@@ -1,0 +1,101 @@
+---
+import '../styles/global.css';
+---
+
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Firmen-Scan — k-AIzen</title>
+		<meta name="description" content="30 Minuten Gespräch. Danach weißt du, was in deinem Betrieb automatisierbar ist." />
+	</head>
+	<body class="min-h-screen bg-neutral-950 text-neutral-100 antialiased">
+		<header class="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
+			<a href="/" class="text-sm font-semibold tracking-wide">k-AIzen</a>
+			<nav class="flex gap-6 text-sm text-neutral-400">
+				<a href="/firmen-scan" class="text-neutral-100">Firmen-Scan</a>
+				<a href="/about" class="transition hover:text-neutral-100">Über</a>
+			</nav>
+		</header>
+
+		<main class="mx-auto max-w-3xl px-6 py-16">
+			<p class="mb-6 text-sm uppercase tracking-widest text-neutral-500">Einstiegsangebot</p>
+
+			<h1 class="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+				Der Firmen-Scan.
+			</h1>
+
+			<p class="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-300">
+				30 Minuten Gespräch. Danach weißt du, was in deinem Betrieb automatisierbar ist —
+				und was nicht.
+			</p>
+
+			<section class="mt-16">
+				<h2 class="text-sm uppercase tracking-widest text-neutral-500">Was im Gespräch passiert</h2>
+				<ul class="mt-6 space-y-4 text-neutral-300">
+					<li class="border-l border-neutral-800 pl-4">
+						<span class="font-medium text-neutral-100">Eure Lage verstehen.</span>
+						Ich frage nach einem typischen Werktag — was kommt rein, wer macht was, wo hakt's.
+					</li>
+					<li class="border-l border-neutral-800 pl-4">
+						<span class="font-medium text-neutral-100">Painpoints mit Zahlen.</span>
+						Wo verliert ihr am meisten Zeit? Wie oft, wie lange, wer macht das? Keine vagen Antworten — wir konkretisieren gemeinsam.
+					</li>
+					<li class="border-l border-neutral-800 pl-4">
+						<span class="font-medium text-neutral-100">Tools + Datenlage.</span>
+						Was nutzt ihr bereits? Microsoft 365, DATEV, lexoffice, Branchen-Software? Damit ich weiß, wo Automation andocken kann.
+					</li>
+					<li class="border-l border-neutral-800 pl-4">
+						<span class="font-medium text-neutral-100">Erfolgs-Bild.</span>
+						Wenn wir in 3 Monaten telefonieren und du sagst "das war richtig gut" — was hat sich konkret verändert?
+					</li>
+				</ul>
+			</section>
+
+			<section class="mt-16">
+				<h2 class="text-sm uppercase tracking-widest text-neutral-500">Was du danach bekommst</h2>
+				<ol class="mt-6 space-y-4 text-neutral-300">
+					<li>
+						<span class="font-medium text-neutral-100">In 3 Werktagen:</span> ein PDF-Vorschlag mit 2–3 konkreten Automatisierungen, zugeschnitten auf deinen Betrieb. Keine Standard-Pakete.
+					</li>
+					<li>
+						<span class="font-medium text-neutral-100">Follow-up-Zoom:</span> wir gehen den Vorschlag gemeinsam durch. Dort kommen auch die Preise auf den Tisch — transparent, aus den benötigten Modulen kalkuliert.
+					</li>
+					<li>
+						<span class="font-medium text-neutral-100">Eigener Server:</span> wenn wir umsetzen, richte ich dir einen eigenen Server ein, auf dem alle Automationen laufen. Deine Daten bleiben bei dir.
+					</li>
+				</ol>
+			</section>
+
+			<section class="mt-16">
+				<h2 class="text-sm uppercase tracking-widest text-neutral-500">Format</h2>
+				<p class="mt-6 text-neutral-300">
+					Zoom ist der Standard — ich kann direkt Bildschirm teilen und Beispiele zeigen.
+					Regensburg und Umkreis besuche ich auch vor Ort, wenn du das möchtest.
+				</p>
+			</section>
+
+			<section class="mt-16 border-t border-neutral-900 pt-12">
+				<h2 class="text-2xl font-semibold tracking-tight">Termin buchen.</h2>
+				<p class="mt-4 text-neutral-300">
+					Schreib mir kurz, wann es bei dir passt und was dein Betrieb macht. Ich melde mich innerhalb von 24 Stunden.
+				</p>
+				<div class="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
+					<a
+						href="mailto:kontakt@k-aizen.de?subject=Firmen-Scan%20buchen"
+						class="inline-flex items-center justify-center rounded-md bg-neutral-100 px-6 py-3 font-medium text-neutral-900 transition hover:bg-white"
+					>
+						kontakt@k-aizen.de
+					</a>
+					<span class="text-sm text-neutral-500">Alternativ: WhatsApp, Formular und Chat folgen.</span>
+				</div>
+			</section>
+		</main>
+
+		<footer class="mx-auto max-w-5xl px-6 py-12 text-sm text-neutral-600">
+			<a href="/" class="transition hover:text-neutral-300">← zurück</a>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,119 @@
+---
+import '../styles/global.css';
+---
+
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Über — k-AIzen</title>
+		<meta name="description" content="Kaizen trifft KI. Kleine Schritte, die jeden Tag den Betrieb leichter machen." />
+	</head>
+	<body class="min-h-screen bg-neutral-950 text-neutral-100 antialiased">
+		<header class="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
+			<a href="/" class="text-sm font-semibold tracking-wide">k-AIzen</a>
+			<nav class="flex gap-6 text-sm text-neutral-400">
+				<a href="/firmen-scan" class="transition hover:text-neutral-100">Firmen-Scan</a>
+				<a href="/about" class="text-neutral-100">Über</a>
+			</nav>
+		</header>
+
+		<main class="mx-auto max-w-3xl px-6 py-16">
+			<p class="mb-6 text-sm uppercase tracking-widest text-neutral-500">Über</p>
+
+			<h1 class="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+				Kaizen trifft KI.
+			</h1>
+
+			<section class="mt-12 space-y-6 text-neutral-300 leading-relaxed">
+				<p>
+					Tagsüber arbeite ich als Techniker in einer großen Parkhaus-Firma. Dort habe ich
+					angefangen, Abläufe zu automatisieren — nicht weil es mein Job war, sondern weil
+					ich die gleichen Handgriffe nicht zehnmal am Tag machen wollte.
+				</p>
+				<p>
+					Daraus ist k-AIzen geworden: individuelle KI-Automation für Betriebe, die die
+					gleichen Potenziale haben wie Konzerne — aber nicht die Konzern-Budgets. Und nicht
+					den Nerv für Enterprise-Berater.
+				</p>
+			</section>
+
+			<section class="mt-16">
+				<h2 class="text-sm uppercase tracking-widest text-neutral-500">Kaizen</h2>
+				<div class="mt-6 space-y-5 text-neutral-300 leading-relaxed">
+					<p>
+						Eine japanische Philosophie: kontinuierliche Verbesserung durch kleine, stetige
+						Schritte — nicht durch große Umbrüche. <span class="text-neutral-500">改善</span> aus
+						<em class="not-italic text-neutral-100">kai</em> (Veränderung) und
+						<em class="not-italic text-neutral-100">zen</em> (zum Besseren).
+					</p>
+					<ul class="space-y-3 border-l border-neutral-800 pl-5 text-neutral-400">
+						<li>Jeder Prozess kann verbessert werden. Stillstand ist Rückschritt.</li>
+						<li>Verbesserungen kommen von allen Ebenen — nicht nur von oben.</li>
+						<li>Fehler sind Informationsquellen, keine Schuldzuweisungen.</li>
+						<li>Erst Standardisierung, dann Optimierung.</li>
+						<li>Kleine Schritte sind nachhaltiger als Revolutionen.</li>
+					</ul>
+					<p>
+						Das ist kein Werbegag. Das ist Arbeitsweise. Ich identifiziere mich seit über
+						15 Jahren mit dem Prinzip, und es passt genau zu dem, was KI-Automatisierung
+						in KMUs braucht: nicht das eine große System, sondern viele kleine Workflows,
+						die sich summieren.
+					</p>
+				</div>
+			</section>
+
+			<section class="mt-16">
+				<h2 class="text-sm uppercase tracking-widest text-neutral-500">Stack</h2>
+				<div class="mt-6 space-y-4 text-neutral-300 leading-relaxed">
+					<p>Womit ich arbeite:</p>
+					<ul class="grid gap-3 text-neutral-400 sm:grid-cols-2">
+						<li><span class="text-neutral-100">Claude Skills</span> — domänen-spezifisches Wissen für KI-Workflows</li>
+						<li><span class="text-neutral-100">n8n</span> — Workflow-Orchestrierung, self-hosted</li>
+						<li><span class="text-neutral-100">OpenClaw</span> — autonome Agenten-Arbeit</li>
+						<li><span class="text-neutral-100">Paperclip</span> — Agenten-Rahmen für Dauer-Tasks</li>
+					</ul>
+					<p>
+						Alles auf eigener Infrastruktur. Keine SaaS-Abos mit deinen Daten im Ausland.
+						Deine Automationen laufen auf deinem Server.
+					</p>
+				</div>
+			</section>
+
+			<section class="mt-16">
+				<h2 class="text-sm uppercase tracking-widest text-neutral-500">Haltung</h2>
+				<div class="mt-6 space-y-4 text-neutral-300 leading-relaxed">
+					<p>
+						Keine Magie. Keine Buzzword-Präsentationen. Keine Demos, die live nie funktionieren.
+					</p>
+					<p>
+						Disziplin, kleine Schritte, und die Bereitschaft, Dinge wieder aus dem Betrieb
+						zu nehmen, wenn sie sich als falsch erweisen. Automation ist dann gut, wenn
+						niemand mehr darüber nachdenken muss.
+					</p>
+				</div>
+			</section>
+
+			<section class="mt-16 border-t border-neutral-900 pt-12">
+				<h2 class="text-2xl font-semibold tracking-tight">Ersten Schritt machen.</h2>
+				<p class="mt-4 text-neutral-300">
+					Der Firmen-Scan ist kostenlos und unverbindlich. 30 Minuten, in denen wir schauen, ob es passt.
+				</p>
+				<div class="mt-8">
+					<a
+						href="/firmen-scan"
+						class="inline-flex items-center justify-center rounded-md bg-neutral-100 px-6 py-3 font-medium text-neutral-900 transition hover:bg-white"
+					>
+						Firmen-Scan ansehen
+					</a>
+				</div>
+			</section>
+		</main>
+
+		<footer class="mx-auto max-w-5xl px-6 py-12 text-sm text-neutral-600">
+			<a href="/" class="transition hover:text-neutral-300">← zurück</a>
+		</footer>
+	</body>
+</html>
