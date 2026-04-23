@@ -1,17 +1,39 @@
 ---
-
+import '../styles/global.css';
 ---
 
-<html lang="en">
+<html lang="de">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>k-AIzen — KI-Automation für KMUs</title>
+		<meta name="description" content="Individuelle KI-Workflows für KMUs mit 10–50 Mitarbeitern. Lokal. Persönlich. Ohne Enterprise-Overhead." />
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="min-h-screen bg-neutral-950 text-neutral-100 antialiased">
+		<main class="mx-auto flex min-h-screen max-w-3xl flex-col justify-center px-6 py-16">
+			<p class="mb-6 text-sm uppercase tracking-widest text-neutral-500">k-AIzen</p>
+
+			<h1 class="text-4xl font-semibold leading-tight tracking-tight sm:text-6xl">
+				KI-Automation für deinen Betrieb —<br />
+				<span class="text-neutral-400">nicht für einen Konzern.</span>
+			</h1>
+
+			<p class="mt-8 max-w-xl text-lg text-neutral-300 leading-relaxed">
+				k-AIzen baut individuelle KI-Workflows für KMUs mit 10–50 Mitarbeitern.
+				Lokal. Persönlich. Ohne Enterprise-Overhead.
+			</p>
+
+			<div class="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
+				<a
+					href="mailto:kontakt@k-aizen.de?subject=Firmen-Scan"
+					class="inline-flex items-center justify-center rounded-md bg-neutral-100 px-6 py-3 font-medium text-neutral-900 transition hover:bg-white"
+				>
+					Firmen-Scan buchen
+				</a>
+				<span class="text-sm text-neutral-500">30 Min · unverbindlich</span>
+			</div>
+		</main>
 	</body>
 </html>
