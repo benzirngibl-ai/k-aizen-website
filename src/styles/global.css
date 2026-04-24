@@ -165,10 +165,10 @@
       120deg,
       #1e3a8a 0%,
       #3b82f6 18%,
-      #60a5fa 32%,
-      #bae6fd 44%,
-      #22d3ee 52%,
-      #60a5fa 66%,
+      #4f8fe8 32%,
+      #60a5fa 44%,
+      #38bdf8 52%,
+      #4f8fe8 66%,
       #3b82f6 82%,
       #1e40af 100%
     );
@@ -183,7 +183,7 @@
       drop-shadow(0 0 50px rgba(var(--arcane-rgb), 0.40));
     animation:
       arcanePulse 2.2s ease-in-out infinite,
-      arcaneFlow 7s ease-in-out infinite;
+      arcaneFlow 16s ease-in-out infinite;
     transition: filter 400ms ease;
   }
   .arcane-pulse:hover,
