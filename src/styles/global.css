@@ -6,12 +6,12 @@
   --color-parchment-dark: #D9CDA8;
   --color-parchment-shadow: #B8A87C;
   --color-parchment-deep: #8E7F5A;
-  --color-ink: #2B1F14;
-  --color-ink-heavy: #1C1309;
-  --color-ink-soft: #6B5742;
-  --color-ink-faint: #9C8A6F;
-  --color-ember: #B03A1A;
-  --color-ember-glow: #E85A2B;
+  --color-ink: #EFE6D2;
+  --color-ink-heavy: #FBF4DD;
+  --color-ink-soft: #C7B58A;
+  --color-ink-faint: #8A7A5A;
+  --color-ember: #E85A2B;
+  --color-ember-glow: #FF7A45;
 
   --font-display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
   --font-body: "EB Garamond", "Iowan Old Style", Georgia, serif;
@@ -76,33 +76,25 @@
     50%      { transform: translate(-5%, 4%)  scale(1.10); }
   }
 
+  body, p, li, span, a, blockquote {
+    text-shadow:
+      0 0 1px  rgba(239, 230, 210, 0.45),
+      0 0 14px rgba(239, 230, 210, 0.14);
+  }
+
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     font-weight: 500;
     letter-spacing: -0.01em;
+    text-shadow:
+      0 0 2px  rgba(251, 244, 221, 0.55),
+      0 0 18px rgba(239, 230, 210, 0.25),
+      0 0 48px rgba(239, 230, 210, 0.12);
   }
 
   ::selection {
-    background-color: rgba(176, 58, 26, 0.35);
-    color: var(--color-ink);
-  }
-}
-
-@layer components {
-  .page-surface {
-    max-width: 80rem;
-    margin: 0 auto;
-    background-color: #E8D9B0;
-    background-image: url('/images/parchment-bg.jpg');
-    background-repeat: repeat;
-    background-size: 600px 600px;
-    position: relative;
-    isolation: isolate;
-    box-shadow:
-      0 40px 120px rgba(0, 0, 0, 0.75),
-      0 10px 30px rgba(0, 0, 0, 0.55),
-      inset 0 0 120px 20px rgba(55, 32, 12, 0.55),
-      inset 0 0 40px rgba(40, 22, 8, 0.35);
+    background-color: rgba(232, 90, 43, 0.45);
+    color: var(--color-ink-heavy);
   }
 }
 
