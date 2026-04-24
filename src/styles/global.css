@@ -6,10 +6,10 @@
   --color-parchment-dark: #D9CDA8;
   --color-parchment-shadow: #B8A87C;
   --color-parchment-deep: #8E7F5A;
-  --color-ink: #EFE6D2;
-  --color-ink-heavy: #FBF4DD;
-  --color-ink-soft: #C7B58A;
-  --color-ink-faint: #8A7A5A;
+  --color-ink: #FBF4DD;
+  --color-ink-heavy: #FFFFFF;
+  --color-ink-soft: #E0D2AA;
+  --color-ink-faint: #B09C78;
   --color-ember: #E85A2B;
   --color-ember-glow: #FF7A45;
 
@@ -28,6 +28,7 @@
   html {
     color: var(--color-ink);
     font-family: var(--font-body);
+    font-weight: 500;
   }
 
   body {
@@ -84,7 +85,7 @@
 
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: -0.01em;
     text-shadow:
       0 0 2px  rgba(251, 244, 221, 0.55),
