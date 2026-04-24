@@ -1,0 +1,70 @@
+---
+import '../styles/global.css';
+import Sigil from '../components/Sigil.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  activeNav?: 'firmen-scan' | 'about' | 'home';
+}
+
+const { title, description, activeNav = 'home' } = Astro.props;
+
+const navLinkClass = (key: string) =>
+  activeNav === key
+    ? 'text-ink font-medium'
+    : 'text-ink-soft transition hover:text-ember-glow ember-glow';
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body class="antialiased">
+    <header class="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
+      <a href="/" class="group flex items-center gap-3">
+        <span class="sigil-glow text-ember ember-pulse">
+          <Sigil size={28} />
+        </span>
+        <span class="font-display text-lg font-semibold tracking-wide text-ink transition group-hover:text-ember-glow">
+          k-AIzen
+        </span>
+      </a>
+      <nav class="flex gap-6 text-sm">
+        <a href="/firmen-scan" class={navLinkClass('firmen-scan')}>Firmen-Scan</a>
+        <a href="/about" class={navLinkClass('about')}>Über</a>
+      </nav>
+    </header>
+
+    <slot />
+
+    <footer class="mx-auto mt-24 max-w-5xl border-t border-parchment-deep/40 px-6 py-12">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex items-center gap-3 text-sm text-ink-soft">
+          <span class="sigil-glow text-ember">
+            <Sigil size={20} />
+          </span>
+          <span>© k-AIzen · Ben Zirngibl</span>
+        </div>
+        <nav class="flex gap-6 text-sm">
+          <a href="/impressum" class="text-ink-soft transition hover:text-ember-glow ember-glow">Impressum</a>
+          <a href="/datenschutz" class="text-ink-soft transition hover:text-ember-glow ember-glow">Datenschutz</a>
+        </nav>
+      </div>
+      <p class="mt-6 font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">
+        改善 · kleine Schritte · jeden Tag
+      </p>
+    </footer>
+  </body>
+</html>

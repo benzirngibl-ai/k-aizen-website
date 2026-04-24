@@ -1,1 +1,100 @@
 @import "tailwindcss";
+
+@theme {
+  --color-parchment: #EFE6D2;
+  --color-parchment-dark: #D9CDA8;
+  --color-parchment-deep: #C4B68F;
+  --color-ink: #2B1F14;
+  --color-ink-soft: #6B5742;
+  --color-ink-faint: #9C8A6F;
+  --color-ember: #B03A1A;
+  --color-ember-glow: #E85A2B;
+
+  --font-display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --font-body: "EB Garamond", "Iowan Old Style", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-parchment);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+  }
+
+  body {
+    background-color: var(--color-parchment);
+    background-image:
+      radial-gradient(ellipse 120% 80% at 50% 0%, rgba(196, 182, 143, 0.35), transparent 60%),
+      radial-gradient(ellipse 100% 80% at 50% 100%, rgba(139, 108, 66, 0.15), transparent 70%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.17 0 0 0 0 0.12 0 0 0 0 0.08 0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-blend-mode: multiply, multiply, normal;
+    background-size: auto, auto, 240px 240px;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: var(--color-ember);
+    color: var(--color-parchment);
+  }
+}
+
+@layer utilities {
+  .ember-glow {
+    transition: color 400ms ease, text-shadow 400ms ease, filter 400ms ease;
+  }
+
+  .ember-glow:hover,
+  a.ember-glow:hover,
+  .group:hover .ember-glow {
+    color: var(--color-ember-glow);
+    text-shadow:
+      0 0 8px rgba(232, 90, 43, 0.55),
+      0 0 20px rgba(232, 90, 43, 0.35),
+      0 0 40px rgba(232, 90, 43, 0.2);
+  }
+
+  .sigil-glow {
+    filter: drop-shadow(0 0 0 transparent);
+    transition: filter 400ms ease;
+  }
+
+  .sigil-glow:hover,
+  .group:hover .sigil-glow {
+    filter:
+      drop-shadow(0 0 3px rgba(232, 90, 43, 0.8))
+      drop-shadow(0 0 12px rgba(232, 90, 43, 0.5));
+  }
+
+  @keyframes emberPulse {
+    0%, 100% {
+      filter: drop-shadow(0 0 2px rgba(176, 58, 26, 0.3));
+    }
+    50% {
+      filter: drop-shadow(0 0 8px rgba(232, 90, 43, 0.6));
+    }
+  }
+
+  .ember-pulse {
+    animation: emberPulse 4s ease-in-out infinite;
+  }
+
+  @keyframes runeDraw {
+    from { stroke-dashoffset: 1000; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  .rune-draw path,
+  .rune-draw circle,
+  .rune-draw line {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: runeDraw 2.5s ease-out forwards;
+  }
+}
