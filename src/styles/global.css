@@ -460,6 +460,49 @@
     mix-blend-mode: multiply;
   }
 
+  .light-beam {
+    position: absolute;
+    top: -40%;
+    left: 15%;
+    width: 55%;
+    height: 180%;
+    transform: rotate(10deg);
+    transform-origin: top center;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 240, 210, 0.55) 0%,
+        rgba(255, 225, 175, 0.35) 25%,
+        rgba(255, 210, 145, 0.18) 55%,
+        rgba(255, 195, 120, 0.06) 80%,
+        transparent 100%
+      );
+    filter: blur(28px);
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 2;
+    animation: beamBreath 7s ease-in-out infinite;
+  }
+  .light-beam::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 250, 230, 0.7) 0%,
+      rgba(255, 240, 200, 0.4) 20%,
+      rgba(255, 220, 160, 0.15) 50%,
+      transparent 85%
+    );
+    filter: blur(8px);
+    width: 30%;
+    left: 35%;
+  }
+  @keyframes beamBreath {
+    0%, 100% { opacity: 0.85; }
+    50%      { opacity: 1.0; }
+  }
+
   @keyframes floatSigil {
     0%, 100% { transform: translateY(0) rotate(0deg); }
     50%      { transform: translateY(-6px) rotate(2deg); }
