@@ -1,0 +1,31 @@
+---
+interface Props {
+  class?: string;
+  flip?: boolean;
+}
+
+const { class: className = '', flip = false } = Astro.props;
+const transform = flip ? 'scale(-1, 1)' : undefined;
+---
+
+<svg
+  class={className}
+  width="120"
+  height="24"
+  viewBox="0 0 120 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.1"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  xmlns="http://www.w3.org/2000/svg"
+  transform={transform}
+  aria-hidden="true"
+>
+  <path d="M 2 12 C 18 12, 26 6, 40 12 C 54 18, 62 8, 76 12" opacity="0.75" />
+  <path d="M 76 12 C 84 12, 88 9, 92 12 C 96 15, 100 12, 108 12" opacity="0.6" />
+  <circle cx="112" cy="12" r="2" fill="currentColor" />
+  <circle cx="118" cy="12" r="1" fill="currentColor" opacity="0.6" />
+  <path d="M 40 12 L 40 6" opacity="0.4" />
+  <path d="M 60 12 L 60 18" opacity="0.4" />
+</svg>

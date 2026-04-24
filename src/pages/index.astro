@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Sigil from '../components/Sigil.astro';
+import Flourish from '../components/Flourish.astro';
+import Divider from '../components/Divider.astro';
 ---
 
 <Layout
@@ -8,41 +10,55 @@ import Sigil from '../components/Sigil.astro';
   description="Individuelle KI-Workflows für KMUs mit 10–50 Mitarbeitern. Lokal. Persönlich. Ohne Enterprise-Overhead."
   activeNav="home"
 >
-  <main class="mx-auto flex min-h-[calc(100vh-10rem)] max-w-3xl flex-col justify-center px-6 py-16">
-    <p class="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">
-      Kaizen × KI
-    </p>
+  <main class="mx-auto max-w-6xl px-6 py-12 page-edge">
+    <div class="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
+      <div>
+        <Flourish class="mb-4 text-ember opacity-80" />
 
-    <h1 class="font-display text-5xl leading-[1.05] tracking-tight text-ink sm:text-7xl">
-      <span class="ember-glow">KI-Automation</span>
-      <span class="italic text-ink-soft">für deinen Betrieb</span> —<br />
-      <span class="italic text-ink-soft">nicht für einen Konzern.</span>
-    </h1>
+        <p class="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">
+          Kaizen × KI
+        </p>
 
-    <p class="mt-10 max-w-xl text-lg leading-relaxed text-ink-soft">
-      k-AIzen baut individuelle KI-Workflows für KMUs mit 10–50 Mitarbeitern.
-      Lokal. Persönlich. Ohne Enterprise-Overhead.
-    </p>
+        <h1 class="font-display text-5xl leading-[1.05] tracking-tight text-ink sm:text-7xl">
+          <span class="ember-glow">KI-Automation</span>
+          <span class="italic text-ink-soft">für deinen Betrieb</span> —<br />
+          <span class="italic text-ink-soft">nicht für einen Konzern.</span>
+        </h1>
 
-    <div class="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
-      <a
-        href="/firmen-scan"
-        class="group inline-flex items-center justify-center gap-3 rounded-sm border border-ember bg-ember px-6 py-3 font-mono text-sm uppercase tracking-widest text-parchment transition hover:bg-ember-glow hover:shadow-[0_0_20px_rgba(232,90,43,0.4)]"
-      >
-        <span class="sigil-glow">
-          <Sigil size={18} />
-        </span>
-        Firmen-Scan buchen
-      </a>
-      <span class="font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">
-        30 Min · unverbindlich · kostenlos
-      </span>
+        <p class="mt-10 max-w-xl text-lg leading-relaxed text-ink-soft">
+          k-AIzen baut individuelle KI-Workflows für KMUs mit 10–50 Mitarbeitern.
+          Lokal. Persönlich. Ohne Enterprise-Overhead.
+        </p>
+
+        <div class="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <a
+            href="/firmen-scan"
+            class="group inline-flex items-center justify-center gap-3 rounded-sm border border-ember bg-ember px-6 py-3 font-mono text-sm uppercase tracking-widest text-parchment transition hover:bg-ember-glow hover:shadow-[0_0_20px_rgba(232,90,43,0.4)]"
+          >
+            <span class="sigil-glow">
+              <Sigil size={18} />
+            </span>
+            Firmen-Scan buchen
+          </a>
+          <span class="font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">
+            30 Min · unverbindlich · kostenlos
+          </span>
+        </div>
+
+        <Flourish class="mt-12 text-ember opacity-70" flip={true} />
+      </div>
+
+      <div class="relative">
+        <div class="absolute -inset-6 rounded-sm bg-[radial-gradient(ellipse_at_center,rgba(232,90,43,0.18),transparent_70%)] pointer-events-none"></div>
+        <img
+          src="/images/grimoire.jpg"
+          alt="Hand mit Federkiel, ein leuchtendes Sigil auf Pergament zeichnend"
+          class="relative w-full rounded-sm mix-blend-multiply float-sigil shadow-[0_20px_60px_rgba(43,31,20,0.35)]"
+          loading="eager"
+        />
+      </div>
     </div>
 
-    <div class="mt-20 flex items-center gap-4 text-xs uppercase tracking-[0.3em] text-ink-faint">
-      <span class="h-px w-16 bg-parchment-deep"></span>
-      <span class="font-mono">改善 — kontinuierliche Verbesserung</span>
-      <span class="h-px flex-1 bg-parchment-deep"></span>
-    </div>
+    <Divider class="mt-24" label="改善 — kontinuierliche Verbesserung" />
   </main>
 </Layout>

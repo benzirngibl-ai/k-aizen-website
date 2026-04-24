@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Divider from '../components/Divider.astro';
+import Flourish from '../components/Flourish.astro';
 ---
 
 <Layout
@@ -7,7 +9,9 @@ import Layout from '../layouts/Layout.astro';
   description="Kaizen trifft KI. Kleine Schritte, die jeden Tag den Betrieb leichter machen."
   activeNav="about"
 >
-  <main class="mx-auto max-w-3xl px-6 py-16">
+  <main class="mx-auto max-w-3xl px-6 py-16 page-edge">
+    <Flourish class="mb-4 text-ember opacity-80" />
+
     <p class="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">Über</p>
 
     <h1 class="font-display text-5xl leading-tight tracking-tight text-ink sm:text-6xl">
@@ -15,7 +19,7 @@ import Layout from '../layouts/Layout.astro';
     </h1>
 
     <section class="mt-12 space-y-6 text-ink-soft leading-relaxed">
-      <p>
+      <p class="drop-cap text-lg">
         Tagsüber arbeite ich als Techniker in einer großen Parkhaus-Firma. Dort habe ich
         angefangen, Abläufe zu automatisieren — nicht weil es mein Job war, sondern weil
         ich die gleichen Handgriffe nicht zehnmal am Tag machen wollte.
@@ -27,14 +31,15 @@ import Layout from '../layouts/Layout.astro';
       </p>
     </section>
 
-    <section class="mt-16">
-      <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">Kaizen</h2>
-      <div class="mt-8 space-y-5 text-ink-soft leading-relaxed">
+    <Divider class="mt-20" label="Kaizen" />
+
+    <section class="mt-12">
+      <div class="space-y-5 text-ink-soft leading-relaxed">
         <p>
           Eine japanische Philosophie: kontinuierliche Verbesserung durch kleine, stetige
           Schritte — nicht durch große Umbrüche. <span class="font-display text-ember italic">改善</span> aus
-          <em class="font-display text-ink not-italic italic">kai</em> (Veränderung) und
-          <em class="font-display text-ink not-italic italic">zen</em> (zum Besseren).
+          <em class="font-display text-ink italic">kai</em> (Veränderung) und
+          <em class="font-display text-ink italic">zen</em> (zum Besseren).
         </p>
         <ul class="space-y-3 border-l-2 border-ember/60 pl-5">
           <li>Jeder Prozess kann verbessert werden. Stillstand ist Rückschritt.</li>
@@ -43,7 +48,7 @@ import Layout from '../layouts/Layout.astro';
           <li>Erst Standardisierung, dann Optimierung.</li>
           <li>Kleine Schritte sind nachhaltiger als Revolutionen.</li>
         </ul>
-        <p>
+        <p class="illuminated-quote mt-10 text-xl text-ink">
           Das ist kein Werbegag. Das ist Arbeitsweise. Ich identifiziere mich seit über
           15 Jahren mit dem Prinzip, und es passt genau zu dem, was KI-Automatisierung
           in KMUs braucht: nicht das eine große System, sondern viele kleine Workflows,
@@ -52,9 +57,10 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </section>
 
-    <section class="mt-16">
-      <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">Stack</h2>
-      <div class="mt-8 space-y-4 text-ink-soft leading-relaxed">
+    <Divider class="mt-20" label="Stack" />
+
+    <section class="mt-12">
+      <div class="space-y-4 text-ink-soft leading-relaxed">
         <p>Womit ich arbeite:</p>
         <ul class="grid gap-3 sm:grid-cols-2">
           <li><span class="font-display text-lg italic text-ink ember-glow">Claude Skills</span> — domänen-spezifisches Wissen für KI-Workflows</li>
@@ -69,9 +75,10 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </section>
 
-    <section class="mt-16">
-      <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">Haltung</h2>
-      <div class="mt-8 space-y-4 text-ink-soft leading-relaxed">
+    <Divider class="mt-20" label="Haltung" />
+
+    <section class="mt-12">
+      <div class="space-y-4 text-ink-soft leading-relaxed">
         <p>
           Keine Magie. Keine Buzzword-Präsentationen. Keine Demos, die live nie funktionieren.
         </p>
@@ -83,12 +90,12 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </section>
 
-    <section class="mt-20 border-t border-parchment-deep/40 pt-12">
-      <h2 class="font-display text-3xl italic tracking-tight text-ink">Ersten Schritt machen.</h2>
-      <p class="mt-4 text-ink-soft">
+    <section class="mt-24 manuscript-frame">
+      <h2 class="font-display text-3xl italic tracking-tight text-ink text-center">Ersten Schritt machen.</h2>
+      <p class="mt-4 text-ink-soft text-center">
         Der Firmen-Scan ist kostenlos und unverbindlich. 30 Minuten, in denen wir schauen, ob es passt.
       </p>
-      <div class="mt-8">
+      <div class="mt-8 flex justify-center">
         <a
           href="/firmen-scan"
           class="inline-flex items-center justify-center rounded-sm border border-ember bg-ember px-6 py-3 font-mono text-sm uppercase tracking-widest text-parchment transition hover:bg-ember-glow hover:shadow-[0_0_20px_rgba(232,90,43,0.4)]"

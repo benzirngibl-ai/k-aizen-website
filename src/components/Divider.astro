@@ -1,0 +1,51 @@
+---
+interface Props {
+  label?: string;
+  class?: string;
+}
+
+const { label, class: className = '' } = Astro.props;
+---
+
+<div class={`flex items-center gap-4 ${className}`} role="separator" aria-hidden="true">
+  <svg class="h-4 flex-1 text-parchment-deep" viewBox="0 0 200 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor">
+    <line x1="0" y1="8" x2="180" y2="8" stroke-width="0.8" />
+    <line x1="0" y1="5" x2="140" y2="5" stroke-width="0.4" opacity="0.5" />
+    <line x1="0" y1="11" x2="140" y2="11" stroke-width="0.4" opacity="0.5" />
+    <circle cx="188" cy="8" r="2" fill="currentColor" />
+    <circle cx="196" cy="8" r="1" fill="currentColor" opacity="0.6" />
+  </svg>
+
+  <svg class="h-6 w-6 text-ember sigil-glow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="12" r="10" opacity="0.4" />
+    <circle cx="12" cy="12" r="6" />
+    <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.6" />
+    <line x1="12" y1="2" x2="12" y2="5" />
+    <line x1="12" y1="19" x2="12" y2="22" />
+    <line x1="2" y1="12" x2="5" y2="12" />
+    <line x1="19" y1="12" x2="22" y2="12" />
+  </svg>
+
+  {label && (
+    <Fragment>
+      <span class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft whitespace-nowrap">{label}</span>
+      <svg class="h-6 w-6 text-ember sigil-glow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="10" opacity="0.4" />
+        <circle cx="12" cy="12" r="6" />
+        <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.6" />
+        <line x1="12" y1="2" x2="12" y2="5" />
+        <line x1="12" y1="19" x2="12" y2="22" />
+        <line x1="2" y1="12" x2="5" y2="12" />
+        <line x1="19" y1="12" x2="22" y2="12" />
+      </svg>
+    </Fragment>
+  )}
+
+  <svg class="h-4 flex-1 text-parchment-deep" viewBox="0 0 200 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor">
+    <circle cx="12" cy="8" r="1" fill="currentColor" opacity="0.6" />
+    <circle cx="4" cy="8" r="2" fill="currentColor" />
+    <line x1="20" y1="8" x2="200" y2="8" stroke-width="0.8" />
+    <line x1="60" y1="5" x2="200" y2="5" stroke-width="0.4" opacity="0.5" />
+    <line x1="60" y1="11" x2="200" y2="11" stroke-width="0.4" opacity="0.5" />
+  </svg>
+</div>
