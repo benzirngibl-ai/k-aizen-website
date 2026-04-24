@@ -20,6 +20,7 @@
 
 :root {
   --ember-rgb: 232, 90, 43;
+  --arcane-rgb: 90, 170, 255;
 }
 
 @layer base {
@@ -156,6 +157,43 @@
         drop-shadow(0 0 5px  rgba(var(--ember-rgb), 0.50))
         drop-shadow(0 0 18px rgba(var(--ember-rgb), 0.35))
         drop-shadow(0 0 44px rgba(var(--ember-rgb), 0.25));
+    }
+  }
+
+  .arcane-pulse {
+    color: var(--color-ember-glow);
+    text-shadow:
+      0 0 6px  rgba(var(--arcane-rgb), 0.55),
+      0 0 18px rgba(var(--arcane-rgb), 0.45),
+      0 0 40px rgba(var(--arcane-rgb), 0.35),
+      0 0 90px rgba(var(--arcane-rgb), 0.22);
+    animation: arcanePulse 3.2s ease-in-out infinite;
+    transition: color 400ms ease, text-shadow 400ms ease;
+  }
+  .arcane-pulse:hover,
+  a.arcane-pulse:hover,
+  .group:hover .arcane-pulse {
+    color: #FF7A45;
+    text-shadow:
+      0 0 8px  rgba(var(--arcane-rgb), 0.80),
+      0 0 24px rgba(var(--arcane-rgb), 0.60),
+      0 0 56px rgba(var(--arcane-rgb), 0.45),
+      0 0 130px rgba(var(--arcane-rgb), 0.30);
+  }
+  @keyframes arcanePulse {
+    0%, 100% {
+      text-shadow:
+        0 0 4px  rgba(var(--arcane-rgb), 0.40),
+        0 0 12px rgba(var(--arcane-rgb), 0.30),
+        0 0 28px rgba(var(--arcane-rgb), 0.22),
+        0 0 60px rgba(var(--arcane-rgb), 0.12);
+    }
+    50% {
+      text-shadow:
+        0 0 8px  rgba(var(--arcane-rgb), 0.75),
+        0 0 26px rgba(var(--arcane-rgb), 0.60),
+        0 0 60px rgba(var(--arcane-rgb), 0.45),
+        0 0 130px rgba(var(--arcane-rgb), 0.28);
     }
   }
 
