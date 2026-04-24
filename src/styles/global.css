@@ -161,40 +161,56 @@
   }
 
   .arcane-pulse {
-    color: var(--color-ember-glow);
-    text-shadow:
-      0 0 6px  rgba(var(--arcane-rgb), 0.55),
-      0 0 18px rgba(var(--arcane-rgb), 0.45),
-      0 0 40px rgba(var(--arcane-rgb), 0.35),
-      0 0 90px rgba(var(--arcane-rgb), 0.22);
-    animation: arcanePulse 3.2s ease-in-out infinite;
-    transition: color 400ms ease, text-shadow 400ms ease;
+    background-image: linear-gradient(
+      120deg,
+      #1e3a8a 0%,
+      #3b82f6 18%,
+      #60a5fa 32%,
+      #bae6fd 44%,
+      #22d3ee 52%,
+      #60a5fa 66%,
+      #3b82f6 82%,
+      #1e40af 100%
+    );
+    background-size: 300% 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    filter:
+      drop-shadow(0 0 6px  rgba(var(--arcane-rgb), 0.70))
+      drop-shadow(0 0 22px rgba(var(--arcane-rgb), 0.55))
+      drop-shadow(0 0 50px rgba(var(--arcane-rgb), 0.40));
+    animation:
+      arcanePulse 2.2s ease-in-out infinite,
+      arcaneFlow 7s ease-in-out infinite;
+    transition: filter 400ms ease;
   }
   .arcane-pulse:hover,
   a.arcane-pulse:hover,
   .group:hover .arcane-pulse {
-    color: #FF7A45;
-    text-shadow:
-      0 0 8px  rgba(var(--arcane-rgb), 0.80),
-      0 0 24px rgba(var(--arcane-rgb), 0.60),
-      0 0 56px rgba(var(--arcane-rgb), 0.45),
-      0 0 130px rgba(var(--arcane-rgb), 0.30);
+    filter:
+      drop-shadow(0 0 10px rgba(var(--arcane-rgb), 0.95))
+      drop-shadow(0 0 32px rgba(var(--arcane-rgb), 0.75))
+      drop-shadow(0 0 80px rgba(var(--arcane-rgb), 0.55));
   }
   @keyframes arcanePulse {
     0%, 100% {
-      text-shadow:
-        0 0 4px  rgba(var(--arcane-rgb), 0.40),
-        0 0 12px rgba(var(--arcane-rgb), 0.30),
-        0 0 28px rgba(var(--arcane-rgb), 0.22),
-        0 0 60px rgba(var(--arcane-rgb), 0.12);
+      filter:
+        drop-shadow(0 0 4px  rgba(var(--arcane-rgb), 0.55))
+        drop-shadow(0 0 14px rgba(var(--arcane-rgb), 0.40))
+        drop-shadow(0 0 34px rgba(var(--arcane-rgb), 0.25));
     }
     50% {
-      text-shadow:
-        0 0 8px  rgba(var(--arcane-rgb), 0.75),
-        0 0 26px rgba(var(--arcane-rgb), 0.60),
-        0 0 60px rgba(var(--arcane-rgb), 0.45),
-        0 0 130px rgba(var(--arcane-rgb), 0.28);
+      filter:
+        drop-shadow(0 0 12px rgba(var(--arcane-rgb), 0.95))
+        drop-shadow(0 0 34px rgba(var(--arcane-rgb), 0.75))
+        drop-shadow(0 0 80px rgba(var(--arcane-rgb), 0.50));
     }
+  }
+  @keyframes arcaneFlow {
+    0%, 100% { background-position:   0% 50%; }
+    50%      { background-position: 100% 50%; }
   }
 
   @keyframes runeDraw {
