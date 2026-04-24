@@ -31,23 +31,31 @@
   body {
     color: var(--color-ink);
     background:
-      radial-gradient(ellipse 70% 55% at 50% 42%, #F4EAD0 0%, rgba(244,234,208,0) 65%),
-      radial-gradient(ellipse 35% 25% at 10% 12%, rgba(120,80,40,0.30), transparent 70%),
-      radial-gradient(ellipse 40% 28% at 92% 8%,  rgba(110,72,34,0.32), transparent 70%),
-      radial-gradient(ellipse 30% 22% at 85% 95%, rgba(120,78,36,0.34), transparent 72%),
-      radial-gradient(ellipse 28% 20% at 8% 92%,  rgba(110,72,30,0.30), transparent 70%),
+      /* Große asymmetrische Tee-/Wasserflecken in den Ecken (Ref-orientiert) */
+      radial-gradient(ellipse 55% 38% at 96% 4%,   rgba(68,40,14,0.85), transparent 60%),
+      radial-gradient(ellipse 50% 38% at 4% 96%,   rgba(72,42,15,0.82), transparent 60%),
+      radial-gradient(ellipse 30% 24% at 10% 8%,   rgba(88,52,20,0.55), transparent 65%),
+      radial-gradient(ellipse 28% 22% at 92% 94%,  rgba(82,48,18,0.60), transparent 65%),
+      /* Harte Kanten-Bänder rings außen — das "Page-Edge"-Gefühl */
+      radial-gradient(ellipse 140% 22% at 50% -2%,  rgba(75,44,16,0.88), transparent 55%),
+      radial-gradient(ellipse 140% 22% at 50% 102%, rgba(75,44,16,0.88), transparent 55%),
+      radial-gradient(ellipse 22% 140% at -2% 50%,  rgba(75,44,16,0.88), transparent 55%),
+      radial-gradient(ellipse 22% 140% at 102% 50%, rgba(75,44,16,0.88), transparent 55%),
+      /* Kleine Streu-Flecken im Textbereich */
       radial-gradient(ellipse 18% 14% at 60% 85%, rgba(130,84,40,0.22), transparent 70%),
-      radial-gradient(ellipse 16% 12% at 35% 5%,  rgba(130,84,40,0.20), transparent 70%),
-      radial-gradient(ellipse 120% 60% at 50% -10%, rgba(90,55,22,0.40), transparent 55%),
-      radial-gradient(ellipse 120% 60% at 50% 110%, rgba(90,55,22,0.40), transparent 55%),
-      radial-gradient(ellipse 60% 130% at -10% 50%, rgba(90,55,22,0.40), transparent 55%),
-      radial-gradient(ellipse 60% 130% at 110% 50%, rgba(90,55,22,0.40), transparent 55%),
+      radial-gradient(ellipse 16% 12% at 35% 22%, rgba(130,84,40,0.20), transparent 70%),
+      /* Warm leuchtende Mitte */
+      radial-gradient(ellipse 55% 45% at 50% 45%, #F4EAD0 0%, rgba(244,234,208,0) 72%),
+      /* Creme-Basis */
       linear-gradient(180deg, #E8D9B0 0%, #DDC893 100%);
     background-attachment: fixed;
     min-height: 100vh;
     position: relative;
     isolation: isolate;
-    box-shadow: inset 0 0 160px rgba(70, 40, 12, 0.25);
+    box-shadow:
+      inset 0 0 240px rgba(55, 32, 12, 0.75),
+      inset 0 0 80px rgba(40, 22, 8, 0.55),
+      inset 0 0 0 1px rgba(60, 35, 14, 0.35);
   }
 
   body::before {
