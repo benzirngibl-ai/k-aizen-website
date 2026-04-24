@@ -2,41 +2,109 @@
 interface Props {
   size?: number;
   class?: string;
-  animate?: boolean;
 }
 
-const { size = 32, class: className = "", animate = false } = Astro.props;
-const animClass = animate ? "rune-draw" : "";
+const { size = 120, class: className = "" } = Astro.props;
+
+const c = size / 2;
+const outer = size * 0.46;
+const mid = size * 0.39;
+const inner = size * 0.30;
+
+const showRunes = size >= 60;
+const showFilter = size >= 48;
+
+const runes = ['ᚲ', '᛫', 'ᚨ', '᛫', 'ᛁ', '᛫', 'ᛉ', '᛫', 'ᛖ', '᛫', 'ᚾ', '᛫'];
+
+const ticks = Array.from({ length: 24 }).map((_, i) => {
+  const a = (i / 24) * Math.PI * 2 - Math.PI / 2;
+  return {
+    x1: c + Math.cos(a) * (outer - 3.5),
+    y1: c + Math.sin(a) * (outer - 3.5),
+    x2: c + Math.cos(a) * outer,
+    y2: c + Math.sin(a) * outer,
+  };
+});
+
+const runeData = runes.map((r, i) => {
+  const a = (i / runes.length) * Math.PI * 2 - Math.PI / 2;
+  const rr = (mid + outer) / 2 + 1;
+  const x = c + Math.cos(a) * rr;
+  const y = c + Math.sin(a) * rr;
+  const rot = (i / runes.length) * 360;
+  return { r, x, y, rot };
+});
+
+const filterId = `sigil-ink-${size}`;
 ---
 
 <svg
   width={size}
   height={size}
-  viewBox="0 0 64 64"
-  fill="none"
-  xmlns="http://www.w3.org/2000/svg"
-  class={`${className} ${animClass}`}
-  stroke="currentColor"
-  stroke-width="1.25"
-  stroke-linecap="round"
-  stroke-linejoin="round"
+  viewBox={`0 0 ${size} ${size}`}
+  class={className}
+  style="overflow: visible"
   aria-hidden="true"
 >
-  <circle cx="32" cy="32" r="28" opacity="0.35" />
-  <circle cx="32" cy="32" r="22" />
-  <circle cx="32" cy="32" r="8" opacity="0.5" />
+  {showFilter && (
+    <defs>
+      <filter id={filterId} x="-10%" y="-10%" width="120%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="9"/>
+        <feDisplacementMap in="SourceGraphic" scale="0.8"/>
+      </filter>
+    </defs>
+  )}
+  <g filter={showFilter ? `url(#${filterId})` : undefined} stroke-linecap="round">
+    <circle cx={c} cy={c} r={outer} fill="none" stroke="currentColor" stroke-width="1.9" opacity="0.95" />
+    <circle cx={c} cy={c} r={outer - 3.5} fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.55" />
+    <circle cx={c} cy={c} r={mid} fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.75" />
 
-  <line x1="32" y1="4" x2="32" y2="10" />
-  <line x1="32" y1="54" x2="32" y2="60" />
-  <line x1="4" y1="32" x2="10" y2="32" />
-  <line x1="54" y1="32" x2="60" y2="32" />
+    {ticks.map(t => (
+      <line x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2} stroke="currentColor" stroke-width="0.6" opacity="0.7" />
+    ))}
 
-  <line x1="12" y1="12" x2="16" y2="16" opacity="0.6" />
-  <line x1="52" y1="12" x2="48" y2="16" opacity="0.6" />
-  <line x1="12" y1="52" x2="16" y2="48" opacity="0.6" />
-  <line x1="52" y1="52" x2="48" y2="48" opacity="0.6" />
+    {showRunes && runeData.map(d => (
+      <text
+        x={d.x}
+        y={d.y}
+        text-anchor="middle"
+        dominant-baseline="middle"
+        font-family="'Cormorant Garamond', serif"
+        font-size={size * 0.1}
+        font-weight="500"
+        fill="currentColor"
+        opacity="0.92"
+        transform={`rotate(${d.rot}, ${d.x}, ${d.y})`}
+      >
+        {d.r}
+      </text>
+    ))}
 
-  <path d="M 32 18 L 42 32 L 32 46 L 22 32 Z" />
-  <line x1="32" y1="22" x2="32" y2="42" opacity="0.7" />
-  <line x1="26" y1="32" x2="38" y2="32" opacity="0.7" />
+    <g transform={`translate(${c},${c})`}>
+      <polygon
+        points={`0,${-inner * 0.92} ${inner * 0.8},${inner * 0.48} ${-inner * 0.8},${inner * 0.48}`}
+        fill="none" stroke="currentColor" stroke-width="1.7" opacity="0.95"
+      />
+      <polygon
+        points={`0,${inner * 0.92} ${inner * 0.8},${-inner * 0.48} ${-inner * 0.8},${-inner * 0.48}`}
+        fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.8"
+      />
+      <circle cx="0" cy="0" r={inner * 0.28} fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.9" />
+      <polygon
+        points={`0,${-inner * 0.14} ${inner * 0.14},0 0,${inner * 0.14} ${-inner * 0.14},0`}
+        fill="currentColor" opacity="0.9"
+      />
+      <path
+        d={`M ${-inner * 0.5} 0 q ${inner * 0.25} ${-inner * 0.25} ${inner * 0.5} 0`}
+        fill="none" stroke="currentColor" stroke-width="0.7" opacity="0.55"
+      />
+      <path
+        d={`M ${inner * 0.5} 0 q ${-inner * 0.25} ${inner * 0.25} ${-inner * 0.5} 0`}
+        fill="none" stroke="currentColor" stroke-width="0.7" opacity="0.55"
+      />
+    </g>
+
+    <line x1={c} y1={c - outer - 4} x2={c} y2={c - outer - 10} stroke="currentColor" stroke-width="1.3" opacity="0.85" />
+    <circle cx={c} cy={c - outer - 12} r="2" fill="none" stroke="currentColor" stroke-width="1.1" opacity="0.85" />
+  </g>
 </svg>

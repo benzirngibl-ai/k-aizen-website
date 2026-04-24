@@ -2,9 +2,12 @@
 
 @theme {
   --color-parchment: #EFE6D2;
+  --color-parchment-lit: #F4ECD8;
   --color-parchment-dark: #D9CDA8;
-  --color-parchment-deep: #C4B68F;
+  --color-parchment-shadow: #B8A87C;
+  --color-parchment-deep: #8E7F5A;
   --color-ink: #2B1F14;
+  --color-ink-heavy: #1C1309;
   --color-ink-soft: #6B5742;
   --color-ink-faint: #9C8A6F;
   --color-ember: #B03A1A;
@@ -15,22 +18,68 @@
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 }
 
+:root {
+  --ember-rgb: 232, 90, 43;
+}
+
 @layer base {
   html {
-    background-color: var(--color-parchment);
     color: var(--color-ink);
     font-family: var(--font-body);
   }
 
   body {
-    background-color: var(--color-parchment);
-    background-image:
-      radial-gradient(ellipse 120% 80% at 50% 0%, rgba(196, 182, 143, 0.35), transparent 60%),
-      radial-gradient(ellipse 100% 80% at 50% 100%, rgba(139, 108, 66, 0.15), transparent 70%),
-      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.17 0 0 0 0 0.12 0 0 0 0 0.08 0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-    background-blend-mode: multiply, multiply, normal;
-    background-size: auto, auto, 240px 240px;
+    color: var(--color-ink);
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 42%, #F4EAD0 0%, rgba(244,234,208,0) 65%),
+      radial-gradient(ellipse 35% 25% at 10% 12%, rgba(120,80,40,0.30), transparent 70%),
+      radial-gradient(ellipse 40% 28% at 92% 8%,  rgba(110,72,34,0.32), transparent 70%),
+      radial-gradient(ellipse 30% 22% at 85% 95%, rgba(120,78,36,0.34), transparent 72%),
+      radial-gradient(ellipse 28% 20% at 8% 92%,  rgba(110,72,30,0.30), transparent 70%),
+      radial-gradient(ellipse 18% 14% at 60% 85%, rgba(130,84,40,0.22), transparent 70%),
+      radial-gradient(ellipse 16% 12% at 35% 5%,  rgba(130,84,40,0.20), transparent 70%),
+      radial-gradient(ellipse 120% 60% at 50% -10%, rgba(90,55,22,0.40), transparent 55%),
+      radial-gradient(ellipse 120% 60% at 50% 110%, rgba(90,55,22,0.40), transparent 55%),
+      radial-gradient(ellipse 60% 130% at -10% 50%, rgba(90,55,22,0.40), transparent 55%),
+      radial-gradient(ellipse 60% 130% at 110% 50%, rgba(90,55,22,0.40), transparent 55%),
+      linear-gradient(180deg, #E8D9B0 0%, #DDC893 100%);
+    background-attachment: fixed;
     min-height: 100vh;
+    position: relative;
+    isolation: isolate;
+    box-shadow: inset 0 0 160px rgba(70, 40, 12, 0.25);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.28  0 0 0 0 0.18  0 0 0 0 0.08  0 0 0 0 0.22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode: multiply;
+    opacity: 0.45;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+      radial-gradient(circle 6px at 23% 28%, rgba(110,62,20,0.35), transparent 100%),
+      radial-gradient(circle 4px at 78% 34%, rgba(110,62,20,0.32), transparent 100%),
+      radial-gradient(circle 8px at 42% 68%, rgba(100,56,18,0.28), transparent 100%),
+      radial-gradient(circle 5px at 68% 72%, rgba(110,62,20,0.35), transparent 100%),
+      radial-gradient(circle 3px at 30% 52%, rgba(120,70,24,0.35), transparent 100%),
+      radial-gradient(circle 4px at 55% 18%, rgba(110,62,20,0.28), transparent 100%),
+      radial-gradient(circle 7px at 88% 58%, rgba(100,56,18,0.28), transparent 100%),
+      radial-gradient(circle 3px at 15% 64%, rgba(120,70,24,0.35), transparent 100%),
+      radial-gradient(circle 2px at 48% 40%, rgba(130,78,30,0.40), transparent 100%),
+      radial-gradient(circle 2px at 72% 46%, rgba(130,78,30,0.35), transparent 100%),
+      radial-gradient(ellipse 12% 8% at 20% 80%, rgba(90,50,15,0.10), transparent 60%),
+      radial-gradient(ellipse 10% 7% at 80% 18%, rgba(90,50,15,0.10), transparent 60%);
   }
 
   h1, h2, h3, h4 {
@@ -40,8 +89,8 @@
   }
 
   ::selection {
-    background-color: var(--color-ember);
-    color: var(--color-parchment);
+    background-color: rgba(176, 58, 26, 0.35);
+    color: var(--color-ink);
   }
 }
 
@@ -49,47 +98,98 @@
   .ember-glow {
     transition: color 400ms ease, text-shadow 400ms ease, filter 400ms ease;
   }
-
   .ember-glow:hover,
   a.ember-glow:hover,
   .group:hover .ember-glow {
     color: var(--color-ember-glow);
     text-shadow:
-      0 0 8px rgba(232, 90, 43, 0.55),
-      0 0 20px rgba(232, 90, 43, 0.35),
-      0 0 40px rgba(232, 90, 43, 0.2);
+      0 0 8px rgba(var(--ember-rgb), 0.55),
+      0 0 20px rgba(var(--ember-rgb), 0.35),
+      0 0 40px rgba(var(--ember-rgb), 0.2);
   }
 
   .sigil-glow {
     filter: drop-shadow(0 0 0 transparent);
     transition: filter 400ms ease;
   }
-
   .sigil-glow:hover,
   .group:hover .sigil-glow {
     filter:
-      drop-shadow(0 0 3px rgba(232, 90, 43, 0.8))
-      drop-shadow(0 0 12px rgba(232, 90, 43, 0.5));
+      drop-shadow(0 0 3px rgba(var(--ember-rgb), 0.8))
+      drop-shadow(0 0 12px rgba(var(--ember-rgb), 0.5));
   }
 
-  @keyframes emberPulse {
+  .ember-breath {
+    color: var(--color-ember-glow);
+    text-shadow:
+      0 0 4px  rgba(var(--ember-rgb), 0.45),
+      0 0 14px rgba(var(--ember-rgb), 0.35),
+      0 0 32px rgba(var(--ember-rgb), 0.25),
+      0 0 70px rgba(var(--ember-rgb), 0.15);
+    animation: emberBreath 7s ease-in-out infinite;
+    transition: color 400ms ease, text-shadow 400ms ease;
+  }
+  .ember-breath:hover,
+  a.ember-breath:hover,
+  .group:hover .ember-breath {
+    color: #FF7A45;
+    text-shadow:
+      0 0 6px  rgba(var(--ember-rgb), 0.75),
+      0 0 18px rgba(var(--ember-rgb), 0.55),
+      0 0 40px rgba(var(--ember-rgb), 0.40),
+      0 0 100px rgba(var(--ember-rgb), 0.25);
+  }
+  @keyframes emberBreath {
     0%, 100% {
-      filter: drop-shadow(0 0 2px rgba(176, 58, 26, 0.3));
+      text-shadow:
+        0 0 4px  rgba(var(--ember-rgb), 0.45),
+        0 0 14px rgba(var(--ember-rgb), 0.35),
+        0 0 32px rgba(var(--ember-rgb), 0.25),
+        0 0 70px rgba(var(--ember-rgb), 0.15);
     }
     50% {
-      filter: drop-shadow(0 0 8px rgba(232, 90, 43, 0.6));
+      text-shadow:
+        0 0 6px  rgba(var(--ember-rgb), 0.55),
+        0 0 22px rgba(var(--ember-rgb), 0.45),
+        0 0 48px rgba(var(--ember-rgb), 0.30),
+        0 0 90px rgba(var(--ember-rgb), 0.20);
     }
   }
 
-  .ember-pulse {
-    animation: emberPulse 4s ease-in-out infinite;
+  .sigil-breath {
+    animation: sigilBreath 8.5s ease-in-out infinite;
+    filter:
+      drop-shadow(0 0 3px  rgba(var(--ember-rgb), 0.35))
+      drop-shadow(0 0 10px rgba(var(--ember-rgb), 0.25))
+      drop-shadow(0 0 26px rgba(var(--ember-rgb), 0.18));
+    transition: filter 400ms ease;
+  }
+  .sigil-breath:hover,
+  .group:hover .sigil-breath {
+    filter:
+      drop-shadow(0 0 5px  rgba(var(--ember-rgb), 0.6))
+      drop-shadow(0 0 18px rgba(var(--ember-rgb), 0.4))
+      drop-shadow(0 0 44px rgba(var(--ember-rgb), 0.25));
+  }
+  @keyframes sigilBreath {
+    0%, 100% {
+      filter:
+        drop-shadow(0 0 3px  rgba(var(--ember-rgb), 0.35))
+        drop-shadow(0 0 10px rgba(var(--ember-rgb), 0.25))
+        drop-shadow(0 0 26px rgba(var(--ember-rgb), 0.18));
+    }
+    50% {
+      filter:
+        drop-shadow(0 0 5px  rgba(var(--ember-rgb), 0.50))
+        drop-shadow(0 0 18px rgba(var(--ember-rgb), 0.35))
+        drop-shadow(0 0 44px rgba(var(--ember-rgb), 0.25));
+    }
   }
 
   @keyframes runeDraw {
     from { stroke-dashoffset: 1000; }
     to { stroke-dashoffset: 0; }
   }
-
   .rune-draw path,
   .rune-draw circle,
   .rune-draw line {
@@ -102,22 +202,24 @@
     font-family: var(--font-display);
     font-weight: 600;
     font-style: italic;
-    color: var(--color-ember);
+    color: var(--color-ember-glow);
     float: left;
     font-size: 4.75rem;
     line-height: 0.85;
     padding: 0.4rem 0.7rem 0 0;
     margin-top: 0.35rem;
     text-shadow:
-      0 0 4px rgba(176, 58, 26, 0.25),
-      0 0 16px rgba(232, 90, 43, 0.15);
+      0 0 6px  rgba(var(--ember-rgb), 0.40),
+      0 0 20px rgba(var(--ember-rgb), 0.30),
+      0 0 50px rgba(var(--ember-rgb), 0.22),
+      0 1px 0 rgba(255,240,200,0.3);
+    animation: emberBreath 7s ease-in-out infinite;
   }
 
   .manuscript-frame {
     position: relative;
     padding: 3rem 2rem;
   }
-
   .manuscript-frame::before,
   .manuscript-frame::after {
     content: "";
@@ -131,14 +233,12 @@
     background-repeat: no-repeat;
     opacity: 0.55;
   }
-
   .manuscript-frame::before {
     top: 0;
     left: 0;
     background-position: top left, top left;
     background-size: 24px 1.5px, 1.5px 24px;
   }
-
   .manuscript-frame::after {
     bottom: 0;
     right: 0;
@@ -152,23 +252,26 @@
     font-family: var(--font-display);
     font-style: italic;
   }
-
   .illuminated-quote::before {
-    content: "“";
+    content: "\201C";
     position: absolute;
     top: -1.5rem;
     left: 0;
     font-family: var(--font-display);
     font-size: 4.5rem;
     line-height: 1;
-    color: var(--color-ember);
-    opacity: 0.7;
+    color: var(--color-ember-glow);
+    text-shadow:
+      0 0 8px  rgba(var(--ember-rgb), 0.45),
+      0 0 26px rgba(var(--ember-rgb), 0.35),
+      0 0 60px rgba(var(--ember-rgb), 0.25),
+      0 0 120px rgba(var(--ember-rgb), 0.15);
+    animation: emberBreath 9s ease-in-out infinite;
   }
 
   .page-edge {
     position: relative;
   }
-
   .page-edge::before {
     content: "";
     position: absolute;
@@ -185,7 +288,6 @@
     0%, 100% { transform: translateY(0) rotate(0deg); }
     50%      { transform: translateY(-6px) rotate(2deg); }
   }
-
   .float-sigil {
     animation: floatSigil 9s ease-in-out infinite;
   }
