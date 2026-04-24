@@ -296,12 +296,13 @@
     background-image: linear-gradient(
       120deg,
       #7a2410 0%,
-      #9a3218 18%,
-      #b03a1a 32%,
-      #cd4824 44%,
-      #e85a2b 52%,
-      #cd4824 66%,
-      #b03a1a 82%,
+      #9a3218 14%,
+      #b03a1a 28%,
+      #cd4824 40%,
+      #f26a38 50%,
+      #cd4824 60%,
+      #b03a1a 72%,
+      #9a3218 86%,
       #7a2410 100%
     );
     background-size: 300% 300%;
@@ -314,10 +315,11 @@
     -webkit-mask-position: center;
     mask-position: center;
     filter:
-      drop-shadow(0 0 4px  rgba(var(--ember-rgb), 0.70))
-      drop-shadow(0 0 14px rgba(var(--ember-rgb), 0.45));
+      drop-shadow(0 0 6px  rgba(var(--ember-rgb), 0.85))
+      drop-shadow(0 0 20px rgba(var(--ember-rgb), 0.65))
+      drop-shadow(0 0 48px rgba(var(--ember-rgb), 0.45));
     animation:
-      emberFlowPulse 5s ease-in-out infinite,
+      sigilFlamePulse 5s ease-in-out infinite,
       arcaneFlow 16s ease-in-out infinite;
     transition: filter 400ms ease;
   }
@@ -325,10 +327,25 @@
   a:hover .sigil-flame,
   .group:hover .sigil-flame {
     filter:
-      drop-shadow(0 0 6px  rgba(var(--ember-rgb), 1.0))
-      drop-shadow(0 0 22px rgba(var(--ember-rgb), 0.85))
-      drop-shadow(0 0 52px rgba(var(--ember-rgb), 0.60))
-      drop-shadow(0 0 110px rgba(var(--ember-rgb), 0.35));
+      drop-shadow(0 0 10px rgba(var(--ember-rgb), 1.0))
+      drop-shadow(0 0 32px rgba(var(--ember-rgb), 0.95))
+      drop-shadow(0 0 72px rgba(var(--ember-rgb), 0.75))
+      drop-shadow(0 0 160px rgba(var(--ember-rgb), 0.50));
+  }
+  @keyframes sigilFlamePulse {
+    0%, 100% {
+      filter:
+        drop-shadow(0 0 4px  rgba(var(--ember-rgb), 0.70))
+        drop-shadow(0 0 16px rgba(var(--ember-rgb), 0.50))
+        drop-shadow(0 0 40px rgba(var(--ember-rgb), 0.30));
+    }
+    50% {
+      filter:
+        drop-shadow(0 0 10px rgba(var(--ember-rgb), 1.0))
+        drop-shadow(0 0 30px rgba(var(--ember-rgb), 0.85))
+        drop-shadow(0 0 68px rgba(var(--ember-rgb), 0.55))
+        drop-shadow(0 0 140px rgba(var(--ember-rgb), 0.30));
+    }
   }
 
   @keyframes emberFlowPulse {
