@@ -291,6 +291,46 @@
       drop-shadow(0 0 52px rgba(var(--ember-rgb), 0.60))
       drop-shadow(0 0 110px rgba(var(--ember-rgb), 0.35));
   }
+  .sigil-flame {
+    display: inline-block;
+    background-image: linear-gradient(
+      120deg,
+      #7a2410 0%,
+      #9a3218 18%,
+      #b03a1a 32%,
+      #cd4824 44%,
+      #e85a2b 52%,
+      #cd4824 66%,
+      #b03a1a 82%,
+      #7a2410 100%
+    );
+    background-size: 300% 300%;
+    -webkit-mask-image: url('/images/sigil.png');
+    mask-image: url('/images/sigil.png');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    filter:
+      drop-shadow(0 0 4px  rgba(var(--ember-rgb), 0.70))
+      drop-shadow(0 0 14px rgba(var(--ember-rgb), 0.45));
+    animation:
+      emberFlowPulse 5s ease-in-out infinite,
+      arcaneFlow 16s ease-in-out infinite;
+    transition: filter 400ms ease;
+  }
+  .sigil-flame:hover,
+  a:hover .sigil-flame,
+  .group:hover .sigil-flame {
+    filter:
+      drop-shadow(0 0 6px  rgba(var(--ember-rgb), 1.0))
+      drop-shadow(0 0 22px rgba(var(--ember-rgb), 0.85))
+      drop-shadow(0 0 52px rgba(var(--ember-rgb), 0.60))
+      drop-shadow(0 0 110px rgba(var(--ember-rgb), 0.35));
+  }
+
   @keyframes emberFlowPulse {
     0%, 100% {
       filter:
