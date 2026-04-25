@@ -11,8 +11,8 @@ import Divider from '../components/Divider.astro';
   activeNav="home"
 >
   <main class="mx-auto max-w-6xl px-6 py-12 page-edge">
-    <div class="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
-      <div>
+    <div class="grid items-center gap-10">
+      <div class="max-w-3xl">
         <Flourish class="mb-4 text-ember opacity-80" />
 
         <p class="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">
@@ -46,17 +46,6 @@ import Divider from '../components/Divider.astro';
         </div>
 
         <Flourish class="mt-12 text-ember opacity-70" flip={true} />
-      </div>
-
-      <div class="relative overflow-hidden rounded-sm">
-        <div class="absolute -inset-6 rounded-sm bg-[radial-gradient(ellipse_at_center,rgba(232,90,43,0.18),transparent_70%)] pointer-events-none"></div>
-        <img
-          src="/images/grimoire.jpg"
-          alt="Hand mit Federkiel, ein leuchtendes Sigil auf Pergament zeichnend"
-          class="relative w-full rounded-sm float-sigil shadow-[0_20px_60px_rgba(0,0,0,0.7)]"
-          loading="eager"
-        />
-        <div class="light-beam"></div>
       </div>
     </div>
 
