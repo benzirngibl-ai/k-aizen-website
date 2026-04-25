@@ -40,6 +40,50 @@
     overflow-x: hidden;
   }
 
+  .bg-kaizen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -3;
+    pointer-events: none;
+    user-select: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5vw;
+    opacity: 0.04;
+    color: rgba(var(--ember-rgb), 0.9);
+    filter:
+      drop-shadow(0 0 30px rgba(var(--ember-rgb), 0.20))
+      drop-shadow(0 0 80px rgba(var(--ember-rgb), 0.08));
+    transition: opacity 1.8s ease, filter 1.8s ease;
+  }
+  body:hover .bg-kaizen {
+    opacity: 0.11;
+    filter:
+      drop-shadow(0 0 50px rgba(var(--ember-rgb), 0.55))
+      drop-shadow(0 0 120px rgba(var(--ember-rgb), 0.30))
+      drop-shadow(0 0 220px rgba(var(--ember-rgb), 0.12));
+  }
+  .bg-kaizen-kanji {
+    display: block;
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", serif;
+    font-size: 28vw;
+    line-height: 1;
+    letter-spacing: 0.05em;
+  }
+  .bg-kaizen-sub {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 3.5vw;
+    letter-spacing: 0.7em;
+    text-indent: 0.7em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
   body::before {
     content: '';
     position: fixed;
