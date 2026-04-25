@@ -66,9 +66,12 @@ const navLinkClass = (key: string) =>
     </footer>
   </body>
   <script>
+    const kaizenEl = document.querySelector('.bg-kaizen') as HTMLElement | null;
     document.addEventListener('mousemove', (e) => {
-      document.body.style.setProperty('--cursor-x', e.clientX + 'px');
-      document.body.style.setProperty('--cursor-y', e.clientY + 'px');
+      if (!kaizenEl) return;
+      const rect = kaizenEl.getBoundingClientRect();
+      document.body.style.setProperty('--cursor-x', (e.clientX - rect.left) + 'px');
+      document.body.style.setProperty('--cursor-y', (e.clientY - rect.top) + 'px');
     });
   </script>
 </html>
