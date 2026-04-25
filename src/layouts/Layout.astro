@@ -65,4 +65,10 @@ const navLinkClass = (key: string) =>
       </p>
     </footer>
   </body>
+  <script>
+    document.addEventListener('mousemove', (e) => {
+      document.body.style.setProperty('--cursor-x', e.clientX + 'px');
+      document.body.style.setProperty('--cursor-y', e.clientY + 'px');
+    });
+  </script>
 </html>
