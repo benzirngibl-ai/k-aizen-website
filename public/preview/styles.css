@@ -183,28 +183,27 @@ em { font-style: italic; color: var(--ember); }
   display: flex; align-items: center;
 }
 
-/* Cherry-Blossom-Branch — overhanging top decoration */
+/* Cherry-Blossom-Branch — overhanging top decoration, anchored to LEFT */
 .hero-blossom-top {
   position: absolute;
-  top: -2%; right: -8%;
-  width: 70%; max-width: 1200px;
+  top: -3%; left: -4%;
+  width: 65%; max-width: 1100px;
   opacity: 0.95;
   z-index: 4;
   pointer-events: none;
-  mix-blend-mode: multiply;
-  transform-origin: 100% 0%;
+  transform-origin: 0% 0%;
 }
 .hero-blossom-top img {
   width: 100%; height: auto;
-  mix-blend-mode: multiply;
+  /* mix-blend-mode entfernt — echtes Alpha vorhanden */
 }
 .blossom-sway {
   animation: blossom-sway 18s var(--ease-monk) infinite;
-  transform-origin: 90% 10%;
+  transform-origin: 5% 5%;
 }
 @keyframes blossom-sway {
-  0%, 100% { transform: rotate(-0.5deg) translateY(0); }
-  50% { transform: rotate(0.7deg) translateY(3px); }
+  0%, 100% { transform: rotate(0.4deg) translateY(0); }
+  50% { transform: rotate(-0.6deg) translateY(2px); }
 }
 
 /* Bamboo — left foreground accent */
@@ -215,12 +214,12 @@ em { font-style: italic; color: var(--ember); }
   opacity: 0.85;
   z-index: 2;
   pointer-events: none;
-  mix-blend-mode: multiply;
+  /* mix-blend-mode entfernt — echtes Alpha vorhanden */
   transform-origin: 50% 100%;
 }
 .hero-bamboo img {
   width: 100%; height: auto;
-  mix-blend-mode: multiply;
+  /* mix-blend-mode entfernt — echtes Alpha vorhanden */
 }
 .bamboo-sway {
   animation: bamboo-sway 16s var(--ease-monk) infinite;
@@ -240,9 +239,9 @@ em { font-style: italic; color: var(--ember); }
   pointer-events: none;
   filter: blur(0.5px);
   z-index: 1;
-  mix-blend-mode: multiply;
+  /* mix-blend-mode entfernt — echtes Alpha vorhanden */
 }
-.hero-mountains img { width: 100%; height: auto; mix-blend-mode: multiply; }
+.hero-mountains img { width: 100%; height: auto; }
 
 .hero-tree {
   position: absolute;
@@ -252,9 +251,9 @@ em { font-style: italic; color: var(--ember); }
   z-index: 3;
   pointer-events: none;
   transform-origin: 50% 95%;
-  mix-blend-mode: multiply;
+  /* mix-blend-mode entfernt — echtes Alpha vorhanden */
 }
-.hero-tree img { width: 100%; height: auto; mix-blend-mode: multiply; }
+.hero-tree img { width: 100%; height: auto; }
 .tree-sway {
   animation: tree-sway 14s var(--ease-monk) infinite;
   transform-origin: 50% 100%;
@@ -274,11 +273,11 @@ em { font-style: italic; color: var(--ember); }
   pointer-events: none;
   opacity: 0;
   transform: translateX(0) translateY(0);
-  mix-blend-mode: multiply;
+  /* mix-blend-mode entfernt — echtes Alpha vorhanden */
 }
 .crane-flight img {
   width: 100%; height: auto;
-  mix-blend-mode: multiply;
+  /* mix-blend-mode entfernt — echtes Alpha vorhanden */
 }
 .crane-flight.fly {
   animation: crane-fly 32s linear forwards;
@@ -777,12 +776,12 @@ section {
   width: 32%; max-width: 480px;
   opacity: 0.42;
   pointer-events: none;
-  mix-blend-mode: multiply;
+  /* mix-blend-mode entfernt — echtes Alpha vorhanden */
   z-index: 1;
 }
 .quote-leaves img {
   width: 100%; height: auto;
-  mix-blend-mode: multiply;
+  /* mix-blend-mode entfernt — echtes Alpha vorhanden */
 }
 .quote-section .container { position: relative; z-index: 2; }
 @media (max-width: 880px) {
