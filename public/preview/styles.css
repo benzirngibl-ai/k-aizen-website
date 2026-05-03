@@ -183,28 +183,78 @@ em { font-style: italic; color: var(--ember); }
   display: flex; align-items: center;
 }
 
+/* Cherry-Blossom-Branch — overhanging top decoration */
+.hero-blossom-top {
+  position: absolute;
+  top: -2%; right: -8%;
+  width: 70%; max-width: 1200px;
+  opacity: 0.95;
+  z-index: 4;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  transform-origin: 100% 0%;
+}
+.hero-blossom-top img {
+  width: 100%; height: auto;
+  mix-blend-mode: multiply;
+}
+.blossom-sway {
+  animation: blossom-sway 18s var(--ease-monk) infinite;
+  transform-origin: 90% 10%;
+}
+@keyframes blossom-sway {
+  0%, 100% { transform: rotate(-0.5deg) translateY(0); }
+  50% { transform: rotate(0.7deg) translateY(3px); }
+}
+
+/* Bamboo — left foreground accent */
+.hero-bamboo {
+  position: absolute;
+  bottom: -8%; left: -6%;
+  width: 22%; max-width: 360px;
+  opacity: 0.85;
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  transform-origin: 50% 100%;
+}
+.hero-bamboo img {
+  width: 100%; height: auto;
+  mix-blend-mode: multiply;
+}
+.bamboo-sway {
+  animation: bamboo-sway 16s var(--ease-monk) infinite;
+  transform-origin: 50% 100%;
+}
+@keyframes bamboo-sway {
+  0%, 100% { transform: rotate(0.6deg); }
+  50% { transform: rotate(-0.8deg); }
+}
+
 .hero-mountains {
   position: absolute;
   bottom: 0; left: 50%;
   transform: translateX(-50%);
   width: 140%; max-width: 2400px;
-  opacity: 0.35;
+  opacity: 0.55;
   pointer-events: none;
   filter: blur(0.5px);
   z-index: 1;
+  mix-blend-mode: multiply;
 }
-.hero-mountains img { width: 100%; height: auto; }
+.hero-mountains img { width: 100%; height: auto; mix-blend-mode: multiply; }
 
 .hero-tree {
   position: absolute;
   bottom: -5%; right: -8%;
   width: 38%; max-width: 560px;
-  opacity: 0.85;
+  opacity: 0.95;
   z-index: 3;
   pointer-events: none;
   transform-origin: 50% 95%;
+  mix-blend-mode: multiply;
 }
-.hero-tree img { width: 100%; height: auto; }
+.hero-tree img { width: 100%; height: auto; mix-blend-mode: multiply; }
 .tree-sway {
   animation: tree-sway 14s var(--ease-monk) infinite;
   transform-origin: 50% 100%;
@@ -218,14 +268,18 @@ em { font-style: italic; color: var(--ember); }
 
 .crane-flight {
   position: absolute;
-  top: 18%; left: -180px;
+  top: 18%; right: -200px;
   width: 160px;
-  z-index: 4;
+  z-index: 6;
   pointer-events: none;
   opacity: 0;
   transform: translateX(0) translateY(0);
+  mix-blend-mode: multiply;
 }
-.crane-flight img { width: 100%; height: auto; }
+.crane-flight img {
+  width: 100%; height: auto;
+  mix-blend-mode: multiply;
+}
 .crane-flight.fly {
   animation: crane-fly 32s linear forwards;
 }
@@ -238,7 +292,7 @@ em { font-style: italic; color: var(--ember); }
   85% { opacity: 0.85; }
   100% {
     opacity: 0;
-    transform: translateX(calc(100vw + 200px)) translateY(60px);
+    transform: translateX(calc(-100vw - 400px)) translateY(60px);
   }
 }
 
@@ -715,6 +769,24 @@ section {
   text-align: center;
   position: relative;
   overflow: hidden;
+}
+.quote-leaves {
+  position: absolute;
+  top: 50%; right: -8%;
+  transform: translateY(-50%);
+  width: 32%; max-width: 480px;
+  opacity: 0.42;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+.quote-leaves img {
+  width: 100%; height: auto;
+  mix-blend-mode: multiply;
+}
+.quote-section .container { position: relative; z-index: 2; }
+@media (max-width: 880px) {
+  .quote-leaves { display: none; }
 }
 .quote-section::before, .quote-section::after {
   content: "";
