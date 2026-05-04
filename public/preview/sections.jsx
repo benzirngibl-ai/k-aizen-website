@@ -204,13 +204,12 @@ function ManifestoSection() {
         <div>
           <Reveal>
             <div style={{
-              display: 'flex', alignItems: 'center', gap: 12,
+              display: 'flex', alignItems: 'center', gap: 14,
               fontFamily: 'var(--font-sans)', fontSize: 12, fontWeight: 600,
               textTransform: 'uppercase', letterSpacing: '0.18em',
               color: 'var(--fg-muted)', marginBottom: 24,
             }}>
-              <img src="/animations/claude-design/logo-mark.png" alt=""
-                style={{ width: 20, height: 20, opacity: 0.7 }} />
+              <LogoMark size={28} opacity={0.75} />
               <span className="kz-kanji" style={{ color: 'var(--kz-ember)' }}>禅</span>
               <span>Manifest</span>
             </div>
@@ -409,13 +408,12 @@ function CtaSection() {
       }}>
         <Reveal>
           <div style={{
-            display: 'inline-flex', alignItems: 'center', gap: 12,
+            display: 'inline-flex', alignItems: 'center', gap: 14,
             fontFamily: 'var(--font-sans)', fontSize: 12, fontWeight: 600,
             textTransform: 'uppercase', letterSpacing: '0.18em',
             color: 'var(--fg-muted)', marginBottom: 28,
           }}>
-            <img src="/animations/claude-design/logo-mark.png" alt=""
-              style={{ width: 22, height: 22, opacity: 0.75 }} />
+            <LogoMark size={32} opacity={0.8} />
             <span className="kz-kanji" style={{ color: 'var(--kz-ember)' }}>始</span>
             <span>Anfangen</span>
           </div>
@@ -475,15 +473,14 @@ function Footer() {
         gap: 'clamp(28px, 5vw, 60px)',
       }}>
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
-            <img src="/animations/claude-design/logo-mark.png" alt="" style={{ width: 28, height: 28, filter: 'invert(1) brightness(1.2)' }} />
-            <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 18, letterSpacing: '-0.01em' }}>
-              k-AI<span style={{ color: 'var(--kz-ember)' }}>·</span>zen
-            </span>
+          <div style={{ marginBottom: 22 }}>
+            <img src="/animations/claude-design/logo-full.png" alt="k-AIzen"
+              style={{ height: 52, width: 'auto', display: 'block',
+                       filter: 'invert(1) brightness(1.05)' }} />
           </div>
           <p style={{
             fontFamily: 'var(--font-display)',
-            fontSize: 20, fontStyle: 'italic',
+            fontSize: 22, fontStyle: 'italic',
             lineHeight: 1.3, color: 'rgba(245,240,232,0.7)',
             maxWidth: 320, margin: 0,
           }}>
@@ -563,11 +560,23 @@ function ScrollProgress() {
   );
 }
 
-// ---------- Reusable: LogoMark ----------
-function LogoMark({ size = 24, opacity = 1, style }) {
+// ---------- Reusable: LogoMark (size = height, width auto-scales mit Aspect ~0.56) ----------
+function LogoMark({ size = 26, opacity = 1, style }) {
   return (
     <img src="/animations/claude-design/logo-mark.png" alt="" style={{
-      width: size, height: size, opacity,
+      height: size, width: 'auto', opacity,
+      display: 'inline-block', verticalAlign: 'middle',
+      flexShrink: 0,
+      ...style,
+    }} />
+  );
+}
+
+// ---------- Reusable: LogoFull (Wordmark mit Schrift, für Footer / prominente Stellen) ----------
+function LogoFull({ size = 44, opacity = 1, style }) {
+  return (
+    <img src="/animations/claude-design/logo-full.png" alt="k-AIzen" style={{
+      height: size, width: 'auto', opacity,
       display: 'inline-block', verticalAlign: 'middle',
       flexShrink: 0,
       ...style,
@@ -592,7 +601,7 @@ function SectionDivider() {
         transformOrigin: 'right center',
         transition: `transform 1100ms ${KZ_EASE}`,
       }} />
-      <LogoMark size={28} opacity={visible ? 0.65 : 0}
+      <LogoMark size={42} opacity={visible ? 0.7 : 0}
         style={{ transition: `opacity 800ms ${KZ_EASE} 200ms` }} />
       <div style={{
         flex: 1, height: 1, maxWidth: 240,
@@ -643,7 +652,7 @@ function ProcessSection() {
             textTransform: 'uppercase', letterSpacing: '0.18em',
             color: 'var(--fg-muted)', marginBottom: 24,
           }}>
-            <LogoMark size={20} opacity={0.7} />
+            <LogoMark size={28} opacity={0.75} />
             <span className="kz-kanji" style={{ color: 'var(--kz-ember)' }}>改善</span>
             <span>So arbeiten wir</span>
           </div>
@@ -756,11 +765,11 @@ function QuoteSection() {
       }}>
         <div style={{
           marginBottom: 36,
-          opacity: visible ? 0.5 : 0,
+          opacity: visible ? 0.6 : 0,
           transform: visible ? 'translateY(0)' : 'translateY(12px)',
           transition: `opacity 1000ms ${KZ_EASE}, transform 1000ms ${KZ_EASE}`,
         }}>
-          <LogoMark size={42} />
+          <LogoMark size={64} />
         </div>
 
         <blockquote style={{
@@ -828,7 +837,7 @@ function TrustSection() {
             textTransform: 'uppercase', letterSpacing: '0.18em',
             color: 'var(--fg-muted)', marginBottom: 24,
           }}>
-            <LogoMark size={20} opacity={0.7} />
+            <LogoMark size={28} opacity={0.75} />
             <span className="kz-kanji" style={{ color: 'var(--kz-ember)' }}>信</span>
             <span>Vertrauen</span>
           </div>
@@ -897,13 +906,14 @@ function AboutSection() {
       {/* Logo-Watermark im Hintergrund */}
       <div style={{
         position: 'absolute',
-        top: '50%', right: '-8%',
+        top: '50%', right: '-4%',
         transform: 'translateY(-50%)',
-        width: 'min(40vw, 480px)',
-        opacity: 0.08,
+        height: 'min(70vh, 560px)',
+        opacity: 0.07,
         pointerEvents: 'none',
       }}>
-        <LogoMark size="100%" opacity={1} style={{ width: '100%', height: 'auto' }} />
+        <img src="/animations/claude-design/logo-mark.png" alt=""
+          style={{ height: '100%', width: 'auto', display: 'block' }} />
       </div>
 
       <div style={{
@@ -919,7 +929,7 @@ function AboutSection() {
             textTransform: 'uppercase', letterSpacing: '0.18em',
             color: 'var(--fg-muted)', marginBottom: 24,
           }}>
-            <LogoMark size={20} opacity={0.7} />
+            <LogoMark size={28} opacity={0.75} />
             <span className="kz-kanji" style={{ color: 'var(--kz-ember)' }}>人</span>
             <span>Wer dahinter steht</span>
           </div>
@@ -990,6 +1000,7 @@ Object.assign(window, {
   KzScrollProgress: ScrollProgress,
   KzSectionDivider: SectionDivider,
   KzLogoMark: LogoMark,
+  KzLogoFull: LogoFull,
   KzUseScrollY: useScrollY,
   KzUseScrollDir: useScrollDirection,
 });

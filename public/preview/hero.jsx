@@ -320,22 +320,20 @@ function Header() {
   };
   return (
     <header style={{
-      position: 'fixed', top: 0, left: 0, right: 0, height: 64,
+      position: 'fixed', top: 0, left: 0, right: 0, height: 88,
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      padding: '0 28px', zIndex: 50,
-      background: atTop ? 'rgba(245,240,232,0.0)' : 'rgba(245,240,232,0.85)',
+      padding: '0 32px', zIndex: 50,
+      background: atTop ? 'rgba(245,240,232,0.0)' : 'rgba(245,240,232,0.88)',
       borderBottom: atTop ? '1px solid transparent' : '1px solid var(--kz-border)',
-      backdropFilter: atTop ? 'none' : 'blur(10px)',
-      WebkitBackdropFilter: atTop ? 'none' : 'blur(10px)',
+      backdropFilter: atTop ? 'none' : 'blur(12px)',
+      WebkitBackdropFilter: atTop ? 'none' : 'blur(12px)',
       transform: hidden ? 'translateY(-100%)' : 'translateY(0)',
       transition: `transform 520ms ${KZ_EASE}, background 420ms ${KZ_EASE}, border-color 420ms ${KZ_EASE}, backdrop-filter 420ms ${KZ_EASE}`,
       willChange: 'transform',
     }}>
-      <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: 'var(--fg)' }}>
-        <img src="/animations/claude-design/logo-mark.png" alt="" style={{ width: 28, height: 28 }} />
-        <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 18, letterSpacing: '-0.01em' }}>
-          k-AI<span style={{ color: 'var(--kz-ember)' }}>·</span>zen
-        </span>
+      <a href="#" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'var(--fg)' }}>
+        <img src="/animations/claude-design/logo-full.png" alt="k-AIzen"
+          style={{ height: 56, width: 'auto', display: 'block' }} />
       </a>
       <nav style={{ display: 'flex', gap: 28 }}>
         {['Workflows', 'Tutorials', 'Über uns', 'Kontakt'].map((x, i) => (
