@@ -6,7 +6,7 @@
 const SITE_URL = 'https://k-aizen.de';
 const TITLE = 'k-AIzen — Eins nach dem anderen. Auch bei AI.';
 const DESCRIPTION = 'AI-Workflow-Automation für KMUs in Deutschland (10–250 Mitarbeitende). Vier Standard-Workflows: Inbox-Triage, Angebots-Generator, Tagesreport, Wissens-Suche. DSGVO-konform, deutsche Server, kein Hype.';
-const OG_IMAGE = `${SITE_URL}/animations/claude-design/logo-full.png`;
+const OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -138,6 +138,18 @@ const serviceSchema = {
   <link rel="alternate" hreflang="x-default" href={SITE_URL} />
 
   <link rel="icon" type="image/png" href="/animations/claude-design/logo-mark.png" />
+  <link rel="apple-touch-icon" href="/animations/claude-design/logo-mark.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+
+  <!-- Preconnect für Critical-Path-Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://unpkg.com" crossorigin />
+
+  <!-- Preload Critical-Above-Fold Assets -->
+  <link rel="preload" as="image" href="/animations/claude-design/logo-full.png" />
+  <link rel="preload" as="image" href="/animations/claude-design/sumi-mountains.png" />
+
   <link rel="stylesheet" href="/preview/colors_and_type.css" />
 
   <!-- JSON-LD Structured Data -->

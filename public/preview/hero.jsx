@@ -340,9 +340,10 @@ function Header() {
         <img src="/animations/claude-design/logo-full.png" alt="k-AIzen"
           style={{ height: 56, width: 'auto', display: 'block' }} />
       </a>
-      <nav style={{ display: 'flex', gap: 28 }} aria-label="Hauptnavigation">
+      <nav style={{ display: 'flex', gap: 24 }} aria-label="Hauptnavigation">
         {[
           { label: 'Workflows', href: '/workflows' },
+          { label: 'Preise', href: '/pricing' },
           { label: 'Tutorials', href: '/tutorials' },
           { label: 'Über uns', href: '/about' },
           { label: 'Kontakt', href: '/kontakt' },

@@ -3,21 +3,28 @@
 // Brand-Tokens aus /preview/colors_and_type.css (gleiche Source wie Homepage)
 // SEO + AI-Discovery: OG, Twitter-Cards, JSON-LD-Slot, ARIA-Landmarks
 
+interface BreadcrumbItem {
+  name: string;
+  href: string;
+}
+
 interface Props {
   title: string;
   description: string;
   path: string;            // z.B. "/about" — für canonical + og:url
-  ogImage?: string;        // optional, default = /animations/claude-design/logo-full.png
+  ogImage?: string;        // optional, default = /og-image.png (1200x630)
   jsonLd?: object | object[]; // optional structured data
-  activeNav?: 'workflows' | 'tutorials' | 'about' | 'kontakt' | 'home';
+  breadcrumbs?: BreadcrumbItem[]; // optional breadcrumb-trail
+  activeNav?: 'workflows' | 'tutorials' | 'about' | 'kontakt' | 'pricing' | 'home';
 }
 
 const {
   title,
   description,
   path,
-  ogImage = '/animations/claude-design/logo-full.png',
+  ogImage = '/og-image.png',
   jsonLd,
+  breadcrumbs,
   activeNav = 'home',
 } = Astro.props;
 
@@ -28,6 +35,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}
 
 const navItems = [
   { label: 'Workflows', href: '/workflows', key: 'workflows' },
+  { label: 'Preise', href: '/pricing', key: 'pricing' },
   { label: 'Tutorials', href: '/tutorials', key: 'tutorials' },
   { label: 'Über uns', href: '/about', key: 'about' },
   { label: 'Kontakt', href: '/kontakt', key: 'kontakt' },
@@ -36,6 +44,24 @@ const navItems = [
 const jsonLdArray = jsonLd
   ? Array.isArray(jsonLd) ? jsonLd : [jsonLd]
   : [];
+
+// Breadcrumb-Schema automatisch generieren falls breadcrumbs-prop gesetzt
+if (breadcrumbs && breadcrumbs.length > 0) {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Start", "item": SITE_URL },
+      ...breadcrumbs.map((b, i) => ({
+        "@type": "ListItem",
+        "position": i + 2,
+        "name": b.name,
+        "item": `${SITE_URL}${b.href}`,
+      })),
+    ],
+  };
+  jsonLdArray.push(breadcrumbSchema);
+}
 ---
 
 <!doctype html>
@@ -74,8 +100,10 @@ const jsonLdArray = jsonLd
   <meta name="PerplexityBot" content="index, follow" />
   <meta name="Applebot" content="index, follow" />
 
-  <!-- Favicon -->
+  <!-- Favicon + PWA -->
   <link rel="icon" type="image/png" href="/animations/claude-design/logo-mark.png" />
+  <link rel="apple-touch-icon" href="/animations/claude-design/logo-mark.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
 
   <!-- Brand Tokens (gleiche wie Homepage) -->
   <link rel="stylesheet" href="/preview/colors_and_type.css" />

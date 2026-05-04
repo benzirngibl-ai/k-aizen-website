@@ -501,6 +501,7 @@ function Footer() {
         ]} />
         <FooterCol title="Mehr" items={[
           { label: 'Über uns', href: '/about' },
+          { label: 'Preise', href: '/pricing' },
           { label: 'Tutorials', href: '/tutorials' },
           { label: 'Erstgespräch', href: '/erstgespraech' },
           { label: 'AGB', href: '/agb' },

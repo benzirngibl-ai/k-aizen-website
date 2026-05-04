@@ -1,0 +1,244 @@
+---
+import KaizenLayout from '../layouts/KaizenLayout.astro';
+
+const offerCatalogSchema = {
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  "name": "k-AIzen Pakete",
+  "description": "Drei Modelle der Zusammenarbeit für KMUs — vom einzelnen Workflow bis zur Jahresbegleitung.",
+  "itemListElement": [
+    {
+      "@type": "Offer",
+      "name": "Einzelner Workflow",
+      "description": "Ein Workflow von Beobachten bis Live-Betrieb. Festpreis, kein Lock-in.",
+      "price": "4500",
+      "priceCurrency": "EUR",
+      "priceSpecification": { "@type": "UnitPriceSpecification", "price": "4500", "priceCurrency": "EUR", "unitText": "ab" },
+      "areaServed": "DE"
+    },
+    {
+      "@type": "Offer",
+      "name": "Workflow-Paket Quartal",
+      "description": "Drei Workflows über drei Monate, inklusive Iterationen und Code-Review.",
+      "price": "12500",
+      "priceCurrency": "EUR",
+      "priceSpecification": { "@type": "UnitPriceSpecification", "price": "12500", "priceCurrency": "EUR", "unitText": "ab, pro Quartal" },
+      "areaServed": "DE"
+    },
+    {
+      "@type": "Offer",
+      "name": "Jahresbegleitung",
+      "description": "Kontinuierliche Workflow-Entwicklung, monatliche Reviews, dedizierter Lead-Engineer.",
+      "price": "30000",
+      "priceCurrency": "EUR",
+      "priceSpecification": { "@type": "UnitPriceSpecification", "price": "30000", "priceCurrency": "EUR", "unitText": "ab, pro Jahr" },
+      "areaServed": "DE"
+    }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Was ist im Festpreis enthalten?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Beobachtungs-Phase, Konzept, Implementierung, Tests, Übergabe-Doku, vier Wochen Begleit-Betrieb. Kein Stunden-Tracking, keine Sub-Kosten, kein versteckter Aufschlag."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie lang dauert ein einzelner Workflow?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Beobachtungs-Phase 2 Wochen, Implementierung 1-2 Wochen, Beobachten danach 4 Wochen. Insgesamt etwa 7-8 Wochen vom ersten Gespräch bis zum stabilen Betrieb."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was wenn der Workflow nicht funktioniert?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In der Beobachtungs-Phase entscheiden wir gemeinsam ob ein Workflow Sinn macht. Falls nein: kein Auftrag. Falls ja: wir bauen, und wenn es nach Live-Betrieb nicht hält was vereinbart war, iterieren wir bis es passt — auf unsere Kosten."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Gibt es eine Geld-zurück-Garantie?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Innerhalb der ersten 4 Wochen ab Vertragsschluss kannst du jederzeit kündigen. Bezahlte Leistungen werden anteilig zurückerstattet. Danach gelten die regulären AGB."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Muss ich einen Vertrag länger als ein Quartal eingehen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nein. Beim Einzelnen Workflow gibt es nur diesen einen Auftrag. Beim Quartals-Paket läuft der Vertrag drei Monate. Bei der Jahresbegleitung ist die Mindestlaufzeit zwölf Monate, danach quartalsweise kündbar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wo werden die Daten gehostet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standardmäßig auf deutschen Cloud-Providern (Hetzner, IONOS) oder lokal auf deiner Infrastruktur. US-Cloud nur mit ausdrücklicher Zustimmung und Standardvertragsklauseln."
+      }
+    }
+  ]
+};
+---
+
+<KaizenLayout
+  title="Preise — Drei Pakete für drei Phasen der Zusammenarbeit"
+  description="Festpreise, kein Lock-in, kein Stunden-Tracking. Einzelner Workflow ab 4.500 €, Quartals-Paket ab 12.500 €, Jahresbegleitung ab 30.000 €. Plus FAQ zu allem was Kunden fragen."
+  path="/pricing"
+  jsonLd={[offerCatalogSchema, faqSchema]}
+>
+  <article class="kz-page">
+    <div class="kz-page-eyebrow">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
+      <span class="kanji">価</span>
+      <span>Preise</span>
+    </div>
+    <h1 class="kz-h1">Drei Pakete. Festpreise. Kein Lock-in.</h1>
+    <p class="kz-lead">
+      Wir berechnen Workflows als Festpreis-Pakete, nicht als Stunden-Honorar. Das hat einen Grund:
+      Stunden-Tracking macht uns zu Buchhaltern und dich zu einem Kostenstellen-Verwalter.
+      Wir wollen lieber Workflows liefern.
+    </p>
+
+    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 64px 0;">
+      <div style="padding: 40px 32px; background: var(--kz-cream-deep); border-radius: 12px; display: flex; flex-direction: column;">
+        <div style="font-family: var(--font-jp); font-size: 36px; color: var(--kz-ember); margin-bottom: 16px;">一</div>
+        <h3 class="kz-h3" style="margin-top: 0;">Einzelner Workflow</h3>
+        <p style="font-style: italic; color: var(--fg-muted); margin: 0 0 24px;">Für die ersten Schritte.</p>
+        <div style="font-family: var(--font-display); font-size: 48px; line-height: 1; margin-bottom: 4px;">
+          ab €4.500
+        </div>
+        <div style="font-size: 14px; color: var(--fg-muted); margin-bottom: 28px;">einmalig, netto</div>
+        <ul style="flex: 1;">
+          <li>1 Workflow von Beobachten bis Live</li>
+          <li>2 Wochen Beobachtungs-Phase</li>
+          <li>1-2 Wochen Implementierung</li>
+          <li>4 Wochen Begleit-Betrieb</li>
+          <li>Übergabe mit Doku + Code-Eigentum</li>
+          <li>Eine Kündigungsoption nach 4 Wochen</li>
+        </ul>
+        <a href="/erstgespraech" class="kz-btn" style="margin-top: 28px;">Reden wir.</a>
+      </div>
+
+      <div style="padding: 40px 32px; background: var(--kz-charcoal); color: var(--kz-cream); border-radius: 12px; display: flex; flex-direction: column; position: relative; transform: scale(1.02); box-shadow: 0 32px 64px -16px rgba(31,41,51,0.32);">
+        <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--kz-ember); color: var(--kz-cream); padding: 6px 16px; font-family: var(--font-sans); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; border-radius: 999px;">Empfohlen</div>
+        <div style="font-family: var(--font-jp); font-size: 36px; color: var(--kz-ember); margin-bottom: 16px;">二</div>
+        <h3 class="kz-h3" style="margin-top: 0; color: var(--kz-cream);">Workflow-Paket Quartal</h3>
+        <p style="font-style: italic; color: rgba(245,240,232,0.7); margin: 0 0 24px;">Für die ernste Praxis.</p>
+        <div style="font-family: var(--font-display); font-size: 48px; line-height: 1; margin-bottom: 4px; color: var(--kz-cream);">
+          ab €12.500
+        </div>
+        <div style="font-size: 14px; color: rgba(245,240,232,0.5); margin-bottom: 28px;">pro Quartal, netto</div>
+        <ul style="flex: 1; color: var(--kz-cream);">
+          <li>3 Workflows über 3 Monate</li>
+          <li>Bi-weekly Review-Calls</li>
+          <li>Compliance-Review im Quartal</li>
+          <li>Slack/Teams-Zugang für Fragen</li>
+          <li>1 Code-Review pro Monat</li>
+          <li>Templates + Knowledge-Hub-Zugang</li>
+          <li>Quartalsweise kündbar nach erstem Quartal</li>
+        </ul>
+        <a href="/erstgespraech" class="kz-btn" style="margin-top: 28px; background: var(--kz-ember); color: var(--kz-cream) !important;">Reden wir.</a>
+      </div>
+
+      <div style="padding: 40px 32px; background: var(--kz-cream-deep); border-radius: 12px; display: flex; flex-direction: column;">
+        <div style="font-family: var(--font-jp); font-size: 36px; color: var(--kz-ember); margin-bottom: 16px;">三</div>
+        <h3 class="kz-h3" style="margin-top: 0;">Jahresbegleitung</h3>
+        <p style="font-style: italic; color: var(--fg-muted); margin: 0 0 24px;">Für volle Hingabe.</p>
+        <div style="font-family: var(--font-display); font-size: 48px; line-height: 1; margin-bottom: 4px;">
+          ab €30.000
+        </div>
+        <div style="font-size: 14px; color: var(--fg-muted); margin-bottom: 28px;">pro Jahr, netto</div>
+        <ul style="flex: 1;">
+          <li>Unbegrenzte Workflow-Loops</li>
+          <li>Dedizierter Lead-Engineer</li>
+          <li>Wöchentliche Calls + On-Demand</li>
+          <li>DPA-Setup + Compliance-Begleitung</li>
+          <li>Eigener Knowledge-Hub für dein Team</li>
+          <li>Quartals-Strategie-Workshop</li>
+          <li>Code-Ownership-Transfer im 12. Monat</li>
+        </ul>
+        <a href="/erstgespraech" class="kz-btn" style="margin-top: 28px;">Reden wir.</a>
+      </div>
+    </section>
+
+    <section style="text-align: center; margin: 64px 0;">
+      <p style="font-family: var(--font-display); font-style: italic; font-size: clamp(20px, 2vw, 26px); color: var(--fg-muted); max-width: 640px; margin: 0 auto;">
+        Alle Preise netto, zzgl. MwSt. Keine Setup-Fee, keine versteckten Kosten,
+        kein Stunden-Tracking. Erste 4 Wochen jederzeit kündbar.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">FAQ</h2>
+
+      <details style="border-top: 1px solid var(--kz-border); padding: 24px 0;">
+        <summary style="cursor: pointer; font-family: var(--font-display); font-size: 22px; font-weight: 400;">Was ist im Festpreis enthalten?</summary>
+        <p style="margin-top: 16px;">
+          Beobachtungs-Phase, Konzept, Implementierung, Tests, Übergabe-Doku, vier Wochen Begleit-Betrieb. Kein Stunden-Tracking,
+          keine Sub-Kosten, kein versteckter Aufschlag. Was im Angebot steht, ist drin.
+        </p>
+      </details>
+
+      <details style="border-top: 1px solid var(--kz-border); padding: 24px 0;">
+        <summary style="cursor: pointer; font-family: var(--font-display); font-size: 22px; font-weight: 400;">Wie lang dauert ein einzelner Workflow?</summary>
+        <p style="margin-top: 16px;">
+          Beobachtungs-Phase 2 Wochen. Implementierung 1-2 Wochen. Begleitender Live-Betrieb 4 Wochen.
+          Insgesamt also etwa 7-8 Wochen vom ersten Gespräch bis zum stabilen Betrieb.
+        </p>
+      </details>
+
+      <details style="border-top: 1px solid var(--kz-border); padding: 24px 0;">
+        <summary style="cursor: pointer; font-family: var(--font-display); font-size: 22px; font-weight: 400;">Was wenn der Workflow nicht funktioniert?</summary>
+        <p style="margin-top: 16px;">
+          In der Beobachtungs-Phase entscheiden wir gemeinsam ob ein Workflow Sinn macht. Falls nein — kein Auftrag, ehrlich gesagt.
+          Falls ja: wir bauen. Und wenn es nach Live-Betrieb nicht hält was vereinbart war, iterieren wir bis es passt — auf unsere Kosten.
+        </p>
+      </details>
+
+      <details style="border-top: 1px solid var(--kz-border); padding: 24px 0;">
+        <summary style="cursor: pointer; font-family: var(--font-display); font-size: 22px; font-weight: 400;">Gibt es eine Geld-zurück-Garantie?</summary>
+        <p style="margin-top: 16px;">
+          Innerhalb der ersten 4 Wochen ab Vertragsschluss kannst du jederzeit kündigen. Bezahlte Leistungen
+          werden anteilig zurückerstattet. Danach gelten die regulären AGB.
+        </p>
+      </details>
+
+      <details style="border-top: 1px solid var(--kz-border); padding: 24px 0;">
+        <summary style="cursor: pointer; font-family: var(--font-display); font-size: 22px; font-weight: 400;">Muss ich einen Vertrag länger als ein Quartal eingehen?</summary>
+        <p style="margin-top: 16px;">
+          Nein. Beim Einzelnen Workflow gibt es nur diesen einen Auftrag. Beim Quartals-Paket läuft der Vertrag
+          drei Monate. Bei der Jahresbegleitung ist die Mindestlaufzeit zwölf Monate, danach quartalsweise kündbar.
+        </p>
+      </details>
+
+      <details style="border-top: 1px solid var(--kz-border); border-bottom: 1px solid var(--kz-border); padding: 24px 0;">
+        <summary style="cursor: pointer; font-family: var(--font-display); font-size: 22px; font-weight: 400;">Wo werden die Daten gehostet?</summary>
+        <p style="margin-top: 16px;">
+          Standardmäßig auf deutschen Cloud-Providern (Hetzner, IONOS) oder lokal auf deiner Infrastruktur.
+          US-Cloud nur mit ausdrücklicher Zustimmung und Standardvertragsklauseln.
+        </p>
+      </details>
+    </section>
+
+    <section style="margin-top: 80px; padding: 56px clamp(24px, 4vw, 48px); background: var(--kz-cream-deep); border-radius: 12px; text-align: center;">
+      <h2 class="kz-h2" style="margin-top: 0;">Welches Paket passt zu dir?</h2>
+      <p>Das findet sich am besten in einem Erstgespräch. Kostet nichts, dauert 30 Minuten, ohne Verkaufsdruck.</p>
+      <p style="margin-top: 32px;">
+        <a href="/erstgespraech" class="kz-btn">Termin vorschlagen →</a>
+      </p>
+    </section>
+  </article>
+</KaizenLayout>

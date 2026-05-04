@@ -1,0 +1,52 @@
+---
+import KaizenLayout from '../layouts/KaizenLayout.astro';
+---
+
+<KaizenLayout
+  title="404 — Diese Seite existiert nicht"
+  description="Die Seite die du suchst existiert nicht. Hier ein paar Vorschläge wo du stattdessen hinwillst."
+  path="/404"
+>
+  <article class="kz-page" style="text-align: center; padding-top: 12vh;">
+    <div style="font-family: var(--font-jp); font-size: clamp(80px, 14vw, 180px); color: var(--kz-ember); line-height: 1; margin-bottom: 32px; opacity: 0.85;">
+      無
+    </div>
+    <h1 class="kz-h1" style="margin: 0 auto 24px; max-width: 720px;">
+      Diese Seite existiert nicht.
+    </h1>
+    <p class="kz-lead" style="margin: 0 auto 56px; text-align: center;">
+      Vielleicht ein alter Link. Vielleicht ein Tippfehler. Vielleicht ein Pfad der nie existiert hat.
+      Setz dich kurz, atme. Hier ein paar Wege weiter:
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; max-width: 760px; margin: 0 auto 48px; text-align: left;">
+      <a href="/" style="padding: 24px; background: var(--kz-cream-deep); border-radius: 8px; text-decoration: none; color: var(--fg); transition: background 220ms var(--ease-out);">
+        <div style="font-family: var(--font-jp); font-size: 24px; color: var(--kz-ember); margin-bottom: 8px;">家</div>
+        <strong style="display: block; margin-bottom: 4px;">Startseite</strong>
+        <span style="font-size: 14px; color: var(--fg-muted);">Zurück zum Anfang</span>
+      </a>
+      <a href="/workflows" style="padding: 24px; background: var(--kz-cream-deep); border-radius: 8px; text-decoration: none; color: var(--fg);">
+        <div style="font-family: var(--font-jp); font-size: 24px; color: var(--kz-ember); margin-bottom: 8px;">流</div>
+        <strong style="display: block; margin-bottom: 4px;">Workflows</strong>
+        <span style="font-size: 14px; color: var(--fg-muted);">Vier Standard-Automationen</span>
+      </a>
+      <a href="/about" style="padding: 24px; background: var(--kz-cream-deep); border-radius: 8px; text-decoration: none; color: var(--fg);">
+        <div style="font-family: var(--font-jp); font-size: 24px; color: var(--kz-ember); margin-bottom: 8px;">人</div>
+        <strong style="display: block; margin-bottom: 4px;">Über uns</strong>
+        <span style="font-size: 14px; color: var(--fg-muted);">Wer dahinter steht</span>
+      </a>
+      <a href="/kontakt" style="padding: 24px; background: var(--kz-cream-deep); border-radius: 8px; text-decoration: none; color: var(--fg);">
+        <div style="font-family: var(--font-jp); font-size: 24px; color: var(--kz-ember); margin-bottom: 8px;">話</div>
+        <strong style="display: block; margin-bottom: 4px;">Kontakt</strong>
+        <span style="font-size: 14px; color: var(--fg-muted);">Drei Wege uns zu erreichen</span>
+      </a>
+    </div>
+
+    <p style="font-family: var(--font-display); font-style: italic; font-size: 22px; color: var(--fg-muted); margin: 56px 0 0;">
+      „Wer den Weg verloren hat — atmet einmal, dann sucht den nächsten Schritt."
+    </p>
+    <p style="font-family: var(--font-brush); font-size: 24px; color: var(--fg-muted); opacity: 0.7; margin-top: 24px;">
+      — k-AIzen Maxime
+    </p>
+  </article>
+</KaizenLayout>

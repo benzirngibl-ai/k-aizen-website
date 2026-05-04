@@ -1,0 +1,28 @@
+{
+  "name": "k-AIzen",
+  "short_name": "k-AIzen",
+  "description": "AI-Workflow-Automation für KMUs in Deutschland. Eins nach dem anderen. Auch bei AI.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#F5F0E8",
+  "background_color": "#F5F0E8",
+  "lang": "de-DE",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "developer-tools"],
+  "icons": [
+    {
+      "src": "/animations/claude-design/logo-mark.png",
+      "sizes": "538x957",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/animations/claude-design/logo-full.png",
+      "sizes": "1129x955",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
