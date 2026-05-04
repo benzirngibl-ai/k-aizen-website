@@ -925,13 +925,14 @@ function AboutSection() {
         position: 'absolute',
         top: '50%', right: '-4%',
         transform: 'translateY(-50%)',
-        height: 'min(70vh, 560px)',
-        opacity: 0.07,
+        height: 'min(60vh, 480px)',
+        opacity: 0.06,
         pointerEvents: 'none',
       }}>
         <img src="/animations/claude-design/logo-mark.png" alt=""
           style={{ height: '100%', width: 'auto', display: 'block' }} />
       </div>
+
 
       <div style={{
         maxWidth: 880, margin: '0 auto',
@@ -954,7 +955,44 @@ function AboutSection() {
 
         <RevealHeadline text="Hinter k-AIzen." accent={[1]} />
 
-        <Reveal delay={280}>
+        <Reveal delay={200}>
+          <div style={{
+            marginTop: 40,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 'clamp(24px, 4vw, 40px)',
+            flexWrap: 'wrap',
+          }}>
+            <img
+              src="/images/ben-portrait.png"
+              alt="Benjamin Zirngibl, Gründer k-AIzen"
+              loading="lazy"
+              style={{
+                width: 'clamp(120px, 14vw, 180px)',
+                height: 'clamp(120px, 14vw, 180px)',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                border: '4px solid var(--kz-cream)',
+                boxShadow: '0 16px 32px -8px rgba(31,41,51,0.18)',
+                flexShrink: 0,
+              }} />
+            <div style={{ minWidth: 0 }}>
+              <p style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(20px, 2vw, 26px)',
+                lineHeight: 1.3, color: 'var(--fg)',
+                margin: 0,
+              }}>Benjamin Zirngibl</p>
+              <p style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: 14, color: 'var(--fg-muted)',
+                margin: '4px 0 0',
+              }}>Gründer · Pulscraft Digital · Bayern</p>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={320}>
           <div style={{
             marginTop: 40,
             display: 'grid',

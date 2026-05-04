@@ -1,0 +1,88 @@
+---
+import KaizenLayout from '../../layouts/KaizenLayout.astro';
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Angebots-Generator Workflow",
+  "description": "AI-gestützte Angebotserstellung für KMUs. Aus Stichworten ein vollständiges, individualisiertes Angebot.",
+  "provider": { "@type": "Organization", "name": "k-AIzen", "url": "https://k-aizen.de" },
+  "areaServed": "DE",
+  "serviceType": "Angebots-Automation",
+  "url": "https://k-aizen.de/workflows/angebote"
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Wie individuell sind die generierten Angebote?", "acceptedAnswer": { "@type": "Answer", "text": "Sehr individuell — die AI nutzt deine Preisliste, deine Standardklauseln, dein Wording. Aus 3-5 Stichworten zum Auftrag baut sie ein 1-2-Seiten-Angebot mit korrekten Positionen, Mengen, Konditionen, Lieferzeiten." } },
+    { "@type": "Question", "name": "Welche CRMs / Buchhaltungs-Tools werden unterstützt?", "acceptedAnswer": { "@type": "Answer", "text": "Lexware Office, sevDesk, DATEV-Schnittstelle, Zoho, HubSpot via API. Bei Maßnahme-individuellen Tools bauen wir den Connector — meist 2-3 Tage Mehraufwand." } },
+    { "@type": "Question", "name": "Werden Angebote automatisch an den Kunden geschickt?", "acceptedAnswer": { "@type": "Answer", "text": "Nein. Du prüfst das generierte Angebot, signierst, sendest. Die AI baut den Entwurf — der Mensch macht den Versand. Auto-Versand ist optional aber nicht Default." } },
+    { "@type": "Question", "name": "Wie lange dauert das Setup?", "acceptedAnswer": { "@type": "Answer", "text": "2-3 Wochen. Beobachtungs-Phase 2 Wochen (wir sammeln 20-30 echte Beispiel-Angebote von dir + verstehen dein Pricing-Modell), Implementierung 1 Woche, dann Live-Betrieb mit Begleitung." } },
+    { "@type": "Question", "name": "Was wenn ein Kunde individuelle Sonderkonditionen hat?", "acceptedAnswer": { "@type": "Answer", "text": "Kunden-spezifische Bedingungen werden im CRM hinterlegt — die AI liest sie automatisch beim Generieren. Rabatte, Zahlungsziele, Lieferadressen, alles kommt aus dem CRM-Stammdaten." } }
+  ]
+};
+---
+
+<KaizenLayout
+  title="Angebots-Generator — Aus 3 Stichworten ein vollständiges Angebot"
+  description="AI-gestützte Angebotserstellung für KMUs. Lexware/sevDesk/DATEV-Anbindung. Vollständige Angebote in 5 Min statt 45. Mensch prüft und sendet."
+  path="/workflows/angebote"
+  activeNav="workflows"
+  breadcrumbs={[{ name: 'Workflows', href: '/workflows' }, { name: 'Angebots-Generator', href: '/workflows/angebote' }]}
+  jsonLd={[serviceSchema, faqSchema]}
+>
+  <article class="kz-page">
+    <p style="margin-bottom: 16px;">
+      <a href="/workflows" style="font-size: 14px; color: var(--fg-muted);">← Alle Workflows</a>
+    </p>
+    <div class="kz-page-eyebrow">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" loading="lazy" />
+      <span class="kanji">二</span>
+      <span>Workflow 2 von 4</span>
+    </div>
+    <h1 class="kz-h1">Angebots-Generator.<br/><span style="color: var(--kz-ember); font-style: italic;">5 Minuten statt 45.</span></h1>
+    <p class="kz-lead">
+      Du sagst der AI in drei Stichworten worum's geht — sie generiert daraus ein vollständiges, individualisiertes Angebot in deinem Branding, auf Basis deiner Preisliste, mit den richtigen Zahlungsbedingungen.
+    </p>
+
+    <section>
+      <h2 class="kz-h2">Wie das funktioniert</h2>
+      <ul>
+        <li><strong>Setup-Phase:</strong> wir definieren einmal deinen Briefkopf, Standard-Klauseln, Preisliste, Zahlungsbedingungen</li>
+        <li><strong>Pro Angebot:</strong> Kunde aus CRM auswählen + 3-5 Stichworte zum Auftrag eintippen</li>
+        <li><strong>AI-Generierung:</strong> in 30 Sekunden ein 1-2-Seiten-Angebot mit korrekten Positionen, Summen, Konditionen</li>
+        <li><strong>Du:</strong> prüfst, signierst, sendest — ein Angebot in 5 Minuten statt 45</li>
+      </ul>
+
+      <h2 class="kz-h2">Wann der Workflow Sinn macht</h2>
+      <p>
+        Wenn du <strong>5+ Angebote pro Woche</strong> schreibst und sie sich strukturell ähneln. Bei einmaligen Großprojekten bringt's wenig — die brauchen sowieso Hand-Anlage. Bei kleinen Standard-Aufträgen aber: massive Zeit-Ersparnis.
+      </p>
+      <p class="kz-quote">
+        Wenn dein Backlog 30 Angebote umfasst und du täglich 3 schreibst — du sparst eine ganze Arbeitswoche pro Monat.
+      </p>
+
+      <h2 class="kz-h2">Tech-Stack</h2>
+      <ul>
+        <li><strong>CRM-Anbindung:</strong> Lexware Office, sevDesk, DATEV, HubSpot, Zoho — oder eigener via API</li>
+        <li><strong>AI-Layer:</strong> Claude für Text-Generierung + spezialisierte Prompt-Templates pro Angebot-Typ</li>
+        <li><strong>Output:</strong> PDF in deinem Corporate-Design ODER Word-Datei zur weiteren Bearbeitung</li>
+        <li><strong>Storage:</strong> Versionierte Ablage in deiner gewünschten Struktur (lokal, Sharepoint, Nextcloud)</li>
+      </ul>
+
+      <h2 class="kz-h2">ROI-Beispiel</h2>
+      <p>
+        <strong>Steuerberatungs-Kanzlei mit 20 MA:</strong> 12 Angebote/Woche, je 35 Min Anlage-Zeit. Nach Setup: 5 Min/Angebot. Spart 6h/Woche = 26h/Monat. Bei 80 €/h Stundenwert = 2.080 €/Monat Ersparnis. Setup-Kosten 4.500 €. Break-Even nach 2 Monaten.
+      </p>
+    </section>
+
+    <section style="margin-top: 80px; padding: 48px; background: var(--kz-cream-deep); border-radius: 12px;">
+      <h2 class="kz-h2" style="margin-top: 0;">Klingt nach deinem Schmerz?</h2>
+      <p style="margin-bottom: 28px;">30-Min-Erstgespräch. Wir hören zu, du erzählst wo's hakt.</p>
+      <a href="/erstgespraech" class="kz-btn">Termin vorschlagen</a>
+      <a href="/workflows/tagesreport" class="kz-btn kz-btn-ghost" style="margin-left: 12px;">Nächster Workflow: Tagesreport →</a>
+    </section>
+  </article>
+</KaizenLayout>
