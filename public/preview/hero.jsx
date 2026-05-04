@@ -609,7 +609,13 @@ function App() {
 
       <main style={{ position: 'relative', zIndex: 2, background: 'var(--kz-cream)' }}>
         <KzManifesto />
+        <KzSectionDivider />
+        <KzProcess />
         <KzWorkflows />
+        <KzQuote />
+        <KzTrust />
+        <KzSectionDivider />
+        <KzAbout />
         <KzCta />
         <KzFooter />
       </main>

@@ -8,7 +8,7 @@
    Noto Serif JP (kanji moments). All Google Fonts → loaded via @import.
    Local fallbacks listed in case downloaded ttfs are dropped into /fonts. */
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat+Brush&family=Caveat:wght@400;600;700&family=Yuji+Mai&family=Noto+Serif+JP:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Caveat:wght@400;600;700&family=Yuji+Mai&family=Noto+Serif+JP:wght@400;600&display=swap");
 
 :root {
   /* ---------- BRAND COLORS (strict — no free-styling) ---------- */
@@ -45,7 +45,7 @@
 
   /* ---------- TYPE FAMILIES ---------- */
   --font-sans:    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-  --font-display: "Caveat Brush", "Yuji Mai", "Klee One", cursive;
+  --font-display: "DM Serif Display", "Noto Serif JP", "Georgia", serif;
   --font-brush:   "Caveat", "Inter", cursive;     /* hand-brush sumi accent — sparingly */
   --font-jp:      "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
   --font-mono:    ui-monospace, "SF Mono", Menlo, "JetBrains Mono", Consolas, monospace;

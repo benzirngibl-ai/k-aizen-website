@@ -204,12 +204,15 @@ function ManifestoSection() {
         <div>
           <Reveal>
             <div style={{
+              display: 'flex', alignItems: 'center', gap: 12,
               fontFamily: 'var(--font-sans)', fontSize: 12, fontWeight: 600,
               textTransform: 'uppercase', letterSpacing: '0.18em',
               color: 'var(--fg-muted)', marginBottom: 24,
             }}>
-              <span className="kz-kanji" style={{ marginRight: 10, color: 'var(--kz-ember)' }}>禅</span>
-              Manifest
+              <img src="/animations/claude-design/logo-mark.png" alt=""
+                style={{ width: 20, height: 20, opacity: 0.7 }} />
+              <span className="kz-kanji" style={{ color: 'var(--kz-ember)' }}>禅</span>
+              <span>Manifest</span>
             </div>
           </Reveal>
 
@@ -406,12 +409,15 @@ function CtaSection() {
       }}>
         <Reveal>
           <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: 12,
             fontFamily: 'var(--font-sans)', fontSize: 12, fontWeight: 600,
             textTransform: 'uppercase', letterSpacing: '0.18em',
             color: 'var(--fg-muted)', marginBottom: 28,
           }}>
-            <span className="kz-kanji" style={{ marginRight: 10, color: 'var(--kz-ember)' }}>始</span>
-            Anfangen
+            <img src="/animations/claude-design/logo-mark.png" alt=""
+              style={{ width: 22, height: 22, opacity: 0.75 }} />
+            <span className="kz-kanji" style={{ color: 'var(--kz-ember)' }}>始</span>
+            <span>Anfangen</span>
           </div>
         </Reveal>
 
@@ -557,14 +563,433 @@ function ScrollProgress() {
   );
 }
 
+// ---------- Reusable: LogoMark ----------
+function LogoMark({ size = 24, opacity = 1, style }) {
+  return (
+    <img src="/animations/claude-design/logo-mark.png" alt="" style={{
+      width: size, height: size, opacity,
+      display: 'inline-block', verticalAlign: 'middle',
+      flexShrink: 0,
+      ...style,
+    }} />
+  );
+}
+
+// ---------- Reusable: Section-Divider mit Logo + Brush-Stroke ----------
+function SectionDivider() {
+  const [ref, visible] = useReveal({ threshold: 0.3 });
+  return (
+    <div ref={ref} style={{
+      maxWidth: 1120, margin: '0 auto',
+      padding: '0 clamp(24px, 5vw, 64px)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      gap: 24,
+    }}>
+      <div style={{
+        flex: 1, height: 1, maxWidth: 240,
+        background: 'linear-gradient(to right, transparent, var(--kz-border) 40%, var(--kz-border))',
+        transform: visible ? 'scaleX(1)' : 'scaleX(0)',
+        transformOrigin: 'right center',
+        transition: `transform 1100ms ${KZ_EASE}`,
+      }} />
+      <LogoMark size={28} opacity={visible ? 0.65 : 0}
+        style={{ transition: `opacity 800ms ${KZ_EASE} 200ms` }} />
+      <div style={{
+        flex: 1, height: 1, maxWidth: 240,
+        background: 'linear-gradient(to left, transparent, var(--kz-border) 40%, var(--kz-border))',
+        transform: visible ? 'scaleX(1)' : 'scaleX(0)',
+        transformOrigin: 'left center',
+        transition: `transform 1100ms ${KZ_EASE} 100ms`,
+      }} />
+    </div>
+  );
+}
+
+// ---------- Section: Process — Vier Schritte. Im Kreis. ----------
+function ProcessSection() {
+  const steps = [
+    {
+      num: '一', title: 'Beobachten', dur: '2 Wochen',
+      desc: 'Wir schauen zu. Nicht das Tools-Inventar, der echte Tagesablauf. Was wiederholt sich? Was ärgert? Was wird vergessen?',
+    },
+    {
+      num: '二', title: 'Verstehen', dur: '3 Tage',
+      desc: 'Aus fünfzig Beobachtungen pickt man eine. Den einen Schritt, der am meisten weh tut, am häufigsten passiert, am klarsten zu beschreiben ist. Nur den.',
+    },
+    {
+      num: '三', title: 'Eines ändern', dur: '1–2 Wochen',
+      desc: 'Wir bauen die kleinste mögliche Automation für genau diesen Schritt. Ein Skript. Ein Cron. Ein Output. Live in Tagen, nicht Quartalen.',
+    },
+    {
+      num: '四', title: 'Wieder beobachten', dur: '4 Wochen',
+      desc: 'Was läuft, läuft. Was bricht, dokumentieren wir. Was du besser verstehst, fließt in Schritt 1 vom nächsten Loop.',
+    },
+  ];
+  return (
+    <section data-screen-label="03 Prozess" style={{
+      position: 'relative',
+      padding: 'clamp(80px, 14vh, 180px) 0 clamp(80px, 14vh, 160px)',
+      background: 'var(--kz-cream)',
+      overflow: 'hidden',
+    }}>
+      <div style={{
+        maxWidth: 980, margin: '0 auto',
+        padding: '0 clamp(24px, 5vw, 64px)',
+      }}>
+        <Reveal>
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 12,
+            fontFamily: 'var(--font-sans)', fontSize: 12, fontWeight: 600,
+            textTransform: 'uppercase', letterSpacing: '0.18em',
+            color: 'var(--fg-muted)', marginBottom: 24,
+          }}>
+            <LogoMark size={20} opacity={0.7} />
+            <span className="kz-kanji" style={{ color: 'var(--kz-ember)' }}>改善</span>
+            <span>So arbeiten wir</span>
+          </div>
+        </Reveal>
+
+        <RevealHeadline text="Vier Schritte. Im Kreis." accent={[2]} />
+
+        <Reveal delay={300}>
+          <p style={{
+            maxWidth: 600, marginTop: 32, marginBottom: 80,
+            fontFamily: 'var(--font-sans)',
+            fontSize: 'clamp(17px, 1.5vw, 20px)',
+            lineHeight: 1.6, color: 'var(--fg-muted)',
+            textWrap: 'pretty',
+          }}>
+            Kaizen ist kein einmaliges Setup-Projekt. Es ist ein Loop.
+            Wir gehen ihn mit dir, immer wieder, bis ihr ihn selbst geht.
+          </p>
+        </Reveal>
+
+        <ol style={{ listStyle: 'none', padding: 0, margin: 0, position: 'relative' }}>
+          {/* Vertical brush-line connector */}
+          <div style={{
+            position: 'absolute',
+            left: 24, top: 36, bottom: 36,
+            width: 1,
+            background: 'linear-gradient(to bottom, transparent, var(--kz-border) 8%, var(--kz-border) 92%, transparent)',
+            opacity: 0.7,
+          }} />
+
+          {steps.map((s, i) => (
+            <Reveal key={i} delay={200 + i * 120} as="li" style={{
+              position: 'relative',
+              padding: '32px 0 32px 80px',
+              borderBottom: i < steps.length - 1 ? '1px solid var(--kz-border)' : 'none',
+            }}>
+              {/* Kanji-Marker */}
+              <div style={{
+                position: 'absolute', left: 0, top: 32,
+                width: 48, height: 48,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                background: 'var(--kz-cream)',
+                border: '1.5px solid var(--kz-border)',
+                borderRadius: '50%',
+                fontFamily: 'var(--font-jp)',
+                fontSize: 22, fontWeight: 600,
+                color: 'var(--fg)',
+              }}>
+                {s.num}
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 32, alignItems: 'baseline' }}>
+                <div>
+                  <h3 style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'clamp(26px, 3vw, 36px)',
+                    fontWeight: 400, lineHeight: 1.1,
+                    margin: '0 0 12px',
+                    letterSpacing: '-0.01em',
+                  }}>{s.title}</h3>
+                  <p style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: 'clamp(15px, 1.2vw, 17px)',
+                    lineHeight: 1.6, color: 'var(--fg-muted)',
+                    margin: 0, maxWidth: 560,
+                    textWrap: 'pretty',
+                  }}>{s.desc}</p>
+                </div>
+                <div style={{
+                  fontFamily: 'var(--font-brush)',
+                  fontSize: 'clamp(22px, 2vw, 28px)',
+                  color: 'var(--kz-ember)',
+                  whiteSpace: 'nowrap',
+                  alignSelf: 'center',
+                }}>{s.dur}</div>
+              </div>
+            </Reveal>
+          ))}
+        </ol>
+
+        <Reveal delay={300} style={{ marginTop: 64, textAlign: 'center' }}>
+          <p style={{
+            fontFamily: 'var(--font-display)',
+            fontStyle: 'italic',
+            fontSize: 'clamp(20px, 2vw, 24px)',
+            color: 'var(--fg-muted)',
+            margin: 0,
+          }}>
+            Dann beginnt der nächste Schritt.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+// ---------- Section: Quote — Big Bored-Monk-Wisdom ----------
+function QuoteSection() {
+  const [ref, visible] = useReveal({ threshold: 0.4 });
+  return (
+    <section data-screen-label="05 Maxime" style={{
+      position: 'relative',
+      padding: 'clamp(100px, 16vh, 200px) 0 clamp(100px, 16vh, 200px)',
+      background: 'var(--kz-cream-deep)',
+      overflow: 'hidden',
+      textAlign: 'center',
+    }}>
+      <div ref={ref} style={{
+        maxWidth: 980, margin: '0 auto',
+        padding: '0 clamp(24px, 5vw, 64px)',
+      }}>
+        <div style={{
+          marginBottom: 36,
+          opacity: visible ? 0.5 : 0,
+          transform: visible ? 'translateY(0)' : 'translateY(12px)',
+          transition: `opacity 1000ms ${KZ_EASE}, transform 1000ms ${KZ_EASE}`,
+        }}>
+          <LogoMark size={42} />
+        </div>
+
+        <blockquote style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: 'clamp(36px, 5.5vw, 72px)',
+          fontStyle: 'italic',
+          fontWeight: 400, lineHeight: 1.15,
+          letterSpacing: '-0.015em',
+          color: 'var(--fg)',
+          margin: 0,
+          textWrap: 'balance',
+          opacity: visible ? 1 : 0,
+          transform: visible ? 'translateY(0)' : 'translateY(20px)',
+          transition: `opacity 1400ms ${KZ_EASE} 200ms, transform 1400ms ${KZ_EASE} 200ms`,
+        }}>
+          „Setz dich hin. Atme. Hier ist der echte Workflow."
+        </blockquote>
+
+        <p style={{
+          fontFamily: 'var(--font-brush)',
+          fontSize: 'clamp(22px, 2vw, 28px)',
+          color: 'var(--fg-muted)',
+          marginTop: 36,
+          opacity: visible ? 0.85 : 0,
+          transform: visible ? 'translateY(0)' : 'translateY(12px)',
+          transition: `opacity 1400ms ${KZ_EASE} 600ms, transform 1400ms ${KZ_EASE} 600ms`,
+        }}>
+          — k-AIzen Maxime
+        </p>
+      </div>
+    </section>
+  );
+}
+
+// ---------- Section: Trust — Was uns unterscheidet ----------
+function TrustSection() {
+  const pillars = [
+    {
+      kanji: '近', title: 'Lokal & persönlich',
+      desc: 'Du sprichst mit dem, der baut. Kein Tier-3-Support, kein Account-Manager-Karussell. Bayern, deutsche Stunden, deutscher Vertrag.',
+    },
+    {
+      kanji: '法', title: 'Compliance-aware',
+      desc: 'DSGVO, Auftragsverarbeitungsverträge, EU-AI-Act sind keine Tabu-Themen. Wir bauen mit deinem Datenschutzbeauftragten am Tisch.',
+    },
+    {
+      kanji: '実', title: 'Ehrlich rechnen',
+      desc: 'Wir berechnen den Stundenwert jedes Workflows bevor wir bauen. Wenn die Mathematik nicht aufgeht, bauen wir nicht.',
+    },
+  ];
+  return (
+    <section data-screen-label="06 Vertrauen" style={{
+      position: 'relative',
+      padding: 'clamp(80px, 14vh, 180px) 0 clamp(80px, 14vh, 160px)',
+      background: 'var(--kz-cream)',
+    }}>
+      <div style={{
+        maxWidth: 1120, margin: '0 auto',
+        padding: '0 clamp(24px, 5vw, 64px)',
+      }}>
+        <Reveal>
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 12,
+            fontFamily: 'var(--font-sans)', fontSize: 12, fontWeight: 600,
+            textTransform: 'uppercase', letterSpacing: '0.18em',
+            color: 'var(--fg-muted)', marginBottom: 24,
+          }}>
+            <LogoMark size={20} opacity={0.7} />
+            <span className="kz-kanji" style={{ color: 'var(--kz-ember)' }}>信</span>
+            <span>Vertrauen</span>
+          </div>
+        </Reveal>
+
+        <RevealHeadline text="Was uns von der Hype-Industrie unterscheidet." accent={[3]} />
+
+        <Reveal delay={300}>
+          <p style={{
+            maxWidth: 640, marginTop: 32, marginBottom: 80,
+            fontFamily: 'var(--font-sans)',
+            fontSize: 'clamp(17px, 1.5vw, 20px)',
+            lineHeight: 1.6, color: 'var(--fg-muted)',
+            textWrap: 'pretty',
+          }}>
+            Drei Dinge, die wir anders machen als die meisten AI-Agencies.
+            Es sind nicht die spektakulärsten — aber die wichtigsten für dich.
+          </p>
+        </Reveal>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: 'clamp(24px, 3vw, 48px)',
+        }}>
+          {pillars.map((p, i) => (
+            <Reveal key={i} delay={200 + i * 120}>
+              <div style={{
+                fontFamily: 'var(--font-jp)',
+                fontSize: 56, lineHeight: 1,
+                color: 'var(--kz-ember)',
+                opacity: 0.85,
+                marginBottom: 20,
+              }}>{p.kanji}</div>
+              <h3 style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(22px, 2.2vw, 28px)',
+                fontWeight: 400, lineHeight: 1.2,
+                margin: '0 0 14px',
+                letterSpacing: '-0.01em',
+              }}>{p.title}</h3>
+              <p style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: 15, lineHeight: 1.6,
+                color: 'var(--fg-muted)',
+                margin: 0,
+                textWrap: 'pretty',
+              }}>{p.desc}</p>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- Section: About — Hinter k-AIzen ----------
+function AboutSection() {
+  return (
+    <section data-screen-label="07 Hinter" style={{
+      position: 'relative',
+      padding: 'clamp(80px, 14vh, 180px) 0 clamp(80px, 14vh, 160px)',
+      background: 'var(--kz-cream-deep)',
+      overflow: 'hidden',
+    }}>
+      {/* Logo-Watermark im Hintergrund */}
+      <div style={{
+        position: 'absolute',
+        top: '50%', right: '-8%',
+        transform: 'translateY(-50%)',
+        width: 'min(40vw, 480px)',
+        opacity: 0.08,
+        pointerEvents: 'none',
+      }}>
+        <LogoMark size="100%" opacity={1} style={{ width: '100%', height: 'auto' }} />
+      </div>
+
+      <div style={{
+        maxWidth: 880, margin: '0 auto',
+        padding: '0 clamp(24px, 5vw, 64px)',
+        position: 'relative',
+        zIndex: 1,
+      }}>
+        <Reveal>
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 12,
+            fontFamily: 'var(--font-sans)', fontSize: 12, fontWeight: 600,
+            textTransform: 'uppercase', letterSpacing: '0.18em',
+            color: 'var(--fg-muted)', marginBottom: 24,
+          }}>
+            <LogoMark size={20} opacity={0.7} />
+            <span className="kz-kanji" style={{ color: 'var(--kz-ember)' }}>人</span>
+            <span>Wer dahinter steht</span>
+          </div>
+        </Reveal>
+
+        <RevealHeadline text="Hinter k-AIzen." accent={[1]} />
+
+        <Reveal delay={280}>
+          <div style={{
+            marginTop: 40,
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gap: 'clamp(24px, 4vw, 56px)',
+          }}>
+            <p style={{
+              fontFamily: 'var(--font-sans)',
+              fontSize: 'clamp(16px, 1.4vw, 18px)',
+              lineHeight: 1.65, color: 'var(--fg)',
+              margin: 0, textWrap: 'pretty',
+            }}>
+              Mein Name ist Benjamin Zirngibl. Ich bin Pulscraft Digital —
+              eine kleine Firma in Bayern, die KMUs hilft, mit AI zu arbeiten
+              ohne Hype und ohne Buzzword-Bingo.
+            </p>
+            <p style={{
+              fontFamily: 'var(--font-sans)',
+              fontSize: 'clamp(16px, 1.4vw, 18px)',
+              lineHeight: 1.65, color: 'var(--fg)',
+              margin: 0, textWrap: 'pretty',
+            }}>
+              k-AIzen ist das fokussierte Outlet — nur Workflow-Automation,
+              keine Web-Designs, keine Side-Quests. Was funktioniert, bleibt.
+              Was nicht funktioniert, fliegt raus.
+            </p>
+          </div>
+        </Reveal>
+
+        <Reveal delay={500}>
+          <p style={{
+            fontFamily: 'var(--font-display)',
+            fontStyle: 'italic',
+            fontSize: 'clamp(22px, 2.4vw, 30px)',
+            lineHeight: 1.3, color: 'var(--fg-muted)',
+            marginTop: 48,
+            maxWidth: 640,
+            textWrap: 'pretty',
+          }}>
+            Wenn du wissen willst wie wir bauen — scroll wieder hoch.
+            Da steht alles.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 // expose to hero.jsx
 Object.assign(window, {
   KzManifesto: ManifestoSection,
+  KzProcess: ProcessSection,
   KzWorkflows: WorkflowsSection,
+  KzQuote: QuoteSection,
+  KzTrust: TrustSection,
+  KzAbout: AboutSection,
   KzCta: CtaSection,
   KzFooter: Footer,
   KzCrane: Crane,
   KzScrollProgress: ScrollProgress,
+  KzSectionDivider: SectionDivider,
+  KzLogoMark: LogoMark,
   KzUseScrollY: useScrollY,
   KzUseScrollDir: useScrollDirection,
 });
