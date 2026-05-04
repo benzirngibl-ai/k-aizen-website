@@ -531,8 +531,6 @@ function App() {
       <KzScrollProgress />
       <Header />
 
-      <KzCrane />
-
       <section data-screen-label="01 Hero" style={{
         position: 'relative',
         width: '100%', height: '100vh',

@@ -181,7 +181,7 @@ function ManifestoSection() {
       padding: 'clamp(80px, 14vh, 180px) 0 clamp(80px, 14vh, 160px)',
       overflow: 'hidden',
     }}>
-      {/* plum tree right */}
+      {/* cherry tree right */}
       <Reveal duration={1600} y={40} style={{
         position: 'absolute',
         right: '-4%', bottom: '-2%',
@@ -189,7 +189,7 @@ function ManifestoSection() {
         opacity: 0.92,
         pointerEvents: 'none',
       }}>
-        <img src="/animations/claude-design/sumi-plum-tree.png" alt=""
+        <img src="/animations/claude-design/sumi-cherry-tree.png" alt=""
           style={{ width: '100%', display: 'block', filter: 'saturate(0.92)' }} />
       </Reveal>
 
