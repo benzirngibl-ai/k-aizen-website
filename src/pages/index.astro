@@ -4,8 +4,8 @@
 // Vorgängerversion liegt unter old-index.astro als Backup.
 
 const SITE_URL = 'https://k-aizen.de';
-const TITLE = 'k-AIzen — Eins nach dem anderen. Auch bei AI.';
-const DESCRIPTION = 'AI-Workflow-Automation für KMUs in Deutschland (10–250 Mitarbeitende). Vier Standard-Workflows: Inbox-Triage, Angebots-Generator, Tagesreport, Wissens-Suche. DSGVO-konform, deutsche Server, kein Hype.';
+const TITLE = 'k-AIzen — Jeden Tag 1% besser. Mit KI.';
+const DESCRIPTION = 'KI-Workflow-Automation für KMU in Deutschland. Discovery-Audit ab 1.190 €, Module ab 2.490 €, Komplett-PA-Bundle 14.999 €. Hosted in Germany, kein Lock-in, ein Mensch der baut. Festpreise, sichtbar.';
 const OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 const organizationSchema = {
@@ -26,15 +26,18 @@ const organizationSchema = {
     "name": "Deutschland"
   },
   "knowsAbout": [
-    "AI Workflow Automation",
-    "Process Automation for SMB",
-    "DSGVO-konforme AI-Integration",
+    "KI-Workflow-Automation für KMU",
+    "Observation-driven Process Automation",
+    "Discovery-Audit für KMU",
+    "Personalplanung mit KI",
+    "Email-Triage Automation",
+    "Beleg-Sortierung DATEV",
     "n8n Workflow Engineering",
-    "Sub-Agent Orchestrierung",
-    "Inbox-Triage Automation",
-    "Document Search Automation",
-    "Wissensmanagement für KMUs",
-    "Compliance-aware AI"
+    "Claude API Integration",
+    "DSGVO-konforme KI-Architektur",
+    "On-Premise LLM (Llama, Mistral)",
+    "Hetzner-Cloud-Infrastruktur",
+    "Per-Kunde-Server-Pattern"
   ],
   "sameAs": [
     "https://www.linkedin.com/in/benjamin-zirngibl-0963753ab",
@@ -42,7 +45,8 @@ const organizationSchema = {
   ],
   "contactPoint": {
     "@type": "ContactPoint",
-    "email": "hallo@k-aizen.de",
+    "email": "kontakt@k-aizen.de",
+    "telephone": "+49-1590-1031928",
     "contactType": "customer service",
     "areaServed": "DE",
     "availableLanguage": ["German", "English"]
@@ -80,15 +84,17 @@ const serviceSchema = {
     "@type": "Country",
     "name": "Deutschland"
   },
-  "serviceType": "AI Workflow Automation für KMUs",
+  "serviceType": "KI-Workflow-Automation für KMU",
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "k-AIzen Standard-Workflows",
+    "name": "k-AIzen Angebot",
     "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Inbox-Triage", "description": "AI klassifiziert Mails, schlägt Antworten vor — Mensch entscheidet." } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Angebots-Generator", "description": "Aus drei Stichworten ein vollständiges Angebot." } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tagesreport", "description": "Täglicher Zwei-Minuten-Report mit Zahlen und Auffälligkeiten." } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wissens-Suche", "description": "Eigene Dokumente/Mails/Tickets — eine Suche, eine Antwort, mit Quellen." } }
+      { "@type": "Offer", "name": "Discovery-Audit Standard", "price": "1490", "priceCurrency": "EUR", "itemOffered": { "@type": "Service", "name": "Discovery-Audit", "description": "1 Tag remote, 3 Mitarbeiter-Interviews, kundenspezifischer PDF-Report binnen 5 Werktagen, 1h Follow-up." } },
+      { "@type": "Offer", "name": "Modul S — Audio→Protokoll", "price": "2490", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Modul M — Email-Befreiung", "price": "4490", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Modul L — Schicht-Genie", "price": "8990", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Komplett-PA-Bundle", "price": "14999", "priceCurrency": "EUR", "itemOffered": { "@type": "Service", "name": "KI-PA Bundle", "description": "Ein S-, ein M- und ein L-Modul gebündelt — der KI-PA für deinen Betrieb." } },
+      { "@type": "Offer", "name": "Retainer Wachstum", "price": "799", "priceCurrency": "EUR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "799", "priceCurrency": "EUR", "unitText": "pro Monat" } }
     ]
   }
 };
@@ -237,23 +243,49 @@ const serviceSchema = {
        auch wenn JavaScript-Rendering fehlschlägt oder langsam ist. -->
   <noscript>
     <article class="kz-noscript-fallback">
-      <h1>Eins nach dem anderen. <span class="accent">Auch bei AI.</span></h1>
+      <h1>Jeden Tag 1% besser. <span class="accent">Mit KI.</span></h1>
       <p>
-        k-AIzen ist eine AI-Workflow-Automation-Marke von Pulscraft Digital, geführt von Benjamin Zirngibl in Bayern.
-        Wir bauen Workflows für KMUs (10–250 Mitarbeitende) — ohne Hype, ohne Buzzword-Bingo.
+        Ich bin Benjamin Zirngibl, dein persönlicher KI-Bauer für sichtbare Prozess-Automatisierung im Mittelstand.
+        Kein Workshop-Zirkus, kein Konzern-Theater. Ein Mensch, der baut. Ein Stack, der dir gehört.
+        Eine Lösung, die am Montagmorgen läuft. 12+ Jahre Mobility-IT-Praxis, eigener Stack auf Hetzner, kein Lock-in.
       </p>
-      <h2>Vier Standard-Workflows</h2>
+
+      <h2>Drei Prinzipien</h2>
       <ul>
-        <li><a href="/workflows#inbox-triage">Inbox-Triage</a> — AI klassifiziert Mails, schlägt Antworten vor</li>
-        <li><a href="/workflows#angebote">Angebots-Generator</a> — aus drei Stichworten ein vollständiges Angebot</li>
-        <li><a href="/workflows#tagesreport">Tagesreport</a> — täglich um 7:30 mit Zahlen + To-Dos</li>
-        <li><a href="/workflows#wissens-suche">Wissens-Suche</a> — eine Suche über deine Dokumente, mit Quellenangabe</li>
+        <li><strong>Preise offen statt „auf Anfrage"</strong> — jeder Festpreis steht auf dieser Seite</li>
+        <li><strong>Übergebbar statt Vertrags-Knebel</strong> — dein Server, deine Workflows, dein Code. Übergabe in 5 Werktagen</li>
+        <li><strong>Liefern statt Workshops</strong> — Tools, die nach dem Projekt laufen. Erfolg in gesparten Stunden</li>
       </ul>
+
+      <h2>Drei Stufen, Festpreise</h2>
+      <ul>
+        <li><a href="/audit">Discovery-Audit</a> — ab 1.190 € · 1 Tag · Lieferung in 5 Werktagen mit Roadmap</li>
+        <li><a href="/pricing">Setup-Module</a> — 2.490 €–9.990 € je Modul · Komplett-PA-Bundle 14.999 €</li>
+        <li><a href="/pricing#retainer">Retainer</a> — 499 € – 1.299 €/Monat · keine Mindestlaufzeit</li>
+      </ul>
+
+      <h2>Methodik — Beobachten statt Beraten</h2>
+      <p>
+        Während andere KI-Strategien in PowerPoint diskutieren, beobachte ich einen Tag in deinem Büro.
+        Ich gucke deiner Buchhalterin über die Schulter, deinem Vertriebsleiter, deinem Chef.
+        Dann baue ich genau das Tool, das die Klick-Routine wegnimmt — sichtbares Ergebnis in Wochen.
+      </p>
+
+      <h2>Vertrauen</h2>
+      <ul>
+        <li>EU-Datenhaltung — dedizierter Hetzner-Server in Deutschland</li>
+        <li>DSGVO-konform ab Tag 1 — Auftragsverarbeitungsvertrag schriftlich vor Projektstart</li>
+        <li>On-Prem-Option — komplette Lösung mit Open-Source-Modellen (Llama, Mistral) auf eigener Infrastruktur</li>
+        <li>Transparente Tool-Wahl — keine Provisionen, schriftliche Begründung</li>
+      </ul>
+
       <h2>Mehr</h2>
       <ul>
-        <li><a href="/about">Über uns</a></li>
-        <li><a href="/erstgespraech">Erstgespräch buchen</a></li>
-        <li><a href="/kontakt">Kontakt</a></li>
+        <li><a href="/about">Über mich — Hands-On-Bauer statt KI-Theoretiker</a></li>
+        <li><a href="/audit">Audit buchen</a></li>
+        <li><a href="/pricing">Alle Preise &amp; Module</a></li>
+        <li><a href="/kontakt">Kontakt</a> — kontakt@k-aizen.de · WhatsApp · LinkedIn</li>
+        <li><a href="/erstgespraech">30-Min-Kennenlern-Call (gratis)</a></li>
       </ul>
     </article>
   </noscript>

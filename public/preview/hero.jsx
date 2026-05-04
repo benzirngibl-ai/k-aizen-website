@@ -20,8 +20,8 @@ const TWEAKS_DEFAULTS = /*EDITMODE-BEGIN*/{
   "showMountains": true,
   "showSun": true,
   "branchCount": 3,
-  "headline": "Eins nach dem anderen.",
-  "sub": "Auch bei AI."
+  "headline": "Jeden Tag 1% besser.",
+  "sub": "Mit KI."
 } /*EDITMODE-END*/;
 
 // ---------- hooks ----------
@@ -342,10 +342,10 @@ function Header() {
       </a>
       <nav style={{ display: 'flex', gap: 24 }} aria-label="Hauptnavigation">
         {[
-          { label: 'Workflows', href: '/workflows' },
+          { label: 'Audit', href: '/audit' },
           { label: 'Preise', href: '/pricing' },
-          { label: 'Tutorials', href: '/tutorials' },
-          { label: 'Über uns', href: '/about' },
+          { label: 'Über mich', href: '/about' },
+          { label: 'FAQ', href: '/#faq' },
           { label: 'Kontakt', href: '/kontakt' },
         ].map((item, i) => (
           <a key={item.label} href={item.href} style={{
@@ -356,13 +356,13 @@ function Header() {
           }}>{item.label}</a>
         ))}
       </nav>
-      <a href="/erstgespraech" style={{
+      <a href="/audit" style={{
         fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 600,
         padding: '8px 16px',
         background: 'var(--kz-charcoal)', color: 'var(--kz-cream)',
         borderRadius: 8, textDecoration: 'none',
       }}>
-        Erstgespräch
+        Audit buchen
       </a>
     </header>
   );
@@ -416,22 +416,23 @@ function HeroOverlay({ headline, sub }) {
 
       <p style={{
         fontFamily: 'var(--font-sans)',
-        maxWidth: 520, marginTop: 28,
+        maxWidth: 620, marginTop: 28,
         fontSize: 17, lineHeight: 1.55,
         color: 'var(--fg-muted)',
         textWrap: 'pretty',
         animation: 'kz-fade-up 900ms var(--ease-out) 700ms both'
       }}>
-        Wir bauen automatisierte Workflows für KMUs. Kein Wundermittel.
-        Kein Hype. Ein Prozess. Wenn der läuft, kommt der nächste.
+        Ich bin dein persönlicher KI-Bauer für sichtbare Prozess-Automatisierung.
+        Kein Workshop-Zirkus, kein Konzern-Theater. Ein Mensch, der baut.
+        Ein Stack, der dir gehört. Eine Lösung, die am Montagmorgen läuft.
       </p>
 
       <div style={{
-        display: 'flex', gap: 12, marginTop: 36,
+        display: 'flex', gap: 12, marginTop: 36, flexWrap: 'wrap', justifyContent: 'center',
         pointerEvents: 'auto',
         animation: 'kz-fade-up 900ms var(--ease-out) 880ms both'
       }}>
-        <a href="/erstgespraech"
+        <a href="/audit"
         data-petal-landing="true"
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
@@ -448,13 +449,13 @@ function HeroOverlay({ headline, sub }) {
           transition: 'background 140ms var(--ease-out), box-shadow 220ms var(--ease-out), transform 220ms var(--ease-out)',
           transform: hover ? 'translateY(-1px)' : 'translateY(0)'
         }}>
-          Workflow besprechen
+          Audit buchen
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
         </a>
-        <a href="/tutorials"
+        <a href="/pricing"
           data-petal-landing="true"
           style={{
           fontSize: 15, fontWeight: 500,
@@ -463,20 +464,31 @@ function HeroOverlay({ headline, sub }) {
           borderRadius: 8, textDecoration: 'none',
           border: '1.5px solid var(--kz-border)', fontFamily: 'var(--font-sans)'
         }}>
-          Tutorials ansehen
+          Pakete & Festpreise
+        </a>
+        <a href="https://wa.me/491590103192"
+          target="_blank" rel="noopener noreferrer"
+          data-petal-landing="true"
+          style={{
+          fontSize: 15, fontWeight: 500,
+          padding: '14px 22px',
+          background: 'transparent', color: 'var(--fg)',
+          borderRadius: 8, textDecoration: 'none',
+          border: '1.5px solid var(--kz-border)', fontFamily: 'var(--font-sans)'
+        }}>
+          WhatsApp
         </a>
       </div>
 
-      {/* Brush annotation — one per surface */}
+      {/* Trust-Trio */}
       <div style={{
-        position: 'absolute',
-        right: 'calc(50% - min(420px, 36vw))', bottom: 'calc(50% - 220px)',
-        fontFamily: 'var(--font-brush)', fontSize: 28, color: 'var(--fg-muted)',
-        transform: 'rotate(-6deg)',
-        opacity: 0.7,
-        animation: 'kz-fade-up 1200ms var(--ease-out) 1300ms both'
+        marginTop: 28,
+        fontFamily: 'var(--font-sans)', fontSize: 13,
+        color: 'var(--fg-muted)',
+        letterSpacing: '0.04em',
+        animation: 'kz-fade-up 1000ms var(--ease-out) 1100ms both'
       }}>
-        — mhm.
+        12+ Jahre Mobility-IT · Eigener Stack auf Hetzner · Kein Lock-in
       </div>
 
       {/* Scroll cue */}
@@ -617,15 +629,18 @@ function App() {
       </section>
 
       <main style={{ position: 'relative', zIndex: 2, background: 'var(--kz-cream)' }}>
-        <KzManifesto />
+        <KzManifest />
+        <KzProblem />
+        <KzAndererWeg />
+        <KzAngebot />
         <KzSectionDivider />
-        <KzProcess />
-        <KzWorkflows />
-        <KzQuote />
-        <KzTrust />
+        <KzMethodik />
+        <KzVertrauen />
         <KzSectionDivider />
-        <KzAbout />
-        <KzCta />
+        <KzUeberMich />
+        <div id="faq"></div>
+        <KzFaq />
+        <KzKontakt />
         <KzFooter />
       </main>
 

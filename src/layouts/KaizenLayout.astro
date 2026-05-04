@@ -15,7 +15,7 @@ interface Props {
   ogImage?: string;        // optional, default = /og-image.png (1200x630)
   jsonLd?: object | object[]; // optional structured data
   breadcrumbs?: BreadcrumbItem[]; // optional breadcrumb-trail
-  activeNav?: 'workflows' | 'tutorials' | 'about' | 'kontakt' | 'pricing' | 'home';
+  activeNav?: 'audit' | 'pricing' | 'about' | 'faq' | 'kontakt' | 'home';
 }
 
 const {
@@ -34,10 +34,10 @@ const canonical = `${SITE_URL}${path}`;
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`;
 
 const navItems = [
-  { label: 'Workflows', href: '/workflows', key: 'workflows' },
+  { label: 'Audit', href: '/audit', key: 'audit' },
   { label: 'Preise', href: '/pricing', key: 'pricing' },
-  { label: 'Tutorials', href: '/tutorials', key: 'tutorials' },
-  { label: 'Über uns', href: '/about', key: 'about' },
+  { label: 'Über mich', href: '/about', key: 'about' },
+  { label: 'FAQ', href: '/#faq', key: 'faq' },
   { label: 'Kontakt', href: '/kontakt', key: 'kontakt' },
 ];
 
@@ -457,25 +457,25 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       <div class="kz-footer-brand">
         <img src="/animations/claude-design/logo-full.png" alt="k-AIzen" />
         <p class="kz-footer-tag">
-          Eins nach dem anderen.<br/>Auch bei AI.
+          Jeden Tag 1% besser.<br/>Mit KI.
         </p>
       </div>
       <div class="kz-footer-col">
-        <h4>Workflows</h4>
+        <h4>Angebot</h4>
         <ul>
-          <li><a href="/workflows#inbox-triage">Inbox-Triage</a></li>
-          <li><a href="/workflows#angebote">Angebote</a></li>
-          <li><a href="/workflows#tagesreport">Tagesreport</a></li>
-          <li><a href="/workflows#wissens-suche">Wissens-Suche</a></li>
+          <li><a href="/audit">Audit buchen</a></li>
+          <li><a href="/pricing">Preise &amp; Module</a></li>
+          <li><a href="/about">Über mich</a></li>
+          <li><a href="/erstgespraech">Erstgespräch (gratis)</a></li>
         </ul>
       </div>
       <div class="kz-footer-col">
         <h4>Kontakt</h4>
         <ul>
-          <li><a href="mailto:hallo@k-aizen.de">hallo@k-aizen.de</a></li>
+          <li><a href="mailto:kontakt@k-aizen.de">kontakt@k-aizen.de</a></li>
+          <li><a href="https://wa.me/491590103192" rel="noopener noreferrer" target="_blank">WhatsApp</a></li>
           <li><a href="https://www.linkedin.com/in/benjamin-zirngibl-0963753ab" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
           <li><a href="/kontakt">Kontakt-Seite</a></li>
-          <li><a href="/erstgespraech">Erstgespräch</a></li>
         </ul>
       </div>
       <div class="kz-footer-col">
@@ -488,8 +488,8 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       </div>
     </div>
     <div class="kz-footer-base">
-      <span>© 2026 k-AIzen · Pulscraft Digital · Bayern</span>
-      <span>Made for Mittelstand</span>
+      <span>© 2026 Benjamin Zirngibl · Pulscraft Digital · Bayern</span>
+      <span>Made in Germany · Hosted in Germany</span>
     </div>
   </footer>
 </body>
