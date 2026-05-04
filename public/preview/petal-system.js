@@ -55,12 +55,24 @@
       this.W = 0; this.H = 0;
       this.gusts = [];        // {x, y, strength, life, maxLife}
       this._resize();
-      window.addEventListener('resize', () => this._resize());
+      // Bound handler-ref damit destroy() den Listener wieder entfernen kann
+      this._resizeBound = () => this._resize();
+      window.addEventListener('resize', this._resizeBound);
 
       // Build pool
       for (let i = 0; i < this.opts.count; i++) {
         this.petals.push(this._makePetal(true));
       }
+    }
+
+    destroy() {
+      // Cleanup bei Component-Unmount damit kein Listener-Leak entsteht
+      if (this._resizeBound) {
+        window.removeEventListener('resize', this._resizeBound);
+        this._resizeBound = null;
+      }
+      this.petals = [];
+      this.gusts = [];
     }
 
     _resize() {

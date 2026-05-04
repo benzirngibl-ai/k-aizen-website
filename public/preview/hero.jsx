@@ -224,6 +224,11 @@ function PetalLayer({ count, wind, repelRadius, mouse, registerSpawnGust, regist
     if (registerSetLandingZones) {
       registerSetLandingZones((zones) => sys.setLandingZones(zones));
     }
+    // Cleanup bei Component-Unmount: removes resize-listener + clears pool
+    return () => {
+      if (sys && typeof sys.destroy === 'function') sys.destroy();
+      sysRef.current = null;
+    };
   }, []);
 
   // update opts when tweaks change
@@ -618,7 +623,9 @@ function App() {
         <KzFooter />
       </main>
 
-      <HeroTweaks tweak={tweak} setTweak={setTweak} />
+      {/* Tweaks-Panel nur sichtbar mit ?tweaks=1 in URL — Kunden sehen es nicht */}
+      {typeof window !== 'undefined' && window.location.search.includes('tweaks=1') &&
+        <HeroTweaks tweak={tweak} setTweak={setTweak} />}
     </>);
 
 }
