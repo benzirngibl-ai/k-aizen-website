@@ -1,54 +1,51 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Sigil from '../components/Sigil.astro';
-import Flourish from '../components/Flourish.astro';
-import Divider from '../components/Divider.astro';
+// k-AIzen Homepage — Claude Design Version (React + Babel-standalone)
+// Lädt Static-Assets aus /preview/ (CSS/JS/JSX) und /animations/claude-design/ (Bilder).
+// Vorgängerversion liegt unter old-index.astro als Backup.
 ---
 
-<Layout
-  title="k-AIzen — KI-Automation für KMUs"
-  description="Individuelle KI-Workflows für KMUs mit 10–50 Mitarbeitern. Lokal. Persönlich. Ohne Enterprise-Overhead."
-  activeNav="home"
->
-  <main class="mx-auto max-w-6xl px-6 py-12 page-edge">
-    <div class="grid items-center gap-10">
-      <div class="max-w-3xl">
-        <Flourish class="mb-4 text-ember opacity-80" />
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>k-AIzen — Eins nach dem anderen.</title>
+  <meta name="description" content="AI-Automation für KMUs (Mittelstand). Eins nach dem anderen. Auch bei AI. Bored-Kaizen-Monk-Voice, Sumi-Tusche-Aesthetic, kein Hype." />
+  <link rel="icon" type="image/png" href="/animations/claude-design/logo-mark.png" />
+  <link rel="stylesheet" href="/preview/colors_and_type.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--kz-cream);
+      overscroll-behavior: none;
+    }
+    #root { isolation: isolate; }
 
-        <p class="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">
-          Kaizen × KI
-        </p>
+    @keyframes kz-fade-up {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes kz-scroll-line {
+      0%   { transform: scaleY(0); transform-origin: top; }
+      40%  { transform: scaleY(1); transform-origin: top; }
+      60%  { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
 
-        <h1 class="font-display text-5xl leading-[1.05] tracking-tight text-ink sm:text-7xl">
-          <span class="arcane-pulse">KI-Automation</span>
-          <span class="italic text-ink-soft">für </span><span class="italic verdant-pulse">deinen Betrieb</span> —<br />
-          <span class="italic text-ink-soft">nicht für einen Konzern.</span>
-        </h1>
+    section { user-select: none; -webkit-user-select: none; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
 
-        <p class="mt-10 max-w-xl text-lg leading-relaxed text-ink-soft">
-          k-AIzen baut individuelle KI-Workflows für KMUs mit 10–50 Mitarbeitern.
-          Lokal. Persönlich. Ohne Enterprise-Overhead.
-        </p>
+  <script is:inline src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
+  <script is:inline src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
+  <script is:inline src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
 
-        <div class="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
-          <a
-            href="/firmen-scan"
-            class="group ember-flow inline-flex items-center justify-center gap-3 rounded-sm border border-ember px-6 py-3 font-mono text-sm uppercase tracking-widest text-parchment"
-          >
-            <span class="sigil-glow">
-              <Sigil size={18} />
-            </span>
-            Firmen-Scan buchen
-          </a>
-          <span class="font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">
-            30 Min · unverbindlich · kostenlos
-          </span>
-        </div>
-
-        <Flourish class="mt-12 text-ember opacity-70" flip={true} />
-      </div>
-    </div>
-
-    <Divider class="mt-24" label="改善 — kontinuierliche Verbesserung" />
-  </main>
-</Layout>
+  <script is:inline src="/preview/petal-system.js"></script>
+  <script is:inline type="text/babel" src="/preview/tweaks-panel.jsx"></script>
+  <script is:inline type="text/babel" src="/preview/sections.jsx"></script>
+  <script is:inline type="text/babel" src="/preview/hero.jsx"></script>
+</body>
+</html>
