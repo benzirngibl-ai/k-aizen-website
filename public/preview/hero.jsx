@@ -189,7 +189,7 @@ function Branch({ index, total, mouse, onGust }) {
 }
 
 // ---------- Petal canvas controller ----------
-function PetalLayer({ count, wind, repelRadius, mouse, registerSpawnGust, registerSpawnExtra }) {
+function PetalLayer({ count, wind, repelRadius, mouse, registerSpawnGust, registerSpawnExtra, registerSetLandingZones }) {
   const ref = useRef(null);
   const sysRef = useRef(null);
 
@@ -221,6 +221,9 @@ function PetalLayer({ count, wind, repelRadius, mouse, registerSpawnGust, regist
     for (const p of sys.petals) sys._initKinematics(p);
     registerSpawnGust((x, y, strength) => sys.spawnGust(x, y, strength));
     registerSpawnExtra((x, y, n) => sys.spawnExtraPetals(x, y, n));
+    if (registerSetLandingZones) {
+      registerSetLandingZones((zones) => sys.setLandingZones(zones));
+    }
   }, []);
 
   // update opts when tweaks change
@@ -287,7 +290,7 @@ function PetalLayer({ count, wind, repelRadius, mouse, registerSpawnGust, regist
 
       // Loop already running; we just skip work when hidden via dt clamp.
       // No-op here, but kept for parity with brief.
-    };document.addEventListener('visibilitychange', onVis);return () => document.removeEventListener('visibilitychange', onVis);}, []);return <canvas ref={ref} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', display: 'block' }} />;} // ---------- Header (k-AIzen brand bar, 64px) ----------
+    };document.addEventListener('visibilitychange', onVis);return () => document.removeEventListener('visibilitychange', onVis);}, []);return <canvas ref={ref} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', display: 'block', zIndex: 6 }} />;} // ---------- Header (k-AIzen brand bar, 64px) ----------
 function Header() {
   const KZ_EASE = 'cubic-bezier(0.22, 1, 0.36, 1)';
   const [hidden, setHidden] = React.useState(false);
@@ -420,6 +423,7 @@ function HeroOverlay({ headline, sub }) {
         animation: 'kz-fade-up 900ms var(--ease-out) 880ms both'
       }}>
         <a href="#"
+        data-petal-landing="true"
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
         style={{
@@ -441,7 +445,9 @@ function HeroOverlay({ headline, sub }) {
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
         </a>
-        <a href="#" style={{
+        <a href="#"
+          data-petal-landing="true"
+          style={{
           fontSize: 15, fontWeight: 500,
           padding: '14px 22px',
           background: 'transparent', color: 'var(--fg)',
@@ -520,11 +526,42 @@ function App() {
   const mouse = useMouseSmooth();
   const gustFn = useRef(() => {});
   const extraFn = useRef(() => {});
+  const setZonesFn = useRef(() => {});
 
   // detect mobile -> reduce
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 720;
   const effectiveCount = isMobile ? Math.min(80, tweak.petalCount) : tweak.petalCount;
   const branches = isMobile ? Math.min(2, tweak.branchCount) : tweak.branchCount;
+
+  // Measure CTA-Buttons → register als Landing-Zones im Petal-System.
+  // Coords sind hero-section-relative (= canvas-relative) damit Petal-x/y matchen.
+  React.useEffect(() => {
+    const updateZones = () => {
+      const heroSection = document.querySelector('[data-screen-label="01 Hero"]');
+      if (!heroSection) return;
+      const heroRect = heroSection.getBoundingClientRect();
+      const buttons = document.querySelectorAll('[data-petal-landing="true"]');
+      const zones = Array.from(buttons).map((btn) => {
+        const r = btn.getBoundingClientRect();
+        return {
+          x: r.left - heroRect.left,
+          y: r.top - heroRect.top,
+          w: r.width,
+          h: r.height,
+        };
+      });
+      setZonesFn.current(zones);
+    };
+    // initial passes — multiple um Font-Load-Reflow abzufangen
+    const t1 = setTimeout(updateZones, 200);
+    const t2 = setTimeout(updateZones, 800);
+    const t3 = setTimeout(updateZones, 1800);
+    window.addEventListener('resize', updateZones);
+    return () => {
+      clearTimeout(t1); clearTimeout(t2); clearTimeout(t3);
+      window.removeEventListener('resize', updateZones);
+    };
+  }, []);
 
   return (
     <>
@@ -564,7 +601,8 @@ function App() {
           repelRadius={tweak.repelRadius}
           mouse={mouse}
           registerSpawnGust={(fn) => {gustFn.current = fn;}}
-          registerSpawnExtra={(fn) => {extraFn.current = fn;}} />
+          registerSpawnExtra={(fn) => {extraFn.current = fn;}}
+          registerSetLandingZones={(fn) => {setZonesFn.current = fn;}} />
 
         <HeroOverlay headline={tweak.headline} sub={tweak.sub} />
       </section>

@@ -42,6 +42,11 @@
         repelRadius: 160,
         repelStrength: 1.0,
         spawnFromBranches: [], // array of {x,y, w,h} normalized 0..1
+        landingZones: [],         // [{x,y,w,h}] — petals settle on top edge
+        cursorWakeRadius: 95,     // landed petals wake when cursor enters this radius
+        windWakeThreshold: 0.82,  // |noise| above this can wake landed petals
+        landingFriction: 0.35,    // vx multiplier on impact
+        landingPad: 5,            // pixels above zone-top petal sits at
       }, opts);
 
       this.petals = [];
@@ -79,6 +84,10 @@
     }
 
     setMouseInactive() { this.mouse.active = false; }
+
+    setLandingZones(zones) {
+      this.opts.landingZones = Array.isArray(zones) ? zones : [];
+    }
 
     spawnGust(x, y, strength = 1, life = 800) {
       this.gusts.push({ x, y, strength, life, maxLife: life });
@@ -154,6 +163,8 @@
       p.hue = (Math.random() - 0.5) * 18;
       p.opacity = 0.7 + Math.random() * 0.3;
       p.dead = false;
+      p.landed = false;
+      p.restTime = 0;
     }
 
     update(dt) {
@@ -174,9 +185,87 @@
         if (g.life <= 0) this.gusts.splice(i, 1);
       }
 
+      const zones = this.opts.landingZones;
+      const wakeR = this.opts.cursorWakeRadius;
+      const wakeR2 = wakeR * wakeR;
+      const windWake = this.opts.windWakeThreshold;
+      const friction = this.opts.landingFriction;
+      const padTop = this.opts.landingPad;
+
       const petals = this.petals;
       for (let i = 0; i < petals.length; i++) {
         const p = petals[i];
+
+        // ============================================================
+        // LANDED-STATE: petal liegt auf einem Button. Skip Physik,
+        // check für Disturbance (Cursor / Wind / Gust) → wake.
+        // ============================================================
+        if (p.landed) {
+          p.restTime += dt;
+          let woken = false;
+
+          // Cursor-Wake: Maus kommt nahe → Petal fliegt weg
+          if (mActive) {
+            const dx = p.x - mx, dy = p.y - my;
+            const d2 = dx * dx + dy * dy;
+            if (d2 < wakeR2 && d2 > 0.01) {
+              const d = Math.sqrt(d2);
+              const fall = 1 - d / wakeR;
+              // Push direction = AWAY vom Cursor + Cursor-Velocity
+              p.vx = (dx / d) * 1.4 * fall + this.mouse.vx * 0.45;
+              p.vy = (dy / d) * 0.5 * fall + this.mouse.vy * 0.32 - 0.7 * fall; // upward-kick
+              p.va = (Math.random() - 0.5) * 0.06;
+              p.landed = false;
+              p.restTime = 0;
+              woken = true;
+            }
+          }
+
+          // Gust-Wake: Wind-Stoß über die Position
+          if (!woken) {
+            for (let g of this.gusts) {
+              const dx = p.x - g.x, dy = p.y - g.y;
+              const d2 = dx * dx + dy * dy;
+              if (d2 < 220 * 220) {
+                const d = Math.sqrt(d2) + 0.001;
+                const fall = (g.life / g.maxLife) * (1 - d / 220) * g.strength;
+                if (fall > 0.28) {
+                  p.vx = (dx / d) * fall * 1.6;
+                  p.vy = -fall * 0.85 + (dy / d) * fall * 0.3;
+                  p.va = (Math.random() - 0.5) * 0.05;
+                  p.landed = false;
+                  p.restTime = 0;
+                  woken = true;
+                  break;
+                }
+              }
+            }
+          }
+
+          // Wind-Noise-Wake: starke Noise-Sektion blast Petal weg
+          if (!woken) {
+            const nfL = noise(p.x, p.y, this.t);
+            if (Math.abs(nfL) > windWake && Math.random() < 0.035) {
+              p.vx = nfL * 1.4 * wind;
+              p.vy = -0.4 - Math.random() * 0.3;
+              p.va = (Math.random() - 0.5) * 0.04;
+              p.landed = false;
+              p.restTime = 0;
+              woken = true;
+            }
+          }
+
+          if (!woken) {
+            // Bleibt liegen — leichter Settle-Drift an Rotation, keine Position-Änderung
+            p.va *= 0.92;
+            p.a += p.va;
+            continue; // skip rest of physics + recycle
+          }
+        }
+
+        // ============================================================
+        // NORMAL PHYSICS für nicht-landed Petals
+        // ============================================================
 
         // global wind: noise field
         const nf = noise(p.x, p.y, this.t);
@@ -204,15 +293,11 @@
           if (d2 < r2 && d2 > 0.01) {
             const d = Math.sqrt(d2);
             const fall = 1 - d / r;
-            // softer falloff (linear-ish, not squared) and lower force
             const force = fall * 0.9 * rs;
-            // gentle radial push
             mx2 += (dx / d) * force * 0.55;
             my2 += (dy / d) * force * 0.55;
-            // tangential swirl — leaves drift around the cursor instead of fleeing
             mx2 += (-dy / d) * force * 0.85;
             my2 += ( dx / d) * force * 0.85;
-            // very mild cursor-velocity drag
             mx2 += this.mouse.vx * fall * 0.06;
             my2 += this.mouse.vy * fall * 0.06;
             p.va += fall * 0.005 * Math.sign(dx);
@@ -227,13 +312,36 @@
         p.vx *= 0.965;
         p.vy *= 0.985;
 
+        const prevY = p.y;
         p.x += p.vx;
         p.y += p.vy;
         p.a += p.va;
         p.va *= 0.97;
 
-        // recycle when offscreen
-        if (p.y > H + 40 || p.x < -120 || p.x > W + 120) {
+        // ============================================================
+        // LANDING-DETECTION: hat das Petal gerade die Top-Edge einer Zone
+        // gekreuzt? (nur wenn nach unten fallend)
+        // ============================================================
+        if (zones.length && p.vy > 0) {
+          for (let z = 0; z < zones.length; z++) {
+            const zone = zones[z];
+            if (p.x < zone.x - 4 || p.x > zone.x + zone.w + 4) continue;
+            const top = zone.y;
+            if (prevY < top && p.y >= top) {
+              // Land
+              p.y = top - padTop;
+              p.vy = 0;
+              p.vx *= friction;
+              p.va *= 0.3;
+              p.landed = true;
+              p.restTime = 0;
+              break;
+            }
+          }
+        }
+
+        // recycle when offscreen (skip for landed petals — already handled above)
+        if (!p.landed && (p.y > H + 40 || p.x < -120 || p.x > W + 120)) {
           this._respawn(p, false);
         }
       }
