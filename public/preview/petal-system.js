@@ -38,7 +38,7 @@
         sprite: null,         // HTMLImage of leaf-sakura.png (legacy single)
         sprites: null,        // array of {img, weight} for variant petals
         wind: 1.0,
-        gravity: 0.06,
+        gravity: 0.042,       // 30% reduziert für ruhigere Fall-Geschwindigkeit
         repelRadius: 160,
         repelStrength: 1.0,
         spawnFromBranches: [], // array of {x,y, w,h} normalized 0..1
@@ -141,10 +141,11 @@
     }
 
     _initKinematics(p) {
-      p.vx = (Math.random() - 0.5) * 0.6;
-      p.vy = 0.4 + Math.random() * 0.9;
+      // Initial-Velocities um 30% reduziert für ruhigere Fall-Bewegung
+      p.vx = (Math.random() - 0.5) * 0.42;
+      p.vy = 0.28 + Math.random() * 0.63;
       p.a = Math.random() * TAU;
-      p.va = (Math.random() - 0.5) * 0.04;
+      p.va = (Math.random() - 0.5) * 0.028;
       // per-variant scale: maple leaves are larger; sakura petals smaller
       p.spriteIdx = this._pickSpriteIndex();
       const variant = this.opts.sprites && this.opts.sprites[p.spriteIdx];
