@@ -298,5 +298,15 @@ const serviceSchema = {
   <script is:inline type="text/babel" src="/preview/tweaks-panel.jsx"></script>
   <script is:inline type="text/babel" src="/preview/sections.jsx"></script>
   <script is:inline type="text/babel" src="/preview/hero.jsx"></script>
+
+  <!-- Chatbot Widget -->
+  <script is:inline>
+    window.KAIZEN_BOT_URL = window.KAIZEN_BOT_URL || (
+      location.hostname === 'localhost' || location.hostname === '127.0.0.1'
+        ? 'http://localhost:4123/chat'
+        : 'https://chat.k-aizen.de/chat'
+    );
+  </script>
+  <script is:inline src="/widgets/chatbot.js" defer></script>
 </body>
 </html>

@@ -492,5 +492,16 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       <span>Made in Germany · Hosted in Germany</span>
     </div>
   </footer>
+
+  <!-- Chatbot Widget — Backend-URL wird über window.KAIZEN_BOT_URL gesetzt.
+       Default: same-origin /api/chat. Dev-Override im Browser-Console möglich. -->
+  <script is:inline>
+    window.KAIZEN_BOT_URL = window.KAIZEN_BOT_URL || (
+      location.hostname === 'localhost' || location.hostname === '127.0.0.1'
+        ? 'http://localhost:4123/chat'
+        : 'https://chat.k-aizen.de/chat'
+    );
+  </script>
+  <script is:inline src="/widgets/chatbot.js" defer></script>
 </body>
 </html>

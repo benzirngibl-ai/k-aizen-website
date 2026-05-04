@@ -14,7 +14,7 @@
 const { useState, useEffect, useRef, useMemo } = React;
 
 const TWEAKS_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "petalCount": 55,
+  "petalCount": 38,
   "wind": 0.3,
   "repelRadius": 170,
   "showMountains": true,
@@ -123,10 +123,10 @@ function Branch({ index, total, mouse, onGust }) {
   const config = useMemo(() => {
     // distribute, varied
     const presets = [
-    { left: '-6%', top: '4%', width: '58%', rotate: -4, flip: false, depth: 0.6, scale: 1.0 },
-    { left: '38%', top: '-8%', width: '52%', rotate: 8, flip: true, depth: 1.0, scale: 0.85 },
-    { left: '-8%', top: '68%', width: '48%', rotate: -2, flip: false, depth: 1.4, scale: 0.75 },
-    { left: '46%', top: '-12%', width: '60%', rotate: 6, flip: true, depth: 0.4, scale: 0.9 }];
+    { left: '-6%', top: '-2%', width: '58%', rotate: -4, flip: false, depth: 0.6, scale: 1.0 },
+    { left: '38%', top: '-18%', width: '52%', rotate: 8, flip: true, depth: 1.0, scale: 0.85 },
+    { left: '-8%', top: '74%', width: '48%', rotate: -2, flip: false, depth: 1.4, scale: 0.75 },
+    { left: '46%', top: '-18%', width: '60%', rotate: 6, flip: true, depth: 0.4, scale: 0.9 }];
 
     return presets[index % presets.length];
   }, [index]);
@@ -376,7 +376,7 @@ function HeroOverlay({ headline, sub }) {
       position: 'absolute', inset: 0,
       display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',
-      padding: '0 24px', textAlign: 'center',
+      padding: '6vh 24px 0', textAlign: 'center',
       pointerEvents: 'none'
     }}>
       <div style={{
@@ -460,9 +460,11 @@ function HeroOverlay({ headline, sub }) {
           style={{
           fontSize: 15, fontWeight: 500,
           padding: '14px 22px',
-          background: 'transparent', color: 'var(--fg)',
+          background: 'rgba(212, 138, 48, 0.16)', color: 'var(--fg)',
           borderRadius: 8, textDecoration: 'none',
-          border: '1.5px solid var(--kz-border)', fontFamily: 'var(--font-sans)'
+          border: '1.5px solid rgba(212, 138, 48, 0.55)', fontFamily: 'var(--font-sans)',
+          backdropFilter: 'blur(2px)',
+          WebkitBackdropFilter: 'blur(2px)'
         }}>
           Pakete & Festpreise
         </a>
@@ -472,9 +474,11 @@ function HeroOverlay({ headline, sub }) {
           style={{
           fontSize: 15, fontWeight: 500,
           padding: '14px 22px',
-          background: 'transparent', color: 'var(--fg)',
+          background: 'rgba(74, 155, 122, 0.16)', color: 'var(--fg)',
           borderRadius: 8, textDecoration: 'none',
-          border: '1.5px solid var(--kz-border)', fontFamily: 'var(--font-sans)'
+          border: '1.5px solid rgba(74, 155, 122, 0.6)', fontFamily: 'var(--font-sans)',
+          backdropFilter: 'blur(2px)',
+          WebkitBackdropFilter: 'blur(2px)'
         }}>
           WhatsApp
         </a>

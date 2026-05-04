@@ -162,9 +162,9 @@
     }
 
     _initKinematics(p) {
-      // Initial-Velocities um 30% reduziert für ruhigere Fall-Bewegung
+      // Fall-Speed nochmal -30% (Bens-Tweak 2026-05-04): ruhiger, max 70% sichtbar
       p.vx = (Math.random() - 0.5) * 0.42;
-      p.vy = 0.28 + Math.random() * 0.63;
+      p.vy = 0.196 + Math.random() * 0.441;
       p.a = Math.random() * TAU;
       p.va = (Math.random() - 0.5) * 0.028;
       // per-variant scale: maple leaves are larger; sakura petals smaller
@@ -173,7 +173,7 @@
       const baseScale = variant?.scale ?? 0.07;
       p.s = baseScale * (0.7 + Math.random() * 0.6);
       p.hue = (Math.random() - 0.5) * 18;
-      p.opacity = 0.7 + Math.random() * 0.3;
+      p.opacity = 0.45 + Math.random() * 0.25;
       p.dead = false;
       p.landed = false;
       p.restTime = 0;
