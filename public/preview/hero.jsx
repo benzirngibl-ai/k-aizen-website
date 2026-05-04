@@ -123,10 +123,10 @@ function Branch({ index, total, mouse, onGust }) {
   const config = useMemo(() => {
     // distribute, varied
     const presets = [
-    { left: '-6%', top: '8%', width: '58%', rotate: -4, flip: false, depth: 0.6, scale: 1.0 },
-    { left: '38%', top: '32%', width: '52%', rotate: 8, flip: true, depth: 1.0, scale: 0.85 },
-    { left: '-8%', top: '54%', width: '48%', rotate: -2, flip: false, depth: 1.4, scale: 0.75 },
-    { left: '46%', top: '-2%', width: '60%', rotate: 6, flip: true, depth: 0.4, scale: 0.9 }];
+    { left: '-6%', top: '4%', width: '58%', rotate: -4, flip: false, depth: 0.6, scale: 1.0 },
+    { left: '38%', top: '-8%', width: '52%', rotate: 8, flip: true, depth: 1.0, scale: 0.85 },
+    { left: '-8%', top: '68%', width: '48%', rotate: -2, flip: false, depth: 1.4, scale: 0.75 },
+    { left: '46%', top: '-12%', width: '60%', rotate: 6, flip: true, depth: 0.4, scale: 0.9 }];
 
     return presets[index % presets.length];
   }, [index]);
