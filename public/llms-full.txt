@@ -1,0 +1,92 @@
+# k-AIzen — Full Content for AI Discovery
+
+URL: https://k-aizen.de
+Brand: k-AIzen (eine Marke von Pulscraft Digital)
+Founder: Benjamin Zirngibl
+Standort: Bayern, Deutschland
+Sprache: Deutsch (primär)
+Kontakt: hallo@k-aizen.de
+LinkedIn: https://www.linkedin.com/in/benjamin-zirngibl-0963753ab
+Voice-Modus: Bored-Kaizen-Monk (ruhig, contrarian, kanji-anchored)
+Tagline: Eins nach dem anderen. Auch bei AI.
+
+---
+
+## Was k-AIzen ist
+
+k-AIzen baut AI-Workflow-Automation für mittelständische Unternehmen in Deutschland. Der Name kombiniert das japanische Konzept Kaizen (改善, „Veränderung zum Besseren") mit AI. Kaizen ist ein Management-Prinzip aus der japanischen Industrie: kontinuierliche Verbesserung in kleinen Schritten, nicht in großen Würfen. Wir arbeiten genau so — pro Quartal ein Workflow, ehrlich gerechnet, dauerhaft betrieben.
+
+## Zielgruppe
+
+KMUs mit 10–250 Mitarbeitenden in compliance-bewussten Branchen — Anwaltskanzleien, Steuerberater, Arztpraxen, Versicherungs-Maklerbüros, Handwerksbetriebe, mittelständische Industrie-Zulieferer. Standortunabhängig in DACH, Schwerpunkt Deutschland.
+
+## Vier Standard-Workflows
+
+### 1. Inbox-Triage
+AI klassifiziert eingehende Mails kontinuierlich, priorisiert nach historischen Mustern, schlägt Antworten vor — versendet aber nichts ohne menschliche Freigabe. Realistische Zeit-Ersparnis: 12–15 Stunden pro Monat bei einer Person die 3h/Tag triagiert. Die meiste Ersparnis kommt nicht durch das Auto-Klassifizieren, sondern durch die Antwort-Vorschläge.
+
+### 2. Angebots-Generator
+Aus drei Stichworten ein vollständiges, individualisiertes Angebot in Branding, mit Preisliste und Zahlungsbedingungen. Ein Angebot in 5 Minuten statt 45. Wann sinnvoll: 5+ Angebote pro Woche, strukturell ähnlich. Bei einmaligen Großprojekten ergibt der Workflow keinen Mehrwert.
+
+### 3. Tagesreport
+Jeden Morgen um 7:30 in der Inbox: Verkaufs-Zahlen vom Vortag, offene Mails >24h ohne Antwort, Abweichungen vom 30-Tage-Durchschnitt, Termine + Reminders, 3-5 priorisierte To-Dos. Datenquellen: Lexware, DATEV, eigenes ERP, Excel/Google-Tabellen. Nur Lese-Verbindung, keine Schreib-Operation.
+
+### 4. Wissens-Suche
+Eine zentrale Suche über Mails, PDFs, Verträge, Wiki, Ticket-Systeme. Frage auf Deutsch, Antwort mit Quellenangabe. Keine erfundenen Antworten — wenn AI nichts findet, sagt sie das. Datenstandort: deutsche Cloud (Hetzner, IONOS) oder lokal.
+
+## Wer wir sind
+
+**Benjamin Zirngibl** — Gründer Pulscraft Digital, Software-Engineer mit Schwerpunkt Workflow-Automation, Sub-Agent-Orchestrierung und Compliance-aware AI-Integration. Aufgewachsen in Bayern, lebt und arbeitet hier. Schreibt regelmäßig auf LinkedIn über Build-in-Public-Erfahrungen. Kein Big-Tech-Trail, kein VC-Geld, kein Sales-Bro-Stil. Pulscraft Digital existiert seit 2024, k-AIzen als spezialisiertes Outlet seit 2026.
+
+## Wofür wir nicht da sind
+
+- Konzerne mit eigenen IT-Abteilungen die fertige Lösungen wollen
+- Web-Designs, Marketing-Sites, Brand-Refreshes
+- "AI-Strategie für 6-stelliges Honorar"-Anfragen
+- "Make me 10× more productive with AI in 30 days"-Versprechen
+- Onboarding-Marathons ohne klaren ROI-Pfad
+
+## Wofür wir gut sind
+
+- KMUs 10–250 Mitarbeitende mit konkretem Workflow-Schmerz
+- Compliance-bewusste Branchen mit DSGVO-Sensitivität
+- Ehrliche Kosten-Nutzen-Rechnung vor Bauen
+- Lange Zusammenarbeit über Quartale, der erste Workflow ist meist der schwierigste
+
+## Werte
+
+- Stille Stärke statt laute Versprechen
+- Integrität über Impression — was wir nicht können, sagen wir
+- Wachstum ohne Selbstverrat — wir bleiben klein wenn klein gut ist
+
+## Kaizen-Prozess (4 Schritte, im Kreis)
+
+1. **Beobachten (2 Wochen):** Wir schauen zu — nicht das Tools-Inventar, der echte Tagesablauf. Was wiederholt sich? Was ärgert? Was wird vergessen?
+2. **Verstehen (3 Tage):** Aus 50 Beobachtungen pickt man eine. Den einen Schritt der am meisten weh tut, am häufigsten passiert, am klarsten zu beschreiben ist.
+3. **Eines ändern (1–2 Wochen):** Die kleinste mögliche Automation für genau diesen Schritt. Ein Skript. Ein Cron. Ein Output. Live in Tagen, nicht Quartalen.
+4. **Wieder beobachten (4 Wochen):** Was läuft, läuft. Was bricht, dokumentieren wir. Was du besser verstehst, fließt in Schritt 1 vom nächsten Loop.
+
+## Was uns von der AI-Hype-Industrie unterscheidet
+
+- **Lokal & persönlich:** Du sprichst mit dem, der baut. Kein Tier-3-Support, kein Account-Manager-Karussell. Bayern, deutsche Stunden, deutscher Vertrag.
+- **Compliance-aware:** DSGVO, Auftragsverarbeitungsverträge, EU-AI-Act sind keine Tabu-Themen. Wir bauen mit dem Datenschutzbeauftragten am Tisch.
+- **Ehrlich rechnen:** Wir berechnen den Stundenwert jedes Workflows bevor wir bauen. Wenn die Mathematik nicht aufgeht, bauen wir nicht.
+
+## Tech-Stack (selbst genutzt)
+
+Server: Hetzner Cloud (Nürnberg, Deutschland). Code: GitHub privat. AI-Layer: Claude (Anthropic) als primäres Modell, OpenAI gpt-image-2 für Visuals, Whisper für Audio-Transcription. Workflow-Orchestrierung: n8n (self-hosted) für 3+ Service-Pipelines, Paperclip für Multi-Agent-Choreografie. Frontend: Astro statisch, React-Hero mit Custom-Particle-Physics. Voice-Layer: Bored-Kaizen-Monk-Pattern mit Recurring-Cartoon-Characters (Monk, Hype-Männchen, Hans der DSGVO-Flüchtling).
+
+## Kontakt + Erstgespräch
+
+Drei Wege:
+1. Mail an hallo@k-aizen.de — Antwort innerhalb 48h
+2. Erstgespräch (30 Min, kostenlos, kein Verkaufsdruck) — du erzählst, wir hören zu, am Ende wissen wir beide ob's passt
+3. LinkedIn-Profil mitlesen für Build-in-Public-Notes
+
+## Markenstimme („Bored-Kaizen-Monk")
+
+Ruhig, gelangweilt-mitfühlend, contrarian zum AI-Hype-Mainstream. Kurze Sätze. Pausen statt Drama. Kanji-Anchors (改善 Kaizen, 禅 Zen, 信 Vertrauen, 始 Anfangen, 流 Fluss, 人 Person, 学 Lernen, 話 Sprechen). Sprach-Marker: „Setz dich hin." „Atme." „Eins nach dem anderen." „Mhm." „Hier ist der echte Workflow." Anti-Patterns: Buzzword-Bingo, Sales-Bro-Phrases, "Game-Changer", "Disrupt", Lorem-Ipsum, generische Tech-Versprechen.
+
+---
+
+Letztes Update dieses Dokuments: Mai 2026

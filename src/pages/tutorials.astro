@@ -1,0 +1,62 @@
+---
+import KaizenLayout from '../layouts/KaizenLayout.astro';
+---
+
+<KaizenLayout
+  title="Tutorials — How wir bauen, Schritt für Schritt"
+  description="Workflow-Anleitungen, Tool-Reviews ohne Affiliate-Bias, Hot-Takes auf Releases. Bald hier — bis dahin im LinkedIn-Feed."
+  path="/tutorials"
+  activeNav="tutorials"
+>
+  <article class="kz-page">
+    <div class="kz-page-eyebrow">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
+      <span class="kanji">学</span>
+      <span>Tutorials</span>
+    </div>
+    <h1 class="kz-h1">Tutorials kommen.</h1>
+    <p class="kz-lead">
+      Wir bauen gerade die Pipeline für regelmäßige Tutorials, Workflow-Anleitungen und Tool-Reviews. Bis die Seite hier gefüllt ist, gibt's das Material auf LinkedIn — kürzer, häufiger, mit PDF-Download.
+    </p>
+
+    <section style="margin-top: 56px;">
+      <h2 class="kz-h2">Was du hier in den nächsten Wochen finden wirst</h2>
+      <ul>
+        <li><strong>Workflow-Anleitungen</strong> mit Skript-Templates die du direkt nutzen kannst — n8n-JSONs, Python-Snippets, Astro-Components</li>
+        <li><strong>Tool-Reviews ohne Affiliate-Bias</strong> — wir bekommen kein Geld vom Hersteller, wir berichten was wir wirklich nutzen und was rausgeflogen ist</li>
+        <li><strong>Hot-Takes auf Releases</strong> — wenn Anthropic, OpenAI, n8n oder Paperclip ein neues Feature launcht, was bedeutet das für KMUs (oft: nicht so viel)</li>
+        <li><strong>Build-in-Public</strong> — Sprint-Reflexionen mit konkreten Stolpersteinen, Architektur-Entscheidungen mit dem Why dahinter</li>
+        <li><strong>Compliance-Themen</strong> — DSGVO, AVV, EU-AI-Act in Klartext, mit Vorlagen</li>
+      </ul>
+    </section>
+
+    <section style="margin-top: 56px;">
+      <h2 class="kz-h2">In der Zwischenzeit</h2>
+      <p>
+        Aktuelle Beobachtungen findest du in deutschem LinkedIn-Voice von Benjamin Zirngibl. Pillar-A
+        (Tutorials + Tool-Takes), Pillar-B (Build-in-Public), Pillar-C (Compliance-Realität).
+      </p>
+      <p style="margin-top: 24px;">
+        <a
+          href="https://www.linkedin.com/in/benjamin-zirngibl-0963753ab"
+          rel="noopener noreferrer"
+          target="_blank"
+          class="kz-btn">
+          LinkedIn-Profil ansehen →
+        </a>
+      </p>
+    </section>
+
+    <section style="margin-top: 80px; padding: 48px clamp(24px, 4vw, 48px); background: var(--kz-cream-deep); border-radius: 12px;">
+      <h2 class="kz-h2" style="margin-top: 0;">Hast du ein konkretes Thema im Kopf?</h2>
+      <p>
+        Wir schreiben hier was Leute wirklich fragen. Wenn du etwas nicht in einem unserer Tutorials siehst aber gern wüsstest — sag's uns.
+      </p>
+      <p style="margin-top: 24px;">
+        <a href="mailto:hallo@k-aizen.de?subject=Tutorial-Wunsch" class="kz-btn kz-btn-ghost">
+          Tutorial-Wunsch schicken
+        </a>
+      </p>
+    </section>
+  </article>
+</KaizenLayout>

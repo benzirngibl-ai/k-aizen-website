@@ -1,120 +1,177 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import KaizenLayout from '../layouts/KaizenLayout.astro';
 ---
 
-<Layout
-  title="Datenschutz — k-AIzen"
-  description="Datenschutzerklärung nach DSGVO für k-aizen.de."
+<KaizenLayout
+  title="Datenschutzerklärung"
+  description="Wie k-AIzen mit deinen Daten umgeht. DSGVO-konform, kein Tracking, keine Cookies, deutsche Server."
+  path="/datenschutz"
 >
-  <main class="mx-auto max-w-3xl px-6 py-16">
-    <p class="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">Rechtliches</p>
-
-    <h1 class="font-display text-5xl leading-tight tracking-tight text-ink sm:text-6xl">
-      Datenschutzerklärung
-    </h1>
-
-    <p class="mt-8 font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">
-      Stand: 24. April 2026
+  <article class="kz-page">
+    <div class="kz-page-eyebrow">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
+      <span>Datenschutz</span>
+    </div>
+    <h1 class="kz-h1">Datenschutzerklärung</h1>
+    <p class="kz-lead">
+      Wir nehmen Datenschutz ernst — fachlich, weil wir mit Compliance-bewussten Branchen arbeiten,
+      und persönlich, weil Tracking-Industrie nicht unsere Welt ist. Diese Seite erklärt was wir
+      verarbeiten, warum, und wie lange.
     </p>
 
-    <section class="mt-12 space-y-8 text-ink-soft leading-relaxed">
-      <div>
-        <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">1. Verantwortlicher</h2>
-        <p class="mt-4">
-          Verantwortlich für die Datenverarbeitung auf dieser Website im Sinne der DSGVO ist:
-        </p>
-        <p class="mt-4 text-ink">
-          Ben Zirngibl<br />
-          Zum Schwarzachtal 5<br />
-          90592 Schwarzenbruck<br />
-          Deutschland<br />
-          E-Mail: <a href="mailto:kontakt@k-aizen.de" class="text-ember underline underline-offset-4 ember-glow">kontakt@k-aizen.de</a>
-        </p>
-      </div>
-
-      <div>
-        <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">2. Allgemeines</h2>
-        <p class="mt-4">
-          Diese Website wird bewusst datensparsam betrieben. Es werden <strong class="text-ink">keine Cookies</strong> gesetzt, <strong class="text-ink">kein Tracking</strong> und <strong class="text-ink">kein Analyse-Tool</strong> (Google Analytics, Matomo, etc.) eingesetzt. Es findet keine Verarbeitung personenbezogener Daten zum Zweck der Profilbildung oder Werbung statt.
-        </p>
-      </div>
-
-      <div>
-        <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">3. Server-Logfiles</h2>
-        <p class="mt-4">
-          Beim Aufruf dieser Website werden durch den Hosting-Provider automatisch Informationen in sogenannten Server-Logfiles erfasst und temporär gespeichert. Dazu gehören:
-        </p>
-        <ul class="mt-4 ml-6 list-disc space-y-1">
-          <li>anonymisierte IP-Adresse des zugreifenden Rechners</li>
-          <li>Datum und Uhrzeit des Zugriffs</li>
-          <li>aufgerufene Seite / Datei</li>
-          <li>übertragene Datenmenge und HTTP-Statuscode</li>
-          <li>verwendeter Browser und Betriebssystem (User-Agent)</li>
-          <li>Referrer-URL (die zuvor besuchte Seite)</li>
-        </ul>
-        <p class="mt-4">
-          Diese Daten werden ausschließlich zur Gewährleistung eines störungsfreien Betriebs der Website und zur Sicherheit der Systeme verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren und funktionierenden Webauftritt). Die Daten werden nicht mit anderen Datenquellen zusammengeführt und nach spätestens 14 Tagen gelöscht.
-        </p>
-      </div>
-
-      <div>
-        <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">4. Hosting</h2>
-        <p class="mt-4">
-          Diese Website wird auf einem Server der Hetzner Online GmbH (Industriestr. 25, 91710 Gunzenhausen, Deutschland) gehostet. Rechenzentrumsstandort ist Deutschland. Die Verarbeitung erfolgt auf Grundlage eines Auftragsverarbeitungsvertrags (AVV) gemäß Art. 28 DSGVO.
-        </p>
-      </div>
-
-      <div>
-        <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">5. Kontaktaufnahme per E-Mail</h2>
-        <p class="mt-4">
-          Wenn du mir per E-Mail (kontakt@k-aizen.de) schreibst, werden die von dir übermittelten Daten (Name, E-Mail-Adresse, Inhalt der Nachricht) zur Bearbeitung deiner Anfrage verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung).
-        </p>
-        <p class="mt-4">
-          Der E-Mail-Service wird von der <strong class="text-ink">Mailbox.org</strong> (Heinlein Hosting GmbH, Schwedter Str. 8/9A, 10119 Berlin, Deutschland) bereitgestellt. Serverstandort ist Deutschland. Nachrichten werden verschlüsselt übertragen und verschlüsselt gespeichert.
-        </p>
-        <p class="mt-4">
-          Deine Anfrage-Daten werden nach Abschluss der Bearbeitung gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten (z.B. steuerrechtlich) dem entgegenstehen.
-        </p>
-      </div>
-
-      <div>
-        <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">6. Weitergabe an Dritte</h2>
-        <p class="mt-4">
-          Deine Daten werden nicht an Dritte weitergegeben, verkauft oder für Werbezwecke genutzt. Eine Übermittlung in Drittländer außerhalb der EU findet nicht statt.
-        </p>
-      </div>
-
-      <div>
-        <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">7. Deine Rechte</h2>
-        <p class="mt-4">
-          Du hast jederzeit das Recht auf:
-        </p>
-        <ul class="mt-4 ml-6 list-disc space-y-1">
-          <li>Auskunft über die gespeicherten Daten (Art. 15 DSGVO)</li>
-          <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
-          <li>Löschung (Art. 17 DSGVO)</li>
-          <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
-          <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
-          <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
-          <li>Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO) — in Bayern: Bayerisches Landesamt für Datenschutzaufsicht (BayLDA), Promenade 18, 91522 Ansbach</li>
-        </ul>
-        <p class="mt-4">
-          Für die Ausübung deiner Rechte genügt eine formlose Nachricht an die oben genannte E-Mail-Adresse.
-        </p>
-      </div>
-
-      <div>
-        <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">8. Änderungen dieser Erklärung</h2>
-        <p class="mt-4">
-          Ich behalte mir vor, diese Datenschutzerklärung anzupassen, um sie aktuellen rechtlichen Anforderungen anzupassen oder Änderungen meiner Leistungen abzubilden. Für erneute Besuche gilt dann die jeweils aktuelle Fassung.
-        </p>
-      </div>
-    </section>
-
-    <section class="mt-16 border-t border-parchment-deep/40 pt-12">
-      <p class="font-mono text-xs uppercase tracking-[0.3em] text-ink-faint">
-        Siehe auch: <a href="/impressum" class="text-ember underline underline-offset-4 ember-glow">Impressum</a>
+    <section>
+      <h2 class="kz-h2">1. Verantwortliche Stelle</h2>
+      <p>
+        Verantwortlich für die Datenverarbeitung auf dieser Website im Sinne der DSGVO:
+      </p>
+      <p>
+        <strong>Pulscraft Digital — Benjamin Zirngibl</strong><br/>
+        [Vollständige Anschrift wird im Impressum ergänzt]<br/>
+        E-Mail: <a href="mailto:hallo@k-aizen.de">hallo@k-aizen.de</a>
       </p>
     </section>
-  </main>
-</Layout>
+
+    <section>
+      <h2 class="kz-h2">2. Was wir NICHT machen</h2>
+      <p>
+        Bevor wir aufzählen was wir verarbeiten — hier was diese Website explizit nicht macht:
+      </p>
+      <ul>
+        <li><strong>Keine Cookies</strong> für Analytics, Werbung oder Tracking</li>
+        <li><strong>Kein Google Analytics</strong>, kein Matomo, kein Plausible — keine Web-Analytics</li>
+        <li><strong>Kein Pixel-Tracking</strong> (Facebook-Pixel, LinkedIn-Insight, Google-Tag-Manager — nichts davon)</li>
+        <li><strong>Keine Newsletter-Software</strong> mit Tracking-Pixel</li>
+        <li><strong>Kein Profiling</strong>, keine automatisierte Entscheidungsfindung</li>
+        <li><strong>Kein Verkauf von Daten</strong> an Dritte</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">3. Hosting</h2>
+      <p>
+        Diese Website wird gehostet bei der <strong>Hetzner Online GmbH</strong>, Industriestraße 25, 91710 Gunzenhausen,
+        Deutschland. Server-Standort: Nürnberg, Deutschland.
+      </p>
+      <p>
+        Beim Aufruf der Seite werden technisch notwendige Server-Logs erstellt. Diese enthalten:
+      </p>
+      <ul>
+        <li>IP-Adresse (gekürzt, nur für 7 Tage zur Spam-/Angriffs-Abwehr)</li>
+        <li>Datum und Uhrzeit des Zugriffs</li>
+        <li>Aufgerufene URL</li>
+        <li>HTTP-Statuscode</li>
+        <li>Übertragene Datenmenge</li>
+        <li>Browser-User-Agent (Browsertyp und -version)</li>
+      </ul>
+      <p>
+        Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an stabilem, sicherem Betrieb der Website).
+        Speicherdauer: max. 7 Tage, danach automatische Löschung.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">4. Externe Schriftarten und Skripte</h2>
+      <p>
+        Beim Aufruf der Seite werden Schriftarten und Bibliotheken von Drittanbieter-CDN geladen:
+      </p>
+      <ul>
+        <li><strong>Google Fonts</strong> (DM Serif Display, Inter, Caveat, Noto Serif JP) — geladen von <code>fonts.googleapis.com</code> / <code>fonts.gstatic.com</code></li>
+        <li><strong>unpkg.com</strong> — React-Library und Babel-Compiler (technische Voraussetzung der Hero-Animation)</li>
+      </ul>
+      <p>
+        Beim Aufruf wird deine IP-Adresse an diese CDN übermittelt. Die Anbieter (Google LLC, USA bzw. Cloudflare als
+        unpkg-Provider) verarbeiten diese eventuell auch außerhalb der EU.
+      </p>
+      <p>
+        Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an performanter, korrekt dargestellter Website).
+      </p>
+      <p>
+        Falls du diese Datenübermittlung vermeiden willst, kannst du Skripte über Browser-Einstellungen oder Erweiterungen
+        wie uBlock Origin / NoScript blockieren — die Seite funktioniert dann eingeschränkt (Schrift fällt auf System-Default
+        zurück, Hero-Animation läuft nicht).
+      </p>
+      <p>
+        Wir planen mittelfristig die Schriftarten und Skripte selbst zu hosten, um diese Datenübermittlung zu vermeiden.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">5. Kontaktaufnahme per E-Mail</h2>
+      <p>
+        Wenn du uns per E-Mail kontaktierst (z.B. an <a href="mailto:hallo@k-aizen.de">hallo@k-aizen.de</a>), werden
+        deine Angaben zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen gespeichert.
+      </p>
+      <p>
+        Verarbeitete Daten: deine Mail-Adresse, dein Name (falls in der Mail enthalten), der Inhalt deiner Nachricht.
+      </p>
+      <p>
+        Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
+        Interesse an Beantwortung deiner Anfrage).
+      </p>
+      <p>
+        Speicherdauer: bis zur Beendigung der geschäftlichen Kommunikation, danach Löschung — außer es bestehen gesetzliche
+        Aufbewahrungspflichten (z.B. handels- oder steuerrechtliche, dann bis zu 10 Jahre).
+      </p>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">6. Externe Verlinkungen</h2>
+      <p>
+        Auf der Website finden sich Links zu externen Diensten (LinkedIn, Calendly, GitHub, Mailto). Beim Klicken
+        verlässt du diese Seite und es gelten die Datenschutzerklärungen der jeweiligen Anbieter. Wir haben keinen
+        Einfluss auf deren Datenverarbeitung.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">7. Deine Rechte</h2>
+      <p>Du hast jederzeit das Recht auf:</p>
+      <ul>
+        <li><strong>Auskunft</strong> (Art. 15 DSGVO) über deine bei uns gespeicherten Daten</li>
+        <li><strong>Berichtigung</strong> (Art. 16 DSGVO) unrichtiger Daten</li>
+        <li><strong>Löschung</strong> (Art. 17 DSGVO) deiner Daten — außer bei gesetzlichen Aufbewahrungspflichten</li>
+        <li><strong>Einschränkung der Verarbeitung</strong> (Art. 18 DSGVO)</li>
+        <li><strong>Datenübertragbarkeit</strong> (Art. 20 DSGVO)</li>
+        <li><strong>Widerspruch</strong> (Art. 21 DSGVO) gegen Verarbeitungen die auf Art. 6 Abs. 1 lit. f beruhen</li>
+        <li><strong>Beschwerde</strong> bei einer Aufsichtsbehörde (Art. 77 DSGVO) — für Bayern: Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)</li>
+      </ul>
+      <p>
+        Anfragen zu deinen Rechten kannst du formlos per E-Mail an <a href="mailto:hallo@k-aizen.de">hallo@k-aizen.de</a> stellen.
+        Wir antworten binnen der gesetzlichen Fristen (in der Regel 30 Tage).
+      </p>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">8. Auftragsverarbeitung bei Kundenprojekten</h2>
+      <p>
+        Wenn wir für dich Workflows bauen die personenbezogene Daten verarbeiten, schließen wir vor Projektstart einen
+        Auftragsverarbeitungsvertrag (AVV) nach Art. 28 DSGVO ab. Wir verarbeiten in deinem Auftrag, nicht in eigener Verantwortung,
+        und nutzen die Daten ausschließlich zur Vertragserfüllung.
+      </p>
+      <p>
+        Datenstandort für Kundenprojekte: deutsche Cloud-Provider (Hetzner, IONOS) wenn nicht anders vereinbart.
+        US-Cloud nur mit ausdrücklicher Zustimmung und Standardvertragsklauseln.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">9. Änderungen dieser Datenschutzerklärung</h2>
+      <p>
+        Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen
+        entspricht oder um Änderungen unserer Leistungen abzubilden. Die jeweils aktuelle Fassung gilt für deinen erneuten
+        Besuch.
+      </p>
+      <p>
+        <strong>Stand:</strong> Mai 2026
+      </p>
+    </section>
+
+    <section style="margin-top: 64px; padding: 32px; background: var(--kz-cream-deep); border-radius: 12px; font-size: 14px; color: var(--fg-muted);">
+      <p style="margin: 0;">
+        <strong>Hinweis:</strong> Diese Datenschutzerklärung wurde inhaltlich vorbereitet und deckt die aktuelle technische
+        Konfiguration der Website ab. Bei Änderungen am Tech-Stack oder vor öffentlicher Live-Schaltung empfehlen wir
+        eine anwaltliche Prüfung.
+      </p>
+    </section>
+  </article>
+</KaizenLayout>

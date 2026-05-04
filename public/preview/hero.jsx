@@ -336,21 +336,26 @@ function Header() {
       transition: `transform 520ms ${KZ_EASE}, background 420ms ${KZ_EASE}, border-color 420ms ${KZ_EASE}, backdrop-filter 420ms ${KZ_EASE}`,
       willChange: 'transform',
     }}>
-      <a href="#" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'var(--fg)' }}>
+      <a href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'var(--fg)' }} aria-label="k-AIzen Startseite">
         <img src="/animations/claude-design/logo-full.png" alt="k-AIzen"
           style={{ height: 56, width: 'auto', display: 'block' }} />
       </a>
-      <nav style={{ display: 'flex', gap: 28 }}>
-        {['Workflows', 'Tutorials', 'Über uns', 'Kontakt'].map((x, i) => (
-          <a key={x} href="#" style={{
+      <nav style={{ display: 'flex', gap: 28 }} aria-label="Hauptnavigation">
+        {[
+          { label: 'Workflows', href: '/workflows' },
+          { label: 'Tutorials', href: '/tutorials' },
+          { label: 'Über uns', href: '/about' },
+          { label: 'Kontakt', href: '/kontakt' },
+        ].map((item, i) => (
+          <a key={item.label} href={item.href} style={{
             ...linkBase,
             transitionDelay: `${i * 60}ms`,
             opacity: hidden ? 0 : 1,
             transform: hidden ? 'translateY(-6px)' : 'translateY(0)',
-          }}>{x}</a>
+          }}>{item.label}</a>
         ))}
       </nav>
-      <a href="#" style={{
+      <a href="/erstgespraech" style={{
         fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 600,
         padding: '8px 16px',
         background: 'var(--kz-charcoal)', color: 'var(--kz-cream)',
@@ -425,7 +430,7 @@ function HeroOverlay({ headline, sub }) {
         pointerEvents: 'auto',
         animation: 'kz-fade-up 900ms var(--ease-out) 880ms both'
       }}>
-        <a href="#"
+        <a href="/erstgespraech"
         data-petal-landing="true"
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
@@ -448,14 +453,14 @@ function HeroOverlay({ headline, sub }) {
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
         </a>
-        <a href="#"
+        <a href="/tutorials"
           data-petal-landing="true"
           style={{
           fontSize: 15, fontWeight: 500,
           padding: '14px 22px',
           background: 'transparent', color: 'var(--fg)',
           borderRadius: 8, textDecoration: 'none',
-          border: '1.5px solid var(--kz-border)', fontFamily: "system-ui", opacity: "3"
+          border: '1.5px solid var(--kz-border)', fontFamily: 'var(--font-sans)'
         }}>
           Tutorials ansehen
         </a>

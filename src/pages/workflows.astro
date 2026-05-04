@@ -1,0 +1,151 @@
+---
+import KaizenLayout from '../layouts/KaizenLayout.astro';
+
+const workflowsSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "k-AIzen Standard-Workflows für KMUs",
+  "description": "Vier standardisierte AI-Automation-Workflows für mittelständische Unternehmen.",
+  "itemListElement": [
+    { "@type": "Service", "position": 1, "name": "Inbox-Triage", "description": "AI klassifiziert eingehende Anfragen, schlägt Antworten vor — versendet aber nichts ohne Freigabe." },
+    { "@type": "Service", "position": 2, "name": "Angebots-Generator", "description": "Aus drei Stichworten ein vollständiges, individualisiertes Angebot." },
+    { "@type": "Service", "position": 3, "name": "Tagesreport", "description": "Täglich um 7:30 — Zahlen, Auffälligkeiten, To-dos in zwei Minuten." },
+    { "@type": "Service", "position": 4, "name": "Wissens-Suche", "description": "Eigene Dokumente, Mails, Tickets — eine Suche, eine Antwort. Mit Quellen." }
+  ]
+};
+---
+
+<KaizenLayout
+  title="Workflows — Vier AI-Automationen für den Mittelstand"
+  description="Inbox-Triage, Angebots-Generator, Tagesreport, Wissens-Suche. Vier standardisierte AI-Workflows für KMUs. Jeder läuft live in 1-2 Wochen."
+  path="/workflows"
+  activeNav="workflows"
+  jsonLd={workflowsSchema}
+>
+  <article class="kz-page">
+    <div class="kz-page-eyebrow">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
+      <span class="kanji">流</span>
+      <span>Workflows</span>
+    </div>
+    <h1 class="kz-h1">Vier Workflows. Sofort einsatzbereit.</h1>
+    <p class="kz-lead">
+      Wir bauen für jedes KMU andere Workflows — aber vier Patterns sehen wir immer wieder. Die hier kannst du in 1-2 Wochen live haben. Der erste ist meist der Schwierigste. Der zweite kommt schon schneller.
+    </p>
+
+    <section id="inbox-triage" aria-labelledby="h-inbox">
+      <h2 class="kz-h2" id="h-inbox">一 · Inbox-Triage</h2>
+      <p>
+        Anfragen kommen rein über drei Mailboxen, vier Formulare, zwei Telefonnummern.
+        Jemand muss sortieren — was ist wichtig, was ist Spam, was kann warten.
+        Heute macht das deine Assistenz, drei Stunden am Tag. Ab nächster Woche macht das die AI.
+      </p>
+      <h3 class="kz-h3">Was die AI tut</h3>
+      <ul>
+        <li>Liest neue Mails / Form-Submissions kontinuierlich</li>
+        <li>Klassifiziert: Anfrage / Beschwerde / Spam / Lieferanten-Mail / interne Mail</li>
+        <li>Priorisiert nach historischen Mustern (welche Kunden kriegen schnell Antwort)</li>
+        <li>Schlägt eine Antwort vor — auf Basis ähnlicher früherer Antworten</li>
+      </ul>
+      <h3 class="kz-h3">Was die AI NICHT tut</h3>
+      <ul>
+        <li>Keine Antwort wird automatisch versendet</li>
+        <li>Keine Mail wird gelöscht</li>
+        <li>Mensch bleibt der Knopf-Drücker — du oder deine Assistenz</li>
+      </ul>
+      <h3 class="kz-h3">Realistisches Zeit-Sparen</h3>
+      <p>
+        ~12-15 Stunden pro Monat bei einer Person die heute 3h/Tag triagiert.
+        Die meiste Ersparnis kommt nicht durch das Auto-Klassifizieren — sondern durch die Antwort-Vorschläge,
+        die deine Mitarbeitende nur noch akzeptieren oder leicht editieren muss.
+      </p>
+      <p class="kz-quote">
+        Die AI macht den ersten Vorschlag. Du machst die Entscheidung.
+      </p>
+    </section>
+
+    <section id="angebote" aria-labelledby="h-angebote">
+      <h2 class="kz-h2" id="h-angebote">二 · Angebots-Generator</h2>
+      <p>
+        Du sagst der AI in drei Stichworten worum's geht — sie generiert daraus ein vollständiges,
+        individualisiertes Angebot in deinem Branding, auf Basis deiner Preisliste, mit den richtigen
+        Zahlungsbedingungen.
+      </p>
+      <h3 class="kz-h3">Wie das funktioniert</h3>
+      <ul>
+        <li>Du definierst einmalig: Briefkopf, Standard-Klauseln, Preisliste, Zahlungsbedingungen</li>
+        <li>Bei jedem Angebot: Kunde + 3-5 Stichworte zum Auftrag rein</li>
+        <li>AI schreibt 1-2-Seiten-Angebot mit korrekten Positionen, Summen, Konditionen</li>
+        <li>Du prüfst, signierst, sendest — ein Angebot in 5 Minuten statt 45</li>
+      </ul>
+      <h3 class="kz-h3">Wann der Workflow Sinn macht</h3>
+      <p>
+        Wenn du 5+ Angebote pro Woche schreibst und sie sich strukturell ähneln. Bei einmaligen Großprojekten
+        bringt's wenig — die brauchen sowieso Hand-Anlage. Bei kleinen Standard-Aufträgen aber: massive Zeit-Ersparnis.
+      </p>
+    </section>
+
+    <section id="tagesreport" aria-labelledby="h-tages">
+      <h2 class="kz-h2" id="h-tages">三 · Tagesreport</h2>
+      <p>
+        Jeden Morgen um 7:30 landet in deiner Inbox eine Zwei-Minuten-Lese-Zusammenfassung.
+        Was ist gestern passiert. Welche Zahlen sind auffällig. Was muss heute entschieden werden.
+      </p>
+      <h3 class="kz-h3">Was im Report steht</h3>
+      <ul>
+        <li>Verkaufs-Zahlen vom Vortag (aus deinem Warenwirtschaftssystem)</li>
+        <li>Offene Mails die >24h ohne Antwort sind</li>
+        <li>Abweichungen vom 30-Tage-Durchschnitt (positiv und negativ)</li>
+        <li>Termine + Reminders für heute</li>
+        <li>3-5 priorisierte To-Dos basierend auf Kontext</li>
+      </ul>
+      <h3 class="kz-h3">Wo die Daten herkommen</h3>
+      <p>
+        Aus dem System das du schon hast — Lexware, DATEV, ein eigenes ERP, Excel-Sheets, Google-Tabellen.
+        Wir bauen nur eine Lese-Verbindung. Schreibend ändern wir nichts.
+      </p>
+    </section>
+
+    <section id="wissens-suche" aria-labelledby="h-wissen">
+      <h2 class="kz-h2" id="h-wissen">四 · Wissens-Suche</h2>
+      <p>
+        Eine zentrale Suche über alles was deine Firma weiß. Mails, PDFs, Verträge, Wiki-Einträge,
+        Ticket-Archive. Du fragst auf Deutsch — kriegst eine Antwort mit Quellenangabe.
+      </p>
+      <h3 class="kz-h3">Was reinkommt</h3>
+      <ul>
+        <li>Mail-Archive (Outlook, Gmail, IMAP)</li>
+        <li>Dokumente (PDF, Word, Markdown, Excel)</li>
+        <li>Wiki / Notion / Confluence</li>
+        <li>Ticket-Systeme (Zendesk, Freshdesk, Jira)</li>
+        <li>Optional: Slack/Teams-Verläufe</li>
+      </ul>
+      <h3 class="kz-h3">Wie die Antwort aussieht</h3>
+      <p>
+        "Zur Frage X ist die Antwort Y. Steht in Datei Z (Seite 4) und Mail vom 12.03.2025."
+        Mit klickbaren Links direkt zur Quelle. Keine erfundenen Antworten — wenn die AI nichts findet,
+        sagt sie das.
+      </p>
+      <h3 class="kz-h3">Compliance</h3>
+      <p>
+        Deine Daten verlassen deinen Server nicht — wir hosten den Index lokal oder auf einer
+        deutschen Cloud (Hetzner, IONOS). Auftragsverarbeitungsvertrag inklusive.
+      </p>
+    </section>
+
+    <section style="margin-top: 96px; padding: 56px clamp(24px, 4vw, 48px); background: var(--kz-cream-deep); border-radius: 12px;">
+      <h2 class="kz-h2" style="margin-top: 0;">Welcher Workflow passt zu dir?</h2>
+      <p>
+        Drei Wege das herauszufinden:
+      </p>
+      <ul>
+        <li><strong>Erstgespräch (30 Min, kostenlos)</strong> — du erzählst, wir hören zu, am Ende wissen wir beide ob's passt</li>
+        <li><strong>Schreiben</strong> per Mail an <a href="mailto:hallo@k-aizen.de">hallo@k-aizen.de</a> mit ein paar Stichworten</li>
+        <li><strong>Selbst lesen</strong> — die <a href="/tutorials">Tutorials</a> zeigen wie wir bauen, ohne dass du mit uns sprechen musst</li>
+      </ul>
+      <p style="margin-top: 32px;">
+        <a href="/erstgespraech" class="kz-btn">Termin vorschlagen →</a>
+      </p>
+    </section>
+  </article>
+</KaizenLayout>

@@ -1,0 +1,440 @@
+---
+// KaizenLayout.astro — Static-page layout für alle Back-Pages
+// Brand-Tokens aus /preview/colors_and_type.css (gleiche Source wie Homepage)
+// SEO + AI-Discovery: OG, Twitter-Cards, JSON-LD-Slot, ARIA-Landmarks
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;            // z.B. "/about" — für canonical + og:url
+  ogImage?: string;        // optional, default = /animations/claude-design/logo-full.png
+  jsonLd?: object | object[]; // optional structured data
+  activeNav?: 'workflows' | 'tutorials' | 'about' | 'kontakt' | 'home';
+}
+
+const {
+  title,
+  description,
+  path,
+  ogImage = '/animations/claude-design/logo-full.png',
+  jsonLd,
+  activeNav = 'home',
+} = Astro.props;
+
+const SITE_URL = 'https://k-aizen.de';
+const fullTitle = title.includes('k-AIzen') ? title : `${title} · k-AIzen`;
+const canonical = `${SITE_URL}${path}`;
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`;
+
+const navItems = [
+  { label: 'Workflows', href: '/workflows', key: 'workflows' },
+  { label: 'Tutorials', href: '/tutorials', key: 'tutorials' },
+  { label: 'Über uns', href: '/about', key: 'about' },
+  { label: 'Kontakt', href: '/kontakt', key: 'kontakt' },
+];
+
+const jsonLdArray = jsonLd
+  ? Array.isArray(jsonLd) ? jsonLd : [jsonLd]
+  : [];
+---
+
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- SEO -->
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Benjamin Zirngibl · Pulscraft Digital" />
+  <meta name="theme-color" content="#F5F0E8" />
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:site_name" content="k-AIzen" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageUrl} />
+
+  <!-- AI Crawlers — explizit erlaubt -->
+  <meta name="GPTBot" content="index, follow" />
+  <meta name="ClaudeBot" content="index, follow" />
+  <meta name="Claude-Web" content="index, follow" />
+  <meta name="PerplexityBot" content="index, follow" />
+  <meta name="Applebot" content="index, follow" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/animations/claude-design/logo-mark.png" />
+
+  <!-- Brand Tokens (gleiche wie Homepage) -->
+  <link rel="stylesheet" href="/preview/colors_and_type.css" />
+
+  <!-- Hreflang (Deutschland-Default, expandable) -->
+  <link rel="alternate" hreflang="de" href={canonical} />
+  <link rel="alternate" hreflang="x-default" href={canonical} />
+
+  {jsonLdArray.map((schema) => (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  ))}
+
+  <style>
+    :root {
+      color-scheme: light;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--kz-cream);
+      color: var(--fg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    main {
+      flex: 1;
+      width: 100%;
+    }
+    /* Header */
+    .kz-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(245, 240, 232, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--kz-border);
+    }
+    .kz-header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 12px clamp(20px, 5vw, 32px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .kz-brand {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .kz-brand img {
+      height: 48px;
+      width: auto;
+      display: block;
+    }
+    .kz-nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+    .kz-nav a {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--fg);
+      text-decoration: none;
+      transition: color 140ms var(--ease-out);
+      padding: 8px 0;
+    }
+    .kz-nav a:hover { color: var(--accent); }
+    .kz-nav a.active { color: var(--accent); }
+    .kz-nav-cta {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 9px 18px;
+      background: var(--kz-charcoal);
+      color: var(--kz-cream);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 140ms var(--ease-out);
+    }
+    .kz-nav-cta:hover { background: var(--kz-ember); }
+    @media (max-width: 760px) {
+      .kz-nav { display: none; }
+    }
+
+    /* Footer */
+    .kz-footer {
+      background: var(--kz-charcoal);
+      color: var(--kz-cream);
+      padding: clamp(60px, 8vh, 100px) 0 32px;
+      margin-top: clamp(80px, 12vh, 140px);
+    }
+    .kz-footer a { color: var(--kz-cream); text-decoration: none; opacity: 0.85; }
+    .kz-footer a:hover { color: var(--kz-ember); opacity: 1; }
+    .kz-footer-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 64px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
+      gap: clamp(28px, 5vw, 60px);
+    }
+    @media (max-width: 760px) {
+      .kz-footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .kz-footer-brand img {
+      height: 50px; width: auto; display: block;
+      margin-bottom: 18px;
+      filter: invert(1) brightness(1.05);
+    }
+    .kz-footer-tag {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 20px;
+      line-height: 1.3;
+      color: rgba(245, 240, 232, 0.7);
+      max-width: 280px;
+      margin: 0;
+    }
+    .kz-footer-col h4 {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(245, 240, 232, 0.5);
+      margin: 0 0 18px;
+    }
+    .kz-footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .kz-footer-col li a {
+      font-size: 15px;
+    }
+    .kz-footer-base {
+      max-width: 1180px;
+      margin: 60px auto 0;
+      padding: 24px clamp(24px, 5vw, 64px) 0;
+      border-top: 1px solid rgba(245, 240, 232, 0.12);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: rgba(245, 240, 232, 0.5);
+    }
+
+    /* Page-Content Defaults */
+    .kz-page {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: clamp(60px, 10vh, 120px) clamp(24px, 5vw, 48px) 0;
+    }
+    .kz-page-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--fg-muted);
+      margin-bottom: 24px;
+    }
+    .kz-page-eyebrow .kz-mark {
+      height: 24px; width: auto;
+    }
+    .kz-page-eyebrow .kanji {
+      font-family: var(--font-jp);
+      color: var(--accent);
+      font-size: 18px;
+    }
+    .kz-h1 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+      margin: 0 0 24px;
+      text-wrap: balance;
+    }
+    .kz-lead {
+      font-family: var(--font-sans);
+      font-size: clamp(17px, 1.6vw, 21px);
+      line-height: 1.55;
+      color: var(--fg-muted);
+      margin: 0 0 56px;
+      max-width: 640px;
+      text-wrap: pretty;
+    }
+    .kz-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin: 64px 0 20px;
+    }
+    .kz-h3 {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.4vw, 28px);
+      line-height: 1.2;
+      margin: 40px 0 12px;
+    }
+    .kz-page p {
+      font-family: var(--font-sans);
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--fg);
+      margin: 0 0 16px;
+      max-width: 680px;
+      text-wrap: pretty;
+    }
+    .kz-page ul {
+      font-family: var(--font-sans);
+      font-size: 17px;
+      line-height: 1.65;
+      max-width: 680px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .kz-page ul li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 10px;
+    }
+    .kz-page ul li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 11px;
+      width: 14px; height: 1px;
+      background: var(--accent);
+    }
+    .kz-page strong { font-weight: 600; }
+    .kz-page a:not(.kz-btn) {
+      color: var(--fg);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+    .kz-page a:not(.kz-btn):hover { color: var(--accent); }
+    .kz-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 600;
+      padding: 14px 26px;
+      background: var(--kz-charcoal);
+      color: var(--kz-cream) !important;
+      border-radius: 8px;
+      text-decoration: none !important;
+      transition: all 220ms var(--ease-out);
+    }
+    .kz-btn:hover {
+      background: var(--kz-ember);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(232, 90, 43, 0.28);
+    }
+    .kz-btn-ghost {
+      background: transparent;
+      color: var(--fg) !important;
+      border: 1.5px solid var(--kz-border);
+    }
+    .kz-btn-ghost:hover {
+      background: var(--kz-charcoal);
+      color: var(--kz-cream) !important;
+      border-color: var(--kz-charcoal);
+    }
+    .kz-quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(22px, 2.4vw, 28px);
+      line-height: 1.4;
+      color: var(--fg-muted);
+      border-left: 2px solid var(--accent);
+      padding-left: 24px;
+      margin: 32px 0;
+    }
+    /* Skip-to-content für Accessibility */
+    .kz-skip {
+      position: absolute; left: -9999px; top: 0;
+      background: var(--kz-charcoal); color: var(--kz-cream);
+      padding: 8px 16px; text-decoration: none; z-index: 100;
+    }
+    .kz-skip:focus { left: 0; }
+  </style>
+</head>
+<body>
+  <a href="#main" class="kz-skip">Zum Hauptinhalt springen</a>
+
+  <header class="kz-header" role="banner">
+    <div class="kz-header-inner">
+      <a href="/" class="kz-brand" aria-label="k-AIzen Startseite">
+        <img src="/animations/claude-design/logo-full.png" alt="k-AIzen" />
+      </a>
+      <nav class="kz-nav" aria-label="Hauptnavigation">
+        {navItems.map((item) => (
+          <a href={item.href} class={item.key === activeNav ? 'active' : ''}>{item.label}</a>
+        ))}
+      </nav>
+      <a href="/erstgespraech" class="kz-nav-cta">Erstgespräch</a>
+    </div>
+  </header>
+
+  <main id="main" role="main">
+    <slot />
+  </main>
+
+  <footer class="kz-footer" role="contentinfo">
+    <div class="kz-footer-grid">
+      <div class="kz-footer-brand">
+        <img src="/animations/claude-design/logo-full.png" alt="k-AIzen" />
+        <p class="kz-footer-tag">
+          Eins nach dem anderen.<br/>Auch bei AI.
+        </p>
+      </div>
+      <div class="kz-footer-col">
+        <h4>Workflows</h4>
+        <ul>
+          <li><a href="/workflows#inbox-triage">Inbox-Triage</a></li>
+          <li><a href="/workflows#angebote">Angebote</a></li>
+          <li><a href="/workflows#tagesreport">Tagesreport</a></li>
+          <li><a href="/workflows#wissens-suche">Wissens-Suche</a></li>
+        </ul>
+      </div>
+      <div class="kz-footer-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:hallo@k-aizen.de">hallo@k-aizen.de</a></li>
+          <li><a href="https://www.linkedin.com/in/benjamin-zirngibl-0963753ab" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="/kontakt">Kontakt-Seite</a></li>
+          <li><a href="/erstgespraech">Erstgespräch</a></li>
+        </ul>
+      </div>
+      <div class="kz-footer-col">
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="/impressum">Impressum</a></li>
+          <li><a href="/datenschutz">Datenschutz</a></li>
+          <li><a href="/agb">AGB</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="kz-footer-base">
+      <span>© 2026 k-AIzen · Pulscraft Digital · Bayern</span>
+      <span>Made for Mittelstand</span>
+    </div>
+  </footer>
+</body>
+</html>

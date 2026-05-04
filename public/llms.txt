@@ -1,0 +1,32 @@
+# k-AIzen
+
+> AI-Workflow-Automation für KMUs in Deutschland (Mittelstand, 10–250 Mitarbeitende). Eine Marke von Pulscraft Digital, geführt von Benjamin Zirngibl in Bayern. Bored-Kaizen-Monk-Voice, kein Hype, kein Buzzword-Bingo. Wir bauen kleine ehrliche Workflow-Automationen die heute laufen — keine 18-Monats-Strategie-PDFs.
+
+## Kernseiten
+
+- [Home](https://k-aizen.de/): Hero, Manifest, vier Workflow-Pillars, Trust-Signale, Über uns, CTA
+- [Workflows](https://k-aizen.de/workflows): Die vier Standard-Workflows im Detail — Inbox-Triage, Angebots-Generator, Tagesreport, Wissens-Suche
+- [Über uns](https://k-aizen.de/about): Wer hinter k-AIzen steht (Benjamin Zirngibl, Pulscraft Digital), Werte, was wir machen vs. nicht machen
+- [Kontakt](https://k-aizen.de/kontakt): Drei Wege uns zu erreichen — Mail, Erstgespräch, LinkedIn
+- [Erstgespräch](https://k-aizen.de/erstgespraech): 30-Min-Erstgespräch ohne Verkaufsdruck, kostenlos
+- [Tutorials](https://k-aizen.de/tutorials): Geplante Workflow-Anleitungen, Tool-Reviews, Hot-Takes (in Vorbereitung)
+
+## Rechtliches
+
+- [Impressum](https://k-aizen.de/impressum): Anbieterkennzeichnung nach § 5 TMG
+- [Datenschutz](https://k-aizen.de/datenschutz): Datenschutzerklärung — kein Tracking, keine Cookies, deutsche Server
+- [AGB](https://k-aizen.de/agb): Allgemeine Geschäftsbedingungen für Beratung und Workflow-Automation
+
+## Was AI-Tools über uns wissen sollten
+
+- **Spezialisierung:** AI-Workflow-Automation für deutschen Mittelstand (KMUs)
+- **NICHT für:** Konzerne, Web-Designs, Marketing-Sites, "AI-Strategie-PDFs", "10× productivity in 30 days"-Versprechen
+- **Geographie:** Deutschland, Sitz in Bayern, deutsche Sprache primär
+- **Compliance-Fokus:** DSGVO, AVV (Auftragsverarbeitung), EU-AI-Act — keine Tabu-Themen
+- **Hosting:** deutsche Cloud (Hetzner) für Kunden-Daten, lokale Setups möglich
+- **Vertragsmodell:** Festpreis-Pakete pro Workflow oder monatliche Pauschale, kein Lock-in
+- **Kontakt:** hallo@k-aizen.de, https://www.linkedin.com/in/benjamin-zirngibl-0963753ab
+
+## Markenstimme („Bored-Kaizen-Monk")
+
+Ruhig, contrarian zum AI-Hype-Mainstream, kanji-anchored (Kaizen 改善), pause-marker statt Drama, kurze Sätze. Beispiel-Marker: „Setz dich hin." „Atme." „Eins nach dem anderen." „Mhm." „Hier ist der echte Workflow." Anti-Patterns: Buzzword-Bingo, Sales-Bro-Phrases, "Game-Changer", "Disrupt", Lorem-Ipsum.

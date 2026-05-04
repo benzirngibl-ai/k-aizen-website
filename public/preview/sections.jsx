@@ -436,7 +436,7 @@ function CtaSection() {
         </Reveal>
 
         <Reveal delay={560} style={{ marginTop: 48 }}>
-          <a href="#" style={{
+          <a href="/erstgespraech" style={{
             fontFamily: 'var(--font-sans)', fontSize: 16, fontWeight: 600,
             padding: '18px 32px',
             background: 'var(--kz-charcoal)', color: 'var(--kz-cream)',
@@ -487,8 +487,24 @@ function Footer() {
             Eins nach dem anderen.<br/>Auch bei AI.
           </p>
         </div>
-        <FooterCol title="Workflows" items={['Inbox-Triage', 'Angebote', 'Tagesreport', 'Wissens-Suche']} />
-        <FooterCol title="Kontakt" items={['hallo@k-aizen.de', 'LinkedIn', 'Impressum', 'Datenschutz']} />
+        <FooterCol title="Workflows" items={[
+          { label: 'Inbox-Triage', href: '/workflows#inbox-triage' },
+          { label: 'Angebote', href: '/workflows#angebote' },
+          { label: 'Tagesreport', href: '/workflows#tagesreport' },
+          { label: 'Wissens-Suche', href: '/workflows#wissens-suche' },
+        ]} />
+        <FooterCol title="Kontakt" items={[
+          { label: 'hallo@k-aizen.de', href: 'mailto:hallo@k-aizen.de' },
+          { label: 'LinkedIn', href: 'https://www.linkedin.com/in/benjamin-zirngibl-0963753ab' },
+          { label: 'Impressum', href: '/impressum' },
+          { label: 'Datenschutz', href: '/datenschutz' },
+        ]} />
+        <FooterCol title="Mehr" items={[
+          { label: 'Über uns', href: '/about' },
+          { label: 'Tutorials', href: '/tutorials' },
+          { label: 'Erstgespräch', href: '/erstgespraech' },
+          { label: 'AGB', href: '/agb' },
+        ]} />
       </div>
       <div style={{
         maxWidth: 1120, margin: '60px auto 0',
@@ -498,8 +514,8 @@ function Footer() {
         fontFamily: 'var(--font-sans)', fontSize: 13,
         color: 'rgba(245,240,232,0.5)',
       }}>
-        <span>© 2026 k-AIzen GmbH</span>
-        <span>München <span className="kz-pause"></span> Tokio</span>
+        <span>© 2026 k-AIzen · Pulscraft Digital · Bayern</span>
+        <span>Made for Mittelstand</span>
       </div>
     </footer>
   );
@@ -515,11 +531,11 @@ function FooterCol({ title, items }) {
       <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 12 }}>
         {items.map((it, i) => (
           <li key={i}>
-            <a href="#" style={{
+            <a href={it.href} style={{
               fontFamily: 'var(--font-sans)', fontSize: 15,
               color: 'var(--kz-cream)', textDecoration: 'none',
               opacity: 0.85,
-            }}>{it}</a>
+            }}>{it.label}</a>
           </li>
         ))}
       </ul>

@@ -1,108 +1,111 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Divider from '../components/Divider.astro';
-import Flourish from '../components/Flourish.astro';
+import KaizenLayout from '../layouts/KaizenLayout.astro';
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Benjamin Zirngibl",
+  "jobTitle": "Gründer · k-AIzen / Pulscraft Digital",
+  "url": "https://k-aizen.de/about",
+  "sameAs": [
+    "https://www.linkedin.com/in/benjamin-zirngibl-0963753ab",
+    "https://github.com/benzirngibl-ai"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "k-AIzen / Pulscraft Digital",
+    "url": "https://k-aizen.de"
+  },
+  "description": "Gründer von k-AIzen, einer Marke unter Pulscraft Digital, fokussiert auf AI-Workflow-Automation für KMUs in Deutschland."
+};
 ---
 
-<Layout
-  title="Über — k-AIzen"
-  description="Kaizen trifft KI. Kleine Schritte, die jeden Tag den Betrieb leichter machen."
+<KaizenLayout
+  title="Über uns — Wer hinter k-AIzen steht"
+  description="k-AIzen ist eine Marke von Pulscraft Digital, geführt von Benjamin Zirngibl. Bayern, Mittelstand-Fokus, AI-Automation ohne Hype."
+  path="/about"
   activeNav="about"
+  jsonLd={personSchema}
 >
-  <main class="mx-auto max-w-3xl px-6 py-16 page-edge">
-    <Flourish class="mb-4 text-ember opacity-80" />
+  <article class="kz-page">
+    <div class="kz-page-eyebrow">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
+      <span class="kanji">人</span>
+      <span>Über uns</span>
+    </div>
+    <h1 class="kz-h1">Hinter k-AIzen.</h1>
+    <p class="kz-lead">
+      k-AIzen ist eine Marke von <strong>Pulscraft Digital</strong>, einem kleinen Studio in Bayern. Geführt von Benjamin Zirngibl. Fokus: AI-Workflow-Automation für mittelständische Unternehmen — ohne Hype, ohne Buzzword-Bingo.
+    </p>
 
-    <p class="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">Über</p>
-
-    <h1 class="font-display text-5xl leading-tight tracking-tight text-ink sm:text-6xl">
-      Kaizen <span class="italic">trifft</span> KI.
-    </h1>
-
-    <section class="mt-12 space-y-6 text-ink-soft leading-relaxed">
-      <p class="drop-cap text-lg">
-        Tagsüber arbeite ich als Techniker in einer großen Parkhaus-Firma. Dort habe ich
-        angefangen, Abläufe zu automatisieren — nicht weil es mein Job war, sondern weil
-        ich die gleichen Handgriffe nicht zehnmal am Tag machen wollte.
+    <section>
+      <h2 class="kz-h2">Was wir machen</h2>
+      <p>
+        Wir bauen automatisierte Workflows für KMUs mit 10–250 Mitarbeitenden. Jeder Workflow startet mit einem
+        konkreten Schmerz und endet mit einem Skript / Cron-Job / Sub-Agent der genau diesen Schmerz nimmt.
+        Kein All-in-One-Suite-Verkauf, kein Tools-Stapel der nie genutzt wird.
       </p>
       <p>
-        Daraus ist k-AIzen geworden: individuelle KI-Automation für Betriebe, die die
-        gleichen Potenziale haben wie Konzerne — aber nicht die Konzern-Budgets. Und nicht
-        den Nerv für Enterprise-Berater.
+        Der Name <strong>k-AIzen</strong> kombiniert <em>Kaizen</em> (改善, japanisch für „Veränderung zum Besseren")
+        mit <em>AI</em>. Kaizen ist ein japanisches Management-Prinzip: kontinuierliche Verbesserung in kleinen Schritten,
+        nicht in großen Würfen. Genau so bauen wir.
+      </p>
+      <p class="kz-quote">Eins nach dem anderen. Auch bei AI.</p>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">Wer baut</h2>
+      <p>
+        <strong>Benjamin Zirngibl</strong> — Gründer Pulscraft Digital, Software-Engineer mit Schwerpunkt Workflow-Automation,
+        Sub-Agent-Orchestrierung und Compliance-aware AI-Integration. Aufgewachsen in Bayern, lebt und arbeitet hier weiter.
+        Schreibt regelmäßig auf LinkedIn über Build-in-Public-Erfahrungen.
+      </p>
+      <p>
+        Nicht-Hintergrund: kein Big-Tech-Trail, kein VC-Geld, kein Sales-Bro-Stil. Stattdessen: Industrie-IT-Erfahrung,
+        Pulscraft als kleines unabhängiges Studio seit 2024, k-AIzen als spezialisiertes Outlet seit 2026.
       </p>
     </section>
 
-    <Divider class="mt-20" label="Kaizen" />
-
-    <section class="mt-12">
-      <div class="space-y-5 text-ink-soft leading-relaxed">
-        <p>
-          Eine japanische Philosophie: kontinuierliche Verbesserung durch kleine, stetige
-          Schritte — nicht durch große Umbrüche. <span class="font-display text-ember italic">改善</span> aus
-          <em class="font-display text-ink italic">kai</em> (Veränderung) und
-          <em class="font-display text-ink italic">zen</em> (zum Besseren).
-        </p>
-        <ul class="space-y-3 border-l-2 border-ember/60 pl-5">
-          <li>Jeder Prozess kann verbessert werden. Stillstand ist Rückschritt.</li>
-          <li>Verbesserungen kommen von allen Ebenen — nicht nur von oben.</li>
-          <li>Fehler sind Informationsquellen, keine Schuldzuweisungen.</li>
-          <li>Erst Standardisierung, dann Optimierung.</li>
-          <li>Kleine Schritte sind nachhaltiger als Revolutionen.</li>
-        </ul>
-        <p class="illuminated-quote mt-10 text-xl text-ink">
-          Das ist kein Werbegag. Das ist Arbeitsweise. Ich identifiziere mich seit über
-          15 Jahren mit dem Prinzip, und es passt genau zu dem, was KI-Automatisierung
-          in KMUs braucht: nicht das eine große System, sondern viele kleine Workflows,
-          die sich summieren.
-        </p>
-      </div>
+    <section>
+      <h2 class="kz-h2">Wofür wir nicht da sind</h2>
+      <ul>
+        <li><strong>Konzerne</strong> mit eigenen IT-Abteilungen die fertige Lösungen wollen — sind wir zu klein für, und ihr seid besser bei großen Beratungen</li>
+        <li><strong>Web-Designs / Marketing-Sites / Brand-Refreshes</strong> — machen wir nicht, dafür gibt's bessere Studios</li>
+        <li><strong>„AI-Strategie für 6-stelliges Honorar"-Anfragen</strong> — wir verkaufen lieber konkrete Workflows die heute laufen als Strategie-PDFs die in der Schublade landen</li>
+        <li><strong>„Make me 10× more productive with AI in 30 days"</strong> — gibt's nicht, und wer es verspricht lügt. Wir sagen ehrlich was AI heute kann und was nicht</li>
+      </ul>
     </section>
 
-    <Divider class="mt-20" label="Stack" />
-
-    <section class="mt-12">
-      <div class="space-y-4 text-ink-soft leading-relaxed">
-        <p>Womit ich arbeite:</p>
-        <ul class="grid gap-3 sm:grid-cols-2">
-          <li><span class="font-display text-lg italic text-ink ember-glow">Claude Skills</span> — domänen-spezifisches Wissen für KI-Workflows</li>
-          <li><span class="font-display text-lg italic text-ink ember-glow">n8n</span> — Workflow-Orchestrierung, self-hosted</li>
-          <li><span class="font-display text-lg italic text-ink ember-glow">OpenClaw</span> — autonome Agenten-Arbeit</li>
-          <li><span class="font-display text-lg italic text-ink ember-glow">Paperclip</span> — Agenten-Rahmen für Dauer-Tasks</li>
-        </ul>
-        <p>
-          Alles auf eigener Infrastruktur. Keine SaaS-Abos mit deinen Daten im Ausland.
-          Deine Automationen laufen auf deinem Server.
-        </p>
-      </div>
+    <section>
+      <h2 class="kz-h2">Wofür wir gut sind</h2>
+      <ul>
+        <li><strong>KMUs mit 10–250 Mitarbeitenden</strong> die einen konkreten Workflow automatisieren wollen — ohne Enterprise-Vertrag und ohne 6-Monats-Onboarding</li>
+        <li><strong>Compliance-bewusste Branchen</strong> — Anwaltskanzleien, Steuerberater, Arztpraxen, Versicherungs-Maklerbüros, Handwerksbetriebe mit DSGVO-Sensitivität</li>
+        <li><strong>Ehrliche Kosten-Nutzen-Rechnung</strong> — wir berechnen den Stundenwert eines Workflows bevor wir bauen. Wenn die Mathematik nicht aufgeht, bauen wir nicht</li>
+        <li><strong>Lange Zusammenarbeit</strong> — der erste Workflow ist meist der schwierigste. Der zweite kommt schneller. Der dritte ist Routine. Wir sind dabei wenn dein Stack über Quartale wächst</li>
+      </ul>
     </section>
 
-    <Divider class="mt-20" label="Haltung" />
-
-    <section class="mt-12">
-      <div class="space-y-4 text-ink-soft leading-relaxed">
-        <p>
-          Keine Magie. Keine Buzzword-Präsentationen. Keine Demos, die live nie funktionieren.
-        </p>
-        <p>
-          Disziplin, kleine Schritte, und die Bereitschaft, Dinge wieder aus dem Betrieb
-          zu nehmen, wenn sie sich als falsch erweisen. Automation ist dann gut, wenn
-          niemand mehr darüber nachdenken muss.
-        </p>
-      </div>
-    </section>
-
-    <section class="mt-24 manuscript-frame">
-      <h2 class="font-display text-3xl italic tracking-tight text-ink text-center">Ersten Schritt machen.</h2>
-      <p class="mt-4 text-ink-soft text-center">
-        Der Firmen-Scan ist kostenlos und unverbindlich. 30 Minuten, in denen wir schauen, ob es passt.
+    <section>
+      <h2 class="kz-h2">Werte</h2>
+      <p>
+        Wir leihen uns das japanische Konzept Kaizen aus weil es unsere Arbeitsweise gut beschreibt — kleine Schritte,
+        viele davon, jeden Tag. Aber wir sind kein Zen-Tempel und keine Feel-Good-Beratung. Wir sind Software-Engineering
+        mit Geduld.
       </p>
-      <div class="mt-8 flex justify-center">
-        <a
-          href="/firmen-scan"
-          class="inline-flex items-center justify-center rounded-sm border border-ember bg-ember px-6 py-3 font-mono text-sm uppercase tracking-widest text-parchment transition hover:bg-ember-glow hover:shadow-[0_0_20px_rgba(232,90,43,0.4)]"
-        >
-          Firmen-Scan ansehen
-        </a>
-      </div>
+      <p>Was uns wichtig ist:</p>
+      <ul>
+        <li><strong>Stille Stärke statt laute Versprechen</strong> — wir reden lieber konkret als groß</li>
+        <li><strong>Integrität über Impression</strong> — was wir nicht können, sagen wir; was wir bauen, läuft</li>
+        <li><strong>Wachstum ohne Selbstverrat</strong> — wir bleiben klein wenn klein gut ist</li>
+      </ul>
     </section>
-  </main>
-</Layout>
+
+    <section style="margin-top: 96px; padding: 56px clamp(24px, 4vw, 48px); background: var(--kz-cream-deep); border-radius: 12px;">
+      <h2 class="kz-h2" style="margin-top: 0;">Wenn du wissen willst wie wir bauen</h2>
+      <p><a href="/workflows">→ Die vier Standard-Workflows ansehen</a></p>
+      <p><a href="/erstgespraech">→ 30-Min-Erstgespräch buchen</a></p>
+      <p><a href="mailto:hallo@k-aizen.de">→ Direkt schreiben: hallo@k-aizen.de</a></p>
+    </section>
+  </article>
+</KaizenLayout>

@@ -1,0 +1,92 @@
+---
+import KaizenLayout from '../layouts/KaizenLayout.astro';
+
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Kontakt — k-AIzen",
+  "url": "https://k-aizen.de/kontakt",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "k-AIzen / Pulscraft Digital",
+    "email": "hallo@k-aizen.de",
+    "url": "https://k-aizen.de",
+    "areaServed": "DE",
+    "founder": { "@type": "Person", "name": "Benjamin Zirngibl" }
+  }
+};
+---
+
+<KaizenLayout
+  title="Kontakt — Schreib oder buch ein Erstgespräch"
+  description="Mail an hallo@k-aizen.de — Antwort innerhalb 48h. Oder direkt 30-Min-Erstgespräch buchen. Ohne Verkaufsdruck."
+  path="/kontakt"
+  activeNav="kontakt"
+  jsonLd={contactSchema}
+>
+  <article class="kz-page">
+    <div class="kz-page-eyebrow">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
+      <span class="kanji">話</span>
+      <span>Kontakt</span>
+    </div>
+    <h1 class="kz-h1">Wie sich der Kontakt anfühlt.</h1>
+    <p class="kz-lead">
+      Drei Wege uns zu erreichen. Alle direkt — kein Sales-Funnel, kein Auto-Responder, kein Tier-3-Support.
+    </p>
+
+    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-bottom: 64px;">
+      <div style="padding: 32px; background: var(--kz-cream-deep); border-radius: 12px;">
+        <div style="font-family: var(--font-jp); font-size: 36px; color: var(--kz-ember); margin-bottom: 12px;">一</div>
+        <h3 class="kz-h3" style="margin-top: 0;">Mail</h3>
+        <p>Du schreibst, wir antworten — meist innerhalb 24h, garantiert binnen 48h. Auch am Wochenende, aber nicht garantiert.</p>
+        <p style="margin-top: 16px;"><a href="mailto:hallo@k-aizen.de" class="kz-btn">hallo@k-aizen.de</a></p>
+      </div>
+      <div style="padding: 32px; background: var(--kz-cream-deep); border-radius: 12px;">
+        <div style="font-family: var(--font-jp); font-size: 36px; color: var(--kz-ember); margin-bottom: 12px;">二</div>
+        <h3 class="kz-h3" style="margin-top: 0;">Erstgespräch</h3>
+        <p>30 Minuten, kostenlos, kein Verkaufsdruck. Du erzählst wo Zeit verloren geht, wir hören zu, am Ende weisst du ob's passt.</p>
+        <p style="margin-top: 16px;"><a href="/erstgespraech" class="kz-btn">Termin buchen</a></p>
+      </div>
+      <div style="padding: 32px; background: var(--kz-cream-deep); border-radius: 12px;">
+        <div style="font-family: var(--font-jp); font-size: 36px; color: var(--kz-ember); margin-bottom: 12px;">三</div>
+        <h3 class="kz-h3" style="margin-top: 0;">LinkedIn</h3>
+        <p>Wenn du erstmal ein bisschen mitlesen willst bevor du schreibst — auf LinkedIn posten wir regelmäßig Build-in-Public-Notes.</p>
+        <p style="margin-top: 16px;"><a href="https://www.linkedin.com/in/benjamin-zirngibl-0963753ab" rel="noopener noreferrer" target="_blank" class="kz-btn kz-btn-ghost">Profil ansehen</a></p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">Was uns interessiert wenn du schreibst</h2>
+      <ul>
+        <li><strong>In welcher Branche</strong> bist du tätig (zur Einschätzung der Compliance-Anforderungen)</li>
+        <li><strong>Wie groß</strong> ist dein Team (10? 50? 200?)</li>
+        <li><strong>Welcher Schmerz</strong> ist akut — Inbox-Flut? Angebote dauern zu lang? Wissen wird nicht gefunden? Etwas anderes?</li>
+        <li><strong>Was hast du schon probiert</strong> — falls überhaupt, und was hat nicht funktioniert</li>
+      </ul>
+      <p>
+        Wenn du diese vier Sätze schreibst, können wir beim ersten Reply schon konkret werden statt 3 Mails-Pingpong.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">Was wir nicht beantworten</h2>
+      <ul>
+        <li><strong>„Was ist das beste AI-Tool 2026?"</strong> — kommt drauf an. Bei dir wahrscheinlich keins davon.</li>
+        <li><strong>„Können wir mal unverbindlich reden?"</strong> — ja, das heißt Erstgespräch. Buch direkt.</li>
+        <li><strong>„Macht ihr auch Web-Designs?"</strong> — nein, nur Workflow-Automation. Für Web-Designs gibt's bessere Studios.</li>
+      </ul>
+    </section>
+
+    <section style="margin-top: 96px; padding: 56px clamp(24px, 4vw, 48px); background: var(--kz-charcoal); color: var(--kz-cream); border-radius: 12px;">
+      <h2 class="kz-h2" style="color: var(--kz-cream); margin-top: 0;">Postanschrift</h2>
+      <p style="color: rgba(245,240,232,0.85);">
+        Pulscraft Digital · Benjamin Zirngibl<br/>
+        Bayern, Deutschland
+      </p>
+      <p style="color: rgba(245,240,232,0.65); font-size: 14px;">
+        Volle postalische Anschrift findest du im <a href="/impressum" style="color: var(--kz-ember);">Impressum</a>.
+      </p>
+    </section>
+  </article>
+</KaizenLayout>

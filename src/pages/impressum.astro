@@ -1,93 +1,113 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import KaizenLayout from '../layouts/KaizenLayout.astro';
 ---
 
-<Layout
-  title="Impressum — k-AIzen"
-  description="Impressum und Anbieterkennzeichnung gemäß § 5 TMG."
+<KaizenLayout
+  title="Impressum"
+  description="Anbieterkennzeichnung nach § 5 TMG für k-AIzen / Pulscraft Digital."
+  path="/impressum"
 >
-  <main class="mx-auto max-w-3xl px-6 py-16">
-    <p class="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">Rechtliches</p>
+  <article class="kz-page">
+    <div class="kz-page-eyebrow">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
+      <span>Impressum</span>
+    </div>
+    <h1 class="kz-h1">Impressum</h1>
+    <p class="kz-lead">Anbieterkennzeichnung nach § 5 TMG.</p>
 
-    <h1 class="font-display text-5xl leading-tight tracking-tight text-ink sm:text-6xl">
-      Impressum
-    </h1>
-
-    <section class="mt-12 space-y-8 text-ink-soft leading-relaxed">
-      <div>
-        <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">Angaben gemäß § 5 TMG</h2>
-        <p class="mt-4 text-ink">
-          Ben Zirngibl<br />
-          Zum Schwarzachtal 5<br />
-          90592 Schwarzenbruck<br />
-          Deutschland
-        </p>
-      </div>
-
-      <div>
-        <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">Kontakt</h2>
-        <p class="mt-4">
-          E-Mail: <a href="mailto:kontakt@k-aizen.de" class="text-ember underline underline-offset-4 ember-glow">kontakt@k-aizen.de</a>
-        </p>
-      </div>
-
-      <div>
-        <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">Umsatzsteuer</h2>
-        <p class="mt-4">
-          Kleinunternehmer gemäß § 19 UStG. Es wird keine Umsatzsteuer berechnet und ausgewiesen.
-        </p>
-      </div>
-
-      <div>
-        <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
-        <p class="mt-4">
-          Ben Zirngibl<br />
-          Zum Schwarzachtal 5<br />
-          90592 Schwarzenbruck
-        </p>
-      </div>
-
-      <div>
-        <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">Streitschlichtung</h2>
-        <p class="mt-4">
-          Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
-          <a href="https://ec.europa.eu/consumers/odr/" class="text-ember underline underline-offset-4 ember-glow" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>.
-          Meine E-Mail-Adresse findest du oben im Impressum.
-        </p>
-        <p class="mt-4">
-          Ich bin nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
-        </p>
-      </div>
-
-      <div>
-        <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">Haftung für Inhalte</h2>
-        <p class="mt-4">
-          Als Diensteanbieter bin ich gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG bin ich als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
-        </p>
-        <p class="mt-4">
-          Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werde ich diese Inhalte umgehend entfernen.
-        </p>
-      </div>
-
-      <div>
-        <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">Haftung für Links</h2>
-        <p class="mt-4">
-          Mein Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte ich keinen Einfluss habe. Deshalb kann ich für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
-        </p>
-      </div>
-
-      <div>
-        <h2 class="font-mono text-xs uppercase tracking-[0.3em] text-ink-soft">Urheberrecht</h2>
-        <p class="mt-4">
-          Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
-        </p>
-      </div>
-    </section>
-
-    <section class="mt-16 border-t border-parchment-deep/40 pt-12">
-      <p class="font-mono text-xs uppercase tracking-[0.3em] text-ink-faint">
-        Siehe auch: <a href="/datenschutz" class="text-ember underline underline-offset-4 ember-glow">Datenschutzerklärung</a>
+    <section>
+      <h2 class="kz-h2">Diensteanbieter</h2>
+      <p>
+        <strong>Pulscraft Digital — Benjamin Zirngibl</strong><br/>
+        [Vollständige Anschrift wird hier ergänzt]<br/>
+        Bayern, Deutschland
       </p>
     </section>
-  </main>
-</Layout>
+
+    <section>
+      <h2 class="kz-h2">Kontakt</h2>
+      <p>
+        E-Mail: <a href="mailto:hallo@k-aizen.de">hallo@k-aizen.de</a><br/>
+        Web: <a href="https://k-aizen.de">https://k-aizen.de</a>
+      </p>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+      <p>
+        Benjamin Zirngibl<br/>
+        Anschrift wie oben
+      </p>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">Umsatzsteuer-Identifikationsnummer</h2>
+      <p>
+        [USt-IdNr. nach § 27 a UStG wird hier ergänzt sobald vergeben]
+      </p>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">EU-Streitschlichtung</h2>
+      <p>
+        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+        <a href="https://ec.europa.eu/consumers/odr/" rel="noopener noreferrer" target="_blank">https://ec.europa.eu/consumers/odr/</a>.
+        Unsere E-Mail-Adresse findest du oben.
+      </p>
+      <p>
+        Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucher­schlichtungsstelle teilzunehmen.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">Haftung für Inhalte</h2>
+      <p>
+        Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
+        Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte
+        oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige
+        Tätigkeit hinweisen.
+      </p>
+      <p>
+        Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben
+        hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten
+        Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">Haftung für Links</h2>
+      <p>
+        Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb
+        können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist
+        stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+      </p>
+      <p>
+        Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige
+        Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten
+        Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">Urheberrecht</h2>
+      <p>
+        Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.
+        Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes
+        bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+      </p>
+      <p>
+        Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet.
+        Solltest du trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis.
+        Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
+      </p>
+    </section>
+
+    <section style="margin-top: 64px; padding: 32px; background: var(--kz-cream-deep); border-radius: 12px; font-size: 14px; color: var(--fg-muted);">
+      <p style="margin: 0;">
+        <strong>Hinweis:</strong> Diese Impressums-Vorlage wurde inhaltlich vorbereitet. Vor öffentlicher Live-Schaltung müssen die
+        Platzhalter (Anschrift, USt-IdNr.) durch echte Daten ersetzt und die finale Fassung anwaltlich geprüft werden.
+        Stand: Mai 2026.
+      </p>
+    </section>
+  </article>
+</KaizenLayout>

@@ -2,6 +2,96 @@
 // k-AIzen Homepage — Claude Design Version (React + Babel-standalone)
 // Lädt Static-Assets aus /preview/ (CSS/JS/JSX) und /animations/claude-design/ (Bilder).
 // Vorgängerversion liegt unter old-index.astro als Backup.
+
+const SITE_URL = 'https://k-aizen.de';
+const TITLE = 'k-AIzen — Eins nach dem anderen. Auch bei AI.';
+const DESCRIPTION = 'AI-Workflow-Automation für KMUs in Deutschland (10–250 Mitarbeitende). Vier Standard-Workflows: Inbox-Triage, Angebots-Generator, Tagesreport, Wissens-Suche. DSGVO-konform, deutsche Server, kein Hype.';
+const OG_IMAGE = `${SITE_URL}/animations/claude-design/logo-full.png`;
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "k-AIzen",
+  "alternateName": "k-AIzen by Pulscraft Digital",
+  "url": SITE_URL,
+  "logo": `${SITE_URL}/animations/claude-design/logo-full.png`,
+  "description": DESCRIPTION,
+  "founder": {
+    "@type": "Person",
+    "name": "Benjamin Zirngibl",
+    "url": "https://www.linkedin.com/in/benjamin-zirngibl-0963753ab"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Deutschland"
+  },
+  "knowsAbout": [
+    "AI Workflow Automation",
+    "Process Automation for SMB",
+    "DSGVO-konforme AI-Integration",
+    "n8n Workflow Engineering",
+    "Sub-Agent Orchestrierung",
+    "Inbox-Triage Automation",
+    "Document Search Automation",
+    "Wissensmanagement für KMUs",
+    "Compliance-aware AI"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/benjamin-zirngibl-0963753ab",
+    "https://github.com/benzirngibl-ai"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "hallo@k-aizen.de",
+    "contactType": "customer service",
+    "areaServed": "DE",
+    "availableLanguage": ["German", "English"]
+  }
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "k-AIzen",
+  "url": SITE_URL,
+  "description": DESCRIPTION,
+  "inLanguage": "de-DE",
+  "publisher": {
+    "@type": "Organization",
+    "name": "k-AIzen / Pulscraft Digital",
+    "url": SITE_URL
+  }
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "k-AIzen — AI-Workflow-Automation",
+  "url": SITE_URL,
+  "image": OG_IMAGE,
+  "telephone": "",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "DE",
+    "addressRegion": "Bayern"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Deutschland"
+  },
+  "serviceType": "AI Workflow Automation für KMUs",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "k-AIzen Standard-Workflows",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Inbox-Triage", "description": "AI klassifiziert Mails, schlägt Antworten vor — Mensch entscheidet." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Angebots-Generator", "description": "Aus drei Stichworten ein vollständiges Angebot." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tagesreport", "description": "Täglicher Zwei-Minuten-Report mit Zahlen und Auffälligkeiten." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wissens-Suche", "description": "Eigene Dokumente/Mails/Tickets — eine Suche, eine Antwort, mit Quellen." } }
+    ]
+  }
+};
 ---
 
 <!doctype html>
@@ -9,10 +99,52 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>k-AIzen — Eins nach dem anderen.</title>
-  <meta name="description" content="AI-Automation für KMUs (Mittelstand). Eins nach dem anderen. Auch bei AI. Bored-Kaizen-Monk-Voice, Sumi-Tusche-Aesthetic, kein Hype." />
+
+  <!-- SEO -->
+  <title>{TITLE}</title>
+  <meta name="description" content={DESCRIPTION} />
+  <link rel="canonical" href={SITE_URL} />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Benjamin Zirngibl · Pulscraft Digital" />
+  <meta name="keywords" content="AI Workflow Automation, KMU AI, Mittelstand Automation, Inbox-Triage, Angebots-Generator, n8n, Workflow-Engineering, DSGVO AI, Bayern AI Agency, Pulscraft Digital, k-AIzen" />
+  <meta name="theme-color" content="#F5F0E8" />
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={TITLE} />
+  <meta property="og:description" content={DESCRIPTION} />
+  <meta property="og:url" content={SITE_URL} />
+  <meta property="og:image" content={OG_IMAGE} />
+  <meta property="og:image:alt" content="k-AIzen Logo" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:site_name" content="k-AIzen" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={TITLE} />
+  <meta name="twitter:description" content={DESCRIPTION} />
+  <meta name="twitter:image" content={OG_IMAGE} />
+
+  <!-- AI Crawlers — explizit erlaubt -->
+  <meta name="GPTBot" content="index, follow" />
+  <meta name="ClaudeBot" content="index, follow" />
+  <meta name="Claude-Web" content="index, follow" />
+  <meta name="PerplexityBot" content="index, follow" />
+  <meta name="Applebot" content="index, follow" />
+  <meta name="Google-Extended" content="index, follow" />
+
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="de" href={SITE_URL} />
+  <link rel="alternate" hreflang="x-default" href={SITE_URL} />
+
   <link rel="icon" type="image/png" href="/animations/claude-design/logo-mark.png" />
   <link rel="stylesheet" href="/preview/colors_and_type.css" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
@@ -34,10 +166,85 @@
     }
 
     section { user-select: none; -webkit-user-select: none; }
+
+    /* Server-Side rendered fallback content für Crawlers + initial paint */
+    .kz-noscript-fallback {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(60px, 10vh, 120px) clamp(24px, 5vw, 48px);
+    }
+    .kz-noscript-fallback h1 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 80px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0 0 24px;
+    }
+    .kz-noscript-fallback .accent {
+      color: var(--kz-ember);
+      font-style: italic;
+    }
+    .kz-noscript-fallback p {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--fg-muted);
+      max-width: 640px;
+    }
+    .kz-noscript-fallback ul {
+      font-family: var(--font-sans);
+      max-width: 640px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .kz-noscript-fallback li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 8px;
+    }
+    .kz-noscript-fallback li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 12px;
+      width: 12px; height: 1px;
+      background: var(--kz-ember);
+    }
+    .kz-noscript-fallback a {
+      color: var(--kz-ember);
+      text-decoration: underline;
+    }
+    /* Hide fallback when React mounts */
+    #root:not(:empty) ~ .kz-noscript-fallback { display: none; }
   </style>
 </head>
 <body>
   <div id="root"></div>
+
+  <!-- SEO/AI-Crawler Fallback — sichtbar bevor React mountet, hidden danach.
+       Stellt sicher dass Suchmaschinen + AI-Tools die Inhalte indexieren können
+       auch wenn JavaScript-Rendering fehlschlägt oder langsam ist. -->
+  <noscript>
+    <article class="kz-noscript-fallback">
+      <h1>Eins nach dem anderen. <span class="accent">Auch bei AI.</span></h1>
+      <p>
+        k-AIzen ist eine AI-Workflow-Automation-Marke von Pulscraft Digital, geführt von Benjamin Zirngibl in Bayern.
+        Wir bauen Workflows für KMUs (10–250 Mitarbeitende) — ohne Hype, ohne Buzzword-Bingo.
+      </p>
+      <h2>Vier Standard-Workflows</h2>
+      <ul>
+        <li><a href="/workflows#inbox-triage">Inbox-Triage</a> — AI klassifiziert Mails, schlägt Antworten vor</li>
+        <li><a href="/workflows#angebote">Angebots-Generator</a> — aus drei Stichworten ein vollständiges Angebot</li>
+        <li><a href="/workflows#tagesreport">Tagesreport</a> — täglich um 7:30 mit Zahlen + To-Dos</li>
+        <li><a href="/workflows#wissens-suche">Wissens-Suche</a> — eine Suche über deine Dokumente, mit Quellenangabe</li>
+      </ul>
+      <h2>Mehr</h2>
+      <ul>
+        <li><a href="/about">Über uns</a></li>
+        <li><a href="/erstgespraech">Erstgespräch buchen</a></li>
+        <li><a href="/kontakt">Kontakt</a></li>
+      </ul>
+    </article>
+  </noscript>
 
   <script is:inline src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
   <script is:inline src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
