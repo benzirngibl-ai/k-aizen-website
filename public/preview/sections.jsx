@@ -46,8 +46,9 @@ function useScrollDirection() {
 }
 
 // IntersectionObserver-based reveal — returns ref + visible state.
+// once=false (default) → re-triggers beim erneuten In-View, nicht nur einmalig.
 function useReveal(opts = {}) {
-  const { threshold = 0.18, rootMargin = '0px 0px -10% 0px', once = true } = opts;
+  const { threshold = 0.18, rootMargin = '0px 0px -10% 0px', once = false } = opts;
   const ref = React.useRef(null);
   const [visible, setVisible] = React.useState(false);
   React.useEffect(() => {

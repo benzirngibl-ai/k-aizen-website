@@ -14,8 +14,8 @@
 const { useState, useEffect, useRef, useMemo } = React;
 
 const TWEAKS_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "petalCount": 240,
-  "wind": 1.0,
+  "petalCount": 110,
+  "wind": 0.6,
   "repelRadius": 170,
   "showMountains": true,
   "showSun": true,
