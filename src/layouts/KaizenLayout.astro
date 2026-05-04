@@ -116,7 +116,7 @@ if (breadcrumbs && breadcrumbs.length > 0) {
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   ))}
 
-  <style>
+  <style is:global>
     :root {
       color-scheme: light;
     }
@@ -132,6 +132,34 @@ if (breadcrumbs && breadcrumbs.length > 0) {
     main {
       flex: 1;
       width: 100%;
+      position: relative;
+    }
+    /* Atmospheric Sumi-Tusche-Layer — subtle background depth */
+    main::before {
+      content: "";
+      position: fixed;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 130%;
+      max-width: 2200px;
+      height: 40vh;
+      background-image: url('/animations/claude-design/sumi-mountains.png');
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      background-size: contain;
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: -1;
+      filter: saturate(0.7);
+    }
+    /* Subtle radial-gradient ink-wash für mehr Tiefe */
+    main::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(31,41,51,0.04) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: -1;
     }
     /* Header */
     .kz-header {
