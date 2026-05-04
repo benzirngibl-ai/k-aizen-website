@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>k-AIzen — Eins nach dem anderen.</title>
+<meta name="description" content="AI-Automation für KMUs. Ohne Hype, ohne Buzzword-Bingo. Eins nach dem anderen — auch bei AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" href="/animations/sumi-tusche/logo-icon.png">
+</head>
+<body>
+
+<!-- ============================================================
+     PRELOADER — Sumi-Tusche Brush-Reveal des Logos
+     ============================================================ -->
+<div class="preloader" id="preloader">
+  <div class="preloader-inner">
+    <img src="/animations/sumi-tusche/logo-icon.png" alt="" class="preloader-logo">
+    <div class="preloader-line"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     NAVIGATION — sticky top
+     ============================================================ -->
+<nav class="nav" id="nav">
+  <a href="#hero" class="nav-brand">
+    <img src="/animations/sumi-tusche/logo-icon.png" alt="k-AIzen Logo" class="nav-logo">
+    <span class="nav-wordmark">k<span class="dot">.</span><span class="ai">AI</span>zen</span>
+  </a>
+  <div class="nav-links">
+    <a href="#manifest">Manifest</a>
+    <a href="#saeulen">Was</a>
+    <a href="#prozess">Wie</a>
+    <a href="#showcase">Werke</a>
+    <a href="#pricing">Pakete</a>
+  </div>
+  <a href="#cta" class="nav-cta">Termin</a>
+</nav>
+
+<!-- ============================================================
+     HERO — Tagline-Reveal + Bonsai-Sway + Mountains-Background
+     ============================================================ -->
+<section class="hero" id="hero">
+
+  <!-- Cherry-Blossom-Branch — overhanging top decoration -->
+  <div class="hero-blossom-top" aria-hidden="true">
+    <img src="/animations/sumi-tusche/cherry-blossom-branch.png" alt="" class="blossom-sway">
+  </div>
+
+  <!-- Mountains-Background-Layer (atmospheric depth) -->
+  <div class="hero-mountains" aria-hidden="true">
+    <img src="/animations/sumi-tusche/mountains.png" alt="">
+  </div>
+
+  <!-- Plum-Tree als Foreground-Element rechts -->
+  <div class="hero-tree" aria-hidden="true">
+    <img src="/animations/sumi-tusche/plum-tree.png" alt="" class="tree-sway">
+  </div>
+
+  <!-- Bamboo als linker Foreground-Akzent -->
+  <div class="hero-bamboo" aria-hidden="true">
+    <img src="/animations/sumi-tusche/bamboo.png" alt="" class="bamboo-sway">
+  </div>
+
+  <!-- Crane-Flight-Layer (subtle decorative animation) -->
+  <div class="crane-flight" aria-hidden="true">
+    <img src="/animations/sumi-tusche/crane.png" alt="" id="crane">
+  </div>
+
+  <!-- Drifting-Leaves-Canvas (Particle-System) -->
+  <canvas class="leaves-canvas" id="leaves-canvas" aria-hidden="true"></canvas>
+
+  <!-- Hero-Content: Tagline -->
+  <div class="hero-content">
+    <p class="hero-eyebrow reveal-up">k-AIzen — AI-Automation für KMUs</p>
+    <h1 class="hero-headline">
+      <span class="brush-reveal" data-delay="0.2">Eins nach dem anderen.</span>
+      <span class="brush-reveal accent" data-delay="0.6">Auch bei AI.</span>
+    </h1>
+    <p class="hero-sub reveal-up" data-delay="1.1">
+      Wir bauen automatisierte Workflows die heute funktionieren. Keine Demo-Magie. Keine 47-Tools-Stacks. Eines nach dem anderen — bis es läuft.
+    </p>
+    <div class="hero-actions reveal-up" data-delay="1.4">
+      <a href="#cta" class="btn btn-primary">Termin vereinbaren</a>
+      <a href="#manifest" class="btn btn-ghost">Ansatz lesen</a>
+    </div>
+  </div>
+
+  <!-- Scroll-Indicator -->
+  <div class="scroll-indicator" aria-hidden="true">
+    <span>scroll</span>
+    <svg width="14" height="40" viewBox="0 0 14 40" fill="none">
+      <path d="M7 2 L7 36 M7 36 L2 30 M7 36 L12 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     MANIFEST — Philosophy-Statement
+     ============================================================ -->
+<section class="manifest" id="manifest">
+  <div class="container">
+    <p class="eyebrow reveal-up">Manifest</p>
+    <h2 class="manifest-headline reveal-up">
+      AI ist ein <em>Werkzeug</em>.<br>
+      Kein Wundermittel.
+    </h2>
+    <div class="manifest-grid">
+      <div class="manifest-item reveal-up">
+        <h3>Wir starten klein.</h3>
+        <p>Ein Prozess. Ein Workflow. Wenn der läuft, kommt der nächste. Eins nach dem anderen — bis dein Stack aus Sachen besteht die ihr wirklich nutzt, nicht aus Tools die ihr besitzt.</p>
+      </div>
+      <div class="manifest-item reveal-up">
+        <h3>Wir bauen für heute.</h3>
+        <p>Wir versprechen nicht was AI in 18 Monaten kann. Wir bauen was sie heute kann. Wenn morgen mehr geht, bauen wir morgen mehr — auf der Basis die heute funktioniert.</p>
+      </div>
+      <div class="manifest-item reveal-up">
+        <h3>Wir respektieren deinen Kontext.</h3>
+        <p>DSGVO, Auftragsverarbeitung, Datenschutzbeauftragte — keine Tabu-Themen. Wir bauen Compliance-aware, weil deine Realität nun mal die ist.</p>
+      </div>
+    </div>
+    <div class="brush-divider" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DREI SÄULEN — was wir machen
+     ============================================================ -->
+<section class="saeulen" id="saeulen">
+  <div class="container">
+    <p class="eyebrow reveal-up">Was wir machen</p>
+    <h2 class="section-headline reveal-up">Drei Säulen. Keine Sortimente.</h2>
+    <p class="section-sub reveal-up">Wir machen drei Dinge. Gut. Wenn du etwas anderes brauchst, sagen wir das. Pulscraft macht alles, k-AIzen macht das hier.</p>
+
+    <div class="saeulen-grid">
+
+      <article class="saeule-card reveal-up" data-delay="0.1">
+        <div class="saeule-mark">A</div>
+        <h3>Tutorials &amp; Tool-Takes</h3>
+        <p class="saeule-tagline">Tools die wir wirklich nutzen — Schritt für Schritt erklärt.</p>
+        <ul>
+          <li>Workflow-Anleitungen mit Skript-Templates</li>
+          <li>Tool-Reviews ohne Affiliate-Bias</li>
+          <li>Hot-Takes auf Releases (Claude, n8n, Paperclip)</li>
+        </ul>
+        <p class="saeule-meta">Format: LinkedIn-Post + PDF-Download</p>
+      </article>
+
+      <article class="saeule-card highlighted reveal-up" data-delay="0.2">
+        <div class="saeule-mark">B</div>
+        <h3>Build-in-Public</h3>
+        <p class="saeule-tagline">Was wir gerade bauen — Lessons inklusive.</p>
+        <ul>
+          <li>Sprint-Reflexionen mit konkreten Stolpersteinen</li>
+          <li>Architektur-Entscheidungen mit dem Why</li>
+          <li>Was kaputt gegangen ist und warum</li>
+        </ul>
+        <p class="saeule-meta">Format: Blog-Beitrag + Repo-Link</p>
+      </article>
+
+      <article class="saeule-card reveal-up" data-delay="0.3">
+        <div class="saeule-mark">C</div>
+        <h3>Compliance-Realität</h3>
+        <p class="saeule-tagline">Was DSGVO + AI-Act für dein KMU heißen.</p>
+        <ul>
+          <li>Auftragsverarbeitungsverträge die halten</li>
+          <li>Welche Tools du wo hosten solltest</li>
+          <li>Was dein Datenschutzbeauftragter fragen wird</li>
+        </ul>
+        <p class="saeule-meta">Format: Checkliste + Beratungs-Termin</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROZESS — Kaizen-Schritte
+     ============================================================ -->
+<section class="prozess" id="prozess">
+  <div class="container">
+    <p class="eyebrow reveal-up">Wie wir arbeiten</p>
+    <h2 class="section-headline reveal-up">Vier Schritte. Im Kreis.</h2>
+    <p class="section-sub reveal-up">Kaizen ist kein einmaliges Setup-Projekt. Es ist ein Loop. Wir gehen ihn mit dir, immer wieder, bis ihr ihn selbst geht.</p>
+
+    <ol class="prozess-list">
+      <li class="prozess-step reveal-up" data-delay="0.1">
+        <div class="prozess-num">1</div>
+        <h3>Beobachten</h3>
+        <p>Wir schauen, wie ihr arbeitet. Nicht Tools-Inventar — sondern den echten Tagesablauf. Was wiederholt ihr? Was ärgert euch? Was wird vergessen?</p>
+        <span class="prozess-time">2 Wochen</span>
+      </li>
+      <li class="prozess-step reveal-up" data-delay="0.2">
+        <div class="prozess-num">2</div>
+        <h3>Eines verstehen</h3>
+        <p>Aus 50 Beobachtungen pickt man eine. Den Schritt der am meisten weh tut, am häufigsten passiert, am klarsten zu beschreiben ist. Nur den.</p>
+        <span class="prozess-time">3 Tage</span>
+      </li>
+      <li class="prozess-step reveal-up" data-delay="0.3">
+        <div class="prozess-num">3</div>
+        <h3>Eines ändern</h3>
+        <p>Wir bauen die kleinste mögliche Automation für genau diesen einen Schritt. Kein 47-Tools-Stack. Ein Skript, ein Cron, ein Output. Live in 1-2 Wochen.</p>
+        <span class="prozess-time">1-2 Wochen</span>
+      </li>
+      <li class="prozess-step reveal-up" data-delay="0.4">
+        <div class="prozess-num">4</div>
+        <h3>Wieder beobachten</h3>
+        <p>Vier Wochen laufen lassen. Was läuft, läuft. Was kaputt geht, dokumentieren wir. Was ihr besser versteht, fließt in Schritt 1 vom nächsten Loop.</p>
+        <span class="prozess-time">4 Wochen</span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================
+     SHOWCASE — Photoalbum mit Polaroid-Frames
+     ============================================================ -->
+<section class="showcase" id="showcase">
+  <div class="container">
+    <p class="eyebrow reveal-up">Werke</p>
+    <h2 class="section-headline reveal-up">Was wir gebaut haben.</h2>
+    <p class="section-sub reveal-up">Echte Outputs aus echten Sprints. Klick einen an für die Story dahinter — was lief, was nicht, was wir gelernt haben.</p>
+
+    <div class="album">
+
+      <article class="polaroid reveal-up" data-tilt="-3" data-delay="0.05">
+        <div class="polaroid-frame">
+          <div class="polaroid-photo placeholder">
+            <span class="placeholder-label">Cartoon-Slot · Hypi vs Monk</span>
+          </div>
+        </div>
+        <p class="polaroid-caption">Microsoft Agent 365 Take · Mai 2026</p>
+      </article>
+
+      <article class="polaroid reveal-up" data-tilt="2" data-delay="0.1">
+        <div class="polaroid-frame">
+          <div class="polaroid-photo placeholder">
+            <span class="placeholder-label">Cartoon-Slot · 47-Tools-Pattern</span>
+          </div>
+        </div>
+        <p class="polaroid-caption">Build-in-Public — Über-Engineering</p>
+      </article>
+
+      <article class="polaroid reveal-up" data-tilt="-2" data-delay="0.15">
+        <div class="polaroid-frame">
+          <div class="polaroid-photo placeholder">
+            <span class="placeholder-label">Cartoon-Slot · Hans Compliance</span>
+          </div>
+        </div>
+        <p class="polaroid-caption">DSGVO-Audit — was du diese Woche prüfst</p>
+      </article>
+
+      <article class="polaroid reveal-up" data-tilt="3" data-delay="0.2">
+        <div class="polaroid-frame">
+          <div class="polaroid-photo placeholder">
+            <span class="placeholder-label">Cartoon-Slot · Monk Solo</span>
+          </div>
+        </div>
+        <p class="polaroid-caption">Kaizen-Reflexion — Sprint 6</p>
+      </article>
+
+      <article class="polaroid reveal-up" data-tilt="-1" data-delay="0.25">
+        <div class="polaroid-frame">
+          <div class="polaroid-photo placeholder">
+            <span class="placeholder-label">Cartoon-Slot · Workflow-Demo</span>
+          </div>
+        </div>
+        <p class="polaroid-caption">Claude + HeyGen Pipeline</p>
+      </article>
+
+      <article class="polaroid reveal-up" data-tilt="2" data-delay="0.3">
+        <div class="polaroid-frame">
+          <div class="polaroid-photo placeholder">
+            <span class="placeholder-label">Cartoon-Slot · Tutorial-Hook</span>
+          </div>
+        </div>
+        <p class="polaroid-caption">n8n Discord-Hub-Pipeline</p>
+      </article>
+
+    </div>
+    <p class="album-note">Polaroid-Slots werden mit echten Cartoon-Posts gefüllt sobald die LinkedIn-Pipeline läuft.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     QUOTE — Monk-Wisdom
+     ============================================================ -->
+<section class="quote-section">
+  <div class="container">
+    <blockquote class="big-quote reveal-up">
+      <span class="quote-mark" aria-hidden="true">„</span>
+      Setz dich hin. Atme. Hier ist der echte Workflow.
+      <span class="quote-mark close" aria-hidden="true">"</span>
+    </blockquote>
+    <p class="quote-attr reveal-up">— k-AIzen Maxime</p>
+  </div>
+  <!-- Leaves-Pack als subtle Background-Decoration -->
+  <div class="quote-leaves" aria-hidden="true">
+    <img src="/animations/sumi-tusche/leaves-pack.png" alt="">
+  </div>
+</section>
+
+<!-- ============================================================
+     PRICING — Drei Pakete
+     ============================================================ -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <p class="eyebrow reveal-up">Pakete</p>
+    <h2 class="section-headline reveal-up">Drei Wege rein.</h2>
+    <p class="section-sub reveal-up">Jeder Weg startet mit dem Beobachten-Schritt. Kein Vertrag länger als 6 Monate. Kein Lock-in.</p>
+
+    <div class="pricing-grid">
+
+      <article class="price-card reveal-up" data-delay="0.1">
+        <p class="price-tier">Starter</p>
+        <p class="price-meta">Für die ersten Schritte.</p>
+        <div class="price-amount"><span class="currency">€</span>1.500<span class="period">/Monat</span></div>
+        <ul class="price-features">
+          <li>1 Workflow-Loop pro Quartal</li>
+          <li>Beobachten-Phase + Build-Phase</li>
+          <li>Wöchentliche Async-Updates</li>
+          <li>1 Monatscall (45 Min)</li>
+          <li>Knowledge-Hub-Zugang</li>
+        </ul>
+        <a href="#cta" class="btn btn-secondary">Reden wir.</a>
+      </article>
+
+      <article class="price-card highlighted reveal-up" data-delay="0.2">
+        <span class="price-badge">Empfohlen</span>
+        <p class="price-tier">Praxis</p>
+        <p class="price-meta">Für die ernste Praxis.</p>
+        <div class="price-amount"><span class="currency">€</span>3.500<span class="period">/Monat</span></div>
+        <ul class="price-features">
+          <li>2 Workflow-Loops pro Quartal</li>
+          <li>Compliance-Review im Quartal</li>
+          <li>Bi-weekly Calls (45 Min)</li>
+          <li>Slack/Teams-Zugang für Fragen</li>
+          <li>Knowledge-Hub-Zugang + Templates</li>
+          <li>1 Code-Review pro Monat</li>
+        </ul>
+        <a href="#cta" class="btn btn-primary">Reden wir.</a>
+      </article>
+
+      <article class="price-card reveal-up" data-delay="0.3">
+        <p class="price-tier">Hingabe</p>
+        <p class="price-meta">Für volle Hingabe.</p>
+        <div class="price-amount"><span class="currency">€</span>7.500<span class="period">/Monat</span></div>
+        <ul class="price-features">
+          <li>Unlimitierte Workflow-Loops</li>
+          <li>Dedizierter Lead-Engineer</li>
+          <li>Wöchentliche Calls + On-Demand</li>
+          <li>DPA-Setup &amp; Compliance-Begleitung</li>
+          <li>Eigener Knowledge-Hub</li>
+          <li>Quartals-Strategie-Workshop</li>
+          <li>Code-Ownership-Transfer im 12. Monat</li>
+        </ul>
+        <a href="#cta" class="btn btn-secondary">Reden wir.</a>
+      </article>
+
+    </div>
+    <p class="pricing-note">Alle Preise netto. Keine Setup-Fee, keine versteckten Kosten. Erste 4 Wochen jederzeit kündbar.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA — Booking-Call
+     ============================================================ -->
+<section class="cta" id="cta">
+  <div class="container cta-inner">
+    <p class="eyebrow reveal-up">Termin</p>
+    <h2 class="cta-headline reveal-up">Ein Gespräch dauert 30 Minuten.</h2>
+    <p class="cta-sub reveal-up">Wir hören zu, du fragst, am Ende wissen wir beide ob wir miteinander arbeiten wollen.</p>
+    <a href="https://calendly.com/k-aizen" class="btn btn-primary btn-large reveal-up">Termin buchen</a>
+    <p class="cta-fineprint reveal-up">Oder Mail an <a href="mailto:hi@k-aizen.de">hi@k-aizen.de</a> — Antwort innerhalb von 48h.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="/animations/sumi-tusche/logo-icon.png" alt="" class="footer-logo">
+      <span class="footer-wordmark">k<span class="dot">.</span><span class="ai">AI</span>zen</span>
+      <p class="footer-tag">Eins nach dem anderen. Auch bei AI.</p>
+    </div>
+    <nav class="footer-nav">
+      <div>
+        <h4>Marke</h4>
+        <a href="#manifest">Manifest</a>
+        <a href="#saeulen">Was wir machen</a>
+        <a href="#prozess">Wie wir arbeiten</a>
+      </div>
+      <div>
+        <h4>Werke</h4>
+        <a href="#showcase">Showcase</a>
+        <a href="https://github.com/benzirngibl-ai">GitHub</a>
+        <a href="#">Knowledge-Hub</a>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <a href="mailto:hi@k-aizen.de">hi@k-aizen.de</a>
+        <a href="https://www.linkedin.com/in/benjamin-zirngibl-0963753ab">LinkedIn</a>
+        <a href="#cta">Termin</a>
+      </div>
+      <div>
+        <h4>Rechtliches</h4>
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">AGB</a>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-base">
+    <p>© 2026 k-AIzen by Pulscraft Digital · Made in Bayern · Kein Hype, keine Buzzword-Bingo.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

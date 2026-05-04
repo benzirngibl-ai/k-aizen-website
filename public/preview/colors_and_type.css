@@ -1,0 +1,256 @@
+/* =========================================================================
+   k-AIzen — Colors & Type
+   "Eins nach dem anderen. Auch bei AI."
+   Sumi-Tusche meets reduced warm palette. No gradients, no neon.
+   ========================================================================= */
+
+/* Webfonts — Inter (body), DM Sans (display), Caveat (sumi-brush accent),
+   Noto Serif JP (kanji moments). All Google Fonts → loaded via @import.
+   Local fallbacks listed in case downloaded ttfs are dropped into /fonts. */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat+Brush&family=Caveat:wght@400;600;700&family=Yuji+Mai&family=Noto+Serif+JP:wght@400;600&display=swap");
+
+:root {
+  /* ---------- BRAND COLORS (strict — no free-styling) ---------- */
+  --kz-charcoal:        #1F2933;   /* primary text, outlines, default buttons */
+  --kz-charcoal-soft:   #2C3540;   /* hover-darker for charcoal surfaces */
+  --kz-ember:           #E85A2B;   /* accent / CTA / brand marker — sparingly */
+  --kz-ember-deep:      #C44419;   /* hover/press for ember */
+  --kz-cream:           #F5F0E8;   /* default background, light surfaces */
+  --kz-cream-deep:      #ECE5D7;   /* hover for cream surfaces, subtle bands */
+
+  /* Optional greys (use sparingly) */
+  --kz-muted:           #6B7785;   /* muted/secondary text */
+  --kz-border:          #D9D5CC;   /* hairlines, dividers, card borders */
+  --kz-card:            #FFFFFF;   /* pure-white cards (inside cream pages) */
+  --kz-ink-wash:        rgba(31, 41, 51, 0.06);  /* sumi-tusche soft wash */
+  --kz-ink-wash-strong: rgba(31, 41, 51, 0.14);
+
+  /* ---------- SEMANTIC TOKENS ---------- */
+  --bg:           var(--kz-cream);
+  --bg-alt:       var(--kz-cream-deep);
+  --bg-card:      var(--kz-card);
+  --bg-inverse:   var(--kz-charcoal);
+
+  --fg:           var(--kz-charcoal);          /* default text */
+  --fg-muted:     var(--kz-muted);             /* secondary text */
+  --fg-inverse:   var(--kz-cream);             /* on charcoal */
+  --fg-accent:    var(--kz-ember);             /* highlight only */
+
+  --border:       var(--kz-border);
+  --border-strong: var(--kz-charcoal);
+
+  --accent:       var(--kz-ember);
+  --accent-deep:  var(--kz-ember-deep);
+
+  /* ---------- TYPE FAMILIES ---------- */
+  --font-sans:    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-display: "Caveat Brush", "Yuji Mai", "Klee One", cursive;
+  --font-brush:   "Caveat", "Inter", cursive;     /* hand-brush sumi accent — sparingly */
+  --font-jp:      "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-mono:    ui-monospace, "SF Mono", Menlo, "JetBrains Mono", Consolas, monospace;
+
+  /* ---------- TYPE SCALE (display sizes assume desktop; collapse on mobile) ---------- */
+  --text-xs:    12px;
+  --text-sm:    14px;
+  --text-base:  16px;
+  --text-md:    18px;
+  --text-lg:    20px;
+  --text-xl:    24px;
+  --text-2xl:   32px;
+  --text-3xl:   44px;
+  --text-4xl:   60px;
+  --text-5xl:   80px;
+
+  /* ---------- LINE HEIGHTS ---------- */
+  --lh-tight:   1.05;
+  --lh-snug:    1.20;
+  --lh-normal:  1.45;
+  --lh-relaxed: 1.65;
+
+  /* ---------- LETTER SPACING ---------- */
+  --tracking-tight:  -0.02em;
+  --tracking-snug:   -0.01em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.04em;
+  --tracking-wider:   0.12em;     /* eyebrow caps */
+
+  /* ---------- SPACING (8pt base; ≤8px is half-step) ---------- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  /* ---------- RADII ---------- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  /* ---------- BORDERS ---------- */
+  --stroke-hair: 1px;
+  --stroke-base: 1.5px;     /* matches Lucide default */
+  --stroke-bold: 2px;
+
+  /* ---------- SHADOWS (sumi-soft; never glassy) ---------- */
+  --shadow-xs: 0 1px 0 rgba(31, 41, 51, 0.05);
+  --shadow-sm: 0 2px 6px -1px rgba(31, 41, 51, 0.08), 0 1px 2px rgba(31, 41, 51, 0.04);
+  --shadow-md: 0 6px 18px -4px rgba(31, 41, 51, 0.12), 0 2px 6px rgba(31, 41, 51, 0.06);
+  --shadow-lg: 0 18px 40px -8px rgba(31, 41, 51, 0.16), 0 6px 14px rgba(31, 41, 51, 0.08);
+  --shadow-press: inset 0 2px 0 rgba(31, 41, 51, 0.10);
+
+  /* ---------- TIMINGS ---------- */
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in:    cubic-bezier(0.55, 0, 1, 0.45);
+  --ease-zen:   cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:   140ms;
+  --dur-base:   220ms;
+  --dur-slow:   420ms;
+
+  /* ---------- LAYOUT ---------- */
+  --container-narrow: 720px;
+  --container:        1120px;
+  --container-wide:   1320px;
+}
+
+/* =====================================================================
+   SEMANTIC TYPE STYLES — apply directly to elements or via class
+   ===================================================================== */
+
+html { color: var(--fg); background: var(--bg); }
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--lh-relaxed);
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings */
+h1, .kz-h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg);
+  text-wrap: balance;
+}
+h2, .kz-h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-snug);
+  color: var(--fg);
+  text-wrap: balance;
+}
+h3, .kz-h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-snug);
+  color: var(--fg);
+}
+h4, .kz-h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  color: var(--fg);
+}
+
+/* Body */
+p, .kz-body {
+  font-size: var(--text-base);
+  line-height: var(--lh-relaxed);
+  color: var(--fg);
+  text-wrap: pretty;
+}
+.kz-lead {
+  font-size: var(--text-md);
+  line-height: var(--lh-relaxed);
+  color: var(--fg);
+}
+.kz-muted {
+  color: var(--fg-muted);
+}
+
+/* Eyebrow / overline — small caps tracker, often used above section heads */
+.kz-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--fg-muted);
+}
+
+/* Brush accent — hand-painted sumi flourish. ONE per surface, max. */
+.kz-brush {
+  font-family: var(--font-brush);
+  font-weight: 600;
+  font-size: var(--text-3xl);
+  line-height: 1;
+  color: var(--accent);
+  letter-spacing: 0;
+}
+
+/* Kanji / JP accent — for the rare "改善" or "禅" mark */
+.kz-kanji {
+  font-family: var(--font-jp);
+  font-weight: 600;
+  color: var(--fg);
+}
+
+/* Tagline — uses italic body for calm "Eins nach dem anderen…" */
+.kz-tagline {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  font-style: italic;
+  line-height: var(--lh-snug);
+  color: var(--fg);
+}
+
+/* Code / mono — only for code blocks and stat numbers */
+code, .kz-mono {
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+}
+
+/* Link — underline always, ember on hover. No mystery interactions. */
+a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+a:hover { color: var(--accent); }
+
+/* Selection */
+::selection {
+  background: var(--accent);
+  color: var(--kz-cream);
+}
+
+/* Pause-marker — used in copy where the monk pauses. Small em-dash row. */
+.kz-pause {
+  display: inline-block;
+  width: 1em;
+  border-top: 2px solid var(--fg-muted);
+  vertical-align: middle;
+  margin: 0 0.4em;
+  opacity: 0.7;
+}
