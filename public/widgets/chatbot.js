@@ -109,14 +109,11 @@
         filter: drop-shadow(0 8px 16px rgba(31,41,51,0.14));
       }
 
-      /* Online-Pulse rechts unten auf der Mauer-Cap (im closed-state) */
+      /* Online-Pulse-Dot — nur Dot, kein Text. Sitzt rechts oben am Mönch-Bild */
       .kbot-pulse-badge {
         position: absolute;
-        right: 14px;
-        bottom: 8px;
-        display: flex; align-items: center; gap: 6px;
-        font-size: 11px; font-weight: 600;
-        color: rgba(31,41,51,0.85);
+        right: 16px;
+        top: 14px;
         opacity: 1;
         transition: opacity 240ms;
         pointer-events: none;
@@ -318,7 +315,6 @@
         <img class="kbot-monk-top" src="/widgets/monk-top.png" alt="" />
         <span class="kbot-pulse-badge">
           <span class="kbot-pulse-dot"></span>
-          <span>Frag den Mönch</span>
         </span>
       </div>
       <button class="kbot-close" id="kbot-close" aria-label="Chat schließen">×</button>
