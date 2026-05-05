@@ -74,10 +74,13 @@ function useReveal(opts = {}) {
 
 function Reveal({ children, delay = 0, y = 18, duration = 900, as: Tag = 'div', style, ...rest }) {
   const [ref, visible] = useReveal();
+  // Mobile: kein translateY → keine staggered-stack-order-quirks, nur opacity-fade
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 720;
+  const effY = isMobile ? 0 : y;
   return (
     <Tag ref={ref} style={{
       opacity: visible ? 1 : 0,
-      transform: visible ? 'none' : `translateY(${y}px)`,
+      transform: visible ? 'none' : `translateY(${effY}px)`,
       transition: `opacity ${duration}ms ${KZ_EASE} ${delay}ms, transform ${duration}ms ${KZ_EASE} ${delay}ms`,
       ...style,
     }} {...rest}>
@@ -268,7 +271,7 @@ function KzGlobalStyles() {
       /* Mobile: forciere mehr Card-Stack-Gap, verhindert visual-overlap
          durch Reveal-transform-stacking-quirks */
       @media (max-width: 720px) {
-        .kz-section-grid { row-gap: 40px !important; }
+        .kz-section-grid { row-gap: 64px !important; }
       }
     `}</style>
   );
