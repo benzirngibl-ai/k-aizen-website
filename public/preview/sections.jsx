@@ -72,15 +72,13 @@ function useReveal(opts = {}) {
   return [ref, visible];
 }
 
-function Reveal({ children, delay = 0, y = 28, duration = 1100, as: Tag = 'div', style, ...rest }) {
+function Reveal({ children, delay = 0, y = 18, duration = 900, as: Tag = 'div', style, ...rest }) {
   const [ref, visible] = useReveal();
   return (
     <Tag ref={ref} style={{
       opacity: visible ? 1 : 0,
-      transform: visible ? 'translate3d(0,0,0)' : `translate3d(0, ${y}px, 0)`,
+      transform: visible ? 'none' : `translateY(${y}px)`,
       transition: `opacity ${duration}ms ${KZ_EASE} ${delay}ms, transform ${duration}ms ${KZ_EASE} ${delay}ms`,
-      willChange: 'opacity, transform',
-      isolation: 'isolate',
       ...style,
     }} {...rest}>
       {children}
