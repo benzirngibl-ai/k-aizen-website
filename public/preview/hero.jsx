@@ -528,7 +528,7 @@ function HeroOverlay({ headline, sub }) {
         fontSize: 'clamp(28px, 4.4vw, 56px)',
         lineHeight: 1.0,
         marginTop: 6,
-        color: 'var(--kz-ember)',
+        color: 'var(--kz-ember-text)',
         animation: 'kz-fade-up 900ms var(--ease-out) 520ms both'
       }}>
         {sub}

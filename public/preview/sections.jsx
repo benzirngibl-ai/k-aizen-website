@@ -117,7 +117,7 @@ function RevealHeadline({ text, delay = 0, style, accent }) {
             transform: visible ? 'translateY(0)' : 'translateY(110%)',
             opacity: 1,
             transition: `transform 1100ms ${KZ_EASE} ${delay + i * 70}ms`,
-            color: accent && accent.includes(i) ? 'var(--kz-ember)' : 'inherit',
+            color: accent && accent.includes(i) ? 'var(--kz-ember-text)' : 'inherit',
             willChange: 'transform',
           }}>
             {w}
@@ -479,7 +479,7 @@ function ProblemSection() {
                 <div style={{
                   fontFamily: 'var(--font-display)',
                   fontSize: 28, lineHeight: 1,
-                  color: 'var(--kz-ember)',
+                  color: 'var(--kz-ember-text)',
                   marginBottom: 14, letterSpacing: '-0.02em',
                 }}>{f.num}</div>
                 <h3 style={{
@@ -576,7 +576,7 @@ function AndererWegSection() {
                   fontWeight: 400, lineHeight: 1.1,
                   margin: '0 0 16px',
                   letterSpacing: '-0.015em',
-                  color: 'var(--kz-ember)',
+                  color: 'var(--kz-ember-text)',
                 }}>{p.positiv}</h3>
                 <p style={{
                   fontFamily: 'var(--font-sans)',
@@ -662,7 +662,7 @@ function AngebotSection() {
             }}>
               <div style={{
                 position: 'absolute', top: -12, left: 24,
-                background: 'var(--kz-ember)', color: 'var(--kz-cream)',
+                background: 'var(--kz-ember-deep)', color: 'var(--kz-cream)',
                 padding: '4px 12px', borderRadius: 999,
                 fontSize: 11, fontWeight: 600, textTransform: 'uppercase',
                 letterSpacing: '0.16em',
@@ -812,7 +812,7 @@ function ctaBtnStyle({ ember = false } = {}) {
   return {
     fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 600,
     padding: '12px 20px',
-    background: ember ? 'var(--kz-ember)' : 'var(--kz-charcoal)',
+    background: ember ? 'var(--kz-ember-deep)' : 'var(--kz-charcoal)',
     color: 'var(--kz-cream)',
     borderRadius: 8, textDecoration: 'none',
     display: 'inline-flex', alignItems: 'center', gap: 8,
@@ -999,7 +999,7 @@ function VertrauenSection() {
                 <div style={{
                   fontFamily: 'var(--font-display)',
                   fontSize: 28, lineHeight: 1,
-                  color: 'var(--kz-ember)',
+                  color: 'var(--kz-ember-text)',
                   marginBottom: 14, letterSpacing: '-0.02em',
                 }}>{p.num}</div>
                 <h3 style={{
