@@ -76,11 +76,11 @@ function Reveal({ children, delay = 0, y = 28, duration = 1100, as: Tag = 'div',
   const [ref, visible] = useReveal();
   return (
     <Tag ref={ref} style={{
-      position: 'relative',
       opacity: visible ? 1 : 0,
       transform: visible ? 'translate3d(0,0,0)' : `translate3d(0, ${y}px, 0)`,
       transition: `opacity ${duration}ms ${KZ_EASE} ${delay}ms, transform ${duration}ms ${KZ_EASE} ${delay}ms`,
       willChange: 'opacity, transform',
+      isolation: 'isolate',
       ...style,
     }} {...rest}>
       {children}
@@ -317,7 +317,7 @@ function ManifestSection() {
       desc: 'Jeder Festpreis steht auf dieser Seite. Keine Stundenfallen, keine Geheim-Angebote, kein „das müssen wir uns mal anschauen".',
     },
     {
-      leaf: 1, title: 'Übergebbar statt Vertrags-Knebel',
+      leaf: 5, title: 'Übergebbar statt Vertrags-Knebel',
       desc: 'Dein Server, deine Workflows, dein Code. Bei Kündigung gehört dir alles. Übergabe in fünf Werktagen, dokumentiert, jederzeit.',
     },
     {
@@ -421,7 +421,7 @@ function ProblemSection() {
         maxWidth: 1120, margin: '0 auto',
         padding: '0 clamp(24px, 5vw, 64px)',
       }}>
-        <SectionEyebrow leaf={1} label="Vier Fallstricke" />
+        <SectionEyebrow leaf={5} label="Vier Fallstricke" />
         <RevealHeadline
           text="Die meisten KI-Projekte scheitern am Prozess, nicht an der Technik."
           accent={[5, 6]} />
@@ -583,13 +583,24 @@ function AngebotSection() {
       background: 'var(--kz-cream-deep)',
       overflow: 'hidden',
     }}>
-      <Reveal duration={1600} y={40} style={{
-        position: 'absolute',
-        left: '-2%', top: '8%',
-        width: 'min(24vw, 320px)',
-        opacity: 0.78,
-        pointerEvents: 'none',
-      }}>
+      <style>{`
+        .kz-bamboo-decoration {
+          position: absolute;
+          left: -2%; top: 8%;
+          width: min(24vw, 320px);
+          opacity: 0.78;
+          pointer-events: none;
+        }
+        @media (max-width: 720px) {
+          .kz-bamboo-decoration {
+            left: auto; right: -8%;
+            top: auto; bottom: 4%;
+            width: 32vw;
+            opacity: 0.4;
+          }
+        }
+      `}</style>
+      <Reveal duration={1600} y={40} className="kz-bamboo-decoration">
         <img src="/animations/claude-design/sumi-bamboo-full.png" alt=""
           style={{ width: '100%', display: 'block', filter: 'saturate(0.92)' }} />
       </Reveal>
@@ -680,7 +691,7 @@ function AngebotSection() {
               height: '100%',
               display: 'flex', flexDirection: 'column',
             }}>
-              <KzLeaf index={1} size={44} style={{ marginBottom: 16 }} />
+              <KzLeaf index={5} size={44} style={{ marginBottom: 16 }} />
               <h3 style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: 26, fontWeight: 400, lineHeight: 1.15,
@@ -1041,7 +1052,7 @@ function UeberMichSection() {
               <p style={{
                 fontFamily: 'var(--font-sans)', fontSize: 14,
                 color: 'var(--fg-muted)', margin: '4px 0 0',
-              }}>Gründer · Pulscraft Digital · Bayern</p>
+              }}>Gründer · <span style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', color: 'var(--fg)' }}>k-<span style={{ color: 'var(--kz-ember-text)' }}>AI</span>zen</span> · Bayern</p>
             </div>
           </div>
         </Reveal>
@@ -1261,7 +1272,7 @@ function KontaktSection() {
         maxWidth: 1120, margin: '0 auto',
         padding: '0 clamp(24px, 5vw, 64px)',
       }}>
-        <SectionEyebrow leaf={1} label="Kontakt" />
+        <SectionEyebrow leaf={2} label="Kontakt" />
         <RevealHeadline text="Erstgespräch. 30 Minuten. Gratis." accent={[2]} />
 
         <Reveal delay={300}>

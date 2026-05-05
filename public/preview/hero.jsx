@@ -128,6 +128,17 @@ function Branch({ index, total, mouse, onGust }) {
     { left: '-8%', top: '74%', width: '48%', rotate: -2, flip: false, depth: 1.4, scale: 0.75 },
     { left: '46%', top: '-18%', width: '60%', rotate: 6, flip: true, depth: 0.4, scale: 0.9 }];
 
+    // Mobile-Override: Ast top-left repositioniert + verkleinert
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 720;
+    if (isMobile) {
+      const mobilePresets = [
+        { left: '-30%', top: '-12%', width: '90%', rotate: -6, flip: false, depth: 0.6, scale: 0.7 },
+        { left: '20%', top: '-22%', width: '90%', rotate: 8, flip: true, depth: 1.0, scale: 0.6 },
+        { left: '-20%', top: '88%', width: '80%', rotate: -2, flip: false, depth: 1.4, scale: 0.55 },
+        { left: '30%', top: '-25%', width: '95%', rotate: 6, flip: true, depth: 0.4, scale: 0.65 }];
+      return mobilePresets[index % mobilePresets.length];
+    }
+
     return presets[index % presets.length];
   }, [index]);
 
@@ -644,7 +655,7 @@ function App() {
 
   // detect mobile -> reduce
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 720;
-  const effectiveCount = isMobile ? Math.min(80, tweak.petalCount) : tweak.petalCount;
+  const effectiveCount = isMobile ? Math.min(20, tweak.petalCount) : tweak.petalCount;
   const branches = isMobile ? Math.min(2, tweak.branchCount) : tweak.branchCount;
 
   // Measure CTA-Buttons → register als Landing-Zones im Petal-System.

@@ -171,7 +171,10 @@
       p.spriteIdx = this._pickSpriteIndex();
       const variant = this.opts.sprites && this.opts.sprites[p.spriteIdx];
       const baseScale = variant?.scale ?? 0.07;
-      p.s = baseScale * (0.7 + Math.random() * 0.6);
+      // Mobile petals 45% kleiner damit sie nicht den content dominieren
+      const isMobile = typeof window !== 'undefined' && window.innerWidth < 720;
+      const mobileFactor = isMobile ? 0.55 : 1;
+      p.s = baseScale * (0.7 + Math.random() * 0.6) * mobileFactor;
       p.hue = (Math.random() - 0.5) * 18;
       p.opacity = 0.45 + Math.random() * 0.25;
       p.dead = false;
