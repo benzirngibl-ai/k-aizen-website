@@ -344,7 +344,7 @@ function ManifestSection() {
       overflow: 'hidden',
     }}>
       <KzGlobalStyles />
-      <Reveal duration={1600} y={40} style={{
+      <Reveal duration={1600} y={40} className="kz-cherry-decoration" style={{
         position: 'absolute',
         right: '-4%', bottom: '-2%',
         width: 'min(40vw, 480px)',
@@ -354,6 +354,11 @@ function ManifestSection() {
         <img src="/animations/claude-design/sumi-cherry-tree.png" alt=""
           style={{ width: '100%', display: 'block', filter: 'saturate(0.92)' }} />
       </Reveal>
+      <style>{`
+        @media (max-width: 720px) {
+          .kz-cherry-decoration { display: none; }
+        }
+      `}</style>
 
       <div style={{
         maxWidth: 1120, margin: '0 auto',
@@ -605,12 +610,7 @@ function AngebotSection() {
           pointer-events: none;
         }
         @media (max-width: 720px) {
-          .kz-bamboo-decoration {
-            left: auto; right: -8%;
-            top: auto; bottom: 4%;
-            width: 32vw;
-            opacity: 0.4;
-          }
+          .kz-bamboo-decoration { display: none; }
         }
       `}</style>
       <Reveal duration={1600} y={40} className="kz-bamboo-decoration">
