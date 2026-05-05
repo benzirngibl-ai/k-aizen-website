@@ -17,6 +17,8 @@
 
   const SUMI_INK = '#1F2933';
   const EMBER = '#E85A2B';
+  const EMBER_TEXT = '#B23A14'; // WCAG-AA body text variant
+  const EMBER_DEEP = '#C44419'; // hover/press
   const CREAM = '#F5F0E8';
 
   /** @type {Array<{role:'user'|'assistant', content:string}>} */
@@ -215,7 +217,7 @@
         align-self: flex-start;
         border-bottom-left-radius: 4px;
       }
-      .kbot-msg.assistant a { color: ${EMBER}; text-decoration: underline; }
+      .kbot-msg.assistant a { color: ${EMBER_TEXT}; text-decoration: underline; }
       .kbot-msg.error {
         background: rgba(232,90,43,0.14);
         color: #B53C12; border: 1px solid rgba(232,90,43,0.5);
@@ -270,7 +272,7 @@
         transition: background 160ms;
       }
       .kbot-input-row button:disabled { opacity: 0.4; cursor: not-allowed; }
-      .kbot-input-row button:not(:disabled):hover { background: ${EMBER}; }
+      .kbot-input-row button:not(:disabled):hover { background: ${EMBER_DEEP}; }
 
       .kbot-typing {
         align-self: flex-start;
@@ -292,62 +294,28 @@
         30% { opacity: 1; transform: translateY(-3px); }
       }
 
-      /* ============== MOBILE: closed = round button, open = full panel ============== */
+      /* ============== MOBILE: kleinerer Mönch rechts unten, kein Round-Button ============== */
       @media (max-width: 700px) {
-        /* Closed state: kompakter 64px round button — nur Mönch-Kopf sichtbar */
+        /* Closed: kleinerer Mönch (200px statt 280px), gleiche Optik wie Desktop */
         #kaizen-bot-root {
-          right: 14px;
-          bottom: 14px;
-          width: 64px;
-          border-radius: 50%;
-          overflow: hidden;
-          box-shadow: 0 12px 28px -6px rgba(31,41,51,0.30), 0 4px 10px rgba(31,41,51,0.16);
+          right: 12px;
+          bottom: 0;
+          width: 200px;
         }
-        /* Mönch-Image: zoom auf head/face area mit object-fit */
-        #kaizen-bot-root:not(.open) .kbot-monk-top {
-          width: 100% !important;
-          height: 64px !important;
-          object-fit: cover !important;
-          object-position: 50% 18% !important;
-          filter: none !important;
-        }
-        /* Pulse-dot dezenter im round-button */
-        #kaizen-bot-root:not(.open) .kbot-pulse-badge {
-          right: 6px;
-          top: 6px;
-        }
-
-        /* Open state: docked-bottom-panel, fast full-width */
+        /* Open: full-width modal docked-bottom (Mönch oben + chat drunter) */
         #kaizen-bot-root.open {
           width: calc(100vw - 24px);
-          right: 12px; bottom: 12px;
-          border-radius: 16px 16px 0 0;
-          box-shadow: 0 -16px 40px -8px rgba(31,41,51,0.30);
-        }
-        /* Im open-state: Mönch zurück auf normale Größe */
-        #kaizen-bot-root.open .kbot-monk-top {
-          width: 100% !important;
-          margin-left: 0;
-          margin-top: 0;
-          filter: drop-shadow(0 8px 16px rgba(31,41,51,0.14)) !important;
-        }
-        #kaizen-bot-root.open .kbot-pulse-badge {
-          right: 16px; top: 14px;
+          right: 12px;
         }
         #kaizen-bot-root.open .kbot-expand {
           height: min(58vh, 380px);
         }
 
-        /* Bubble auf mobile kleiner + bessere position */
+        /* Bubble kleiner + Position auf mobile */
         .kbot-bubble {
           width: 130px !important;
-          right: 80% !important;
-          bottom: 90% !important;
-        }
-        #kaizen-bot-root:not(.open) .kbot-bubble {
-          /* bubble bezieht sich auf den round-button → stärker links */
-          right: 60% !important;
-          bottom: 50% !important;
+          bottom: 92% !important;
+          right: 50% !important;
         }
       }
     `;
@@ -373,7 +341,7 @@
           <div class="kbot-messages" id="kbot-messages"></div>
           <div class="kbot-suggestions" id="kbot-suggestions"></div>
           <div class="kbot-input-row">
-            <input type="text" id="kbot-input" placeholder="Frage stellen…" maxlength="2000" autocomplete="off">
+            <input type="text" id="kbot-input" aria-label="Deine Frage an k-AIzen" placeholder="Frage stellen…" maxlength="2000" autocomplete="off">
             <button id="kbot-send" aria-label="Senden">→</button>
           </div>
         </div>

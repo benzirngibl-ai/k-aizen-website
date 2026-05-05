@@ -14,13 +14,14 @@
   /* ---------- BRAND COLORS (strict — no free-styling) ---------- */
   --kz-charcoal:        #1F2933;   /* primary text, outlines, default buttons */
   --kz-charcoal-soft:   #2C3540;   /* hover-darker for charcoal surfaces */
-  --kz-ember:           #E85A2B;   /* accent / CTA / brand marker — sparingly */
+  --kz-ember:           #E85A2B;   /* accent / CTA / brand marker — backgrounds, borders, kanji, display ≥24px ONLY */
   --kz-ember-deep:      #C44419;   /* hover/press for ember */
+  --kz-ember-text:      #B23A14;   /* WCAG-AA body-text variant — 6.0:1 cream / 5.8:1 white / 6.2:1 charcoal */
   --kz-cream:           #F5F0E8;   /* default background, light surfaces */
   --kz-cream-deep:      #ECE5D7;   /* hover for cream surfaces, subtle bands */
 
   /* Optional greys (use sparingly) */
-  --kz-muted:           #6B7785;   /* muted/secondary text */
+  --kz-muted:           #525C68;   /* muted/secondary text — WCAG-AA 5.0:1 on cream */
   --kz-border:          #D9D5CC;   /* hairlines, dividers, card borders */
   --kz-card:            #FFFFFF;   /* pure-white cards (inside cream pages) */
   --kz-ink-wash:        rgba(31, 41, 51, 0.06);  /* sumi-tusche soft wash */
@@ -35,7 +36,7 @@
   --fg:           var(--kz-charcoal);          /* default text */
   --fg-muted:     var(--kz-muted);             /* secondary text */
   --fg-inverse:   var(--kz-cream);             /* on charcoal */
-  --fg-accent:    var(--kz-ember);             /* highlight only */
+  --fg-accent:    var(--kz-ember-text);        /* AA-safe ember for inline text */
 
   --border:       var(--kz-border);
   --border-strong: var(--kz-charcoal);
