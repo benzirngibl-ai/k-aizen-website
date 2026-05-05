@@ -613,7 +613,11 @@ function AngebotSection() {
           pointer-events: none;
         }
         @media (max-width: 720px) {
-          .kz-bamboo-decoration { display: none; }
+          .kz-bamboo-decoration {
+            width: 32vw;
+            opacity: 0.55;
+            top: 2%;
+          }
         }
       `}</style>
       <Reveal duration={1600} y={40} className="kz-bamboo-decoration">
@@ -643,7 +647,7 @@ function AngebotSection() {
           </p>
         </Reveal>
 
-        <div className="kz-section-grid" style={{
+        <div className="kz-section-grid kz-pricing-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
           gap: 'clamp(20px, 2.5vw, 28px)',
@@ -777,12 +781,27 @@ function AngebotSection() {
           </Reveal>
         </div>
 
+        <style>{`
+          .kz-stage-gate-note {
+            margin: clamp(72px, 9vw, 96px) auto 0;
+            max-width: 640px;
+            padding: 24px 28px 0;
+            border-top: 1px solid rgba(31,41,51,0.14);
+            text-align: center;
+          }
+          @media (max-width: 720px) {
+            .kz-stage-gate-note {
+              margin-top: 88px;
+              padding-top: 28px;
+            }
+          }
+        `}</style>
         <Reveal delay={500}>
-          <p style={{
+          <p className="kz-stage-gate-note" style={{
             fontFamily: 'var(--font-display)', fontStyle: 'italic',
             fontSize: 'clamp(15px, 1.4vw, 18px)',
             color: 'var(--fg-muted)',
-            margin: '40px 0 0', textAlign: 'center',
+            lineHeight: 1.55,
           }}>
             Audit-Honorar wird zu 50% auf ein Setup-Paket angerechnet,
             wenn du innerhalb 30 Tagen nach Audit-Lieferung buchst.
