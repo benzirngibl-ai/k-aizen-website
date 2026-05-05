@@ -604,19 +604,7 @@ function HeroOverlay({ headline, sub }) {
         </a>
       </div>
 
-      {/* Trust-Trio */}
-      <div style={{
-        marginTop: 28,
-        fontFamily: 'var(--font-sans)', fontSize: 13,
-        color: 'var(--fg-muted)',
-        letterSpacing: '0.04em',
-        animation: 'kz-fade-up 1000ms var(--ease-out) 1100ms both'
-      }}>
-        7 Jahre Mobility-Praxis · Eigener Stack auf Hetzner · Kein Lock-in
-      </div>
-
-      {/* Scroll cue — full-width container, content centered via flex.
-          Auf Mobile hidden weil Trust-Trio den Platz braucht. */}
+      {/* Scroll cue — full-width container, content centered via flex. */}
       <div className="kz-scroll-cue" style={{
         position: 'absolute', bottom: 30, left: 0, right: 0,
         display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
