@@ -74,12 +74,13 @@
       }
 
       /* Sprech-Blasen — links überhalb vom Mönch.
-         Tail unten-rechts der Bubble zeigt zum Mönch. */
+         Tail unten-rechts der Bubble zeigt nach unten-rechts auf den Mönch. */
       .kbot-bubble {
         position: absolute;
-        bottom: 70%;       /* anchored slightly above monk's body */
-        right: 38%;        /* bubble extends left from 38% from root-right */
-        width: 170px;
+        bottom: 100%;      /* bubble komplett oberhalb root */
+        margin-bottom: -10px; /* leichter overlap nach unten */
+        right: 55%;        /* tail-Anchor links der Mönch-Mitte → bubble extends nach links */
+        width: 160px;
         height: auto;
         pointer-events: none;
         opacity: 0;
@@ -168,7 +169,7 @@
         transition: height 560ms cubic-bezier(0.22, 1, 0.36, 1);
       }
       #kaizen-bot-root.open .kbot-expand {
-        height: min(440px, calc(100vh - 220px));
+        height: min(380px, calc(100vh - 240px));
       }
 
       /* Chat-Area — Mauer-Tile als Background */
@@ -194,7 +195,7 @@
       .kbot-messages {
         flex: 1;
         overflow-y: auto;
-        padding: 12px 16px 6px;
+        padding: 14px 26px 6px;
         display: flex; flex-direction: column;
         gap: 9px;
       }
@@ -225,7 +226,7 @@
       }
 
       .kbot-suggestions {
-        padding: 0 14px 6px;
+        padding: 0 26px 6px;
         display: flex; flex-wrap: wrap; gap: 5px;
       }
       .kbot-suggestions button {
@@ -246,7 +247,7 @@
       }
 
       .kbot-input-row {
-        padding: 8px 12px 10px;
+        padding: 8px 24px 10px;
         display: flex; gap: 6px;
         flex-shrink: 0;
       }
@@ -393,10 +394,10 @@
   }
 
   function scheduleBubbles() {
-    // Welcome: nach 3s, hide nach ~5s
-    setTimeout(() => showBubble('welcome', 5500), 3000);
-    // Hilfe: nach 20s erstes Mal
-    setTimeout(() => showBubble('help', 5500), 20000);
+    // Welcome: nach 8s, hide nach 5.5s
+    setTimeout(() => showBubble('welcome', 5500), 8000);
+    // Hilfe: nach 25s erstes Mal
+    setTimeout(() => showBubble('help', 5500), 25000);
     // Hilfe danach: alle 60-120s random
     const scheduleNext = () => {
       const delay = 60000 + Math.random() * 60000;
@@ -405,7 +406,7 @@
         scheduleNext();
       }, delay);
     };
-    setTimeout(scheduleNext, 30000); // start after first help-bubble window
+    setTimeout(scheduleNext, 35000); // start after first help-bubble window
   }
 
   function openModal() {
