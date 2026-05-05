@@ -261,15 +261,14 @@ function SectionDivider() {
   );
 }
 
-// ---------- Reusable: Leaf-Icon (ersetzt vorherige Kanji als Akzent) ----------
+// ---------- Reusable: Leaf-Icon (Sumi-Tusche-Sprites als Brand-Akzent) ----------
 const KZ_LEAVES = [
-  '/animations/claude-design/leaf-sakura.png',
-  '/animations/claude-design/leaf-maple-red.png',
-  '/animations/claude-design/leaf-maple-green.png',
-  '/animations/claude-design/leaf-oval-yellow.png',
-  '/animations/claude-design/leaf-oval-green.png',
-  '/animations/claude-design/leaf-yellow-2.png',
-  '/animations/claude-design/leaf-branch-green.png',
+  '/icons/icon-sakura-branch.png',   // 0 — rosa Sakura mit grünen Blättern
+  '/icons/icon-maple-red.png',       // 1 — rotes Ahorn-Bouquet
+  '/icons/icon-ginkgo.png',          // 2 — gelbe Ginkgo-Blätter
+  '/icons/icon-plum-blossom.png',    // 3 — weiß-rosa Pflaumenblüten
+  '/icons/icon-camellia.png',        // 4 — rote Kamelien
+  '/icons/icon-pine.png',            // 5 — Kiefernzweig mit Zapfen
 ];
 function KzLeaf({ index = 0, size = 28, opacity = 0.95, style }) {
   const src = KZ_LEAVES[((index % KZ_LEAVES.length) + KZ_LEAVES.length) % KZ_LEAVES.length];

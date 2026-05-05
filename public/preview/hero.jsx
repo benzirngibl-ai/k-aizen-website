@@ -610,14 +610,15 @@ function HeroOverlay({ headline, sub }) {
         12+ Jahre Mobility-IT · Eigener Stack auf Hetzner · Kein Lock-in
       </div>
 
-      {/* Scroll cue */}
+      {/* Scroll cue — full-width container, content centered via flex */}
       <div style={{
-        position: 'absolute', bottom: 30, left: '50%', transform: 'translateX(-50%)',
+        position: 'absolute', bottom: 30, left: 0, right: 0,
         display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
         fontFamily: 'var(--font-sans)', fontSize: 11, fontWeight: 600,
         textTransform: 'uppercase', letterSpacing: '0.2em',
         color: 'var(--fg-muted)',
-        animation: 'kz-fade-up 1000ms var(--ease-out) 1500ms both'
+        animation: 'kz-fade-up 1000ms var(--ease-out) 1500ms both',
+        pointerEvents: 'none'
       }}>
         <span>Scrollen</span>
         <div style={{
