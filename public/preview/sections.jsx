@@ -261,6 +261,19 @@ function SectionDivider() {
   );
 }
 
+// ---------- Global Mobile-Style-Inject ----------
+function KzGlobalStyles() {
+  return (
+    <style>{`
+      /* Mobile: forciere mehr Card-Stack-Gap, verhindert visual-overlap
+         durch Reveal-transform-stacking-quirks */
+      @media (max-width: 720px) {
+        .kz-section-grid { row-gap: 40px !important; }
+      }
+    `}</style>
+  );
+}
+
 // ---------- Reusable: Leaf-Icon (Sumi-Tusche-Sprites als Brand-Akzent) ----------
 const KZ_LEAVES = [
   '/icons/icon-sakura-branch.png',   // 0 — rosa Sakura mit grünen Blättern
@@ -308,6 +321,8 @@ function SectionEyebrow({ leaf = 0, label, align = 'left' }) {
 // SECTION 02 — Manifest (3 Prinzipien)
 // ============================================================
 function ManifestSection() {
+  // KzGlobalStyles wird hier gerendert weil ManifestSection als erstes
+  // Section nach dem Hero kommt — Style-Tag injiziert sich einmalig in HEAD
   const principles = [
     {
       leaf: 0, title: 'Preise offen statt „auf Anfrage"',
@@ -328,6 +343,7 @@ function ManifestSection() {
       padding: 'clamp(80px, 14vh, 180px) 0 clamp(80px, 14vh, 160px)',
       overflow: 'hidden',
     }}>
+      <KzGlobalStyles />
       <Reveal duration={1600} y={40} style={{
         position: 'absolute',
         right: '-4%', bottom: '-2%',
@@ -348,7 +364,7 @@ function ManifestSection() {
         <RevealHeadline text="Drei Prinzipien. Keine Ausnahmen." accent={[1]} />
 
         <Reveal delay={300} style={{ marginTop: 64 }}>
-          <div style={{
+          <div className="kz-section-grid" style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
             gap: 'clamp(20px, 2.5vw, 32px)',
@@ -438,7 +454,7 @@ function ProblemSection() {
           </p>
         </Reveal>
 
-        <div style={{
+        <div className="kz-section-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
           gap: 'clamp(20px, 2.5vw, 32px)',
@@ -528,7 +544,7 @@ function AndererWegSection() {
           </p>
         </Reveal>
 
-        <div style={{
+        <div className="kz-section-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
           gap: 'clamp(24px, 3vw, 48px)',
@@ -624,7 +640,7 @@ function AngebotSection() {
           </p>
         </Reveal>
 
-        <div style={{
+        <div className="kz-section-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
           gap: 'clamp(20px, 2.5vw, 28px)',
@@ -954,7 +970,7 @@ function VertrauenSection() {
           </p>
         </Reveal>
 
-        <div style={{
+        <div className="kz-section-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
           gap: 'clamp(28px, 3vw, 48px)',
@@ -1285,7 +1301,7 @@ function KontaktSection() {
           </p>
         </Reveal>
 
-        <div style={{
+        <div className="kz-section-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
           gap: 'clamp(20px, 2.5vw, 28px)',
