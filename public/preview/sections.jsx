@@ -76,6 +76,7 @@ function Reveal({ children, delay = 0, y = 28, duration = 1100, as: Tag = 'div',
   const [ref, visible] = useReveal();
   return (
     <Tag ref={ref} style={{
+      position: 'relative',
       opacity: visible ? 1 : 0,
       transform: visible ? 'translate3d(0,0,0)' : `translate3d(0, ${y}px, 0)`,
       transition: `opacity ${duration}ms ${KZ_EASE} ${delay}ms, transform ${duration}ms ${KZ_EASE} ${delay}ms`,
@@ -107,6 +108,8 @@ function RevealHeadline({ text, delay = 0, style, accent }) {
           overflow: 'hidden',
           marginRight: '0.28em',
           verticalAlign: 'top',
+          paddingBottom: '0.18em',
+          marginBottom: '-0.18em',
         }}>
           <span style={{
             display: 'inline-block',
@@ -260,8 +263,33 @@ function SectionDivider() {
   );
 }
 
+// ---------- Reusable: Leaf-Icon (ersetzt vorherige Kanji als Akzent) ----------
+const KZ_LEAVES = [
+  '/animations/claude-design/leaf-sakura.png',
+  '/animations/claude-design/leaf-maple-red.png',
+  '/animations/claude-design/leaf-maple-green.png',
+  '/animations/claude-design/leaf-oval-yellow.png',
+  '/animations/claude-design/leaf-oval-green.png',
+  '/animations/claude-design/leaf-yellow-2.png',
+  '/animations/claude-design/leaf-branch-green.png',
+];
+function KzLeaf({ index = 0, size = 28, opacity = 0.95, style }) {
+  const src = KZ_LEAVES[((index % KZ_LEAVES.length) + KZ_LEAVES.length) % KZ_LEAVES.length];
+  return (
+    <img src={src} alt="" aria-hidden="true" style={{
+      width: size, height: size,
+      objectFit: 'contain',
+      opacity,
+      display: 'inline-block',
+      verticalAlign: 'middle',
+      flexShrink: 0,
+      ...style,
+    }} />
+  );
+}
+
 // ---------- Reusable: SectionEyebrow ----------
-function SectionEyebrow({ kanji, label, align = 'left' }) {
+function SectionEyebrow({ leaf = 0, label, align = 'left' }) {
   return (
     <Reveal>
       <div style={{
@@ -272,7 +300,7 @@ function SectionEyebrow({ kanji, label, align = 'left' }) {
         justifyContent: align === 'right' ? 'flex-end' : 'flex-start',
       }}>
         <LogoMark size={28} opacity={0.75} />
-        <span className="kz-kanji" style={{ color: 'var(--kz-ember)' }}>{kanji}</span>
+        <KzLeaf index={leaf} size={26} />
         <span>{label}</span>
       </div>
     </Reveal>
@@ -285,15 +313,15 @@ function SectionEyebrow({ kanji, label, align = 'left' }) {
 function ManifestSection() {
   const principles = [
     {
-      kanji: '価', title: 'Preise offen statt „auf Anfrage"',
+      leaf: 0, title: 'Preise offen statt „auf Anfrage"',
       desc: 'Jeder Festpreis steht auf dieser Seite. Keine Stundenfallen, keine Geheim-Angebote, kein „das müssen wir uns mal anschauen".',
     },
     {
-      kanji: '流', title: 'Übergebbar statt Vertrags-Knebel',
+      leaf: 1, title: 'Übergebbar statt Vertrags-Knebel',
       desc: 'Dein Server, deine Workflows, dein Code. Bei Kündigung gehört dir alles. Übergabe in fünf Werktagen, dokumentiert, jederzeit.',
     },
     {
-      kanji: '実', title: 'Liefern statt Workshops',
+      leaf: 3, title: 'Liefern statt Workshops',
       desc: 'Ich rede nicht über KI-Strategien. Ich baue Tools, die nach dem Projekt laufen. Erfolg messen wir in Stunden, die dein Team zurück hat.',
     },
   ];
@@ -319,7 +347,7 @@ function ManifestSection() {
         padding: '0 clamp(24px, 5vw, 64px)',
         position: 'relative',
       }}>
-        <SectionEyebrow kanji="禅" label="Manifest" />
+        <SectionEyebrow leaf={0} label="Manifest" />
         <RevealHeadline text="Drei Prinzipien. Keine Ausnahmen." accent={[1]} />
 
         <Reveal delay={300} style={{ marginTop: 64 }}>
@@ -337,12 +365,7 @@ function ManifestSection() {
                   height: '100%',
                   display: 'flex', flexDirection: 'column',
                 }}>
-                  <div style={{
-                    fontFamily: 'var(--font-jp)',
-                    fontSize: 48, lineHeight: 1,
-                    color: 'var(--kz-ember)', opacity: 0.85,
-                    marginBottom: 18,
-                  }}>{p.kanji}</div>
+                  <KzLeaf index={p.leaf} size={56} style={{ marginBottom: 18 }} />
                   <h3 style={{
                     fontFamily: 'var(--font-display)',
                     fontSize: 'clamp(20px, 2vw, 24px)',
@@ -398,7 +421,7 @@ function ProblemSection() {
         maxWidth: 1120, margin: '0 auto',
         padding: '0 clamp(24px, 5vw, 64px)',
       }}>
-        <SectionEyebrow kanji="罠" label="Vier Fallstricke" />
+        <SectionEyebrow leaf={1} label="Vier Fallstricke" />
         <RevealHeadline
           text="Die meisten KI-Projekte scheitern am Prozess, nicht an der Technik."
           accent={[5, 6]} />
@@ -491,7 +514,7 @@ function AndererWegSection() {
         maxWidth: 1120, margin: '0 auto',
         padding: '0 clamp(24px, 5vw, 64px)',
       }}>
-        <SectionEyebrow kanji="道" label="Der andere Weg" />
+        <SectionEyebrow leaf={2} label="Der andere Weg" />
         <RevealHeadline text="Es gibt einen anderen Weg." accent={[3]} />
 
         <Reveal delay={300}>
@@ -576,7 +599,7 @@ function AngebotSection() {
         padding: '0 clamp(24px, 5vw, 64px)',
         position: 'relative',
       }}>
-        <SectionEyebrow kanji="提" label="Angebot" />
+        <SectionEyebrow leaf={3} label="Angebot" />
         <RevealHeadline text="Drei Stufen. Festpreise. Keine versteckten Kosten." accent={[2]} />
 
         <Reveal delay={300}>
@@ -617,11 +640,7 @@ function AngebotSection() {
                 fontSize: 11, fontWeight: 600, textTransform: 'uppercase',
                 letterSpacing: '0.16em',
               }}>Empfohlener Einstieg</div>
-              <div style={{
-                fontFamily: 'var(--font-jp)',
-                fontSize: 36, color: 'var(--kz-ember)',
-                marginBottom: 16,
-              }}>始</div>
+              <KzLeaf index={0} size={44} style={{ marginBottom: 16 }} />
               <h3 style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: 26, fontWeight: 400, lineHeight: 1.15,
@@ -661,11 +680,7 @@ function AngebotSection() {
               height: '100%',
               display: 'flex', flexDirection: 'column',
             }}>
-              <div style={{
-                fontFamily: 'var(--font-jp)',
-                fontSize: 36, color: 'var(--kz-ember)',
-                marginBottom: 16,
-              }}>建</div>
+              <KzLeaf index={1} size={44} style={{ marginBottom: 16 }} />
               <h3 style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: 26, fontWeight: 400, lineHeight: 1.15,
@@ -705,11 +720,7 @@ function AngebotSection() {
               display: 'flex', flexDirection: 'column',
               border: '1px solid var(--kz-border)',
             }}>
-              <div style={{
-                fontFamily: 'var(--font-jp)',
-                fontSize: 36, color: 'var(--kz-ember)',
-                marginBottom: 16,
-              }}>続</div>
+              <KzLeaf index={3} size={44} style={{ marginBottom: 16 }} />
               <h3 style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: 26, fontWeight: 400, lineHeight: 1.15,
@@ -806,7 +817,7 @@ function MethodikSection() {
         maxWidth: 980, margin: '0 auto',
         padding: '0 clamp(24px, 5vw, 64px)',
       }}>
-        <SectionEyebrow kanji="観" label="So arbeite ich" />
+        <SectionEyebrow leaf={4} label="So arbeite ich" />
         <RevealHeadline
           text="Beobachten statt Beraten."
           accent={[0]} />
@@ -910,7 +921,7 @@ function VertrauenSection() {
         maxWidth: 1120, margin: '0 auto',
         padding: '0 clamp(24px, 5vw, 64px)',
       }}>
-        <SectionEyebrow kanji="信" label="Vertrauen" />
+        <SectionEyebrow leaf={5} label="Vertrauen" />
         <RevealHeadline text="Deine Daten bleiben in Deutschland. Und bei dir." accent={[3, 4]} />
 
         <Reveal delay={300}>
@@ -992,7 +1003,7 @@ function UeberMichSection() {
         padding: '0 clamp(24px, 5vw, 64px)',
         position: 'relative', zIndex: 1,
       }}>
-        <SectionEyebrow kanji="人" label="Über mich" />
+        <SectionEyebrow leaf={6} label="Über mich" />
         <RevealHeadline text="Hands-On-Bauer statt KI-Theoretiker." accent={[0, 1]} />
 
         <Reveal delay={200}>
@@ -1171,7 +1182,7 @@ function FaqSection() {
         maxWidth: 880, margin: '0 auto',
         padding: '0 clamp(24px, 5vw, 64px)',
       }}>
-        <SectionEyebrow kanji="問" label="Häufige Fragen" />
+        <SectionEyebrow leaf={0} label="Häufige Fragen" />
         <RevealHeadline text="Was Inhaber vor dem Erstgespräch wissen wollen." accent={[5, 6]} />
 
         <Reveal delay={300}>
@@ -1243,7 +1254,7 @@ function KontaktSection() {
         maxWidth: 1120, margin: '0 auto',
         padding: '0 clamp(24px, 5vw, 64px)',
       }}>
-        <SectionEyebrow kanji="話" label="Kontakt" />
+        <SectionEyebrow leaf={1} label="Kontakt" />
         <RevealHeadline text="Erstgespräch. 30 Minuten. Gratis." accent={[2]} />
 
         <Reveal delay={300}>
@@ -1266,7 +1277,7 @@ function KontaktSection() {
         }}>
           <Reveal delay={200}>
             <div style={kontaktKarte()}>
-              <div style={kontaktKanji()}>暦</div>
+              <KzLeaf index={4} size={44} style={{ marginBottom: 16 }} />
               <h3 style={kontaktH3()}>Erstgespräch</h3>
               <p style={kontaktDesc()}>
                 30 Minuten, gratis, per Video oder Telefon. Wir klären, ob wir
@@ -1280,7 +1291,7 @@ function KontaktSection() {
 
           <Reveal delay={320}>
             <div style={kontaktKarte()}>
-              <div style={kontaktKanji()}>話</div>
+              <KzLeaf index={5} size={44} style={{ marginBottom: 16 }} />
               <h3 style={kontaktH3()}>WhatsApp</h3>
               <p style={kontaktDesc()}>
                 Schnelle Frage zwischendurch? Schreib mir direkt.
@@ -1295,7 +1306,7 @@ function KontaktSection() {
 
           <Reveal delay={440}>
             <div style={kontaktKarte()}>
-              <div style={kontaktKanji()}>書</div>
+              <KzLeaf index={6} size={44} style={{ marginBottom: 16 }} />
               <h3 style={kontaktH3()}>Mail / Formular</h3>
               <p style={kontaktDesc()}>
                 Für ausführliche Anfragen. Du beschreibst deine Situation,

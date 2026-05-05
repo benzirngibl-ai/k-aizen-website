@@ -300,6 +300,7 @@ function Header() {
   const KZ_EASE = 'cubic-bezier(0.22, 1, 0.36, 1)';
   const [hidden, setHidden] = React.useState(false);
   const [atTop, setAtTop] = React.useState(true);
+  const [menuOpen, setMenuOpen] = React.useState(false);
   React.useEffect(() => {
     let last = window.scrollY || 0;
     let raf = 0;
@@ -323,48 +324,136 @@ function Header() {
     fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 500,
     transition: `opacity 600ms ${KZ_EASE}, transform 600ms ${KZ_EASE}`,
   };
+  const navItems = [
+    { label: 'Audit', href: '/audit' },
+    { label: 'Preise', href: '/pricing' },
+    { label: 'Über mich', href: '/about' },
+    { label: 'FAQ', href: '/#faq' },
+    { label: 'Kontakt', href: '/kontakt' },
+    { label: 'Erstgespräch', href: '/erstgespraech' },
+  ];
   return (
-    <header style={{
-      position: 'fixed', top: 0, left: 0, right: 0, height: 88,
-      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      padding: '0 32px', zIndex: 50,
-      background: atTop ? 'rgba(245,240,232,0.0)' : 'rgba(245,240,232,0.88)',
-      borderBottom: atTop ? '1px solid transparent' : '1px solid var(--kz-border)',
-      backdropFilter: atTop ? 'none' : 'blur(12px)',
-      WebkitBackdropFilter: atTop ? 'none' : 'blur(12px)',
-      transform: hidden ? 'translateY(-100%)' : 'translateY(0)',
-      transition: `transform 520ms ${KZ_EASE}, background 420ms ${KZ_EASE}, border-color 420ms ${KZ_EASE}, backdrop-filter 420ms ${KZ_EASE}`,
-      willChange: 'transform',
-    }}>
-      <a href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'var(--fg)' }} aria-label="k-AIzen Startseite">
-        <img src="/animations/claude-design/logo-full.png" alt="k-AIzen"
-          style={{ height: 56, width: 'auto', display: 'block' }} />
-      </a>
-      <nav style={{ display: 'flex', gap: 24 }} aria-label="Hauptnavigation">
-        {[
-          { label: 'Audit', href: '/audit' },
-          { label: 'Preise', href: '/pricing' },
-          { label: 'Über mich', href: '/about' },
-          { label: 'FAQ', href: '/#faq' },
-          { label: 'Kontakt', href: '/kontakt' },
-        ].map((item, i) => (
-          <a key={item.label} href={item.href} style={{
-            ...linkBase,
-            transitionDelay: `${i * 60}ms`,
-            opacity: hidden ? 0 : 1,
-            transform: hidden ? 'translateY(-6px)' : 'translateY(0)',
-          }}>{item.label}</a>
-        ))}
-      </nav>
-      <a href="/audit" style={{
-        fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 600,
-        padding: '8px 16px',
-        background: 'var(--kz-charcoal)', color: 'var(--kz-cream)',
-        borderRadius: 8, textDecoration: 'none',
+    <>
+      <style>{`
+        @media (max-width: 860px) {
+          .kz-header-nav { display: none !important; }
+          .kz-header-burger { display: flex !important; }
+          .kz-header-cta-desktop { display: none !important; }
+          .kz-header { padding: 0 16px !important; }
+        }
+        @media (min-width: 861px) {
+          .kz-header-burger { display: none !important; }
+          .kz-mobile-menu { display: none !important; }
+        }
+      `}</style>
+      <header className="kz-header" style={{
+        position: 'fixed', top: 0, left: 0, right: 0, height: 88,
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        padding: '0 32px', zIndex: 50,
+        background: atTop ? 'rgba(245,240,232,0.0)' : 'rgba(245,240,232,0.88)',
+        borderBottom: atTop ? '1px solid transparent' : '1px solid var(--kz-border)',
+        backdropFilter: atTop ? 'none' : 'blur(12px)',
+        WebkitBackdropFilter: atTop ? 'none' : 'blur(12px)',
+        transform: hidden ? 'translateY(-100%)' : 'translateY(0)',
+        transition: `transform 520ms ${KZ_EASE}, background 420ms ${KZ_EASE}, border-color 420ms ${KZ_EASE}, backdrop-filter 420ms ${KZ_EASE}`,
+        willChange: 'transform',
       }}>
-        Audit buchen
-      </a>
-    </header>
+        <a href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'var(--fg)' }} aria-label="k-AIzen Startseite">
+          <img src="/animations/claude-design/logo-full.png" alt="k-AIzen"
+            style={{ height: 48, width: 'auto', display: 'block' }} />
+        </a>
+        <nav className="kz-header-nav" style={{ display: 'flex', gap: 22 }} aria-label="Hauptnavigation">
+          {navItems.slice(0, 5).map((item, i) => (
+            <a key={item.label} href={item.href} style={{
+              ...linkBase,
+              transitionDelay: `${i * 60}ms`,
+              opacity: hidden ? 0 : 1,
+              transform: hidden ? 'translateY(-6px)' : 'translateY(0)',
+            }}>{item.label}</a>
+          ))}
+        </nav>
+        <a href="/audit" className="kz-header-cta-desktop" style={{
+          fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 600,
+          padding: '8px 16px',
+          background: 'var(--kz-charcoal)', color: 'var(--kz-cream)',
+          borderRadius: 8, textDecoration: 'none',
+        }}>
+          Audit buchen
+        </a>
+        <button className="kz-header-burger" onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}
+          aria-expanded={menuOpen}
+          style={{
+            display: 'none', alignItems: 'center', justifyContent: 'center',
+            width: 44, height: 44, padding: 0,
+            background: 'transparent', border: 'none',
+            cursor: 'pointer',
+          }}>
+          <span style={{
+            display: 'flex', flexDirection: 'column', gap: 5,
+            width: 24,
+          }}>
+            <span style={{
+              height: 2, width: '100%', background: 'var(--fg)', borderRadius: 1,
+              transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none',
+              transition: `transform 280ms ${KZ_EASE}`,
+            }} />
+            <span style={{
+              height: 2, width: '100%', background: 'var(--fg)', borderRadius: 1,
+              opacity: menuOpen ? 0 : 1,
+              transition: `opacity 200ms ${KZ_EASE}`,
+            }} />
+            <span style={{
+              height: 2, width: '100%', background: 'var(--fg)', borderRadius: 1,
+              transform: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none',
+              transition: `transform 280ms ${KZ_EASE}`,
+            }} />
+          </span>
+        </button>
+      </header>
+
+      {/* Mobile-Menü Overlay */}
+      <div className="kz-mobile-menu" style={{
+        position: 'fixed', top: 88, left: 0, right: 0,
+        background: 'rgba(245,240,232,0.98)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        zIndex: 49,
+        padding: menuOpen ? '24px 16px 32px' : '0 16px',
+        maxHeight: menuOpen ? 'calc(100vh - 88px)' : '0',
+        overflow: 'hidden',
+        transition: `max-height 380ms ${KZ_EASE}, padding 380ms ${KZ_EASE}`,
+        borderBottom: menuOpen ? '1px solid var(--kz-border)' : 'none',
+        boxShadow: menuOpen ? '0 16px 32px -8px rgba(31,41,51,0.12)' : 'none',
+      }}>
+        <nav style={{
+          display: 'flex', flexDirection: 'column', gap: 6,
+          opacity: menuOpen ? 1 : 0,
+          transform: menuOpen ? 'translateY(0)' : 'translateY(-8px)',
+          transition: `opacity 320ms ${KZ_EASE} 80ms, transform 320ms ${KZ_EASE} 80ms`,
+        }} aria-label="Mobile-Navigation">
+          {navItems.map((item) => (
+            <a key={item.label} href={item.href} onClick={() => setMenuOpen(false)} style={{
+              display: 'block',
+              padding: '14px 12px',
+              color: 'var(--fg)', textDecoration: 'none',
+              fontFamily: 'var(--font-sans)',
+              fontSize: 17, fontWeight: 500,
+              borderBottom: '1px solid rgba(31,41,51,0.08)',
+            }}>{item.label}</a>
+          ))}
+          <a href="/audit" onClick={() => setMenuOpen(false)} style={{
+            marginTop: 16,
+            padding: '14px 18px',
+            background: 'var(--kz-charcoal)', color: 'var(--kz-cream)',
+            borderRadius: 10, textDecoration: 'none',
+            fontFamily: 'var(--font-sans)',
+            fontSize: 15, fontWeight: 600,
+            textAlign: 'center',
+          }}>Audit buchen →</a>
+        </nav>
+      </div>
+    </>
   );
 }
 
