@@ -346,11 +346,25 @@ function Header() {
   return (
     <>
       <style>{`
+        .kz-header-inner-grid {
+          max-width: 1180px;
+          margin: 0 auto;
+          padding: 0 clamp(20px, 5vw, 32px);
+          display: grid;
+          grid-template-columns: auto 1fr auto auto;
+          align-items: center;
+          gap: 24px;
+          height: 100%;
+        }
+        .kz-header-nav { justify-self: center; }
         @media (max-width: 860px) {
           .kz-header-nav { display: none !important; }
           .kz-header-burger { display: flex !important; }
           .kz-header-cta-desktop { display: none !important; }
-          .kz-header { padding: 0 16px !important; }
+          .kz-header-inner-grid {
+            grid-template-columns: auto 1fr auto;
+            padding: 0 16px;
+          }
         }
         @media (min-width: 861px) {
           .kz-header-burger { display: none !important; }
@@ -359,8 +373,7 @@ function Header() {
       `}</style>
       <header className="kz-header" style={{
         position: 'fixed', top: 0, left: 0, right: 0, height: 88,
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '0 32px', zIndex: 50,
+        zIndex: 50,
         background: atTop ? 'rgba(245,240,232,0.0)' : 'rgba(245,240,232,0.88)',
         borderBottom: atTop ? '1px solid transparent' : '1px solid var(--kz-border)',
         backdropFilter: atTop ? 'none' : 'blur(12px)',
@@ -369,6 +382,7 @@ function Header() {
         transition: `transform 520ms ${KZ_EASE}, background 420ms ${KZ_EASE}, border-color 420ms ${KZ_EASE}, backdrop-filter 420ms ${KZ_EASE}`,
         willChange: 'transform',
       }}>
+        <div className="kz-header-inner-grid">
         <a href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'var(--fg)' }} aria-label="k-AIzen Startseite">
           <img src="/animations/claude-design/logo-full.png" alt="k-AIzen"
             style={{ height: 48, width: 'auto', display: 'block' }} />
@@ -421,6 +435,7 @@ function Header() {
             }} />
           </span>
         </button>
+        </div>
       </header>
 
       {/* Mobile-Menü Overlay */}

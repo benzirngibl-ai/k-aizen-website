@@ -175,9 +175,9 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       max-width: 1180px;
       margin: 0 auto;
       padding: 12px clamp(20px, 5vw, 32px);
-      display: flex;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      justify-content: space-between;
       gap: 24px;
     }
     .kz-brand {
@@ -194,6 +194,7 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       display: flex;
       gap: 28px;
       align-items: center;
+      justify-self: center;
     }
     .kz-nav a {
       font-family: var(--font-sans);
