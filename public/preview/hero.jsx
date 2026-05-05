@@ -502,9 +502,11 @@ function HeroOverlay({ headline, sub }) {
         textTransform: 'uppercase', letterSpacing: '0.18em',
         color: 'var(--fg-muted)',
         marginBottom: 18,
+        display: 'inline-flex', alignItems: 'center', gap: 10,
         animation: 'kz-fade-up 700ms var(--ease-out) 200ms both'
       }}>
-        <span className="kz-kanji" style={{ marginRight: 10, color: 'var(--kz-ember)' }}>改善</span>
+        <img src="/icons/icon-sakura-branch.png" alt=""
+          style={{ width: 22, height: 22, objectFit: 'contain', flexShrink: 0 }} />
         AI-Automation für den Mittelstand
       </div>
 
@@ -576,11 +578,11 @@ function HeroOverlay({ headline, sub }) {
         <a href="/pricing"
           data-petal-landing="true"
           style={{
-          fontSize: 15, fontWeight: 500,
+          fontSize: 15, fontWeight: 600,
           padding: '14px 22px',
-          background: 'rgba(212, 138, 48, 0.16)', color: 'var(--fg)',
+          background: 'rgba(212, 138, 48, 0.32)', color: 'var(--fg)',
           borderRadius: 8, textDecoration: 'none',
-          border: '1.5px solid rgba(212, 138, 48, 0.55)', fontFamily: 'var(--font-sans)',
+          border: '2px solid rgba(180, 110, 30, 0.95)', fontFamily: 'var(--font-sans)',
           backdropFilter: 'blur(2px)',
           WebkitBackdropFilter: 'blur(2px)'
         }}>
@@ -590,11 +592,11 @@ function HeroOverlay({ headline, sub }) {
           target="_blank" rel="noopener noreferrer"
           data-petal-landing="true"
           style={{
-          fontSize: 15, fontWeight: 500,
+          fontSize: 15, fontWeight: 600,
           padding: '14px 22px',
-          background: 'rgba(74, 155, 122, 0.16)', color: 'var(--fg)',
+          background: 'rgba(74, 155, 122, 0.32)', color: 'var(--fg)',
           borderRadius: 8, textDecoration: 'none',
-          border: '1.5px solid rgba(74, 155, 122, 0.6)', fontFamily: 'var(--font-sans)',
+          border: '2px solid rgba(50, 125, 95, 0.95)', fontFamily: 'var(--font-sans)',
           backdropFilter: 'blur(2px)',
           WebkitBackdropFilter: 'blur(2px)'
         }}>
