@@ -613,11 +613,7 @@ function AngebotSection() {
           pointer-events: none;
         }
         @media (max-width: 720px) {
-          .kz-bamboo-decoration {
-            width: 32vw;
-            opacity: 0.55;
-            top: 2%;
-          }
+          .kz-bamboo-decoration { display: none; }
         }
       `}</style>
       <Reveal duration={1600} y={40} className="kz-bamboo-decoration">
