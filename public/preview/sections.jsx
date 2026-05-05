@@ -1081,9 +1081,10 @@ function UeberMichSection() {
               lineHeight: 1.65, color: 'var(--fg)',
               margin: '0 0 20px', textWrap: 'pretty',
             }}>
-              Zwölf Jahre Mobility-IT bei SKIDATA. Software, die jeden Tag ohne Pause
-              läuft, an realen Maschinen, mit echten Kunden. Wer in der Mobility-IT
-              durchhält, lernt zwei Dinge: Lösungen müssen am Montagmorgen
+              Sieben Jahre bei SKIDATA in der Mobility-Branche. Quereinsteiger,
+              kein klassischer IT-Background — den IT-Schwerpunkt habe ich erst
+              kürzlich gefunden. Aber in der Mobility-Praxis lernt man zwei Dinge,
+              die sich auf alles übertragen: Lösungen müssen am Montagmorgen
               funktionieren, nicht nur in der Demo. Und Übergabe an andere ist
               Pflicht, nicht Kür.
             </p>
