@@ -1292,7 +1292,7 @@ function FaqSection() {
 // SECTION 11 — Kontakt (3 Wege)
 // ============================================================
 function KontaktSection() {
-  const whatsappLink = 'https://wa.me/491590103192?text=' + encodeURIComponent('Hi Ben, ich habe Interesse an k-AIzen.');
+  const whatsappLink = 'https://wa.me/4915901031928?text=' + encodeURIComponent('Hi Ben, ich habe Interesse an k-AIzen.');
   return (
     <section data-screen-label="11 Kontakt" style={{
       position: 'relative',
@@ -1452,7 +1452,7 @@ function Footer() {
         ]} />
         <FooterCol title="Kontakt" items={[
           { label: 'kontakt@k-aizen.de', href: 'mailto:kontakt@k-aizen.de' },
-          { label: 'WhatsApp', href: 'https://wa.me/491590103192' },
+          { label: 'WhatsApp', href: 'https://wa.me/4915901031928' },
           { label: 'LinkedIn', href: 'https://www.linkedin.com/in/benjamin-zirngibl-0963753ab' },
           { label: 'Impressum', href: '/impressum' },
           { label: 'Datenschutz', href: '/datenschutz' },

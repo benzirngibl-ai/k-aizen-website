@@ -588,7 +588,7 @@ function HeroOverlay({ headline, sub }) {
         }}>
           Pakete & Festpreise
         </a>
-        <a href="https://wa.me/491590103192"
+        <a href="https://wa.me/4915901031928"
           target="_blank" rel="noopener noreferrer"
           data-petal-landing="true"
           style={{
