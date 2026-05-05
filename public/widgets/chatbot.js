@@ -1,12 +1,14 @@
 /**
- * k-AIzen Site-Chatbot Widget — Mönch-an-der-Mauer (v2)
- * ------------------------------------------------------
- * Single Container, rechts unten gedockt. Closed: 88px tall (nur Mönch peekt
- * über die Mauer-Kante). Click → height grows auf 620px → Mauer-Fläche unter
- * dem Mönch wird zum Chat-Container. Mönch bleibt oben sichtbar.
+ * k-AIzen Site-Chatbot Widget — Mönch-an-der-Mauer (v3, image-as-UI)
+ * -------------------------------------------------------------------
+ * KEIN Container, KEIN Border, KEIN Shadow — nur das Bild ist das UI.
+ * 3 Bild-Stücke vertikal gestackt:
+ *   1. monk-top.png   — Mönch + Mauer-Cap (176px hoch bei 320px width)
+ *   2. wall-tile.png  — 2px-Slice der Mauer-Front, vertikal getiled (flex)
+ *   3. wall-bottom.png — Mauer-Bottom mit Ornamental-Border (34px)
  *
- * Backend-URL via window.KAIZEN_BOT_URL — fallback auf same-origin /api/chat.
- * Defensive mount: prüft /health vor Render.
+ * Closed-State: Nur monk-top sichtbar (chat-area collapsed auf height 0)
+ * Open-State:   chat-area expandiert + wall-bottom appears
  */
 
 (function () {
@@ -16,9 +18,6 @@
   const SUMI_INK = '#1F2933';
   const EMBER = '#E85A2B';
   const CREAM = '#F5F0E8';
-  const WALL = '#DDC9A0'; // Mauer-Beige aus dem Bild
-  const BAR_HEIGHT = 88;
-  const IMAGE_HEIGHT = 202; // 360 width × 450/800 ratio
 
   /** @type {Array<{role:'user'|'assistant', content:string}>} */
   const history = [];
@@ -45,7 +44,7 @@
     }
 
     injectStyles();
-    renderContainer();
+    renderWidget();
   }
 
   function injectStyles() {
@@ -57,69 +56,47 @@
         position: fixed;
         bottom: 0;
         right: 24px;
-        width: 360px;
-        height: ${BAR_HEIGHT}px;
-        background: ${WALL};
-        border-radius: 18px 18px 0 0;
-        overflow: hidden;
-        box-shadow:
-          0 -16px 40px -8px rgba(31,41,51,0.24),
-          0 -4px 12px rgba(31,41,51,0.10);
-        transition: height 560ms cubic-bezier(0.22, 1, 0.36, 1);
+        width: 320px;
         z-index: 9999;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
-      }
-      #kaizen-bot-root.open {
-        height: min(620px, calc(100vh - 40px));
+        /* KEIN background, KEIN border, KEIN shadow — Bild IST das UI */
       }
 
-      /* Mönch-Image-Sektion — oben, immer in voller Bild-Höhe.
-         Im closed-state nur die top 88px sichtbar (overflow clip). */
-      .kbot-image-section {
-        position: absolute;
-        top: 0; left: 0; right: 0;
-        height: ${IMAGE_HEIGHT}px;
-        pointer-events: none;
+      /* Mönch + Mauer-Cap (immer sichtbar, click-target im closed-state) */
+      .kbot-handle {
+        display: block;
+        width: 100%;
+        margin: 0; padding: 0;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        position: relative;
       }
-      .kbot-image-section img {
+      .kbot-monk-top {
+        display: block;
         width: 100%;
         height: auto;
-        display: block;
+        user-select: none;
+        -webkit-user-drag: none;
+        filter: drop-shadow(0 8px 16px rgba(31,41,51,0.14));
       }
 
-      /* Toggle-Klick-Fläche (closed-state) — über der Bar */
-      .kbot-handle {
+      /* Online-Pulse rechts unten auf der Mauer-Cap (im closed-state) */
+      .kbot-pulse-badge {
         position: absolute;
-        top: 0; left: 0; right: 0;
-        height: ${BAR_HEIGHT}px;
-        cursor: pointer;
-        z-index: 5;
-        background: linear-gradient(
-          to bottom,
-          rgba(245,240,232,0.0) 0%,
-          rgba(245,240,232,0.0) 60%,
-          rgba(31,41,51,0.06) 100%
-        );
-        transition: opacity 280ms;
-      }
-      #kaizen-bot-root.open .kbot-handle {
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      /* Online-Indicator unten-rechts auf der Bar */
-      .kbot-handle-label {
-        position: absolute;
-        bottom: 8px; right: 14px;
+        right: 14px;
+        bottom: 8px;
         display: flex; align-items: center; gap: 6px;
         font-size: 11px; font-weight: 600;
-        color: rgba(31,41,51,0.78);
-        background: rgba(245,240,232,0.78);
-        padding: 4px 10px;
-        border-radius: 999px;
-        backdrop-filter: blur(4px);
+        color: rgba(31,41,51,0.85);
+        opacity: 1;
+        transition: opacity 240ms;
+        pointer-events: none;
       }
-      .kbot-handle-pulse {
+      #kaizen-bot-root.open .kbot-pulse-badge {
+        opacity: 0;
+      }
+      .kbot-pulse-dot {
         width: 7px; height: 7px;
         border-radius: 50%;
         background: #4A9B7A;
@@ -132,63 +109,76 @@
         100% { box-shadow: 0 0 0 0 rgba(74,155,122,0); }
       }
 
-      /* Close-Button (open-state) */
+      /* Close-Button (open-state) — top-right über dem Mönch */
       .kbot-close {
         position: absolute;
-        top: 12px; right: 12px;
-        width: 32px; height: 32px;
+        top: 12px;
+        right: 12px;
+        width: 28px; height: 28px;
         border-radius: 50%;
-        background: rgba(31,41,51,0.82);
+        background: rgba(31,41,51,0.78);
         color: ${CREAM};
         border: none;
         cursor: pointer;
         display: flex; align-items: center; justify-content: center;
-        font-size: 18px; line-height: 1;
-        z-index: 6;
+        font-size: 16px; line-height: 1;
         opacity: 0;
         pointer-events: none;
         transition: opacity 280ms 200ms, background 160ms;
+        z-index: 6;
       }
-      .kbot-close:hover { background: ${SUMI_INK}; }
       #kaizen-bot-root.open .kbot-close {
         opacity: 1;
         pointer-events: auto;
       }
+      .kbot-close:hover { background: ${SUMI_INK}; }
 
-      /* Chat-Sektion — auf der Mauer-Fläche, beginnt unter Mönch-Image */
-      .kbot-chat-section {
-        position: absolute;
-        top: ${IMAGE_HEIGHT}px;
-        left: 0; right: 0; bottom: 0;
+      /* Expand-Wrapper — collapsed im closed, expanded im open */
+      .kbot-expand {
+        height: 0;
+        overflow: hidden;
         display: flex; flex-direction: column;
-        background: ${WALL};
+        transition: height 560ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      #kaizen-bot-root.open .kbot-expand {
+        height: min(440px, calc(100vh - 220px));
       }
 
-      /* Subtle Mauer-Schatten oben (gibt der Mauer-Top-Edge mehr Tiefe) */
-      .kbot-chat-section::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 8%; right: 8%;
-        height: 8px;
-        background: linear-gradient(to bottom, rgba(31,41,51,0.10), transparent);
-        pointer-events: none;
+      /* Chat-Area — Mauer-Tile als Background */
+      .kbot-chat-area {
+        flex: 1;
+        background: url(/widgets/wall-tile.png) repeat-y;
+        background-size: 100% auto;
+        display: flex; flex-direction: column;
+        min-height: 0;
       }
 
+      /* Wall-Bottom (immer am unteren Ende) */
+      .kbot-wall-bottom {
+        display: block;
+        width: 100%;
+        height: auto;
+        flex-shrink: 0;
+        user-select: none;
+        -webkit-user-drag: none;
+      }
+
+      /* Chat-Messages */
       .kbot-messages {
         flex: 1;
         overflow-y: auto;
-        padding: 14px 16px 8px;
+        padding: 12px 16px 6px;
         display: flex; flex-direction: column;
-        gap: 10px;
+        gap: 9px;
       }
       .kbot-msg {
-        max-width: 85%;
-        padding: 10px 14px;
-        border-radius: 12px;
-        font-size: 13.5px; line-height: 1.5;
+        max-width: 86%;
+        padding: 9px 13px;
+        border-radius: 11px;
+        font-size: 13px; line-height: 1.5;
         white-space: pre-wrap;
         word-wrap: break-word;
-        box-shadow: 0 2px 6px rgba(31,41,51,0.06);
+        box-shadow: 0 2px 5px rgba(31,41,51,0.07);
       }
       .kbot-msg.user {
         background: ${SUMI_INK}; color: ${CREAM};
@@ -208,16 +198,16 @@
       }
 
       .kbot-suggestions {
-        padding: 0 16px 8px;
-        display: flex; flex-wrap: wrap; gap: 6px;
+        padding: 0 14px 6px;
+        display: flex; flex-wrap: wrap; gap: 5px;
       }
       .kbot-suggestions button {
         background: ${CREAM};
         color: ${SUMI_INK};
         border: 1px solid rgba(31,41,51,0.16);
-        border-radius: 16px;
-        padding: 6px 12px;
-        font-size: 12px;
+        border-radius: 14px;
+        padding: 5px 11px;
+        font-size: 11.5px;
         cursor: pointer;
         font-family: inherit;
         transition: background 160ms, border-color 160ms, transform 160ms;
@@ -229,17 +219,16 @@
       }
 
       .kbot-input-row {
-        padding: 10px 12px 12px;
-        border-top: 1px solid rgba(31,41,51,0.10);
-        display: flex; gap: 8px;
+        padding: 8px 12px 10px;
+        display: flex; gap: 6px;
         flex-shrink: 0;
       }
       .kbot-input-row input {
         flex: 1;
-        padding: 9px 14px;
+        padding: 8px 12px;
         border: 1px solid rgba(31,41,51,0.18);
-        border-radius: 10px;
-        font-size: 13.5px;
+        border-radius: 8px;
+        font-size: 13px;
         font-family: inherit;
         background: ${CREAM};
         color: ${SUMI_INK};
@@ -249,8 +238,8 @@
       .kbot-input-row input:focus { border-color: ${SUMI_INK}; }
       .kbot-input-row button {
         background: ${SUMI_INK}; color: ${CREAM};
-        border: none; border-radius: 10px;
-        padding: 9px 16px;
+        border: none; border-radius: 8px;
+        padding: 8px 14px;
         font-size: 14px; font-weight: 600;
         cursor: pointer; font-family: inherit;
         transition: background 160ms;
@@ -261,12 +250,12 @@
       .kbot-typing {
         align-self: flex-start;
         background: ${CREAM};
-        padding: 11px 14px; border-radius: 12px;
+        padding: 10px 13px; border-radius: 11px;
         display: flex; gap: 5px;
-        box-shadow: 0 2px 6px rgba(31,41,51,0.06);
+        box-shadow: 0 2px 5px rgba(31,41,51,0.07);
       }
       .kbot-typing span {
-        width: 6px; height: 6px;
+        width: 5px; height: 5px;
         background: ${SUMI_INK}; opacity: 0.4;
         border-radius: 50%;
         animation: kbot-typing 1.2s infinite;
@@ -280,47 +269,60 @@
 
       @media (max-width: 480px) {
         #kaizen-bot-root {
-          right: 8px; left: 8px;
-          width: auto;
+          right: 12px;
+          width: min(320px, calc(100vw - 24px));
         }
-        #kaizen-bot-root.open {
-          height: min(82vh, calc(100vh - 40px));
+        #kaizen-bot-root.open .kbot-expand {
+          height: min(60vh, 440px);
         }
       }
     `;
     document.head.appendChild(style);
   }
 
-  function renderContainer() {
+  function renderWidget() {
     const root = document.createElement('div');
     root.id = 'kaizen-bot-root';
     root.innerHTML = `
-      <div class="kbot-image-section">
-        <img src="/widgets/monk-chat.png" alt="" />
-      </div>
-
-      <div class="kbot-handle" id="kbot-handle">
-        <div class="kbot-handle-label">
-          <span class="kbot-handle-pulse"></span>
+      <div class="kbot-handle" id="kbot-handle" role="button" tabindex="0" aria-label="Chat öffnen">
+        <img class="kbot-monk-top" src="/widgets/monk-top.png" alt="" />
+        <span class="kbot-pulse-badge">
+          <span class="kbot-pulse-dot"></span>
           <span>Frag den Mönch</span>
-        </div>
+        </span>
       </div>
-
       <button class="kbot-close" id="kbot-close" aria-label="Chat schließen">×</button>
 
-      <div class="kbot-chat-section">
-        <div class="kbot-messages" id="kbot-messages"></div>
-        <div class="kbot-suggestions" id="kbot-suggestions"></div>
-        <div class="kbot-input-row">
-          <input type="text" id="kbot-input" placeholder="Frage stellen…" maxlength="2000" autocomplete="off">
-          <button id="kbot-send" aria-label="Senden">→</button>
+      <div class="kbot-expand">
+        <div class="kbot-chat-area">
+          <div class="kbot-messages" id="kbot-messages"></div>
+          <div class="kbot-suggestions" id="kbot-suggestions"></div>
+          <div class="kbot-input-row">
+            <input type="text" id="kbot-input" placeholder="Frage stellen…" maxlength="2000" autocomplete="off">
+            <button id="kbot-send" aria-label="Senden">→</button>
+          </div>
         </div>
+        <img class="kbot-wall-bottom" src="/widgets/wall-bottom.png" alt="" />
       </div>
     `;
     document.body.appendChild(root);
 
-    document.getElementById('kbot-handle').onclick = openModal;
-    document.getElementById('kbot-close').onclick = closeModal;
+    const handle = document.getElementById('kbot-handle');
+    const closeBtn = document.getElementById('kbot-close');
+
+    handle.onclick = () => {
+      if (!isOpen) openModal();
+    };
+    handle.onkeydown = (e) => {
+      if ((e.key === 'Enter' || e.key === ' ') && !isOpen) {
+        e.preventDefault();
+        openModal();
+      }
+    };
+    closeBtn.onclick = (e) => {
+      e.stopPropagation();
+      closeModal();
+    };
 
     const input = document.getElementById('kbot-input');
     const sendBtn = document.getElementById('kbot-send');
@@ -342,7 +344,6 @@
     ]);
   }
 
-  // ---------- Open / Close ----------
   function openModal() {
     if (isOpen) return;
     isOpen = true;
@@ -355,7 +356,6 @@
     document.getElementById('kaizen-bot-root').classList.remove('open');
   }
 
-  // ---------- Messages ----------
   function appendUser(text) {
     const msg = document.createElement('div');
     msg.className = 'kbot-msg user';
@@ -419,7 +419,6 @@
     if (el) el.innerHTML = '';
   }
 
-  // ---------- Send ----------
   async function send(rawText) {
     const text = String(rawText || '').trim();
     if (!text || isSending) return;
