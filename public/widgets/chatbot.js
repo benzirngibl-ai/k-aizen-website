@@ -478,7 +478,16 @@
     return esc
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
       .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, url) => {
+        // Nur https://, mailto: und relative /-URLs erlauben — blockiert
+        // javascript:, data:, file: etc. und schützt vor XSS via prompt-injection.
+        if (!/^(https?:\/\/|mailto:|\/)/i.test(url)) return label;
+        // Quote-Escape — verhindert href-attribute-breakout via " in URL.
+        const safe = url.replace(/"/g, '%22');
+        const isExternal = /^https?:\/\//i.test(safe);
+        const attrs = isExternal ? ' rel="noopener noreferrer" target="_blank"' : '';
+        return `<a href="${safe}"${attrs}>${label}</a>`;
+      })
       .replace(/\n/g, '<br>');
   }
   function renderSuggestions(items) {
