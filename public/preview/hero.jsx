@@ -359,10 +359,13 @@ function Header() {
         .kz-header-nav { justify-self: center; }
         @media (max-width: 860px) {
           .kz-header-nav { display: none !important; }
-          .kz-header-burger { display: flex !important; }
+          .kz-header-burger {
+            display: flex !important;
+            justify-self: end;
+          }
           .kz-header-cta-desktop { display: none !important; }
           .kz-header-inner-grid {
-            grid-template-columns: auto 1fr auto;
+            grid-template-columns: auto 1fr;
             padding: 0 16px;
           }
         }
@@ -607,11 +610,12 @@ function HeroOverlay({ headline, sub }) {
         letterSpacing: '0.04em',
         animation: 'kz-fade-up 1000ms var(--ease-out) 1100ms both'
       }}>
-        12+ Jahre Mobility-IT · Eigener Stack auf Hetzner · Kein Lock-in
+        7 Jahre Mobility-Praxis · Eigener Stack auf Hetzner · Kein Lock-in
       </div>
 
-      {/* Scroll cue — full-width container, content centered via flex */}
-      <div style={{
+      {/* Scroll cue — full-width container, content centered via flex.
+          Auf Mobile hidden weil Trust-Trio den Platz braucht. */}
+      <div className="kz-scroll-cue" style={{
         position: 'absolute', bottom: 30, left: 0, right: 0,
         display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
         fontFamily: 'var(--font-sans)', fontSize: 11, fontWeight: 600,
@@ -627,6 +631,11 @@ function HeroOverlay({ headline, sub }) {
           animation: 'kz-scroll-line 2.4s var(--ease-zen) infinite'
         }} />
       </div>
+      <style>{`
+        @media (max-width: 720px) {
+          .kz-scroll-cue { display: none !important; }
+        }
+      `}</style>
     </div>);
 
 }
@@ -678,6 +687,11 @@ function App() {
   // Coords sind hero-section-relative (= canvas-relative) damit Petal-x/y matchen.
   React.useEffect(() => {
     const updateZones = () => {
+      // Mobile: Petals fliegen einfach durch, keine landing-zones
+      if (window.innerWidth < 720) {
+        setZonesFn.current([]);
+        return;
+      }
       const heroSection = document.querySelector('[data-screen-label="01 Hero"]');
       if (!heroSection) return;
       const heroRect = heroSection.getBoundingClientRect();

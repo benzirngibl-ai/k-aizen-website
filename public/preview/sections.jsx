@@ -1108,7 +1108,7 @@ function UeberMichSection() {
             color: 'var(--fg)',
           }}>
             {[
-              '12+ Jahre IT-Praxis (Parkhaus-Systeme, SKIDATA-Stack, sweb.Validate/Control)',
+              '7 Jahre Mobility-Praxis bei SKIDATA (Parkhaus-Systeme, sweb.Validate/Control) — IT-Schwerpunkt seit kurzem, mehrere praxisnahe Projekte fertig',
               'Eigener KI-Stack: n8n + Claude API + React/Supabase, gehostet auf Hetzner',
               'Gebaut: Personalplanungs-Tool, News-Digest, Email-Triage, Telefonagent (in Exploration)',
               'DSGVO-konforme Auftragsverarbeitung',
