@@ -79,9 +79,9 @@ function Reveal({ children, delay = 0, y = 18, duration = 900, as: Tag = 'div', 
   const effY = isMobile ? 0 : y;
   return (
     <Tag ref={ref} style={{
-      opacity: visible ? 1 : 0,
+      opacity: 1,
       transform: visible ? 'none' : `translateY(${effY}px)`,
-      transition: `opacity ${duration}ms ${KZ_EASE} ${delay}ms, transform ${duration}ms ${KZ_EASE} ${delay}ms`,
+      transition: `transform ${duration}ms ${KZ_EASE} ${delay}ms`,
       ...style,
     }} {...rest}>
       {children}
@@ -115,10 +115,10 @@ function RevealHeadline({ text, delay = 0, style, accent }) {
           <span style={{
             display: 'inline-block',
             transform: visible ? 'translateY(0)' : 'translateY(110%)',
-            opacity: visible ? 1 : 0,
-            transition: `transform 1100ms ${KZ_EASE} ${delay + i * 70}ms, opacity 800ms ${KZ_EASE} ${delay + i * 70}ms`,
+            opacity: 1,
+            transition: `transform 1100ms ${KZ_EASE} ${delay + i * 70}ms`,
             color: accent && accent.includes(i) ? 'var(--kz-ember)' : 'inherit',
-            willChange: 'transform, opacity',
+            willChange: 'transform',
           }}>
             {w}
           </span>
