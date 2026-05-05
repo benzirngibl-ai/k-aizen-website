@@ -292,13 +292,62 @@
         30% { opacity: 1; transform: translateY(-3px); }
       }
 
-      @media (max-width: 480px) {
+      /* ============== MOBILE: closed = round button, open = full panel ============== */
+      @media (max-width: 700px) {
+        /* Closed state: kompakter 64px round button — nur Mönch-Kopf sichtbar */
         #kaizen-bot-root {
-          right: 12px;
-          width: min(320px, calc(100vw - 24px));
+          right: 14px;
+          bottom: 14px;
+          width: 64px;
+          border-radius: 50%;
+          overflow: hidden;
+          box-shadow: 0 12px 28px -6px rgba(31,41,51,0.30), 0 4px 10px rgba(31,41,51,0.16);
+        }
+        /* Mönch-Image: zoom auf head/face area mit object-fit */
+        #kaizen-bot-root:not(.open) .kbot-monk-top {
+          width: 100% !important;
+          height: 64px !important;
+          object-fit: cover !important;
+          object-position: 50% 18% !important;
+          filter: none !important;
+        }
+        /* Pulse-dot dezenter im round-button */
+        #kaizen-bot-root:not(.open) .kbot-pulse-badge {
+          right: 6px;
+          top: 6px;
+        }
+
+        /* Open state: docked-bottom-panel, fast full-width */
+        #kaizen-bot-root.open {
+          width: calc(100vw - 24px);
+          right: 12px; bottom: 12px;
+          border-radius: 16px 16px 0 0;
+          box-shadow: 0 -16px 40px -8px rgba(31,41,51,0.30);
+        }
+        /* Im open-state: Mönch zurück auf normale Größe */
+        #kaizen-bot-root.open .kbot-monk-top {
+          width: 100% !important;
+          margin-left: 0;
+          margin-top: 0;
+          filter: drop-shadow(0 8px 16px rgba(31,41,51,0.14)) !important;
+        }
+        #kaizen-bot-root.open .kbot-pulse-badge {
+          right: 16px; top: 14px;
         }
         #kaizen-bot-root.open .kbot-expand {
-          height: min(60vh, 440px);
+          height: min(58vh, 380px);
+        }
+
+        /* Bubble auf mobile kleiner + bessere position */
+        .kbot-bubble {
+          width: 130px !important;
+          right: 80% !important;
+          bottom: 90% !important;
+        }
+        #kaizen-bot-root:not(.open) .kbot-bubble {
+          /* bubble bezieht sich auf den round-button → stärker links */
+          right: 60% !important;
+          bottom: 50% !important;
         }
       }
     `;

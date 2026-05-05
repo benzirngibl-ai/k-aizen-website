@@ -835,16 +835,23 @@ function MethodikSection() {
           </p>
         </Reveal>
 
+        <style>{`
+          .kz-methodik-row {
+            display: grid;
+            grid-template-columns: minmax(120px, 200px) 1fr;
+            gap: clamp(20px, 4vw, 48px);
+            padding-bottom: 28px;
+            align-items: baseline;
+          }
+          @media (max-width: 720px) {
+            .kz-methodik-row { grid-template-columns: 1fr; gap: 12px; }
+          }
+        `}</style>
         <div style={{ display: 'grid', gap: 36, marginBottom: 48 }}>
           {cases.map((c, i) => (
             <Reveal key={i} delay={200 + i * 140}>
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'minmax(120px, 200px) 1fr',
-                gap: 'clamp(20px, 4vw, 48px)',
-                paddingBottom: 28,
+              <div className="kz-methodik-row" style={{
                 borderBottom: i < cases.length - 1 ? '1px solid var(--kz-border)' : 'none',
-                alignItems: 'baseline',
               }}>
                 <div>
                   <div style={{

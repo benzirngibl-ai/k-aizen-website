@@ -27,6 +27,22 @@ const personSchema = {
   activeNav="about"
   jsonLd={personSchema}
 >
+  <style is:global>
+    .kz-about-row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: clamp(24px, 4vw, 48px);
+      align-items: start;
+      margin-top: 16px;
+    }
+    @media (max-width: 720px) {
+      .kz-about-row {
+        grid-template-columns: 1fr;
+        justify-items: start;
+        gap: 20px;
+      }
+    }
+  </style>
   <article class="kz-page">
     <div class="kz-page-eyebrow">
       <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
@@ -55,7 +71,7 @@ const personSchema = {
 
     <section>
       <h2 class="kz-h2">Wer baut</h2>
-      <div style="display: grid; grid-template-columns: auto 1fr; gap: clamp(24px, 4vw, 48px); align-items: start; margin-top: 16px;">
+      <div class="kz-about-row">
         <img
           src="/images/ben-portrait.png"
           alt="Benjamin Zirngibl, Gründer von k-AIzen"
