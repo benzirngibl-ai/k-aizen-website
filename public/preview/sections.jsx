@@ -1395,13 +1395,6 @@ function kontaktKarte() {
     display: 'flex', flexDirection: 'column',
   };
 }
-function kontaktKanji() {
-  return {
-    fontFamily: 'var(--font-jp)',
-    fontSize: 36, color: 'var(--kz-ember)',
-    marginBottom: 16,
-  };
-}
 function kontaktH3() {
   return {
     fontFamily: 'var(--font-display)',

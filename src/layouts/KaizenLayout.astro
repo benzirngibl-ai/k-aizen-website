@@ -161,6 +161,10 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       pointer-events: none;
       z-index: -1;
     }
+    /* Breakpoints used across this site:
+       - 720px → content collapses to single column (cards, grids)
+       - 860px → header switches to hamburger nav (Logo + Wordmark + Burger fits)
+       Values are intentional, not equivalent. */
     /* Header */
     .kz-header {
       position: sticky;
@@ -310,11 +314,6 @@ if (breadcrumbs && breadcrumbs.length > 0) {
     }
     .kz-page-eyebrow .kz-mark {
       height: 24px; width: auto;
-    }
-    .kz-page-eyebrow .kanji {
-      font-family: var(--font-jp);
-      color: var(--accent);
-      font-size: 18px;
     }
     .kz-page-eyebrow .kz-eyebrow-leaf {
       width: 22px;
