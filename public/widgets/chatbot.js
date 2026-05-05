@@ -55,8 +55,8 @@
       #kaizen-bot-root {
         position: fixed;
         bottom: 0;
-        right: 24px;
-        width: 320px;
+        right: 16px;
+        width: 280px;
         z-index: 9999;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
         /* KEIN background, KEIN border, KEIN shadow — Bild IST das UI */
@@ -71,6 +71,33 @@
         background: transparent;
         cursor: pointer;
         position: relative;
+      }
+
+      /* Sprech-Blasen — links überhalb vom Mönch.
+         Tail unten-rechts der Bubble zeigt zum Mönch. */
+      .kbot-bubble {
+        position: absolute;
+        bottom: 70%;       /* anchored slightly above monk's body */
+        right: 38%;        /* bubble extends left from 38% from root-right */
+        width: 170px;
+        height: auto;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(8px) scale(0.92);
+        transform-origin: bottom right;
+        transition:
+          opacity 380ms cubic-bezier(0.22, 1, 0.36, 1),
+          transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
+        filter: drop-shadow(0 6px 10px rgba(31,41,51,0.18));
+        z-index: 4;
+      }
+      .kbot-bubble.show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      #kaizen-bot-root.open .kbot-bubble {
+        opacity: 0 !important;
+        transform: translateY(8px) scale(0.92) !important;
       }
       .kbot-monk-top {
         display: block;
@@ -285,6 +312,8 @@
     root.id = 'kaizen-bot-root';
     root.innerHTML = `
       <div class="kbot-handle" id="kbot-handle" role="button" tabindex="0" aria-label="Chat öffnen">
+        <img class="kbot-bubble kbot-bubble-welcome" src="/widgets/bubble-welcome.png" alt="" />
+        <img class="kbot-bubble kbot-bubble-help" src="/widgets/bubble-help.png" alt="" />
         <img class="kbot-monk-top" src="/widgets/monk-top.png" alt="" />
         <span class="kbot-pulse-badge">
           <span class="kbot-pulse-dot"></span>
@@ -342,6 +371,41 @@
       'Was kostet das Audit?',
       'Mini-Audit starten',
     ]);
+
+    scheduleBubbles();
+  }
+
+  // ---------- Sprech-Blasen ----------
+  function showBubble(name, durationMs = 5500) {
+    if (isOpen) return;
+    const bubbles = document.querySelectorAll('.kbot-bubble');
+    bubbles.forEach((b) => b.classList.remove('show'));
+    const target = document.querySelector('.kbot-bubble-' + name);
+    if (!target) return;
+    // kleine Verzögerung damit die transition triggert wenn vorherige aktive war
+    requestAnimationFrame(() => {
+      target.classList.add('show');
+    });
+    clearTimeout(target._kbotHideTimer);
+    target._kbotHideTimer = setTimeout(() => {
+      target.classList.remove('show');
+    }, durationMs);
+  }
+
+  function scheduleBubbles() {
+    // Welcome: nach 3s, hide nach ~5s
+    setTimeout(() => showBubble('welcome', 5500), 3000);
+    // Hilfe: nach 20s erstes Mal
+    setTimeout(() => showBubble('help', 5500), 20000);
+    // Hilfe danach: alle 60-120s random
+    const scheduleNext = () => {
+      const delay = 60000 + Math.random() * 60000;
+      setTimeout(() => {
+        showBubble('help', 5000);
+        scheduleNext();
+      }, delay);
+    };
+    setTimeout(scheduleNext, 30000); // start after first help-bubble window
   }
 
   function openModal() {
