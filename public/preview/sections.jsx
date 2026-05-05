@@ -733,7 +733,7 @@ function AngebotSection() {
                 margin: '0 0 20px', flex: 1, textWrap: 'pretty',
               }}>
                 Aus dem Audit suchst du dir ein Modul aus. Wir bauen, integrieren,
-                übergeben. Komplett-PA-Bundle (S+M+L): <strong style={{ color: 'var(--kz-ember)' }}>14.999 €</strong> Festpreis.
+                übergeben. Komplett-PA-Bundle (S+M+L): <strong style={{ color: 'var(--kz-ember-text)' }}>14.999 €</strong> Festpreis.
               </p>
               <a href="/pricing#module" style={ctaBtnStyle({ ember: true })}>
                 Module ansehen <Arrow />
@@ -909,7 +909,7 @@ function MethodikSection() {
                   <div style={{
                     fontFamily: 'var(--font-brush)',
                     fontSize: 'clamp(16px, 1.5vw, 20px)',
-                    color: 'var(--kz-ember)',
+                    color: 'var(--kz-ember-text)',
                     marginTop: 6,
                   }}>{c.cost}</div>
                 </div>
@@ -1138,7 +1138,7 @@ function UeberMichSection() {
               'Vor Ort im Raum Süddeutschland · remote in ganz DACH',
             ].map((item, i) => (
               <li key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-                <span style={{ color: 'var(--kz-ember)', fontWeight: 600, flexShrink: 0 }}>·</span>
+                <span style={{ color: 'var(--kz-ember-text)', fontWeight: 600, flexShrink: 0 }}>·</span>
                 <span style={{ textWrap: 'pretty' }}>{item}</span>
               </li>
             ))}
@@ -1273,7 +1273,7 @@ function FaqSection() {
                 }}>
                   <span>{f.q}</span>
                   <span style={{
-                    color: 'var(--kz-ember)', fontSize: 14,
+                    color: 'var(--kz-ember-text)', fontSize: 14,
                     fontFamily: 'var(--font-sans)', flexShrink: 0,
                   }}>+</span>
                 </summary>
@@ -1379,11 +1379,11 @@ function KontaktSection() {
             fontFamily: 'var(--font-sans)', fontSize: 14,
             color: 'var(--fg-muted)',
           }}>
-            Oder direkt: <a href="mailto:kontakt@k-aizen.de" style={{ color: 'var(--kz-ember)' }}>kontakt@k-aizen.de</a>
+            Oder direkt: <a href="mailto:kontakt@k-aizen.de" style={{ color: 'var(--kz-ember-text)' }}>kontakt@k-aizen.de</a>
             {' · '}
             <a href="https://www.linkedin.com/in/benjamin-zirngibl-0963753ab"
                target="_blank" rel="noopener noreferrer"
-               style={{ color: 'var(--kz-ember)' }}>LinkedIn</a>
+               style={{ color: 'var(--kz-ember-text)' }}>LinkedIn</a>
           </p>
         </Reveal>
       </div>
