@@ -1,12 +1,12 @@
 # k-AIzen
 
-> AI-Workflow-Automation für KMUs in Deutschland (Mittelstand, 10–250 Mitarbeitende). Eine Marke von Pulscraft Digital, geführt von Benjamin Zirngibl in Bayern. Bored-Kaizen-Monk-Voice, kein Hype, kein Buzzword-Bingo. Wir bauen kleine ehrliche Workflow-Automationen die heute laufen — keine 18-Monats-Strategie-PDFs.
+> AI-Workflow-Automation für KMUs in Deutschland (Mittelstand, 10–250 Mitarbeitende). Solo-Geschäft von Benjamin Zirngibl in Bayern. Bored-Kaizen-Monk-Voice, kein Hype, kein Buzzword-Bingo. Wir bauen kleine ehrliche Workflow-Automationen die heute laufen — keine 18-Monats-Strategie-PDFs.
 
 ## Kernseiten
 
 - [Home](https://k-aizen.de/): Hero, Manifest, vier Workflow-Pillars, Trust-Signale, Über uns, CTA
 - [Workflows](https://k-aizen.de/workflows): Die vier Standard-Workflows im Detail — Inbox-Triage, Angebots-Generator, Tagesreport, Wissens-Suche
-- [Über uns](https://k-aizen.de/about): Wer hinter k-AIzen steht (Benjamin Zirngibl, Pulscraft Digital), Werte, was wir machen vs. nicht machen
+- [Über uns](https://k-aizen.de/about): Wer hinter k-AIzen steht (Benjamin Zirngibl, ), Werte, was wir machen vs. nicht machen
 - [Kontakt](https://k-aizen.de/kontakt): Drei Wege uns zu erreichen — Mail, Erstgespräch, LinkedIn
 - [Erstgespräch](https://k-aizen.de/erstgespraech): 30-Min-Erstgespräch ohne Verkaufsdruck, kostenlos
 - [Tutorials](https://k-aizen.de/tutorials): Geplante Workflow-Anleitungen, Tool-Reviews, Hot-Takes (in Vorbereitung)
