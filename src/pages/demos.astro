@@ -1,0 +1,83 @@
+---
+import KaizenLayout from '../layouts/KaizenLayout.astro';
+---
+
+<KaizenLayout
+  title="Live-Demos — sieh selbst wie es funktioniert"
+  description="Teste k-AIzen-Module direkt im Browser: Email-Triage, Audio-Protokoll, Beleg-Sortierung. Kostenlos, ohne Registrierung."
+  path="/demos"
+  activeNav="demos"
+>
+  <article class="kz-page">
+    <div class="kz-page-eyebrow">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" loading="lazy" />
+      <img src="/icons/icon-ginkgo.png" alt="" class="kz-eyebrow-leaf" loading="lazy" />
+      <span>Live-Demos</span>
+    </div>
+    <h1 class="kz-h1">Sieh selbst<br/><span style="color: var(--kz-ember-text); font-style: italic;">wie es funktioniert.</span></h1>
+    <p class="kz-lead">
+      Kein Slide-Deck. Kein Pitch. Hier läuft der echte Code — dieselben Module, die wir bei Kunden deployen. Probier es aus, dann entscheid ob du das auch willst.
+    </p>
+
+    <!-- EMAIL-TRIAGE DEMO -->
+    <section id="email-triage" style="margin-top: 64px;">
+      <h2 class="kz-h2">Email-Triage — dein Postfach, geordnet</h2>
+      <p>
+        Füge eine beliebige Geschäfts-Mail ein. Der Bot kategorisiert sie, bewertet die Priorität und schreibt dir einen Antwort-Entwurf — in Sekunden. <strong>Dieses Modul gibt es als Setup ab 4.490 €.</strong>
+      </p>
+      <div id="kz-demo-email"></div>
+    </section>
+
+    <!-- WEITERE DEMOS -->
+    <section style="margin-top: 64px;">
+      <h2 class="kz-h2">Weitere Demos</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 24px;">
+
+        <div style="padding: 28px 24px; background: var(--kz-cream-deep); border-radius: 12px; opacity: 0.55;">
+          <img src="/icons/icon-camellia.png" alt="" class="kz-section-leaf" loading="lazy" />
+          <h3 class="kz-h3" style="margin-top: 0;">Audio → Protokoll</h3>
+          <p style="font-size: 15px;">Meeting-Aufnahme hochladen — Transkript + Action-Items in 60 Sekunden.</p>
+          <div style="font-size: 13px; color: var(--fg-muted);">Modul S · 2.490 € · Demo in Arbeit</div>
+        </div>
+
+        <div style="padding: 28px 24px; background: var(--kz-cream-deep); border-radius: 12px; opacity: 0.55;">
+          <img src="/icons/icon-pine.png" alt="" class="kz-section-leaf" loading="lazy" />
+          <h3 class="kz-h3" style="margin-top: 0;">Beleg-Sortierung</h3>
+          <p style="font-size: 15px;">PDF oder Foto hochladen — DATEV-Kategorie-Vorschlag + strukturierte Felder.</p>
+          <div style="font-size: 13px; color: var(--fg-muted);">Modul M · 3.990 € · Demo in Arbeit</div>
+        </div>
+
+        <div style="padding: 28px 24px; background: var(--kz-cream-deep); border-radius: 12px; opacity: 0.55;">
+          <img src="/icons/icon-plum-blossom.png" alt="" class="kz-section-leaf" loading="lazy" />
+          <h3 class="kz-h3" style="margin-top: 0;">News-Cockpit</h3>
+          <p style="font-size: 15px;">Branche eingeben — Live-Zusammenfassung aus 5–10 Quellen, täglich frisch.</p>
+          <div style="font-size: 13px; color: var(--fg-muted);">Modul M · 3.990 € · Demo in Arbeit</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BOTTOM CTA -->
+    <section style="margin-top: 80px; background: var(--kz-charcoal); color: var(--kz-cream); border-radius: 16px; padding: 48px 40px; text-align: center;">
+      <h2 class="kz-h2" style="margin-top: 0; color: var(--kz-cream);">Willst du das für deinen Betrieb?</h2>
+      <p class="kz-lead" style="color: rgba(245,240,232,0.75); max-width: 600px; margin: 0 auto 28px;">
+        Ein Discovery-Audit zeigt welche Module bei dir den größten Hebel haben. Ein Tag, ein Report, eine Roadmap.
+      </p>
+      <p>
+        <a href="/audit" class="kz-nav-cta" style="background: var(--kz-ember); color: var(--kz-cream); padding: 14px 28px; border-radius: 999px; font-size: 15px; font-weight: 600; text-decoration: none; display: inline-block;">Audit buchen — ab 1.190 €</a>
+      </p>
+      <p style="margin-top: 16px; font-size: 14px; color: rgba(245,240,232,0.6);">
+        <a href="/erstgespraech" style="color: rgba(245,240,232,0.75); text-decoration: underline;">Oder erst kennenlernen: 30-Min-Call gratis →</a>
+      </p>
+    </section>
+  </article>
+
+  <script is:inline>
+    window.KAIZEN_DEMO_BASE = window.KAIZEN_DEMO_BASE || (
+      location.hostname === 'localhost' || location.hostname === '127.0.0.1'
+        ? 'http://localhost:4123'
+        : 'https://chat.k-aizen.de'
+    );
+  </script>
+  <script is:inline src="/widgets/demo-email.js" defer></script>
+</KaizenLayout>
