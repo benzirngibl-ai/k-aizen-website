@@ -162,7 +162,7 @@
           '</div>',
 
           // CTA at bottom
-          '<div style="margin-top:20px;padding:16px 20px;background:var(--kz-charcoal);border-radius:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">',
+          '<div style="margin-top:48px;padding:16px 20px;background:var(--kz-charcoal);border-radius:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">',
           '<span style="color:var(--kz-cream);font-weight:600;">Willst du das für dein Postfach?</span>',
           '<a href="/audit" style="background:var(--kz-ember);color:var(--kz-cream);padding:10px 22px;border-radius:999px;font-weight:600;text-decoration:none;font-size:14px;white-space:nowrap;">Audit buchen →</a>',
           '</div>',
@@ -273,6 +273,27 @@
             '</div>' +
             '</div>',
             4000
+          );
+
+          // Calendar confirmation card
+          addStep(
+            '<div style="background:white;border-radius:12px;border:1px solid rgba(31,41,51,0.1);overflow:hidden;">' +
+            '<div style="background:#f8f9fa;padding:9px 14px;border-bottom:1px solid rgba(31,41,51,0.06);display:flex;align-items:center;gap:8px;">' +
+            '<span style="font-size:12px;">📅</span>' +
+            '<span style="font-size:11px;font-weight:600;color:#5f6368;text-transform:uppercase;letter-spacing:0.08em;">Kalender</span>' +
+            '<span style="margin-left:auto;font-size:11px;color:#5f6368;">' + calDate.split(',')[0] + ', 07.05.2026</span>' +
+            '</div>' +
+            '<div style="padding:10px 14px;">' +
+            '<div style="background:#1a73e8;color:white;border-radius:6px;padding:7px 11px;font-size:12px;line-height:1.4;">' +
+            '<strong>Erstgespräch — k-AIzen</strong><br>10:00 – 10:30 Uhr' +
+            '</div>' +
+            '</div>' +
+            '<div style="padding:10px 14px;background:#f0fdf4;border-top:1px solid rgba(31,41,51,0.06);display:flex;align-items:center;gap:8px;">' +
+            '<span style="font-size:15px;">✅</span>' +
+            '<span style="font-size:13px;color:#15803d;font-weight:600;">Termin automatisch eingetragen</span>' +
+            '</div>' +
+            '</div>',
+            5200
           );
         });
 
