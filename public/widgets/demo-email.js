@@ -123,10 +123,34 @@
           '<div style="margin-top:20px;padding:16px 20px;background:var(--kz-charcoal);border-radius:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">',
           '<span style="color:var(--kz-cream);font-weight:600;">Willst du das für dein Postfach?</span>',
           '<a href="/audit" style="background:var(--kz-ember);color:var(--kz-cream);padding:10px 22px;border-radius:999px;font-weight:600;text-decoration:none;font-size:14px;white-space:nowrap;">Audit buchen →</a>',
+          '</div>',
+
+          '<div style="margin-top:24px;padding:20px;background:var(--kz-cream-deep);border-radius:10px;">',
+          '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--fg-muted);margin-bottom:14px;">So läuft das bei dir im Betrieb ab:</div>',
+          '<div id="kz-pipeline-steps"></div>',
           '</div>'
         ].join('');
 
         resultEl.style.display = 'block';
+
+        var steps = [
+          { icon: '✅', text: 'Mail kategorisiert + Antwort-Entwurf erstellt' },
+          { icon: '📁', text: 'Mail automatisch in Ordner "' + escapeHtml(data.kategorie) + '" verschoben' },
+          { icon: '📱', text: 'Du bekommst eine WhatsApp-Nachricht mit dem Entwurf' },
+          { icon: '💬', text: 'Du antwortest "Ja" — Mail geht automatisch raus' },
+          { icon: '📅', text: 'Kalender-Eintrag für Erstgespräch wird erstellt' }
+        ];
+        var pipelineEl = document.getElementById('kz-pipeline-steps');
+        steps.forEach(function (s, i) {
+          var div = document.createElement('div');
+          div.style.cssText = 'display:flex;align-items:flex-start;gap:10px;padding:8px 0;opacity:0;transform:translateY(6px);transition:opacity 0.35s ease,transform 0.35s ease;' + (i < steps.length - 1 ? 'border-bottom:1px solid rgba(31,41,51,0.08);' : '');
+          div.innerHTML = '<span style="font-size:16px;line-height:1.4;flex-shrink:0;">' + s.icon + '</span><span style="font-size:14px;color:var(--kz-charcoal);">' + s.text + '</span>';
+          pipelineEl.appendChild(div);
+          setTimeout(function () {
+            div.style.opacity = '1';
+            div.style.transform = 'translateY(0)';
+          }, 300 + i * 350);
+        });
 
       } finally {
         btn.disabled = false;
