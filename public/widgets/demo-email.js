@@ -125,31 +125,78 @@
           '<a href="/audit" style="background:var(--kz-ember);color:var(--kz-cream);padding:10px 22px;border-radius:999px;font-weight:600;text-decoration:none;font-size:14px;white-space:nowrap;">Audit buchen →</a>',
           '</div>',
 
-          '<div style="margin-top:24px;padding:20px;background:var(--kz-cream-deep);border-radius:10px;">',
-          '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--fg-muted);margin-bottom:14px;">So läuft das bei dir im Betrieb ab:</div>',
-          '<div id="kz-pipeline-steps"></div>',
+          '<div style="margin-top:24px;" id="kz-sim-container">',
+          '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--fg-muted);margin-bottom:12px;">Und jetzt — dein PA übernimmt:</div>',
+          '<div style="background:var(--kz-charcoal);border-radius:14px;padding:18px;">',
+          '<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(245,240,232,0.08);">',
+          '<div style="width:36px;height:36px;background:var(--kz-ember);border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;">🤖</div>',
+          '<div><div style="font-size:13px;font-weight:700;color:var(--kz-cream);">k-AIzen PA</div><div style="font-size:11px;color:rgba(245,240,232,0.45);">Neue Mail erkannt · gerade eben</div></div>',
+          '</div>',
+          '<div style="font-size:14px;color:rgba(245,240,232,0.8);margin-bottom:8px;"><strong style="color:var(--kz-cream);">' + escapeHtml(data.kategorie) + '</strong> · Priorität ' + escapeHtml(data.prioritaet) + '</div>',
+          '<div style="background:rgba(245,240,232,0.07);border-radius:8px;padding:10px 12px;font-size:13px;color:rgba(245,240,232,0.65);font-style:italic;margin-bottom:14px;line-height:1.5;">"' + escapeHtml(data.antwort_draft.slice(0, 100)) + '…"</div>',
+          '<button id="kz-sim-btn" style="width:100%;padding:13px;background:var(--kz-ember);color:var(--kz-cream);border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;">Ja — Antwort senden</button>',
+          '</div>',
+          '<div id="kz-sim-steps" style="margin-top:12px;"></div>',
           '</div>'
         ].join('');
 
         resultEl.style.display = 'block';
 
-        var steps = [
-          { icon: '✅', text: 'Mail kategorisiert + Antwort-Entwurf erstellt' },
-          { icon: '📁', text: 'Mail automatisch in Ordner "' + escapeHtml(data.kategorie) + '" verschoben' },
-          { icon: '📱', text: 'Du bekommst eine WhatsApp-Nachricht mit dem Entwurf' },
-          { icon: '💬', text: 'Du antwortest "Ja" — Mail geht automatisch raus' },
-          { icon: '📅', text: 'Kalender-Eintrag für Erstgespräch wird erstellt' }
-        ];
-        var pipelineEl = document.getElementById('kz-pipeline-steps');
-        steps.forEach(function (s, i) {
-          var div = document.createElement('div');
-          div.style.cssText = 'display:flex;align-items:flex-start;gap:10px;padding:8px 0;opacity:0;transform:translateY(6px);transition:opacity 0.35s ease,transform 0.35s ease;' + (i < steps.length - 1 ? 'border-bottom:1px solid rgba(31,41,51,0.08);' : '');
-          div.innerHTML = '<span style="font-size:16px;line-height:1.4;flex-shrink:0;">' + s.icon + '</span><span style="font-size:14px;color:var(--kz-charcoal);">' + s.text + '</span>';
-          pipelineEl.appendChild(div);
+        // Next Thursday as demo calendar date
+        var d = new Date();
+        d.setDate(d.getDate() + ((4 - d.getDay() + 7) % 7 || 7));
+        var calDate = d.toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' });
+
+        document.getElementById('kz-sim-btn').addEventListener('click', function () {
+          var simBtn = document.getElementById('kz-sim-btn');
+          var stepsEl = document.getElementById('kz-sim-steps');
+          simBtn.disabled = true;
+          simBtn.textContent = '📤 Wird gesendet…';
+
+          function addStep(html, delay) {
+            setTimeout(function () {
+              var el = document.createElement('div');
+              el.style.cssText = 'opacity:0;transform:translateY(6px);transition:opacity 0.3s ease,transform 0.3s ease;margin-bottom:8px;';
+              el.innerHTML = html;
+              stepsEl.appendChild(el);
+              requestAnimationFrame(function () { requestAnimationFrame(function () {
+                el.style.opacity = '1'; el.style.transform = 'translateY(0)';
+              }); });
+            }, delay);
+          }
+
+          // Step 1 — sent
           setTimeout(function () {
-            div.style.opacity = '1';
-            div.style.transform = 'translateY(0)';
-          }, 300 + i * 350);
+            simBtn.textContent = '✅ Gesendet';
+            simBtn.style.background = '#3a7d44';
+          }, 900);
+
+          // Step 2 — mail moved
+          addStep(
+            '<div style="display:flex;align-items:center;gap:10px;background:var(--kz-cream-deep);padding:12px 14px;border-radius:10px;">' +
+            '<span style="font-size:18px;">📁</span>' +
+            '<span style="font-size:14px;color:var(--kz-charcoal);">Mail in Ordner <strong>"' + escapeHtml(data.kategorie) + '"</strong> verschoben</span>' +
+            '</div>', 1600);
+
+          // Step 3 — customer reply bubble
+          addStep(
+            '<div style="background:var(--kz-charcoal);border-radius:12px;padding:14px 16px;">' +
+            '<div style="font-size:11px;color:rgba(245,240,232,0.45);margin-bottom:6px;">Eingehende Antwort</div>' +
+            '<div style="font-size:14px;color:var(--kz-cream);">💬 <em>"Danke! ' + calDate.split(',')[0] + ' 10:00 Uhr passt prima."</em></div>' +
+            '</div>', 2800);
+
+          // Step 4 — calendar entry
+          addStep(
+            '<div style="background:white;border:1px solid rgba(31,41,51,0.1);border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px;">' +
+            '<div style="background:var(--kz-ember);color:white;border-radius:8px;padding:8px 10px;text-align:center;min-width:44px;flex-shrink:0;">' +
+            '<div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;opacity:0.85;">Neu</div>' +
+            '<div style="font-size:22px;font-weight:800;line-height:1;">' + d.getDate() + '</div>' +
+            '</div>' +
+            '<div>' +
+            '<div style="font-size:14px;font-weight:700;color:var(--kz-charcoal);">📅 Erstgespräch — 10:00 Uhr</div>' +
+            '<div style="font-size:13px;color:var(--fg-muted);margin-top:2px;">' + calDate + '</div>' +
+            '</div>' +
+            '</div>', 4000);
         });
 
       } finally {
