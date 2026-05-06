@@ -15,7 +15,7 @@ interface Props {
   ogImage?: string;        // optional, default = /og-image.png (1200x630)
   jsonLd?: object | object[]; // optional structured data
   breadcrumbs?: BreadcrumbItem[]; // optional breadcrumb-trail
-  activeNav?: 'audit' | 'pricing' | 'about' | 'faq' | 'kontakt' | 'home';
+  activeNav?: 'audit' | 'pricing' | 'about' | 'faq' | 'kontakt' | 'home' | 'demos';
 }
 
 const {
@@ -35,6 +35,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}
 
 const navItems = [
   { label: 'Audit', href: '/audit', key: 'audit' },
+  { label: 'Demos', href: '/demos', key: 'demos' },
   { label: 'Preise', href: '/pricing', key: 'pricing' },
   { label: 'Über mich', href: '/about', key: 'about' },
   { label: 'FAQ', href: '/#faq', key: 'faq' },
@@ -484,6 +485,7 @@ if (breadcrumbs && breadcrumbs.length > 0) {
         <h4>Angebot</h4>
         <ul>
           <li><a href="/audit">Audit buchen</a></li>
+          <li><a href="/demos">Live-Demos</a></li>
           <li><a href="/pricing">Preise &amp; Module</a></li>
           <li><a href="/about">Über mich</a></li>
           <li><a href="/erstgespraech">Erstgespräch (gratis)</a></li>
