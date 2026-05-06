@@ -1468,7 +1468,7 @@ function Footer() {
         color: 'rgba(245,240,232,0.5)',
         flexWrap: 'wrap', gap: 12,
       }}>
-        <span>© 2026 Benjamin Zirngibl · Pulscraft Digital · Bayern</span>
+        <span>© 2026 Benjamin Zirngibl · k-AIzen · Bayern</span>
         <span>Made in Germany · Hosted in Germany</span>
       </div>
     </footer>
