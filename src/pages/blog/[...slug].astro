@@ -1,0 +1,153 @@
+---
+import { getCollection, render } from 'astro:content';
+import KaizenLayout from '../../layouts/KaizenLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const pillarLabel: Record<'A' | 'B' | 'C', string> = {
+  A: 'KMU-Use-Case-Lab',
+  B: 'Build-in-Public',
+  C: 'Compliance-Realität',
+};
+
+const dateDe = (d: Date) =>
+  d.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  ...(post.data.updatedDate && { dateModified: post.data.updatedDate.toISOString() }),
+  author: { '@type': 'Person', name: post.data.author },
+  publisher: { '@type': 'Organization', name: 'k-AIzen' },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `https://k-aizen.de/blog/${post.id}` },
+  keywords: post.data.tags.join(', '),
+};
+---
+
+<KaizenLayout
+  title={post.data.title}
+  description={post.data.description}
+  path={`/blog/${post.id}`}
+  activeNav="blog"
+  ogImage={post.data.ogImage}
+  jsonLd={jsonLd}
+  breadcrumbs={[
+    { name: 'Blog', href: '/blog' },
+    { name: post.data.title, href: `/blog/${post.id}` },
+  ]}
+>
+  <article class="kz-page kz-blog-post">
+    <div class="kz-page-eyebrow">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
+      <span>{pillarLabel[post.data.pillar]}</span>
+    </div>
+    <h1 class="kz-h1">{post.data.title}</h1>
+    <p class="kz-lead">{post.data.description}</p>
+
+    <div class="kz-blog-meta">
+      <time datetime={post.data.pubDate.toISOString()}>{dateDe(post.data.pubDate)}</time>
+      {post.data.updatedDate && (
+        <span> · Aktualisiert: {dateDe(post.data.updatedDate)}</span>
+      )}
+      <span> · {post.data.author}</span>
+    </div>
+
+    <div class="kz-blog-prose">
+      <Content />
+    </div>
+
+    <nav class="kz-blog-nav">
+      <a href="/blog" class="kz-btn kz-btn-ghost">← Mehr Blog-Posts</a>
+      <a href="/erstgespraech" class="kz-btn">Erstgespräch buchen →</a>
+    </nav>
+  </article>
+
+  <style>
+    .kz-blog-meta {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--fg-muted);
+      margin-bottom: 48px;
+    }
+    .kz-blog-prose {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      line-height: 1.7;
+      max-width: 720px;
+    }
+    .kz-blog-prose h2 {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3vw, 34px);
+      margin: 56px 0 16px;
+      line-height: 1.2;
+    }
+    .kz-blog-prose h3 {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.2vw, 24px);
+      margin: 40px 0 12px;
+    }
+    .kz-blog-prose p { margin: 0 0 20px; }
+    .kz-blog-prose ul, .kz-blog-prose ol {
+      margin: 0 0 20px;
+      padding-left: 24px;
+    }
+    .kz-blog-prose li { margin-bottom: 8px; }
+    .kz-blog-prose code {
+      font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+      font-size: 0.9em;
+      background: var(--kz-cream-deep, #ede5d4);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .kz-blog-prose pre {
+      background: var(--kz-charcoal);
+      color: var(--kz-cream);
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 24px 0;
+    }
+    .kz-blog-prose pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+    .kz-blog-prose blockquote {
+      font-family: var(--font-display);
+      font-style: italic;
+      border-left: 2px solid var(--accent);
+      padding-left: 24px;
+      margin: 32px 0;
+      font-size: clamp(20px, 2.2vw, 24px);
+      color: var(--fg-muted);
+    }
+    .kz-blog-prose a {
+      color: var(--fg);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+    .kz-blog-prose a:hover { color: var(--accent); }
+    .kz-blog-prose strong { font-weight: 600; }
+    .kz-blog-nav {
+      display: flex;
+      gap: 16px;
+      margin-top: 80px;
+      padding-top: 32px;
+      border-top: 1px solid var(--kz-border);
+      flex-wrap: wrap;
+    }
+  </style>
+</KaizenLayout>

@@ -1,0 +1,109 @@
+---
+import KaizenLayout from '../../layouts/KaizenLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const pillarLabel: Record<'A' | 'B' | 'C', string> = {
+  A: 'KMU-Use-Case-Lab',
+  B: 'Build-in-Public',
+  C: 'Compliance-Realität',
+};
+---
+
+<KaizenLayout
+  title="Blog — Beobachtungen aus der KI-KMU-Praxis"
+  description="Was funktioniert, was Hype ist. Drei Pillars: KMU-Use-Case-Lab, Build-in-Public, Compliance-Realität."
+  path="/blog"
+  activeNav="blog"
+>
+  <article class="kz-page">
+    <div class="kz-page-eyebrow">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
+      <span>Blog</span>
+    </div>
+    <h1 class="kz-h1">Beobachtungen aus der KI-KMU-Praxis</h1>
+    <p class="kz-lead">
+      Was ich teste, was funktioniert, was Hype ist. Drei Pillars: KMU-Use-Case-Lab (Tools für den Alltag), Build-in-Public (eigene Sprints), Compliance-Realität (EU AI Act + DSGVO für KMU).
+    </p>
+
+    {posts.length === 0 ? (
+      <p class="kz-empty">Noch keine veröffentlichten Posts. Bald hier.</p>
+    ) : (
+      <section class="kz-blog-list">
+        {posts.map((post) => (
+          <a href={`/blog/${post.id}`} class="kz-blog-card">
+            <div class="kz-blog-pillar">{pillarLabel[post.data.pillar]}</div>
+            <h2 class="kz-blog-card-title">{post.data.title}</h2>
+            <p class="kz-blog-card-desc">{post.data.description}</p>
+            <div class="kz-blog-meta">
+              <time datetime={post.data.pubDate.toISOString()}>
+                {post.data.pubDate.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' })}
+              </time>
+            </div>
+          </a>
+        ))}
+      </section>
+    )}
+  </article>
+
+  <style>
+    .kz-empty {
+      font-family: var(--font-sans);
+      font-size: 17px;
+      color: var(--fg-muted);
+      margin-top: 32px;
+    }
+    .kz-blog-list {
+      display: grid;
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .kz-blog-card {
+      display: block;
+      text-decoration: none !important;
+      color: var(--fg);
+      padding: 32px;
+      background: var(--kz-cream-deep, #ede5d4);
+      border-radius: 12px;
+      border: 1px solid var(--kz-border);
+      transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out);
+    }
+    .kz-blog-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(31, 41, 51, 0.08);
+    }
+    .kz-blog-pillar {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .kz-blog-card-title {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.4vw, 28px);
+      line-height: 1.2;
+      margin: 0 0 12px;
+      color: var(--fg);
+    }
+    .kz-blog-card-desc {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--fg-muted);
+      margin: 0 0 16px;
+    }
+    .kz-blog-meta {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--fg-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</KaizenLayout>
