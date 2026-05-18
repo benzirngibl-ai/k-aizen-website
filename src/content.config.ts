@@ -16,4 +16,17 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const tutorials = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/tutorials' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    slug: z.string().optional(),
+    author: z.string().default('Benjamin Zirngibl'),
+    source_video: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { blog, tutorials };

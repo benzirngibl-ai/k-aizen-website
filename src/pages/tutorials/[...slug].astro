@@ -1,0 +1,156 @@
+---
+import { getCollection, render } from 'astro:content';
+import KaizenLayout from '../../layouts/KaizenLayout.astro';
+
+export async function getStaticPaths() {
+  const tutorials = await getCollection('tutorials', ({ data }) => !data.draft);
+  return tutorials.map((tut) => ({
+    params: { slug: tut.data.slug || tut.id },
+    props: { tut },
+  }));
+}
+
+const { tut } = Astro.props;
+const { Content } = await render(tut);
+const slug = tut.data.slug || tut.id;
+const pdfUrl = `/tutorials/${slug}.pdf`;
+
+const dateDe = (d: Date) =>
+  d.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: tut.data.title,
+  description: tut.data.description,
+  datePublished: tut.data.pubDate.toISOString(),
+  author: { '@type': 'Person', name: tut.data.author },
+  publisher: { '@type': 'Organization', name: 'k-AIzen' },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `https://k-aizen.de/tutorials/${slug}` },
+};
+---
+
+<KaizenLayout
+  title={tut.data.title}
+  description={tut.data.description}
+  path={`/tutorials/${slug}`}
+  activeNav="tutorials"
+  jsonLd={jsonLd}
+  breadcrumbs={[
+    { name: 'Tutorials', href: '/tutorials' },
+    { name: tut.data.title, href: `/tutorials/${slug}` },
+  ]}
+>
+  <article class="kz-page kz-tutorial-post">
+    <div class="kz-page-eyebrow">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
+      <span>Tutorial</span>
+    </div>
+    <h1 class="kz-h1">{tut.data.title}</h1>
+    <p class="kz-lead">{tut.data.description}</p>
+
+    <div class="kz-tutorial-meta">
+      <time datetime={tut.data.pubDate.toISOString()}>{dateDe(tut.data.pubDate)}</time>
+      <span> · {tut.data.author}</span>
+    </div>
+
+    <div class="kz-tutorial-pdf-cta">
+      <a href={pdfUrl} class="kz-btn" download>📥 Als PDF herunterladen</a>
+      <a href="/tutorials" class="kz-btn kz-btn-ghost">← Alle Tutorials</a>
+    </div>
+
+    <div class="kz-tutorial-prose">
+      <Content />
+    </div>
+
+    <nav class="kz-tutorial-nav">
+      <a href="/tutorials" class="kz-btn kz-btn-ghost">← Mehr Tutorials</a>
+      <a href="/erstgespraech" class="kz-btn">Erstgespräch buchen →</a>
+    </nav>
+  </article>
+
+  <style>
+    .kz-tutorial-meta {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--fg-muted);
+      margin-bottom: 32px;
+    }
+    .kz-tutorial-pdf-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+      padding: 24px;
+      background: var(--kz-cream-deep, #ede5d4);
+      border-radius: 12px;
+      border: 1px solid var(--kz-border);
+    }
+    .kz-tutorial-prose {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      line-height: 1.7;
+      max-width: 720px;
+    }
+    .kz-tutorial-prose h2 {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3vw, 34px);
+      margin: 56px 0 16px;
+      line-height: 1.2;
+    }
+    .kz-tutorial-prose h3 {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.2vw, 24px);
+      margin: 40px 0 12px;
+    }
+    .kz-tutorial-prose p { margin: 0 0 20px; }
+    .kz-tutorial-prose ul, .kz-tutorial-prose ol {
+      margin: 0 0 20px;
+      padding-left: 24px;
+    }
+    .kz-tutorial-prose li { margin-bottom: 8px; }
+    .kz-tutorial-prose code {
+      font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+      font-size: 0.9em;
+      background: var(--kz-cream-deep, #ede5d4);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .kz-tutorial-prose pre {
+      background: var(--kz-charcoal);
+      color: var(--kz-cream);
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 24px 0;
+    }
+    .kz-tutorial-prose pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+    .kz-tutorial-prose blockquote {
+      font-family: var(--font-display);
+      font-style: italic;
+      border-left: 2px solid var(--accent);
+      padding-left: 24px;
+      margin: 32px 0;
+      color: var(--fg-muted);
+    }
+    .kz-tutorial-prose a {
+      color: var(--fg);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .kz-tutorial-prose a:hover { color: var(--accent); }
+    .kz-tutorial-prose strong { font-weight: 600; }
+    .kz-tutorial-nav {
+      display: flex;
+      gap: 16px;
+      margin-top: 80px;
+      padding-top: 32px;
+      border-top: 1px solid var(--kz-border);
+      flex-wrap: wrap;
+    }
+  </style>
+</KaizenLayout>
