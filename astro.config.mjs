@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import react from '@astrojs/react';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -8,8 +9,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://k-aizen.de',
   integrations: [
+    react(),
     sitemap({
-      filter: (page) => !page.includes('/old-index') && !page.includes('/preview/') && !page.includes('/v1/'),
+      filter: (page) => !page.includes('/old-index') && !page.includes('/preview/') && !page.includes('/v1/') && !page.includes('/katalog'),
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),

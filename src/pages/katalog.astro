@@ -1,0 +1,182 @@
+---
+// /katalog — Interaktiver Flip-Book-Produkt-Katalog (Desktop) + Scroll-Variante (Mobile)
+// Unverlinkt im Header — Direktlink für Sales-Calls / Zoom-Onboarding.
+// Robots: noindex (kein Sitemap-Eintrag, vgl. astro.config.mjs)
+
+import KatalogBook from '../components/katalog/KatalogBook.jsx';
+import '../components/katalog/mobile.css';
+
+const mitarbeiter = [
+  { name: 'KI-PA', subtitle: 'Personal-Assistent', price: '14.999 €', desc: 'Mails, Kalender, Reisen, Mini-Tasks. Das Fundament.' },
+  { name: 'Social', subtitle: 'Social-Media-Manager', price: 'ab 9.999 €', desc: 'Content-Pipeline, Posts, Community-Antworten.' },
+  { name: 'Finanzer', subtitle: 'KI-Buchhaltung', price: 'ab 12.499 €', desc: 'Belege, Reports, Steuerberater-Schnittstelle.' },
+  { name: 'Personaler', subtitle: 'HR & Schichtplan', price: 'ab 22.999 €', desc: 'Urlaub, Schichten, Multi-Standort-Koordination.' },
+];
+
+const paModule = [
+  { label: 'Mail-Triage', desc: 'Wichtig / Sofort / Später — mit deinem Voice-Tone als Antwort-Entwurf.' },
+  { label: 'Kalender & Termine', desc: 'Calendly-Bookings, Pre-Call-Recherche, Audio→Protokoll.' },
+  { label: 'Reisen & Buchungen', desc: 'Hotels, Flüge, Mietwagen — du bestätigst per Discord.' },
+  { label: 'Mini-Automationen', desc: 'Wiederkehrende Tasks die dich täglich Zeit kosten.' },
+];
+---
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Katalog · k-AIzen</title>
+  <meta name="description" content="k-AIzen Produkt-Katalog — vier KI-Mitarbeiter für dein KMU. Interaktiver Flip-Book-Katalog für Sales-Calls und Onboarding." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#F5F0E8" />
+  <link rel="icon" type="image/png" href="/animations/claude-design/logo-mark.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <!-- Desktop: Flip-Book -->
+  <div id="kz-katalog-desktop">
+    <KatalogBook client:only="react" />
+  </div>
+
+  <!-- Mobile: Scroll-Variante -->
+  <div id="kz-katalog-mobile">
+    <div class="km-topbar">
+      <span class="km-brand">k-<span class="km-brand-ai">AI</span>zen · Katalog</span>
+      <a href="/" class="km-close">Schließen ✕</a>
+    </div>
+
+    <article class="km-page">
+      <!-- Hero -->
+      <div class="km-eyebrow">Produkt-Katalog 2026</div>
+      <h1 class="km-h1">
+        Vier KI-Mitarbeiter.<br />
+        <span class="km-ember">Für dein KMU.</span>
+      </h1>
+      <p class="km-lead">
+        KI-Personal-Assistent, Social-Media-Manager, Finanzer und Personaler — als feste Pakete oder einzeln. Persönlich betreut, in Deutschland gehostet, ohne Lock-in.
+      </p>
+
+      <div class="km-divider"></div>
+
+      <!-- Vorwort -->
+      <div class="km-eyebrow">Vorwort</div>
+      <h2 class="km-h2">
+        Ich bin nicht euer SaaS-Vendor.<br />
+        <span class="km-ember">Ich bin euer KI-Guy.</span>
+      </h2>
+      <p class="km-body">
+        Stell dir vor, du hättest einen Versicherungsmakler — aber für KI. Jemand, der dein System aufsetzt, es auf dem neuesten Stand hält, sich für dich um neue Modelle informiert, und den du anrufst, wenn du Fragen hast.
+      </p>
+      <p class="km-body">
+        Genau das ist k-AIzen. Kein Tool, das du irgendwo abonnierst. Sondern ein persönlicher KI-Partner, der mit deinem Unternehmen mitwächst.
+      </p>
+      <div class="km-quote">
+        „Wenn ein neues KI-Modell rauskommt — z. B. GPT-6 oder Claude 5 — informier ich mich, evaluier ob's für euer Setup besser wäre, und tausche es bei Bedarf aus."
+        <span class="km-quote-attr">— k-AIzen Sales-Doktrin</span>
+      </div>
+
+      <div class="km-divider"></div>
+
+      <!-- Übersicht -->
+      <div class="km-eyebrow">Übersicht</div>
+      <h2 class="km-h2">Die vier Mitarbeiter</h2>
+      <p class="km-body">Jeder als komplettes Paket. Einzeln buchbar — auch in Kombination.</p>
+
+      {mitarbeiter.map((it) => (
+        <div class="km-card">
+          <div class="km-card-row">
+            <div style="min-width: 0;">
+              <div class="km-card-title">
+                {it.name} <em>· {it.subtitle}</em>
+              </div>
+              <div class="km-card-desc">{it.desc}</div>
+            </div>
+            <div class="km-price">{it.price}</div>
+          </div>
+        </div>
+      ))}
+
+      <div class="km-divider"></div>
+
+      <!-- KI-PA Hero -->
+      <div class="km-eyebrow">Mitarbeiter 1 von 4</div>
+      <h2 class="km-h2" style="font-size: clamp(34px, 9vw, 48px); margin-top: 24px;">Der KI-PA</h2>
+      <p class="km-lead">
+        Dein persönlicher Assistent. Liest deine Mails, plant deine Termine, organisiert deine Reisen — und denkt mit.
+      </p>
+
+      {paModule.map((m) => (
+        <div class="km-bullet">
+          <div class="km-bullet-mark"></div>
+          <div>
+            <div class="km-bullet-label">{m.label}</div>
+            <div class="km-bullet-desc">{m.desc}</div>
+          </div>
+        </div>
+      ))}
+
+      <h2 class="km-h2">Festpreis. Kein Kleingedrucktes.</h2>
+
+      <div class="km-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 6px;">
+          <div class="km-card-title">Komplett-Bundle</div>
+          <span class="km-price-badge">14.999 €</span>
+        </div>
+        <div class="km-card-desc">Einmaliger Setup. Alle 4 Kern-Module: Mail-Triage, Kalender, Reisen, Mini-Tasks.</div>
+      </div>
+
+      <p class="km-body" style="font-style: italic; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 16px; color: #4a5360; margin-top: 16px;">
+        Plus Retainer für die laufende Betreuung:
+      </p>
+
+      <div class="km-retainer">
+        <div style="min-width: 0;">
+          <div class="km-retainer-label">Bundle-Retainer</div>
+          <div class="km-retainer-desc">Hosting, Updates, 8h Anpassung/Monat.</div>
+        </div>
+        <div class="km-retainer-price">1.299 €/Mo</div>
+      </div>
+      <div class="km-retainer">
+        <div style="min-width: 0;">
+          <div class="km-retainer-label">Bundle-Retainer Premium</div>
+          <div class="km-retainer-desc">Reaktion &lt; 4h Werktags, 16h/Monat.</div>
+        </div>
+        <div class="km-retainer-price">1.799 €/Mo</div>
+      </div>
+
+      <div class="km-cta-box">
+        <strong>Erstgespräch gratis.</strong> Audit ab 1.490 € — bei Buchung innerhalb 30 Tagen werden 50 % aufs Setup angerechnet.
+      </div>
+
+      <div class="km-divider"></div>
+
+      <!-- Roadmap -->
+      <div class="km-eyebrow">Weiter geht's</div>
+      <h2 class="km-h2">Social · Finanzer · Personaler</h2>
+      <p class="km-lead">
+        Die nächsten drei Mitarbeiter — jeweils einzeln oder in Kombination mit dem KI-PA. Vollständige Seiten folgen in der nächsten Katalog-Version.
+      </p>
+
+      <div class="km-divider"></div>
+
+      <!-- CTA -->
+      <div class="km-eyebrow">Nächster Schritt</div>
+      <h1 class="km-h1">Lass uns <span class="km-ember">reden.</span></h1>
+      <p class="km-lead">
+        30 Minuten Erstgespräch. Kostenlos. Du beschreibst dein KMU, ich sage dir ehrlich was Sinn macht — und was nicht.
+      </p>
+
+      <a href="/erstgespraech" class="km-btn">Erstgespräch buchen →</a>
+      <a href="https://wa.me/4915901031928" class="km-btn km-btn-ghost">WhatsApp direkt</a>
+
+      <div class="km-footer">
+        Benjamin Zirngibl · kontakt@k-aizen.de
+      </div>
+    </article>
+  </div>
+</body>
+</html>

@@ -1,0 +1,964 @@
+---
+// /katalog-v2 — Premium Scroll-Snap Product Presentation
+// Editorial-Pacing nach Research-Findings (Fraunces + Inter Tight + JetBrains Mono).
+// Unverlinkt, noindex. Direktlink für Sales-Calls / Zoom-Onboarding.
+
+import '../components/katalog-v2/katalog-v2.css';
+
+// ── Data ────────────────────────────────────────────────────────────────
+
+const employees = [
+  {
+    id: 'pa',
+    num: '01',
+    name: 'Der KI-PA',
+    nameEmphasis: 'KI-PA',
+    role: 'Personal-Assistent',
+    status: 'ready',
+    statusLabel: 'Production-ready',
+    statusPct: '95%',
+    icp: 'Solopreneure und Service-KMU mit 1–15 Mitarbeitenden',
+    hook: 'Wann hast du das letzte Mal eine Mail beantwortet, ohne dich vorher fünf Minuten reinzudenken?',
+    mission: 'Er behandelt deine Mails, plant deine Termine, sortiert deine Belege und briefed dich morgens.',
+    missionLong: 'Du kommst morgens an, weißt sofort was wichtig ist, und triffst nur noch die Entscheidungen, die wirklich deine sind.',
+    useCases: [
+      {
+        when: 'MORGENS · 07:30',
+        pain: 'Du öffnest deinen Posteingang. 73 ungelesene Mails. Wo fängst du an?',
+        solution: 'Im Discord wartet eine kuratierte Tagesübersicht: 3 Mails brauchen heute deine Antwort, 12 sind erledigt. Dazu Termine, ToDos, Wetter.',
+      },
+      {
+        when: 'TAGSÜBER · 14:12',
+        pain: 'Mitten im Fokus poppt eine Mail vom wichtigen Kunden auf. Wieder unterbrochen.',
+        solution: 'Der PA schreibt einen Antwort-Entwurf in deinem Tone-of-Voice. Du tippst auf „Approve", er sendet. Zwei Sekunden statt zwanzig Minuten.',
+      },
+      {
+        when: 'ABENDS · 18:45',
+        pain: 'Ein Berg Belege vom Tag — Tankquittungen, Restaurant, Hotel.',
+        solution: 'Du fotografierst, Discord sortiert: Reise / Bewirtung / Büro. Steuerberater-ready am Monatsende.',
+      },
+    ],
+    modules: [
+      { code: 'M-B3', name: 'Email-Befreiung', desc: 'Triage in Wichtig/Sofort/Später. Reply-Drafts in deinem Tonfall. Approval-Flow per Discord.', cls: 'M', price: '4.490 €', status: 'live' },
+      { code: 'M-A3', name: 'Calendly-Booking-Center', desc: 'Eingehende Bookings landen mit Pre-Call-Briefing in Discord. Kontext zum Anrufer auf einen Blick.', cls: 'S', price: '1.490 €', status: 'live' },
+      { code: 'M-A4', name: 'Daily Morning Briefing', desc: 'Tagesübersicht: Status, Termine, ToDos, Wetter — als Push um 07:00.', cls: 'S', price: '990 €', status: 'live' },
+      { code: 'M-B2', name: 'Beleg-Sortierung', desc: 'Receipt-Scan via Foto. OCR + Kategorisierung + Steuerberater-Archiv.', cls: 'M', price: '1.990 €', status: 'live' },
+      { code: 'M-A1', name: 'Audio→Protokoll', desc: 'Meeting-Recording wird Transkript, Zusammenfassung und ToDo-Liste.', cls: 'S', price: '2.490 €', status: 'build' },
+    ],
+    bundlePrice: '10.299 €',
+    bundleSavings: '10 % gegenüber Einzelmodulen',
+    retainer: [
+      { tier: 'Bundle-Retainer', price: '1.029 €/Mo', desc: 'Alle 5 Module live, 10h Anpassung pro Monat, Reaktion <12h Werktags. +25 % pro zusätzlichem Customer-User.' },
+    ],
+    proof: { metric: '~12h', label: 'gewonnen pro Woche', source: 'Bens eigener PA-Betrieb seit März 2026' },
+  },
+  {
+    id: 'social',
+    num: '02',
+    name: 'Der Social-Marketer',
+    nameEmphasis: 'Social-Marketer',
+    role: 'Content & Community',
+    status: 'build',
+    statusLabel: 'Verfügbar Q3 2026',
+    statusPct: '',
+    icp: 'DTC-Brands, lokale Service-Anbieter mit Personal-Brand, Coaches',
+    hook: 'Du hast den dritten Monat in Folge nichts gepostet — oder?',
+    mission: 'Er postet konstant Branchen-Content in deinem Stil, beantwortet Anfragen und hält dich strategisch up-to-date.',
+    missionLong: 'Du machst nur noch Strategie. Er macht die Reichweite. Dein LinkedIn, Instagram, Meta — endlich aktiv.',
+    useCases: [
+      {
+        when: 'MONTAG · 09:00',
+        pain: 'Die Wochen-Content-Idee fehlt. Wieder. Du schiebst es auf Dienstag.',
+        solution: 'Der Marketer hat über Nacht die Branchen-News durchforstet und drei Post-Ideen vorbereitet — mit Hook, Body, Visual-Skizze.',
+      },
+      {
+        when: 'DIENSTAG · 11:30',
+        pain: 'Ein DM kommt rein: „Wie funktioniert eure Onboarding?" — die übliche Frage.',
+        solution: 'Der Chatbot antwortet in deinem Voice innerhalb von zwei Sekunden mit der Standard-Erklärung. Du schreibst nur bei Fortgeschrittenem.',
+      },
+      {
+        when: 'FREITAG · 17:00',
+        pain: 'Du willst nochmal posten vor Wochenende. Aber keine Zeit zum Schreiben.',
+        solution: 'Du tippst drei Stichworte in Discord. Vollständiger Post inklusive Bild kommt zurück. Approve, Publish — fertig.',
+      },
+    ],
+    modules: [
+      { code: 'M-C4', name: 'Social Marketer Komplett', desc: 'LinkedIn / Meta / IG Auto-Post mit Approval. Content-Kalender, Image-Generation aus deinem Style, Analytics, Repost-Logic — Customer muss nichts zuliefern.', cls: 'L', price: '7.490 €', status: 'build' },
+      { code: 'M-A2', name: 'FAQ-Chatbot Basis', desc: 'Website-Chatbot mit deiner Knowledge-Base. Lead-Capture eingebaut.', cls: 'S', price: '2.490 €', status: 'build' },
+    ],
+    bundlePrice: '8.999 €',
+    bundleSavings: '10 % gegenüber Einzelmodulen',
+    retainer: [
+      { tier: 'Bundle-Retainer', price: '999 €/Mo', desc: 'Beide Module live, Content-Volumen unbegrenzt, 10h Anpassung pro Monat, Reaktion <12h Werktags. +25 % pro zusätzlichem Customer-User.' },
+    ],
+    proof: { metric: '12+', label: 'Posts pro Monat – ohne dass du tippst', source: 'Internes k-AIzen-Volume seit Mai 2026' },
+  },
+  {
+    id: 'finanzer',
+    num: '03',
+    name: 'Der Finanzer',
+    nameEmphasis: 'Finanzer',
+    role: 'KI-Buchhaltung',
+    status: 'build',
+    statusLabel: 'Verfügbar Q3 2026',
+    statusPct: '',
+    icp: 'KMU 5–30 MA mit externem Steuerberater, ohne eigene Buchhaltung',
+    hook: 'Sammelst du Belege im Schuhkarton oder im Foto-Album auf dem Handy?',
+    mission: 'Er sammelt Belege, schreibt Rechnungen, mahnt höflich, und bereitet alles für den Steuerberater perfekt auf.',
+    missionLong: 'Du unterschreibst, das war\'s. Keine Excel-Listen mehr, keine Sortier-Sonntage mehr.',
+    useCases: [
+      {
+        when: 'MITTWOCH · 13:00',
+        pain: 'Restaurant-Beleg vom Geschäftsessen. Wieder einer für die Sammlung im Auto.',
+        solution: 'Foto an Discord-Kanal. OCR liest Betrag, Datum, Anbieter. Kategorisiert automatisch als Bewirtung. Steuerberater-Archiv.',
+      },
+      {
+        when: 'MONATSENDE · 28.',
+        pain: 'Drei Kunden hängen mit Rechnungen hinterher. Du müsstest mahnen, hasst aber das Schreiben.',
+        solution: 'Der Finanzer schickt automatisch die erste Mahnung — höflich, in deinem Stil. Bei zweiter Mahnung kommt eine Discord-Notification, falls du persönlich entscheiden willst.',
+      },
+      {
+        when: 'STEUERBERATER-CALL',
+        pain: 'Quartal-Aufbereitung. Du musst alle Belege zusammensuchen, Excel pflegen, dem Berater erklären.',
+        solution: 'Monats-Export als ZIP: alle Belege sortiert, Rechnungen tabellarisch, alle Kategorien. Der Berater bekommt das, was er braucht — Tag 1 jeden Monats.',
+      },
+    ],
+    modules: [
+      { code: 'M-C5', name: 'Rechnungs-Flow', desc: 'Erstellung, Versand, Mahnwesen, Kontoauszug-Matching. Vollautomatisch mit deiner Approval.', cls: 'L', price: '4.990 €', status: 'build' },
+      { code: 'M-B2', name: 'Beleg-Sortierung', desc: 'Receipt-Scan via Foto. OCR + Kategorisierung + Steuerberater-Archiv.', cls: 'M', price: '1.990 €', status: 'live' },
+      { code: 'M-B5', name: 'Steuerberater-Monatsexport', desc: 'Alle Belege + Rechnungen monatlich als sauberes ZIP — bereit für den Berater.', cls: 'M', price: '2.890 €', status: 'build' },
+      { code: 'M-A1', name: 'Audio→Protokoll', desc: 'Steuerberater-Calls werden Transkript mit ToDo-Liste.', cls: 'S', price: '2.490 €', status: 'build' },
+    ],
+    bundlePrice: '10.999 €',
+    bundleSavings: '10 % gegenüber Einzelmodulen',
+    retainer: [
+      { tier: 'Bundle-Retainer', price: '1.199 €/Mo', desc: 'Alle 4 Module live, monatlicher Steuerberater-Export inklusive, 12h Anpassung pro Monat, Reaktion <12h. +25 % pro zusätzlichem Customer-User.' },
+    ],
+    proof: { metric: '0', label: 'Belege im Schuhkarton', source: 'Designziel — testet sich beim ersten Customer-Setup' },
+  },
+  {
+    id: 'personaler',
+    num: '04',
+    name: 'Der Personaler',
+    nameEmphasis: 'Personaler',
+    role: 'HR & Schichtplan',
+    status: 'plan',
+    statusLabel: 'Verfügbar Q4 2026',
+    statusPct: '',
+    icp: 'KMU 20–100 MA mit HR-Engpass — Geschäftsführer macht\'s selbst',
+    hook: 'Wer pflegt eigentlich euren Urlaubskalender? Die Antwort kostet dich vermutlich täglich 20 Minuten.',
+    mission: 'Er übernimmt Urlaubsanträge, Krankmeldungen, Onboarding-Checklisten und Schichtkoordination — alles aus einem zentralen Discord-Cockpit.',
+    missionLong: 'Eure HR-Operations laufen, ohne dass du dich noch um irgendwas davon kümmern musst.',
+    useCases: [
+      {
+        when: 'URLAUB · MORGEN',
+        pain: 'Mitarbeiter ruft an: „Kann ich nächste Woche eine Woche frei?". Du musst Kalender checken, andere Schichten anschauen.',
+        solution: 'Der Mitarbeiter stellt den Antrag im Discord. Der Personaler prüft Konflikte, schlägt vor, was geht. Du genehmigst mit einem Klick.',
+      },
+      {
+        when: 'KRANKMELDUNG · 06:30',
+        pain: 'WhatsApp: „Bin heute krank." Du musst Vertretung organisieren, alle benachrichtigen.',
+        solution: 'Discord-Kommando: „Krank heute." Der Personaler benachrichtigt das Team, prüft Schicht-Vertretungen, schlägt Lösung vor.',
+      },
+      {
+        when: 'NEUE STELLE · MONTAG',
+        pain: 'Bewerbung kommt rein. Du musst lesen, antworten, weiterleiten, Termin koordinieren.',
+        solution: 'Bewerber-Triage filtert Spam und Junk. Echte Bewerbungen kommen mit Score und Zusammenfassung in Discord — du entscheidest nur noch.',
+      },
+    ],
+    modules: [
+      { code: 'M-C6', name: 'HR-Operating-System', desc: 'Onboarding-Checklisten, Urlaubsanträge, Krankmeldungen, interne Comms — zentral in Discord.', cls: 'L', price: '8.990 €', status: 'plan' },
+      { code: 'M-C2', name: 'Schicht-Genie', desc: 'Schichtplanung, Konflikt-Detection, Tausch-Vorschläge, Multi-Standort.', cls: 'L', price: '8.990 €', status: 'plan' },
+      { code: 'M-B6', name: 'Bewerber-Triage', desc: 'Eingehende Bewerbungen vorqualifizieren mit Score + Zusammenfassung.', cls: 'M', price: '1.890 €', status: 'plan' },
+      { code: 'M-A1', name: 'Audio→Protokoll', desc: 'Interne Meetings und 1-on-1-Gespräche als Transkript.', cls: 'S', price: '2.490 €', status: 'build' },
+    ],
+    bundlePrice: '19.999 €',
+    bundleSavings: '10 % gegenüber Einzelmodulen',
+    retainer: [
+      { tier: 'Bundle-Retainer', price: '2.199 €/Mo', desc: 'Alle 4 Module live, HR-spezifische Datenschutz-Compliance, 22h Anpassung pro Monat, Reaktion <12h. +25 % pro zusätzlichem Customer-User.' },
+    ],
+    proof: { metric: '20 min', label: 'pro Tag, die ein GF mit HR-Admin verliert', source: 'KMU-Realität, branchenübergreifend' },
+  },
+];
+
+const auditTiers = [
+  { name: 'Remote Kompakt', desc: '2h Call + 1-seitige Empfehlung.', price: '1.190 €' },
+  { name: 'Remote Standard', desc: '4h Call + 4-seitiger Audit-Report + Modul-Empfehlung + ROI-Schätzung.', price: '1.490 €', featured: true },
+  { name: 'Vor Ort', desc: 'Tag vor Ort. Alle Beteiligten interviewen. Vollständiger Audit-Report.', price: '1.990 €' },
+];
+
+const combos = [
+  { name: 'PA + Finanzer', cells: ['Solo/Klein-KMU', '20.999 €', '2.199 €/Mo', 'Summe Bundles'] },
+  { name: 'PA + Social', cells: ['Content-Marketing-First', '18.999 €', '1.999 €/Mo', 'Summe Bundles'] },
+  { name: 'Drei Mitarbeiter', cells: ['Mittelgroße KMU', '29.999 €', '3.199 €/Mo', 'Summe Bundles'] },
+  { name: 'Alle vier', cells: ['Full-Setup, ganze Mannschaft', '44.999 €', '4.999 €/Mo', '−10 % Extra-Bündel'] },
+  { name: 'Ultimate · Die ganze KI-Mannschaft', cells: ['Wer alles will — inkl. Voice', '57.999 €', '6.999 €/Mo', '−15 % Ultimate-Rabatt'], featured: true },
+];
+
+// Voice-Add-On (Cross-Cut)
+const voiceLayer = {
+  foundation: { name: 'Voice-Foundation', setup: '4.990 €', retainer: '299 €/Mo', desc: 'Phone-Number + STT/TTS + Conversation-Engine. Allein nicht nutzbar — braucht mindestens einen Use-Case-Pack.' },
+  packs: [
+    { code: 'M-V1', name: 'Voice-Pack PA', setup: '1.490 €', retainer: '149 €/Mo', desc: 'Anrufe entgegen nehmen, Termine vereinbaren, FAQ beantworten, Pre-Call-Briefing in Discord.' },
+    { code: 'M-V2', name: 'Voice-Pack Personaler', setup: '1.490 €', retainer: '149 €/Mo', desc: 'Personal anrufen für Schicht-Aushelfe, Krankmeldungen per Telefon annehmen, Bewerber-Vor-Screening.' },
+    { code: 'M-V3', name: 'Voice-Pack Finanzer', setup: '1.490 €', retainer: '149 €/Mo', desc: 'Höfliche Mahn-Anrufe Tier 2 nach E-Mail-Mahnung, Steuerberater-Call-Briefing.' },
+  ],
+};
+
+// Bezahl-Modelle (Modell A vs B)
+const paymentModels = [
+  { id: 'pa',         name: 'PA',         setupA: '10.299 €', retainerA: '1.029 €/Mo', retainerBYear1: '1.899 €/Mo', retainerBYear2: '1.029 €/Mo' },
+  { id: 'social',     name: 'Social',     setupA: '8.999 €',  retainerA: '999 €/Mo',   retainerBYear1: '1.749 €/Mo', retainerBYear2: '999 €/Mo' },
+  { id: 'finanzer',   name: 'Finanzer',   setupA: '10.999 €', retainerA: '1.199 €/Mo', retainerBYear1: '2.099 €/Mo', retainerBYear2: '1.199 €/Mo' },
+  { id: 'personaler', name: 'Personaler', setupA: '19.999 €', retainerA: '2.199 €/Mo', retainerBYear1: '3.899 €/Mo', retainerBYear2: '2.199 €/Mo' },
+  { id: 'ultimate',   name: 'Ultimate',   setupA: '57.999 €', retainerA: '6.999 €/Mo', retainerBYear1: '11.999 €/Mo', retainerBYear2: '6.999 €/Mo' },
+];
+
+// Section-Index für progress-dots
+const sections = [
+  { id: 'cover',     label: 'Cover' },
+  { id: 'manifest',  label: 'Manifest' },
+  { id: 'overview',  label: 'Mitarbeiter' },
+  ...employees.flatMap((e) => [
+    { id: `${e.id}-hero`,     label: e.name },
+    { id: `${e.id}-mission`,  label: `${e.name} · Mission` },
+    { id: `${e.id}-cases`,    label: `${e.name} · Alltag` },
+    { id: `${e.id}-modules`,  label: `${e.name} · Module` },
+    { id: `${e.id}-pricing`,  label: `${e.name} · Preis` },
+  ]),
+  { id: 'combos',    label: 'Kombinationen' },
+  { id: 'voice',     label: 'Voice-Layer' },
+  { id: 'ultimate',  label: 'Ultimate' },
+  { id: 'payment',   label: 'Bezahl-Modelle' },
+  { id: 'payment-table', label: 'Modell-Vergleich' },
+  { id: 'service',   label: 'Service-Verständnis' },
+  { id: 'audit',     label: 'Audit · Einstieg' },
+  { id: 'cta',       label: 'Erstgespräch' },
+];
+---
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>k-AIzen — Produkt-Katalog 2026</title>
+  <meta name="description" content="Vier KI-Mitarbeiter für dein KMU. KI-PA, Social, Finanzer, Personaler. Persönlich betreut, in Deutschland gehostet." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#F5F0E8" />
+  <link rel="icon" type="image/png" href="/animations/claude-design/logo-mark.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Top Chrome -->
+  <header class="kz-topbar">
+    <a href="/" class="kz-brand">k-<span class="kz-brand-ai">AI</span>zen · Katalog</a>
+    <div class="kz-topbar-meta">
+      <span>MMXXVI</span>
+      <a href="/" class="kz-close">Schließen</a>
+    </div>
+  </header>
+
+  <!-- Section Progress Dots -->
+  <nav class="kz-progress" aria-label="Sektionen">
+    {sections.map((s, i) => (
+      <button class="kz-progress-dot" data-target={s.id} aria-current={i === 0 ? 'true' : 'false'}>
+        <span class="kz-progress-dot-label">{s.label}</span>
+        <span class="kz-progress-dot-mark"></span>
+      </button>
+    ))}
+  </nav>
+
+  <!-- Scroll Hint -->
+  <div class="kz-scroll-hint" id="kz-scroll-hint">
+    <span class="kz-scroll-hint-line"></span>
+    <span>Scroll</span>
+    <span class="kz-scroll-hint-line"></span>
+  </div>
+
+  <!-- ── SECTION 1: COVER ────────────────────────────────────────────── -->
+  <section class="kz-section kz-cover" id="cover">
+    <span class="kz-cover-kanji">改</span>
+    <div class="kz-cover-content" style="margin-top: auto;">
+      <div class="kz-eyebrow" style="margin-bottom: 32px;">Produkt-Katalog · MMXXVI · für KMU</div>
+      <h1 class="kz-display kz-display--xxl">
+        Vier&nbsp;<span class="kz-italic">KI-Mitarbeiter.</span>
+      </h1>
+      <p class="kz-lead" style="margin-top: clamp(20px, 3vh, 32px); max-width: 48ch;">
+        Persönlich betreut. In Deutschland gehostet. Ohne Lock-in.
+      </p>
+    </div>
+    <div class="kz-cover-meta">
+      <div class="kz-cover-meta-block">
+        <span class="kz-mono">Benjamin Zirngibl · k-aizen.de</span>
+        <span class="kz-mono">Bayern, Deutschland</span>
+      </div>
+      <div class="kz-cover-meta-block" style="text-align: right; align-items: flex-end;">
+        <span class="kz-mono">Vol. III · Mai 2026</span>
+        <span class="kz-mono">{sections.length.toString().padStart(2, '0')} Sektionen</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 2: MANIFEST ─────────────────────────────────────────── -->
+  <section class="kz-section kz-manifest" id="manifest">
+    <div class="kz-manifest-grid">
+      <div class="kz-manifest-portrait">
+        <img src="/images/ben-portrait.png" alt="Benjamin Zirngibl" />
+        <div class="kz-manifest-portrait-caption">
+          <span class="kz-mono" style="color: rgba(245,240,232,0.5);">Benjamin Zirngibl</span>
+          <span class="kz-mono" style="color: rgba(245,240,232,0.5);">Gründer · k-AIzen</span>
+        </div>
+      </div>
+      <div class="kz-manifest-body">
+        <div class="kz-eyebrow" style="margin-bottom: 32px;">Manifest · Eins</div>
+        <h2 class="kz-manifest-quote">
+          „Ich bin nicht<br />euer SaaS-Vendor.<br /><span class="kz-italic">Ich bin euer KI-Guy.</span>"
+        </h2>
+        <span class="kz-manifest-attr">Wie ein Versicherungsmakler — nur für KI</span>
+        <p class="kz-lead" style="margin-top: clamp(24px, 4vh, 40px); max-width: 56ch; color: rgba(245,240,232,0.75);">
+          Andere setzen ein System auf und verschwinden. Ich bleibe dein Ansprechpartner. Halte dein Setup auf dem neuesten Stand. Tausche Modelle, wenn ein besseres kommt. Bin am Telefon, wenn du Fragen hast.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 3: OVERVIEW ─────────────────────────────────────────── -->
+  <section class="kz-section kz-overview" id="overview">
+    <div style="display: flex; flex-direction: column; gap: 18px;">
+      <span class="kz-eyebrow">Sortiment</span>
+      <h2 class="kz-display kz-display--l">Die&nbsp;<span class="kz-italic">vier&nbsp;Mitarbeiter</span>.</h2>
+      <p class="kz-lead">Jeder als komplettes Paket. Einzeln buchbar. Auch in Kombination — Multi-Mitarbeiter-Rabatte siehe später.</p>
+    </div>
+
+    <div class="kz-overview-grid">
+      {employees.map((e) => (
+        <a href={`#${e.id}-hero`} class="kz-overview-card">
+          <span class="kz-overview-card-num">№ {e.num}</span>
+          <h3 class="kz-overview-card-name">{e.name.replace(e.nameEmphasis, '')}<em>{e.nameEmphasis}</em></h3>
+          <p class="kz-overview-card-role">{e.role}</p>
+          <p class="kz-overview-card-desc">{e.mission}</p>
+          <div class="kz-overview-card-foot">
+            <span class="kz-overview-card-price">{e.bundlePrice}</span>
+            <span class="kz-overview-card-status">
+              {e.statusLabel}{e.statusPct ? ` · ${e.statusPct}` : ''}
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ── PER-EMPLOYEE SECTIONS ───────────────────────────────────────── -->
+  {employees.map((e) => (
+    <div data-emp={e.id}>
+      <!-- HERO -->
+      <section class={`kz-section kz-emp-hero`} id={`${e.id}-hero`}>
+        <div class="kz-emp-meta">
+          <div class="kz-emp-meta-left">
+            <span class="kz-eyebrow">Mitarbeiter № {e.num} von 04</span>
+            <span class="kz-mono">ICP · {e.icp}</span>
+          </div>
+          <span class="kz-emp-status-pill">
+            <span class={`kz-emp-status-dot kz-emp-status-dot--${e.status}`}></span>
+            {e.statusLabel}{e.statusPct ? ` · ${e.statusPct}` : ''}
+          </span>
+        </div>
+        <div class="kz-emp-hero-body">
+          <h2 class="kz-emp-name">
+            {e.name.split(e.nameEmphasis)[0]}<em>{e.nameEmphasis}</em>{e.name.split(e.nameEmphasis)[1]}
+          </h2>
+          <p class="kz-emp-hook">„{e.hook}"</p>
+        </div>
+        <div class="kz-emp-hero-foot">
+          <span class="kz-mono">{e.role}</span>
+          <span class="kz-mono">→ scroll zur Mission</span>
+        </div>
+      </section>
+
+      <!-- MISSION -->
+      <section class={`kz-section kz-section--split`} id={`${e.id}-mission`} style="background: var(--kz-cream);">
+        <div>
+          <span class="kz-eyebrow" style="margin-bottom: 32px; display: inline-flex;">Was er macht</span>
+          <h3 class="kz-display kz-display--l" style="margin-top: 8px;">
+            <span class="kz-italic-soft">Eine</span><br />Mission.
+          </h3>
+        </div>
+        <div>
+          <p class="kz-lead" style="font-size: clamp(22px, 1.9vw, 30px); color: var(--kz-charcoal); margin-bottom: 24px;">
+            {e.mission}
+          </p>
+          <p class="kz-body">{e.missionLong}</p>
+          <div style="margin-top: clamp(36px, 6vh, 64px); display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--kz-line); padding-top: 28px;">
+            <div class="kz-caption">Bündelpreis</div>
+            <div style="font-family: var(--kz-display); font-size: clamp(36px, 4vw, 56px); font-weight: 500; letter-spacing: -0.02em; line-height: 1;">{e.bundlePrice}</div>
+            <div class="kz-mono" style="margin-top: 4px;">{e.bundleSavings}</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- USE-CASES -->
+      <section class={`kz-section kz-usecase`} id={`${e.id}-cases`}>
+        <div class="kz-usecase-head">
+          <span class="kz-eyebrow">Alltag · drei Momente</span>
+          <h3 class="kz-display kz-display--l">Was er für dich macht.</h3>
+        </div>
+        <div class="kz-usecase-grid">
+          {e.useCases.map((u) => (
+            <div class="kz-usecase-item">
+              <span class="kz-usecase-time">{u.when}</span>
+              <p class="kz-usecase-pain">„{u.pain}"</p>
+              <p class="kz-usecase-solution">{u.solution}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- MODULES -->
+      <section class={`kz-section kz-modules`} id={`${e.id}-modules`}>
+        <div class="kz-modules-head">
+          <span class="kz-eyebrow">Bausteine · {e.modules.length} Module</span>
+          <h3 class="kz-display kz-display--l">Aus diesen Teilen<br />gebaut.</h3>
+          <p class="kz-lead">Jedes Modul ist einzeln buchbar — oder als Teil des Bundles unten.</p>
+        </div>
+        <div class="kz-modules-list">
+          {e.modules.map((m) => (
+            <div class="kz-module">
+              <span class="kz-module-code">{m.code}</span>
+              <div class="kz-module-body">
+                <span class="kz-module-name">{m.name}</span>
+                <span class="kz-module-desc">{m.desc}</span>
+              </div>
+              <div class="kz-module-meta">
+                <span class="kz-module-class">{m.cls}</span>
+                <span class="kz-module-price">{m.price}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- PRICING -->
+      <section class={`kz-section kz-pricing`} id={`${e.id}-pricing`}>
+        <div class="kz-pricing-headline">
+          <span class="kz-eyebrow">Investition · {e.name}</span>
+          <h3 class="kz-display kz-display--l" style="margin-top: 18px;">Festpreis.<br /><span class="kz-italic-soft">Kein Kleingedrucktes.</span></h3>
+        </div>
+
+        <div class="kz-pricing-bundle">
+          <div>
+            <div class="kz-pricing-bundle-label">Komplett-Bundle · {e.bundleSavings}</div>
+            <h4 class="kz-pricing-bundle-name">{e.name}</h4>
+            <p class="kz-pricing-bundle-includes">
+              {e.modules.length} Module · Einmaliger Setup · 4 Wochen Begleit-Betrieb · Eigener Server in Deutschland · DSGVO-konform ab Tag 1.
+            </p>
+          </div>
+          <div class="kz-pricing-bundle-price">
+            <span class="kz-pricing-bundle-amount">{e.bundlePrice}</span>
+            <div class="kz-pricing-bundle-suffix">Einmalig · netto</div>
+          </div>
+        </div>
+
+        <div class="kz-pricing-retainer">
+          {e.retainer.map((r) => (
+            <div class="kz-pricing-retainer-item">
+              <span class="kz-pricing-retainer-label">Retainer · {r.tier}</span>
+              <span class="kz-pricing-retainer-tier">{r.price}</span>
+              <span class="kz-pricing-retainer-desc">{r.desc}</span>
+            </div>
+          ))}
+        </div>
+
+        <p class="kz-pricing-note">
+          <strong>Audit verrechnet sich.</strong> Bei Buchung innerhalb 30 Tagen nach Discovery-Audit werden 50 % des Audit-Preises auf das Bundle angerechnet.
+        </p>
+      </section>
+    </div>
+  ))}
+
+  <!-- ── SECTION: COMBOS ─────────────────────────────────────────────── -->
+  <section class="kz-section kz-combos" id="combos">
+    <div style="display: flex; flex-direction: column; gap: 18px;">
+      <span class="kz-eyebrow">Kombinationen</span>
+      <h2 class="kz-display kz-display--l">Mehrere Mitarbeiter,<br /><span class="kz-italic-soft">echte Rabatte.</span></h2>
+      <p class="kz-lead">Multi-Mitarbeiter-Kombinationen kommen mit fester Rabatt-Staffelung — keine Pseudo-Pakete, keine versteckten Aufschläge.</p>
+    </div>
+    <div class="kz-combos-table">
+      <div class="kz-combo-cell kz-combo-cell--head">Kombi</div>
+      <div class="kz-combo-cell kz-combo-cell--head">Setup</div>
+      <div class="kz-combo-cell kz-combo-cell--head">Retainer</div>
+      <div class="kz-combo-cell kz-combo-cell--head" style="justify-content: flex-end;">Ersparnis</div>
+      {combos.map((c) => (
+        <>
+          <div class={`kz-combo-cell kz-combo-cell--name ${c.featured ? 'kz-combo-cell--featured' : ''}`}>
+            {c.name}
+            {c.featured && <span class="kz-combo-featured-pill">Empfohlen</span>}
+          </div>
+          <div class={`kz-combo-cell ${c.featured ? 'kz-combo-cell--featured' : ''}`}>{c.cells[0]}</div>
+          <div class={`kz-combo-cell kz-combo-cell--price ${c.featured ? 'kz-combo-cell--featured' : ''}`}>{c.cells[1]} · {c.cells[2]}</div>
+          <div class={`kz-combo-cell kz-combo-cell--savings ${c.featured ? 'kz-combo-cell--featured' : ''}`}>{c.cells[3]}</div>
+        </>
+      ))}
+    </div>
+  </section>
+
+  <!-- ── SECTION: VOICE-LAYER ────────────────────────────────────────── -->
+  <section class="kz-section kz-voice" id="voice">
+    <div class="kz-voice-intro">
+      <span class="kz-eyebrow">Erweiterung · Voice-Layer</span>
+      <h2 class="kz-display kz-display--l" style="margin-top: 18px;">
+        Wenn der Mitarbeiter<br /><span class="kz-italic-soft">auch das Telefon</span><br />in die Hand nehmen soll.
+      </h2>
+      <p class="kz-lead" style="margin-top: 24px;">
+        Voice ist kein eigener Mitarbeiter — Voice ist eine Capability, die du bei deinen bestehenden Mitarbeitern aktivierst. PA nimmt eingehende Calls entgegen, Personaler ruft Aushelfe-Personal an und nimmt Krankmeldungen telefonisch, Finanzer macht höfliche Mahn-Calls. Foundation einmal, dann pro Use-Case erweiterbar.
+      </p>
+    </div>
+
+    <div class="kz-voice-grid">
+      <div class="kz-voice-foundation">
+        <span class="kz-voice-tag">Pflicht-Basis</span>
+        <h3 class="kz-voice-card-title">{voiceLayer.foundation.name}</h3>
+        <p class="kz-voice-card-desc">{voiceLayer.foundation.desc}</p>
+        <div class="kz-voice-card-price">
+          <span><strong>{voiceLayer.foundation.setup}</strong> Setup</span>
+          <span><strong>{voiceLayer.foundation.retainer}</strong> Retainer</span>
+        </div>
+      </div>
+      <div class="kz-voice-packs">
+        {voiceLayer.packs.map((p) => (
+          <div class="kz-voice-pack">
+            <span class="kz-voice-pack-code">{p.code}</span>
+            <h4 class="kz-voice-pack-title">{p.name}</h4>
+            <p class="kz-voice-pack-desc">{p.desc}</p>
+            <div class="kz-voice-pack-price">
+              <span>{p.setup} Setup</span>
+              <span class="kz-voice-pack-sep">·</span>
+              <span>{p.retainer}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <p class="kz-voice-footnote">
+      Voice-Foundation wird nur einmal pro Customer gebraucht — egal wie viele Voice-Packs aktiv sind. Im <strong>Ultimate-Bundle</strong> ist Foundation + alle 3 Packs bereits enthalten.
+    </p>
+  </section>
+
+  <!-- ── SECTION: ULTIMATE-BUNDLE ────────────────────────────────────── -->
+  <section class="kz-section kz-ultimate" id="ultimate">
+    <div class="kz-ultimate-card">
+      <span class="kz-ultimate-eyebrow">Die ganze KI-Mannschaft</span>
+      <h2 class="kz-display kz-display--xl kz-ultimate-title">
+        Ultimate.<br /><span class="kz-italic">Wenn du alles willst.</span>
+      </h2>
+      <p class="kz-ultimate-lead">
+        Vier KI-Mitarbeiter. Alle Standalone-Module. Voice-Layer komplett. Premium-Service.<br />
+        Für den Customer der nicht halb-macht.
+      </p>
+
+      <div class="kz-ultimate-grid">
+        <div class="kz-ultimate-col">
+          <h4 class="kz-ultimate-col-title">Alle 4 Mitarbeiter</h4>
+          <ul class="kz-ultimate-list">
+            <li>PA — Mails, Termine, Belege, Briefings, Audio→Protokoll</li>
+            <li>Social — Posting auf 3 Kanälen, Image-Generation, FAQ-Bot</li>
+            <li>Finanzer — Rechnungen, Belege, Mahnwesen, Steuerberater-Export</li>
+            <li>Personaler — HR-OS, Schicht-Genie, Bewerber-Triage</li>
+          </ul>
+        </div>
+        <div class="kz-ultimate-col">
+          <h4 class="kz-ultimate-col-title">Erweiterungen all-inclusive</h4>
+          <ul class="kz-ultimate-list">
+            <li>Sales-Chat Frontend (Lead-Capture auf Website)</li>
+            <li>Lead-Research-Pipeline (5 qualifizierte Leads/Tag)</li>
+            <li>News & Knowledge Cockpit</li>
+            <li>Content + Image Generation Standalone</li>
+            <li><strong>Voice-Layer komplett</strong> — Foundation + PA + Personaler + Finanzer</li>
+          </ul>
+        </div>
+        <div class="kz-ultimate-col">
+          <h4 class="kz-ultimate-col-title">Premium-Service</h4>
+          <ul class="kz-ultimate-list">
+            <li>Reaktion &lt;4h auch am Wochenende</li>
+            <li>2× Vor-Ort-Visite pro Jahr inklusive</li>
+            <li>Quartals-Strategy-Calls (90 Min)</li>
+            <li>Bis zu 5 Customer-User inklusive (statt +25 %)</li>
+            <li>Beta-Access für neue Module</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="kz-ultimate-pricing">
+        <div class="kz-ultimate-pricing-row">
+          <span class="kz-ultimate-pricing-label">Setup-First</span>
+          <span class="kz-ultimate-pricing-value"><strong>57.999 €</strong> Setup</span>
+          <span class="kz-ultimate-pricing-value"><strong>6.999 €/Mo</strong> Retainer</span>
+        </div>
+        <div class="kz-ultimate-pricing-row">
+          <span class="kz-ultimate-pricing-label">SaaS-Style (24 Mo)</span>
+          <span class="kz-ultimate-pricing-value">0 € Setup</span>
+          <span class="kz-ultimate-pricing-value"><strong>11.999 €/Mo</strong> Y1 → 6.999 €/Mo Y2+ (Auto-Reduktion)</span>
+        </div>
+      </div>
+
+      <p class="kz-ultimate-footnote">
+        Mindestlaufzeit Modell B: <strong>24 Monate</strong>. Setup-Kosten sind über das erste Jahr in den Retainer verteilt — nach 12 Monaten fällt der Preis automatisch auf den Standard-Retainer, du zahlst weniger für gleichen Mehrwert.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── SECTION: BEZAHL-MODELLE · Konzept ───────────────────────────── -->
+  <section class="kz-section kz-payment" id="payment">
+    <div class="kz-payment-intro">
+      <span class="kz-eyebrow">Bezahlung · Zwei Wege</span>
+      <h2 class="kz-display kz-display--l" style="margin-top: 18px;">
+        Komplett-Investment<br /><span class="kz-italic-soft">oder Ratenzahlung —</span><br />du wählst.
+      </h2>
+      <p class="kz-lead" style="margin-top: 24px;">
+        Setup-First oder SaaS-Style. Bei <strong>Modell B</strong> verteilt sich das Setup über 12 Monate, danach reduziert sich der Retainer automatisch auf den Standardpreis — du zahlst weniger für gleichen Mehrwert.
+      </p>
+    </div>
+
+    <div class="kz-payment-grid">
+      <div class="kz-payment-card">
+        <div class="kz-payment-card-header">
+          <span class="kz-payment-card-eyebrow">Modell A · Setup-First</span>
+          <h3 class="kz-payment-card-title">Klassisch.<br />Einmal investieren, dann läuft's.</h3>
+        </div>
+        <ul class="kz-payment-card-bullets">
+          <li>Einmaliges Setup-Investment</li>
+          <li>Niedriger monatlicher Retainer</li>
+          <li>Keine Mindestlaufzeit — jederzeit kündbar</li>
+          <li>Beste Wahl wenn Liquidität da ist</li>
+        </ul>
+      </div>
+
+      <div class="kz-payment-card kz-payment-card--featured">
+        <div class="kz-payment-card-header">
+          <span class="kz-payment-card-eyebrow">Modell B · SaaS-Style</span>
+          <h3 class="kz-payment-card-title">Ratenzahlung.<br />Niedrige Einstiegshürde, fairer Übergang.</h3>
+        </div>
+        <ul class="kz-payment-card-bullets">
+          <li><strong>0 € Setup</strong> — direkt loslegen</li>
+          <li>Setup wird über 12 Monate in den Retainer verteilt</li>
+          <li>Mindestlaufzeit 12 Monate</li>
+          <li><strong>Nach Year 1:</strong> automatische Reduktion auf Standard-Retainer</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION: BEZAHL-MODELLE · Tabelle ───────────────────────────── -->
+  <section class="kz-section kz-payment" id="payment-table">
+    <div class="kz-payment-table-intro">
+      <span class="kz-eyebrow">Modell-Vergleich · Alle Bundles</span>
+      <h2 class="kz-display kz-display--m" style="margin-top: 14px;">
+        Beide Wege.<br /><span class="kz-italic-soft">Schwarz auf weiß.</span>
+      </h2>
+    </div>
+
+    <div class="kz-payment-table">
+      <div class="kz-payment-table-head">
+        <div>Bundle</div>
+        <div>Modell A · Setup</div>
+        <div>Modell A · Retainer</div>
+        <div>Modell B · Year 1</div>
+        <div>Modell B · Year 2+</div>
+      </div>
+      {paymentModels.map((m) => (
+        <div class="kz-payment-table-row">
+          <div class="kz-payment-table-name">{m.name}</div>
+          <div>{m.setupA}</div>
+          <div>{m.retainerA}</div>
+          <div class="kz-payment-table-highlight">{m.retainerBYear1}</div>
+          <div>{m.retainerBYear2}</div>
+        </div>
+      ))}
+    </div>
+
+    <p class="kz-payment-footnote">
+      Multi-User-Aufschlag (+25 % Retainer pro zusätzlichem Customer-User) gilt für beide Modelle.
+    </p>
+  </section>
+
+  <!-- ── SECTION: SERVICE-VERSTÄNDNIS ────────────────────────────────── -->
+  <section class="kz-section kz-service" id="service">
+    <div class="kz-service-intro">
+      <span class="kz-eyebrow">Service-Verständnis</span>
+      <h2 class="kz-display kz-display--l" style="margin-top: 18px;">
+        Du kaufst keine Software.<br /><span class="kz-italic">Du engagierst einen KI-Berater.</span>
+      </h2>
+      <p class="kz-lead" style="margin-top: 24px;">
+        Wie dein Versicherungsmakler: du zahlst Beitrag, kriegst Schutz. Hörst du auf zu zahlen, hört der Schutz auf. Das System läuft auf Servern und mit Logik, die in meiner Verantwortung bleiben — du hast jederzeit Zugriff auf deine Daten, aber nicht auf den Motor.
+      </p>
+    </div>
+
+    <div class="kz-service-grid">
+      <div class="kz-service-col">
+        <h4 class="kz-service-col-title">Was bei dir bleibt</h4>
+        <ul class="kz-service-list">
+          <li>Beleg-Archiv (alle Foto-Scans + OCR-Ergebnisse)</li>
+          <li>Rechnungs-Historie + Mahn-Logs</li>
+          <li>Calendly-Bookings, Bewerber-Daten</li>
+          <li>Audio→Protokoll-Transkripte</li>
+          <li>Discord-Channel-Message-Backup</li>
+          <li>Knowledge-Base-Content den du selbst eingespeist hast</li>
+        </ul>
+        <p class="kz-service-col-note">Bei Service-Ende: sauberer Export als ZIP, professionelle Übergabe.</p>
+      </div>
+
+      <div class="kz-service-col kz-service-col--mine">
+        <h4 class="kz-service-col-title">Was bei mir bleibt</h4>
+        <ul class="kz-service-list">
+          <li>Server-Infrastruktur (Hosting, Docker-Stack)</li>
+          <li>Discord-Bot-Code</li>
+          <li>API-Integrationen + meine Keys</li>
+          <li>Custom-Prompts, Triage-Logic</li>
+          <li>n8n-Workflows</li>
+          <li>PA-Backend-Architektur</li>
+        </ul>
+        <p class="kz-service-col-note">Mein IP. Bleibt mein IP. Damit ich's für dich (und andere Kunden) weiterentwickeln kann.</p>
+      </div>
+    </div>
+
+    <div class="kz-service-commitments">
+      <h4 class="kz-service-commitments-title">Mindestlaufzeiten Retainer</h4>
+      <div class="kz-service-commitments-grid">
+        <div class="kz-service-commitment">
+          <span class="kz-service-commitment-label">Einzelmodul</span>
+          <span class="kz-service-commitment-value">6 Monate</span>
+        </div>
+        <div class="kz-service-commitment">
+          <span class="kz-service-commitment-label">KI-Mitarbeiter-Bundle</span>
+          <span class="kz-service-commitment-value">12 Monate</span>
+        </div>
+        <div class="kz-service-commitment">
+          <span class="kz-service-commitment-label">Ultimate-Bundle</span>
+          <span class="kz-service-commitment-value">24 Monate</span>
+        </div>
+      </div>
+      <p class="kz-service-footnote">
+        Kündigungsfrist 3 Monate zum Ende der Mindestlaufzeit. Setup-Preis deckt Build + 4 Wochen Begleit-Betrieb. Laufender Service ab Monat 2 über Retainer.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── SECTION: AUDIT ──────────────────────────────────────────────── -->
+  <section class="kz-section kz-audit" id="audit">
+    <div class="kz-audit-content">
+      <div>
+        <span class="kz-eyebrow">Einstieg · Audit</span>
+        <h2 class="kz-display kz-display--l" style="margin-top: 18px;">
+          Wir starten<br /><span class="kz-italic">nicht mit Code.</span><br />Wir starten mit <span class="kz-italic-soft">Fragen.</span>
+        </h2>
+        <p class="kz-lead" style="margin-top: 24px;">
+          Discovery-Audit. 50 % werden auf das Setup angerechnet, wenn du binnen 30 Tagen ein Bundle buchst. Wer nicht weitermacht, zahlt voll — fair.
+        </p>
+      </div>
+      <div class="kz-audit-tiers">
+        {auditTiers.map((t) => (
+          <div class={`kz-audit-tier ${t.featured ? 'kz-audit-tier--featured' : ''}`}>
+            <span class="kz-audit-tier-name">{t.name}</span>
+            <span class="kz-audit-tier-desc">{t.desc}</span>
+            <span class="kz-audit-tier-price">{t.price}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION: CTA ────────────────────────────────────────────────── -->
+  <section class="kz-section kz-cta" id="cta">
+    <div>
+      <span class="kz-eyebrow">Nächster Schritt</span>
+    </div>
+    <div class="kz-cta-mid">
+      <h2 class="kz-display kz-display--xl">Lass uns<br /><span class="kz-italic">reden.</span></h2>
+      <p class="kz-lead">30 Minuten Erstgespräch. Kostenlos. Du beschreibst dein KMU, ich sage dir ehrlich, was Sinn macht — und was nicht.</p>
+      <div class="kz-cta-actions">
+        <a href="/erstgespraech" class="kz-btn kz-btn--primary">
+          <span>Erstgespräch buchen</span>
+          <span>→</span>
+        </a>
+        <a href="https://wa.me/4915901031928" class="kz-btn kz-btn--ghost-on-dark">
+          <span>WhatsApp direkt</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+    <div class="kz-cta-foot">
+      <span>Benjamin Zirngibl · kontakt@k-aizen.de</span>
+      <span>Bayern · Deutschland</span>
+    </div>
+  </section>
+
+  <!-- Script: progress dots + smooth scroll -->
+  <script is:inline>
+    (function() {
+      const dots = document.querySelectorAll('.kz-progress-dot');
+      const sections = Array.from(dots).map((d) => document.getElementById(d.dataset.target)).filter(Boolean);
+      const scrollHint = document.getElementById('kz-scroll-hint');
+
+      // Click dot → scroll to section
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          const target = document.getElementById(dot.dataset.target);
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+      // Update active dot on scroll
+      let ticking = false;
+      function updateActive() {
+        const mid = window.scrollY + window.innerHeight / 2;
+        let activeIdx = 0;
+        sections.forEach((s, i) => {
+          if (s.offsetTop <= mid) activeIdx = i;
+        });
+        dots.forEach((d, i) => d.setAttribute('aria-current', i === activeIdx ? 'true' : 'false'));
+
+        // Hide hint after scroll-start
+        if (window.scrollY > 100) {
+          scrollHint?.classList.add('kz-scroll-hint--hidden');
+        } else {
+          scrollHint?.classList.remove('kz-scroll-hint--hidden');
+        }
+        ticking = false;
+      }
+      document.body.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateActive);
+          ticking = true;
+        }
+      });
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateActive);
+          ticking = true;
+        }
+      });
+
+      // Keyboard nav: ArrowDown / Space = next section
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+          e.preventDefault();
+          const mid = (document.scrollingElement || document.documentElement).scrollTop + window.innerHeight / 2;
+          let next = sections.find((s) => s.offsetTop > mid + 10);
+          if (next) next.scrollIntoView({ behavior: 'smooth' });
+        } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+          e.preventDefault();
+          const top = (document.scrollingElement || document.documentElement).scrollTop;
+          let prev = [...sections].reverse().find((s) => s.offsetTop < top - 10);
+          if (prev) prev.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+
+      // ── Scroll-Reveal: pattern from homepage useReveal() ─────────────
+      // Auto-mark content elements as reveal-targets, then observe.
+      // Selectors chosen so most editorial content fades up on intersect.
+      const revealSelectors = [
+        '.kz-eyebrow',
+        '.kz-display',
+        '.kz-lead',
+        '.kz-body',
+        '.kz-overview-card',
+        '.kz-usecase-item',
+        '.kz-module',
+        '.kz-pricing-bundle',
+        '.kz-pricing-retainer-item',
+        '.kz-pricing-note',
+        '.kz-combo-cell--name',
+        '.kz-voice-foundation',
+        '.kz-voice-pack',
+        '.kz-voice-footnote',
+        '.kz-ultimate-card',
+        '.kz-payment-card',
+        '.kz-payment-table-head',
+        '.kz-payment-table-row',
+        '.kz-payment-footnote',
+        '.kz-audit-tier',
+        '.kz-emp-name',
+        '.kz-emp-hook',
+        '.kz-emp-status-pill',
+        '.kz-emp-meta-left',
+        '.kz-manifest-quote',
+        '.kz-manifest-attr',
+        '.kz-cover-meta-block',
+        '.kz-btn',
+      ];
+      const revealEls = document.querySelectorAll(revealSelectors.join(','));
+      revealEls.forEach((el) => {
+        el.setAttribute('data-reveal', '');
+      });
+
+      // Word-by-word reveal for major display headlines on Cover, Manifest, CTA
+      // Wraps text-nodes only (preserves inline <span>/<br> structure).
+      function wrapWordsForReveal(headline) {
+        const walker = document.createTreeWalker(headline, NodeFilter.SHOW_TEXT, null);
+        const textNodes = [];
+        let n;
+        while ((n = walker.nextNode())) textNodes.push(n);
+        let wordIndex = 0;
+        textNodes.forEach((textNode) => {
+          const words = textNode.textContent.split(/(\s+)/);
+          const frag = document.createDocumentFragment();
+          words.forEach((w) => {
+            if (/^\s+$/.test(w) || w === '') {
+              frag.appendChild(document.createTextNode(w));
+              return;
+            }
+            const mask = document.createElement('span');
+            mask.className = 'kz-word-mask';
+            mask.style.transitionDelay = `${wordIndex * 60}ms`;
+            const inner = document.createElement('span');
+            inner.className = 'kz-word-inner';
+            inner.style.transitionDelay = `${wordIndex * 60}ms`;
+            inner.textContent = w;
+            // Copy parent emphasis (italic + ember) onto inner so word-roll preserves styling
+            if (textNode.parentElement && textNode.parentElement.classList.contains('kz-italic')) {
+              inner.style.fontStyle = 'italic';
+              inner.style.color = 'var(--kz-ember)';
+            }
+            if (textNode.parentElement && textNode.parentElement.classList.contains('kz-italic-soft')) {
+              inner.style.fontStyle = 'italic';
+              inner.style.color = 'var(--kz-charcoal-soft)';
+            }
+            mask.appendChild(inner);
+            frag.appendChild(mask);
+            wordIndex++;
+          });
+          textNode.parentNode.replaceChild(frag, textNode);
+        });
+      }
+
+      // Apply word-reveal to hero-level headlines (kz-display--xxl, --xl)
+      // Skip smaller --l/--m to keep performance + avoid over-staging
+      document.querySelectorAll('.kz-display--xxl, .kz-display--xl, .kz-emp-name, .kz-manifest-quote').forEach((h) => {
+        try { wrapWordsForReveal(h); } catch (e) {}
+      });
+
+      // IntersectionObserver — toggles is-visible class on intersect
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          } else {
+            // Re-trigger on re-entry: remove is-visible when scrolled out of view
+            entry.target.classList.remove('is-visible');
+          }
+        });
+      }, {
+        threshold: 0.18,
+        rootMargin: '0px 0px -10% 0px',
+      });
+
+      // Observe reveal targets + word-masks
+      document.querySelectorAll('[data-reveal]').forEach((el) => revealObserver.observe(el));
+      document.querySelectorAll('.kz-word-mask').forEach((el) => revealObserver.observe(el));
+    })();
+  </script>
+</body>
+</html>
