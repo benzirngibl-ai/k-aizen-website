@@ -1,0 +1,725 @@
+---
+import KaizenLayout from '../layouts/KaizenLayout.astro';
+---
+<KaizenLayout
+  title="Customer-Onboarding · k-AIzen"
+  description="Setup-Formular für neue k-AIzen-Customer. Alle Infos die wir brauchen um deinen KI-Mitarbeiter live zu schalten — strukturiert in 7 kurzen Sektionen mit Schritt-für-Schritt-Anleitungen."
+  path="/onboarding"
+  activeNav="home"
+>
+  <article class="kz-page" style="max-width: 760px;">
+    <div class="kz-page-eyebrow">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
+      <span>Customer-Setup</span>
+    </div>
+
+    <h1 class="kz-h1">
+      Willkommen.<br/>
+      <span style="color: var(--kz-ember-text); font-style: italic;">Lass uns dein Setup machen.</span>
+    </h1>
+
+    <p class="kz-lead">
+      Sieben kurze Sektionen. Pro Sektion: ein paar Felder, eine klare Anleitung mit Links zum Klicken oder Kopieren. Dauert ungefähr 15–20 Minuten. Am Ende landen alle Infos sauber strukturiert bei mir — wir können dann direkt mit dem Setup starten.
+    </p>
+
+    <div class="kz-help-card">
+      <strong>Wichtig:</strong> Wenn du irgendwo unsicher bist, lass das Feld leer und schreib mir per WhatsApp. Lieber zu wenig als falsches eintragen. Alle Felder mit <span style="color: var(--kz-ember-text);">*</span> sind Pflicht. Der Rest ist optional.
+    </div>
+
+    <form id="onboarding-form" novalidate>
+
+      <!-- ── SECTION 1: WER DU BIST ──────────────────────────────────── -->
+      <section class="kz-form-section">
+        <div class="kz-section-head">
+          <span class="kz-section-num">01</span>
+          <h2 class="kz-h2">Wer du bist</h2>
+        </div>
+        <p class="kz-section-intro">Damit wir wissen, wem wir das KI-Setup bauen.</p>
+
+        <div class="kz-field">
+          <label for="full_name">Voll-Name <span class="req">*</span></label>
+          <input id="full_name" name="full_name" type="text" required placeholder="z. B. Anna Müller" />
+        </div>
+
+        <div class="kz-field">
+          <label for="business_name">Firmen-/Marken-Name</label>
+          <input id="business_name" name="business_name" type="text" placeholder="z. B. Müller Fotografie · oder leer wenn Solo unter eigenem Namen" />
+        </div>
+
+        <div class="kz-row-2">
+          <div class="kz-field">
+            <label for="contact_email">Kontakt-Mail <span class="req">*</span></label>
+            <input id="contact_email" name="contact_email" type="email" required placeholder="anna@beispiel.de" />
+            <span class="kz-hint">Hier erreichen wir dich für Rückfragen. NICHT die Mailbox die der KI-PA verwalten soll — die kommt später.</span>
+          </div>
+          <div class="kz-field">
+            <label for="phone">Telefon / WhatsApp</label>
+            <input id="phone" name="phone" type="tel" placeholder="+49 …" />
+            <span class="kz-hint">Optional. Für schnelle Rückfragen während Setup.</span>
+          </div>
+        </div>
+
+        <div class="kz-field">
+          <label>Welchen KI-Mitarbeiter willst du? <span class="req">*</span></label>
+          <div class="kz-radio-grid">
+            <label><input type="radio" name="employee" value="pa" required /> KI-PA · Personal-Assistent</label>
+            <label><input type="radio" name="employee" value="social" /> Social-Marketer</label>
+            <label><input type="radio" name="employee" value="finanzer" /> Finanzer · Buchhaltung</label>
+            <label><input type="radio" name="employee" value="personaler" /> Personaler · HR</label>
+            <label><input type="radio" name="employee" value="ultimate" /> Ultimate (alle 4 + Voice)</label>
+            <label><input type="radio" name="employee" value="unsure" /> Unsicher — schlag mir was vor</label>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 2: MAIL-SETUP ───────────────────────────────────── -->
+      <section class="kz-form-section">
+        <div class="kz-section-head">
+          <span class="kz-section-num">02</span>
+          <h2 class="kz-h2">Deine Geschäfts-Mailbox</h2>
+        </div>
+        <p class="kz-section-intro">
+          Damit der KI-PA deine Mails lesen, triagieren und Antwort-Entwürfe schreiben kann. Wir nutzen <strong>IMAP mit App-Password</strong> — kein direkter Zugriff auf dein echtes Passwort.
+        </p>
+
+        <details class="kz-explain">
+          <summary>Was ist ein App-Password und warum nicht mein echtes Passwort?</summary>
+          <p>
+            Ein App-Password ist ein zufällig generierter Spezial-Schlüssel den dein Mail-Anbieter nur für eine bestimmte Anwendung ausstellt. Du kannst es jederzeit widerrufen ohne dein Hauptpasswort zu ändern. Wenn du irgendwann sagst „k-AIzen, weg mit dir", drehst du in deinem Account einfach das eine App-Password ab — fertig. Wir kommen nicht an dein echtes Passwort und sehen auch keine 2FA-Codes.
+          </p>
+        </details>
+
+        <div class="kz-field">
+          <label for="mail_provider">Welcher Mail-Anbieter? <span class="req">*</span></label>
+          <select id="mail_provider" name="mail_provider" required>
+            <option value="">— bitte wählen —</option>
+            <option value="gmail">Gmail / Google Workspace</option>
+            <option value="outlook">Outlook / Microsoft 365 / Hotmail</option>
+            <option value="webde">web.de</option>
+            <option value="gmx">GMX</option>
+            <option value="ionos">IONOS / 1&1</option>
+            <option value="strato">STRATO</option>
+            <option value="all-inkl">All-Inkl</option>
+            <option value="custom">Eigene Domain (anderer Provider)</option>
+            <option value="dont-know">Weiß ich nicht — hilf mir</option>
+          </select>
+        </div>
+
+        <!-- Provider-spezifische Anleitungen — alle dargestellt, JavaScript zeigt nur die relevante -->
+
+        <div class="kz-howto" data-provider="gmail" hidden>
+          <h4>Gmail / Google Workspace — App-Password generieren</h4>
+          <ol>
+            <li><strong>2-Faktor-Auth aktivieren</strong> (falls noch nicht): <a href="https://myaccount.google.com/security" target="_blank" rel="noopener">myaccount.google.com/security</a> → „Bestätigung in zwei Schritten" → Einrichten.</li>
+            <li><strong>App-Password generieren:</strong> <a href="https://myaccount.google.com/apppasswords" target="_blank" rel="noopener">myaccount.google.com/apppasswords</a></li>
+            <li>App-Name: <code>k-AIzen PA</code> → „Erstellen"</li>
+            <li>Google zeigt dir einen 16-Zeichen-Code (z. B. <code>abcd efgh ijkl mnop</code>). Den ohne Leerzeichen unten einfügen.</li>
+          </ol>
+          <p class="kz-mini-note">IMAP-Settings sind auto-erkannt (<code>imap.gmail.com:993</code>).</p>
+        </div>
+
+        <div class="kz-howto" data-provider="outlook" hidden>
+          <h4>Outlook / Microsoft 365 — App-Password</h4>
+          <ol>
+            <li><strong>2-Faktor-Auth aktivieren:</strong> <a href="https://account.microsoft.com/security" target="_blank" rel="noopener">account.microsoft.com/security</a></li>
+            <li><strong>App-Password:</strong> <a href="https://account.live.com/proofs/AppPassword" target="_blank" rel="noopener">account.live.com/proofs/AppPassword</a> → „Neues App-Password erstellen"</li>
+            <li>Generiertes Password unten eintragen.</li>
+          </ol>
+          <p class="kz-mini-note">IMAP: <code>outlook.office365.com:993</code> (M365) oder <code>imap-mail.outlook.com:993</code> (Hotmail).</p>
+        </div>
+
+        <div class="kz-howto" data-provider="webde" hidden>
+          <h4>web.de — IMAP aktivieren</h4>
+          <ol>
+            <li>Login auf <a href="https://web.de" target="_blank" rel="noopener">web.de</a></li>
+            <li>Einstellungen → POP3 / IMAP → IMAP aktivieren</li>
+            <li>Bei web.de gibt es kein klassisches „App-Password" — du musst dein normales Passwort verwenden ODER ein eigenes Mail-Passwort setzen in Sicherheits-Einstellungen.</li>
+          </ol>
+          <p class="kz-mini-note">IMAP: <code>imap.web.de:993</code>. <strong>Hinweis:</strong> Wir empfehlen ein separates Mail-Passwort statt deines Login-Passworts.</p>
+        </div>
+
+        <div class="kz-howto" data-provider="gmx" hidden>
+          <h4>GMX — POP3/IMAP aktivieren</h4>
+          <ol>
+            <li>Login auf <a href="https://gmx.net" target="_blank" rel="noopener">gmx.net</a></li>
+            <li>E-Mail-Einstellungen → POP3/IMAP-Abruf → aktivieren</li>
+            <li>Wie bei web.de: dein normales oder separat-gesetztes Mail-Passwort verwenden.</li>
+          </ol>
+          <p class="kz-mini-note">IMAP: <code>imap.gmx.net:993</code>.</p>
+        </div>
+
+        <div class="kz-howto" data-provider="ionos" hidden>
+          <h4>IONOS / 1&1 — IMAP-Settings</h4>
+          <p>Du hast eine eigene Mail-Adresse bei IONOS (z. B. <code>anna@deinedomain.de</code>):</p>
+          <ol>
+            <li><a href="https://my.ionos.de/email" target="_blank" rel="noopener">my.ionos.de/email</a> → Mailbox auswählen</li>
+            <li>IMAP-Settings: <code>imap.ionos.de:993</code> (SSL/TLS)</li>
+            <li>Username = volle Mail-Adresse, Password = das Mailbox-Passwort das du bei IONOS gesetzt hast.</li>
+          </ol>
+        </div>
+
+        <div class="kz-howto" data-provider="strato" hidden>
+          <h4>STRATO — IMAP-Settings</h4>
+          <ol>
+            <li>STRATO-Customer-Login → E-Mail-Verwaltung</li>
+            <li>IMAP: <code>imap.strato.de:993</code> (SSL/TLS)</li>
+            <li>Username + Mailbox-Passwort verwenden.</li>
+          </ol>
+        </div>
+
+        <div class="kz-howto" data-provider="all-inkl" hidden>
+          <h4>All-Inkl — IMAP-Settings</h4>
+          <ol>
+            <li>KAS-Login → E-Mail-Postfächer</li>
+            <li>IMAP: <code>w01XXXXXX.kasserver.com:993</code> (die genaue Server-Adresse findest du im KAS unter „Mein Account → Konfiguration")</li>
+            <li>Volle Mail-Adresse + Postfach-Passwort.</li>
+          </ol>
+        </div>
+
+        <div class="kz-howto" data-provider="custom" hidden>
+          <h4>Eigene Domain — IMAP-Settings</h4>
+          <p>Du hast eine Mail bei einem anderen Provider (z. B. mailbox.org, posteo, eigener Server)? Schreib unten in die Notiz-Box welcher Provider — wir finden die IMAP-Settings raus.</p>
+        </div>
+
+        <div class="kz-howto" data-provider="dont-know" hidden>
+          <h4>Weiß ich nicht</h4>
+          <p>Schau in deinem Mail-Programm (Apple Mail, Outlook auf dem Mac, Thunderbird) unter <em>Einstellungen → Konten</em>. Dort steht der Provider-Name. Oder schick einen Screenshot per WhatsApp — wir helfen.</p>
+        </div>
+
+        <div class="kz-row-2">
+          <div class="kz-field">
+            <label for="mail_address">Mail-Adresse (für IMAP) <span class="req">*</span></label>
+            <input id="mail_address" name="mail_address" type="email" required placeholder="anna@beispiel.de" />
+          </div>
+          <div class="kz-field">
+            <label for="mail_app_password">App-Password <span class="req">*</span></label>
+            <input id="mail_app_password" name="mail_app_password" type="password" required placeholder="z. B. abcdefghijklmnop" />
+            <span class="kz-hint">Das ist verschlüsselt zu uns übertragen und landet später nur im ENV deines eigenen Servers.</span>
+          </div>
+        </div>
+
+        <div class="kz-row-2">
+          <div class="kz-field">
+            <label for="imap_host">IMAP-Server (Host)</label>
+            <input id="imap_host" name="imap_host" type="text" placeholder="z. B. imap.gmail.com — wird oft auto-befüllt" />
+          </div>
+          <div class="kz-field">
+            <label for="imap_port">IMAP-Port</label>
+            <input id="imap_port" name="imap_port" type="number" value="993" placeholder="993" />
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 3: CALENDLY ─────────────────────────────────────── -->
+      <section class="kz-form-section">
+        <div class="kz-section-head">
+          <span class="kz-section-num">03</span>
+          <h2 class="kz-h2">Calendly · Termin-Buchungen</h2>
+        </div>
+        <p class="kz-section-intro">
+          Damit eingehende Bookings automatisch im Discord landen — mit Pre-Call-Briefing falls gewünscht.
+        </p>
+
+        <div class="kz-field">
+          <label>Hast du schon ein Calendly?</label>
+          <div class="kz-radio-grid">
+            <label><input type="radio" name="calendly" value="yes" /> Ja, hab ich</label>
+            <label><input type="radio" name="calendly" value="no_help" /> Nein — hilf mir beim Setup</label>
+            <label><input type="radio" name="calendly" value="not_needed" /> Brauch ich nicht (keine Calls)</label>
+          </div>
+        </div>
+
+        <div class="kz-field">
+          <label for="calendly_url">Calendly-URL (falls vorhanden)</label>
+          <input id="calendly_url" name="calendly_url" type="url" placeholder="https://calendly.com/dein-name" />
+          <span class="kz-hint">Beispiel: <code>https://calendly.com/anna-mueller</code></span>
+        </div>
+
+        <details class="kz-explain">
+          <summary>Calendly noch nicht? In 5 Minuten gemacht.</summary>
+          <ol>
+            <li>Auf <a href="https://calendly.com/signup" target="_blank" rel="noopener">calendly.com/signup</a> gehen — kostenlos für 1 Event-Type</li>
+            <li>Mit deiner Geschäfts-Mail anmelden (die du oben angegeben hast)</li>
+            <li>Ersten Event-Type erstellen: „30-Min-Kennenlernen" o. ä.</li>
+            <li>URL kopieren, oben einfügen</li>
+          </ol>
+        </details>
+      </section>
+
+      <!-- ── SECTION 4: DISCORD ──────────────────────────────────────── -->
+      <section class="kz-form-section">
+        <div class="kz-section-head">
+          <span class="kz-section-num">04</span>
+          <h2 class="kz-h2">Discord · dein Cockpit</h2>
+        </div>
+        <p class="kz-section-intro">
+          Hier kommen Mails, Bookings, Leads und Status-Meldungen rein. Du bekommst die App fürs Handy + Desktop — eine zentrale Stelle für alles.
+        </p>
+
+        <div class="kz-field">
+          <label>Hast du schon Discord (privat oder anders)?</label>
+          <div class="kz-radio-grid">
+            <label><input type="radio" name="discord" value="yes_account" /> Ja, hab Account</label>
+            <label><input type="radio" name="discord" value="no_account" /> Nein, noch nicht</label>
+          </div>
+        </div>
+
+        <div class="kz-field">
+          <label for="discord_username">Discord-Username (falls vorhanden)</label>
+          <input id="discord_username" name="discord_username" type="text" placeholder="z. B. anna_mueller#1234 oder anna_mueller" />
+          <span class="kz-hint">Damit wir dich auf den Server einladen können.</span>
+        </div>
+
+        <details class="kz-explain">
+          <summary>Noch kein Discord? Dauert 3 Minuten.</summary>
+          <ol>
+            <li><a href="https://discord.com/register" target="_blank" rel="noopener">discord.com/register</a> — mit deiner Geschäfts-Mail registrieren</li>
+            <li>Username wählen, Geburtsdatum eintragen, fertig</li>
+            <li>Optional: Desktop-App + Handy-App installieren</li>
+            <li>Username unten eintragen — wir laden dich auf deinen eigenen Server ein</li>
+          </ol>
+          <p class="kz-mini-note">Wir setzen dir einen eigenen Discord-Server mit Channels für Mails, Bookings, Leads etc. auf — du musst nichts selbst konfigurieren.</p>
+        </details>
+      </section>
+
+      <!-- ── SECTION 5: VOICE / BRAND-SAMPLE ─────────────────────────── -->
+      <section class="kz-form-section">
+        <div class="kz-section-head">
+          <span class="kz-section-num">05</span>
+          <h2 class="kz-h2">Dein Tonfall</h2>
+        </div>
+        <p class="kz-section-intro">
+          Damit die KI in DEINEM Stil schreibt — nicht generisch. 2-3 Beispiele deiner echten Mails / Posts reichen. Kein Marketing-Geschwafel — wir brauchen wie du wirklich schreibst.
+        </p>
+
+        <div class="kz-field">
+          <label for="voice_mail_samples">Beispiel-Mails (2-3, einfach reinpasten)</label>
+          <textarea id="voice_mail_samples" name="voice_mail_samples" rows="8" placeholder="Eine typische Antwort an einen Kunden, eine Anfrage-Antwort, eine Mahnung im deinem Stil — irgendwas worüber wir sehen wie du normalerweise schreibst.
+
+Trenne die einzelnen Beispiele mit:
+---"></textarea>
+        </div>
+
+        <div class="kz-field">
+          <label for="voice_post_samples">Beispiel-Posts / Captions (nur bei Social-Marketer-Setup)</label>
+          <textarea id="voice_post_samples" name="voice_post_samples" rows="6" placeholder="2-3 deiner besten LinkedIn/IG-Posts. Trenne mit ---"></textarea>
+        </div>
+
+        <div class="kz-field">
+          <label for="voice_notes">Tonfall-Hinweise (alles was wir wissen sollten)</label>
+          <textarea id="voice_notes" name="voice_notes" rows="3" placeholder="z. B. „immer locker per Du", „bei Geschäfts-Mails Sie", „nie Emojis in Kundenmails", „Sprache wechsle zwischen DE und EN bei internationalen Kunden""></textarea>
+        </div>
+      </section>
+
+      <!-- ── SECTION 6: WAS BIETEST DU AN ────────────────────────────── -->
+      <section class="kz-form-section">
+        <div class="kz-section-head">
+          <span class="kz-section-num">06</span>
+          <h2 class="kz-h2">Was du anbietest</h2>
+        </div>
+        <p class="kz-section-intro">
+          Für ICP-Filter (Lead-Pipeline) und für AI-Reply-Drafts. Je präziser, desto besser die KI-Output-Qualität.
+        </p>
+
+        <div class="kz-field">
+          <label for="services">Service-Beschreibung <span class="req">*</span></label>
+          <textarea id="services" name="services" rows="4" required placeholder="z. B. „Hochzeitsfotografie + Image-Filme für lokale Unternehmen. Hauptmarkt Augsburg/Münchner Umland. Stil: emotional, dokumentarisch.""></textarea>
+        </div>
+
+        <div class="kz-row-2">
+          <div class="kz-field">
+            <label for="region">Region (für Lead-Filter)</label>
+            <input id="region" name="region" type="text" placeholder="z. B. Bayern, Großraum München, DACH-weit" />
+          </div>
+          <div class="kz-field">
+            <label for="target_audience">Zielgruppe</label>
+            <input id="target_audience" name="target_audience" type="text" placeholder="z. B. Brautpaare 25-40, lokale Restaurants" />
+          </div>
+        </div>
+
+        <div class="kz-field">
+          <label for="price_range">Preis-Range (typische Aufträge)</label>
+          <input id="price_range" name="price_range" type="text" placeholder="z. B. 1.500-3.500 € Hochzeit, 5-15k Image-Film" />
+        </div>
+      </section>
+
+      <!-- ── SECTION 7: BESTANDSKUNDEN ───────────────────────────────── -->
+      <section class="kz-form-section">
+        <div class="kz-section-head">
+          <span class="kz-section-num">07</span>
+          <h2 class="kz-h2">Bestandskunden · Empfehlungs-Pipeline</h2>
+        </div>
+        <p class="kz-section-intro">
+          Optional aber sehr empfohlen: wenn du eine Liste hast, baut die KI später Re-Engagement-Touches (6-8 Wochen nach Auftrag). Das ist erfahrungsgemäß 5× ROI gegenüber neuer Akquise.
+        </p>
+
+        <div class="kz-field">
+          <label>Hast du eine Bestandskunden-Liste?</label>
+          <div class="kz-radio-grid">
+            <label><input type="radio" name="customers_list" value="excel" /> Ja, Excel/Google Sheets</label>
+            <label><input type="radio" name="customers_list" value="crm" /> Ja, in einem CRM (HubSpot/Pipedrive/…)</label>
+            <label><input type="radio" name="customers_list" value="head" /> Nur im Kopf</label>
+            <label><input type="radio" name="customers_list" value="none" /> Bin gerade gestartet</label>
+          </div>
+        </div>
+
+        <div class="kz-field">
+          <label for="customers_notes">Wie viele Kunden ungefähr + welche Daten hast du?</label>
+          <textarea id="customers_notes" name="customers_notes" rows="3" placeholder="z. B. „ca. 80 Kunden, hab Name + Mail + letztes Auftragsdatum in Google Sheets" oder „ca. 20, alles in HubSpot, kann CSV exportieren""></textarea>
+          <span class="kz-hint">Mindest-Felder die wir später brauchen: <strong>Name, Mail, letzte Interaktion, Service</strong>. Du kannst die Liste später hochladen — wir können auch helfen sie zu strukturieren.</span>
+        </div>
+      </section>
+
+      <!-- ── SECTION FINAL: NOTE + DSGVO ─────────────────────────────── -->
+      <section class="kz-form-section">
+        <div class="kz-section-head">
+          <span class="kz-section-num">→</span>
+          <h2 class="kz-h2">Sonstiges + Absenden</h2>
+        </div>
+
+        <div class="kz-field">
+          <label for="anything_else">Sonstige Notizen, Wünsche, Sonderfälle</label>
+          <textarea id="anything_else" name="anything_else" rows="4" placeholder="Alles was du noch loswerden willst. Spezielle Tool-Stacks, Branchen-Besonderheiten, Datenschutz-Concerns, was du dir konkret erhoffst …"></textarea>
+        </div>
+
+        <div class="kz-field kz-consent">
+          <label class="kz-checkbox">
+            <input type="checkbox" name="consent" required />
+            <span>
+              Ich willige ein, dass meine angegebenen Daten zur Einrichtung des k-AIzen-Setups verarbeitet werden.
+              Zugangsdaten (App-Passwords, IMAP-Credentials) werden ausschließlich in ENV-Variablen meines eigenen Servers gespeichert, nicht in Datenbanken oder Logs.
+              <a href="/datenschutz" target="_blank">Datenschutzerklärung</a> <span class="req">*</span>
+            </span>
+          </label>
+        </div>
+
+        <button type="submit" id="submit-btn" class="kz-btn-submit">
+          Formular absenden →
+        </button>
+
+        <div id="submit-status" hidden></div>
+      </section>
+    </form>
+  </article>
+
+  <style>
+    .kz-help-card {
+      background: var(--kz-cream-deep);
+      border-left: 3px solid var(--kz-ember);
+      padding: 16px 20px;
+      border-radius: 6px;
+      margin: 24px 0 40px;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .kz-form-section {
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 1px solid var(--kz-border);
+    }
+    .kz-form-section:first-of-type { border-top: none; padding-top: 0; }
+
+    .kz-section-head {
+      display: flex; align-items: baseline; gap: 16px; margin-bottom: 8px;
+    }
+    .kz-section-num {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      color: var(--kz-ember-text);
+      font-weight: 600;
+    }
+    .kz-section-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.6vw, 30px);
+      font-weight: 500;
+      margin: 0;
+      line-height: 1.15;
+    }
+    .kz-section-intro {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--fg-muted);
+      margin: 0 0 28px;
+      max-width: 580px;
+    }
+
+    .kz-field { margin-bottom: 20px; }
+    .kz-field label {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: var(--fg);
+      margin-bottom: 6px;
+    }
+    .kz-field input[type="text"],
+    .kz-field input[type="email"],
+    .kz-field input[type="tel"],
+    .kz-field input[type="url"],
+    .kz-field input[type="number"],
+    .kz-field input[type="password"],
+    .kz-field select,
+    .kz-field textarea {
+      width: 100%;
+      padding: 11px 14px;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.4;
+      border: 1px solid var(--kz-border);
+      border-radius: 6px;
+      background: white;
+      color: var(--fg);
+      transition: border-color 160ms;
+    }
+    .kz-field input:focus,
+    .kz-field select:focus,
+    .kz-field textarea:focus {
+      outline: none;
+      border-color: var(--kz-ember);
+      box-shadow: 0 0 0 3px rgba(232, 90, 43, 0.12);
+    }
+    .kz-field textarea { resize: vertical; min-height: 80px; }
+    .kz-hint {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--fg-muted);
+      margin-top: 4px;
+      line-height: 1.45;
+    }
+
+    .req { color: var(--kz-ember-text); font-weight: 700; }
+
+    .kz-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 600px) {
+      .kz-row-2 { grid-template-columns: 1fr; }
+    }
+
+    .kz-radio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .kz-radio-grid label {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--kz-border);
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 400;
+      background: white;
+      transition: border-color 140ms, background 140ms;
+    }
+    .kz-radio-grid label:hover {
+      border-color: var(--kz-ember);
+      background: var(--kz-cream-paper, var(--kz-cream-deep));
+    }
+    .kz-radio-grid input[type="radio"] {
+      accent-color: var(--kz-ember);
+    }
+
+    .kz-explain {
+      background: var(--kz-cream-paper, var(--kz-cream-deep));
+      padding: 0 18px;
+      border-radius: 6px;
+      margin: 16px 0 20px;
+      font-family: var(--font-sans);
+    }
+    .kz-explain summary {
+      cursor: pointer;
+      padding: 14px 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--kz-ember-text);
+    }
+    .kz-explain[open] summary {
+      border-bottom: 1px solid var(--kz-border);
+      margin-bottom: 12px;
+    }
+    .kz-explain ol, .kz-explain ul, .kz-explain p {
+      font-size: 14px;
+      line-height: 1.6;
+      padding-left: 20px;
+      padding-bottom: 12px;
+    }
+    .kz-explain p { padding-left: 0; }
+    .kz-explain code {
+      background: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+      border: 1px solid var(--kz-border);
+    }
+    .kz-explain a { color: var(--kz-ember-text); }
+
+    .kz-howto {
+      background: rgba(232, 90, 43, 0.06);
+      border-left: 3px solid var(--kz-ember);
+      padding: 16px 20px;
+      border-radius: 4px;
+      margin: 12px 0 24px;
+      font-family: var(--font-sans);
+    }
+    .kz-howto h4 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      margin: 0 0 12px;
+      font-weight: 600;
+    }
+    .kz-howto ol { padding-left: 20px; font-size: 14px; line-height: 1.6; margin: 0; }
+    .kz-howto code {
+      background: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+      border: 1px solid var(--kz-border);
+    }
+    .kz-howto a { color: var(--kz-ember-text); font-weight: 500; }
+    .kz-mini-note {
+      font-size: 13px;
+      color: var(--fg-muted);
+      margin-top: 12px;
+      font-style: italic;
+    }
+
+    .kz-consent {
+      background: var(--kz-cream-deep);
+      padding: 18px 20px;
+      border-radius: 6px;
+      border: 1px solid var(--kz-border);
+    }
+    .kz-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .kz-checkbox input { margin-top: 4px; accent-color: var(--kz-ember); }
+    .kz-checkbox a { color: var(--kz-ember-text); text-decoration: underline; }
+
+    .kz-btn-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 32px;
+      padding: 16px 32px;
+      background: var(--kz-charcoal);
+      color: var(--kz-cream);
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all 200ms;
+    }
+    .kz-btn-submit:hover {
+      background: var(--kz-ember);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(232, 90, 43, 0.25);
+    }
+    .kz-btn-submit:disabled {
+      opacity: 0.6;
+      cursor: wait;
+      transform: none;
+      box-shadow: none;
+    }
+
+    #submit-status {
+      margin-top: 20px;
+      padding: 14px 18px;
+      border-radius: 6px;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    #submit-status.success {
+      background: rgba(74, 222, 128, 0.12);
+      border-left: 3px solid #16a34a;
+      color: #15803d;
+    }
+    #submit-status.error {
+      background: rgba(232, 90, 43, 0.1);
+      border-left: 3px solid var(--kz-ember);
+      color: var(--kz-ember-text);
+    }
+  </style>
+
+  <script is:inline>
+    // Provider-spezifische How-To-Anleitungen ein-/ausblenden
+    const providerSelect = document.getElementById('mail_provider');
+    const howtos = document.querySelectorAll('.kz-howto[data-provider]');
+    const imapHost = document.getElementById('imap_host');
+
+    const PROVIDER_DEFAULTS = {
+      gmail:   { host: 'imap.gmail.com' },
+      outlook: { host: 'outlook.office365.com' },
+      webde:   { host: 'imap.web.de' },
+      gmx:     { host: 'imap.gmx.net' },
+      ionos:   { host: 'imap.ionos.de' },
+      strato:  { host: 'imap.strato.de' },
+    };
+
+    providerSelect.addEventListener('change', (e) => {
+      const val = e.target.value;
+      howtos.forEach((el) => {
+        el.hidden = el.dataset.provider !== val;
+      });
+      if (PROVIDER_DEFAULTS[val] && !imapHost.value) {
+        imapHost.value = PROVIDER_DEFAULTS[val].host;
+      }
+    });
+
+    // Form-Submit
+    const form = document.getElementById('onboarding-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const status = document.getElementById('submit-status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sende ab …';
+      status.hidden = true;
+
+      const data = Object.fromEntries(new FormData(form).entries());
+      data._submitted_at = new Date().toISOString();
+      data._user_agent = navigator.userAgent;
+
+      try {
+        const baseUrl = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
+          ? 'http://localhost:4123'
+          : 'https://chat.k-aizen.de';
+        const res = await fetch(`${baseUrl}/api/onboarding`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        status.className = 'success';
+        status.innerHTML = '<strong>Danke — alles angekommen.</strong> Ich melde mich innerhalb von 24h mit den nächsten Schritten. In der Zwischenzeit: lade dir <a href="https://discord.com/download" target="_blank">Discord</a> herunter falls noch nicht passiert.';
+        status.hidden = false;
+        form.querySelectorAll('input, textarea, select, button').forEach((el) => { if (el !== status) el.disabled = true; });
+        window.scrollTo({ top: status.offsetTop - 100, behavior: 'smooth' });
+      } catch (err) {
+        status.className = 'error';
+        status.innerHTML = `<strong>Hat nicht geklappt:</strong> ${err.message}. Bitte schreib mir kurz auf <a href="https://wa.me/4915901031928">WhatsApp</a> mit dem Hinweis dass das Formular nicht durchging — ich helfe dann direkt.`;
+        status.hidden = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Formular absenden →';
+      }
+    });
+  </script>
+</KaizenLayout>
