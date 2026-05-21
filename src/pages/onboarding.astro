@@ -577,12 +577,39 @@ Trenne die einzelnen Beispiele mit:
       font-weight: 600;
     }
     .kz-howto ol { padding-left: 20px; font-size: 14px; line-height: 1.6; margin: 0; }
-    .kz-howto code {
+    .kz-howto code,
+    .kz-explain code {
       background: white;
       padding: 2px 6px;
       border-radius: 4px;
       font-size: 13px;
       border: 1px solid var(--kz-border);
+      cursor: copy;
+      transition: background 120ms, border-color 120ms;
+      user-select: all;
+    }
+    .kz-howto code:hover,
+    .kz-explain code:hover {
+      background: var(--kz-cream-deep);
+      border-color: var(--kz-ember);
+    }
+    .kz-howto code.kz-copied,
+    .kz-explain code.kz-copied {
+      background: rgba(74, 222, 128, 0.18);
+      border-color: #16a34a;
+    }
+    .kz-howto code::after,
+    .kz-explain code::after {
+      content: "📋";
+      margin-left: 6px;
+      font-size: 10px;
+      opacity: 0.4;
+    }
+    .kz-howto code.kz-copied::after,
+    .kz-explain code.kz-copied::after {
+      content: "✓";
+      color: #16a34a;
+      opacity: 1;
     }
     .kz-howto a { color: var(--kz-ember-text); font-weight: 500; }
     .kz-mini-note {
@@ -681,6 +708,24 @@ Trenne die einzelnen Beispiele mit:
       if (PROVIDER_DEFAULTS[val] && !imapHost.value) {
         imapHost.value = PROVIDER_DEFAULTS[val].host;
       }
+    });
+
+    // Click-to-copy auf alle <code>-Blöcke in den How-To-Anleitungen
+    document.querySelectorAll('.kz-howto code, .kz-explain code').forEach((el) => {
+      el.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(el.textContent.trim());
+          el.classList.add('kz-copied');
+          setTimeout(() => el.classList.remove('kz-copied'), 1400);
+        } catch (err) {
+          // Fallback für ältere Browser: select text manually
+          const range = document.createRange();
+          range.selectNodeContents(el);
+          const sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+      });
     });
 
     // Form-Submit
