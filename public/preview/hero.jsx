@@ -81,10 +81,10 @@ function Mountains({ mouse, show }) {
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center bottom',
       backgroundSize: 'contain',
-      opacity: 0.42,
-      filter: 'saturate(0.7)',
+      opacity: 0.55,
+      filter: 'saturate(0.7) invert(1)',
       pointerEvents: 'none',
-      mixBlendMode: 'multiply',
+      mixBlendMode: 'screen',
       willChange: 'transform'
     }} />);
 
@@ -377,7 +377,7 @@ function Header() {
       <header className="kz-header" style={{
         position: 'fixed', top: 0, left: 0, right: 0, height: 88,
         zIndex: 50,
-        background: atTop ? 'rgba(245,240,232,0.0)' : 'rgba(245,240,232,0.88)',
+        background: atTop ? 'rgba(31,41,51,0.0)' : 'rgba(31,41,51,0.88)',
         borderBottom: atTop ? '1px solid transparent' : '1px solid var(--kz-border)',
         backdropFilter: atTop ? 'none' : 'blur(12px)',
         WebkitBackdropFilter: atTop ? 'none' : 'blur(12px)',
@@ -444,7 +444,7 @@ function Header() {
       {/* Mobile-Menü Overlay */}
       <div className="kz-mobile-menu" style={{
         position: 'fixed', top: 88, left: 0, right: 0,
-        background: 'rgba(245,240,232,0.98)',
+        background: 'rgba(31,41,51,0.98)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
         zIndex: 49,
@@ -717,7 +717,7 @@ function App() {
         position: 'relative',
         width: '100%', height: '100vh',
         overflow: 'hidden',
-        background: 'var(--kz-cream)',
+        background: 'var(--bg-alt)',
         zIndex: 2,
       }}>
         {/* Subtle ink wash so the cream isn't dead-flat */}
@@ -752,7 +752,7 @@ function App() {
         <HeroOverlay headline={tweak.headline} sub={tweak.sub} />
       </section>
 
-      <main style={{ position: 'relative', zIndex: 2, background: 'var(--kz-cream)' }}>
+      <main style={{ position: 'relative', zIndex: 2, background: 'var(--bg-alt)' }}>
         <KzManifest />
         <KzProblem />
         <KzAndererWeg />

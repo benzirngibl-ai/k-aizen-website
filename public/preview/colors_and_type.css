@@ -28,18 +28,19 @@
   --kz-ink-wash-strong: rgba(31, 41, 51, 0.14);
 
   /* ---------- SEMANTIC TOKENS ---------- */
-  --bg:           var(--kz-cream);
-  --bg-alt:       var(--kz-cream-deep);
-  --bg-card:      var(--kz-card);
-  --bg-inverse:   var(--kz-charcoal);
+  /* Charcoal dominates as background, Cream as text for contrast, Ember as accent. */
+  --bg:           var(--kz-charcoal);
+  --bg-alt:       var(--kz-charcoal-soft);
+  --bg-card:      var(--kz-charcoal-soft);
+  --bg-inverse:   var(--kz-cream);
 
-  --fg:           var(--kz-charcoal);          /* default text */
-  --fg-muted:     var(--kz-muted);             /* secondary text */
-  --fg-inverse:   var(--kz-cream);             /* on charcoal */
+  --fg:           var(--kz-cream);             /* default text */
+  --fg-muted:     #A8B0BA;                     /* muted text on dark bg */
+  --fg-inverse:   var(--kz-charcoal);          /* on cream-inverse surfaces */
   --fg-accent:    var(--kz-ember-text);        /* AA-safe ember for inline text */
 
-  --border:       var(--kz-border);
-  --border-strong: var(--kz-charcoal);
+  --border:       rgba(245, 240, 232, 0.18);   /* cream hairlines on dark */
+  --border-strong: var(--kz-cream);
 
   --accent:       var(--kz-ember);
   --accent-deep:  var(--kz-ember-deep);
@@ -125,6 +126,17 @@
    ===================================================================== */
 
 html { color: var(--fg); background: var(--bg); }
+
+/* Botanical/sumi assets — darken to harmonize with charcoal background.
+   Applies to cherry-branch/tree, bamboo, sakura/leaf decorations.
+   Excludes mountains (handled separately with invert) and logos. */
+img[src*="/claude-design/sumi-cherry-"],
+img[src*="/claude-design/sumi-bamboo"],
+img[src*="/claude-design/sumi-crane"],
+img[src*="/claude-design/leaf-"],
+img[src*="/icon-sakura"] {
+  filter: brightness(0.62) saturate(0.78) contrast(1.05);
+}
 body {
   font-family: var(--font-sans);
   font-size: var(--text-base);

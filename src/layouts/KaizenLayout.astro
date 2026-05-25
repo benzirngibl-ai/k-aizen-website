@@ -125,7 +125,7 @@ if (breadcrumbs && breadcrumbs.length > 0) {
     *, *::before, *::after { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     body {
-      background: var(--kz-cream);
+      background: var(--bg);
       color: var(--fg);
       min-height: 100vh;
       display: flex;
@@ -149,10 +149,10 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       background-repeat: no-repeat;
       background-position: center bottom;
       background-size: contain;
-      opacity: 0.18;
+      opacity: 0.22;
       pointer-events: none;
       z-index: -1;
-      filter: saturate(0.7);
+      filter: saturate(0.7) invert(1);
     }
     /* Subtle radial-gradient ink-wash für mehr Tiefe */
     main::after {
@@ -172,10 +172,10 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(245, 240, 232, 0.92);
+      background: rgba(31, 41, 51, 0.92);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--kz-border);
+      border-bottom: 1px solid var(--border);
     }
     .kz-header-inner {
       max-width: 1180px;

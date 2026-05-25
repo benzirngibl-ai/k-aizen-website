@@ -381,7 +381,7 @@ function ManifestSection() {
               <Reveal key={i} delay={200 + i * 120}>
                 <div style={{
                   padding: '36px 32px',
-                  background: 'var(--kz-cream-deep)',
+                  background: 'var(--bg)',
                   borderRadius: 12,
                   height: '100%',
                   display: 'flex', flexDirection: 'column',
@@ -436,7 +436,7 @@ function ProblemSection() {
     <section data-screen-label="03 Problem" style={{
       position: 'relative',
       padding: 'clamp(80px, 14vh, 180px) 0 clamp(80px, 14vh, 160px)',
-      background: 'var(--kz-cream-deep)',
+      background: 'var(--bg)',
     }}>
       <div style={{
         maxWidth: 1120, margin: '0 auto',
@@ -471,7 +471,7 @@ function ProblemSection() {
             <Reveal key={i} delay={200 + i * 120}>
               <div style={{
                 padding: '32px 28px',
-                background: 'var(--kz-cream)',
+                background: 'var(--bg-alt)',
                 borderRadius: 12,
                 height: '100%',
                 borderLeft: '3px solid var(--kz-ember)',
@@ -601,7 +601,7 @@ function AngebotSection() {
     <section data-screen-label="05 Angebot" style={{
       position: 'relative',
       padding: 'clamp(80px, 14vh, 180px) 0 clamp(80px, 14vh, 160px)',
-      background: 'var(--kz-cream-deep)',
+      background: 'var(--bg)',
       overflow: 'hidden',
     }}>
       <style>{`
@@ -653,7 +653,7 @@ function AngebotSection() {
           <Reveal delay={200}>
             <div style={{
               padding: '36px 30px',
-              background: 'var(--kz-cream)',
+              background: 'var(--bg-alt)',
               borderRadius: 12,
               height: '100%',
               display: 'flex', flexDirection: 'column',
@@ -741,7 +741,7 @@ function AngebotSection() {
           <Reveal delay={440}>
             <div style={{
               padding: '36px 30px',
-              background: 'var(--kz-cream)',
+              background: 'var(--bg-alt)',
               borderRadius: 12,
               height: '100%',
               display: 'flex', flexDirection: 'column',
@@ -853,7 +853,7 @@ function MethodikSection() {
     <section data-screen-label="06 Methodik" style={{
       position: 'relative',
       padding: 'clamp(80px, 14vh, 180px) 0 clamp(80px, 14vh, 160px)',
-      background: 'var(--kz-cream)',
+      background: 'var(--bg-alt)',
     }}>
       <div style={{
         maxWidth: 980, margin: '0 auto',
@@ -1032,7 +1032,7 @@ function UeberMichSection() {
     <section data-screen-label="09 Über mich" style={{
       position: 'relative',
       padding: 'clamp(80px, 14vh, 180px) 0 clamp(80px, 14vh, 160px)',
-      background: 'var(--kz-cream-deep)',
+      background: 'var(--bg)',
       overflow: 'hidden',
     }}>
       <div style={{
@@ -1144,7 +1144,7 @@ function UeberMichSection() {
         <Reveal delay={560}>
           <div style={{
             marginTop: 56, padding: '32px clamp(24px, 4vw, 40px)',
-            background: 'var(--kz-cream)', borderRadius: 12,
+            background: 'var(--bg-alt)', borderRadius: 12,
             borderLeft: '3px solid var(--kz-ember)',
           }}>
             <h3 style={{
@@ -1297,7 +1297,7 @@ function KontaktSection() {
     <section data-screen-label="11 Kontakt" style={{
       position: 'relative',
       padding: 'clamp(100px, 16vh, 200px) 0 clamp(80px, 14vh, 160px)',
-      background: 'var(--kz-cream-deep)',
+      background: 'var(--bg)',
       overflow: 'hidden',
     }}>
       <div style={{
@@ -1389,7 +1389,7 @@ function KontaktSection() {
 function kontaktKarte() {
   return {
     padding: '36px 30px',
-    background: 'var(--kz-cream)',
+    background: 'var(--bg-alt)',
     borderRadius: 12,
     height: '100%',
     display: 'flex', flexDirection: 'column',
