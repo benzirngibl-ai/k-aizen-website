@@ -75,19 +75,19 @@
         position: relative;
       }
 
-      /* Sprech-Blasen — links überhalb vom Mönch.
-         Tail unten-rechts der Bubble zeigt nach unten-rechts auf den Mönch. */
+      /* Sprech-Blasen — rechts oberhalb von Lena.
+         Tail unten-links der Bubble zeigt nach unten-links auf Lena's Kopf. */
       .kbot-bubble {
         position: absolute;
         bottom: 100%;      /* bubble komplett oberhalb root */
         margin-bottom: -10px; /* leichter overlap nach unten */
-        right: 55%;        /* tail-Anchor links der Mönch-Mitte → bubble extends nach links */
+        left: 55%;         /* tail-Anchor rechts der Lena-Mitte → bubble extends nach rechts */
         width: 160px;
         height: auto;
         pointer-events: none;
         opacity: 0;
         transform: translateY(8px) scale(0.92);
-        transform-origin: bottom right;
+        transform-origin: bottom left;
         transition:
           opacity 380ms cubic-bezier(0.22, 1, 0.36, 1),
           transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -323,11 +323,12 @@
           height: min(58vh, 380px);
         }
 
-        /* Bubble kleiner + Position auf mobile */
+        /* Bubble kleiner + Position auf mobile (analog Desktop: rechts-oberhalb) */
         .kbot-bubble {
           width: 130px !important;
           bottom: 92% !important;
-          right: 50% !important;
+          left: 50% !important;
+          right: auto !important;
         }
       }
     `;
@@ -339,8 +340,8 @@
     root.id = 'kaizen-bot-root';
     root.innerHTML = `
       <div class="kbot-handle" id="kbot-handle" role="button" tabindex="0" aria-label="Chat öffnen">
-        <img class="kbot-bubble kbot-bubble-welcome" src="/widgets/bubble-welcome.png" alt="" />
-        <img class="kbot-bubble kbot-bubble-help" src="/widgets/bubble-help.png" alt="" />
+        <img class="kbot-bubble kbot-bubble-welcome" src="/widgets/bubble-welcome.png?v=20260527-lena" alt="" />
+        <img class="kbot-bubble kbot-bubble-help" src="/widgets/bubble-help.png?v=20260527-lena" alt="" />
         <span class="kbot-monk-wrap">
           <img class="kbot-monk-top" src="/widgets/monk-top.png" alt="" />
         </span>
@@ -392,7 +393,7 @@
     sendBtn.onclick = () => send(input.value);
 
     appendAssistant(
-      'Ich bin der k-AIzen-Bot. Frag mich was zu k-AIzen — Pricing, Module, Methodik, Vertrauen — oder lass uns ein Mini-Audit durchgehen.',
+      'Hallo, ich bin Lena, die KI-Chat-Assistentin. Frag mich was zu k-AIzen — Pricing, Module, Methodik, Vertrauen — oder lass uns ein Mini-Audit durchgehen.',
     );
     renderSuggestions([
       'Was ist k-AIzen?',
