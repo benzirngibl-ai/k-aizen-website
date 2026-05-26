@@ -91,7 +91,11 @@
         transition:
           opacity 380ms cubic-bezier(0.22, 1, 0.36, 1),
           transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
-        filter: drop-shadow(0 6px 10px rgba(31,41,51,0.18));
+        /* Invert white-bubble/black-text PNG so it reads cream-on-dark on charcoal bg.
+           drop-shadow uses cream glow for separation from the dark page. */
+        filter:
+          invert(1)
+          drop-shadow(0 6px 10px rgba(245,240,232,0.18));
         z-index: 4;
       }
       .kbot-bubble.show {
@@ -102,10 +106,37 @@
         opacity: 0 !important;
         transform: translateY(8px) scale(0.92) !important;
       }
+      .kbot-monk-wrap {
+        position: relative;
+        display: block;
+        width: 100%;
+        line-height: 0;
+      }
+      /* Cream backdrop behind monk's face fills gaps where bg-removal also
+         erased eye-whites — without this they look hollow on the dark theme.
+         Sits above the page bg but below the monk PNG. Only covers the
+         head area (top ~55%), so the table/desk at the bottom keeps clean
+         transparent edges. */
+      .kbot-monk-wrap::before {
+        content: "";
+        position: absolute;
+        left: 18%; right: 18%;
+        top: 4%; height: 52%;
+        background: radial-gradient(ellipse at 50% 45%,
+          rgba(245, 240, 232, 0.92) 0%,
+          rgba(245, 240, 232, 0.78) 38%,
+          rgba(245, 240, 232, 0.35) 68%,
+          rgba(245, 240, 232, 0) 88%);
+        filter: blur(6px);
+        pointer-events: none;
+        z-index: 0;
+      }
       .kbot-monk-top {
         display: block;
         width: 100%;
         height: auto;
+        position: relative;
+        z-index: 1;
         user-select: none;
         -webkit-user-drag: none;
         filter: drop-shadow(0 8px 16px rgba(31,41,51,0.14));
@@ -329,7 +360,9 @@
       <div class="kbot-handle" id="kbot-handle" role="button" tabindex="0" aria-label="Chat öffnen">
         <img class="kbot-bubble kbot-bubble-welcome" src="/widgets/bubble-welcome.png" alt="" />
         <img class="kbot-bubble kbot-bubble-help" src="/widgets/bubble-help.png" alt="" />
-        <img class="kbot-monk-top" src="/widgets/monk-top.png" alt="" />
+        <span class="kbot-monk-wrap">
+          <img class="kbot-monk-top" src="/widgets/monk-top.png" alt="" />
+        </span>
         <span class="kbot-pulse-badge">
           <span class="kbot-pulse-dot"></span>
         </span>
