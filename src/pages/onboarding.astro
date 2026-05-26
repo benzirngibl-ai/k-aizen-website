@@ -632,6 +632,11 @@ Trenne die einzelnen Beispiele mit:
       border-radius: 6px;
       border: 1px solid var(--kz-border);
     }
+    /* Override .kz-field label cream-color when inside consent box */
+    .kz-consent label,
+    .kz-consent span {
+      color: var(--fg-inverse);
+    }
     .kz-checkbox {
       display: flex;
       align-items: flex-start;
@@ -639,6 +644,7 @@ Trenne die einzelnen Beispiele mit:
       font-family: var(--font-sans);
       font-size: 14px;
       line-height: 1.5;
+      color: inherit;
     }
     .kz-checkbox input { margin-top: 4px; accent-color: var(--kz-ember); }
     .kz-checkbox a { color: var(--kz-ember-text); text-decoration: underline; }
