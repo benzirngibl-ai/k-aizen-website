@@ -1,0 +1,133 @@
+{
+  "variant": "markus",
+  "title": "Dein Tag mit dem KI-PA · Markus",
+  "description": "So sieht der Alltag eines Geschäftsführers mit einem persönlichen KI-Assistenten aus.",
+  "character": {
+    "story_name": "Markus",
+    "branche_label": "Geschäftsführer · Berater",
+    "image_folder": "/pitch/markus"
+  },
+  "slides": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "headline": "Du bekommst einen persönlichen Assistenten.",
+      "subheadline": "Keine Software. Keine generische KI. Ein Assistent, der dich und dein Beratungs-Business kennenlernt.",
+      "image": "00-hook.png"
+    },
+    {
+      "id": "morning-briefing",
+      "type": "scene",
+      "time": "06:30",
+      "scene_label": "Aufwachen",
+      "image": "01-morning.png",
+      "headline": "Du wachst auf.",
+      "body": "Statt 47 ungelesenen Mails: ein Briefing. Mandanten-Anfragen, heutige Termine, was wichtig ist. 90 Sekunden lesen. Du weißt, woran du bist — bevor der Tag dich kriegt.",
+      "discord": {
+        "channel": "#briefing",
+        "author": "k-AIzen PA",
+        "timestamp": "06:00",
+        "content": "🌅 **Daily Briefing · Mittwoch, 27. Mai**\n\n📧 Mails über Nacht: 14\n  • 2 dringend (Mandant Müller, Bahn-Storno)\n  • 5 wichtig (Drafts in #approve)\n  • 7 archiviert\n\n📅 Heute:\n  • 09:00 Strategie-Call Schmidt GmbH\n  • 11:30 Erstgespräch Sarah K. (neuer Lead)\n  • 14:00 Werkstatt\n  • 16:00 Team-Sync\n\n📌 Pending: 3 Approvals warten\n☀️ München 18°, nachmittags Regen"
+      }
+    },
+    {
+      "id": "morning-approvals",
+      "type": "scene",
+      "time": "07:00",
+      "scene_label": "Morgen-Routine",
+      "image": "02-coffee.png",
+      "headline": "Du machst dir einen Kaffee.",
+      "body": "Drei Reactions im Discord: Bürobedarf ✅. Antwort an Mandant Müller ✏️ noch persönlicher. Hotel Berlin für nächste Woche ✅. Drei Sekunden pro Entscheidung.",
+      "discord": {
+        "channel": "#approve",
+        "author": "k-AIzen PA",
+        "timestamp": "06:45",
+        "content": "📌 **3 Approvals warten**\n\n**1. Bürobedarf-Nachbestellung**\nOffice-Discount · Standardpack · 38,50 €\n→ Reagiere ✅ zum Bestellen\n\n**2. Antwort an Mandant Müller**\nDraft (Re: Strategie-Workshop Q3) im Thread\n→ Reagiere ✅ oder ✏️\n\n**3. Hotel Berlin · 03.-05.06.**\nAdlon · 487 € · Storno-frei bis 02.06.\n→ Reagiere ✅ zum Buchen"
+      }
+    },
+    {
+      "id": "precall-briefing",
+      "type": "scene",
+      "time": "08:30",
+      "scene_label": "Im Auto",
+      "image": "03-car.png",
+      "headline": "Du bist auf dem Weg zum Mandanten.",
+      "body": "„Brief mich nochmal Schmidt GmbH.\" Während du fährst, liest dir dein PA das Wichtigste vor: wer im Termin sitzt, was zuletzt besprochen wurde, frische News. Du kommst vorbereitet an.",
+      "discord": {
+        "channel": "#meetings",
+        "author": "k-AIzen PA",
+        "timestamp": "08:32",
+        "content": "📋 **Pre-Call · Schmidt GmbH · 09:00**\n\n**Markus Schmidt, CTO**\nMandant seit März 2025. Letzter Termin: 14. Mai (Workshop Cloud-Migration).\n\n**Status:** Implementierungsphase 2 läuft, sie haben Fragen zur Integration mit Bestandssystemen.\n\n**Aus Ben-Notizen:**\n  • Schmerzpunkt: alte SAP-Anbindung\n  • Budget weiter ausbaufähig\n  • Entscheidungsträger: CTO + neuer CFO\n\n**Frische News:**\n  • Neuer CFO seit 2 Wochen (LinkedIn 25.5.)\n  • Pressemeldung Niederlassung Stuttgart"
+      }
+    },
+    {
+      "id": "call-protocol",
+      "type": "scene",
+      "time": "09:43",
+      "scene_label": "Nach dem Call",
+      "image": "04-postcall.png",
+      "headline": "Der Mandanten-Call ist vorbei.",
+      "body": "Audio in den Channel. Drei Minuten später: Action-Items, Insights, Risiken — strukturiert. Du kannst direkt das Follow-up rausschicken, ohne Notizen-Abtipperei.",
+      "discord": {
+        "channel": "#meetings",
+        "author": "k-AIzen PA",
+        "timestamp": "09:46",
+        "content": "📝 **Schmidt GmbH · 09:00-09:43**\n\n**✅ Action Items:**\n  1. Du sendest Reference-Liste Logistik-Mandanten bis Freitag\n  2. Markus prüft Salesforce-API-Doku\n  3. Follow-up-Call: 03.06. (Einladung verschickt)\n\n**💡 Insights:**\n  • Ready für Phase 3, brauchen CFO-Buy-in\n  • CFO ist neu → eigenes Strategie-Gespräch anbieten?\n  • Budget kann nach oben\n\n**📌 Risiko:**\n  • Reference-Calls müssen sitzen, sonst Wettbewerber"
+      }
+    },
+    {
+      "id": "lunch",
+      "type": "scene",
+      "time": "12:30",
+      "scene_label": "Lunch",
+      "image": "05-lunch.png",
+      "headline": "Du brauchst Mittagspause.",
+      "body": "„Was Italienisches, ruhige Ecke, 20 Min Fußweg.\" 30 Sekunden, drei Optionen mit Begründung. Ein ✅ später ist reserviert.",
+      "discord": {
+        "channel": "#sandbox",
+        "author": "k-AIzen PA",
+        "timestamp": "12:33",
+        "content": "🍝 **3 italienische Optionen, ruhige Ecken:**\n\n**1. Trattoria da Vinci** ⭐ 4.7\n  → Klassisch, separate Räume möglich, 16 Min\n  → Reservierung 12:45 verfügbar\n\n**2. Osteria Bella** ⭐ 4.5\n  → Modern, etwas lauter\n  → 14 Min\n\n**3. Il Posto** ⭐ 4.6\n  → Hinterhof, sehr ruhig, 19 Min\n  → Reservierung empfohlen\n\n→ Reagiere 1️⃣ 2️⃣ 3️⃣ — ich reserviere."
+      }
+    },
+    {
+      "id": "concierge-task",
+      "type": "scene",
+      "time": "14:00",
+      "scene_label": "Werkstatt-Termin · Tier 2",
+      "image": "06-waiting.png",
+      "headline": "Du wartest in der Werkstatt.",
+      "body": "„Frag beim Finanzamt nach meiner USt-Voranmeldung Mai.\" Mit Concierge-Tier ruft Ben für dich an. Du musst nichts wissen, nichts klären. Du kriegst das Ergebnis im Channel.",
+      "discord": {
+        "channel": "#sandbox",
+        "author": "k-AIzen PA",
+        "timestamp": "14:02",
+        "content": "📞 **Roger, kümmere mich drum.**\n\nFinanzamt-Anruf läuft heute Nachmittag. Ergebnis spätestens morgen früh in #briefing.\n\nStatus-Updates kommen automatisch."
+      }
+    },
+    {
+      "id": "evening-wrap",
+      "type": "scene",
+      "time": "18:00",
+      "scene_label": "Feierabend",
+      "image": "07-evening.png",
+      "headline": "Feierabend.",
+      "body": "Du klappst den Laptop zu. In #briefing wartet dein Tages-Wrap: alles erledigt, alles dokumentiert. Morgen-Plan steht schon. Du kannst loslassen — der PA hat den Faden.",
+      "discord": {
+        "channel": "#briefing",
+        "author": "k-AIzen PA",
+        "timestamp": "18:00",
+        "content": "🌆 **Evening Wrap · Mittwoch**\n\n**✅ Heute erledigt:**\n  • 14 Mails bearbeitet (5 Drafts gesendet)\n  • Mandanten-Call protokolliert\n  • Bürobedarf bestellt\n  • Hotel Berlin gebucht\n  • Lunch reserviert\n  • Finanzamt-Anfrage: USt-Mai durch ✅\n\n**📥 Morgen wartet:**\n  • 09:00 Wagner-Call (Briefing 08:30)\n  • Reference-Liste an Schmidt\n  • 2 Mails in #approve\n\n🌙 Schlaf gut."
+      }
+    },
+    {
+      "id": "cta",
+      "type": "cta",
+      "headline": "Wollen wir loslegen?",
+      "body": "30 Minuten Erstgespräch. Kostenlos. Ohne Verkaufsdruck. Wir schauen, ob's für dein Beratungs-Business passt.",
+      "cta_label": "Termin buchen",
+      "cta_href": "/erstgespraech",
+      "image": "08-cta.png"
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+---
+// DiscordMockup.astro — Premium Discord-style channel post for pitch slides
+// Used in right column of 3-column SlideLayout
+//
+// Markdown-light support:
+//   - **bold**   → <strong>
+//   - *italic*   → <em>
+//   - newlines   → <br>
+//   - bullets (•) stay as plain text
+
+interface Props {
+  channel: string;        // e.g. "#briefing"
+  author: string;         // e.g. "k-AIzen PA"
+  timestamp: string;      // e.g. "06:00"
+  content: string;        // Post body with light markdown
+  authorAvatarUrl?: string;
+}
+
+const {
+  channel,
+  author,
+  timestamp,
+  content,
+  authorAvatarUrl = '/animations/claude-design/logo-mark.png'
+} = Astro.props;
+
+// Render light markdown safely
+function renderContent(raw: string): string {
+  return raw
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>')
+    .replace(/\n/g, '<br>');
+}
+
+const contentHtml = renderContent(content);
+---
+
+<div class="dc-mockup">
+  <header class="dc-channel-header">
+    <span class="dc-hash">#</span>
+    <span class="dc-channel-name">{channel.replace(/^#/, '')}</span>
+    <span class="dc-channel-dot" aria-hidden="true"></span>
+  </header>
+
+  <div class="dc-post">
+    <img src={authorAvatarUrl} alt="" class="dc-avatar" />
+    <div class="dc-post-body">
+      <div class="dc-post-meta">
+        <span class="dc-author">{author}</span>
+        <span class="dc-bot-badge">BOT</span>
+        <span class="dc-timestamp">heute · {timestamp}</span>
+      </div>
+      <div class="dc-content" set:html={contentHtml}></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .dc-mockup {
+    background: linear-gradient(180deg, #2b2d31 0%, #26282c 100%);
+    border-radius: 18px;
+    color: #dbdee1;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    overflow: hidden;
+    box-shadow:
+      0 30px 60px -20px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transform: perspective(1200px) rotateY(-1.5deg) rotateX(0.5deg);
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+
+  .dc-mockup:hover {
+    transform: perspective(1200px) rotateY(0deg) rotateX(0deg);
+  }
+
+  .dc-channel-header {
+    background: linear-gradient(180deg, #1e1f22 0%, #1a1b1e 100%);
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: #f2f3f5;
+    font-weight: 600;
+    position: relative;
+  }
+
+  .dc-hash {
+    color: #80848e;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 300;
+  }
+
+  .dc-channel-name {
+    font-size: 15px;
+    letter-spacing: -0.01em;
+  }
+
+  .dc-channel-dot {
+    margin-left: auto;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #23a559;
+    box-shadow: 0 0 8px rgba(35, 165, 89, 0.5);
+  }
+
+  .dc-post {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .dc-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FF5500 0%, #FF7733 100%);
+    padding: 7px;
+    object-fit: contain;
+    box-shadow:
+      0 4px 12px rgba(255, 85, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .dc-post-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+
+  .dc-author {
+    color: #f2f3f5;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+  }
+
+  .dc-bot-badge {
+    background: linear-gradient(135deg, #5865f2, #4752c4);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(88, 101, 242, 0.35);
+  }
+
+  .dc-timestamp {
+    color: #949ba4;
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .dc-content {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #dbdee1;
+  }
+
+  .dc-content :global(strong) {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .dc-content :global(em) {
+    font-style: italic;
+    color: #dcddde;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dc-mockup {
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .dc-mockup {
+      transform: none;
+    }
+  }
+</style>

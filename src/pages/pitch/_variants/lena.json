@@ -1,0 +1,133 @@
+{
+  "variant": "lena",
+  "title": "Dein Tag mit dem KI-PA · Lena",
+  "description": "So sieht der Alltag einer jungen Unternehmerin mit einem persönlichen KI-Assistenten aus.",
+  "character": {
+    "story_name": "Lena",
+    "branche_label": "Unternehmerin · Restaurant",
+    "image_folder": "/pitch/lena"
+  },
+  "slides": [
+    {
+      "id": "hook",
+      "type": "hook",
+      "headline": "Du bekommst einen persönlichen Assistenten.",
+      "subheadline": "Keine Software. Keine generische KI. Ein Assistent, der dich und dein Restaurant kennenlernt.",
+      "image": "00-hook.png"
+    },
+    {
+      "id": "morning-briefing",
+      "type": "scene",
+      "time": "08:30",
+      "scene_label": "Vor der Schicht",
+      "image": "01-morning.png",
+      "headline": "Du bist als Erste im Lokal.",
+      "body": "Statt panisch durch Reservierungen und Lieferanten-Mails zu scrollen: ein Briefing. Was heute ansteht, was kritisch ist, was bestätigt werden muss. 90 Sekunden lesen — dann weißt du, wo der Tag dich kriegen wird.",
+      "discord": {
+        "channel": "#briefing",
+        "author": "k-AIzen PA",
+        "timestamp": "08:00",
+        "content": "🌅 **Daily Briefing · Mittwoch, 27. Mai**\n\n📧 Mails über Nacht: 17\n  • 2 dringend (Lieferant Müller verspätet, Geburtstag-Reservierung Samstag)\n  • 6 Reservierungs-Anfragen (Drafts in #approve)\n  • 9 archiviert\n\n🍽️ Heute:\n  • Lunch ausgebucht (28 Gäste)\n  • Abend: 4 Reservierungen + Walk-Ins\n  • Personal: Sandra krank, Tim springt ein\n\n📌 Pending: 4 Approvals warten\n☀️ München 18°, nachmittags Regen → weniger Terrasse"
+      }
+    },
+    {
+      "id": "morning-approvals",
+      "type": "scene",
+      "time": "09:00",
+      "scene_label": "Morgen-Setup",
+      "image": "02-coffee.png",
+      "headline": "Du machst dir einen Cappuccino.",
+      "body": "Vier Reactions im Discord: Weinbestellung ✅. Antwort an enttäuschten Gast ✏️ persönlicher und warmer. Reservierungs-Verschiebung Samstag ✅. Neuer Lieferant ❌. Erledigt, bevor die Küche anfängt.",
+      "discord": {
+        "channel": "#approve",
+        "author": "k-AIzen PA",
+        "timestamp": "08:45",
+        "content": "📌 **4 Approvals warten**\n\n**1. Wein-Nachbestellung**\nVino-Direkt · Hauspack · 412 €\n→ Reagiere ✅\n\n**2. Antwort an Familie Krause**\nDraft (Re: kalter Hauptgang gestern) im Thread\n→ ✅ oder ✏️\n\n**3. Reservierungs-Verschiebung Samstag**\nTisch 7 statt 5 (Geburtstag, 8 statt 6 Personen)\n→ ✅ wenn machbar\n\n**4. Neue Lieferant-Anfrage Bio-Gemüse**\nGrüner Hof · Pitch im Thread\n→ ✅ Termin / ❌ ablehnen"
+      }
+    },
+    {
+      "id": "precall-briefing",
+      "type": "scene",
+      "time": "11:30",
+      "scene_label": "Vor dem Lunch-Service",
+      "image": "03-car.png",
+      "headline": "Der Lunch-Rush kommt.",
+      "body": "„Wer kommt heute zum Mittagessen?\" Drei Sekunden später hast du den Gast-Brief: VIP-Gäste, Stammkunden, Allergien, Geburtstage. Du gehst raus mit dem Wissen, wer am Tisch sitzt — wie früher mit einer richtigen Empfangsdame.",
+      "discord": {
+        "channel": "#bookings",
+        "author": "k-AIzen PA",
+        "timestamp": "11:25",
+        "content": "📋 **Lunch-Service · 28 Gäste**\n\n**Besondere Notizen:**\n\n🎂 **Tisch 4** (12:30, 4 Pers) — Geburtstag Frau Hauser. Stammkundin seit 2022. Dessert mit Kerze vorbereitet.\n\n⚠️ **Tisch 6** (13:00, 2 Pers) — Glutenfrei. Letzter Besuch: Pasta-Glutenproblem (Küche: separates Brett-Briefing).\n\n⭐ **Tisch 9** (13:15, 6 Pers) — Influencer-Gruppe (@lena_bistro). Möchte Foto-Ecke am Fenster.\n\n**Stammkunden:** Tisch 2 (Hr. Wolf, immer Riesling), Tisch 8 (Familie Bauer, Kinder mögen Pommes)"
+      }
+    },
+    {
+      "id": "call-protocol",
+      "type": "scene",
+      "time": "15:00",
+      "scene_label": "Nach dem Lunch-Service",
+      "image": "04-postcall.png",
+      "headline": "Lunch ist durch.",
+      "body": "Du nimmst kurz eine Sprachnachricht auf: „Müller-Lieferant kam wieder zu spät, Tim hat gut performt, neue Hauptspeise lief schlecht.\" Drei Minuten später hast du strukturierte Notizen — die wandern in deinen Wochen-Review.",
+      "discord": {
+        "channel": "#meetings",
+        "author": "k-AIzen PA",
+        "timestamp": "15:03",
+        "content": "📝 **Service-Notiz · Mittwoch Lunch**\n\n**✅ Was lief gut:**\n  • Tim als Springer top — schnell, ruhig, freundlich\n  • Geburtstags-Dessert bei Tisch 4 → Familie begeistert\n  • Influencer-Gruppe: gute Stimmung, Stories gepostet\n\n**⚠️ Was lief schlecht:**\n  • Müller-Lieferant 90 Min zu spät (3. Mal diesen Monat)\n  • Neue Hauptspeise „Salbei-Gnocchi\" → nur 4× verkauft\n\n**📌 Action:**\n  • Müller-Gespräch suchen (oder Wechsel?)\n  • Salbei-Gnocchi: neu positionieren oder rausnehmen?\n  • Tim für Festanstellung andenken"
+      }
+    },
+    {
+      "id": "lunch",
+      "type": "scene",
+      "time": "17:00",
+      "scene_label": "Vor dem Abend-Service",
+      "image": "05-lunch.png",
+      "headline": "Du brauchst eine Pause.",
+      "body": "„Such mir einen Coffee-Shop in der Nähe, ruhig, 5 Min Fußweg, wo ich kurz E-Mails fertigmachen kann.\" Eine Antwort, ein ✅ — dein PA reserviert dir den ruhigsten Platz.",
+      "discord": {
+        "channel": "#sandbox",
+        "author": "k-AIzen PA",
+        "timestamp": "17:02",
+        "content": "☕ **3 ruhige Spots, 5 Min Fußweg:**\n\n**1. Café Niko** ⭐ 4.6\n  → Backstage-Ecke, WLAN ok, 4 Min\n  → Aktuell halb leer\n\n**2. Coffee Pirates** ⭐ 4.4\n  → Modern, manchmal laut nachmittags\n  → 5 Min\n\n**3. Espresso Bar** ⭐ 4.7\n  → Sehr klein, nur Stehen\n  → 3 Min\n\n→ Reagiere 1️⃣ 2️⃣ 3️⃣"
+      }
+    },
+    {
+      "id": "concierge-task",
+      "type": "scene",
+      "time": "17:30",
+      "scene_label": "Im Café · Tier 2",
+      "image": "06-waiting.png",
+      "headline": "Du sitzt im Café.",
+      "body": "„Frag bei der GEMA nach meiner Anmeldung von letztem Monat — die haben noch nicht reagiert.\" Mit Concierge-Tier ruft Ben für dich an. Du arbeitest in Ruhe weiter — Antwort kommt morgen früh im Channel.",
+      "discord": {
+        "channel": "#sandbox",
+        "author": "k-AIzen PA",
+        "timestamp": "17:33",
+        "content": "📞 **Roger, kümmere mich drum.**\n\nGEMA-Anruf läuft heute Nachmittag oder morgen früh. Ergebnis spätestens morgen Mittag in #briefing.\n\nStatus-Updates kommen automatisch."
+      }
+    },
+    {
+      "id": "evening-wrap",
+      "type": "scene",
+      "time": "23:30",
+      "scene_label": "Nach Service",
+      "image": "07-evening.png",
+      "headline": "Service ist durch.",
+      "body": "Du schließt ab. In #briefing wartet dein Tages-Wrap: Umsatz, Gäste-Feedback, was morgen Sonderwünsche sind. Du gehst nach Hause — und kannst wirklich abschalten. Der PA hat den Faden.",
+      "discord": {
+        "channel": "#briefing",
+        "author": "k-AIzen PA",
+        "timestamp": "23:30",
+        "content": "🌆 **Evening Wrap · Mittwoch**\n\n**✅ Heute:**\n  • Lunch: 28 Gäste, ⌀ 32 € pro Person\n  • Abend: 47 Gäste, ⌀ 48 € pro Person\n  • 12 Reservierungs-Drafts gesendet\n  • Wein bestellt, GEMA-Ticket offen bei Ben\n  • IG-Story von @sarah_foodie reposted (12k Reach)\n\n**📥 Morgen wartet:**\n  • Müller-Lieferant: Gespräch über Verspätungen?\n  • 3 Reservierungs-Anfragen in #approve\n  • Personal-Plan-Update (Tim → Festanstellung)\n\n🌙 Schlaf gut, Lena."
+      }
+    },
+    {
+      "id": "cta",
+      "type": "cta",
+      "headline": "Wollen wir loslegen?",
+      "body": "30 Minuten Erstgespräch. Kostenlos. Ohne Verkaufsdruck. Wir schauen, ob's für dein Restaurant passt.",
+      "cta_label": "Termin buchen",
+      "cta_href": "/erstgespraech",
+      "image": "08-cta.png"
+    }
+  ]
+}
