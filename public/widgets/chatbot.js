@@ -112,27 +112,6 @@
         width: 100%;
         line-height: 0;
       }
-      /* Cream backdrop behind monk's face fills gaps where bg-removal also
-         erased eye-whites — without this they look hollow on the dark theme.
-         Sits above the page bg but below the monk PNG. Only covers the
-         head area (top ~55%), so the table/desk at the bottom keeps clean
-         transparent edges. */
-      .kbot-monk-wrap::before {
-        content: "";
-        position: absolute;
-        /* Spans both eyes — measured pupil centers at x 49% (left eye)
-           and x 66% (right eye), eye band y 22-41%. */
-        left: 47.5%; right: 31.5%;
-        top: 23%; height: 16%;
-        background: radial-gradient(ellipse at 50% 50%,
-          rgba(252, 248, 240, 1) 0%,
-          rgba(252, 248, 240, 0.95) 50%,
-          rgba(252, 248, 240, 0.45) 80%,
-          rgba(252, 248, 240, 0) 100%);
-        filter: blur(2px);
-        pointer-events: none;
-        z-index: 0;
-      }
       .kbot-monk-top {
         display: block;
         width: 100%;
