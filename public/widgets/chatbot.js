@@ -120,14 +120,16 @@
       .kbot-monk-wrap::before {
         content: "";
         position: absolute;
-        left: 38%; right: 32%;
-        top: 10%; height: 32%;
+        /* Sized + positioned to sit directly behind the eyes
+           (measured: face bbox x 47-67%, eyes y 21-30%, center x≈54%). */
+        left: 48%; right: 40%;
+        top: 21%; height: 11%;
         background: radial-gradient(ellipse at 50% 50%,
           rgba(252, 248, 240, 1) 0%,
-          rgba(252, 248, 240, 0.95) 28%,
-          rgba(252, 248, 240, 0.55) 60%,
-          rgba(252, 248, 240, 0) 95%);
-        filter: blur(3px);
+          rgba(252, 248, 240, 0.95) 40%,
+          rgba(252, 248, 240, 0.5) 75%,
+          rgba(252, 248, 240, 0) 100%);
+        filter: blur(1.5px);
         pointer-events: none;
         z-index: 0;
       }
