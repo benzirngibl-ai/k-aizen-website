@@ -120,16 +120,16 @@
       .kbot-monk-wrap::before {
         content: "";
         position: absolute;
-        /* Sized + positioned to sit directly behind the eyes
-           (measured: face bbox x 47-67%, eyes y 21-30%, center x≈54%). */
-        left: 48%; right: 40%;
-        top: 21%; height: 11%;
+        /* Spans both eyes — measured pupil centers at x 49% (left eye)
+           and x 66% (right eye), eye band y 22-41%. */
+        left: 46%; right: 30%;
+        top: 22%; height: 18%;
         background: radial-gradient(ellipse at 50% 50%,
           rgba(252, 248, 240, 1) 0%,
-          rgba(252, 248, 240, 0.95) 40%,
-          rgba(252, 248, 240, 0.5) 75%,
+          rgba(252, 248, 240, 0.95) 50%,
+          rgba(252, 248, 240, 0.45) 80%,
           rgba(252, 248, 240, 0) 100%);
-        filter: blur(1.5px);
+        filter: blur(2px);
         pointer-events: none;
         z-index: 0;
       }
