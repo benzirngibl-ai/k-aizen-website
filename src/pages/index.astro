@@ -5,7 +5,7 @@
 
 const SITE_URL = 'https://k-aizen.de';
 const TITLE = 'k-AIzen — Jeden Tag 1% besser. Mit KI.';
-const DESCRIPTION = 'KI-Workflow-Automation für KMU in Deutschland. Discovery-Audit ab 1.190 €, Module ab 2.490 €, Komplett-PA-Bundle 14.999 €. Hosted in Germany, kein Lock-in, ein Mensch der baut. Festpreise, sichtbar.';
+const DESCRIPTION = 'KI-PA für KMU in Deutschland. Tier 1 Autonom ab 10.299 € Setup + 1.029 €/Mo (oder 1.899 €/Mo SaaS-Style). Tier 2 + Concierge ab 12.999 € + 1.299 €/Mo. Add-ons: Voice-Empfangsdame, Content-Maschine, Beleg-Modul. Hosted in Germany, kein Lock-in, ein Mensch der baut. Festpreise, sichtbar.';
 const OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 const organizationSchema = {
@@ -92,12 +92,11 @@ const serviceSchema = {
     "@type": "OfferCatalog",
     "name": "k-AIzen Angebot",
     "itemListElement": [
-      { "@type": "Offer", "name": "Discovery-Audit Standard", "price": "1490", "priceCurrency": "EUR", "itemOffered": { "@type": "Service", "name": "Discovery-Audit", "description": "1 Tag remote, 3 Mitarbeiter-Interviews, kundenspezifischer PDF-Report binnen 5 Werktagen, 1h Follow-up." } },
-      { "@type": "Offer", "name": "Modul S — Audio→Protokoll", "price": "2490", "priceCurrency": "EUR" },
-      { "@type": "Offer", "name": "Modul M — Email-Befreiung", "price": "4490", "priceCurrency": "EUR" },
-      { "@type": "Offer", "name": "Modul L — Schicht-Genie", "price": "8990", "priceCurrency": "EUR" },
-      { "@type": "Offer", "name": "Komplett-PA-Bundle", "price": "14999", "priceCurrency": "EUR", "itemOffered": { "@type": "Service", "name": "KI-PA Bundle", "description": "Ein S-, ein M- und ein L-Modul gebündelt — der KI-PA für deinen Betrieb." } },
-      { "@type": "Offer", "name": "Retainer Wachstum", "price": "799", "priceCurrency": "EUR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "799", "priceCurrency": "EUR", "unitText": "pro Monat" } }
+      { "@type": "Offer", "name": "Discovery-Audit Standard", "price": "1490", "priceCurrency": "EUR", "itemOffered": { "@type": "Service", "name": "Discovery-Audit", "description": "1 Tag remote, kundenspezifischer Report binnen 5 Werktagen, 1h Follow-up. 50% bei Setup-Buchung innerhalb 30 Tagen aufs Setup angerechnet." } },
+      { "@type": "Offer", "name": "KI-PA Autonom (Tier 1) — Setup-First", "price": "10299", "priceCurrency": "EUR", "itemOffered": { "@type": "Service", "name": "KI-PA Autonom", "description": "Persönlicher KI-Assistent. Mail-Triage, Termine, Briefings, Belege, Audio→Protokoll, Customer-Memory. Discord-Cockpit, eigener Server in Deutschland." } },
+      { "@type": "Offer", "name": "KI-PA + Concierge (Tier 2) — Setup-First", "price": "12999", "priceCurrency": "EUR", "itemOffered": { "@type": "Service", "name": "KI-PA + Concierge", "description": "Alles aus Tier 1 plus: Anrufe, Behörden, Reklamationen, Verhandlungen, Reise-Logistik — übernommen als Mensch." } },
+      { "@type": "Offer", "name": "Voice-Empfangsdame (Add-on)", "price": "9999", "priceCurrency": "EUR", "itemOffered": { "@type": "Service", "name": "Voice-Empfangsdame", "description": "Eigene Firmen-Telefonnummer. KI nimmt Anrufe entgegen, beantwortet FAQs, vereinbart Termine." } },
+      { "@type": "Offer", "name": "Retainer Tier 1", "price": "1029", "priceCurrency": "EUR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "1029", "priceCurrency": "EUR", "unitText": "pro Monat" } }
     ]
   }
 };
@@ -263,8 +262,9 @@ const serviceSchema = {
       <h2>Drei Stufen, Festpreise</h2>
       <ul>
         <li><a href="/audit">Discovery-Audit</a> — ab 1.190 € · 1 Tag · Lieferung in 5 Werktagen mit Roadmap</li>
-        <li><a href="/pricing">Setup-Module</a> — 2.490 €–9.990 € je Modul · Komplett-PA-Bundle 14.999 €</li>
-        <li><a href="/pricing#retainer">Retainer</a> — 499 € – 1.299 €/Monat · keine Mindestlaufzeit</li>
+        <li><a href="/ki-pa">KI-PA Tier 1 (Autonom)</a> — 10.299 € Setup + 1.029 €/Mo · oder SaaS-Style 1.899 €/Mo Y1</li>
+        <li><a href="/ki-pa">KI-PA Tier 2 (+ Concierge)</a> — 12.999 € + 1.299 €/Mo · Mensch übernimmt was KI nicht kann</li>
+        <li><a href="/pricing">Add-on-Module</a> — Voice-Empfangsdame, Content-Maschine, Beleg-Modul ab 999 € Setup</li>
       </ul>
 
       <h2>Methodik — Beobachten statt Beraten</h2>
