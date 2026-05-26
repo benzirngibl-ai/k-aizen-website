@@ -122,8 +122,8 @@
         position: absolute;
         /* Spans both eyes — measured pupil centers at x 49% (left eye)
            and x 66% (right eye), eye band y 22-41%. */
-        left: 46%; right: 30%;
-        top: 22%; height: 18%;
+        left: 47.5%; right: 31.5%;
+        top: 23%; height: 16%;
         background: radial-gradient(ellipse at 50% 50%,
           rgba(252, 248, 240, 1) 0%,
           rgba(252, 248, 240, 0.95) 50%,
