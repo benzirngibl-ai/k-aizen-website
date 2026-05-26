@@ -184,7 +184,7 @@ const whatsappLink = `https://wa.me/4915901031928?text=${encodeURIComponent('Hi 
     <section class="kz-section" aria-labelledby="module-headline">
       <h2 id="module-headline" class="kz-h2">Was steckt drin</h2>
       <p class="kz-section-lead">
-        Fünf Module, ein durchgängiges System. Alles in deinem Discord, alles auf deinem Server.
+        Sieben Module, ein durchgängiges System. Alles in deinem Discord, alles auf deinem Server.
       </p>
 
       <div class="kz-module-list">
@@ -235,6 +235,14 @@ const whatsappLink = `https://wa.me/4915901031928?text=${encodeURIComponent('Hi 
             <p class="kz-module-outcome">Dein PA lernt dich kennen. Sprachnotiz „Frau Hauser hat 70. Geburtstag, kommt wieder" → 8 Monate später bei neuer Reservierung poppt das Profil automatisch hoch. Wie eine echte Empfangsdame mit perfektem Gedächtnis.</p>
           </div>
         </div>
+
+        <div class="kz-module">
+          <span class="kz-module-code">M-N1</span>
+          <div class="kz-module-content">
+            <h3 class="kz-module-name">News-Cockpit</h3>
+            <p class="kz-module-outcome">Tägliche Branchen-News kuratiert + ins Daily Briefing integriert. Keine Info-Überflutung — du erfährst nur was für dein Business zählt.</p>
+          </div>
+        </div>
       </div>
 
       <p style="margin-top: 20px; font-size: 15px; color: var(--fg-muted);">
@@ -275,7 +283,7 @@ const whatsappLink = `https://wa.me/4915901031928?text=${encodeURIComponent('Hi 
           </div>
 
           <ul>
-            <li>Alle 6 Module live in 2–3 Wochen</li>
+            <li>Alle 7 Module live in 2–3 Wochen</li>
             <li>Customer-Memory inklusive</li>
             <li>10h Anpassung pro Monat</li>
             <li>Reaktion &lt; 12h an Werktagen</li>
@@ -299,12 +307,12 @@ const whatsappLink = `https://wa.me/4915901031928?text=${encodeURIComponent('Hi 
             <span class="kz-price-unit">Modell A · Setup einmalig</span>
           </div>
           <div class="kz-price-row kz-price-row-sub">
-            <span class="kz-price-figure-sm">+ 1.299 € / Mo</span>
+            <span class="kz-price-figure-sm">+ 1.529 € / Mo</span>
             <span class="kz-price-unit">pro Monat · 12 Mo Mindestlaufzeit</span>
           </div>
 
           <div style="margin: 16px 0; padding: 12px 14px; background: rgba(245,240,232,0.08); border-radius: 6px; font-size: 13px;">
-            <strong>Modell B (SaaS):</strong> 0 € Setup + 2.399 €/Mo Y1 → 1.299 €/Mo ab Y2.
+            <strong>Modell B (SaaS):</strong> 0 € Setup + 2.599 €/Mo Y1 → 1.529 €/Mo ab Y2.
           </div>
 
           <ul>
@@ -372,8 +380,10 @@ const whatsappLink = `https://wa.me/4915901031928?text=${encodeURIComponent('Hi 
         <li><strong>📢 Content-Maschine</strong> — Social-Media-Posts in deinem Tonfall, 12+ Posts/Monat, Approval-Flow im Discord (4.499 € + 499 €/Mo)</li>
         <li><strong>💰 Beleg- & Steuer-Modul</strong> — erweiterte Beleg-Sortierung + monatlicher Steuerberater-Export, GoBD-konform (3.499 € + 399 €/Mo)</li>
         <li><strong>🎯 Lead-Pipeline</strong> — Lead-Recherche mit ICP-Filter, Outreach-Drafts, Follow-up-Tracking (2.999 € + 299 €/Mo)</li>
-        <li><strong>📰 News-Cockpit</strong> — tägliche Branchen-News kuratiert + ins Daily Briefing integriert (999 € + 99 €/Mo)</li>
       </ul>
+      <p style="margin-top: 16px; font-size: 14px; color: var(--fg-muted);">
+        📰 <strong>News-Cockpit</strong> (Branchen-News im Daily Briefing) ist in beiden Tiers Standard — kein Add-on nötig.
+      </p>
       <p style="margin-top: 24px;">
         <a href="/pricing" class="kz-btn kz-btn-ghost" aria-label="Vollständige Pricing-Übersicht mit allen Modulen">Vollständige Preis-Übersicht →</a>
       </p>
@@ -701,6 +711,7 @@ const whatsappLink = `https://wa.me/4915901031928?text=${encodeURIComponent('Hi 
     .kz-proof-card {
       padding: 32px 28px;
       background: var(--kz-cream-deep);
+      color: var(--fg-inverse);
       border-radius: 12px;
     }
     .kz-proof-figure {
@@ -791,8 +802,17 @@ const whatsappLink = `https://wa.me/4915901031928?text=${encodeURIComponent('Hi 
     .kz-bottom-cta {
       padding: 56px clamp(24px, 4vw, 48px);
       background: var(--kz-cream-deep);
+      color: var(--fg-inverse);
       border-radius: 14px;
       margin-top: 96px;
+    }
+    .kz-bottom-cta p { color: var(--fg-inverse); }
+    .kz-bottom-cta .kz-btn-ghost {
+      color: var(--fg-inverse);
+      border-color: rgba(31, 41, 51, 0.35);
+    }
+    .kz-bottom-cta .kz-btn-ghost:hover {
+      background: rgba(31, 41, 51, 0.08);
     }
     .kz-cta-buttons {
       display: flex;

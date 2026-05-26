@@ -5,7 +5,7 @@ const offerCatalogSchema = {
   "@context": "https://schema.org",
   "@type": "OfferCatalog",
   "name": "k-AIzen Preise",
-  "description": "Discovery-Audit ab 1.190 €, KI-PA in 2 Tiers (Autonom ab 10.299 € Setup oder 1.899 €/Mo · Concierge ab 12.999 € oder 2.399 €/Mo), Add-on-Module ab 999 €. Preise öffentlich, kein Lock-in.",
+  "description": "Discovery-Audit ab 1.190 €, KI-PA in 2 Tiers (Autonom ab 10.299 € Setup oder 1.899 €/Mo · Concierge ab 12.999 € oder 2.599 €/Mo), Add-on-Module ab 999 €. Preise öffentlich, kein Lock-in.",
   "itemListElement": [
     {
       "@type": "Offer",
@@ -60,7 +60,7 @@ const faqSchema = {
 
 <KaizenLayout
   title="Preise — KI-PA in 2 Tiers, Add-ons, Audit. Alles offen."
-  description="KI-PA Autonom (Tier 1) ab 10.299 € Setup oder 1.899 €/Mo. KI-PA + Concierge (Tier 2) ab 12.999 € oder 2.399 €/Mo. Add-ons ab 999 €. Discovery-Audit ab 1.190 €. Kein Lock-in. Preise öffentlich."
+  description="KI-PA Autonom (Tier 1) ab 10.299 € Setup oder 1.899 €/Mo. KI-PA + Concierge (Tier 2) ab 12.999 € oder 2.599 €/Mo. Add-ons ab 999 €. Discovery-Audit ab 1.190 €. Kein Lock-in. Preise öffentlich."
   path="/pricing"
   activeNav="pricing"
   jsonLd={[offerCatalogSchema, faqSchema]}
@@ -164,6 +164,7 @@ const faqSchema = {
             <li>✓ Web-Recherche + Personen-Background</li>
             <li>✓ Customer-Memory (lernt Stammkunden + Mandanten)</li>
             <li>✓ Link-First-Empfehlungen (Restaurants, Hotels, Bestellungen)</li>
+            <li>✓ <strong>News-Cockpit</strong> — tägliche Branchen-News kuratiert</li>
             <li>✓ Discord-Cockpit, eigener Hetzner-Server, DSGVO-konform</li>
           </ul>
         </div>
@@ -178,13 +179,13 @@ const faqSchema = {
           <div style="margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid rgba(245,240,232,0.12);">
             <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(245,240,232,0.55); margin-bottom: 6px;">Modell A — Setup-First</div>
             <div style="font-family: var(--font-display); font-size: 32px; line-height: 1;">12.999 € <span style="font-size: 14px; color: rgba(245,240,232,0.6); font-family: inherit;">einmalig</span></div>
-            <div style="font-size: 15px; margin-top: 4px;">+ <strong>1.299 €/Mo</strong> Retainer · 12 Mo Mindestlaufzeit</div>
+            <div style="font-size: 15px; margin-top: 4px;">+ <strong>1.529 €/Mo</strong> Retainer · 12 Mo Mindestlaufzeit</div>
           </div>
 
           <div style="margin-bottom: 24px;">
             <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(245,240,232,0.55); margin-bottom: 6px;">Modell B — SaaS-Style</div>
             <div style="font-family: var(--font-display); font-size: 32px; line-height: 1;">0 € <span style="font-size: 14px; color: rgba(245,240,232,0.6); font-family: inherit;">Setup</span></div>
-            <div style="font-size: 15px; margin-top: 4px;">+ <strong>2.399 €/Mo</strong> Y1 → <strong>1.299 €/Mo</strong> ab Y2 · 12 Mo</div>
+            <div style="font-size: 15px; margin-top: 4px;">+ <strong>2.599 €/Mo</strong> Y1 → <strong>1.529 €/Mo</strong> ab Y2 · 12 Mo</div>
           </div>
 
           <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 1.7;">
@@ -252,16 +253,11 @@ const faqSchema = {
           <div style="font-size: 14px; margin-top: 2px;">+ <strong>299 €/Mo</strong></div>
         </div>
 
-        <!-- News-Cockpit -->
-        <div style="padding: 28px 24px; background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 12px;">
-          <div style="font-size: 28px; margin-bottom: 8px;">📰</div>
-          <h3 class="kz-h3" style="margin-top: 0; font-size: 19px;">News-Cockpit</h3>
-          <p style="margin: 4px 0 12px 0; font-size: 14px; color: var(--fg-muted);">Tägliche Branchen-News kuratiert + im Daily Briefing integriert. Keine Info-Überflutung.</p>
-          <div style="font-family: var(--font-display); font-size: 22px; line-height: 1;">999 €<span style="font-size: 14px; color: var(--fg-muted); font-family: inherit;"> Setup</span></div>
-          <div style="font-size: 14px; margin-top: 2px;">+ <strong>99 €/Mo</strong></div>
-        </div>
-
       </div>
+
+      <p style="margin-top: 24px; padding: 16px 20px; background: rgba(255,85,0,0.06); border-left: 3px solid var(--kz-ember); border-radius: 4px; font-size: 14px;">
+        📰 <strong>News-Cockpit</strong> (tägliche Branchen-News kuratiert + ins Daily Briefing integriert) ist <strong>in beiden Tiers Standard</strong> — kein Aufpreis.
+      </p>
     </section>
 
     <!-- ═══════════════ 4. BEISPIEL-BUNDLES ═══════════════ -->
@@ -293,8 +289,8 @@ const faqSchema = {
           <div style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--kz-ember); margin-bottom: 8px;">GF Vollausstattung</div>
           <h3 class="kz-h3" style="margin-top: 0; font-size: 20px; color: var(--kz-cream);">Premium-Setup</h3>
           <p style="margin: 4px 0 16px 0; font-size: 14px; color: rgba(245,240,232,0.7);">Tier 2 + Voice + Content + Beleg</p>
-          <div style="font-family: var(--font-display); font-size: 28px; line-height: 1.1;">30.996 € + <span style="color: var(--kz-ember);">2.996 €</span>/Mo</div>
-          <div style="font-size: 13px; color: rgba(245,240,232,0.6); margin-top: 6px;">Modell A · Year-1-Total ~66.900 €</div>
+          <div style="font-family: var(--font-display); font-size: 28px; line-height: 1.1;">30.996 € + <span style="color: var(--kz-ember);">3.226 €</span>/Mo</div>
+          <div style="font-size: 13px; color: rgba(245,240,232,0.6); margin-top: 6px;">Modell A · Year-1-Total ~69.700 €</div>
         </div>
 
       </div>
