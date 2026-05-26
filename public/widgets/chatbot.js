@@ -120,14 +120,14 @@
       .kbot-monk-wrap::before {
         content: "";
         position: absolute;
-        left: 18%; right: 18%;
-        top: 4%; height: 52%;
-        background: radial-gradient(ellipse at 50% 45%,
-          rgba(245, 240, 232, 0.92) 0%,
-          rgba(245, 240, 232, 0.78) 38%,
-          rgba(245, 240, 232, 0.35) 68%,
-          rgba(245, 240, 232, 0) 88%);
-        filter: blur(6px);
+        left: 38%; right: 32%;
+        top: 10%; height: 32%;
+        background: radial-gradient(ellipse at 50% 50%,
+          rgba(252, 248, 240, 1) 0%,
+          rgba(252, 248, 240, 0.95) 28%,
+          rgba(252, 248, 240, 0.55) 60%,
+          rgba(252, 248, 240, 0) 95%);
+        filter: blur(3px);
         pointer-events: none;
         z-index: 0;
       }
