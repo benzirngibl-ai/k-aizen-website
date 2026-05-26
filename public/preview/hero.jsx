@@ -761,6 +761,8 @@ function App() {
         <KzMethodik />
         <KzVertrauen />
         <KzSectionDivider />
+        <KzMeetLena />
+        <KzSectionDivider />
         <KzUeberMich />
         <div id="faq"></div>
         <KzFaq />

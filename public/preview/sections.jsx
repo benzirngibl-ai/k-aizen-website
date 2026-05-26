@@ -1025,6 +1025,112 @@ function VertrauenSection() {
 }
 
 // ============================================================
+// SECTION 08 — Meet Lena (Brand-Avatar-Persona)
+// ============================================================
+function MeetLenaSection() {
+  return (
+    <section data-screen-label="08 Meet Lena" style={{
+      position: 'relative',
+      padding: 'clamp(80px, 14vh, 180px) 0 clamp(80px, 14vh, 160px)',
+      background: 'var(--bg)',
+      overflow: 'hidden',
+    }}>
+      <div style={{
+        maxWidth: 1120, margin: '0 auto',
+        padding: '0 clamp(24px, 5vw, 64px)',
+      }}>
+        <SectionEyebrow leaf={3} label="Dein KI-PA" />
+        <RevealHeadline text="Das ist Lena." accent={[1]} />
+
+        <Reveal delay={300}>
+          <p style={{
+            maxWidth: 640, marginTop: 32, marginBottom: 64,
+            fontFamily: 'var(--font-sans)',
+            fontSize: 'clamp(17px, 1.5vw, 20px)',
+            lineHeight: 1.6, color: 'var(--fg-muted)',
+            textWrap: 'pretty',
+          }}>
+            Lena ist nicht ein Tool. Sie ist eine <strong style={{ color: 'var(--fg)' }}>Person</strong>,
+            mit der du arbeitest. Sie liest deine Mails, bereitet deine Termine vor,
+            schreibt Antwort-Entwürfe in deinem Tonfall, recherchiert was du brauchst,
+            und merkt sich, wer Frau Hauser ist. Du sprichst mit ihr im Discord —
+            sie erledigt den Rest.
+          </p>
+        </Reveal>
+
+        <div className="kz-section-grid kz-lena-grid" style={{
+          display: 'grid',
+          gridTemplateColumns: 'minmax(0, 1.1fr) minmax(0, 1fr)',
+          gap: 'clamp(32px, 4vw, 64px)',
+          alignItems: 'center',
+        }}>
+          <Reveal delay={200}>
+            <div style={{ position: 'relative' }}>
+              <img src="/animations/claude-design/lena-hero.png"
+                alt="Lena, dein KI-Personal-Assistent"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  borderRadius: 'clamp(12px, 1.5vw, 20px)',
+                  display: 'block',
+                  boxShadow: '0 30px 60px -20px rgba(0,0,0,0.4), 0 12px 24px -8px rgba(0,0,0,0.25)',
+                  filter: 'saturate(0.96)',
+                }} />
+            </div>
+          </Reveal>
+
+          <Reveal delay={420}>
+            <div style={{
+              fontFamily: 'var(--font-sans)',
+              color: 'var(--fg)',
+            }}>
+              <ul style={{
+                listStyle: 'none', padding: 0, margin: 0,
+                display: 'flex', flexDirection: 'column', gap: 22,
+              }}>
+                {[
+                  { label: 'Persönlich, nicht generisch.', desc: 'Du redest mit Lena, nicht „mit der KI". Sie hat einen Namen, einen Tonfall, einen Stil — und du arbeitest mit ihr wie mit einer Top-Assistentin.' },
+                  { label: 'Sie kennt dich.', desc: 'Customer-Memory von Tag 1. Sie weiß, dass Frau Hauser im Oktober nach dem Penthouse in Schwabing gefragt hat — und sagt es dir, bevor du durchstellst.' },
+                  { label: 'Sie macht Schluss.', desc: 'Sie endet jede Mail mit konkretem Vorschlag, nicht mit „Was meinst du?". Sie schickt im Customer-Discord-Kanal nicht 50 Notifications am Tag, sondern eine 3-Punkt-Tages-Übersicht morgens um 7.' },
+                  { label: 'Sie ist nicht ChatGPT.', desc: 'Eigener Hetzner-Server in Deutschland pro Customer. Mail-Triage läuft auf Claude Opus, Briefings auf Sonnet, Voice (optional) auf ElevenLabs — kein US-Cloud-Lock-in, kein Datenleak.' },
+                ].map((row, i) => (
+                  <li key={i}>
+                    <div style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: 'clamp(20px, 1.8vw, 24px)',
+                      fontWeight: 400, lineHeight: 1.2,
+                      color: 'var(--kz-ember-text)',
+                      letterSpacing: '-0.01em',
+                      marginBottom: 6,
+                    }}>{row.label}</div>
+                    <div style={{
+                      fontSize: 15, lineHeight: 1.6,
+                      color: 'var(--fg-muted)',
+                      textWrap: 'pretty',
+                    }}>{row.desc}</div>
+                  </li>
+                ))}
+              </ul>
+
+              <Reveal delay={780}>
+                <div style={{ marginTop: 40, display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+                  <a href="/pitch/lena" style={ctaBtnStyle({ ember: true })}>
+                    Lena's Tagesablauf <Arrow />
+                  </a>
+                  <a href="/ki-pa" style={ctaBtnStyle()}>
+                    Komplett-Setup ansehen <Arrow />
+                  </a>
+                </div>
+              </Reveal>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================
 // SECTION 09 — Über mich (Bens Hero-Story)
 // ============================================================
 function UeberMichSection() {
@@ -1505,6 +1611,7 @@ Object.assign(window, {
   KzAngebot: AngebotSection,
   KzMethodik: MethodikSection,
   KzVertrauen: VertrauenSection,
+  KzMeetLena: MeetLenaSection,
   KzUeberMich: UeberMichSection,
   KzFaq: FaqSection,
   KzKontakt: KontaktSection,
