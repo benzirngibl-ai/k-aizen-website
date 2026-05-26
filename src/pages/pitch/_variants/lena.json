@@ -46,6 +46,36 @@
       }
     },
     {
+      "id": "memory-capture",
+      "type": "scene",
+      "time": "10:30",
+      "scene_label": "Zwischendurch",
+      "image": "09-memory.png",
+      "headline": "Der PA lernt dich kennen.",
+      "body": "Eine Sprachnachricht zwischendurch: „Frau Hauser hatte 70. Geburtstag, kommt nächstes Jahr wieder, vegetarisch wie immer.\" Drei Sekunden gesprochen. Für immer gespeichert. Beim nächsten Besuch erinnert dich dein PA an alles — als hätte er Frau Hauser selber kennengelernt.",
+      "discord": {
+        "channel": "#sandbox",
+        "author": "k-AIzen PA",
+        "timestamp": "10:32",
+        "content": "🎙️ **Voice-Notiz verarbeitet.**\n\n✅ Notiert für **Frau Hauser** (Stammkundin seit 2022):\n  • 27. Mai 2026 — 70. Geburtstag, sehr happy\n  • Diät bestätigt: vegetarisch\n  • Erwartung: nächstes Jahr ~Mai 2027\n\n📅 **Erinnerung gesetzt:** 14. April 2027 — Geburtstags-Slot proaktiv anbieten\n\n🧠 Bei nächster Reservierung mit Hauser-Name → Profile poppt automatisch auf"
+      }
+    },
+    {
+      "id": "memory-retrieve",
+      "type": "scene",
+      "time": "11:00",
+      "scene_label": "Neue Reservierung",
+      "image": "10-memory-retrieve.png",
+      "headline": "8 Monate später.",
+      "body": "„Familie Hauser, 4 Personen, Donnerstag 19:00\" — eine Reservierung kommt rein. Dein PA matcht den Namen, zieht alles zusammen: Stammkundin, Lieblings-Tisch, Allergien, was du dir damals notiert hast. Du gehst raus und kennst sie wieder — wie eine Empfangsdame, die seit 5 Jahren bei dir arbeitet.",
+      "discord": {
+        "channel": "#bookings",
+        "author": "k-AIzen PA",
+        "timestamp": "11:02",
+        "content": "📅 **Neue Reservierung · Donnerstag 19:00, 4 Pers**\n👤 \"Hauser-Familie\"\n\n🔍 **Match gefunden: Frau Hauser** (Stammkundin seit 2022)\n\n**Aus deinem Memory:**\n  • Lieblings-Tisch: 4 (Fenster, ruhig)\n  • Diät: vegetarisch, oft glutenfrei\n  • Letzter Besuch: 27.05.2026 — 70. Geburtstag (gefeiert)\n  • Deine Notiz: „Mag, wenn man Familie erkennt — Tochter heißt Klara\"\n\n✅ Tisch 4 verfügbar — soll ich's so eintragen?"
+      }
+    },
+    {
       "id": "precall-briefing",
       "type": "scene",
       "time": "11:30",

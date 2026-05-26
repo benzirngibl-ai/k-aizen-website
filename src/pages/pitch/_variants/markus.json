@@ -46,6 +46,36 @@
       }
     },
     {
+      "id": "memory-capture",
+      "type": "scene",
+      "time": "07:45",
+      "scene_label": "Vor dem Aufbruch",
+      "image": "09-memory.png",
+      "headline": "Der PA lernt dich kennen.",
+      "body": "Eine Sprachnachricht vorm Loslaufen: „Schmidt mag direkte Mails, kein Geschwafel — und sein neuer CFO heißt Bernhardt, kommt aus dem Banken-Sektor.\" Drei Sekunden gesprochen. Für immer gespeichert. Beim nächsten Call mit Schmidt erinnert dich dein PA an alles — auch wenn du sie 6 Monate nicht gesehen hast.",
+      "discord": {
+        "channel": "#sandbox",
+        "author": "k-AIzen PA",
+        "timestamp": "07:47",
+        "content": "🎙️ **Voice-Notiz verarbeitet.**\n\n✅ Notiert für **Schmidt GmbH** (Mandant seit März 2025):\n  • Markus Schmidt mag direkte, knappe Mails — kein Geschwafel\n  • Neuer CFO: **Bernhardt**, Hintergrund Bankenwelt\n  • Insight: CFO-Buy-in entscheidend für Phase 3\n\n🧠 Bei nächster Kommunikation mit Schmidt → Tonfall-Hinweis aktiv\n📌 Bei Erwähnung „CFO\" oder „Bernhardt\" → CRM-Profil poppt"
+      }
+    },
+    {
+      "id": "memory-retrieve",
+      "type": "scene",
+      "time": "08:15",
+      "scene_label": "Mail kommt rein",
+      "image": "10-memory-retrieve.png",
+      "headline": "6 Monate später.",
+      "body": "Eine Mail von Schmidt kommt rein — neuer Beratungs-Auftrag. Dein PA matcht den Absender, zieht alles zusammen: Mandanten-Historie, Tonfall-Hinweise, deine Notizen, vergangene Pains. Du schreibst die Antwort in der Sprache, die dein Mandant mag — ohne nachzudenken.",
+      "discord": {
+        "channel": "#mails",
+        "author": "k-AIzen PA",
+        "timestamp": "08:17",
+        "content": "📧 **Neue Mail · Schmidt GmbH**\n👤 Markus Schmidt (CTO)\n\n🔍 **Mandanten-Profil:**\n  • Mandant seit März 2025\n  • Letzter Kontakt: 27.05.2026 (Workshop Phase 2)\n  • Tonfall-Hinweis: direkte, knappe Mails — kein Geschwafel\n  • CFO Bernhardt (neu, Bankenhintergrund)\n\n**Mail-Inhalt (Auszug):**\n  „Bernhardt will Q4 ein Strategie-Update sehen…\"\n\n✏️ **Draft im Schmidt-Tonfall:**\n  „Markus, kein Problem. 30 Min reichen für Bernhardt — wir gehen Phase 2-Status + Q4-Roadmap durch. Mittwoch 14:00?\"\n\n→ ✅ senden | ✏️ ändern"
+      }
+    },
+    {
       "id": "precall-briefing",
       "type": "scene",
       "time": "08:30",
