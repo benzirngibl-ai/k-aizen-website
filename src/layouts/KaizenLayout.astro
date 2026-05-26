@@ -437,6 +437,28 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       color: var(--kz-cream) !important;
       border-color: var(--kz-charcoal);
     }
+    /* When a ghost button sits on a cream-deep card, force dark text + dark border */
+    [style*="--kz-cream-deep"] .kz-btn-ghost,
+    [style*="background: var(--kz-cream-deep)"] .kz-btn-ghost,
+    .kz-day-card .kz-btn-ghost,
+    .kz-module .kz-btn-ghost,
+    .kz-price-card-a .kz-btn-ghost,
+    .kz-proof-card .kz-btn-ghost,
+    .kz-bottom-cta .kz-btn-ghost {
+      color: var(--fg-inverse) !important;
+      border-color: rgba(31, 41, 51, 0.35);
+    }
+    [style*="--kz-cream-deep"] .kz-btn-ghost:hover,
+    [style*="background: var(--kz-cream-deep)"] .kz-btn-ghost:hover,
+    .kz-day-card .kz-btn-ghost:hover,
+    .kz-module .kz-btn-ghost:hover,
+    .kz-price-card-a .kz-btn-ghost:hover,
+    .kz-proof-card .kz-btn-ghost:hover,
+    .kz-bottom-cta .kz-btn-ghost:hover {
+      background: var(--kz-charcoal);
+      color: var(--kz-cream) !important;
+      border-color: var(--kz-charcoal);
+    }
     .kz-quote {
       font-family: var(--font-display);
       font-style: italic;
