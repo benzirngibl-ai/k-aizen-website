@@ -15,7 +15,7 @@ interface Props {
   ogImage?: string;        // optional, default = /og-image.png (1200x630)
   jsonLd?: object | object[]; // optional structured data
   breadcrumbs?: BreadcrumbItem[]; // optional breadcrumb-trail
-  activeNav?: 'audit' | 'pricing' | 'about' | 'faq' | 'kontakt' | 'home' | 'demos' | 'blog' | 'tutorials';
+  activeNav?: 'audit' | 'pricing' | 'about' | 'faq' | 'kontakt' | 'home' | 'blog' | 'tutorials';
   noindex?: boolean;       // wenn true → blockiert Indexierung (für Pitch-Decks)
   hideChrome?: boolean;    // wenn true → versteckt Header + Footer (für Pitch-Decks)
 }
@@ -39,7 +39,6 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}
 
 const navItems = [
   { label: 'Audit', href: '/audit', key: 'audit' },
-  { label: 'Demos', href: '/demos', key: 'demos' },
   { label: 'Blog', href: '/blog', key: 'blog' },
   { label: 'Preise', href: '/pricing', key: 'pricing' },
   { label: 'Über mich', href: '/about', key: 'about' },
@@ -490,7 +489,6 @@ if (breadcrumbs && breadcrumbs.length > 0) {
         <h4>Angebot</h4>
         <ul>
           <li><a href="/audit">Audit buchen</a></li>
-          <li><a href="/demos">Live-Demos</a></li>
           <li><a href="/blog">Blog</a></li>
           <li><a href="/pricing">Preise &amp; Module</a></li>
           <li><a href="/about">Über mich</a></li>
