@@ -16,6 +16,8 @@ interface Props {
   jsonLd?: object | object[]; // optional structured data
   breadcrumbs?: BreadcrumbItem[]; // optional breadcrumb-trail
   activeNav?: 'audit' | 'pricing' | 'about' | 'faq' | 'kontakt' | 'home' | 'demos' | 'blog' | 'tutorials';
+  noindex?: boolean;       // wenn true → blockiert Indexierung (für Pitch-Decks)
+  hideChrome?: boolean;    // wenn true → versteckt Header + Footer (für Pitch-Decks)
 }
 
 const {
@@ -26,6 +28,8 @@ const {
   jsonLd,
   breadcrumbs,
   activeNav = 'home',
+  noindex = false,
+  hideChrome = false,
 } = Astro.props;
 
 const SITE_URL = 'https://k-aizen.de';
@@ -76,7 +80,7 @@ if (breadcrumbs && breadcrumbs.length > 0) {
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large"} />
   <meta name="author" content="Benjamin Zirngibl · k-AIzen" />
   <meta name="theme-color" content="#F5F0E8" />
 
@@ -456,7 +460,7 @@ if (breadcrumbs && breadcrumbs.length > 0) {
 <body>
   <a href="#main" class="kz-skip">Zum Hauptinhalt springen</a>
 
-  <header class="kz-header" role="banner">
+  <header class="kz-header" role="banner" style={hideChrome ? 'display: none;' : ''}>
     <div class="kz-header-inner">
       <a href="/" class="kz-brand" aria-label="k-AIzen Startseite">
         <img src="/animations/claude-design/logo-full.png" alt="k-AIzen" />
@@ -474,7 +478,7 @@ if (breadcrumbs && breadcrumbs.length > 0) {
     <slot />
   </main>
 
-  <footer class="kz-footer" role="contentinfo">
+  <footer class="kz-footer" role="contentinfo" style={hideChrome ? 'display: none;' : ''}>
     <div class="kz-footer-grid">
       <div class="kz-footer-brand">
         <img src="/animations/claude-design/logo-full.png" alt="k-AIzen" />

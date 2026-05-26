@@ -11,7 +11,7 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
-      filter: (page) => !page.includes('/old-index') && !page.includes('/preview/') && !page.includes('/v1/') && !page.includes('/katalog'),
+      filter: (page) => !page.includes('/old-index') && !page.includes('/preview/') && !page.includes('/v1/') && !page.includes('/katalog') && !page.includes('/pitch'),
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),

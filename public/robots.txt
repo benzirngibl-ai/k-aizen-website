@@ -6,6 +6,7 @@ Allow: /
 Disallow: /preview/
 Disallow: /v1/
 Disallow: /old-index
+Disallow: /pitch/
 
 # AI-Crawler — alle explizit erlaubt
 User-agent: GPTBot
