@@ -1,0 +1,825 @@
+---
+import KaizenLayout from '../layouts/KaizenLayout.astro';
+
+// KI-PA Landing-Page — public-facing, SEO-optimiert, conversion-fokussiert.
+// Content-Source: k-aizen/00-blueprints/sales-stories/SALES-1PAGER-ki-pa.md (v4 — 2026-05-19)
+
+const SITE_URL = 'https://k-aizen.de';
+const PAGE_PATH = '/ki-pa';
+const TITLE = 'Der KI-PA — Dein persönlicher KI-Assistent für KMU';
+const DESCRIPTION = 'KI-Personal-Assistent für Solopreneure und Service-KMU. Mail-Triage, Termine, Tages-Briefing, Beleg-Scan. 10.299 € Setup oder 1.899 €/Mo ohne Setup. Hosted in Germany.';
+
+// Structured Data — Product Schema mit Pricing
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "k-AIzen KI-PA — Persönlicher KI-Assistent",
+  "description": "Persönlicher KI-Assistent für Solopreneure und Service-KMU. Liest Mails, plant Termine, organisiert Reisen, briefed morgens. 5 Module: Email-Befreiung, Calendly-Booking, Daily-Briefing, Beleg-Sortierung, Audio→Protokoll. DSGVO-konform, eigener Server in Deutschland, kein Lock-in.",
+  "brand": { "@type": "Brand", "name": "k-AIzen" },
+  "category": "AI Personal Assistant for SMB",
+  "image": `${SITE_URL}/og-image.png`,
+  "url": `${SITE_URL}${PAGE_PATH}`,
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Setup-First (Modell A)",
+      "description": "10.299 € Setup einmalig + 1.029 €/Mo Retainer (10h Anpassung/Mo, Reaktion <12h Werktags)",
+      "price": "10299",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2026-12-31",
+      "seller": { "@type": "Organization", "name": "k-AIzen", "url": SITE_URL }
+    },
+    {
+      "@type": "Offer",
+      "name": "SaaS-Style (Modell B — Ratenzahlung)",
+      "description": "0 € Setup, 1.899 €/Mo Year 1, danach automatisch 1.029 €/Mo. Mindestlaufzeit 12 Monate.",
+      "price": "1899",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "1899",
+        "priceCurrency": "EUR",
+        "unitText": "pro Monat (Year 1)"
+      },
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "Organization", "name": "k-AIzen", "url": SITE_URL }
+    }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "1.029 €/Mo Retainer — ist das nicht viel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Das ist günstiger als ein Versicherungsmakler-Honorar bei größeren Mandanten. Du bekommst dafür einen persönlichen KI-Partner der mit deinem Business mitwächst — nicht eine Software-Lizenz. 10h Anpassung pro Monat sind drin, Reaktion unter 12h Werktags."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was passiert wenn ein neues KI-Modell rauskommt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ich evaluiere es, tausche es bei Bedarf aus. Du merkst nur, dass dein System plötzlich besser läuft. Genau dafür ist der Retainer da."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Können wir das nicht selbst aufsetzen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Klar — aber wer aktualisiert es? Wer pflegt die Prompts wenn Claude 5 rauskommt? Wer rotiert die API-Keys? Wer macht das Monitoring? Du kaufst nicht das Setup, du kaufst den laufenden Betrieb."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was wenn wir kündigen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "3-Klick-Übergabe: Hetzner-Account auf dich transferieren, Tailscale-Zugang dir geben, DNS umstellen. 5 Werktage später bist du komplett unabhängig. Code, Workflows, Daten — alles deins."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Für wen ist der KI-PA gedacht?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Solopreneure und Service-KMU mit 1–15 Mitarbeitenden. Typisch: Berater, Coaches, Anwälte, Architekten, Steuerberater, Agenturen, Therapeuten, Makler. Wer den ganzen Tag in Mails, Terminen und Belegen versinkt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ist das DSGVO-konform?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja — ab Tag 1. Eigener Hetzner-Server in Deutschland, AVV vor Projektstart, keine Datenweitergabe an Dritte. On-Prem-Option mit Open-Source-Modellen (Llama, Mistral) verfügbar wenn gewünscht."
+      }
+    }
+  ]
+};
+
+const erstgespraechMail = `mailto:kontakt@k-aizen.de?subject=${encodeURIComponent('KI-PA — Erstgespräch')}&body=${encodeURIComponent('Hi Ben,\n\nich interessiere mich für den KI-PA. Lass uns 30 Min reden.\n\nMein Unternehmen:\n- Name:\n- Branche:\n- MA-Anzahl:\n- Größter Zeitfresser aktuell:\n\nViele Grüße')}`;
+
+const whatsappLink = `https://wa.me/4915901031928?text=${encodeURIComponent('Hi Ben, ich interessiere mich für den KI-PA. Können wir kurz reden?')}`;
+---
+
+<KaizenLayout
+  title="Der KI-PA — Dein persönlicher KI-Assistent für KMU"
+  description={DESCRIPTION}
+  path={PAGE_PATH}
+  activeNav="pricing"
+  breadcrumbs={[{ name: 'Preise', href: '/pricing' }, { name: 'KI-PA', href: '/ki-pa' }]}
+  jsonLd={[productSchema, faqSchema]}
+>
+  <article class="kz-page kz-pa-page">
+    <!-- HERO -->
+    <div class="kz-page-eyebrow">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" loading="lazy" />
+      <img src="/icons/icon-sakura-branch.png" alt="" class="kz-eyebrow-leaf" loading="lazy" />
+      <span>Der KI-PA</span>
+    </div>
+
+    <h1 class="kz-h1">
+      Wann hast du das letzte Mal eine Mail beantwortet,<br/>
+      <span style="color: var(--kz-ember-text); font-style: italic;">ohne dich vorher 5 Minuten reinzudenken?</span>
+    </h1>
+
+    <p class="kz-lead">
+      Dein persönlicher KI-Assistent — liest deine Mails, plant deine Termine, organisiert deine Reisen und briefed dich morgens. Du kommst an, weißt sofort was wichtig ist, triffst nur noch deine Entscheidungen.
+    </p>
+
+    <div class="kz-hero-cta">
+      <a href="/erstgespraech" class="kz-btn" aria-label="30-Minuten-Erstgespräch buchen, kostenlos">
+        Erstgespräch buchen →
+      </a>
+      <a href="#preise" class="kz-btn kz-btn-ghost" aria-label="Direkt zu den Preisen springen">
+        Was kostet das?
+      </a>
+    </div>
+
+    <p class="kz-hero-meta">
+      30 Min · gratis · keine Kreditkarte · kein Sales-Pitch
+    </p>
+
+    <!-- DAY IN THE LIFE -->
+    <section class="kz-section" aria-labelledby="day-headline">
+      <h2 id="day-headline" class="kz-h2">Ein Tag mit dem KI-PA</h2>
+      <p class="kz-section-lead">
+        Drei Momente am Tag, an denen du normalerweise Zeit verlierst — und was stattdessen passiert.
+      </p>
+
+      <div class="kz-day-grid">
+        <div class="kz-day-card">
+          <div class="kz-day-time">07:30</div>
+          <h3 class="kz-day-title">Morgens</h3>
+          <p class="kz-day-body">
+            73 ungelesene Mails — wo fängst du an? Im Discord wartet eine kuratierte Tagesübersicht: <strong>3 Mails brauchen heute deine Antwort, 12 sind erledigt.</strong> Dazu Termine, ToDos, Wetter.
+          </p>
+        </div>
+
+        <div class="kz-day-card">
+          <div class="kz-day-time">14:12</div>
+          <h3 class="kz-day-title">Tagsüber</h3>
+          <p class="kz-day-body">
+            Mitten im Fokus poppt eine Kunden-Mail auf. Der PA schreibt einen Antwort-Entwurf in deinem Tone-of-Voice. Du tippst auf „Approve" — gesendet. <strong>Zwei Sekunden statt zwanzig Minuten.</strong>
+          </p>
+        </div>
+
+        <div class="kz-day-card">
+          <div class="kz-day-time">18:45</div>
+          <h3 class="kz-day-title">Abends</h3>
+          <p class="kz-day-body">
+            Berg Belege vom Tag — Tankquittungen, Restaurant, Hotel. Du fotografierst, Discord sortiert: Reise / Bewirtung / Büro. <strong>Steuerberater-ready am Monatsende.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WAS STECKT DRIN -->
+    <section class="kz-section" aria-labelledby="module-headline">
+      <h2 id="module-headline" class="kz-h2">Was steckt drin</h2>
+      <p class="kz-section-lead">
+        Fünf Module, ein durchgängiges System. Alles in deinem Discord, alles auf deinem Server.
+      </p>
+
+      <div class="kz-module-list">
+        <div class="kz-module">
+          <span class="kz-module-code">M-B3</span>
+          <div class="kz-module-content">
+            <h3 class="kz-module-name">Email-Befreiung</h3>
+            <p class="kz-module-outcome">Wichtig / Sofort / Später-Triage. Reply-Drafts in deinem Tonfall. Approval per Discord-Tap.</p>
+          </div>
+        </div>
+
+        <div class="kz-module">
+          <span class="kz-module-code">M-A3</span>
+          <div class="kz-module-content">
+            <h3 class="kz-module-name">Calendly-Booking-Center</h3>
+            <p class="kz-module-outcome">Eingehende Bookings + Pre-Call-Briefing in Discord. Kontext auf einen Blick.</p>
+          </div>
+        </div>
+
+        <div class="kz-module">
+          <span class="kz-module-code">M-A4</span>
+          <div class="kz-module-content">
+            <h3 class="kz-module-name">Daily Morning Briefing</h3>
+            <p class="kz-module-outcome">Tagesübersicht (Status / Termine / ToDos / Wetter) — als Push um 07:00.</p>
+          </div>
+        </div>
+
+        <div class="kz-module">
+          <span class="kz-module-code">M-B2</span>
+          <div class="kz-module-content">
+            <h3 class="kz-module-name">Beleg-Sortierung</h3>
+            <p class="kz-module-outcome">Receipt-Scan via Foto + OCR + Steuerberater-Archiv. Reise / Bewirtung / Büro automatisch.</p>
+          </div>
+        </div>
+
+        <div class="kz-module">
+          <span class="kz-module-code">M-A1</span>
+          <div class="kz-module-content">
+            <h3 class="kz-module-name">Audio → Protokoll</h3>
+            <p class="kz-module-outcome">Meeting-Recording → Transkript + Zusammenfassung + ToDos. Push direkt nach dem Call.</p>
+          </div>
+        </div>
+
+        <div class="kz-module">
+          <span class="kz-module-code">M-M1</span>
+          <div class="kz-module-content">
+            <h3 class="kz-module-name">Customer-Memory</h3>
+            <p class="kz-module-outcome">Dein PA lernt dich kennen. Sprachnotiz „Frau Hauser hat 70. Geburtstag, kommt wieder" → 8 Monate später bei neuer Reservierung poppt das Profil automatisch hoch. Wie eine echte Empfangsdame mit perfektem Gedächtnis.</p>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top: 20px; font-size: 15px; color: var(--fg-muted);">
+        Sehen wie das im Alltag aussieht? Schau dir einen vollständigen Tag durch:
+        <a href="/pitch/markus" style="color: var(--kz-ember-text); font-weight: 600;">/pitch/markus</a> (Berater/GF) oder
+        <a href="/pitch/lena" style="color: var(--kz-ember-text); font-weight: 600;">/pitch/lena</a> (Gastro/junge Unternehmerin).
+      </p>
+    </section>
+
+    <!-- PRICING -->
+    <section class="kz-section" id="preise" aria-labelledby="pricing-headline">
+      <h2 id="pricing-headline" class="kz-h2">Was kostet das?</h2>
+      <p class="kz-section-lead">
+        Zwei Tiers — der Unterschied ist nicht der KI-Funktionsumfang, sondern ob ich als Mensch im Hintergrund einspringe. Beide Tiers in je 2 Zahlungs-Modellen.
+      </p>
+
+      <div class="kz-pricing-grid">
+        <!-- Tier 1 — KI-PA Autonom -->
+        <div class="kz-price-card kz-price-card-a">
+          <img src="/icons/icon-camellia.png" alt="" class="kz-section-leaf" loading="lazy" />
+          <div class="kz-price-badge">Tier 1 · Autonom</div>
+          <h3 class="kz-h3" style="margin-top: 0;">KI-PA Autonom</h3>
+          <p style="font-size: 14px; color: var(--fg-muted); margin: 4px 0 16px 0;">
+            Dein KI-Assistent ohne menschlichen Backstop. Was er kann, macht er. Was er nicht kann, sagt er ehrlich.
+          </p>
+
+          <div class="kz-price-row">
+            <span class="kz-price-figure">10.299 €</span>
+            <span class="kz-price-unit">Modell A · Setup einmalig</span>
+          </div>
+          <div class="kz-price-row kz-price-row-sub">
+            <span class="kz-price-figure-sm">+ 1.029 €</span>
+            <span class="kz-price-unit">pro Monat · 12 Mo Mindestlaufzeit</span>
+          </div>
+
+          <div style="margin: 16px 0; padding: 12px 14px; background: rgba(0,0,0,0.04); border-radius: 6px; font-size: 13px;">
+            <strong>Modell B (SaaS):</strong> 0 € Setup + 1.899 €/Mo Y1 → 1.029 €/Mo ab Y2.
+          </div>
+
+          <ul>
+            <li>Alle 6 Module live in 2–3 Wochen</li>
+            <li>Customer-Memory inklusive</li>
+            <li>10h Anpassung pro Monat</li>
+            <li>Reaktion &lt; 12h an Werktagen</li>
+            <li>Modell-Updates wenn Claude 5+ kommt</li>
+          </ul>
+          <a href={erstgespraechMail} class="kz-btn" aria-label="Tier 1 KI-PA Autonom über Erstgespräch starten">Tier 1 anfragen →</a>
+        </div>
+
+        <!-- Tier 2 — KI-PA + Concierge -->
+        <div class="kz-price-card kz-price-card-b">
+          <div class="kz-price-flag">Empfehlung</div>
+          <img src="/icons/icon-plum-blossom.png" alt="" class="kz-section-leaf" loading="lazy" />
+          <div class="kz-price-badge kz-price-badge-light">Tier 2 · Concierge</div>
+          <h3 class="kz-h3" style="margin-top: 0; color: var(--kz-cream);">KI-PA + Concierge</h3>
+          <p style="font-size: 14px; color: rgba(245,240,232,0.75); margin: 4px 0 16px 0;">
+            Dein KI-Assistent UND ich als persönlicher Backstop. Was die KI nicht kann, mache ich. Du musst nichts mehr machen.
+          </p>
+
+          <div class="kz-price-row">
+            <span class="kz-price-figure">12.999 €</span>
+            <span class="kz-price-unit">Modell A · Setup einmalig</span>
+          </div>
+          <div class="kz-price-row kz-price-row-sub">
+            <span class="kz-price-figure-sm">+ 1.299 € / Mo</span>
+            <span class="kz-price-unit">pro Monat · 12 Mo Mindestlaufzeit</span>
+          </div>
+
+          <div style="margin: 16px 0; padding: 12px 14px; background: rgba(245,240,232,0.08); border-radius: 6px; font-size: 13px;">
+            <strong>Modell B (SaaS):</strong> 0 € Setup + 2.399 €/Mo Y1 → 1.299 €/Mo ab Y2.
+          </div>
+
+          <ul>
+            <li><strong>Alles aus Tier 1</strong>, plus:</li>
+            <li>Anrufe in deinem Namen (Behörden, Service)</li>
+            <li>Reklamationen + Verhandlungen + Bürokratie</li>
+            <li>Komplexe Reise-Logistik (Multi-Stop, Visa)</li>
+            <li>Vollmacht + AVV + Vault-Setup</li>
+            <li>Service-Level Mo-Fr 9-16 für Mensch-Tasks</li>
+          </ul>
+          <a href={erstgespraechMail} class="kz-btn" style="background: var(--kz-ember-deep);" aria-label="Tier 2 KI-PA Concierge über Erstgespräch starten">Tier 2 anfragen →</a>
+        </div>
+      </div>
+
+      <p class="kz-price-note">
+        <strong>Audit-Anrechnung:</strong> 50 % des <a href="/audit">Audit-Preises</a> werden bei Buchung innerhalb 30 Tagen aufs Setup angerechnet.
+        <br/><br/>
+        <strong>Add-on-Module zubuchbar zu beiden Tiers:</strong> Voice-Empfangsdame (9.999 € + 799 €/Mo) · Content-Maschine (4.499 € + 499 €/Mo) · Beleg- & Steuer-Modul (3.499 € + 399 €/Mo) · Lead-Pipeline (2.999 € + 299 €/Mo) · News-Cockpit (999 € + 99 €/Mo). Vollständige Pricing-Übersicht: <a href="/pricing">/pricing</a>.
+      </p>
+    </section>
+
+    <!-- BEWEISSTELLEN -->
+    <section class="kz-section" aria-labelledby="proof-headline">
+      <h2 id="proof-headline" class="kz-h2">Beweisstellen</h2>
+
+      <div class="kz-proof-grid">
+        <div class="kz-proof-card">
+          <div class="kz-proof-figure">~12 h</div>
+          <p class="kz-proof-body">
+            <strong>pro Woche gespart.</strong> Ben's eigener PA-Betrieb seit März 2026 — selbst getestet, ehrliche Erfahrungswerte. Kein Marketing-Versprechen, sondern was bei mir auf dem Tisch liegt.
+          </p>
+        </div>
+
+        <div class="kz-proof-card">
+          <div class="kz-proof-figure">Live-Demo</div>
+          <p class="kz-proof-body">
+            Der echte PA im echten Discord. <strong>Keine Slideware, kein Mockup</strong> — du siehst was an dem Tag passiert ist, wo Approvals stehen, wie Belege einsortiert wurden.
+          </p>
+        </div>
+      </div>
+
+      <blockquote class="kz-quote">
+        „Andere setzen das System auf und tschüss. Ich bleibe euer Ansprechpartner — verwalte, halte aktuell, tausche Modelle wenn ein besseres kommt."
+      </blockquote>
+      <p style="font-size: 14px; color: var(--fg-muted); margin-top: -16px;">
+        — Versicherungsmakler-Analogie, die in 80% meiner Sales-Gespräche zieht
+      </p>
+
+      <ul style="margin-top: 32px;">
+        <li><strong>DSGVO-konform ab Tag 1</strong> — eigener Hetzner-Server in Deutschland, AVV vor Projektstart</li>
+        <li><strong>Kein Lock-in</strong> — 3-Klick-Übergabe wenn ihr kündigt: Hetzner-Account, Tailscale, DNS</li>
+        <li><strong>On-Prem-Option</strong> — Llama / Mistral auf eigener Infrastruktur möglich</li>
+      </ul>
+    </section>
+
+    <!-- CROSS-SELL -->
+    <section class="kz-section kz-cross-sell" aria-labelledby="cross-headline">
+      <img src="/icons/icon-ginkgo.png" alt="" class="kz-section-leaf-lg" loading="lazy" />
+      <h2 id="cross-headline" class="kz-h2" style="margin-top: 0;">Brauchst du mehr?</h2>
+      <p>
+        Der KI-PA ist das Hauptprodukt — Add-on-Module ergänzen ihn, wenn dein Schmerz woanders liegt oder zusätzlich da ist. Alle Add-ons integrieren sich in deinen existierenden Discord-Server.
+      </p>
+      <ul>
+        <li><strong>🎙️ Voice-Empfangsdame</strong> — eigene Firmen-Telefonnummer, KI nimmt Anrufe entgegen, beantwortet FAQs, vereinbart Termine (9.999 € + 799 €/Mo)</li>
+        <li><strong>📢 Content-Maschine</strong> — Social-Media-Posts in deinem Tonfall, 12+ Posts/Monat, Approval-Flow im Discord (4.499 € + 499 €/Mo)</li>
+        <li><strong>💰 Beleg- & Steuer-Modul</strong> — erweiterte Beleg-Sortierung + monatlicher Steuerberater-Export, GoBD-konform (3.499 € + 399 €/Mo)</li>
+        <li><strong>🎯 Lead-Pipeline</strong> — Lead-Recherche mit ICP-Filter, Outreach-Drafts, Follow-up-Tracking (2.999 € + 299 €/Mo)</li>
+        <li><strong>📰 News-Cockpit</strong> — tägliche Branchen-News kuratiert + ins Daily Briefing integriert (999 € + 99 €/Mo)</li>
+      </ul>
+      <p style="margin-top: 24px;">
+        <a href="/pricing" class="kz-btn kz-btn-ghost" aria-label="Vollständige Pricing-Übersicht mit allen Modulen">Vollständige Preis-Übersicht →</a>
+      </p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="kz-section" id="faq" aria-labelledby="faq-headline">
+      <h2 id="faq-headline" class="kz-h2">Häufige Einwände</h2>
+
+      <details class="kz-faq">
+        <summary>Tier 1 oder Tier 2 — was ist der echte Unterschied?</summary>
+        <p>
+          Beide haben den gleichen <strong>KI-Funktionsumfang</strong> (Mails, Termine, Briefings, Recherche, Belege, Memory). Der Unterschied: <strong>was passiert, wenn die KI an eine Grenze kommt?</strong>
+          <br/><br/>
+          <strong>Tier 1:</strong> Die KI sagt's ehrlich. Du erledigst's selbst — z.B. Anruf bei der Versicherung. Das ist günstiger und passt für DIY-affine Solopreneurs.
+          <br/><br/>
+          <strong>Tier 2:</strong> Ich mache es im Hintergrund. Mo-Fr 9-16 für Mensch-Tasks. Du kriegst das Ergebnis im Discord — als hätte die KI angerufen. Das fühlt sich wie eine echte Vollzeit-Assistenz an, kostet aber ein Bruchteil.
+          <br/><br/>
+          <strong>Empfehlung:</strong> starte mit Tier 1, beobachte 4-8 Wochen welche Tasks die KI nicht löst — wenn das spürbar ist, upgrade auf Tier 2 (dein PA bleibt der gleiche, kein neuer Setup).
+        </p>
+      </details>
+
+      <details class="kz-faq">
+        <summary>Modell A (Setup) oder Modell B (SaaS) — wie entscheide ich?</summary>
+        <p>
+          Beide ergeben über 24 Monate ungefähr den gleichen Total-Cost. <strong>Modell A:</strong> einmaliger Setup-Block, dann niedrige Monatsraten — gut wenn Cash da ist. <strong>Modell B (SaaS-Style):</strong> kein Setup, höhere Y1-Rate, automatische Reduktion ab Y2 — gut wenn Cashflow wichtiger ist als Total-Cost. Keine Spielchen, keine versteckte Verteuerung.
+        </p>
+      </details>
+
+      <details class="kz-faq">
+        <summary>1.029 €/Mo ist viel.</summary>
+        <p>
+          Das ist günstiger als ein Versicherungsmakler-Honorar bei größeren Mandanten. Du bekommst dafür einen persönlichen KI-Partner der mit deinem Business mitwächst — nicht eine Software-Lizenz. <strong>10h Anpassung pro Monat sind drin</strong>, Reaktion unter 12h Werktags.
+        </p>
+      </details>
+
+      <details class="kz-faq">
+        <summary>Was passiert wenn ein neues KI-Modell rauskommt?</summary>
+        <p>
+          Ich evaluiere es, tausche es bei Bedarf aus. Du merkst nur, dass dein System plötzlich besser läuft. <strong>Genau dafür ist der Retainer da.</strong>
+        </p>
+      </details>
+
+      <details class="kz-faq">
+        <summary>Können wir das nicht selbst aufsetzen?</summary>
+        <p>
+          Klar — aber wer aktualisiert es? Wer pflegt die Prompts wenn Claude 5 rauskommt? Wer rotiert die API-Keys? Wer macht das Monitoring? <strong>Du kaufst nicht das Setup, du kaufst den laufenden Betrieb.</strong>
+        </p>
+      </details>
+
+      <details class="kz-faq">
+        <summary>Was wenn wir kündigen?</summary>
+        <p>
+          3-Klick-Übergabe: Hetzner-Account auf dich transferieren, Tailscale-Zugang dir geben, DNS umstellen. <strong>5 Werktage später bist du komplett unabhängig.</strong> Code, Workflows, Daten — alles deins.
+        </p>
+      </details>
+
+      <details class="kz-faq">
+        <summary>Für wen ist der KI-PA gedacht?</summary>
+        <p>
+          Solopreneure und Service-KMU mit <strong>1–15 Mitarbeitenden</strong>. Typisch: Berater, Coaches, Anwälte, Architekten, Steuerberater, Agenturen, Therapeuten, Makler. Wer den ganzen Tag in Mails, Terminen und Belegen versinkt.
+        </p>
+      </details>
+
+      <details class="kz-faq">
+        <summary>Ist das DSGVO-konform?</summary>
+        <p>
+          Ja — ab Tag 1. Eigener Hetzner-Server in Deutschland, AVV vor Projektstart, keine Datenweitergabe an Dritte. <strong>On-Prem-Option mit Open-Source-Modellen</strong> (Llama, Mistral) verfügbar wenn gewünscht.
+        </p>
+      </details>
+    </section>
+
+    <!-- FOOTER CTA -->
+    <section class="kz-section kz-bottom-cta" aria-labelledby="cta-headline">
+      <h2 id="cta-headline" class="kz-h2" style="margin-top: 0;">30 Minuten Erstgespräch. Kostenlos.</h2>
+      <p>
+        Du beschreibst dein KMU, ich sage dir ehrlich was Sinn macht — und was nicht. Wenn der PA passt, machen wir einen Audit. <strong>Wenn nicht, hast du immerhin Klarheit.</strong>
+      </p>
+      <div class="kz-cta-buttons">
+        <a href="/erstgespraech" class="kz-btn" aria-label="30-Minuten-Erstgespräch jetzt buchen, kostenlos">Erstgespräch buchen →</a>
+        <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="kz-btn kz-btn-ghost" aria-label="WhatsApp-Nachricht an Ben Zirngibl senden">WhatsApp an Ben</a>
+        <a href="/audit" class="kz-btn kz-btn-ghost" aria-label="Discovery-Audit-Seite besuchen">Direkt zum Audit</a>
+      </div>
+      <p style="margin-top: 24px; font-size: 13px; color: var(--fg-muted);">
+        Keine Kreditkarte. Kein Sales-Pitch. Wenn ich nicht der Richtige bin, sage ich es dir.
+      </p>
+    </section>
+  </article>
+
+  <style>
+    /* KI-PA Landing-Page — pageScoped styles, built on KaizenLayout tokens */
+
+    /* HERO CTA */
+    .kz-hero-cta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: -24px 0 12px;
+    }
+    .kz-hero-meta {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--fg-muted);
+      margin: 0 0 32px;
+    }
+
+    /* SECTION baseline */
+    .kz-section {
+      margin-top: 80px;
+    }
+    .kz-section-lead {
+      font-family: var(--font-sans);
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--fg-muted);
+      max-width: 640px;
+      margin: 0 0 32px;
+    }
+
+    /* DAY IN THE LIFE CARDS */
+    .kz-day-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .kz-day-card {
+      padding: 32px 24px;
+      background: var(--kz-cream-deep);
+      border-radius: 12px;
+      position: relative;
+      transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out);
+    }
+    .kz-day-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 38px -16px rgba(31,41,51,0.18);
+    }
+    .kz-day-time {
+      font-family: var(--font-display);
+      font-size: 14px;
+      letter-spacing: 0.16em;
+      color: var(--kz-ember-text);
+      margin-bottom: 8px;
+    }
+    .kz-day-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      line-height: 1.15;
+      margin: 0 0 16px;
+    }
+    .kz-day-body {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--fg);
+      margin: 0;
+    }
+
+    /* MODULE LIST */
+    .kz-module-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .kz-module {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 20px;
+      align-items: start;
+      padding: 24px;
+      background: var(--kz-cream-deep);
+      border-radius: 12px;
+      transition: background 180ms var(--ease-out);
+    }
+    .kz-module:hover {
+      background: var(--kz-cream);
+      box-shadow: inset 0 0 0 1px var(--kz-border);
+    }
+    .kz-module-code {
+      font-family: var(--font-display);
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      color: var(--kz-ember-text);
+      padding: 6px 10px;
+      background: rgba(232,90,43,0.08);
+      border-radius: 6px;
+      text-align: center;
+      align-self: start;
+    }
+    .kz-module-content {
+      min-width: 0;
+    }
+    .kz-module-name {
+      font-family: var(--font-display);
+      font-size: 22px;
+      line-height: 1.2;
+      margin: 0 0 6px;
+    }
+    .kz-module-outcome {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--fg-muted);
+      margin: 0;
+    }
+
+    /* PRICING */
+    .kz-pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .kz-price-card {
+      padding: 36px 28px;
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .kz-price-card-a {
+      background: var(--kz-cream-deep);
+      color: var(--fg);
+    }
+    .kz-price-card-b {
+      background: var(--kz-charcoal);
+      color: var(--kz-cream);
+      box-shadow: 0 24px 48px -16px rgba(31,41,51,0.32);
+    }
+    .kz-price-card-b .kz-h3,
+    .kz-price-card-b .kz-price-figure,
+    .kz-price-card-b .kz-price-figure-sm {
+      color: var(--kz-cream);
+    }
+    .kz-price-card-b .kz-price-unit {
+      color: rgba(245,240,232,0.65);
+    }
+    .kz-price-card-b ul li {
+      color: var(--kz-cream);
+    }
+    .kz-price-card-b ul li::before {
+      background: var(--kz-ember);
+    }
+    .kz-price-flag {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--kz-ember-deep);
+      color: var(--kz-cream);
+      padding: 5px 16px;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      border-radius: 999px;
+    }
+    .kz-price-badge {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--fg-muted);
+      margin-bottom: 4px;
+    }
+    .kz-price-badge-light {
+      color: rgba(245,240,232,0.7);
+    }
+    .kz-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin: 4px 0 6px;
+      flex-wrap: wrap;
+    }
+    .kz-price-row-sub {
+      margin-bottom: 20px;
+    }
+    .kz-price-figure {
+      font-family: var(--font-display);
+      font-size: 40px;
+      line-height: 1;
+      letter-spacing: -0.01em;
+    }
+    .kz-price-figure-sm {
+      font-family: var(--font-display);
+      font-size: 22px;
+      line-height: 1;
+    }
+    .kz-price-unit {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--fg-muted);
+    }
+    .kz-price-card ul {
+      flex: 1;
+      margin: 0 0 24px;
+      font-size: 14.5px !important;
+    }
+    .kz-price-card ul li {
+      font-size: 14.5px;
+      margin-bottom: 8px;
+    }
+    .kz-price-card .kz-btn {
+      align-self: stretch;
+      justify-content: center;
+    }
+    .kz-price-note {
+      margin-top: 24px;
+      font-size: 14px;
+      color: var(--fg-muted);
+    }
+
+    /* PROOF */
+    .kz-proof-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin: 24px 0 8px;
+    }
+    .kz-proof-card {
+      padding: 32px 28px;
+      background: var(--kz-cream-deep);
+      border-radius: 12px;
+    }
+    .kz-proof-figure {
+      font-family: var(--font-display);
+      font-size: 48px;
+      line-height: 1;
+      color: var(--kz-ember-text);
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+    .kz-proof-body {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--fg);
+      margin: 0;
+    }
+
+    /* CROSS-SELL */
+    .kz-cross-sell {
+      padding: 48px clamp(24px, 4vw, 48px);
+      background: var(--kz-charcoal);
+      color: var(--kz-cream);
+      border-radius: 14px;
+    }
+    .kz-cross-sell .kz-h2,
+    .kz-cross-sell p,
+    .kz-cross-sell ul li {
+      color: var(--kz-cream);
+    }
+    .kz-cross-sell ul li::before {
+      background: var(--kz-ember);
+    }
+    .kz-cross-sell a.kz-btn-ghost {
+      color: var(--kz-cream) !important;
+      border-color: rgba(245,240,232,0.4);
+    }
+    .kz-cross-sell a.kz-btn-ghost:hover {
+      background: var(--kz-ember-deep);
+      border-color: var(--kz-ember-deep);
+      color: var(--kz-cream) !important;
+    }
+
+    /* FAQ */
+    .kz-faq {
+      border-top: 1px solid var(--kz-border);
+      padding: 24px 0;
+    }
+    .kz-faq:last-of-type {
+      border-bottom: 1px solid var(--kz-border);
+    }
+    .kz-faq summary {
+      cursor: pointer;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.3;
+      list-style: none;
+      position: relative;
+      padding-right: 36px;
+      transition: color 160ms var(--ease-out);
+    }
+    .kz-faq summary::-webkit-details-marker { display: none; }
+    .kz-faq summary::after {
+      content: "+";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: 28px;
+      line-height: 1;
+      color: var(--kz-ember-text);
+      transition: transform 220ms var(--ease-out);
+    }
+    .kz-faq[open] summary::after {
+      content: "−";
+    }
+    .kz-faq[open] summary {
+      color: var(--kz-ember-text);
+    }
+    .kz-faq p {
+      margin-top: 16px !important;
+      font-size: 16px;
+    }
+
+    /* BOTTOM CTA */
+    .kz-bottom-cta {
+      padding: 56px clamp(24px, 4vw, 48px);
+      background: var(--kz-cream-deep);
+      border-radius: 14px;
+      margin-top: 96px;
+    }
+    .kz-cta-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 720px) {
+      .kz-h1 {
+        font-size: clamp(32px, 8vw, 48px) !important;
+      }
+      .kz-module {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .kz-module-code {
+        justify-self: start;
+      }
+      .kz-price-figure {
+        font-size: 34px;
+      }
+      .kz-proof-figure {
+        font-size: 40px;
+      }
+      .kz-faq summary {
+        font-size: 18px;
+      }
+    }
+  </style>
+</KaizenLayout>
