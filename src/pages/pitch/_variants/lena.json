@@ -1,10 +1,10 @@
 {
   "variant": "lena",
-  "title": "Dein Tag mit dem KI-PA · Lena",
-  "description": "So sieht der Alltag einer jungen Unternehmerin mit einem persönlichen KI-Assistenten aus.",
+  "title": "Dein Tag mit Lena — der k-AIzen KI-PA",
+  "description": "Lena ist die Brand-Persona unseres KI-PA. Hier zeigen wir ihren Alltag als Restaurant-Inhaberin — stellvertretend für jeden, der jeden Tag 100 kleine Entscheidungen schultert.",
   "character": {
     "story_name": "Lena",
-    "branche_label": "Unternehmerin · Restaurant",
+    "branche_label": "k-AIzen KI-PA · Brand-Persona",
     "image_folder": "/pitch/lena"
   },
   "slides": [

@@ -4,7 +4,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const variantsDir = path.join(process.cwd(), 'src/pages/pitch/_variants');
-const files = fs.readdirSync(variantsDir).filter(f => f.endsWith('.json'));
+// Sort: Lena (brand-persona) first, then Markus, then any others alphabetical
+const sortPriority: Record<string, number> = { 'lena.json': 0, 'markus.json': 1 };
+const files = fs.readdirSync(variantsDir)
+  .filter(f => f.endsWith('.json'))
+  .sort((a, b) => (sortPriority[a] ?? 99) - (sortPriority[b] ?? 99) || a.localeCompare(b));
 
 const variants = files.map(f => {
   const data = JSON.parse(fs.readFileSync(path.join(variantsDir, f), 'utf-8'));
