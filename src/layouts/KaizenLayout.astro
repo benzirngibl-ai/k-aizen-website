@@ -459,6 +459,16 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       color: var(--kz-cream) !important;
       border-color: var(--kz-charcoal);
     }
+    /* Global: any h1/h2/h3/p/strong inside a cream-deep section gets dark text — kills the recurring inheritance bug */
+    [style*="background: var(--kz-cream-deep)"] :is(h1, h2, h3, p, strong, li, span):not([style*="color"]),
+    [style*="background:var(--kz-cream-deep)"] :is(h1, h2, h3, p, strong, li, span):not([style*="color"]),
+    .kz-day-card :is(h1, h2, h3, p, strong, li):not([style*="color"]),
+    .kz-module :is(h1, h2, h3, p, strong, li):not([style*="color"]),
+    .kz-price-card-a :is(h1, h2, h3, p, strong, li):not([style*="color"]),
+    .kz-proof-card :is(h1, h2, h3, p, strong, li):not([style*="color"]),
+    .kz-bottom-cta :is(h1, h2, h3, p, strong, li):not([style*="color"]) {
+      color: var(--fg-inverse);
+    }
     .kz-quote {
       font-family: var(--font-display);
       font-style: italic;
