@@ -106,23 +106,28 @@
         opacity: 0 !important;
         transform: translateY(8px) scale(0.92) !important;
       }
+      /* Wrap croppt den Avatar — feste Höhe begrenzt den Platz, den der Avatar im Flow nimmt.
+         monk-top sitzt absolut innen, kann aber durch top: -X nach oben verschoben werden,
+         sodass nur Kopf+Schultern unten sichtbar bleiben. Chat-Container bleibt unverändert. */
       .kbot-monk-wrap {
         position: relative;
         display: block;
         width: 100%;
+        height: 80px;              /* nur 80px Platz für Lena im Layout */
+        overflow: hidden;
         line-height: 0;
       }
       .kbot-monk-top {
         display: block;
-        width: 100%;
+        width: calc(100% - 40px);  /* gleicher visueller Effekt wie margin-left: 40px */
         height: auto;
-        position: relative;
+        position: absolute;
+        left: 40px;                /* Lena nach rechts versetzen */
+        bottom: 0;                 /* an Unterkante vom wrap kleben → Kopf+Schultern sichtbar */
         z-index: 1;
         user-select: none;
         -webkit-user-drag: none;
         filter: drop-shadow(0 8px 16px rgba(31,41,51,0.14));
-        margin-top: 175px;         /* 60px tiefer — nur noch Kopf+Schultern sichtbar */
-        margin-left: 40px;         /* Lena nach rechts versetzen */
       }
 
       /* Online-Pulse-Dot — nur Dot, kein Text. Sitzt rechts oben am Mönch-Bild */
@@ -342,8 +347,8 @@
     root.id = 'kaizen-bot-root';
     root.innerHTML = `
       <div class="kbot-handle" id="kbot-handle" role="button" tabindex="0" aria-label="Chat öffnen">
-        <img class="kbot-bubble kbot-bubble-welcome" src="/widgets/bubble-welcome.png?v=20260528-younglena-v9" alt="" />
-        <img class="kbot-bubble kbot-bubble-help" src="/widgets/bubble-help.png?v=20260528-younglena-v9" alt="" />
+        <img class="kbot-bubble kbot-bubble-welcome" src="/widgets/bubble-welcome.png?v=20260528-younglena-v10" alt="" />
+        <img class="kbot-bubble kbot-bubble-help" src="/widgets/bubble-help.png?v=20260528-younglena-v10" alt="" />
         <span class="kbot-monk-wrap">
           <img class="kbot-monk-top" src="/widgets/monk-top.png" alt="" />
         </span>
