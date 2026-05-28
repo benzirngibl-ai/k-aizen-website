@@ -340,8 +340,8 @@
     root.id = 'kaizen-bot-root';
     root.innerHTML = `
       <div class="kbot-handle" id="kbot-handle" role="button" tabindex="0" aria-label="Chat öffnen">
-        <img class="kbot-bubble kbot-bubble-welcome" src="/widgets/bubble-welcome.png?v=20260527-lena" alt="" />
-        <img class="kbot-bubble kbot-bubble-help" src="/widgets/bubble-help.png?v=20260527-lena" alt="" />
+        <img class="kbot-bubble kbot-bubble-welcome" src="/widgets/bubble-welcome.png?v=20260528-younglena" alt="" />
+        <img class="kbot-bubble kbot-bubble-help" src="/widgets/bubble-help.png?v=20260528-younglena" alt="" />
         <span class="kbot-monk-wrap">
           <img class="kbot-monk-top" src="/widgets/monk-top.png" alt="" />
         </span>
