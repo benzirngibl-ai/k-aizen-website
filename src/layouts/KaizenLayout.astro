@@ -469,6 +469,20 @@ if (breadcrumbs && breadcrumbs.length > 0) {
     .kz-bottom-cta :is(h1, h2, h3, p, strong, li):not([style*="color"]) {
       color: var(--fg-inverse);
     }
+    /* Links inside cream-deep sections: dark-text with ember underline on hover */
+    [style*="background: var(--kz-cream-deep)"] a:not(.kz-btn):not(.kz-btn--whatsapp):not(.kz-btn--audit):not(.kz-btn-ghost),
+    [style*="background:var(--kz-cream-deep)"] a:not(.kz-btn):not(.kz-btn--whatsapp):not(.kz-btn--audit):not(.kz-btn-ghost),
+    .kz-day-card a:not(.kz-btn):not(.kz-btn-ghost),
+    .kz-module a:not(.kz-btn):not(.kz-btn-ghost),
+    .kz-price-card-a a:not(.kz-btn):not(.kz-btn-ghost),
+    .kz-proof-card a:not(.kz-btn):not(.kz-btn-ghost),
+    .kz-bottom-cta a:not(.kz-btn):not(.kz-btn--whatsapp):not(.kz-btn--audit):not(.kz-btn-ghost) {
+      color: var(--kz-ember-text);
+    }
+    [style*="background: var(--kz-cream-deep)"] a:not(.kz-btn):not(.kz-btn--whatsapp):not(.kz-btn--audit):not(.kz-btn-ghost):hover,
+    [style*="background:var(--kz-cream-deep)"] a:not(.kz-btn):not(.kz-btn--whatsapp):not(.kz-btn--audit):not(.kz-btn-ghost):hover {
+      color: var(--kz-ember-deep);
+    }
     .kz-quote {
       font-family: var(--font-display);
       font-style: italic;
