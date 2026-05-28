@@ -80,7 +80,7 @@
       .kbot-bubble {
         position: absolute;
         bottom: 100%;      /* bubble komplett oberhalb root */
-        margin-bottom: -40px; /* bubble etwas höher — mehr Luft zum Avatar */
+        margin-bottom: -10px; /* bubble höher — Tail zeigt auf Lenas Schulter */
         right: 52%;       /* bubble weiter links — Tail nicht mehr ins Gesicht */
         width: 160px;
         height: auto;
@@ -119,10 +119,10 @@
       }
       .kbot-monk-top {
         display: block;
-        width: calc(100% - 40px);  /* gleicher visueller Effekt wie margin-left: 40px */
+        width: calc(100% - 80px);  /* Avatar-Breite gleich, mehr left-offset */
         height: auto;
         position: absolute;
-        left: 40px;                /* Lena nach rechts versetzen */
+        left: 80px;                /* Lena weiter rechts — hängt am rechten Widget-Rand */
         bottom: 0;                 /* an Unterkante vom wrap kleben → ragt oberhalb raus, frei */
         z-index: 1;
         user-select: none;
@@ -347,8 +347,8 @@
     root.id = 'kaizen-bot-root';
     root.innerHTML = `
       <div class="kbot-handle" id="kbot-handle" role="button" tabindex="0" aria-label="Chat öffnen">
-        <img class="kbot-bubble kbot-bubble-welcome" src="/widgets/bubble-welcome.png?v=20260528-younglena-v11" alt="" />
-        <img class="kbot-bubble kbot-bubble-help" src="/widgets/bubble-help.png?v=20260528-younglena-v11" alt="" />
+        <img class="kbot-bubble kbot-bubble-welcome" src="/widgets/bubble-welcome.png?v=20260528-younglena-v12" alt="" />
+        <img class="kbot-bubble kbot-bubble-help" src="/widgets/bubble-help.png?v=20260528-younglena-v12" alt="" />
         <span class="kbot-monk-wrap">
           <img class="kbot-monk-top" src="/widgets/monk-top.png" alt="" />
         </span>
