@@ -81,7 +81,7 @@
         position: absolute;
         bottom: 100%;      /* bubble komplett oberhalb root */
         margin-bottom: -10px; /* leichter overlap nach unten */
-        right: 30%;       /* tail-Anchor links der Lena → bubble extends nach links */
+        right: 5%;        /* tail unten-rechts der Bubble zeigt auf Lena rechts unter ihr */
         width: 160px;
         height: auto;
         pointer-events: none;
@@ -121,7 +121,8 @@
         user-select: none;
         -webkit-user-drag: none;
         filter: drop-shadow(0 8px 16px rgba(31,41,51,0.14));
-        margin-top: 35px;     /* Lena 35px tiefer im Layout-Slot */
+        margin-top: 65px;          /* 30px weiter runter (35 + 30) */
+        margin-left: 40px;         /* Lena nach rechts versetzen */
       }
 
       /* Online-Pulse-Dot — nur Dot, kein Text. Sitzt rechts oben am Mönch-Bild */
@@ -328,7 +329,7 @@
         .kbot-bubble {
           width: 130px !important;
           bottom: 92% !important;
-          right: 50% !important;
+          right: 5% !important;
           left: auto !important;
         }
       }
@@ -341,8 +342,8 @@
     root.id = 'kaizen-bot-root';
     root.innerHTML = `
       <div class="kbot-handle" id="kbot-handle" role="button" tabindex="0" aria-label="Chat öffnen">
-        <img class="kbot-bubble kbot-bubble-welcome" src="/widgets/bubble-welcome.png?v=20260528-younglena-v4" alt="" />
-        <img class="kbot-bubble kbot-bubble-help" src="/widgets/bubble-help.png?v=20260528-younglena-v4" alt="" />
+        <img class="kbot-bubble kbot-bubble-welcome" src="/widgets/bubble-welcome.png?v=20260528-younglena-v5" alt="" />
+        <img class="kbot-bubble kbot-bubble-help" src="/widgets/bubble-help.png?v=20260528-younglena-v5" alt="" />
         <span class="kbot-monk-wrap">
           <img class="kbot-monk-top" src="/widgets/monk-top.png" alt="" />
         </span>
