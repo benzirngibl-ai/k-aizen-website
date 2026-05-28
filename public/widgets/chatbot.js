@@ -75,19 +75,19 @@
         position: relative;
       }
 
-      /* Sprech-Blasen — rechts oberhalb von Lena.
-         Tail unten-links der Bubble zeigt nach unten-links auf Lena's Kopf. */
+      /* Sprech-Blasen — links oberhalb von Lena (alte Bubbles, Tail unten-rechts).
+         Lena steht rechts-versetzt im PNG, Bubble links über ihr. */
       .kbot-bubble {
         position: absolute;
         bottom: 100%;      /* bubble komplett oberhalb root */
         margin-bottom: -10px; /* leichter overlap nach unten */
-        left: 55%;         /* tail-Anchor rechts der Lena-Mitte → bubble extends nach rechts */
+        right: 30%;       /* tail-Anchor links der Lena → bubble extends nach links */
         width: 160px;
         height: auto;
         pointer-events: none;
         opacity: 0;
         transform: translateY(8px) scale(0.92);
-        transform-origin: bottom left;
+        transform-origin: bottom right;
         transition:
           opacity 380ms cubic-bezier(0.22, 1, 0.36, 1),
           transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -327,8 +327,8 @@
         .kbot-bubble {
           width: 130px !important;
           bottom: 92% !important;
-          left: 50% !important;
-          right: auto !important;
+          right: 50% !important;
+          left: auto !important;
         }
       }
     `;
@@ -340,8 +340,8 @@
     root.id = 'kaizen-bot-root';
     root.innerHTML = `
       <div class="kbot-handle" id="kbot-handle" role="button" tabindex="0" aria-label="Chat öffnen">
-        <img class="kbot-bubble kbot-bubble-welcome" src="/widgets/bubble-welcome.png?v=20260528-younglena-v2" alt="" />
-        <img class="kbot-bubble kbot-bubble-help" src="/widgets/bubble-help.png?v=20260528-younglena-v2" alt="" />
+        <img class="kbot-bubble kbot-bubble-welcome" src="/widgets/bubble-welcome.png?v=20260528-younglena-v3" alt="" />
+        <img class="kbot-bubble kbot-bubble-help" src="/widgets/bubble-help.png?v=20260528-younglena-v3" alt="" />
         <span class="kbot-monk-wrap">
           <img class="kbot-monk-top" src="/widgets/monk-top.png" alt="" />
         </span>
