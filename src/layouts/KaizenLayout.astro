@@ -83,6 +83,33 @@ if (breadcrumbs && breadcrumbs.length > 0) {
   <meta name="author" content="Benjamin Zirngibl · k-AIzen" />
   <meta name="theme-color" content="#F5F0E8" />
 
+  <!--
+    SECURITY HEADERS — bewusst NICHT als <meta http-equiv> gesetzt.
+
+    Begründung:
+    - X-Frame-Options / X-Content-Type-Options sind echte HTTP-Header und
+      werden von Browsern als <meta http-equiv> ignoriert → bringen hier nichts.
+    - Eine Content-Security-Policy LIESSE sich via <meta http-equiv> setzen,
+      würde aber die Homepage zerstören: die lädt React von unpkg.com und nutzt
+      inline-Scripts (siehe is:inline unten + index). Eine sinnvoll-strenge CSP
+      (script-src 'self') würde diese blocken; eine CSP mit 'unsafe-inline' +
+      unpkg.com wäre security-theater ohne echten Schutzwert.
+
+    Entscheidung: KEINE kaputte/wirkungslose CSP im HTML. Stattdessen gehören
+    die Security-Header auf den Reverse-Proxy / Coolify-Layer, wo sie als echte
+    Response-Header greifen (und Frame-Ancestors/XFO tatsächlich durchsetzen):
+
+        X-Content-Type-Options: nosniff
+        X-Frame-Options: SAMEORIGIN            (bzw. CSP: frame-ancestors 'self')
+        Referrer-Policy: strict-origin-when-cross-origin
+        Permissions-Policy: geolocation=(), microphone=(), camera=()
+        Content-Security-Policy: ...           (muss unpkg.com + inline-Scripts
+                                                 der Homepage berücksichtigen)
+
+    Siehe Coolify → App → "Custom Headers" / Caddy/Traefik-Config.
+  -->
+
+
   <!-- OpenGraph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content={fullTitle} />
