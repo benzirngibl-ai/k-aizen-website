@@ -346,7 +346,7 @@
     const root = document.createElement('div');
     root.id = 'kaizen-bot-root';
     root.innerHTML = `
-      <div class="kbot-handle" id="kbot-handle" role="button" tabindex="0" aria-label="Chat öffnen">
+      <div class="kbot-handle" id="kbot-handle" role="button" tabindex="0" aria-label="Chat öffnen" aria-expanded="false" aria-controls="kbot-expand">
         <img class="kbot-bubble kbot-bubble-welcome" src="/widgets/bubble-welcome.png?v=20260528-younglena-v12" alt="" />
         <img class="kbot-bubble kbot-bubble-help" src="/widgets/bubble-help.png?v=20260528-younglena-v12" alt="" />
         <span class="kbot-monk-wrap">
@@ -358,9 +358,9 @@
       </div>
       <button class="kbot-close" id="kbot-close" aria-label="Chat schließen">×</button>
 
-      <div class="kbot-expand">
+      <div class="kbot-expand" id="kbot-expand" role="dialog" aria-modal="true" aria-label="k-AIzen Chat mit Lena">
         <div class="kbot-chat-area">
-          <div class="kbot-messages" id="kbot-messages"></div>
+          <div class="kbot-messages" id="kbot-messages" role="log" aria-live="polite" aria-atomic="false"></div>
           <div class="kbot-suggestions" id="kbot-suggestions"></div>
           <div class="kbot-input-row">
             <input type="text" id="kbot-input" aria-label="Deine Frage an k-AIzen" placeholder="Frage stellen…" maxlength="2000" autocomplete="off">
@@ -388,6 +388,12 @@
       e.stopPropagation();
       closeModal();
     };
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        e.preventDefault();
+        closeModal();
+      }
+    });
 
     const input = document.getElementById('kbot-input');
     const sendBtn = document.getElementById('kbot-send');
@@ -448,12 +454,18 @@
     if (isOpen) return;
     isOpen = true;
     document.getElementById('kaizen-bot-root').classList.add('open');
+    document.getElementById('kbot-handle')?.setAttribute('aria-expanded', 'true');
     setTimeout(() => document.getElementById('kbot-input')?.focus(), 600);
   }
   function closeModal() {
     if (!isOpen) return;
     isOpen = false;
     document.getElementById('kaizen-bot-root').classList.remove('open');
+    const handle = document.getElementById('kbot-handle');
+    if (handle) {
+      handle.setAttribute('aria-expanded', 'false');
+      handle.focus();
+    }
   }
 
   function appendUser(text) {
