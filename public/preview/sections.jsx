@@ -6,7 +6,7 @@
    2. Manifest (3 Prinzipien)
    3. Problem (4 Fallstricke)
    4. Anderer Weg (Anti-Personae)
-   5. Angebot (Audit / Setup / Retainer)
+   5. Angebot (Setup / Retainer)
    6. Methodik (Observation-driven)
    7. Vertrauen (4 Punkte)
    8. Use-Cases (kommt in einem späteren Sprint)
@@ -594,7 +594,7 @@ function AndererWegSection() {
 }
 
 // ============================================================
-// SECTION 05 — Angebot (Audit / Setup / Retainer)
+// SECTION 05 — Angebot (Setup / Retainer)
 // ============================================================
 function AngebotSection() {
   return (
@@ -649,53 +649,7 @@ function AngebotSection() {
           gap: 'clamp(20px, 2.5vw, 28px)',
           marginBottom: 32,
         }}>
-          {/* AUDIT */}
-          <Reveal delay={200}>
-            <div style={{
-              padding: '36px 30px',
-              background: 'var(--bg-alt)',
-              borderRadius: 12,
-              height: '100%',
-              display: 'flex', flexDirection: 'column',
-              border: '2px solid var(--kz-ember)',
-              position: 'relative',
-            }}>
-              <div style={{
-                position: 'absolute', top: -12, left: 24,
-                background: 'var(--kz-ember-deep)', color: 'var(--kz-cream)',
-                padding: '4px 12px', borderRadius: 999,
-                fontSize: 11, fontWeight: 600, textTransform: 'uppercase',
-                letterSpacing: '0.16em',
-              }}>Empfohlener Einstieg</div>
-              <KzLeaf index={0} size={44} style={{ marginBottom: 16 }} />
-              <h3 style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 26, fontWeight: 400, lineHeight: 1.15,
-                margin: '0 0 6px', letterSpacing: '-0.01em',
-              }}>Discovery-Audit</h3>
-              <div style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 32, lineHeight: 1, color: 'var(--fg)',
-                marginTop: 12, marginBottom: 4,
-              }}>1.490 €</div>
-              <div style={{
-                fontSize: 13, color: 'var(--fg-muted)', marginBottom: 20,
-              }}>Festpreis · 1 Tag · Lieferung in 5 Werktagen</div>
-              <p style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: 14, lineHeight: 1.55,
-                color: 'var(--fg-muted)',
-                margin: '0 0 20px', flex: 1, textWrap: 'pretty',
-              }}>
-                Ein Tag bei dir oder remote, ein paar Tage Auswertung, schriftliches
-                Liefer-Artefakt mit Roadmap. Damit kannst du weiterarbeiten —
-                auch wenn wir uns danach nicht wiedersehen.
-              </p>
-              <a href="/audit" style={ctaBtnStyle()}>
-                Audit buchen <Arrow />
-              </a>
-            </div>
-          </Reveal>
+          {/* entfernt: Discovery-Audit-Karte (Geschäftsmodell eingestellt 2026-06-01, finale Pricing-Entscheidung in Task 5) */}
 
           {/* SETUP */}
           <Reveal delay={320}>
@@ -728,7 +682,7 @@ function AngebotSection() {
                 color: 'rgba(245,240,232,0.78)',
                 margin: '0 0 20px', flex: 1, textWrap: 'pretty',
               }}>
-                Aus dem Audit suchst du dir ein Modul aus. Wir bauen, integrieren,
+                Du suchst dir ein Modul aus. Wir bauen, integrieren,
                 übergeben. Komplett-PA-Bundle (S+M+L): <strong style={{ color: 'var(--kz-ember-text)' }}>14.999 €</strong> Festpreis.
               </p>
               <a href="/pricing#module" style={ctaBtnStyle({ ember: true })}>
@@ -792,17 +746,7 @@ function AngebotSection() {
             }
           }
         `}</style>
-        <Reveal delay={500}>
-          <p className="kz-stage-gate-note" style={{
-            fontFamily: 'var(--font-display)', fontStyle: 'italic',
-            fontSize: 'clamp(15px, 1.4vw, 18px)',
-            color: 'var(--fg-muted)',
-            lineHeight: 1.55,
-          }}>
-            Audit-Honorar wird zu 50% auf ein Setup-Paket angerechnet,
-            wenn du innerhalb 30 Tagen nach Audit-Lieferung buchst.
-          </p>
-        </Reveal>
+        {/* entfernt: Audit-Stage-Gate-Note (Audit-Geschäft eingestellt 2026-06-01) */}
       </div>
     </section>
   );
@@ -831,7 +775,14 @@ function Arrow() {
 // ============================================================
 // SECTION 06 — Methodik (Observation-driven)
 // ============================================================
+/* entfernt: Audit-Geschäft eingestellt 2026-06-01, finale Entscheidung in Task 5 */
+// Stub hält den Object.assign-Export + App()-Render gültig, rendert aber nichts.
 function MethodikSection() {
+  return null;
+}
+/* eslint-disable */
+/* ORIGINAL — Audit-/Beobachtungs-Prozess, deaktiviert:
+function MethodikSectionLegacy() {
   const cases = [
     {
       who: 'Buchhalterin',
@@ -938,6 +889,8 @@ function MethodikSection() {
     </section>
   );
 }
+END ORIGINAL */
+/* eslint-enable */
 
 // ============================================================
 // SECTION 07 — Vertrauen (4 Punkte)
@@ -1294,7 +1247,7 @@ function FaqSection() {
   const fragen = [
     {
       q: 'Wie lange dauert ein Projekt?',
-      a: 'Setup-Module 4–8 Wochen. Audit selbst etwa 2 Wochen: 1 Tag bei dir, ein paar Tage Auswertung, Übergabe-Call.',
+      a: 'Setup-Module 4–8 Wochen — vom Kick-off über Bau und Integration bis zur Übergabe inklusive Schulung der Key-User.',
     },
     {
       q: 'Wir haben keine IT-Leute. Ist das ein Problem?',
@@ -1306,7 +1259,7 @@ function FaqSection() {
     },
     {
       q: 'Was kostet es wirklich?',
-      a: 'Audit 1.490 € fix. Setup-Module je nach Klasse 2.490 € – 9.990 €. Komplett-PA-Bundle 14.999 €. Retainer 499 € – 1.299 €/Monat je nach Modul-Anzahl. Alle Preise auf der Pricing-Seite. Keine versteckten Nachträge.',
+      a: 'Setup-Module je nach Klasse 2.490 € – 9.990 €. Komplett-PA-Bundle 14.999 €. Retainer 499 € – 1.299 €/Monat je nach Modul-Anzahl. Alle Preise auf der Pricing-Seite. Keine versteckten Nachträge.',
     },
     {
       q: 'Macht ihr auch nur Workshops?',
@@ -1551,7 +1504,6 @@ function Footer() {
           </p>
         </div>
         <FooterCol title="Angebot" items={[
-          { label: 'Audit buchen', href: '/audit' },
           { label: 'Preise & Module', href: '/pricing' },
           { label: 'Über mich', href: '/about' },
           { label: 'Erstgespräch', href: '/erstgespraech' },
