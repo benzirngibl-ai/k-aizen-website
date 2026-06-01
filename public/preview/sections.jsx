@@ -594,6 +594,108 @@ function AndererWegSection() {
 }
 
 // ============================================================
+// SECTION — Ein Tag mit Lena (5 Szenen Story-Herzstück)
+// ============================================================
+function SzeneRow({ index, time, spoken, result, side = 'left' }) {
+  const textFirst = side === 'left';
+  const textBlock = (
+    <div className="kz-szene-text">
+      <div className="kz-szene-time" style={{
+        fontFamily: 'var(--font-sans)',
+        fontSize: 13, fontWeight: 500,
+        color: 'var(--kz-ember-text)',
+        textTransform: 'uppercase', letterSpacing: '0.12em',
+        marginBottom: 16,
+      }}>{time}</div>
+      {spoken && (
+        <div className="kz-bubble" style={{
+          background: 'var(--bg-alt)',
+          borderRadius: 14,
+          borderLeft: '3px solid var(--kz-ember)',
+          padding: '18px 22px',
+          margin: '0 0 18px',
+          fontFamily: 'var(--font-sans)',
+          fontSize: 'clamp(16px, 1.5vw, 19px)',
+          lineHeight: 1.5,
+          fontStyle: 'italic',
+          color: 'var(--fg)',
+          textWrap: 'pretty',
+        }}>„{spoken}"</div>
+      )}
+      <p className="kz-szene-result" style={{
+        margin: 0,
+        fontFamily: 'var(--font-sans)',
+        fontSize: 'clamp(16px, 1.5vw, 19px)',
+        lineHeight: 1.6,
+        color: 'var(--fg-muted)',
+        textWrap: 'pretty',
+      }}>{result}</p>
+    </div>
+  );
+  const illuBlock = (
+    <div className="kz-szene-illu" aria-hidden="true" style={{
+      minHeight: 200,
+      borderRadius: 12,
+      background: 'var(--bg-alt)',
+      border: '1px solid var(--kz-border)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+    }}>
+      <span style={{
+        fontFamily: 'var(--font-sans)',
+        fontSize: 12, letterSpacing: '0.08em',
+        textTransform: 'uppercase',
+        color: 'var(--fg-muted)', opacity: 0.55,
+      }}>Illustration Szene {index + 1}</span>
+    </div>
+  );
+  return (
+    <Reveal delay={index * 100} y={28}>
+      <div className="kz-szene" data-side={side} style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: 'clamp(28px, 4vw, 56px)',
+        alignItems: 'center',
+        margin: 'clamp(48px, 7vh, 80px) 0',
+      }}>
+        {textFirst ? textBlock : illuBlock}
+        {textFirst ? illuBlock : textBlock}
+      </div>
+    </Reveal>
+  );
+}
+
+function EinTagMitLenaSection() {
+  const szenen = [
+    { time: '08:14 — Im Auto', spoken: 'Ey Lena, Herr Meier — seine Frau mag rote Rosen. Und merk dir: drei Kunden mit dem Lieferproblem.', result: 'Du sprichst es einfach ins Handy. Lena merkt sich alles — kein Notizzettel, kein Vergessen.' },
+    { time: '6 Monate später', spoken: null, result: 'Lena meldet sich: „Frau Meier hat morgen Geburtstag — sie mag rote Rosen." Der Assistent, der nie vergisst.' },
+    { time: '09:30 — Posteingang', spoken: null, result: 'Mails kommen rein und werden automatisch sortiert. Wichtiges oben, Spam weg, alles nach Kunde gruppiert.' },
+    { time: '11:00 — Eine Rechnung kommt', spoken: null, result: 'Du bekommst auf dein Dashboard: „Rechnung Müller bearbeitet — Antwort-Vorschau bereit." Du liest, drückst Approve, raus geht sie. Volle Kontrolle, null Tipparbeit.' },
+    { time: '15:20 — Auf der Baustelle', spoken: null, result: 'Du machst ein Foto, postest es ins Dashboard. Sekunden später ist es auf Instagram und Facebook. Ein Klick, überall präsent.' },
+  ];
+  return (
+    <section data-screen-label="03 Ein Tag mit Lena" id="story" style={{
+      position: 'relative',
+      padding: 'clamp(80px, 14vh, 180px) 0 clamp(80px, 14vh, 160px)',
+      overflow: 'hidden',
+    }}>
+      <div style={{
+        maxWidth: 1120, margin: '0 auto',
+        padding: '0 clamp(24px, 5vw, 64px)',
+      }}>
+        <SectionEyebrow leaf={1} label="Ein Tag mit Lena" />
+        <RevealHeadline
+          text="So fühlt sich ein Tag mit deinem KI-Mitarbeiter an."
+          accent={[6, 7]} />
+        {szenen.map((s, i) => (
+          <SzeneRow key={i} index={i} time={s.time} spoken={s.spoken}
+            result={s.result} side={i % 2 === 0 ? 'left' : 'right'} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ============================================================
 // SECTION 05 — Angebot (Setup / Retainer)
 // ============================================================
 function AngebotSection() {
@@ -1560,6 +1662,7 @@ Object.assign(window, {
   KzManifest: ManifestSection,
   KzProblem: ProblemSection,
   KzAndererWeg: AndererWegSection,
+  KzEinTagMitLena: EinTagMitLenaSection,
   KzAngebot: AngebotSection,
   KzMethodik: MethodikSection,
   KzVertrauen: VertrauenSection,
