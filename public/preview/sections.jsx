@@ -812,7 +812,7 @@ function MethodikSectionLegacy() {
       }}>
         <SectionEyebrow leaf={4} label="So arbeite ich" />
         <RevealHeadline
-          text="Beobachten statt Beraten."
+          text="Ein Mitarbeiter, kein Werkzeug."
           accent={[0]} />
 
         <Reveal delay={300}>
@@ -824,7 +824,7 @@ function MethodikSectionLegacy() {
             textWrap: 'pretty',
           }}>
             Während andere KI-Strategien in PowerPoint diskutieren,
-            beobachte ich einen Tag in deinem Büro.
+            baue ich dir eine KI-PA, die remote mitarbeitet.
           </p>
         </Reveal>
 
