@@ -789,7 +789,6 @@ function App() {
 
       <main style={{ position: 'relative', zIndex: 2, background: 'var(--bg-alt)' }}>
         <KzManifest />
-        <KzProblem />
         <KzEinTagMitLena />
         <KzSectionDivider />
         <KzAndererWeg />

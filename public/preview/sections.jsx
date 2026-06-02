@@ -4,8 +4,7 @@
    11 Sektionen nach k-AIzen Content-Blueprint:
    1. Hero (in hero.jsx)
    2. Manifest (3 Prinzipien)
-   3. Problem (4 Fallstricke)
-   4. Anderer Weg (Anti-Personae)
+   3. Anderer Weg (Anti-Personae)
    5. Angebot (Setup / Retainer)
    6. Methodik (Observation-driven)
    7. Vertrauen (4 Punkte)
@@ -405,100 +404,6 @@ function ManifestSection() {
             ))}
           </div>
         </Reveal>
-      </div>
-    </section>
-  );
-}
-
-// ============================================================
-// SECTION 03 — Problem (4 Fallstricke)
-// ============================================================
-function ProblemSection() {
-  const fallstricke = [
-    {
-      num: '01', title: 'ChatGPT in der Mittagspause',
-      desc: 'Dein Team spielt mit KI in der Mittagspause. Aber niemand weiß, welche Prozesse wirklich davon profitieren — und welche nicht. Am Ende machen drei Leute irgendwas mit KI, ohne Plan, ohne Messung.',
-    },
-    {
-      num: '02', title: 'Der Workshop-Verkäufer',
-      desc: 'Drei Marketing-Agenturen haben dir einen ChatGPT-Workshop angeboten. Eine nennt sich plötzlich „KI-Agentur". Was fehlt: jemand, der nach dem Workshop noch da ist und die Lösung baut — nicht jemand, der dir ein Slide-Deck verkauft.',
-    },
-    {
-      num: '03', title: 'Konzern-Beratung mit Junior-Team',
-      desc: 'Die großen Häuser kosten ab 80.000 € und schicken drei Junior-Berater, die deinen Betrieb erst kennenlernen müssen. Für ein KMU mit 25 Leuten wirtschaftlich nicht darstellbar — und auch nicht nötig.',
-    },
-    {
-      num: '04', title: 'DSGVO-Panik',
-      desc: 'Wer ChatGPT ohne Rahmen nutzt, hat im Worst Case Daten in den USA und keine Auftragsverarbeitung. Die Angst vor Compliance-Problemen bremst jede ernsthafte KI-Initiative — dabei lässt sich das in zwei Stunden klären.',
-    },
-  ];
-  return (
-    <section data-screen-label="03 Problem" style={{
-      position: 'relative',
-      padding: 'clamp(80px, 14vh, 180px) 0 clamp(80px, 14vh, 160px)',
-      background: 'var(--bg)',
-    }}>
-      <div style={{
-        maxWidth: 1120, margin: '0 auto',
-        padding: '0 clamp(24px, 5vw, 64px)',
-      }}>
-        <SectionEyebrow leaf={5} label="Vier Fallstricke" />
-        <RevealHeadline
-          text="Die meisten KI-Projekte scheitern am Prozess, nicht an der Technik."
-          accent={[5, 6]} />
-
-        <Reveal delay={300}>
-          <p style={{
-            maxWidth: 720, marginTop: 32, marginBottom: 64,
-            fontFamily: 'var(--font-sans)',
-            fontSize: 'clamp(17px, 1.5vw, 20px)',
-            lineHeight: 1.6, color: 'var(--fg-muted)',
-            textWrap: 'pretty',
-          }}>
-            Die Modelle sind reif. Die Tools sind da. Was fehlt, ist jemand,
-            der deine Realität kennt, die richtigen Stellen findet und die Lösung
-            fertig baut — nicht als PowerPoint, sondern als Software, die dein
-            Team am Montagmorgen aufruft.
-          </p>
-        </Reveal>
-
-        <div className="kz-section-grid" style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: 'clamp(20px, 2.5vw, 32px)',
-        }}>
-          {fallstricke.map((f, i) => (
-            <Reveal key={i} delay={200 + i * 120}>
-              <div style={{
-                padding: '32px 28px',
-                background: 'var(--bg-alt)',
-                borderRadius: 12,
-                height: '100%',
-                borderLeft: '3px solid var(--kz-ember)',
-              }}>
-                <div style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 28, lineHeight: 1,
-                  color: 'var(--kz-ember-text)',
-                  marginBottom: 14, letterSpacing: '-0.02em',
-                }}>{f.num}</div>
-                <h3 style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(20px, 2vw, 24px)',
-                  fontWeight: 400, lineHeight: 1.25,
-                  margin: '0 0 14px',
-                  letterSpacing: '-0.01em',
-                }}>{f.title}</h3>
-                <p style={{
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: 15, lineHeight: 1.6,
-                  color: 'var(--fg-muted)',
-                  margin: 0, textWrap: 'pretty',
-                }}>{f.desc}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
       </div>
     </section>
   );
@@ -1740,7 +1645,6 @@ function FooterCol({ title, items }) {
 // expose to hero.jsx
 Object.assign(window, {
   KzManifest: ManifestSection,
-  KzProblem: ProblemSection,
   KzAndererWeg: AndererWegSection,
   KzEinTagMitLena: EinTagMitLenaSection,
   KzAngebot: AngebotSection,
