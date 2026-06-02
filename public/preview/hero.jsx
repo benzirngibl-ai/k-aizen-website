@@ -20,8 +20,8 @@ const TWEAKS_DEFAULTS = /*EDITMODE-BEGIN*/{
   "showMountains": true,
   "showSun": true,
   "branchCount": 3,
-  "headline": "Jeden Tag 1% besser.",
-  "sub": "Mit KI."
+  "headline": "Dein Mitarbeiter, der nie etwas vergisst.",
+  "sub": "Nie krank. Nachts um 3 erreichbar."
 } /*EDITMODE-END*/;
 
 // ---------- hooks ----------
@@ -540,9 +540,9 @@ function HeroOverlay({ headline, sub }) {
         textWrap: 'pretty',
         animation: 'kz-fade-up 900ms var(--ease-out) 700ms both'
       }}>
-        Ich bin dein persönlicher KI-Bauer für sichtbare Prozess-Automatisierung.
-        Kein Workshop-Zirkus, kein Konzern-Theater. Ein Mensch, der baut.
-        Ein Stack, der dir gehört. Eine Lösung, die am Montagmorgen läuft.
+        Ein persönlicher KI-Assistent, der mitdenkt wie ein Mitarbeiter —
+        remote eingerichtet, auf deinem eigenen Server in Deutschland.
+        DSGVO-konform, kein Lock-in. Eine Lösung, die am Montagmorgen läuft.
       </p>
 
       <div style={{
@@ -600,6 +600,43 @@ function HeroOverlay({ headline, sub }) {
         }}>
           WhatsApp
         </a>
+      </div>
+
+      {/* VIDEO-SLOT — Auto/Handy-Moment, Higgsfield/Seedance, Quelle später eingesetzt */}
+      <div className="kz-video-slot" style={{
+        position: 'relative',
+        width: 'min(560px, 86vw)',
+        aspectRatio: '16 / 9',
+        marginTop: 34,
+        borderRadius: 14,
+        border: '1px solid var(--kz-border)',
+        background: 'var(--kz-ink-wash)',
+        backdropFilter: 'blur(3px)',
+        WebkitBackdropFilter: 'blur(3px)',
+        display: 'flex', flexDirection: 'column',
+        alignItems: 'center', justifyContent: 'center', gap: 12,
+        overflow: 'hidden',
+        pointerEvents: 'auto',
+        boxShadow: '0 14px 40px -14px rgba(31,41,51,0.18)',
+        animation: 'kz-fade-up 900ms var(--ease-out) 1050ms both'
+      }}>
+        <div style={{
+          width: 56, height: 56, borderRadius: '50%',
+          background: 'var(--kz-ember)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          boxShadow: '0 6px 18px -4px rgba(232,90,43,0.45)'
+        }}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--kz-cream)"
+            aria-hidden="true" style={{ marginLeft: 3 }}>
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+        <span style={{
+          fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 600,
+          letterSpacing: '0.04em', color: 'var(--fg-muted)'
+        }}>
+          Ein Tag mit Lena — in 90 Sekunden
+        </span>
       </div>
 
       {/* Scroll cue — full-width container, content centered via flex. */}
