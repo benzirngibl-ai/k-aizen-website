@@ -1445,7 +1445,7 @@ function FaqSection() {
     },
     {
       q: 'Was kostet es wirklich?',
-      a: 'Setup-Module je nach Klasse 2.490 € – 9.990 €. Komplett-PA-Bundle 14.999 €. Retainer 499 € – 1.299 €/Monat je nach Modul-Anzahl. Alle Preise auf der Pricing-Seite. Keine versteckten Nachträge.',
+      a: 'Dein KI-PA startet bei 1.490 €/Monat. Module buchst du nach Bedarf dazu — Telefon-Empfang +799 €, Social +499 €, Lead-Pipeline +399 €, Beleg & Steuer +289 €, Recruiting +189 €/Monat. Das Setup besprechen wir im Erstgespräch. Festpreise, keine versteckten Nachträge.',
     },
     {
       q: 'Macht ihr auch nur Workshops?',
@@ -1457,7 +1457,7 @@ function FaqSection() {
     },
     {
       q: 'Was, wenn im Betrieb später ein Problem auftritt?',
-      a: 'Im Setup sind 4 Wochen Begleitung nach Go-Live inklusive. Danach optional ein Retainer ab 499 €/Monat — laufender Betrieb, Anpassungen, Bug-Fixes. SLA < 24h Werktags.',
+      a: 'Laufender Betrieb, Anpassungen und Bug-Fixes sind im monatlichen KI-PA ab 1.490 €/Monat schon enthalten — kein Extra-Retainer. SLA < 24h Werktags.',
     },
     {
       q: 'Brauchen wir einen eigenen KI-Spezialisten?',
