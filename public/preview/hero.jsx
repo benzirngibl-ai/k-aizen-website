@@ -755,13 +755,14 @@ function App() {
       <main style={{ position: 'relative', zIndex: 2, background: 'var(--bg-alt)' }}>
         <KzManifest />
         <KzProblem />
-        <KzAndererWeg />
-        <KzAngebot />
+        <KzEinTagMitLena />
         <KzSectionDivider />
-        <KzMethodik />
-        <KzVertrauen />
+        <KzAndererWeg />
         <KzSectionDivider />
         <KzMeetLena />
+        <KzSectionDivider />
+        <KzVertrauen />
+        <KzAngebot />
         <KzSectionDivider />
         <KzUeberMich />
         <div id="faq"></div>
