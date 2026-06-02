@@ -699,8 +699,24 @@ function EinTagMitLenaSection() {
 // SECTION 05 — Angebot (Setup / Retainer)
 // ============================================================
 function AngebotSection() {
+  const basisFeatures = [
+    'Mail-Triage + Antwort-Drafts in deinem Ton',
+    'Termine + tägliche Briefings',
+    'Meeting-Protokolle in 60 Sekunden',
+    'Customer-Memory — kennt deine Kunden',
+    'Web-Recherche + Branchen-News',
+    'Beleg-Erfassung',
+    'Eigener Server in Deutschland · DSGVO inklusive · kein Lock-in',
+  ];
+  const module = [
+    { name: 'Telefon-Empfang', desc: 'KI nimmt Anrufe an, beantwortet FAQs, bucht Termine.', preis: '+799 €/Mo' },
+    { name: 'Social-Maschine', desc: 'Auto-Posting für LinkedIn, Meta & Insta in deinem Ton.', preis: '+499 €/Mo' },
+    { name: 'Lead-Pipeline', desc: 'Täglich passende Leads + fertige Outreach-Drafts.', preis: '+399 €/Mo' },
+    { name: 'Beleg & Steuer', desc: 'DATEV-konformer Monats-Export an deinen Steuerberater.', preis: '+289 €/Mo' },
+    { name: 'HR / Bewerber-Triage', desc: 'Bewerbungen geparst, bewertet und vorsortiert.', preis: '+189 €/Mo' },
+  ];
   return (
-    <section data-screen-label="05 Angebot" style={{
+    <section data-screen-label="05 Angebot" id="preis" style={{
       position: 'relative',
       padding: 'clamp(80px, 14vh, 180px) 0 clamp(80px, 14vh, 160px)',
       background: 'var(--bg)',
@@ -717,6 +733,14 @@ function AngebotSection() {
         @media (max-width: 720px) {
           .kz-bamboo-decoration { display: none; }
         }
+        .kz-basis-card {
+          display: grid;
+          grid-template-columns: 1.1fr 1fr;
+          gap: clamp(28px, 4vw, 56px);
+        }
+        @media (max-width: 760px) {
+          .kz-basis-card { grid-template-columns: 1fr; }
+        }
       `}</style>
       <Reveal duration={1600} y={40} className="kz-bamboo-decoration">
         <img src="/animations/claude-design/sumi-bamboo-full.png" alt=""
@@ -729,126 +753,186 @@ function AngebotSection() {
         position: 'relative',
       }}>
         <SectionEyebrow leaf={3} label="Angebot" />
-        <RevealHeadline text="Drei Stufen. Festpreise. Keine versteckten Kosten." accent={[2]} />
+        <RevealHeadline text="Ein PA. Ein Preis. Module nach Bedarf." accent={[2]} />
 
+        {/* WERT-ANKER — vor dem Preis */}
         <Reveal delay={300}>
-          <p style={{
-            maxWidth: 720, marginTop: 32, marginBottom: 64,
-            fontFamily: 'var(--font-sans)',
-            fontSize: 'clamp(17px, 1.5vw, 20px)',
-            lineHeight: 1.6, color: 'var(--fg-muted)',
-            textWrap: 'pretty',
+          <div style={{
+            maxWidth: 760, marginTop: 32, marginBottom: 'clamp(48px, 7vh, 72px)',
+            display: 'grid', gap: 24,
           }}>
-            Jede Stufe hat einen klaren Umfang, einen Festpreis und ein definiertes
-            Ergebnis. Du steigst ein, wo es für dich Sinn ergibt, und bleibst so lange,
-            wie du Mehrwert siehst. Kein Abo-Zwang, kein versteckter Aufwand.
-          </p>
+            <p style={{
+              margin: 0,
+              borderLeft: '3px solid var(--kz-ember)',
+              paddingLeft: 22,
+              fontFamily: 'var(--font-sans)',
+              fontSize: 'clamp(16px, 1.5vw, 19px)',
+              lineHeight: 1.6, color: 'var(--fg)',
+              textWrap: 'pretty',
+            }}>
+              Eine Teilzeit-Assistenz (30 h) kostet dich als Arbeitgeber real
+              {' '}<strong style={{ color: 'var(--kz-ember-text)' }}>~2.200–3.500 €/Mo</strong>{' '}
+              — inkl. Lohnnebenkosten, Urlaub, Krankheit. Dein KI-PA: ein Bruchteil
+              davon, 24/7, kündigt nie.
+            </p>
+            <p style={{
+              margin: 0,
+              borderLeft: '3px solid var(--kz-ember)',
+              paddingLeft: 22,
+              fontFamily: 'var(--font-sans)',
+              fontSize: 'clamp(16px, 1.5vw, 19px)',
+              lineHeight: 1.6, color: 'var(--fg)',
+              textWrap: 'pretty',
+            }}>
+              Spezialisierte Inbox-Services verlangen
+              {' '}<strong style={{ color: 'var(--kz-ember-text)' }}>1.000–2.000 €/Mo</strong>{' '}
+              — nur für E-Mails. Dein PA macht das plus Termine, Memory, Briefings,
+              Belege und Protokolle — zum selben Preis.
+            </p>
+          </div>
         </Reveal>
 
-        <div className="kz-section-grid kz-pricing-grid" style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: 'clamp(20px, 2.5vw, 28px)',
-          marginBottom: 32,
-        }}>
-          {/* entfernt: Discovery-Audit-Karte (Geschäftsmodell eingestellt 2026-06-01, finale Pricing-Entscheidung in Task 5) */}
-
-          {/* SETUP */}
-          <Reveal delay={320}>
-            <div style={{
-              padding: '36px 30px',
-              background: 'var(--kz-charcoal)',
-              color: 'var(--kz-cream)',
-              borderRadius: 12,
-              height: '100%',
-              display: 'flex', flexDirection: 'column',
-            }}>
+        {/* BASIS-KARTE */}
+        <Reveal delay={360}>
+          <div className="kz-basis-card" style={{
+            padding: 'clamp(32px, 4vw, 48px)',
+            background: 'var(--kz-charcoal)',
+            color: 'var(--kz-cream)',
+            borderRadius: 14,
+            marginBottom: 'clamp(40px, 6vh, 64px)',
+            alignItems: 'start',
+          }}>
+            <div>
               <KzLeaf index={5} size={44} style={{ marginBottom: 16 }} />
               <h3 style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 26, fontWeight: 400, lineHeight: 1.15,
-                margin: '0 0 6px', letterSpacing: '-0.01em',
+                fontSize: 'clamp(26px, 3vw, 34px)', fontWeight: 400, lineHeight: 1.12,
+                margin: '0 0 14px', letterSpacing: '-0.015em',
                 color: 'var(--kz-cream)',
-              }}>Setup-Module</h3>
+              }}>Dein KI-PA</h3>
               <div style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 32, lineHeight: 1, color: 'var(--kz-cream)',
-                marginTop: 12, marginBottom: 4,
-              }}>2.490 € – 9.990 €</div>
-              <div style={{
-                fontSize: 13, color: 'rgba(245,240,232,0.6)', marginBottom: 20,
-              }}>Festpreis je Modul · 4–8 Wochen</div>
-              <p style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: 14, lineHeight: 1.55,
-                color: 'rgba(245,240,232,0.78)',
-                margin: '0 0 20px', flex: 1, textWrap: 'pretty',
+                fontSize: 'clamp(40px, 5vw, 56px)', lineHeight: 1,
+                color: 'var(--kz-cream)',
+                marginBottom: 6,
               }}>
-                Du suchst dir ein Modul aus. Wir bauen, integrieren,
-                übergeben. Komplett-PA-Bundle (S+M+L): <strong style={{ color: 'var(--kz-ember-text)' }}>14.999 €</strong> Festpreis.
-              </p>
-              <a href="/pricing#module" style={ctaBtnStyle({ ember: true })}>
-                Module ansehen <Arrow />
+                <span style={{ fontSize: '0.45em', color: 'rgba(245,240,232,0.6)' }}>ab </span>
+                1.490 €<span style={{ fontSize: '0.4em', color: 'rgba(245,240,232,0.6)' }}> /Mo</span>
+              </div>
+              <div style={{
+                fontSize: 13, color: 'rgba(245,240,232,0.6)', marginBottom: 24,
+              }}>keine Mindestlaufzeit · Setup besprechen wir im Gespräch</div>
+              <a href="#kontakt" style={ctaBtnStyle({ ember: true })}>
+                Gespräch vereinbaren <Arrow />
               </a>
             </div>
-          </Reveal>
+            <div>
+              <div style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: 12, fontWeight: 600,
+                textTransform: 'uppercase', letterSpacing: '0.12em',
+                color: 'rgba(245,240,232,0.55)',
+                marginBottom: 18,
+              }}>Alles drin</div>
+              <ul style={{
+                listStyle: 'none', margin: 0, padding: 0,
+                display: 'grid', gap: 12,
+              }}>
+                {basisFeatures.map((f, i) => (
+                  <li key={i} style={{
+                    display: 'flex', gap: 12, alignItems: 'flex-start',
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: 15, lineHeight: 1.45,
+                    color: 'rgba(245,240,232,0.88)',
+                    textWrap: 'pretty',
+                  }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="var(--kz-ember-text)" strokeWidth="2.4" strokeLinecap="round"
+                      strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 3 }}>
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Reveal>
 
-          {/* RETAINER */}
-          <Reveal delay={440}>
-            <div style={{
-              padding: '36px 30px',
-              background: 'var(--bg-alt)',
-              borderRadius: 12,
-              height: '100%',
-              display: 'flex', flexDirection: 'column',
-              border: '1px solid var(--kz-border)',
-            }}>
-              <KzLeaf index={3} size={44} style={{ marginBottom: 16 }} />
-              <h3 style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 26, fontWeight: 400, lineHeight: 1.15,
-                margin: '0 0 6px', letterSpacing: '-0.01em',
-              }}>Retainer</h3>
+        {/* MODULE */}
+        <Reveal delay={420}>
+          <h3 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(22px, 2.4vw, 28px)', fontWeight: 400,
+            lineHeight: 1.15, letterSpacing: '-0.01em',
+            margin: '0 0 8px', color: 'var(--fg)',
+          }}>Dazubuchbare Module</h3>
+          <p style={{
+            margin: '0 0 28px',
+            fontFamily: 'var(--font-sans)',
+            fontSize: 16, lineHeight: 1.6, color: 'var(--fg-muted)',
+            maxWidth: 640, textWrap: 'pretty',
+          }}>
+            Du erweiterst deinen PA genau dort, wo dein Betrieb es braucht — Modul
+            dazu, fertig.
+          </p>
+        </Reveal>
+
+        <div className="kz-section-grid" style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: 'clamp(16px, 2vw, 24px)',
+        }}>
+          {module.map((m, i) => (
+            <Reveal key={i} delay={440 + i * 80}>
               <div style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 32, lineHeight: 1, color: 'var(--fg)',
-                marginTop: 12, marginBottom: 4,
-              }}>499 € – 1.299 €</div>
-              <div style={{
-                fontSize: 13, color: 'var(--fg-muted)', marginBottom: 20,
-              }}>pro Monat · keine Mindestlaufzeit</div>
-              <p style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: 14, lineHeight: 1.55,
-                color: 'var(--fg-muted)',
-                margin: '0 0 20px', flex: 1, textWrap: 'pretty',
+                padding: '24px 26px',
+                background: 'var(--bg-alt)',
+                border: '1px solid var(--kz-border)',
+                borderRadius: 12,
+                height: '100%',
+                display: 'flex', flexDirection: 'column',
               }}>
-                Laufender Betrieb, Hosting, Updates, Anpassungen. Drei Stufen je
-                nach Modul-Anzahl. Direkter Ansprechpartner, kein Ticket-System.
-              </p>
-              <a href="/pricing#retainer" style={ctaBtnStyle()}>
-                Retainer ansehen <Arrow />
-              </a>
-            </div>
-          </Reveal>
+                <div style={{
+                  display: 'flex', justifyContent: 'space-between',
+                  alignItems: 'baseline', gap: 12, marginBottom: 8,
+                }}>
+                  <h4 style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 20, fontWeight: 400, lineHeight: 1.15,
+                    margin: 0, letterSpacing: '-0.01em', color: 'var(--fg)',
+                  }}>{m.name}</h4>
+                  <div style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 19, lineHeight: 1, whiteSpace: 'nowrap',
+                    color: 'var(--kz-ember-text)',
+                  }}>{m.preis}</div>
+                </div>
+                <p style={{
+                  margin: 0,
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: 14, lineHeight: 1.55,
+                  color: 'var(--fg-muted)', textWrap: 'pretty',
+                }}>{m.desc}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
 
-        <style>{`
-          .kz-stage-gate-note {
-            margin: clamp(72px, 9vw, 96px) auto 0;
-            max-width: 640px;
-            padding: 24px 28px 0;
-            border-top: 1px solid rgba(31,41,51,0.14);
-            text-align: center;
-          }
-          @media (max-width: 720px) {
-            .kz-stage-gate-note {
-              margin-top: 88px;
-              padding-top: 28px;
-            }
-          }
-        `}</style>
-        {/* entfernt: Audit-Stage-Gate-Note (Audit-Geschäft eingestellt 2026-06-01) */}
+        <Reveal delay={840}>
+          <p style={{
+            margin: '28px 0 0',
+            fontFamily: 'var(--font-sans)',
+            fontSize: 16, lineHeight: 1.6,
+            color: 'var(--fg-muted)', textWrap: 'pretty',
+          }}>
+            Rechnungen, Mahnwesen &amp; mehr —{' '}
+            <a href="#kontakt" style={{
+              color: 'var(--kz-ember-text)', textDecoration: 'none',
+              borderBottom: '1px solid var(--kz-ember)',
+            }}>sprich mich an</a>.
+          </p>
+        </Reveal>
       </div>
     </section>
   );
