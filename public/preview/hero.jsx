@@ -550,7 +550,7 @@ function HeroOverlay({ headline, sub }) {
         pointerEvents: 'auto',
         animation: 'kz-fade-up 900ms var(--ease-out) 880ms both'
       }}>
-        <a href="/audit"
+        <a href="/erstgespraech"
         data-petal-landing="true"
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
@@ -567,13 +567,13 @@ function HeroOverlay({ headline, sub }) {
           transition: 'background 140ms var(--ease-out), box-shadow 220ms var(--ease-out), transform 220ms var(--ease-out)',
           transform: hover ? 'translateY(-1px)' : 'translateY(0)'
         }}>
-          Audit buchen
+          Erstgespräch buchen
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
         </a>
-        <a href="/pricing"
+        <a href="#preis"
           data-petal-landing="true"
           style={{
           fontSize: 15, fontWeight: 600,

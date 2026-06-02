@@ -822,8 +822,8 @@ function AngebotSection() {
               <div style={{
                 fontSize: 13, color: 'rgba(245,240,232,0.6)', marginBottom: 24,
               }}>keine Mindestlaufzeit · Setup besprechen wir im Gespräch</div>
-              <a href="#kontakt" style={ctaBtnStyle({ ember: true })}>
-                Gespräch vereinbaren <Arrow />
+              <a href="/erstgespraech" style={ctaBtnStyle({ ember: true })}>
+                Erstgespräch buchen <Arrow />
               </a>
             </div>
             <div>
@@ -1253,11 +1253,8 @@ function MeetLenaSection() {
 
               <Reveal delay={780}>
                 <div style={{ marginTop: 40, display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-                  <a href="/pitch/lena" style={ctaBtnStyle({ ember: true })}>
-                    Lena's Tagesablauf <Arrow />
-                  </a>
-                  <a href="/ki-pa" style={ctaBtnStyle()}>
-                    Komplett-Setup ansehen <Arrow />
+                  <a href="/erstgespraech" style={ctaBtnStyle({ ember: true })}>
+                    Erstgespräch buchen <Arrow />
                   </a>
                 </div>
               </Reveal>
@@ -1690,9 +1687,8 @@ function Footer() {
           </p>
         </div>
         <FooterCol title="Angebot" items={[
-          { label: 'Preise & Module', href: '/pricing' },
-          { label: 'Über mich', href: '/about' },
-          { label: 'Erstgespräch', href: '/erstgespraech' },
+          { label: 'Preise & Module', href: '#preis' },
+          { label: 'Erstgespräch buchen', href: '/erstgespraech' },
         ]} />
         <FooterCol title="Kontakt" items={[
           { label: 'kontakt@k-aizen.de', href: 'mailto:kontakt@k-aizen.de' },
