@@ -1539,7 +1539,7 @@ function FaqSection() {
 function KontaktSection() {
   const whatsappLink = 'https://wa.me/4915901031928?text=' + encodeURIComponent('Hi Ben, ich habe Interesse an k-AIzen.');
   return (
-    <section data-screen-label="11 Kontakt" style={{
+    <section data-screen-label="11 Kontakt" id="kontakt" style={{
       position: 'relative',
       padding: 'clamp(100px, 16vh, 200px) 0 clamp(80px, 14vh, 160px)',
       background: 'var(--bg)',

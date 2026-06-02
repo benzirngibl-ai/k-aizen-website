@@ -336,12 +336,10 @@ function Header() {
     transition: `opacity 600ms ${KZ_EASE}, transform 600ms ${KZ_EASE}`,
   };
   const navItems = [
-    { label: 'Audit', href: '/audit' },
-    { label: 'Preise', href: '/pricing' },
-    { label: 'Über mich', href: '/about' },
-    { label: 'FAQ', href: '/#faq' },
-    { label: 'Kontakt', href: '/kontakt' },
-    { label: 'Erstgespräch', href: '/erstgespraech' },
+    { label: 'So funktioniert’s', href: '#story' },
+    { label: 'Preise', href: '#preis' },
+    { label: 'FAQ', href: '#faq' },
+    { label: 'Kontakt', href: '#kontakt' },
   ];
   return (
     <>
@@ -391,7 +389,7 @@ function Header() {
             style={{ height: 48, width: 'auto', display: 'block' }} />
         </a>
         <nav className="kz-header-nav" style={{ display: 'flex', gap: 22 }} aria-label="Hauptnavigation">
-          {navItems.slice(0, 5).map((item, i) => (
+          {navItems.map((item, i) => (
             <a key={item.label} href={item.href} style={{
               ...linkBase,
               transitionDelay: `${i * 60}ms`,
@@ -400,13 +398,13 @@ function Header() {
             }}>{item.label}</a>
           ))}
         </nav>
-        <a href="/audit" className="kz-header-cta-desktop" style={{
+        <a href="/erstgespraech" className="kz-header-cta-desktop" style={{
           fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 600,
           padding: '8px 16px',
           background: 'var(--kz-charcoal)', color: 'var(--kz-cream)',
           borderRadius: 8, textDecoration: 'none',
         }}>
-          Audit buchen
+          Erstgespräch
         </a>
         <button className="kz-header-burger" onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}
@@ -471,7 +469,7 @@ function Header() {
               borderBottom: '1px solid rgba(31,41,51,0.08)',
             }}>{item.label}</a>
           ))}
-          <a href="/audit" onClick={() => setMenuOpen(false)} style={{
+          <a href="/erstgespraech" onClick={() => setMenuOpen(false)} style={{
             marginTop: 16,
             padding: '14px 18px',
             background: 'var(--kz-charcoal)', color: 'var(--kz-cream)',
@@ -479,7 +477,7 @@ function Header() {
             fontFamily: 'var(--font-sans)',
             fontSize: 15, fontWeight: 600,
             textAlign: 'center',
-          }}>Audit buchen →</a>
+          }}>Erstgespräch →</a>
         </nav>
       </div>
     </>

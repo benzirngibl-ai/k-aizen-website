@@ -125,7 +125,7 @@
    SEMANTIC TYPE STYLES — apply directly to elements or via class
    ===================================================================== */
 
-html { color: var(--fg); background: var(--bg); }
+html { color: var(--fg); background: var(--bg); scroll-behavior: smooth; scroll-padding-top: 88px; }
 
 /* Botanical/sumi assets — darken to harmonize with charcoal background.
    Applies to cherry-branch/tree, bamboo, sakura/leaf decorations.
