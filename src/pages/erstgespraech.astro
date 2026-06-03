@@ -69,12 +69,28 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
         Such dir direkt einen Slot — 30 Minuten, ohne Verkaufsdruck.
       </p>
 
+      <!-- Cal.com inline embed (self-hosted, DSGVO-konform, DE-Server — ersetzt Calendly) -->
       <div
-        class="calendly-inline-widget"
-        data-url="https://calendly.com/ben-zirngibl/erstgespraech?hide_event_type_details=1&hide_gdpr_banner=1"
-        style="min-width:320px;height:700px;margin-top:24px;"
+        style="width:100%;min-width:320px;height:700px;margin-top:24px;overflow:auto;border-radius:8px;"
+        id="cal-inline-erstgespraech"
       ></div>
-      <script src="https://assets.calendly.com/assets/external/widget.js" is:inline async></script>
+      <script type="text/javascript" is:inline>
+        (function (C, A, L) {
+          let p = function (a, ar) { a.q.push(ar); };
+          let d = C.document;
+          C.Cal = C.Cal || function () {
+            let cal = C.Cal; let ar = arguments;
+            if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
+            if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; }
+            p(cal, ar);
+          };
+        })(window, "https://cal.k-aizen.de/embed/embed.js", "init");
+        Cal("init", { origin: "https://cal.k-aizen.de" });
+        Cal("inline", {
+          elementOrSelector: "#cal-inline-erstgespraech",
+          calLink: "ben-kaizen/30min",
+        });
+      </script>
 
       <p style="margin-top: 32px; font-size: 14px; color: var(--fg-muted);">
         Lieber per Mail? <a href="mailto:kontakt@k-aizen.de?subject=Erstgespr%C3%A4ch%20Anfrage&body=Hi%20k-AIzen-Team%2C%0A%0AKontext%20zu%20uns%3A%0A-%20Branche%3A%20%0A-%20Team-Gr%C3%B6%C3%9Fe%3A%20%0A-%20Konkreter%20Schmerz%2FWorkflow%3A%20%0A%0ABeste%20Gr%C3%BC%C3%9Fe%2C">kontakt@k-aizen.de</a> — wir antworten binnen 48h.
