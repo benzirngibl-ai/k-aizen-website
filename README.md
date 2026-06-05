@@ -1,14 +1,21 @@
-# Astro Starter Kit: Minimal
+# k-AIzen Website Site
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Live-Astro-Projekt fuer k-aizen.de. Dieses Verzeichnis ist ein eigenes nested Git-Repo und deployt separat.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Ownership-Pointer
 
-## 🚀 Project Structure
+- Website-Code, Routes, Components, Public-Assets: hier arbeiten.
+- Website-Audits, Moodboards, alte Design-Exporte: `../`
+- Business-Blueprints und Pitch-Docs: `../../00-blueprints/`
+- Offizielle Links und Preisanker: `../../../_shared/LINKS.md`
+- Deploy-/Operations-Regel: `../../../_shared/OPERATION-AUTONOMY.md` + `../../../_shared/access.md`
+- Workspace-Kompass: `../../../STRUCTURE.md`
 
-Inside of your Astro project, you'll see the following folders and files:
+## Deploy Rule
+
+Bei "deploy", "live stellen", "Coolify", "Production" oder "Logs pruefen" zuerst die Operations-Regel und `access.md` lesen. Wenn der dokumentierte Zugang reicht, Deploy/Check selbst ausfuehren und Ben nur das Ergebnis melden.
+
+## Project Structure
 
 ```text
 /
@@ -25,7 +32,7 @@ There's nothing special about `src/components/`, but that's where we like to put
 
 Any static assets, like images, can be placed in the `public/` directory.
 
-## 🧞 Commands
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -37,7 +44,3 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

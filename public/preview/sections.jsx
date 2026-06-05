@@ -501,7 +501,72 @@ function AndererWegSection() {
 // ============================================================
 // SECTION — Ein Tag mit Lena (5 Szenen Story-Herzstück)
 // ============================================================
-function SzeneRow({ index, time, spoken, result, side = 'left' }) {
+
+// Discord-Mockup für die Story (JSX-Port der pitch/DiscordMockup.astro).
+// Light-Markdown: **bold** → <strong>, \n → <br>. priority='alert' = rote Beschwerde-Markierung.
+function dcRenderContent(raw) {
+  const esc = raw.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return esc
+    .replace(/\*\*(.+?)\*\*/g, '<strong style="color:#fff;font-weight:600">$1</strong>')
+    .replace(/\n/g, '<br>');
+}
+function DiscordCard({ channel, author = 'k-AIzen PA', timestamp, content, priority }) {
+  const isAlert = priority === 'alert';
+  return (
+    <div style={{
+      background: 'linear-gradient(180deg, #2b2d31 0%, #26282c 100%)',
+      borderRadius: 18,
+      color: '#dbdee1',
+      fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
+      fontSize: 14, lineHeight: 1.55, overflow: 'hidden',
+      boxShadow: '0 30px 60px -20px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.04), inset 0 1px 0 rgba(255,255,255,0.05)',
+      width: '100%',
+    }}>
+      <header style={{
+        background: 'linear-gradient(180deg, #1e1f22 0%, #1a1b1e 100%)',
+        padding: '14px 18px', display: 'flex', alignItems: 'center', gap: 8,
+        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        color: '#f2f3f5', fontWeight: 600,
+      }}>
+        <span style={{ color: '#80848e', fontSize: 20, lineHeight: 1, fontWeight: 300 }}>#</span>
+        <span style={{ fontSize: 15, letterSpacing: '-0.01em' }}>{channel.replace(/^#/, '')}</span>
+        <span style={{
+          marginLeft: 'auto', width: 8, height: 8, borderRadius: '50%',
+          background: '#23a559', boxShadow: '0 0 8px rgba(35,165,89,0.5)',
+        }} />
+      </header>
+      <div style={{ display: 'grid', gridTemplateColumns: '44px 1fr', gap: 14, padding: 18,
+        ...(isAlert ? { borderLeft: '3px solid #f23f43', background: 'rgba(242,63,67,0.06)' } : {}) }}>
+        <img src="/animations/claude-design/logo-mark.png" alt="" style={{
+          width: 40, height: 40, borderRadius: '50%',
+          background: 'linear-gradient(135deg, #FF5500 0%, #FF7733 100%)',
+          padding: 7, objectFit: 'contain',
+          boxShadow: '0 4px 12px rgba(255,85,0,0.35), inset 0 1px 0 rgba(255,255,255,0.2)',
+        }} />
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6, flexWrap: 'wrap' }}>
+            <span style={{ color: '#f2f3f5', fontWeight: 600, fontSize: 15, letterSpacing: '-0.01em' }}>{author}</span>
+            <span style={{
+              background: 'linear-gradient(135deg, #5865f2, #4752c4)', color: '#fff',
+              fontSize: 10, fontWeight: 700, padding: '2px 6px', borderRadius: 4, letterSpacing: '0.5px',
+            }}>BOT</span>
+            {isAlert && (
+              <span style={{
+                background: 'linear-gradient(135deg, #f23f43, #c62828)', color: '#fff',
+                fontSize: 10, fontWeight: 700, padding: '2px 6px', borderRadius: 4, letterSpacing: '0.5px',
+              }}>! HOCH</span>
+            )}
+            <span style={{ color: '#949ba4', fontSize: 12 }}>heute · {timestamp}</span>
+          </div>
+          <div style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word', color: '#dbdee1' }}
+            dangerouslySetInnerHTML={{ __html: dcRenderContent(content) }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SzeneRow({ index, time, spoken, result, image, alt, discord, side = 'left' }) {
   const textFirst = side === 'left';
   const textBlock = (
     <div className="kz-szene-text">
@@ -535,9 +600,30 @@ function SzeneRow({ index, time, spoken, result, side = 'left' }) {
         color: 'var(--fg-muted)',
         textWrap: 'pretty',
       }}>{result}</p>
+      {discord && (
+        <div style={{ marginTop: 24 }}>
+          {(Array.isArray(discord) ? discord : [discord]).map((d, di) => (
+            <div key={di} style={{ marginTop: di > 0 ? 14 : 0 }}>
+              <DiscordCard {...d} />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
-  const illuBlock = (
+  const illuBlock = image ? (
+    <div className="kz-szene-illu" style={{
+      position: 'relative',
+      borderRadius: 16,
+      overflow: 'hidden',
+      aspectRatio: '16 / 9',
+      boxShadow: '0 24px 48px -20px rgba(26,26,26,0.32), 0 0 0 1px rgba(26,26,26,0.05)',
+    }}>
+      <img src={image} alt={alt || ''} loading="lazy" style={{
+        width: '100%', height: '100%', objectFit: 'cover', display: 'block',
+      }} />
+    </div>
+  ) : (
     <div className="kz-szene-illu" aria-hidden="true" style={{
       minHeight: 200,
       borderRadius: 12,
@@ -571,11 +657,23 @@ function SzeneRow({ index, time, spoken, result, side = 'left' }) {
 
 function EinTagMitLenaSection() {
   const szenen = [
-    { time: '08:14 — Im Auto', spoken: 'Ey Lena, Herr Meier — seine Frau mag rote Rosen. Und merk dir: drei Kunden mit dem Lieferproblem.', result: 'Du sprichst es einfach ins Handy. Lena merkt sich alles — kein Notizzettel, kein Vergessen.' },
-    { time: '6 Monate später', spoken: null, result: 'Lena meldet sich: „Frau Meier hat morgen Geburtstag — sie mag rote Rosen." Der Assistent, der nie vergisst.' },
-    { time: '09:30 — Posteingang', spoken: null, result: 'Mails kommen rein und werden automatisch sortiert. Wichtiges oben, Spam weg, alles nach Kunde gruppiert.' },
-    { time: '11:00 — Eine Rechnung kommt', spoken: null, result: 'Du bekommst auf dein Dashboard: „Rechnung Müller bearbeitet — Antwort-Vorschau bereit." Du liest, drückst Approve, raus geht sie. Volle Kontrolle, null Tipparbeit.' },
-    { time: '15:20 — Auf der Baustelle', spoken: null, result: 'Du machst ein Foto, postest es ins Dashboard. Sekunden später ist es auf Instagram und Facebook. Ein Klick, überall präsent.' },
+    { time: 'Früher — ohne Assistent', spoken: null, image: '/pitch/markus/12-old-day.png', alt: 'Unternehmer überfordert am Schreibtisch, Papierchaos', result: '47 ungelesene Mails. Drei davon dringend — aber welche? Termine, die du fast vergisst, Rückfragen vom Team. Schon vor dem ersten Kaffee hinterher. So sah dein Morgen bisher aus.' },
+    { time: '06:30 — Aufwachen', spoken: null, image: '/pitch/markus/01-morning.png', alt: 'Unternehmer wacht entspannt auf, liest Briefing am Handy', result: 'Statt Chaos: ein Briefing. Umsatz gestern, was über Nacht reinkam, deine Termine, was heute wichtig ist. 90 Sekunden lesen — du weißt, woran du bist, bevor der Tag dich kriegt.' },
+    { time: '07:00 — Kaffee & Freigaben', spoken: null, image: '/pitch/markus/02-coffee.png', alt: 'Unternehmer gibt am Handy Aufgaben frei', result: 'Drei Freigaben warten: Bestellung ✅, Antwort an einen Kunden ✏️ noch persönlicher, Hotel für nächste Woche ✅. Drei Sekunden pro Entscheidung. Du entscheidest — dein Assistent macht den Rest.',
+      discord: { channel: '#aufgaben', timestamp: '06:45', content: '📌 **3 Freigaben warten**\n\n**1. Bürobedarf nachbestellen**\nOffice-Discount · 38,50 €\n→ ✅ zum Bestellen\n\n**2. Antwort an Kunde Müller**\nDraft liegt im Thread\n→ ✅ senden · ✏️ ändern\n\n**3. Hotel Berlin · 03.–05.06.**\n487 € · stornofrei bis 02.06.\n→ ✅ zum Buchen' } },
+    { time: '07:45 — Vor dem Aufbruch', spoken: 'Schmidt mag direkte Mails, kein Geschwafel — und sein neuer Einkäufer heißt Bernhardt, kommt aus dem Banken-Sektor.', image: '/pitch/markus/09-memory.png', alt: 'Unternehmer spricht Sprachnotiz ins Handy', result: 'Du sprichst es einfach ins Handy, drei Sekunden. Für immer gespeichert. Dein Assistent lernt dich und deine Kunden kennen — wie ein Mitarbeiter, der nie vergisst.' },
+    { time: '6 Monate später', spoken: null, image: '/pitch/markus/10-memory-retrieve.png', alt: 'Unternehmer sieht erfreut die zusammengezogene Kundenhistorie', result: 'Eine Mail von Schmidt kommt rein. Dein Assistent zieht alles zusammen: Historie, Tonfall-Hinweise, deine Notizen. Du antwortest in der Sprache, die dein Kunde mag — ohne nachzudenken.' },
+    { time: '08:10 — Eine Beschwerde kommt rein', spoken: 'Sag Herrn Brandt, dass es mir leid tut — und dass wir uns gerne auf einen Kaffee zusammensetzen, um das aus der Welt zu schaffen.', image: '/pitch/markus/04-postcall.png', alt: 'Unternehmer am Schreibtisch diktiert eine Antwort ins Handy', result: 'Eine verärgerte Mail landet im Posteingang — dein Assistent erkennt: Beschwerde, hoch priorisiert, und legt sie dir oben hin. Du sagst in einem Satz, was passieren soll. Sekunden später liegt die fertige, höfliche Mail bereit. Du liest, drückst Approve — raus. Aus einem Stoßseufzer wird eine professionelle Antwort.',
+      discord: [
+        { channel: '#posteingang', priority: 'alert', timestamp: '08:09', content: '🚨 **Beschwerde erkannt — hoch priorisiert**\n\n👤 Thomas Brandt (Bestandskunde)\n\n„…die letzte Lieferung war zwei Wochen zu spät, so kann ich nicht arbeiten. Ich erwarte eine Reaktion."\n\n📌 Oben angepinnt · wartet auf dich' },
+        { channel: '#posteingang', timestamp: '08:11', content: '✏️ **Antwort-Entwurf · an Thomas Brandt**\n\n„Sehr geehrter Herr Brandt,\n\nes tut mir aufrichtig leid, dass die Lieferung so spät kam — das entspricht nicht unserem Anspruch. Lassen Sie uns das persönlich klären: Ich lade Sie gerne auf einen Kaffee ein, um eine Lösung zu finden, die für Sie passt.\n\nWann würde es Ihnen diese Woche passen?"\n\n→ ✅ senden · ✏️ ändern' },
+      ] },
+    { time: '08:30 — Im Auto', spoken: 'Brief mich nochmal zum Termin Schmidt GmbH.', image: '/pitch/markus/03-car.png', alt: 'Unternehmer fährt Auto, hört Briefing', result: 'Während du fährst, liest dir dein Assistent das Wichtigste vor: wer im Termin sitzt, was zuletzt besprochen wurde, frische News zur Firma. Du kommst vorbereitet an.' },
+    { time: '09:43 — Nach dem Termin', spoken: null, image: '/pitch/markus/04-postcall.png', alt: 'Unternehmer zufrieden nach dem Meeting am Schreibtisch', result: 'Audio in den Channel. Drei Minuten später: Action-Items, Insights, Risiken — strukturiert. Du schickst direkt das Follow-up raus, ohne eine Notiz abzutippen.' },
+    { time: '11:15 — Team-Frage', spoken: null, image: '/pitch/markus/14-team.png', alt: 'Unternehmer geht entspannt durchs Büro', result: '„Wie war nochmal der Ablauf für die Reisekostenabrechnung?" Früher unterbricht dich das. Jetzt antwortet dein Assistent aus dem Firmen-Wissen — die Antwort, die DU mal hinterlegt hast. Du wirst nur bei echtem Neuland gefragt.' },
+    { time: '14:30 — Beim Geschäftsessen', spoken: null, image: '/pitch/markus/15-beleg.png', alt: 'Unternehmer fotografiert Beleg im Café', result: 'Bewirtungsbeleg abfotografiert, fertig. Datum, Betrag, Kategorie, Lieferant — alles ausgelesen und sortiert abgelegt. Was dein Steuerberater braucht, ist immer bereit. Keine Zettel im Handschuhfach.',
+      discord: { channel: '#rechnungen', timestamp: '14:31', content: '🧾 **Beleg erfasst**\n\n  • Datum: 03.06.2026\n  • Betrag: 87,40 €\n  • Kategorie: Bewirtung (70 %)\n  • Lieferant: Trattoria da Vinci\n\n✅ Abgelegt + für Steuerberater markiert' } },
+    { time: '18:00 — Feierabend', spoken: null, image: '/pitch/markus/07-evening.png', alt: 'Unternehmer entspannt abends auf dem Sofa', result: 'Du klappst den Laptop zu. Im Briefing wartet dein Tages-Wrap: alles erledigt, alles dokumentiert, Morgen-Plan steht schon. Du kannst loslassen — der Assistent hat den Faden.' },
   ];
   return (
     <section data-screen-label="03 Ein Tag mit Lena" id="story" style={{
@@ -587,13 +685,14 @@ function EinTagMitLenaSection() {
         maxWidth: 1120, margin: '0 auto',
         padding: '0 clamp(24px, 5vw, 64px)',
       }}>
-        <SectionEyebrow leaf={1} label="Ein Tag mit Lena" />
+        <SectionEyebrow leaf={1} label="Ein Tag mit deinem KI-Assistenten" />
         <RevealHeadline
           text="So fühlt sich ein Tag mit deinem KI-Mitarbeiter an."
           accent={[6, 7]} />
         {szenen.map((s, i) => (
           <SzeneRow key={i} index={i} time={s.time} spoken={s.spoken}
-            result={s.result} side={i % 2 === 0 ? 'left' : 'right'} />
+            result={s.result} image={s.image} alt={s.alt} discord={s.discord}
+            side={i % 2 === 0 ? 'left' : 'right'} />
         ))}
       </div>
     </section>
@@ -615,7 +714,7 @@ function AngebotSection() {
   ];
   const module = [
     { name: 'Telefon-Empfang', desc: 'KI nimmt Anrufe an, beantwortet FAQs, bucht Termine.', preis: '+799 €/Mo' },
-    { name: 'Social-Maschine', desc: 'Auto-Posting für LinkedIn, Meta & Insta in deinem Ton.', preis: '+499 €/Mo' },
+    { name: 'Social-Maschine', desc: 'Auto-Posting für LinkedIn in deinem Ton, mit Content-Kalender & Approve-Flow. Meta & Insta folgen.', preis: '+499 €/Mo' },
     { name: 'Lead-Pipeline', desc: 'Täglich passende Leads + fertige Outreach-Drafts.', preis: '+399 €/Mo' },
     { name: 'Beleg & Steuer', desc: 'DATEV-konformer Monats-Export an deinen Steuerberater.', preis: '+289 €/Mo' },
     { name: 'HR / Bewerber-Triage', desc: 'Bewerbungen geparst, bewertet und vorsortiert.', preis: '+189 €/Mo' },

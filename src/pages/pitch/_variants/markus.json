@@ -16,6 +16,36 @@
       "image": "00-hook.png"
     },
     {
+      "id": "so-funktionierts",
+      "type": "scene",
+      "time": "Setup",
+      "scene_label": "So funktioniert's",
+      "image": "11-how.png",
+      "headline": "Kein Tool, das du lernst. Ein Assistent, der dich kennenlernt.",
+      "body": "Dein PA läuft auf deinem eigenen Server — deine Daten bleiben bei dir. Du steuerst ihn wie einen Mitarbeiter: per Handy, per Discord, mit einer Sprachnachricht. Er liest mit, denkt mit, bereitet vor. Entscheiden tust immer du — er macht nur die Arbeit drumherum.",
+      "discord": {
+        "channel": "#willkommen",
+        "author": "k-AIzen PA",
+        "timestamp": "Tag 1",
+        "content": "👋 **Hi Markus, ich bin dein PA.**\n\nSo arbeiten wir zusammen:\n  • Ich melde mich morgens mit einem Briefing\n  • Du gibst per ✅ / ✏️ frei — drei Sekunden pro Sache\n  • Sag mir per Sprachnachricht, was ich mir merken soll\n  • Ich laufe auf **deinem Server** — niemand sonst liest mit\n\n🔒 Deine Daten gehören dir. Immer."
+      }
+    },
+    {
+      "id": "der-alte-tag",
+      "type": "scene",
+      "time": "Früher",
+      "scene_label": "Ein Tag ohne PA",
+      "image": "12-old-day.png",
+      "headline": "So sah dein Morgen bisher aus.",
+      "body": "47 ungelesene Mails. Drei davon dringend — aber welche? Termine, die du fast vergessen hättest. Rückfragen vom Team. Und das Gefühl, schon vor dem ersten Kaffee hinterher zu sein. Abends dann nochmal eine Stunde Schreibtisch, weil tagsüber keine Zeit war.",
+      "discord": {
+        "channel": "#posteingang",
+        "author": "Outlook",
+        "timestamp": "06:30",
+        "content": "📥 **Posteingang: 47 ungelesen**\n\n  • Re: Re: Re: Angebot Müller?\n  • DRINGEND Rückruf Schmidt\n  • Newsletter (x12)\n  • Team: \"kurze Frage…\"\n  • Lieferant: Liefertermin?\n  • … und 30 weitere\n\n😵 Wo fängst du an?"
+      }
+    },
+    {
       "id": "morning-briefing",
       "type": "scene",
       "time": "06:30",
@@ -76,6 +106,21 @@
       }
     },
     {
+      "id": "angebot-erstellen",
+      "type": "scene",
+      "time": "08:20",
+      "scene_label": "Angebot raus",
+      "image": "13-angebot.png",
+      "headline": "Ein Kunde will ein Angebot.",
+      "body": "Früher: Vorlage suchen, alte Angebote durchwühlen, Preise zusammenklauben — eine halbe Stunde. Jetzt: „Mach Müller ein Angebot für die Cloud-Migration, Basis letztes Projekt.\" Dein PA zieht Vorlage, Projekt-Historie und Preise zusammen. Du prüfst, passt an, schickst raus.",
+      "discord": {
+        "channel": "#approve",
+        "author": "k-AIzen PA",
+        "timestamp": "08:23",
+        "content": "📄 **Angebot-Entwurf · Müller GmbH**\n\nBasis: Projekt \"Cloud-Migration Phase 1\" (03/2025)\n\n  • Leistung: Migration Bestandssysteme\n  • Aufwand: 12 Personentage\n  • Tagessatz: 1.150 € (dein Standard)\n  • Summe: **13.800 € netto**\n  • Optional: Wartung 290 €/Mo\n\n📎 PDF im Thread\n→ ✅ senden | ✏️ anpassen"
+      }
+    },
+    {
       "id": "precall-briefing",
       "type": "scene",
       "time": "08:30",
@@ -106,6 +151,21 @@
       }
     },
     {
+      "id": "mitarbeiter-frage",
+      "type": "scene",
+      "time": "11:15",
+      "scene_label": "Team-Frage",
+      "image": "14-team.png",
+      "headline": "Dein Team fragt etwas, das du schon 10× erklärt hast.",
+      "body": "„Wie war nochmal der Ablauf für die Reisekostenabrechnung?\" Früher unterbricht dich das mitten in der Arbeit. Jetzt antwortet dein PA aus dem Firmen-Wissen — die Antwort, die DU mal hinterlegt hast. Du wirst nur einbezogen, wenn's wirklich neu ist.",
+      "discord": {
+        "channel": "#team",
+        "author": "k-AIzen PA",
+        "timestamp": "11:16",
+        "content": "💬 **Frage von Lisa (Team):**\n„Ablauf Reisekostenabrechnung?\"\n\n🤖 **Beantwortet aus Firmen-Wiki:**\n  1. Beleg in #belege fotografieren\n  2. Formular im Drive ausfüllen\n  3. Bis 5. des Monats bei Markus\n\n✅ Lisa hat Antwort erhalten\n📌 Markus nur informiert — keine Aktion nötig"
+      }
+    },
+    {
       "id": "lunch",
       "type": "scene",
       "time": "12:30",
@@ -133,6 +193,21 @@
         "author": "k-AIzen PA",
         "timestamp": "14:02",
         "content": "📞 **Roger, kümmere mich drum.**\n\nFinanzamt-Anruf läuft heute Nachmittag. Ergebnis spätestens morgen früh in #briefing.\n\nStatus-Updates kommen automatisch."
+      }
+    },
+    {
+      "id": "beleg-erfassung",
+      "type": "scene",
+      "time": "14:30",
+      "scene_label": "Beleg erfassen",
+      "image": "15-beleg.png",
+      "headline": "Tankquittung, Bewirtungsbeleg, Rechnung.",
+      "body": "Früher landen die Zettel im Handschuhfach und nerven den Steuerberater im März. Jetzt: abfotografieren, fertig. Dein PA liest Datum, Betrag, Kategorie, Lieferant aus und legt alles sortiert ab. Was dein Steuerberater braucht, ist immer bereit.",
+      "discord": {
+        "channel": "#belege",
+        "author": "k-AIzen PA",
+        "timestamp": "14:31",
+        "content": "🧾 **Beleg erfasst**\n\n  • Datum: 03.06.2026\n  • Betrag: 87,40 €\n  • Kategorie: Bewirtung (70%)\n  • Lieferant: Trattoria da Vinci\n  • Projekt: Kunde Schmidt\n\n✅ Abgelegt + für Steuerberater markiert\n📊 Monat Juni: 14 Belege, 1.240 € erfasst"
       }
     },
     {
