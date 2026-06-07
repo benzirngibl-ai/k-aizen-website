@@ -1,174 +1,301 @@
 ---
 import KaizenLayout from '../../layouts/KaizenLayout.astro';
+import SlideLayout from '../../components/pitch/SlideLayout.astro';
 import fs from 'node:fs';
 import path from 'node:path';
 
+// Single neutral pitch deck — loads _variants/pitch.json directly.
+// (Former per-persona variants markus/lena archived in _archive/.)
 const variantsDir = path.join(process.cwd(), 'src/pages/pitch/_variants');
-// Sort: Lena (brand-persona) first, then Markus, then any others alphabetical
-const sortPriority: Record<string, number> = { 'lena.json': 0, 'markus.json': 1 };
-const files = fs.readdirSync(variantsDir)
-  .filter(f => f.endsWith('.json'))
-  .sort((a, b) => (sortPriority[a] ?? 99) - (sortPriority[b] ?? 99) || a.localeCompare(b));
+const raw = fs.readFileSync(path.join(variantsDir, 'pitch.json'), 'utf-8');
+const data = JSON.parse(raw);
 
-const variants = files.map(f => {
-  const data = JSON.parse(fs.readFileSync(path.join(variantsDir, f), 'utf-8'));
-  return {
-    slug: path.basename(f, '.json'),
-    title: data.title,
-    description: data.description,
-    branche: data.character.branche_label,
-    storyName: data.character.story_name,
-    slideCount: data.slides.length,
-  };
-});
+const imageFolder = data.character.image_folder;
+const imageUrl = (slideImage: string) => `${imageFolder}/${slideImage}`;
 ---
 
 <KaizenLayout
-  title="Pitch-Deck · Varianten"
-  description="Internes Tool: Pitch-Deck-Varianten für KI-PA-Erstgespräche"
+  title={data.title}
+  description={data.description}
   path="/pitch"
   noindex={true}
+  hideChrome={true}
   activeNav="home"
 >
-  <article class="kz-page" style="max-width: 1100px; padding: 80px 24px;">
-    <div class="kz-page-eyebrow">
-      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
-      <span>Pitch-Deck · Operator-Tool</span>
-    </div>
+  <main class="pitch-deck" id="pitch-deck" data-total={data.slides.length}>
+    {data.slides.map((slide: any, idx: number) => (
+      <div class="pitch-slide-wrapper" data-slide-index={idx} id={`slide-${idx}`}>
+        <SlideLayout
+          type={slide.type}
+          time={slide.time}
+          scene_label={slide.scene_label}
+          imageUrl={imageUrl(slide.image)}
+          imageAlt={`${data.character.story_name} · ${slide.scene_label || slide.headline}`}
+          headline={slide.headline}
+          subheadline={slide.subheadline}
+          body={slide.body}
+          discord={slide.discord}
+          cta_label={slide.cta_label}
+          cta_href={slide.cta_href}
+        />
+      </div>
+    ))}
+  </main>
 
-    <h1 class="kz-h1">Wähle deine Variante.</h1>
-    <p class="kz-lead">
-      Diese Pitch-Decks sind nicht in Suchmaschinen indexiert. Du kannst die Links direkt an Leads schicken — die Story erzählt sich selbst.
-    </p>
+  <div class="pitch-progress-bar" aria-hidden="true">
+    <div class="pitch-progress-fill" id="pitch-progress-fill"></div>
+  </div>
 
-    <div class="pitch-index-grid">
-      {variants.map(v => (
-        <a href={`/pitch/${v.slug}`} class="pitch-index-card">
-          <div class="pitch-index-branche">{v.branche}</div>
-          <h2 class="pitch-index-title">{v.title}</h2>
-          <p class="pitch-index-desc">{v.description}</p>
-          <div class="pitch-index-meta">
-            <span class="pitch-index-character">{v.storyName}</span>
-            <span class="pitch-index-slides">{v.slideCount} Slides</span>
-          </div>
-          <span class="pitch-index-link">
-            /pitch/{v.slug}
-            <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M4 10h12m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-        </a>
+  <nav class="pitch-nav" aria-label="Slide-Navigation">
+    <button id="pitch-prev" aria-label="Vorherige Slide" class="pitch-nav-btn">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="pitch-nav-dots" id="pitch-nav-dots">
+      {data.slides.map((_: any, idx: number) => (
+        <button class="pitch-nav-dot" data-dot-index={idx} aria-label={`Slide ${idx + 1}`}></button>
       ))}
     </div>
-  </article>
+    <span id="pitch-progress" class="pitch-progress">1 / {data.slides.length}</span>
+    <button id="pitch-next" aria-label="Nächste Slide" class="pitch-nav-btn">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </nav>
 </KaizenLayout>
 
-<style>
-  .pitch-index-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 24px;
-    margin-top: 56px;
-  }
-
-  .pitch-index-card {
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    border-radius: 16px;
-    padding: 28px;
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    position: relative;
+<style is:global>
+  html, body {
     overflow: hidden;
-    transition:
-      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-      box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-      border-color 0.5s;
+    height: 100%;
+  }
+  body {
+    background: #F5F0E8;
+  }
+</style>
+
+<style>
+  .pitch-deck {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100vh;
+    scroll-behavior: smooth;
+    background: #F5F0E8;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .pitch-index-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255, 85, 0, 0) 0%, rgba(255, 85, 0, 0.04) 100%);
-    opacity: 0;
-    transition: opacity 0.5s;
+  .pitch-slide-wrapper {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    position: relative;
+  }
+
+  /* === Top Progress Bar === */
+  .pitch-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(26, 26, 26, 0.06);
+    z-index: 200;
     pointer-events: none;
   }
 
-  .pitch-index-card:hover {
-    transform: translateY(-4px);
+  .pitch-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #FF5500, #FF8833);
+    width: 0%;
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 14px rgba(255, 85, 0, 0.45);
+  }
+
+  /* === Glassmorphism Nav (bottom) === */
+  .pitch-nav {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    background: rgba(26, 26, 26, 0.65);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 150;
     box-shadow:
-      0 24px 48px -16px rgba(26, 26, 26, 0.16),
-      0 0 0 1px rgba(255, 85, 0, 0.2);
-    border-color: rgba(255, 85, 0, 0.3);
+      0 20px 50px -20px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transform: translateX(-50%) translateY(12px);
+    animation: pitch-nav-enter 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
   }
 
-  .pitch-index-card:hover::before {
-    opacity: 1;
+  @keyframes pitch-nav-enter {
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
   }
 
-  .pitch-index-branche {
-    color: #FF5500;
+  .pitch-nav-btn {
+    background: transparent;
+    border: none;
+    color: rgba(245, 240, 232, 0.85);
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), color 0.3s, transform 0.3s;
+  }
+
+  .pitch-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    transform: scale(1.08);
+  }
+
+  .pitch-nav-btn:active {
+    transform: scale(0.96);
+  }
+
+  .pitch-nav-dots {
+    display: flex;
+    gap: 6px;
+    padding: 0 4px;
+  }
+
+  .pitch-nav-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(245, 240, 232, 0.3);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .pitch-nav-dot:hover {
+    background: rgba(245, 240, 232, 0.6);
+    transform: scale(1.3);
+  }
+
+  .pitch-nav-dot.is-active {
+    background: #FF5500;
+    width: 24px;
+    border-radius: 3px;
+    box-shadow: 0 0 12px rgba(255, 85, 0, 0.55);
+  }
+
+  .pitch-progress {
+    color: rgba(245, 240, 232, 0.75);
     font-size: 12px;
     font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-
-  .pitch-index-title {
-    font-size: 1.4rem;
-    margin: 0 0 12px 0;
-    line-height: 1.2;
-    color: #1a1a1a;
-    letter-spacing: -0.01em;
-  }
-
-  .pitch-index-desc {
-    color: #555;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    margin: 0 0 20px 0;
-    flex-grow: 1;
-  }
-
-  .pitch-index-meta {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 20px;
-    font-size: 13px;
-    color: #777;
-  }
-
-  .pitch-index-character::before {
-    content: '👤 ';
-  }
-
-  .pitch-index-slides::before {
-    content: '📑 ';
-  }
-
-  .pitch-index-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: #FF5500;
-    font-weight: 600;
-    font-size: 0.9rem;
+    letter-spacing: 1px;
+    min-width: 44px;
+    text-align: center;
     font-variant-numeric: tabular-nums;
-    transition: gap 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .pitch-index-card:hover .pitch-index-link {
-    gap: 10px;
+  @media (max-width: 640px) {
+    .pitch-nav-dots {
+      display: none;
+    }
+    .pitch-nav {
+      bottom: 16px;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .pitch-index-card,
-    .pitch-index-card::before,
-    .pitch-index-link {
+    .pitch-deck { scroll-behavior: auto; }
+    .pitch-nav,
+    .pitch-progress-fill,
+    .pitch-nav-dot,
+    .pitch-nav-btn {
+      animation: none !important;
       transition: none !important;
     }
   }
 </style>
+
+<script>
+  const deck = document.getElementById('pitch-deck');
+  const slides = Array.from(document.querySelectorAll<HTMLElement>('.pitch-slide-wrapper'));
+  const prevBtn = document.getElementById('pitch-prev');
+  const nextBtn = document.getElementById('pitch-next');
+  const progressLabel = document.getElementById('pitch-progress');
+  const progressFill = document.getElementById('pitch-progress-fill');
+  const dots = Array.from(document.querySelectorAll<HTMLElement>('.pitch-nav-dot'));
+  const totalSlides = slides.length;
+
+  let currentIndex = 0;
+  let isProgrammaticScroll = false;
+  let scrollEndTimer: number | null = null;
+
+  function updateProgress() {
+    if (progressLabel) progressLabel.textContent = `${currentIndex + 1} / ${totalSlides}`;
+    if (progressFill) progressFill.style.width = `${((currentIndex + 1) / totalSlides) * 100}%`;
+    dots.forEach((d, i) => d.classList.toggle('is-active', i === currentIndex));
+  }
+
+  function goToSlide(idx: number) {
+    if (idx < 0 || idx >= totalSlides) return;
+    currentIndex = idx;
+    isProgrammaticScroll = true;
+    slides[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateProgress();
+    if (scrollEndTimer) window.clearTimeout(scrollEndTimer);
+    scrollEndTimer = window.setTimeout(() => { isProgrammaticScroll = false; }, 950);
+  }
+
+  prevBtn?.addEventListener('click', () => goToSlide(currentIndex - 1));
+  nextBtn?.addEventListener('click', () => goToSlide(currentIndex + 1));
+  dots.forEach((d, i) => d.addEventListener('click', () => goToSlide(i)));
+
+  document.addEventListener('keydown', (e) => {
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) {
+      e.preventDefault();
+      goToSlide(currentIndex + 1);
+    } else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) {
+      e.preventDefault();
+      goToSlide(currentIndex - 1);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      goToSlide(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      goToSlide(totalSlides - 1);
+    }
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const slide = entry.target as HTMLElement;
+      const inner = slide.querySelector<HTMLElement>('.pitch-slide');
+      if (entry.isIntersecting && entry.intersectionRatio > 0.55) {
+        inner?.classList.add('is-visible');
+        if (!isProgrammaticScroll) {
+          const idx = parseInt(slide.dataset.slideIndex || '0');
+          if (idx !== currentIndex) {
+            currentIndex = idx;
+            updateProgress();
+          }
+        }
+      } else if (entry.intersectionRatio < 0.15) {
+        inner?.classList.remove('is-visible');
+      }
+    });
+  }, { threshold: [0, 0.15, 0.55, 1] });
+
+  slides.forEach(s => observer.observe(s));
+
+  updateProgress();
+  requestAnimationFrame(() => {
+    slides[0]?.querySelector('.pitch-slide')?.classList.add('is-visible');
+  });
+</script>
