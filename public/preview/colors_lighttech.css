@@ -92,6 +92,62 @@ h1, .kz-h1 { font-weight: 800; }
 h2, .kz-h2 { font-weight: 700; }
 h3, .kz-h3, h4, .kz-h4 { font-weight: 700; }
 
+/* =====================================================================
+   EXTRUDIERTE 3D-HEADLINES — wie aus Metallblock gefräst.
+   Gestapelte text-shadow-Lagen bauen die Tiefen-Wand nach unten-rechts,
+   helle Kante oben gibt den Licht-Glanz, weicher Cast-Shadow erdet.
+   Nur große Headlines (h1/h2) — kleiner Text bleibt flach & lesbar.
+   ===================================================================== */
+@media (min-width: 720px) {
+  h1, .kz-h1, h2, .kz-h2 {
+    --lt-extrude: 6px;            /* Tiefe der Extrusion (h1) */
+    text-shadow:
+      0  1px 0 rgba(255,255,255,0.55),   /* Lichtkante oben */
+      0 -1px 0 rgba(255,255,255,0.30),
+      1px  1px 0 #2A3040,
+      2px  2px 0 #262C3B,
+      3px  3px 0 #222836,
+      4px  4px 0 #1E2431,
+      5px  5px 0 #1A1F2B,
+      6px  6px 0 #161B25,                /* Tiefen-Wand (Anthrazit) */
+      8px  9px 14px rgba(11,16,32,0.30); /* weicher Cast-Shadow */
+  }
+  h2, .kz-h2 {
+    --lt-extrude: 5px;            /* etwas flacher als h1 */
+    text-shadow:
+      0  1px 0 rgba(255,255,255,0.50),
+      1px  1px 0 #2A3040,
+      2px  2px 0 #242A39,
+      3px  3px 0 #1E2431,
+      4px  4px 0 #181D28,
+      5px  5px 0 #141921,
+      7px  8px 12px rgba(11,16,32,0.28);
+  }
+}
+
+/* Indigo-Text (Subline / Akzent-Worte) bekommt eine VIOLETTE Tiefe,
+   damit das "Material" zur Farbe passt statt grau zu wirken. */
+@media (min-width: 720px) {
+  .kz-h1 .accent, h1 .accent,
+  .kz-h2 .accent, h2 .accent,
+  [style*="var(--accent)"]:is(h1,h2,.kz-h1,.kz-h2) {
+    text-shadow:
+      0  1px 0 rgba(255,255,255,0.40),
+      1px  1px 0 #3B2A8A,
+      2px  2px 0 #34247C,
+      3px  3px 0 #2D1F6E,
+      4px  4px 0 #261960,
+      5px  5px 0 #1F1352,
+      6px  6px 0 #190E45,
+      8px  9px 14px rgba(79,70,229,0.28);
+  }
+}
+
+/* prefers-reduced-motion / sehr kleine Screens → flach lassen (Lesbarkeit) */
+@media (max-width: 719px) {
+  h1, .kz-h1, h2, .kz-h2 { text-shadow: 0 1px 1px rgba(11,16,32,0.12); }
+}
+
 /* Tagline / brush: keine Handschrift mehr, sondern ruhiger Akzent-Text */
 .kz-tagline { font-style: normal; font-weight: 600; color: var(--fg); }
 .kz-brush {
@@ -243,3 +299,62 @@ div[style*="border-radius: 50%"][style*="radial-gradient"] {
 
 /* Pause-Marker / Hairlines an helles Theme anpassen */
 .kz-pause { border-top-color: var(--lt-slate-2); }
+
+/* =====================================================================
+   CURSOR-GLOW — interaktiver Maus-Spotlight + Proximity-Leuchten
+   (gesteuert von cursor-glow.js via --gx/--gy/--near)
+   ===================================================================== */
+
+/* 1) Globaler Spotlight, folgt der Maus, liegt HINTER dem Inhalt */
+#lt-cursor-spot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+  background: radial-gradient(circle,
+    rgba(124,58,237,0.16) 0%,
+    rgba(79,70,229,0.10) 32%,
+    transparent 68%);
+  mix-blend-mode: multiply;   /* schmiegt sich an hellen Hintergrund */
+}
+
+/* 2) Headlines: leuchten am Cursor-Punkt auf (radialer Indigo-Schein,
+      clippt auf die Buchstaben-Form via background-clip:text) */
+@media (min-width: 720px) {
+  h1, .kz-h1, h2, .kz-h2 {
+    position: relative;
+  }
+  h1.lt-glow-on::after, .kz-h1.lt-glow-on::after,
+  h2.lt-glow-on::after, .kz-h2.lt-glow-on::after {
+    content: attr(data-text);
+  }
+  /* Schein-Layer über der Headline; Stärke = --near */
+  h1.lt-glow-on, .kz-h1.lt-glow-on,
+  h2.lt-glow-on, .kz-h2.lt-glow-on {
+    background-image: radial-gradient(
+      240px circle at var(--gx, 50%) var(--gy, 50%),
+      rgba(124,58,237, calc(0.55 * var(--near, 0))) 0%,
+      rgba(79,70,229, calc(0.30 * var(--near, 0))) 35%,
+      transparent 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    transition: background-image 80ms linear;
+  }
+}
+
+/* 3) Buttons & Karten-CTAs: weicher Schein + leichtes Anheben bei Nähe */
+a.lt-glow-on, button.lt-glow-on, .kz-btn.lt-glow-on {
+  box-shadow:
+    0 0 0 1px rgba(124,58,237, calc(0.45 * var(--near, 0))),
+    0 calc(8px * var(--near, 0)) calc(28px * var(--near, 0)) -6px rgba(79,70,229, calc(0.55 * var(--near, 0))),
+    0 6px 18px -6px rgba(79,70,229,0.30) !important;
+  transition: box-shadow 120ms var(--ease-out), transform 120ms var(--ease-out);
+}
+
+/* Spotlight an mobilen/Touch-Geräten gar nicht erst stören */
+@media (pointer: coarse) {
+  #lt-cursor-spot { display: none; }
+}
