@@ -100,28 +100,22 @@ h3, .kz-h3, h4, .kz-h4 { font-weight: 700; }
    ===================================================================== */
 @media (min-width: 720px) {
   h1, .kz-h1, h2, .kz-h2 {
-    --lt-extrude: 6px;            /* Tiefe der Extrusion (h1) */
+    --lt-extrude: 3px;            /* Tiefe der Extrusion (h1) — dezenter */
     text-shadow:
       0  1px 0 rgba(255,255,255,0.55),   /* Lichtkante oben */
-      0 -1px 0 rgba(255,255,255,0.30),
+      0 -1px 0 rgba(255,255,255,0.25),
       1px  1px 0 #2A3040,
-      2px  2px 0 #262C3B,
-      3px  3px 0 #222836,
-      4px  4px 0 #1E2431,
-      5px  5px 0 #1A1F2B,
-      6px  6px 0 #161B25,                /* Tiefen-Wand (Anthrazit) */
-      8px  9px 14px rgba(11,16,32,0.30); /* weicher Cast-Shadow */
+      2px  2px 0 #242A39,
+      3px  3px 0 #1E2431,                /* Tiefen-Wand (Anthrazit) */
+      4px  5px 9px rgba(11,16,32,0.26);  /* weicher Cast-Shadow */
   }
   h2, .kz-h2 {
-    --lt-extrude: 5px;            /* etwas flacher als h1 */
+    --lt-extrude: 2px;            /* noch flacher als h1 */
     text-shadow:
       0  1px 0 rgba(255,255,255,0.50),
       1px  1px 0 #2A3040,
-      2px  2px 0 #242A39,
-      3px  3px 0 #1E2431,
-      4px  4px 0 #181D28,
-      5px  5px 0 #141921,
-      7px  8px 12px rgba(11,16,32,0.28);
+      2px  2px 0 #202634,
+      4px  4px 7px rgba(11,16,32,0.22);
   }
 }
 
