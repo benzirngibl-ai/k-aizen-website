@@ -1,0 +1,245 @@
+/* =========================================================================
+   k-AIzen — LIGHT TECH (Vorschau-Variante)
+   Hell, produkt-zentriert, Indigo/Violett-Akzent. Plus Jakarta Sans.
+   Re-skinnt dieselben JSX-Sektionen (hero.jsx / sections.jsx) über Tokens.
+   Fantasy-Deko (Berge/Kraniche/Bambus/Blätter) wird ausgeblendet.
+   Lädt NACH colors_and_type.css und überschreibt dessen :root-Tokens.
+   ========================================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root {
+  /* ---------- LIGHT TECH PALETTE ---------- */
+  --lt-ink:        #0B1020;   /* fast-schwarzer Text, Headlines */
+  --lt-ink-soft:   #1C2333;   /* sekundäre dunkle Flächen */
+  --lt-slate:      #475569;   /* Fließtext gedämpft */
+  --lt-slate-2:    #64748B;   /* noch ruhiger / Captions */
+  --lt-paper:      #FCFCFD;   /* Haupt-Hintergrund (off-white) */
+  --lt-paper-2:    #F4F5FA;   /* Bänder / alternierende Sektionen */
+  --lt-card:       #FFFFFF;   /* Karten */
+  --lt-line:       #E6E8F0;   /* Hairlines / Borders */
+  --lt-line-soft:  #EEF0F6;
+
+  --lt-indigo:     #4F46E5;   /* Primär-Akzent / CTA */
+  --lt-indigo-deep:#4338CA;   /* hover/press */
+  --lt-violet:     #7C3AED;   /* Gradient-Partner */
+  --lt-indigo-text:#4338CA;   /* AA-sicherer Inline-Text-Indigo */
+  --lt-indigo-wash:rgba(79,70,229,0.07);
+  --lt-glow:       rgba(124,58,237,0.14);
+
+  /* ---------- SEMANTISCHE TOKENS (override) ---------- */
+  --kz-charcoal:        var(--lt-ink);
+  --kz-charcoal-soft:   var(--lt-ink-soft);
+  --kz-ember:           var(--lt-indigo);
+  --kz-ember-deep:      var(--lt-indigo-deep);
+  --kz-ember-text:      var(--lt-indigo-text);
+  --kz-cream:           var(--lt-paper);
+  --kz-cream-deep:      var(--lt-paper-2);
+  --kz-muted:           var(--lt-slate);
+  --kz-border:          var(--lt-line);
+  --kz-card:            var(--lt-card);
+  --kz-ink-wash:        var(--lt-indigo-wash);
+  --kz-ink-wash-strong: rgba(79,70,229,0.12);
+
+  --bg:           var(--lt-paper);
+  --bg-alt:       var(--lt-paper-2);
+  --bg-card:      var(--lt-card);
+  --bg-inverse:   var(--lt-ink);
+
+  --fg:           var(--lt-ink);
+  --fg-muted:     var(--lt-slate);
+  --fg-inverse:   var(--lt-paper);
+  --fg-accent:    var(--lt-indigo-text);
+
+  --border:        var(--lt-line);
+  --border-strong: var(--lt-ink);
+
+  --accent:        var(--lt-indigo);
+  --accent-deep:   var(--lt-indigo-deep);
+
+  /* ---------- TYPE FAMILIES (override — weg vom Serif) ---------- */
+  --font-sans:    "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-brush:   "Plus Jakarta Sans", sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Schärfere Radien, klarere Tech-Schatten */
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+
+  --shadow-xs: 0 1px 2px rgba(11,16,32,0.04);
+  --shadow-sm: 0 2px 8px -2px rgba(11,16,32,0.08), 0 1px 3px rgba(11,16,32,0.04);
+  --shadow-md: 0 10px 28px -8px rgba(11,16,32,0.12), 0 3px 8px rgba(11,16,32,0.06);
+  --shadow-lg: 0 28px 60px -14px rgba(79,70,229,0.18), 0 10px 24px rgba(11,16,32,0.10);
+}
+
+/* =====================================================================
+   GLOBAL — hell statt dunkel
+   ===================================================================== */
+html, body {
+  color: var(--fg);
+  background: var(--bg);
+}
+
+/* Headlines: kräftig, eng, NICHT kursiv-serif */
+h1, .kz-h1, h2, .kz-h2, h3, .kz-h3, h4, .kz-h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+  color: var(--fg);
+}
+h1, .kz-h1 { font-weight: 800; }
+h2, .kz-h2 { font-weight: 700; }
+h3, .kz-h3, h4, .kz-h4 { font-weight: 700; }
+
+/* Tagline / brush: keine Handschrift mehr, sondern ruhiger Akzent-Text */
+.kz-tagline { font-style: normal; font-weight: 600; color: var(--fg); }
+.kz-brush {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: normal;
+  color: var(--accent);
+  font-size: var(--text-2xl);
+  letter-spacing: -0.02em;
+}
+
+/* Accent-Italics aus dem Fallback / noscript bleiben lesbar, aber indigo */
+.accent { color: var(--accent) !important; font-style: normal !important; }
+
+/* Links */
+a { color: var(--fg); }
+a:hover { color: var(--accent); }
+::selection { background: var(--accent); color: #fff; }
+
+/* Mono fürs „Engineering"-Detail bei Eyebrows */
+.kz-eyebrow {
+  font-family: var(--font-mono);
+  letter-spacing: 0.10em;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* =====================================================================
+   FANTASY-DEKO AUSBLENDEN
+   ===================================================================== */
+/* Sumi-Berge-Hintergrund im Hero */
+[style*="sumi-mountains"],
+div[style*="sumi-mountains"] { background-image: none !important; background: transparent !important; }
+
+/* Alle dekorativen Tusche-/Blatt-/Tier-Bilder */
+img[src*="/claude-design/sumi-"],
+img[src*="/claude-design/leaf-"],
+img[src*="/icon-sakura"],
+.kz-cherry-decoration,
+.kz-bamboo-decoration {
+  display: none !important;
+}
+
+/* Fallende Blätter/Blüten (Canvas-Partikelsystem) — auf dieser Seite gibt es
+   keine Daten-Charts, daher ist das Ausblenden aller <canvas> sicher. */
+canvas { display: none !important; }
+
+/* Falls Deko-Filter (Helligkeit runter) noch greift — neutralisieren */
+img[src*="/claude-design/"] { filter: none !important; }
+
+/* =====================================================================
+   LIGHT-TECH HERO-GLOW (subtiler Gradient-Schimmer statt Berge)
+   ===================================================================== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(900px 520px at 78% -8%, var(--lt-glow), transparent 60%),
+    radial-gradient(700px 480px at 10% 4%, rgba(79,70,229,0.10), transparent 62%);
+}
+#root { position: relative; z-index: 1; }
+
+/* =====================================================================
+   BUTTONS / CTA — Indigo→Violett-Gradient, weiße Schrift
+   (greift breite gängige Klassen + Inline-Ember-Backgrounds)
+   ===================================================================== */
+[class*="cta"], button, .kz-btn, a.kz-btn,
+[style*="background: var(--accent)"],
+[style*="background:var(--accent)"],
+[style*="#E85A2B"], [style*="#e85a2b"] {
+  /* nur Hintergrund-orange-Treffer umfärben passiert per Override unten */
+}
+
+.kz-btn, a.kz-btn, button.kz-btn {
+  background: linear-gradient(135deg, var(--lt-indigo), var(--lt-violet)) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 6px 18px -6px rgba(79,70,229,0.45);
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+}
+.kz-btn:hover, a.kz-btn:hover, button.kz-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px -6px rgba(79,70,229,0.55);
+}
+.kz-btn--ghost, a.kz-btn--ghost {
+  background: #fff !important;
+  color: var(--lt-ink) !important;
+  border: 1px solid var(--lt-line) !important;
+  box-shadow: var(--shadow-xs);
+}
+
+/* =====================================================================
+   KARTEN / FLÄCHEN — weiß auf off-white, feine Linien & Tech-Schatten
+   ===================================================================== */
+[class*="card"], .kz-card {
+  background: var(--lt-card) !important;
+  border: 1px solid var(--lt-line) !important;
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-lg);
+}
+
+/* Story-Bilder „Ein Tag mit Lena": gerahmt, leicht gekippt, Tech-Schatten */
+img[src*="/pitch/"] {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--lt-line);
+}
+
+/* ---- LOGO: logo-full.png ist cremefarben (für dunklen BG) → für hell invertieren ---- */
+img[src*="logo-full.png"] { filter: invert(1) brightness(0.18) saturate(0) !important; }
+
+/* ---- INLINE-STYLE-BUTTONS (kein class) gezielt umfärben ---- */
+/* Sekundär-Buttons mit hartkodiertem Amber bzw. Grün → neutrale helle Tech-Buttons */
+a[style*="rgba(212, 138, 48"], a[style*="rgba(212,138,48"],
+a[style*="rgba(74, 155, 122"], a[style*="rgba(74,155,122"] {
+  background: #fff !important;
+  color: var(--lt-ink) !important;
+  border: 1px solid var(--lt-line) !important;
+  backdrop-filter: none !important;
+  box-shadow: var(--shadow-xs) !important;
+}
+a[style*="rgba(212, 138, 48"]:hover, a[style*="rgba(212,138,48"]:hover,
+a[style*="rgba(74, 155, 122"]:hover, a[style*="rgba(74,155,122"]:hover {
+  border-color: var(--lt-indigo) !important;
+  color: var(--lt-indigo) !important;
+}
+
+/* Primärer "Erstgespräch"-Button (charcoal-Inline) → Indigo→Violett-Gradient */
+a[style*="background: var(--kz-charcoal)"],
+a[style*="background:var(--kz-charcoal)"],
+a[style*="background: var(--kz-ember-deep)"],
+a[style*="background:var(--kz-ember-deep)"] {
+  background: linear-gradient(135deg, var(--lt-indigo), var(--lt-violet)) !important;
+  color: #fff !important;
+  box-shadow: 0 6px 18px -6px rgba(79,70,229,0.45) !important;
+}
+
+/* ---- HERO-GLOW (180px radial Kreis) → indigo statt ember ---- */
+div[style*="border-radius: 50%"][style*="radial-gradient"] {
+  background: radial-gradient(circle, var(--lt-glow) 0%, transparent 70%) !important;
+}
+
+/* Muted-Text dunkler/lesbarer auf hell */
+.kz-muted, .kz-muted * { color: var(--fg-muted) !important; }
+
+/* Pause-Marker / Hairlines an helles Theme anpassen */
+.kz-pause { border-top-color: var(--lt-slate-2); }

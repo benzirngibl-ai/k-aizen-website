@@ -1,0 +1,68 @@
+---
+// VORSCHAU — Light-Tech-Variante der Startseite.
+// Gleiches "Ein Tag mit Lena"-Schema (hero.jsx + sections.jsx),
+// nur über colors_lighttech.css neu eingekleidet (hell, indigo, kein Fantasy).
+// Erreichbar unter /preview-lighttech — ändert NICHTS an der Live-Startseite.
+const SITE_URL = 'https://k-aizen.de';
+const TITLE = 'k-AIzen — Vorschau Light-Tech';
+---
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{TITLE}</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#FCFCFD" />
+
+  <link rel="icon" type="image/png" href="/animations/claude-design/logo-mark.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://unpkg.com" crossorigin />
+
+  <!-- Basis-Tokens ZUERST, dann Light-Tech-Override -->
+  <link rel="stylesheet" href="/preview/colors_and_type.css?v=20260528-younglena-v12" />
+  <link rel="stylesheet" href="/preview/colors_lighttech.css?v=lighttech-1" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { background: var(--bg); overscroll-behavior: none; }
+    #root { isolation: isolate; }
+    section { user-select: none; -webkit-user-select: none; }
+
+    /* Vorschau-Ribbon */
+    .lt-ribbon {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: linear-gradient(135deg, #4F46E5, #7C3AED);
+      color: #fff; font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.01em;
+      padding: 7px 14px;
+      box-shadow: 0 2px 12px rgba(79,70,229,0.35);
+    }
+    .lt-ribbon a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+    body { padding-top: 36px; }
+  </style>
+</head>
+<body>
+  <div class="lt-ribbon">
+    VORSCHAU · Light-Tech-Variante (Indigo) — gleiches „Ein Tag mit Lena"-Schema, neuer Look ·
+    <a href="/">zur aktuellen Seite</a>
+  </div>
+
+  <div id="root"></div>
+
+  <script is:inline src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+  <script is:inline src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+  <script is:inline src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+
+  <!-- petal-system.js bleibt geladen (hero.jsx braucht den Constructor),
+       die fallenden Blätter/Blüten sind per CSS unsichtbar geschaltet. -->
+  <script is:inline src="/preview/petal-system.js?v=20260528-younglena-v12"></script>
+  <script is:inline type="text/babel" src="/preview/tweaks-panel.jsx?v=20260528-younglena-v12"></script>
+  <script is:inline type="text/babel" src="/preview/sections.jsx?v=20260528-younglena-v12"></script>
+  <script is:inline type="text/babel" src="/preview/hero.jsx?v=20260528-younglena-v12"></script>
+</body>
+</html>
