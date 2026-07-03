@@ -1,298 +1,495 @@
 ---
-// k-AIzen Homepage — Claude Design Version (React + Babel-standalone)
-// Lädt Static-Assets aus /preview/ (CSS/JS/JSX) und /animations/claude-design/ (Bilder).
-// Vorgängerversion liegt unter old-index.astro als Backup.
+// k-AIzen — Cinematic Light Premium (Nordstern-Positionierung).
+// Seit 2026-07-03 die Startseite (war zuvor /v2). Vorgänger: old-index.astro.
+const benFoto = "/images/ben-portrait.png";
 
-const SITE_URL = 'https://k-aizen.de';
-const TITLE = 'k-AIzen — Dein KI-Assistent, der nie etwas vergisst. Für KMU in Deutschland.';
-const DESCRIPTION = 'KI-PA für KMU in Deutschland — dein persönlicher KI-Assistent für Mails, Termine, Memory, Briefings und mehr. Remote eingerichtet, eigener Server in Deutschland, DSGVO-konform. Ab 1.490 €/Mo, Module dazubuchbar. Festpreise, kein Lock-in.';
-const OG_IMAGE = `${SITE_URL}/og-image.png`;
+// "Ein Tag mit Lena" — konkrete Alltagsmomente statt abstrakter Feature-Liste.
+const szenen = [
+  {
+    time: "Früher — ohne Assistent",
+    img: "/pitch/12-old-day.png", alt: "Unternehmer mit überfülltem Posteingang am Schreibtisch",
+    result: "Der Tag startet schon mit Rückstand: ungelesene Mails, offene Rückfragen, ein Termin, der fast untergeht. Nichts davon ist einzeln riesig. Zusammen zieht es trotzdem sofort Energie.",
+    sources: ["Mails", "Termine", "Rückfragen"],
+    flow: ["Alles kommt ungefiltert", "Sie sortieren selbst", "Tag startet im Rückstand"],
+  },
+  {
+    time: "06:30 — Tagesbriefing",
+    img: "/pitch/01-morning.png", alt: "Unternehmer liest morgens das Tagesbriefing seines KI-Assistenten",
+    result: "Lena legt Ihnen morgens ein kurzes Tagesbriefing hin: Termine, neue Mails, offene Entscheidungen und Dinge, die nicht liegenbleiben sollten. Kein Dashboard zum Durchklicken. Ein Überblick, bevor der Tag losgeht.",
+    sources: ["Mail", "Kalender", "Aufgaben"],
+    flow: ["Neue Eingänge prüfen", "Wichtiges bündeln", "Briefing schicken"],
+  },
+  {
+    time: "07:00 — Freigaben",
+    img: "/pitch/02-coffee.png", alt: "Unternehmer gibt Freigaben am Handy an KI-Assistentin Lena",
+    result: "Ein paar Dinge brauchen nur Ihre Entscheidung: bestellen, senden, buchen oder ändern. Lena bereitet es vor, sammelt die Freigaben ein und dokumentiert, was entschieden wurde. Sie geben frei. Der Rest läuft weiter.",
+    sources: ["Mail", "Kalender", "Bestellung"],
+    flow: ["Vorschlag vorbereiten", "Freigabe einholen", "Erledigen + dokumentieren"],
+    discord: { channel: "#aufgaben", time: "06:45", body: "📌 **3 Freigaben warten**\n\n**1. Bürobedarf nachbestellen** · 38,50 €\n→ ✅ bestellen\n\n**2. Antwort an Kunde Müller** · Draft liegt bereit\n→ ✅ senden  ✏️ ändern\n\n**3. Hotel Berlin · 03.–05.06.** · 487 €\n→ ✅ buchen" },
+  },
+  {
+    time: "08:10 — Beschwerde",
+    img: "/pitch/13-angebot.png", alt: "Unternehmer bearbeitet vorbereitete Antwort auf Kundenbeschwerde",
+    result: "Eine verärgerte Kundenmail geht nicht im Posteingang unter. Lena erkennt die Beschwerde, markiert sie als wichtig und bereitet eine sachliche Antwort vor. Sie entscheiden den Ton und geben frei.",
+    sources: ["Mail", "Kundenliste", "Verlauf"],
+    flow: ["Beschwerde erkennen", "Verlauf zusammenfassen", "Antwort zur Freigabe"],
+    discord: { channel: "#posteingang", time: "08:09", alert: true, body: "🚨 **Beschwerde erkannt — hoch priorisiert**\n\n👤 Thomas Brandt (Bestandskunde)\n\n„…die letzte Lieferung war zwei Wochen zu spät. Ich erwarte eine Reaktion.\"\n\n📌 Oben angepinnt · wartet auf Sie" },
+  },
+  {
+    time: "10:40 — Antwort mit Vorgeschichte",
+    img: "/pitch/10-memory-retrieve.png", alt: "Unternehmer prüft eine KI-gestützte Antwort mit Mailverlauf und Kundenkontext",
+    result: "Wenn eine neue Kundenmail kommt, betrachtet Lena nicht nur diese eine Nachricht. Sie zieht den Mailverlauf, offene Zusagen und vorhandene Kundennotizen dazu. Daraus entsteht kein blindes Autopilot-Schreiben, sondern ein Antwortvorschlag mit Kontext.",
+    sources: ["Mailverlauf", "Kundennotiz", "CRM"],
+    flow: ["Neue Mail lesen", "Vorgeschichte laden", "Entwurf mit Kontext"],
+    discord: { channel: "#posteingang", time: "10:37", body: "🧠 **Antwort mit Kontext**\n\nThomas Brandt · Bestandskunde\nQuelle: Mailverlauf + Kundennotiz\n\n• Lieferung war verspätet\n• Rückmeldung noch offen\n• Ton: kurz, konkret, keine Floskeln\n\nEntwurf liegt bereit · bitte prüfen" },
+  },
+  {
+    time: "14:30 — Beleg",
+    img: "/pitch/15-beleg.png", alt: "Unternehmer fotografiert Bewirtungsbeleg für Belegerfassung",
+    result: "Foto machen reicht. Lena liest Datum, Betrag und Kategorie aus und legt den Beleg so ab, dass er später für Buchhaltung oder Steuerberater nicht wieder gesucht werden muss.",
+    sources: ["Foto", "OCR", "Buchhaltung"],
+    flow: ["Beleg auslesen", "Fehlendes markieren", "Sauber ablegen"],
+    discord: { channel: "#rechnungen", time: "14:31", body: "🧾 **Beleg erfasst**\n\n• Datum: 03.06.2026\n• Betrag: 87,40 €\n• Kategorie: Bewirtung (70 %)\n• Lieferant: Trattoria da Vinci\n\n✅ Abgelegt + für Steuerberater markiert" },
+  },
+  {
+    time: "18:00 — Tagesabschluss",
+    img: "/pitch/07-evening.png", alt: "Unternehmer entspannt abends nach Tagesabschluss",
+    result: "Am Ende sehen Sie, was erledigt ist, was offen bleibt und was morgen zuerst drankommt. Nicht mehr alles im Kopf behalten. Einfach sauber übergeben.",
+    sources: ["Mails", "Freigaben", "Aufgaben"],
+    flow: ["Erledigtes sammeln", "Offenes markieren", "Morgen vorbereiten"],
+  },
+];
 
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "k-AIzen",
-  "alternateName": "k-AIzen — Benjamin Zirngibl",
-  "url": SITE_URL,
-  "logo": `${SITE_URL}/animations/claude-design/logo-full.png`,
-  "description": DESCRIPTION,
-  "founder": {
-    "@type": "Person",
-    "name": "Benjamin Zirngibl",
-    "url": "https://www.linkedin.com/in/benjamin-zirngibl-0963753ab"
+const ablaufSchritte = [
+  {
+    k: "01",
+    title: "Erstgespräch",
+    text: "30 Minuten: Wir schauen, ob KI bei Ihnen gerade wirklich Sinn macht und wo der erste Hebel liegt.",
   },
-  "areaServed": {
-    "@type": "Country",
-    "name": "Deutschland"
+  {
+    k: "02",
+    title: "KI-Check",
+    text: "Ich prüfe Mails, Kalender, Aufgaben, wiederkehrende Entscheidungen und Datenquellen. Danach ist klar, was zuerst gebaut wird.",
   },
-  "knowsAbout": [
-    "KI-Workflow-Automation für KMU",
-    "Observation-driven Process Automation",
-    "Personalplanung mit KI",
-    "Email-Triage Automation",
-    "Beleg-Sortierung DATEV",
-    "n8n Workflow Engineering",
-    "Claude API Integration",
-    "DSGVO-konforme KI-Architektur",
-    "On-Premise LLM (Llama, Mistral)",
-    "Hetzner-Cloud-Infrastruktur",
-    "Per-Kunde-Server-Pattern"
-  ],
-  "sameAs": [
-    "https://www.linkedin.com/in/benjamin-zirngibl-0963753ab",
-    "https://github.com/benzirngibl-ai"
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "email": "kontakt@k-aizen.de",
-    "telephone": "+49-1590-1031928",
-    "contactType": "customer service",
-    "areaServed": "DE",
-    "availableLanguage": ["German", "English"]
-  }
-};
+  {
+    k: "03",
+    title: "KI-PA einrichten",
+    text: "Der Assistent bekommt freigegebene Quellen, Regeln, Tonalität und klare Grenzen. Erst Vorschläge, dann Freigabe.",
+  },
+  {
+    k: "04",
+    title: "System ausbauen",
+    text: "Wenn der Einstieg trägt, automatisieren wir Schritt für Schritt weitere Abläufe: Telefon, Belege, Leads, Wissen, interne Prozesse.",
+  },
+];
 
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "k-AIzen",
-  "url": SITE_URL,
-  "description": DESCRIPTION,
-  "inLanguage": "de-DE",
-  "publisher": {
-    "@type": "Organization",
-    "name": "k-AIzen",
-    "url": SITE_URL
-  }
-};
-
-const serviceSchema = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "k-AIzen — AI-Workflow-Automation",
-  "url": SITE_URL,
-  "image": OG_IMAGE,
-  "telephone": "+49-1590-1031928",
-  "priceRange": "€€",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Zum Schwarzachtal 5",
-    "postalCode": "90592",
-    "addressLocality": "Schwarzenbruck",
-    "addressRegion": "Bayern",
-    "addressCountry": "DE"
+const proofPunkte = [
+  {
+    title: "Echte Quellen",
+    text: "Antworten und Briefings entstehen aus freigegebenen Quellen: Mailverlauf, Kalender, Aufgaben, Kundennotizen oder CRM.",
   },
-  "areaServed": {
-    "@type": "Country",
-    "name": "Deutschland"
+  {
+    title: "Freigabe statt Blindflug",
+    text: "Sensible Dinge werden vorbereitet, nicht heimlich verschickt. Sie sehen Vorschlag, Kontext und offene Fragen.",
   },
-  "serviceType": "KI-Workflow-Automation für KMU",
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "k-AIzen Angebot",
-    "itemListElement": [
-      { "@type": "Offer", "name": "KI-PA", "price": "1490", "priceCurrency": "EUR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "1490", "priceCurrency": "EUR", "unitText": "pro Monat" }, "itemOffered": { "@type": "Service", "name": "KI-PA", "description": "Persönlicher KI-Assistent, remote eingerichtet. Mail-Triage, Termine, Customer-Memory, Briefings, Beleg-Erfassung, Audio→Protokoll, Recherche, News. Eigener Server in Deutschland, DSGVO-konform, kein Lock-in." } },
-      { "@type": "Offer", "name": "Modul Telefon-Empfang", "itemOffered": { "@type": "Service", "name": "Telefon-Empfang", "description": "Dazubuchbares Modul: KI nimmt Anrufe entgegen, beantwortet FAQs, vereinbart Termine." } },
-      { "@type": "Offer", "name": "Modul Social", "itemOffered": { "@type": "Service", "name": "Social", "description": "Dazubuchbares Modul: Content-Erstellung und Social-Media-Betreuung." } },
-      { "@type": "Offer", "name": "Modul Lead-Pipeline", "itemOffered": { "@type": "Service", "name": "Lead-Pipeline", "description": "Dazubuchbares Modul: Lead-Recherche, Qualifizierung und Outreach." } },
-      { "@type": "Offer", "name": "Modul Beleg & Steuer", "itemOffered": { "@type": "Service", "name": "Beleg & Steuer", "description": "Dazubuchbares Modul: Beleg-Erfassung und steuerliche Vorbereitung." } },
-      { "@type": "Offer", "name": "Modul Recruiting", "itemOffered": { "@type": "Service", "name": "Recruiting", "description": "Dazubuchbares Modul: Bewerber-Sichtung und Recruiting-Workflows." } }
-    ]
-  }
-};
+  {
+    title: "Greifbare Artefakte",
+    text: "Nach kurzer Zeit liegen keine Versprechen vor, sondern Briefings, Antwortentwürfe, Freigabelisten und Ablaufkarten.",
+  },
+  {
+    title: "Saubere Basis",
+    text: "Getrennte Kundenumgebungen, dokumentierte Entscheidungen und Datenschutz von Anfang an mitgedacht.",
+  },
+];
 ---
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <!-- SEO -->
-  <title>{TITLE}</title>
-  <meta name="description" content={DESCRIPTION} />
-  <link rel="canonical" href={SITE_URL} />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta name="author" content="Benjamin Zirngibl · k-AIzen" />
-  <meta name="keywords" content="AI Workflow Automation, KMU AI, Mittelstand Automation, Inbox-Triage, Angebots-Generator, n8n, Workflow-Engineering, DSGVO AI, Bayern AI Agency, k-AIzen, Benjamin Zirngibl" />
-  <meta name="theme-color" content="#F5F0E8" />
-
-  <!-- OpenGraph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content={TITLE} />
-  <meta property="og:description" content={DESCRIPTION} />
-  <meta property="og:url" content={SITE_URL} />
-  <meta property="og:image" content={OG_IMAGE} />
-  <meta property="og:image:alt" content="k-AIzen Logo" />
-  <meta property="og:locale" content="de_DE" />
-  <meta property="og:site_name" content="k-AIzen" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={TITLE} />
-  <meta name="twitter:description" content={DESCRIPTION} />
-  <meta name="twitter:image" content={OG_IMAGE} />
-
-  <!-- AI Crawlers — explizit erlaubt -->
-  <meta name="GPTBot" content="index, follow" />
-  <meta name="ClaudeBot" content="index, follow" />
-  <meta name="Claude-Web" content="index, follow" />
-  <meta name="PerplexityBot" content="index, follow" />
-  <meta name="Applebot" content="index, follow" />
-  <meta name="Google-Extended" content="index, follow" />
-
-  <!-- Hreflang -->
-  <link rel="alternate" hreflang="de" href={SITE_URL} />
-  <link rel="alternate" hreflang="x-default" href={SITE_URL} />
-
-  <link rel="icon" type="image/png" href="/animations/claude-design/logo-mark.png" />
-  <link rel="apple-touch-icon" href="/animations/claude-design/logo-mark.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>k-AIzen — Ihr KI-Ansprechpartner im Unternehmen</title>
+  <meta name="description" content="Ein fester KI-Ansprechpartner für Ihr Unternehmen. Start mit dem KI-PA für Mail, Kalender, Aufgaben und Kontext — danach Schritt für Schritt Automatisierung und System." />
+  <meta name="theme-color" content="#FCFCFD" />
+  <link rel="icon" type="image/png" href="/icons/kaizen-favicon.png" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/icons/kaizen-favicon.png" />
   <link rel="manifest" href="/manifest.webmanifest" />
-
-  <!-- Preconnect für Critical-Path-Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://unpkg.com" crossorigin />
-
-  <!-- Preload Critical-Above-Fold Assets -->
-  <link rel="preload" as="image" href="/animations/claude-design/logo-full.png" />
-  <link rel="preload" as="image" href="/animations/claude-design/sumi-mountains.png" />
-
-  <link rel="stylesheet" href="/preview/colors_and_type.css?v=20260528-younglena-v12" />
-
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      background: var(--bg);
-      overscroll-behavior: none;
-    }
-    #root { isolation: isolate; }
-
-    @keyframes kz-fade-up {
-      from { transform: translateY(14px); }
-      to   { transform: translateY(0); }
-    }
-    @keyframes kz-scroll-line {
-      0%   { transform: scaleY(0); transform-origin: top; }
-      40%  { transform: scaleY(1); transform-origin: top; }
-      60%  { transform: scaleY(1); transform-origin: bottom; }
-      100% { transform: scaleY(0); transform-origin: bottom; }
-    }
-
-    section { user-select: none; -webkit-user-select: none; }
-
-    /* Server-Side rendered fallback content für Crawlers + initial paint */
-    .kz-noscript-fallback {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: clamp(60px, 10vh, 120px) clamp(24px, 5vw, 48px);
-    }
-    .kz-noscript-fallback h1 {
-      font-family: var(--font-display);
-      font-size: clamp(40px, 6vw, 80px);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin: 0 0 24px;
-    }
-    .kz-noscript-fallback .accent {
-      color: var(--kz-ember);
-      font-style: italic;
-    }
-    .kz-noscript-fallback p {
-      font-family: var(--font-sans);
-      font-size: 18px;
-      line-height: 1.6;
-      color: var(--fg-muted);
-      max-width: 640px;
-    }
-    .kz-noscript-fallback ul {
-      font-family: var(--font-sans);
-      max-width: 640px;
-      padding-left: 0;
-      list-style: none;
-    }
-    .kz-noscript-fallback li {
-      position: relative;
-      padding-left: 22px;
-      margin-bottom: 8px;
-    }
-    .kz-noscript-fallback li::before {
-      content: "";
-      position: absolute;
-      left: 0; top: 12px;
-      width: 12px; height: 1px;
-      background: var(--kz-ember);
-    }
-    .kz-noscript-fallback a {
-      color: var(--kz-ember-text);
-      text-decoration: underline;
-    }
-    /* Hide fallback when React mounts */
-    #root:not(:empty) ~ .kz-noscript-fallback { display: none; }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/v2/kz-v2.css?v=6" />
+  <link rel="stylesheet" href="/v2/kz-v2-polish.css?v=6" />
 </head>
 <body>
-  <div id="root"></div>
 
-  <!-- SEO/AI-Crawler Fallback — sichtbar bevor React mountet, hidden danach.
-       Stellt sicher dass Suchmaschinen + AI-Tools die Inhalte indexieren können
-       auch wenn JavaScript-Rendering fehlschlägt oder langsam ist. -->
-  <noscript>
-    <article class="kz-noscript-fallback">
-      <h1>Dein Mitarbeiter, der <span class="accent">nie etwas vergisst.</span></h1>
-      <p>
-        Der KI-PA ist dein persönlicher KI-Assistent für KMU in Deutschland. Er übernimmt Mail-Triage,
-        Termine, Customer-Memory, Briefings, Beleg-Erfassung, Audio→Protokoll, Recherche und News.
-        Remote eingerichtet, eigener Server in Deutschland, DSGVO-konform, kein Lock-in.
+  <!-- Scroll-Progress -->
+  <div class="kz-progress"></div>
+
+  <!-- NAV -->
+  <nav class="kz-nav">
+    <div class="kz-nav__brand">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-logo-mark" />
+      <span class="kz-logo">k&#8209;<span class="kz-logo__ai">AI</span>zen</span>
+    </div>
+    <div class="kz-nav__links">
+      <a href="#angebot">Angebot</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#ein-tag">Ein Tag mit Lena</a>
+      <a href="#proof">Proof</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <a href="/erstgespraech" class="kz-btn kz-btn--primary" style="padding:11px 22px;font-size:14px;">Erstgespräch</a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="kz-hero">
+    <div class="kz-hero__grid"></div>
+    <div class="kz-wrap">
+      <div class="kz-hero__eyebrow kz-reveal"><span class="dot"></span> Ihr KI-Ansprechpartner im Unternehmen</div>
+      <h1 class="kz-h1 kz-kinetic">Ein fester Ansprechpartner für KI — <span class="accent">mit dem KI-PA als Startpunkt.</span></h1>
+      <p class="kz-hero__sub kz-reveal" data-delay="2">
+        So wie größere Firmen klare Verantwortliche für Datenschutz haben, bekommen Sie jemanden, der KI für Ihren Betrieb im Blick behält: erst Mails, Termine, Freigaben und Kontext. Danach Schritt für Schritt Automatisierung und System.
+      </p>
+      <div class="kz-hero__cta kz-reveal" data-delay="3">
+        <a href="/erstgespraech" class="kz-btn kz-btn--primary">Kostenloses Erstgespräch buchen <span class="kz-btn__arrow">→</span></a>
+        <a href="#angebot" class="kz-btn kz-btn--ghost">Angebot ansehen</a>
+      </div>
+    </div>
+    <div class="kz-scrollcue">
+      <span>Scroll</span>
+      <span class="kz-scrollcue__line"></span>
+    </div>
+  </header>
+
+  <!-- 2 — DAS PROBLEM (Spiegel) -->
+  <section class="kz-section">
+    <div class="kz-wrap">
+      <span class="kz-eyebrow kz-reveal">Das Dilemma</span>
+      <h2 class="kz-h2 kz-reveal" data-delay="1">
+        „KI wird wichtig. Aber wer soll das bei uns eigentlich verantworten?"
+      </h2>
+      <p class="kz-lead kz-reveal" data-delay="2">
+        Tools testen reicht nicht. Irgendjemand muss verstehen, wo Zeit verloren geht, welche Daten ran dürfen, welche Antworten freigegeben werden müssen und wie daraus ein funktionierendes System entsteht. Genau diese Verantwortung bleibt in vielen Betrieben liegen.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3 — REFRAME: all in vs all in -->
+  <section class="kz-section" style="background:var(--paper-2);">
+    <div class="kz-wrap">
+      <span class="kz-eyebrow kz-reveal">Auf Augenhöhe</span>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center;">
+        <div class="kz-reveal" data-delay="1">
+          <div class="kz-split-card" data-tilt>
+            <div class="kz-split-num">01</div>
+            <h3 style="font-size:1.5rem;font-weight:700;margin-bottom:8px;">Sie</h3>
+            <p style="color:var(--slate);">Sie kennen Ihr Handwerk. Ihr Lebenswerk. Niemand kennt Ihren Betrieb so wie Sie.</p>
+          </div>
+        </div>
+        <div class="kz-reveal" data-delay="2">
+          <div class="kz-split-card kz-split-card--accent" data-tilt>
+            <div class="kz-split-num">02</div>
+            <h3 style="font-size:1.5rem;font-weight:700;margin-bottom:8px;">Ich</h3>
+            <p style="color:rgba(255,255,255,0.85);">Ich werde Ihr KI-Ansprechpartner: ich prüfe, was sinnvoll ist, baue den ersten Assistenten und entwickle daraus Schritt für Schritt bessere Abläufe.</p>
+          </div>
+        </div>
+      </div>
+      <p class="kz-lead kz-reveal" data-delay="3" style="margin-top:48px;text-align:center;margin-inline:auto;">
+        Der Einstieg ist bewusst klein genug, um ihn zu verstehen — aber so gebaut, dass er später wachsen kann.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3.5 — ZAHLEN-BAND (Rhythmus + Greifbarkeit) -->
+  <section class="kz-section" style="padding-block:0;">
+    <div class="kz-wrap">
+      <div class="kz-stats kz-reveal">
+        <div class="kz-stat">
+          <div class="kz-stat__num" data-count="1" data-suffix="">0</div>
+          <div class="kz-stat__label">fester KI-Ansprechpartner, der Ihren Betrieb kennt</div>
+        </div>
+        <div class="kz-stat">
+          <div class="kz-stat__num" data-count="30" data-suffix=" Min">0</div>
+          <div class="kz-stat__label">kostenloses Erstgespräch als sauberer Einstieg</div>
+        </div>
+        <div class="kz-stat">
+          <div class="kz-stat__num" data-count="4" data-suffix="">0</div>
+          <div class="kz-stat__label">Startbereiche: Mail, Kalender, Aufgaben, Wissen</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3.6 — ANGEBOT -->
+  <section class="kz-section" id="angebot">
+    <div class="kz-wrap">
+      <span class="kz-eyebrow kz-reveal">Das Angebot</span>
+      <h2 class="kz-h2 kz-reveal" data-delay="1">Der erste Schritt ist nicht „die ganze Firma automatisieren".</h2>
+      <p class="kz-lead kz-reveal" data-delay="2">
+        Der erste Schritt ist ein persönlicher KI-Assistent, der an echten Stellen hilft: Mail, Kalender, Aufgaben, Freigaben und Kontext. So bekommt Ihr Betrieb einen greifbaren Einstieg in KI, ohne dass Sie selbst zum Tool-Manager werden.
       </p>
 
-      <h2>Das Angebot</h2>
-      <ul>
-        <li><a href="/ki-pa">KI-PA</a> — ab 1.490 €/Mo. Persönlicher KI-Assistent, remote eingerichtet, eigener Server in Deutschland.</li>
-        <li><a href="/pricing">Module dazubuchbar</a> — Telefon-Empfang, Social, Lead-Pipeline, Beleg &amp; Steuer, Recruiting.</li>
-      </ul>
+      <div class="kz-offer kz-reveal" data-delay="3">
+        <div class="kz-offer__main">
+          <div class="kz-offer__label">Einstieg</div>
+          <h3>KI-PA + persönlicher KI-Ansprechpartner</h3>
+          <p>
+            Ich richte den Assistenten mit Ihnen ein, binde nur freigegebene Quellen an und sorge dafür, dass er Vorschläge mit nachvollziehbarem Kontext liefert.
+          </p>
+          <ul class="kz-checklist">
+            <li>Mailverlauf, Kalender, Aufgaben und Kundennotizen als freigegebene Quellen.</li>
+            <li>Tagesbriefing, Antwortentwürfe, Freigaben und Erinnerungen für den Alltag.</li>
+            <li>Regeln, Tonalität und Grenzen, damit nichts unkontrolliert nach außen geht.</li>
+            <li>Laufende Weiterentwicklung, wenn der erste Assistent im Alltag trägt.</li>
+          </ul>
+        </div>
+        <aside class="kz-offer__side">
+          <div class="kz-offer__side-k">Nächster Schritt</div>
+          <h3>30 Minuten Erstgespräch</h3>
+          <p>Wir nehmen Ihren Alltag durch und entscheiden, ob der KI-PA der richtige Startpunkt ist.</p>
+          <a href="/erstgespraech" class="kz-btn kz-btn--primary">Erstgespräch buchen <span class="kz-btn__arrow">→</span></a>
+          <a href="/ki-pa" class="kz-offer__link">KI-PA Detailseite ansehen</a>
+        </aside>
+      </div>
+    </div>
+  </section>
 
-      <h2>Vertrauen</h2>
-      <ul>
-        <li>EU-Datenhaltung — dedizierter Server in Deutschland</li>
-        <li>DSGVO-konform ab Tag 1 — Auftragsverarbeitungsvertrag schriftlich vor Projektstart</li>
-        <li>Kein Lock-in — dein Server, deine Daten, jederzeit übergebbar</li>
-        <li>Festpreise, sichtbar — kein „auf Anfrage"</li>
-      </ul>
+  <!-- 3.7 — ABLAUF -->
+  <section class="kz-section" id="ablauf" style="background:var(--paper-2);">
+    <div class="kz-wrap">
+      <span class="kz-eyebrow kz-reveal">Ablauf</span>
+      <h2 class="kz-h2 kz-reveal" data-delay="1">Vom ersten Gespräch zum ersten System im Betrieb.</h2>
+      <p class="kz-lead kz-reveal" data-delay="2">
+        Es geht nicht darum, sofort alles zu automatisieren. Es geht darum, den richtigen Einstieg zu finden, sauber aufzubauen und dann mit jedem Schritt mehr Ordnung ins Unternehmen zu bringen.
+      </p>
+      <div class="kz-process">
+        {ablaufSchritte.map((step, index) => (
+          <div class="kz-process__step kz-reveal" data-delay={(index % 4) + 1}>
+            <div class="kz-process__k">{step.k}</div>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-      <h2>Mehr</h2>
-      <ul>
-        <li><a href="/ki-pa">KI-PA — dein remote KI-Assistent</a></li>
-        <li><a href="/pricing">Alle Preise &amp; Module</a></li>
-        <li><a href="/kontakt">Kontakt</a> — kontakt@k-aizen.de · WhatsApp · LinkedIn</li>
-        <li><a href="/erstgespraech">Erstgespräch buchen</a></li>
-      </ul>
-    </article>
-  </noscript>
+  <!-- 4 — WER ICH BIN -->
+  <section class="kz-section" id="wer-ich-bin">
+    <div class="kz-wrap">
+      <div style="display:grid;grid-template-columns:minmax(0,0.9fr) 1.1fr;gap:clamp(28px,6vw,72px);align-items:center;">
+        <div class="kz-reveal">
+          <div class="kz-portrait" data-tilt>
+            <img src={benFoto} alt="Benjamin Zirngibl" loading="lazy" />
+            <div class="kz-portrait__badge">Benjamin Zirngibl · Gründer</div>
+          </div>
+        </div>
+        <div>
+          <span class="kz-eyebrow kz-reveal">Wer ich bin</span>
+          <h2 class="kz-h2 kz-reveal" data-delay="1">Ich will nicht Ihr Tool-Lieferant sein. Ich will Ihr KI-Ansprechpartner sein.</h2>
+          <p class="kz-lead kz-reveal" data-delay="2">
+            Ich komme nicht mit einem fertigen Tool und verschwinde wieder. Ich arbeite mich in Ihren Betrieb ein, übersetze Alltag in sinnvolle KI-Abläufe und bleibe ansprechbar, wenn daraus das nächste Thema entsteht.
+          </p>
+          <p class="kz-lead kz-reveal" data-delay="3">
+            Das Ziel ist größer als ein Assistent: langfristig mehr System, weniger Sucherei, weniger Liegengebliebenes und mehr Abläufe, die sauber funktionieren.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <script is:inline src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
-  <script is:inline src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
-  <script is:inline src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+  <!-- 5 — LANGFRISTIGE ROLLE -->
+  <section class="kz-section" id="so-laeufts" style="background:var(--ink);color:var(--paper);">
+    <div class="kz-wrap">
+      <span class="kz-eyebrow kz-reveal" style="color:#FFB088;">Langfristig</span>
+      <h2 class="kz-h2 kz-reveal" data-delay="1" style="color:#fff;">Erst KI-PA. Dann Schritt für Schritt mehr System im Betrieb.</h2>
+      <p class="kz-lead kz-reveal" data-delay="2" style="color:rgba(255,255,255,0.7);">Der Assistent ist der Anfang, nicht die Grenze. Wenn der erste Nutzen sichtbar ist, nehmen wir den nächsten wiederkehrenden Ablauf und bauen ihn sauber weiter.</p>
+      <div class="kz-steps">
+        <div class="kz-step kz-reveal" data-delay="1" data-tilt>
+          <div class="kz-step__k">Verantwortung</div>
+          <h4>Ein fester KI-Kontakt</h4>
+          <p>Sie haben jemanden, der KI im Blick behält, Fragen einordnet und nicht bei jedem neuen Tool wieder bei null anfängt.</p>
+        </div>
+        <div class="kz-step kz-reveal" data-delay="2" data-tilt>
+          <div class="kz-step__k">Automatisieren</div>
+          <h4>Wiederkehrendes abgeben</h4>
+          <p>Mails, Termine, Telefon, Belege, Leads, interne Listen: alles, was regelmäßig gleich anfängt, kann sauberer laufen.</p>
+        </div>
+        <div class="kz-step kz-reveal" data-delay="3" data-tilt>
+          <div class="kz-step__k">Systematisieren</div>
+          <h4>Wissen nutzbar machen</h4>
+          <p>Aus Notizen, Regeln, Erfahrungen und Entscheidungen wird ein System, das nicht nur in Köpfen oder alten Mails steckt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <script is:inline src="/preview/petal-system.js?v=20260528-younglena-v12"></script>
-  <script is:inline type="text/babel" src="/preview/tweaks-panel.jsx?v=20260528-younglena-v12"></script>
-  <script is:inline type="text/babel" src="/preview/sections.jsx?v=20260528-younglena-v14"></script>
-  <script is:inline type="text/babel" src="/preview/hero.jsx?v=20260528-younglena-v12"></script>
+  <!-- 5.5 — EIN TAG MIT LENA (Vision / Beweis) -->
+  <section class="kz-section" id="ein-tag">
+    <div class="kz-wrap">
+      <span class="kz-eyebrow kz-reveal">KI-Assistent im Alltag</span>
+      <h2 class="kz-h2 kz-reveal" data-delay="1">Ein Tag mit Lena im Betrieb.</h2>
+      <p class="kz-lead kz-reveal" data-delay="2">Lena ist ein Beispiel für den KI-PA als ersten Schritt. Sie arbeitet mit Mail, Kalender, Kundenliste, CRM, Notizen und Freigaben. Sie sortiert vor, schlägt nächste Schritte vor und fragt nach, wenn etwas nicht eindeutig ist. Sie ersetzt nicht Ihr Urteil. Sie nimmt Ihnen das Suchen und Nachhalten ab.</p>
 
-  <!-- Chatbot Widget -->
-  <script is:inline>
-    window.KAIZEN_BOT_URL = window.KAIZEN_BOT_URL || (
-      location.hostname === 'localhost' || location.hostname === '127.0.0.1'
-        ? 'http://localhost:4123/chat'
-        : 'https://chat.k-aizen.de/chat'
-    );
-  </script>
-  <script is:inline src="/widgets/chatbot.js?v=20260528-younglena-v12" defer></script>
+      <div class="kz-day" style="margin-top:clamp(48px,8vw,96px);">
+        <div class="kz-day__line"></div>
+        {szenen.map((s, i) => (
+          <div class={`kz-scene kz-scene--${i % 2 === 0 ? 'left' : 'right'} kz-reveal`}>
+            <div class="kz-scene__timewrap"><span class="kz-scene__time">{s.time}</span></div>
+            <div class="kz-scene__media">
+              <img src={s.img} alt={s.alt} loading="lazy" />
+            </div>
+            <div class="kz-scene__dot"></div>
+            <div class="kz-scene__body">
+              {s.spoken && <p class="kz-scene__spoken">„{s.spoken}"</p>}
+              <p class="kz-scene__result">{s.result}</p>
+              {(s.sources || s.flow) && (
+                <div class="kz-scene__mechanic">
+                  {s.sources && (
+                    <div class="kz-source-row">
+                      <span class="kz-source-label">Quellen</span>
+                      <div class="kz-source-chips">
+                        {s.sources.map((source) => (
+                          <span>{source}</span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {s.flow && (
+                    <div class="kz-flow" aria-label="Ablauf">
+                      {s.flow.map((step, stepIndex) => (
+                        <div class="kz-flow__step">
+                          <span class="kz-flow__num">{stepIndex + 1}</span>
+                          <span>{step}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+              {s.discord && (
+                <div class="kz-discord">
+                  <div class={`kz-discord__head${s.discord.alert ? ' alert' : ''}`}>
+                    <span class="ch">{s.discord.channel}</span>
+                    <span>· {s.discord.time}</span>
+                  </div>
+                  <div class="kz-discord__body" set:html={s.discord.body.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>')}></div>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 — PROOF -->
+  <section class="kz-section" id="proof">
+    <div class="kz-wrap">
+      <span class="kz-eyebrow kz-reveal">Proof</span>
+      <h2 class="kz-h2 kz-reveal" data-delay="1">Woran Sie merken, dass das kein KI-Gerede bleibt.</h2>
+      <div class="kz-grid4">
+        {proofPunkte.map((punkt, index) => (
+          <div class="kz-feat kz-reveal" data-delay={(index % 4) + 1}>
+            <span>◆</span>
+            <h4>{punkt.title}</h4>
+            <p>{punkt.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 — GROSS-ZITAT (ruhiger Rhythmus-Bruch) -->
+  <section class="kz-quote" style="background:var(--ink);">
+    <div class="kz-wrap">
+      <span class="kz-quote__mark kz-reveal" style="color:var(--violet);">„</span>
+      <blockquote class="kz-reveal" data-delay="1" style="color:#fff;">
+        Ich will nicht der Mensch sein, der Ihnen ein KI-Tool verkauft. Ich will dafür sorgen, dass KI in Ihrem Betrieb wirklich nutzbar wird.
+      </blockquote>
+      <cite class="kz-reveal" data-delay="2" style="color:rgba(255,255,255,0.6);">— Benjamin Zirngibl</cite>
+    </div>
+  </section>
+
+  <!-- 8 — KONTAKT -->
+  <section class="kz-section" id="kontakt" style="background:var(--paper-2);text-align:center;">
+    <div class="kz-wrap">
+      <span class="kz-eyebrow kz-reveal">Nächster Schritt</span>
+      <h2 class="kz-h2 kz-reveal" data-delay="1" style="margin-inline:auto;">Buchen Sie ein 30-Minuten-Erstgespräch.</h2>
+      <p class="kz-lead kz-reveal" data-delay="2" style="margin-inline:auto;">Wir nehmen Ihren Alltag durch und finden heraus, ob der KI-PA der richtige Einstieg ist. Kostenlos und ohne Druck.</p>
+      <div class="kz-reveal" data-delay="3" style="margin-top:36px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="/erstgespraech" class="kz-btn kz-btn--primary">Erstgespräch buchen <span class="kz-btn__arrow">→</span></a>
+        <a href="mailto:kontakt@k-aizen.de" class="kz-btn kz-btn--ghost">Direkt schreiben</a>
+        <a href="https://wa.me/4915901031928" class="kz-btn kz-btn--ghost">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.477-.916zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.148-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.29.173-1.414z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="kz-footer">
+    <div class="kz-wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+      <span>© k-AIzen · Benjamin Zirngibl</span>
+      <span style="font-family:var(--font-mono);">KI-PA · Automatisierung · Systematisierung</span>
+    </div>
+  </footer>
+
+  <style>
+    .kz-btn--whatsapp { background:#25D366; color:#fff; box-shadow:0 8px 24px -6px rgba(37,211,102,0.45); }
+    .kz-btn--whatsapp:hover { box-shadow:0 14px 36px -8px rgba(37,211,102,0.6); }
+    .kz-logo-mark { width:24px; height:24px; object-fit:contain; display:block; }
+    .kz-logo { font-weight:800; letter-spacing:-0.02em; }
+    .kz-logo__ai { background:linear-gradient(120deg,var(--indigo),var(--violet)); -webkit-background-clip:text; background-clip:text; color:transparent; font-weight:800; }
+    .kz-offer { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(280px,0.65fr); gap:22px; margin-top:48px; align-items:stretch; }
+    .kz-offer__main, .kz-offer__side { border-radius:var(--radius-lg); border:1px solid var(--line); background:var(--card); box-shadow:var(--shadow-md); }
+    .kz-offer__main { padding:clamp(28px,4vw,44px); }
+    .kz-offer__label, .kz-offer__side-k, .kz-process__k { font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.14em; font-weight:700; color:var(--indigo-deep); }
+    .kz-offer__main h3, .kz-offer__side h3 { font-size:clamp(1.45rem,2.5vw,2rem); line-height:1.12; letter-spacing:-0.02em; margin-top:12px; }
+    .kz-offer__main p, .kz-offer__side p { color:var(--slate); margin-top:16px; font-size:1.02rem; line-height:1.65; }
+    .kz-checklist { list-style:none; display:grid; gap:12px; margin-top:24px; }
+    .kz-checklist li { position:relative; padding-left:30px; color:var(--ink-soft); line-height:1.55; }
+    .kz-checklist li::before { content:'✓'; position:absolute; left:0; top:1px; display:grid; place-items:center; width:20px; height:20px; border-radius:50%; background:var(--indigo-wash); color:var(--indigo-deep); font-weight:800; font-size:12px; }
+    .kz-offer__side { padding:28px; display:flex; flex-direction:column; justify-content:center; background:linear-gradient(145deg,#fff,var(--indigo-wash)); }
+    .kz-offer__side .kz-btn { justify-content:center; margin-top:24px; width:100%; }
+    .kz-offer__link { display:inline-flex; justify-content:center; margin-top:16px; color:var(--indigo-deep); text-decoration:none; font-weight:750; font-size:0.94rem; }
+    .kz-offer__link:hover { text-decoration:underline; }
+    .kz-process { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; margin-top:48px; counter-reset:process; }
+    .kz-process__step { position:relative; min-height:250px; padding:26px; border-radius:var(--radius-lg); background:var(--card); border:1px solid var(--line); box-shadow:var(--shadow-sm); overflow:hidden; }
+    .kz-process__step::after { content:''; position:absolute; left:26px; right:26px; bottom:0; height:3px; background:linear-gradient(90deg,var(--indigo),var(--violet)); opacity:0.85; }
+    .kz-process__step h3 { font-size:1.2rem; margin-top:18px; margin-bottom:10px; letter-spacing:-0.015em; }
+    .kz-process__step p { color:var(--slate); font-size:0.95rem; line-height:1.6; }
+    .kz-split-card { background:var(--card); border:1px solid var(--line); border-radius:var(--radius-xl); padding:36px; box-shadow:var(--shadow-md); transition:transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out); will-change:transform; }
+    .kz-split-card:hover { box-shadow:var(--shadow-lg); }
+    .kz-split-card--accent { background:linear-gradient(145deg,var(--indigo),var(--violet)); color:#fff; border:none; }
+    .kz-split-num { font-family:var(--font-mono); font-size:13px; opacity:0.5; margin-bottom:18px; }
+    .kz-portrait { position:relative; border-radius:var(--radius-xl); overflow:hidden; box-shadow:var(--shadow-lg); transition:transform 0.3s var(--ease-out); will-change:transform; }
+    .kz-portrait img { width:100%; display:block; aspect-ratio:4/5; object-fit:cover; }
+    .kz-portrait__badge { position:absolute; bottom:14px; left:14px; background:rgba(11,16,32,0.72); backdrop-filter:blur(8px); color:#fff; font-size:13px; font-weight:600; padding:8px 14px; border-radius:999px; }
+    .kz-traits { list-style:none; display:flex; flex-direction:column; gap:14px; margin-top:8px; }
+    .kz-traits li { padding-left:26px; position:relative; color:var(--slate); font-size:1.05rem; }
+    .kz-traits li::before { content:'→'; position:absolute; left:0; color:var(--indigo); font-weight:700; }
+    .kz-traits strong { color:var(--ink); }
+    .kz-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px; }
+    .kz-step { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:var(--radius-lg); padding:30px; transition:transform 0.3s var(--ease-out), background 0.3s; will-change:transform; }
+    .kz-step:hover { background:rgba(255,255,255,0.07); }
+    .kz-step__k { font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.12em; color:#FFB088; margin-bottom:14px; }
+    .kz-step h4 { font-size:1.3rem; font-weight:700; margin-bottom:8px; color:#fff; }
+    .kz-step p { color:rgba(255,255,255,0.65); font-size:0.97rem; }
+    .kz-grid4 { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:48px; }
+    .kz-feat { padding:28px; border:1px solid var(--line); border-radius:var(--radius-lg); background:var(--card); transition:border-color 0.3s, transform 0.3s var(--ease-out); }
+    .kz-feat:hover { border-color:var(--indigo); transform:translateY(-3px); }
+    .kz-feat span { color:var(--violet); font-size:18px; }
+    .kz-feat h4 { font-size:1.15rem; font-weight:700; margin:12px 0 8px; }
+    .kz-feat p { color:var(--slate); font-size:0.97rem; }
+    @media (max-width:760px){
+      #wer-ich-bin .kz-wrap > div, .kz-section[style*="grid"] > .kz-wrap > div { grid-template-columns:1fr !important; }
+      .kz-offer, .kz-process, .kz-steps, .kz-grid4 { grid-template-columns:1fr !important; }
+      .kz-process__step { min-height:auto; }
+      .kz-hero__grid { display:none; }
+    }
+  </style>
+
+  <script is:inline src="/v2/kz-v2.js?v=4" defer></script>
 </body>
 </html>

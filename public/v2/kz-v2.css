@@ -1,0 +1,178 @@
+/* ============================================================
+   k-AIzen v2 — Cinematic Light Premium
+   Design tokens adapted from colors_lighttech.css
+   ============================================================ */
+
+:root {
+  /* Surfaces */
+  --ink: #0B1020;
+  --ink-soft: #1C2333;
+  --slate: #475569;
+  --slate-2: #64748B;
+  --paper: #FCFCFD;
+  --paper-2: #F4F5FA;
+  --card: #FFFFFF;
+  --line: #E6E8F0;
+  --line-soft: #EEF0F6;
+
+  /* Accents — Ember (k-AIzen-Markenfarbe) */
+  --indigo: #E85A2B;          /* ember (Token-Name beibehalten, damit nichts bricht) */
+  --indigo-deep: #C2491F;     /* ember dunkler */
+  --violet: #FF7A45;          /* ember-glow (heller, für Verläufe) */
+  --indigo-wash: rgba(232, 90, 43, 0.07);
+  --glow: rgba(255, 122, 69, 0.18);
+  --teal: #138086;                       /* Komplementär-Akzent zu Ember (Cursor-Hover) */
+  --teal-glow: rgba(19, 128, 134, 0.22);
+
+  /* Type */
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px -2px rgba(11,16,32,0.08), 0 1px 3px rgba(11,16,32,0.04);
+  --shadow-md: 0 10px 28px -8px rgba(11,16,32,0.12), 0 3px 8px rgba(11,16,32,0.06);
+  --shadow-lg: 0 28px 60px -14px rgba(232,90,43,0.18), 0 10px 24px rgba(11,16,32,0.10);
+  --shadow-glow: 0 0 0 1px rgba(232,90,43,0.12), 0 20px 50px -12px rgba(255,122,69,0.30);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --gutter: clamp(20px, 5vw, 64px);
+  --maxw: 1200px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.5;
+  overflow-x: hidden;
+  cursor: auto;
+}
+
+/* ---------- Layout ---------- */
+.kz-wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: var(--gutter); position: relative; z-index: 1; }
+section { position: relative; }
+section[id] { scroll-margin-top: 88px; }
+
+/* ---------- Nav ---------- */
+.kz-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px var(--gutter);
+  background: rgba(252,252,253,0.7);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.4s ease, background 0.4s ease, padding 0.4s ease;
+}
+.kz-nav.is-scrolled { border-bottom-color: var(--line); padding-block: 12px; }
+.kz-nav__brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; letter-spacing: -0.02em; }
+.kz-nav__brand img { height: 28px; width: auto; }
+.kz-nav__links { display: flex; gap: 32px; align-items: center; }
+.kz-nav__links a { color: var(--slate); text-decoration: none; font-size: 14px; font-weight: 600; position: relative; transition: color 0.2s; }
+.kz-nav__links a::after {
+  content: ''; position: absolute; left: 0; bottom: -4px; height: 2px; width: 0;
+  background: linear-gradient(90deg, var(--indigo), var(--violet));
+  transition: width 0.3s var(--ease-out);
+}
+.kz-nav__links a:hover { color: var(--ink); }
+.kz-nav__links a:hover::after { width: 100%; }
+@media (max-width: 760px){ .kz-nav__links { display: none; } }
+
+/* ---------- Buttons ---------- */
+.kz-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 28px;
+  border-radius: 999px;
+  font-weight: 700; font-size: 15px;
+  text-decoration: none;
+  border: none; cursor: pointer;
+  position: relative;
+  will-change: transform;
+  transition: transform 0.2s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+.kz-btn--primary {
+  background: linear-gradient(135deg, var(--indigo), var(--violet));
+  color: #fff;
+  box-shadow: 0 8px 24px -6px rgba(232,90,43,0.45);
+}
+.kz-btn--primary:hover { box-shadow: 0 14px 36px -8px rgba(255,122,69,0.6); }
+.kz-btn--ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+.kz-btn--ghost:hover { border-color: var(--indigo); color: var(--indigo-deep); }
+.kz-btn__arrow { transition: transform 0.3s var(--ease-out); }
+.kz-btn:hover .kz-btn__arrow { transform: translateX(4px); }
+
+/* ---------- Reveal animations ---------- */
+.kz-reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
+.kz-reveal.is-in { opacity: 1; transform: none; }
+.kz-reveal[data-delay="1"] { transition-delay: 0.08s; }
+.kz-reveal[data-delay="2"] { transition-delay: 0.16s; }
+.kz-reveal[data-delay="3"] { transition-delay: 0.24s; }
+.kz-reveal[data-delay="4"] { transition-delay: 0.32s; }
+
+/* Word-by-word headline build */
+.kz-kinetic span { display: inline-block; opacity: 0; transform: translateY(0.5em) rotate(2deg); transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out); }
+.kz-kinetic.is-in span { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .kz-reveal, .kz-kinetic span { opacity: 1 !important; transform: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Hero ---------- */
+.kz-hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; overflow: hidden; }
+.kz-hero__grid { position: absolute; inset: 0; z-index: 0; opacity: 0.5;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 75%);
+}
+.kz-hero__eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  color: var(--indigo-deep);
+  padding: 7px 14px; border-radius: 999px;
+  background: var(--indigo-wash); border: 1px solid rgba(232,90,43,0.16);
+  margin-bottom: 28px;
+}
+.kz-hero__eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--violet); box-shadow: 0 0 0 0 rgba(255,122,69,0.5); animation: kz-pulse 2.4s infinite; }
+@keyframes kz-pulse { 0%{box-shadow:0 0 0 0 rgba(255,122,69,0.5);} 70%{box-shadow:0 0 0 8px rgba(255,122,69,0);} 100%{box-shadow:0 0 0 0 rgba(255,122,69,0);} }
+
+.kz-h1 {
+  font-size: clamp(2.6rem, 6.5vw, 5.2rem);
+  line-height: 1.02; letter-spacing: -0.035em; font-weight: 800;
+  max-width: 16ch;
+}
+.kz-h1 .accent { background: linear-gradient(120deg, var(--indigo), var(--violet)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.kz-hero__sub { font-size: clamp(1.05rem, 2vw, 1.35rem); color: var(--slate); max-width: 52ch; margin-top: 28px; line-height: 1.6; }
+.kz-hero__cta { display: flex; gap: 16px; margin-top: 40px; flex-wrap: wrap; }
+
+.kz-scrollcue { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--slate-2); font-size: 11px; font-family: var(--font-mono); letter-spacing: 0.15em; text-transform: uppercase; }
+.kz-scrollcue__line { width: 1px; height: 40px; background: linear-gradient(var(--violet), transparent); animation: kz-cue 2s infinite; transform-origin: top; }
+@keyframes kz-cue { 0%,100%{ transform: scaleY(0.4); opacity:0.4; } 50%{ transform: scaleY(1); opacity:1; } }
+
+/* ---------- Generic section ---------- */
+.kz-section { padding-block: clamp(80px, 12vw, 160px); }
+.kz-eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--indigo-deep); margin-bottom: 18px; display: block; }
+.kz-h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); line-height: 1.08; letter-spacing: -0.03em; font-weight: 800; max-width: 18ch; }
+.kz-lead { font-size: clamp(1.05rem, 1.8vw, 1.25rem); color: var(--slate); max-width: 56ch; margin-top: 22px; line-height: 1.65; }
+
+/* Footer */
+.kz-footer { padding-block: 56px; border-top: 1px solid var(--line); color: var(--slate-2); font-size: 14px; }

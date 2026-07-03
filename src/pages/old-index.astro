@@ -1,0 +1,298 @@
+---
+// k-AIzen Homepage — Claude Design Version (React + Babel-standalone)
+// Lädt Static-Assets aus /preview/ (CSS/JS/JSX) und /animations/claude-design/ (Bilder).
+// Vorgängerversion liegt unter old-index.astro als Backup.
+
+const SITE_URL = 'https://k-aizen.de';
+const TITLE = 'k-AIzen — Dein KI-Assistent, der nie etwas vergisst. Für KMU in Deutschland.';
+const DESCRIPTION = 'KI-PA für KMU in Deutschland — dein persönlicher KI-Assistent für Mails, Termine, Memory, Briefings und mehr. Remote eingerichtet, eigener Server in Deutschland, DSGVO-konform. Ab 1.490 €/Mo, Module dazubuchbar. Festpreise, kein Lock-in.';
+const OG_IMAGE = `${SITE_URL}/og-image.png`;
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "k-AIzen",
+  "alternateName": "k-AIzen — Benjamin Zirngibl",
+  "url": SITE_URL,
+  "logo": `${SITE_URL}/animations/claude-design/logo-full.png`,
+  "description": DESCRIPTION,
+  "founder": {
+    "@type": "Person",
+    "name": "Benjamin Zirngibl",
+    "url": "https://www.linkedin.com/in/benjamin-zirngibl-0963753ab"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Deutschland"
+  },
+  "knowsAbout": [
+    "KI-Workflow-Automation für KMU",
+    "Observation-driven Process Automation",
+    "Personalplanung mit KI",
+    "Email-Triage Automation",
+    "Beleg-Sortierung DATEV",
+    "n8n Workflow Engineering",
+    "Claude API Integration",
+    "DSGVO-konforme KI-Architektur",
+    "On-Premise LLM (Llama, Mistral)",
+    "Hetzner-Cloud-Infrastruktur",
+    "Per-Kunde-Server-Pattern"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/benjamin-zirngibl-0963753ab",
+    "https://github.com/benzirngibl-ai"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "kontakt@k-aizen.de",
+    "telephone": "+49-1590-1031928",
+    "contactType": "customer service",
+    "areaServed": "DE",
+    "availableLanguage": ["German", "English"]
+  }
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "k-AIzen",
+  "url": SITE_URL,
+  "description": DESCRIPTION,
+  "inLanguage": "de-DE",
+  "publisher": {
+    "@type": "Organization",
+    "name": "k-AIzen",
+    "url": SITE_URL
+  }
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "k-AIzen — AI-Workflow-Automation",
+  "url": SITE_URL,
+  "image": OG_IMAGE,
+  "telephone": "+49-1590-1031928",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Zum Schwarzachtal 5",
+    "postalCode": "90592",
+    "addressLocality": "Schwarzenbruck",
+    "addressRegion": "Bayern",
+    "addressCountry": "DE"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Deutschland"
+  },
+  "serviceType": "KI-Workflow-Automation für KMU",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "k-AIzen Angebot",
+    "itemListElement": [
+      { "@type": "Offer", "name": "KI-PA", "price": "1490", "priceCurrency": "EUR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "1490", "priceCurrency": "EUR", "unitText": "pro Monat" }, "itemOffered": { "@type": "Service", "name": "KI-PA", "description": "Persönlicher KI-Assistent, remote eingerichtet. Mail-Triage, Termine, Customer-Memory, Briefings, Beleg-Erfassung, Audio→Protokoll, Recherche, News. Eigener Server in Deutschland, DSGVO-konform, kein Lock-in." } },
+      { "@type": "Offer", "name": "Modul Telefon-Empfang", "itemOffered": { "@type": "Service", "name": "Telefon-Empfang", "description": "Dazubuchbares Modul: KI nimmt Anrufe entgegen, beantwortet FAQs, vereinbart Termine." } },
+      { "@type": "Offer", "name": "Modul Social", "itemOffered": { "@type": "Service", "name": "Social", "description": "Dazubuchbares Modul: Content-Erstellung und Social-Media-Betreuung." } },
+      { "@type": "Offer", "name": "Modul Lead-Pipeline", "itemOffered": { "@type": "Service", "name": "Lead-Pipeline", "description": "Dazubuchbares Modul: Lead-Recherche, Qualifizierung und Outreach." } },
+      { "@type": "Offer", "name": "Modul Beleg & Steuer", "itemOffered": { "@type": "Service", "name": "Beleg & Steuer", "description": "Dazubuchbares Modul: Beleg-Erfassung und steuerliche Vorbereitung." } },
+      { "@type": "Offer", "name": "Modul Recruiting", "itemOffered": { "@type": "Service", "name": "Recruiting", "description": "Dazubuchbares Modul: Bewerber-Sichtung und Recruiting-Workflows." } }
+    ]
+  }
+};
+---
+
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- SEO -->
+  <title>{TITLE}</title>
+  <meta name="description" content={DESCRIPTION} />
+  <link rel="canonical" href={SITE_URL} />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Benjamin Zirngibl · k-AIzen" />
+  <meta name="keywords" content="AI Workflow Automation, KMU AI, Mittelstand Automation, Inbox-Triage, Angebots-Generator, n8n, Workflow-Engineering, DSGVO AI, Bayern AI Agency, k-AIzen, Benjamin Zirngibl" />
+  <meta name="theme-color" content="#F5F0E8" />
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={TITLE} />
+  <meta property="og:description" content={DESCRIPTION} />
+  <meta property="og:url" content={SITE_URL} />
+  <meta property="og:image" content={OG_IMAGE} />
+  <meta property="og:image:alt" content="k-AIzen Logo" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:site_name" content="k-AIzen" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={TITLE} />
+  <meta name="twitter:description" content={DESCRIPTION} />
+  <meta name="twitter:image" content={OG_IMAGE} />
+
+  <!-- AI Crawlers — explizit erlaubt -->
+  <meta name="GPTBot" content="index, follow" />
+  <meta name="ClaudeBot" content="index, follow" />
+  <meta name="Claude-Web" content="index, follow" />
+  <meta name="PerplexityBot" content="index, follow" />
+  <meta name="Applebot" content="index, follow" />
+  <meta name="Google-Extended" content="index, follow" />
+
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="de" href={SITE_URL} />
+  <link rel="alternate" hreflang="x-default" href={SITE_URL} />
+
+  <link rel="icon" type="image/png" href="/animations/claude-design/logo-mark.png" />
+  <link rel="apple-touch-icon" href="/animations/claude-design/logo-mark.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+
+  <!-- Preconnect für Critical-Path-Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://unpkg.com" crossorigin />
+
+  <!-- Preload Critical-Above-Fold Assets -->
+  <link rel="preload" as="image" href="/animations/claude-design/logo-full.png" />
+  <link rel="preload" as="image" href="/animations/claude-design/sumi-mountains.png" />
+
+  <link rel="stylesheet" href="/preview/colors_and_type.css?v=20260528-younglena-v12" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      overscroll-behavior: none;
+    }
+    #root { isolation: isolate; }
+
+    @keyframes kz-fade-up {
+      from { transform: translateY(14px); }
+      to   { transform: translateY(0); }
+    }
+    @keyframes kz-scroll-line {
+      0%   { transform: scaleY(0); transform-origin: top; }
+      40%  { transform: scaleY(1); transform-origin: top; }
+      60%  { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    section { user-select: none; -webkit-user-select: none; }
+
+    /* Server-Side rendered fallback content für Crawlers + initial paint */
+    .kz-noscript-fallback {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(60px, 10vh, 120px) clamp(24px, 5vw, 48px);
+    }
+    .kz-noscript-fallback h1 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 80px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0 0 24px;
+    }
+    .kz-noscript-fallback .accent {
+      color: var(--kz-ember);
+      font-style: italic;
+    }
+    .kz-noscript-fallback p {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--fg-muted);
+      max-width: 640px;
+    }
+    .kz-noscript-fallback ul {
+      font-family: var(--font-sans);
+      max-width: 640px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .kz-noscript-fallback li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 8px;
+    }
+    .kz-noscript-fallback li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 12px;
+      width: 12px; height: 1px;
+      background: var(--kz-ember);
+    }
+    .kz-noscript-fallback a {
+      color: var(--kz-ember-text);
+      text-decoration: underline;
+    }
+    /* Hide fallback when React mounts */
+    #root:not(:empty) ~ .kz-noscript-fallback { display: none; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- SEO/AI-Crawler Fallback — sichtbar bevor React mountet, hidden danach.
+       Stellt sicher dass Suchmaschinen + AI-Tools die Inhalte indexieren können
+       auch wenn JavaScript-Rendering fehlschlägt oder langsam ist. -->
+  <noscript>
+    <article class="kz-noscript-fallback">
+      <h1>Dein Mitarbeiter, der <span class="accent">nie etwas vergisst.</span></h1>
+      <p>
+        Der KI-PA ist dein persönlicher KI-Assistent für KMU in Deutschland. Er übernimmt Mail-Triage,
+        Termine, Customer-Memory, Briefings, Beleg-Erfassung, Audio→Protokoll, Recherche und News.
+        Remote eingerichtet, eigener Server in Deutschland, DSGVO-konform, kein Lock-in.
+      </p>
+
+      <h2>Das Angebot</h2>
+      <ul>
+        <li><a href="/ki-pa">KI-PA</a> — ab 1.490 €/Mo. Persönlicher KI-Assistent, remote eingerichtet, eigener Server in Deutschland.</li>
+        <li><a href="/pricing">Module dazubuchbar</a> — Telefon-Empfang, Social, Lead-Pipeline, Beleg &amp; Steuer, Recruiting.</li>
+      </ul>
+
+      <h2>Vertrauen</h2>
+      <ul>
+        <li>EU-Datenhaltung — dedizierter Server in Deutschland</li>
+        <li>DSGVO-konform ab Tag 1 — Auftragsverarbeitungsvertrag schriftlich vor Projektstart</li>
+        <li>Kein Lock-in — dein Server, deine Daten, jederzeit übergebbar</li>
+        <li>Festpreise, sichtbar — kein „auf Anfrage"</li>
+      </ul>
+
+      <h2>Mehr</h2>
+      <ul>
+        <li><a href="/ki-pa">KI-PA — dein remote KI-Assistent</a></li>
+        <li><a href="/pricing">Alle Preise &amp; Module</a></li>
+        <li><a href="/kontakt">Kontakt</a> — kontakt@k-aizen.de · WhatsApp · LinkedIn</li>
+        <li><a href="/erstgespraech">Erstgespräch buchen</a></li>
+      </ul>
+    </article>
+  </noscript>
+
+  <script is:inline src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+  <script is:inline src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+  <script is:inline src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+
+  <script is:inline src="/preview/petal-system.js?v=20260528-younglena-v12"></script>
+  <script is:inline type="text/babel" src="/preview/tweaks-panel.jsx?v=20260528-younglena-v12"></script>
+  <script is:inline type="text/babel" src="/preview/sections.jsx?v=20260528-younglena-v14"></script>
+  <script is:inline type="text/babel" src="/preview/hero.jsx?v=20260528-younglena-v12"></script>
+
+  <!-- Chatbot Widget -->
+  <script is:inline>
+    window.KAIZEN_BOT_URL = window.KAIZEN_BOT_URL || (
+      location.hostname === 'localhost' || location.hostname === '127.0.0.1'
+        ? 'http://localhost:4123/chat'
+        : 'https://chat.k-aizen.de/chat'
+    );
+  </script>
+  <script is:inline src="/widgets/chatbot.js?v=20260528-younglena-v12" defer></script>
+</body>
+</html>

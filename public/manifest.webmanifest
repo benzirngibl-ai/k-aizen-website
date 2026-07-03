@@ -13,10 +13,10 @@
   "categories": ["business", "productivity", "developer-tools"],
   "icons": [
     {
-      "src": "/animations/claude-design/logo-mark.png",
-      "sizes": "538x957",
+      "src": "/icons/kaizen-favicon.png",
+      "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     },
     {
       "src": "/animations/claude-design/logo-full.png",
