@@ -211,7 +211,7 @@ Legacy-Links:
 
 ## Markenstimme
 
-k-AIzen spricht ruhig, direkt und menschlich. Kein Blackbox-Versprechen, kein "Game-Changer", kein Hype. Gute Formulierungen erklären:
+k-AIzen spricht ruhig, direkt und menschlich. Kein Rätselraten, kein "Game-Changer", kein Hype. Gute Formulierungen erklären:
 
 - woher eine Information kommt
 - was die KI vorbereitet

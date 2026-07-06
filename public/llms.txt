@@ -19,7 +19,7 @@
 - **Einstieg:** KI-PA für Mail, Kalender, Aufgaben, Briefings, Kundennotizen, Freigaben und Kontext.
 - **Langfristiges Ziel:** Firma systematisieren und automatisieren, Schritt für Schritt: Belege, Telefon, Wissen, Leads, interne Prozesse, eigenes Kaizen OS oder Integration in vorhandene Systeme.
 - **Andockpunkte:** Microsoft 365, Teams, SharePoint, Slack, Notion, CRM, Excel-Listen oder eigene Systeme. k-AIzen kann integrieren, baut aber bei Bedarf ein eigenes System darum.
-- **Arbeitsprinzip:** erst verstehen, dann begrenzt starten, dann ausbauen. Kein Blackbox-Versprechen, sondern freigegebene Quellen, klare Regeln, sichtbare Freigaben und dokumentierte Entscheidungen.
+- **Arbeitsprinzip:** erst verstehen, dann begrenzt starten, dann ausbauen. Kein Rätselraten, sondern freigegebene Quellen, klare Regeln, sichtbare Freigaben und dokumentierte Entscheidungen.
 - **Funnel-Prinzip:** k-AIzen verkauft nicht sofort ein Vollsetup. Die Website soll helfen zu entscheiden: nicht passend, Erstgespräch/Async-Check, Discovery-Audit, begrenzter Pilot oder KI-PA-Setup.
 - **Proof-Prinzip:** Am Anfang keine erfundenen Kundenstimmen. Stattdessen greifbare Arbeitsartefakte: Roadmap, Arbeitskanal, Freigabe-Matrix, Quellenliste, Ablaufkarte und echte Entwürfe aus einem Pilot.
 - **Zielgruppe:** KMU in Deutschland/DACH, besonders Betriebe, die mit Mail-, Datei-, Office- und Wissenschaos arbeiten und keinen internen KI-Verantwortlichen haben.
@@ -36,4 +36,4 @@
 
 ## Markenstimme
 
-Ruhig, konkret, menschlich, ohne Hype. k-AIzen erklärt, woher Informationen kommen, welche Grenzen die KI hat und wann ein Mensch entscheiden muss. Die wichtigste Botschaft: KI wird nicht als Blackbox verkauft, sondern als sauberes System aus Quellen, Kontext, Freigaben und Verantwortung.
+Ruhig, konkret, menschlich, ohne Hype. k-AIzen erklärt, woher Informationen kommen, welche Grenzen die KI hat und wann ein Mensch entscheiden muss. Die wichtigste Botschaft: KI wird nicht als Magie verkauft, sondern als sauberes System aus Quellen, Kontext, Freigaben und Verantwortung.
