@@ -13,7 +13,6 @@ export async function getStaticPaths() {
 const { tut } = Astro.props;
 const { Content } = await render(tut);
 const slug = tut.data.slug || tut.id;
-const pdfUrl = `/tutorials/${slug}.pdf`;
 
 const dateDe = (d: Date) =>
   d.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -54,9 +53,9 @@ const jsonLd = {
       <span> · {tut.data.author}</span>
     </div>
 
-    <div class="kz-tutorial-pdf-cta">
-      <a href={pdfUrl} class="kz-btn" download>📥 Als PDF herunterladen</a>
-      <a href="/tutorials" class="kz-btn kz-btn-ghost">← Alle Tutorials</a>
+    <div class="kz-tutorial-link-cta">
+      <a href="/tutorials" class="kz-btn kz-btn-ghost">Alle Ressourcen</a>
+      <a href="/erstgespraech" class="kz-btn">Erstgespräch buchen</a>
     </div>
 
     <div class="kz-tutorial-prose">
@@ -76,7 +75,7 @@ const jsonLd = {
       color: var(--fg-muted);
       margin-bottom: 32px;
     }
-    .kz-tutorial-pdf-cta {
+    .kz-tutorial-link-cta {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;

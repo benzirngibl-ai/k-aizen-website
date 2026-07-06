@@ -11,7 +11,22 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
-      filter: (page) => !page.includes('/old-index') && !page.includes('/preview/') && !page.includes('/v1/') && !page.includes('/katalog') && !page.includes('/pitch'),
+      filter: (page) => {
+        const url = new URL(page);
+        const path = url.pathname;
+        const blockedPrefixes = [
+          '/old-index',
+          '/preview',
+          '/preview-lighttech',
+          '/v1',
+          '/katalog',
+          '/katalog-v2',
+          '/pitch',
+          '/onboarding',
+        ];
+
+        return !blockedPrefixes.some((prefix) => path === prefix || path.startsWith(`${prefix}/`));
+      },
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),

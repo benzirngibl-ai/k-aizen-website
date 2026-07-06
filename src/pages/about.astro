@@ -16,13 +16,13 @@ const personSchema = {
     "name": "k-AIzen",
     "url": "https://k-aizen.de"
   },
-  "description": "Gründer von k-AIzen, fokussiert auf AI-Workflow-Automation für KMUs in Deutschland."
+  "description": "Gründer von k-AIzen. Baut KI-Assistenten und betreute KI-Systeme für kleine und mittelständische Unternehmen."
 };
 ---
 
 <KaizenLayout
-  title="Über uns — Wer hinter k-AIzen steht"
-  description="k-AIzen ist Bens Solo-Geschäft in Bayern. Mittelstand-Fokus, AI-Automation ohne Hype."
+  title="Über mich — Benjamin Zirngibl"
+  description="Wer hinter k-AIzen steht: Benjamin Zirngibl, KI-Ansprechpartner für Unternehmen. Start mit KI-PA, danach Schritt für Schritt mehr System im Betrieb."
   path="/about"
   activeNav="about"
   jsonLd={personSchema}
@@ -30,114 +30,142 @@ const personSchema = {
   <style is:global>
     .kz-about-row {
       display: grid;
-      grid-template-columns: auto 1fr;
-      gap: clamp(24px, 4vw, 48px);
-      align-items: start;
-      margin-top: 16px;
+      grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
+      gap: clamp(28px, 6vw, 72px);
+      align-items: center;
+      margin-top: 44px;
     }
-    @media (max-width: 720px) {
-      .kz-about-row {
+    .kz-about-photo {
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 4 / 5;
+      border-radius: var(--radius-xl);
+      object-fit: cover;
+      box-shadow: var(--shadow-lg);
+    }
+    .kz-about-principles {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+    .kz-about-principles article {
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--card);
+      box-shadow: var(--shadow-sm);
+    }
+    .kz-about-principles h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+    }
+    .kz-about-note {
+      margin-top: 56px;
+      padding: clamp(28px, 4vw, 42px);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(145deg, #fff, var(--indigo-wash));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-md);
+    }
+    .kz-about-note p {
+      max-width: 76ch;
+      color: var(--slate);
+      line-height: 1.72;
+    }
+    @media (max-width: 780px) {
+      .kz-about-row,
+      .kz-about-principles {
         grid-template-columns: 1fr;
-        justify-items: start;
-        gap: 20px;
       }
     }
   </style>
-  <article class="kz-page">
-    <div class="kz-page-eyebrow">
-      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
-      <img src="/icons/icon-camellia.png" alt="" class="kz-eyebrow-leaf" loading="lazy" />
-      <span>Über uns</span>
-    </div>
-    <h1 class="kz-h1">Hinter k-AIzen.</h1>
+
+  <article class="kz-page kz-page--wide">
+    <div class="kz-page-eyebrow"><span>Über mich</span></div>
+    <h1 class="kz-h1">Benjamin Zirngibl. Gründer von k-AIzen.</h1>
     <p class="kz-lead">
-      <strong>k-AIzen</strong> ist mein Solo-Geschäft in Bayern. Ich bin Benjamin Zirngibl, Hands-On-Bauer für AI-Workflow-Automation für mittelständische Unternehmen — ohne Hype, ohne Buzzword-Bingo.
+      k-AIzen unterstützt Unternehmen dabei, KI nicht nur auszuprobieren, sondern
+      sinnvoll in den Alltag zu bringen: mit klaren Quellen, Freigaben, ersten Assistenten
+      und einem schrittweisen Ausbau zu besseren Abläufen.
     </p>
 
-    <section>
-      <h2 class="kz-h2">Was wir machen</h2>
+    <section class="kz-about-row">
+      <img
+        src="/images/ben-portrait.png"
+        alt="Benjamin Zirngibl, Gründer von k-AIzen"
+        class="kz-about-photo"
+        loading="lazy"
+      />
+      <div>
+        <h2 class="kz-h2" style="margin-top: 0;">Warum k-AIzen so gebaut ist</h2>
+        <p>
+          Viele Unternehmen wissen, dass KI wichtig wird. Aber zwischen ein paar
+          getesteten Tools und einem brauchbaren System liegt Arbeit: Datenquellen
+          verstehen, Freigaben klären, Prozesse ordnen, Mitarbeiter mitnehmen und
+          laufend verbessern.
+        </p>
+        <p>
+          Genau dort setzt k-AIzen an. Der KI-PA ist der erste greifbare Einstieg:
+          Mail, Kalender, Aufgaben, Kundennotizen und Freigaben. Wenn dieser Einstieg
+          trägt, bauen wir weiter: Telefon, Belege, Leads, Wissen, interne Abläufe,
+          Kaizen OS.
+        </p>
+      </div>
+    </section>
+
+    <section class="kz-about-note">
+      <h2 class="kz-h2" style="margin-top: 0;">Warum diese Rolle wichtig ist</h2>
       <p>
-        Wir bauen automatisierte Workflows für KMUs mit 10–250 Mitarbeitenden. Jeder Workflow startet mit einem
-        konkreten Schmerz und endet mit einem Skript / Cron-Job / Sub-Agent der genau diesen Schmerz nimmt.
-        Kein All-in-One-Suite-Verkauf, kein Tools-Stapel der nie genutzt wird.
+        Viele kleine und mittelständische Unternehmen brauchen nicht noch ein weiteres
+        Tool. Sie brauchen eine verantwortliche Rolle: für die erste brauchbare
+        Anwendung, für Datenquellen, Rückfragen, Grenzen und den nächsten kleinen
+        Schritt, sobald der erste funktioniert.
       </p>
       <p>
-        Der Name <strong>k-AIzen</strong> kombiniert <em>Kaizen</em> (改善, japanisch für „Veränderung zum Besseren")
-        mit <em>AI</em>. Kaizen ist ein japanisches Management-Prinzip: kontinuierliche Verbesserung in kleinen Schritten,
-        nicht in großen Würfen. Genau so bauen wir.
+        Deshalb ist k-AIzen nicht als klassische Agentur positioniert. Die Arbeit ist nah genug am
+        Alltag, um Muster zu sehen, und technisch genug, um daraus ein funktionierendes System zu bauen.
+        Ruhig, nachvollziehbar und ohne so zu tun, als müsste KI alles sofort übernehmen.
       </p>
-      <p class="kz-quote">Eins nach dem anderen. Auch bei AI.</p>
     </section>
 
     <section>
-      <h2 class="kz-h2">Wer baut</h2>
-      <div class="kz-about-row">
-        <img
-          src="/images/ben-portrait.png"
-          alt="Benjamin Zirngibl, Gründer von k-AIzen"
-          width="240"
-          height="240"
-          loading="lazy"
-          style="width: clamp(140px, 20vw, 240px); height: auto; aspect-ratio: 1/1; border-radius: 50%; object-fit: cover; border: 3px solid var(--kz-cream-deep); box-shadow: 0 12px 32px -8px rgba(31,41,51,0.18);"
-        />
-        <div>
-          <p>
-            <strong>Benjamin Zirngibl</strong> — Gründer k-AIzen, Software-Engineer mit Schwerpunkt Workflow-Automation,
-            Sub-Agent-Orchestrierung und Compliance-aware AI-Integration. Aufgewachsen in Bayern, lebt und arbeitet hier weiter.
-            Schreibt regelmäßig auf LinkedIn über Build-in-Public-Erfahrungen.
-          </p>
-          <p>
-            Nicht-Hintergrund: kein Big-Tech-Trail, kein VC-Geld, kein Sales-Bro-Stil. Stattdessen: Industrie-IT-Erfahrung,
-            k-AIzen als kleines unabhängiges Solo-Geschäft seit 2026.
-          </p>
-          <p>
-            <a href="https://www.linkedin.com/in/benjamin-zirngibl-0963753ab" rel="noopener noreferrer" target="_blank">LinkedIn-Profil →</a>
-          </p>
-        </div>
+      <h2 class="kz-h2">Arbeitsweise</h2>
+      <div class="kz-about-principles">
+        <article>
+          <h3>Klein anfangen</h3>
+          <p>Erst ein konkreter Bereich, der messbar entlastet. Keine große KI-Transformation als erster Schritt.</p>
+        </article>
+        <article>
+          <h3>Kontext offenlegen</h3>
+          <p>Wenn die KI etwas vorschlägt, soll klar sein, aus welchen Quellen der Vorschlag kommt.</p>
+        </article>
+        <article>
+          <h3>Dranbleiben</h3>
+          <p>KI ist kein einmaliges Setup. Modelle, Prozesse und Anforderungen ändern sich. Dafür bleibt k-AIzen Ansprechpartner.</p>
+        </article>
       </div>
     </section>
 
     <section>
-      <h2 class="kz-h2">Wofür wir nicht da sind</h2>
+      <h2 class="kz-h2">Wofür k-AIzen gut passt</h2>
       <ul>
-        <li><strong>Konzerne</strong> mit eigenen IT-Abteilungen die fertige Lösungen wollen — sind wir zu klein für, und ihr seid besser bei großen Beratungen</li>
-        <li><strong>Web-Designs / Marketing-Sites / Brand-Refreshes</strong> — machen wir nicht, dafür gibt's bessere Studios</li>
-        <li><strong>„AI-Strategie für 6-stelliges Honorar"-Anfragen</strong> — wir verkaufen lieber konkrete Workflows die heute laufen als Strategie-PDFs die in der Schublade landen</li>
-        <li><strong>„Make me 10× more productive with AI in 30 days"</strong> — gibt's nicht, und wer es verspricht lügt. Wir sagen ehrlich was AI heute kann und was nicht</li>
+        <li><strong>Kleine und mittelständische Unternehmen</strong>, die KI nutzen wollen, aber keinen internen KI-Verantwortlichen haben.</li>
+        <li><strong>Service-, Beratungs-, Handwerks- und Verwaltungsbetriebe</strong>, in denen Mail, Termine, Wissen und Rückfragen viel Zeit ziehen.</li>
+        <li><strong>Unternehmen mit gewachsenen Datei- und Tool-Strukturen</strong>, in denen Informationen zwar irgendwo existieren, aber selten dort auftauchen, wo sie gebraucht werden.</li>
+        <li><strong>Teams, die nicht noch ein Tool suchen</strong>, sondern jemanden, der KI in den bestehenden Alltag übersetzt.</li>
       </ul>
     </section>
 
-    <section>
-      <h2 class="kz-h2">Wofür wir gut sind</h2>
-      <ul>
-        <li><strong>KMUs mit 10–250 Mitarbeitenden</strong> die einen konkreten Workflow automatisieren wollen — ohne Enterprise-Vertrag und ohne 6-Monats-Onboarding</li>
-        <li><strong>Compliance-bewusste Branchen</strong> — Anwaltskanzleien, Steuerberater, Arztpraxen, Versicherungs-Maklerbüros, Handwerksbetriebe mit DSGVO-Sensitivität</li>
-        <li><strong>Ehrliche Kosten-Nutzen-Rechnung</strong> — wir berechnen den Stundenwert eines Workflows bevor wir bauen. Wenn die Mathematik nicht aufgeht, bauen wir nicht</li>
-        <li><strong>Lange Zusammenarbeit</strong> — der erste Workflow ist meist der schwierigste. Der zweite kommt schneller. Der dritte ist Routine. Wir sind dabei wenn dein Stack über Quartale wächst</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2 class="kz-h2">Werte</h2>
+    <section style="margin-top: 96px; padding: 48px clamp(24px, 4vw, 48px); background: var(--kz-cream-deep); border-radius: 16px;">
+      <h2 class="kz-h2" style="margin-top: 0;">Der nächste sinnvolle Schritt</h2>
       <p>
-        Wir leihen uns das japanische Konzept Kaizen aus weil es unsere Arbeitsweise gut beschreibt — kleine Schritte,
-        viele davon, jeden Tag. Aber wir sind kein Zen-Tempel und keine Feel-Good-Beratung. Wir sind Software-Engineering
-        mit Geduld.
+        Wir schauen in 30 Minuten, ob der KI-PA für Ihren Betrieb ein sinnvoller Einstieg ist.
+        Wenn es nicht passt, wird das offen benannt. Wenn ja, klären wir, ob KI-Check, Pilot oder Audit als nächstes passt.
       </p>
-      <p>Was uns wichtig ist:</p>
-      <ul>
-        <li><strong>Stille Stärke statt laute Versprechen</strong> — wir reden lieber konkret als groß</li>
-        <li><strong>Integrität über Impression</strong> — was wir nicht können, sagen wir; was wir bauen, läuft</li>
-        <li><strong>Wachstum ohne Selbstverrat</strong> — wir bleiben klein wenn klein gut ist</li>
-      </ul>
-    </section>
-
-    <section style="margin-top: 96px; padding: 56px clamp(24px, 4vw, 48px); background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 12px;">
-      <h2 class="kz-h2" style="margin-top: 0;">Wenn du wissen willst wie wir bauen</h2>
-      <p><a href="/pricing">→ Module &amp; Festpreise ansehen</a></p>
-      <p><a href="/audit">→ Discovery-Audit buchen (1.490 €)</a></p>
-      <p><a href="/erstgespraech">→ 30-Min-Erstgespräch (gratis)</a></p>
-      <p><a href="mailto:kontakt@k-aizen.de">→ Direkt schreiben: kontakt@k-aizen.de</a></p>
+      <p style="margin-top: 28px;">
+        <a href="/erstgespraech" class="kz-btn">Erstgespräch buchen <span class="kz-btn__arrow">→</span></a>
+      </p>
     </section>
   </article>
 </KaizenLayout>

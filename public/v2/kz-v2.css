@@ -51,6 +51,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: clip;
 }
 
 body {
@@ -58,7 +59,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   line-height: 1.5;
-  overflow-x: hidden;
+  overflow-x: clip;
   cursor: auto;
 }
 
@@ -167,6 +168,9 @@ section[id] { scroll-margin-top: 88px; }
 .kz-scrollcue { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--slate-2); font-size: 11px; font-family: var(--font-mono); letter-spacing: 0.15em; text-transform: uppercase; }
 .kz-scrollcue__line { width: 1px; height: 40px; background: linear-gradient(var(--violet), transparent); animation: kz-cue 2s infinite; transform-origin: top; }
 @keyframes kz-cue { 0%,100%{ transform: scaleY(0.4); opacity:0.4; } 50%{ transform: scaleY(1); opacity:1; } }
+@media (max-width: 760px) {
+  .kz-scrollcue { display: none; }
+}
 
 /* ---------- Generic section ---------- */
 .kz-section { padding-block: clamp(80px, 12vw, 160px); }

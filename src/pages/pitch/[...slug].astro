@@ -1,4 +1,11 @@
 ---
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'lena' } },
+    { params: { slug: 'markus' } },
+  ];
+}
+
 const target = '/ki-pa';
 ---
 

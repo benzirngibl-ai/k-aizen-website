@@ -21,7 +21,7 @@ Lange Antwort: Genau dafür schreibe ich diesen Post. Am 7. Mai 2026 haben sich 
 
 Mein erster Reflex, als ich die Pressemitteilung gelesen habe: "Gut, Hochrisiko-Pflichten erst ab 2. Dezember 2027 — da haben meine Kunden eineinhalb Jahre Luft." Ich habe das einem Mandanten so geschrieben. War nicht ganz falsch, aber irreführend.
 
-Denn die Verschiebung betrifft den Hochrisiko-Teil. Die Transparenzpflichten nach Artikel 50 — also "Sag deinen Kunden, wenn sie mit einem Bot reden" oder "Kennzeichne KI-generierte Bilder" — die gelten weiterhin ab **2. August 2026**. Das sind keine zwei Monate mehr.
+Denn die Verschiebung betrifft den Hochrisiko-Teil. Die Transparenzpflichten nach Artikel 50 — also Hinweise, wenn Kunden mit einem Bot sprechen, oder die Kennzeichnung KI-generierter Bilder — gelten weiterhin ab **2. August 2026**. Das ist sehr nah.
 
 Die Watermarking-Pflicht für generative KI wurde auf den **2. Dezember 2026** verschoben. Auch nicht weit weg.
 
@@ -35,9 +35,9 @@ Der AI Act unterscheidet vier Risiko-Klassen: verboten, hochriskant, begrenztes 
 
 Die schlechte: Ein paar typische KMU-Anwendungen kippen in den Hochrisiko-Bereich. Konkret:
 
-- **Bewerberauswahl mit KI-Vorsortierung.** Wenn dein HR-Tool Lebensläufe automatisch rankt oder rausfiltert, ist das Hochrisiko. Egal, ob du 5 oder 500 Bewerbungen im Jahr hast.
+- **Bewerberauswahl mit KI-Vorsortierung.** Wenn ein HR-Tool Lebensläufe automatisch rankt oder rausfiltert, ist das Hochrisiko. Egal, ob es um 5 oder 500 Bewerbungen im Jahr geht.
 - **Mitarbeiterbewertung oder Schichtplanung mit KI.** Wenn ein Algorithmus mitbestimmt, wer welche Schicht bekommt oder wer befördert wird — Hochrisiko.
-- **Kreditwürdigkeitsprüfung bei Kunden.** Auch wenn du nur dein Forderungsmanagement automatisiert hast.
+- **Kreditwürdigkeitsprüfung bei Kunden.** Auch wenn nur das Forderungsmanagement automatisiert wurde.
 
 Was **nicht** Hochrisiko ist (Stand jetzt):
 
@@ -68,8 +68,8 @@ Und: Die Einigung vom 7. Mai ist noch nicht final beschlossen. Der Text kann sic
 
 ## Warum sich der Aufwand lohnt
 
-Drei Stunden für die Tool-Liste, eine Stunde für die Transparenz-Hinweise, vielleicht ein Anwalts-Termin für die Grauzonen. Macht für die meisten Betriebe einen Tagessatz. Dafür hast du im August 2026, wenn Artikel 50 scharfgeschaltet wird, eine saubere Akte. Und falls 2027 die Hochrisiko-Pflichten kommen, weißt du, ob du betroffen bist.
+Drei Stunden für die Tool-Liste, eine Stunde für die Transparenz-Hinweise, vielleicht ein Anwalts-Termin für die Grauzonen. Macht für die meisten Betriebe einen Tagessatz. Dafür liegt zum Stichtag im August 2026 eine saubere Akte vor. Und falls 2027 die Hochrisiko-Pflichten kommen, ist klar, ob der Betrieb betroffen ist.
 
-Was du dir damit erkaufst, ist nicht nur Compliance. Es ist Klarheit, was im eigenen Laden überhaupt läuft. Bei dem Bauunternehmer aus dem Schwarzwald haben wir nebenbei rausgefunden, dass die Sekretärin auf der unbezahlten kostenlosen ChatGPT-Version Angebotskalkulationen reinkopiert hat. Das war kein AI-Act-Problem — das war ein DSGVO-Problem. Die Verschiebung des AI Act ändert daran nichts.
+Was man sich damit erkauft, ist nicht nur Compliance. Es ist Klarheit, was im eigenen Betrieb überhaupt läuft. Bei dem Bauunternehmer aus dem Schwarzwald haben wir nebenbei rausgefunden, dass die Sekretärin auf der unbezahlten kostenlosen ChatGPT-Version Angebotskalkulationen reinkopiert hat. Das war kein AI-Act-Problem — das war ein DSGVO-Problem. Die Verschiebung des AI Act ändert daran nichts.
 
-*Wenn du wissen willst, wo dein Betrieb steht: Ein 30-Minuten-Erstgespräch bei mir kostet nichts und endet mit einer ehrlichen Einschätzung, kein Verkaufsgespräch. [Termin buchen](/erstgespraech).*
+*Wenn Sie wissen möchten, wo Ihr Betrieb steht: Im [Erstgespräch](/erstgespraech) schauen wir auf Ihre konkrete Tool-Landschaft und den kleinsten sinnvollen nächsten Schritt.*

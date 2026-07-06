@@ -1,12 +1,100 @@
 ---
 import KaizenLayout from '../layouts/KaizenLayout.astro';
+
+const asyncMail = `mailto:kontakt@k-aizen.de?subject=${encodeURIComponent("KI-PA Kurzcheck")}&body=${encodeURIComponent(`Hi Ben,
+
+ich möchte erst einmal ohne Termin prüfen, ob k-AIzen für uns passt.
+
+1. Branche / Teamgröße:
+2. Wo verlieren wir gerade Zeit?
+3. Welche Systeme nutzen wir? (z. B. Microsoft 365, Teams, Slack, Notion, CRM, Excel)
+
+Beste Grüße`)}`;
+
+const outcomeCards = [
+  {
+    title: "Fit-Einschätzung",
+    text: "Passt KI-PA, KI-Check, Pilot oder gerade nichts? Sie erhalten eine klare fachliche Empfehlung.",
+  },
+  {
+    title: "Erster sinnvoller Use Case",
+    text: "Wir benennen den Bereich, der am ehesten trägt: Mail, Kalender, Aufgaben, Belege, Wissen, Telefon oder etwas anderes.",
+  },
+  {
+    title: "Nächster Schritt ohne Nebel",
+    text: "Wenn es passt, wissen Sie, ob ein kleiner Pilot oder ein Discovery-Audit sinnvoll ist. Wenn nicht, wird das klar benannt.",
+  },
+];
+
+const noFitItems = [
+  "Sie wollen sofort vollautomatische Entscheidungen ohne Freigaben.",
+  "Niemand im Betrieb kann Quellen, Regeln oder Beispiele bereitstellen.",
+  "Es geht vor allem um ein sichtbares KI-Label, nicht um einen echten Ablauf.",
+];
+
+const conversationSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://k-aizen.de/erstgespraech#webpage",
+      "url": "https://k-aizen.de/erstgespraech",
+      "name": "Erstgespräch — k-AIzen",
+      "description": "Kostenloses 30-Minuten-Erstgespräch oder Async-Kurzcheck, um zu klären, ob KI-PA, KI-Check, Discovery-Audit oder Pilot sinnvoll ist.",
+      "inLanguage": "de-DE",
+      "isPartOf": { "@id": "https://k-aizen.de/#website" },
+      "about": { "@id": "https://k-aizen.de/ki-pa#service" }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://k-aizen.de/erstgespraech#service",
+      "name": "Kostenloses KI-Erstgespräch",
+      "serviceType": "KI-Potenzialcheck und Erstberatung",
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "k-AIzen",
+        "url": "https://k-aizen.de",
+        "email": "kontakt@k-aizen.de"
+      },
+      "areaServed": ["DE", "AT", "CH"],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://k-aizen.de/erstgespraech#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Kostet das Erstgespräch etwas?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Nein. Das Erstgespräch kostet nichts und dient dazu, den Fit zu prüfen." }
+        },
+        {
+          "@type": "Question",
+          "name": "Muss ich direkt einen Termin buchen?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Nein. Alternativ können Interessenten einen Async-Kurzcheck per Mail schicken: Branche, Engpass und vorhandene Systeme reichen für eine erste Einschätzung." }
+        },
+        {
+          "@type": "Question",
+          "name": "Was habe ich nach dem Erstgespräch?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Nach dem Erstgespräch steht eine Fit-Einschätzung: ob KI-PA, KI-Check, Discovery-Audit, Pilot oder kein Projekt sinnvoll ist. Außerdem wird der wahrscheinlich beste erste Use Case benannt." }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <KaizenLayout
-  title="Erstgespräch — 30 Minuten ohne Verkaufsdruck"
-  description="Buch ein 30-Minuten-Erstgespräch. Du erzählst, wir hören zu. Am Ende wissen wir beide ob ein Workflow Sinn macht."
+  title="Erstgespräch — klare Einschätzung in 30 Minuten"
+  description="Buchen Sie ein 30-Minuten-Erstgespräch. Wir klären, wo im Betrieb Zeit verloren geht und ob KI-PA, KI-Check oder ein Pilot sinnvoll ist."
   path="/erstgespraech"
   activeNav="kontakt"
+  jsonLd={conversationSchema}
 >
   <article class="kz-page">
     <div class="kz-page-eyebrow">
@@ -14,64 +102,110 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
       <img src="/icons/icon-sakura-branch.png" alt="" class="kz-eyebrow-leaf" loading="lazy" />
       <span>Erstgespräch</span>
     </div>
-    <h1 class="kz-h1">30 Minuten. Ohne Verkaufsdruck.</h1>
+    <h1 class="kz-h1">30 Minuten für eine klare Einschätzung.</h1>
     <p class="kz-lead">
-      Du erzählst wo bei euch Zeit verloren geht. Wir hören zu. Am Ende des Gesprächs weisst du
-      ob ein Workflow Sinn macht — oder eben nicht. Beides ist ein gutes Ergebnis.
+      Sie schildern, wo in Ihrem Betrieb Zeit verloren geht. Gemeinsam klären wir,
+      ob KI-PA, KI-Check oder ein Pilot fachlich sinnvoll ist.
+      Wenn nicht, ist auch das eine klare Entscheidung.
     </p>
 
     <!-- Pre-Read Block -->
     <section class="kz-pre-read" style="margin-top: 32px; padding: 28px 32px; background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 12px;">
-      <h2 class="kz-h2" style="margin-top: 0; font-size: 22px; color: var(--fg-inverse);">Bevor wir reden — 3 Min Pre-Read</h2>
+      <h2 class="kz-h2" style="margin-top: 0; font-size: 22px; color: var(--fg-inverse);">Vorbereitung — 3 Min Pre-Read</h2>
       <p style="margin: 8px 0 16px 0; color: var(--fg-inverse);">
-        Damit du nicht ins Gespräch kommst ohne Idee was wir bauen: schau dir einen vollständigen Tag mit Lena — unserer KI-PA Brand-Persona — an. 11 Slides, ~3 Min Klick-Through. Dann brauchen wir die ersten 10 Min im Call nicht für „was kann das alles" — wir reden direkt über deine Situation.
+        Damit Sie nicht ohne Bild ins Gespräch kommen: Die KI-PA-Seite zeigt, wie der Einstieg
+        praktisch aussieht — Mail, Kontext, Freigaben und Arbeitskanal statt abstrakter Tool-Liste.
+        Dann reden wir im Termin direkt über Ihre Situation.
       </p>
       <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-        <a href="/pitch/lena" class="kz-btn">Tag mit Lena →</a>
-        <a href="/pitch/markus" class="kz-btn kz-btn-ghost">Variante mit Markus (Berater/GF) →</a>
+        <a href="/ki-pa" class="kz-btn">KI-PA verstehen →</a>
+        <a href="/#ein-tag" class="kz-btn kz-btn-ghost">Tagesbeispiel ansehen →</a>
+      </div>
+    </section>
+
+    <section style="margin-top: 56px;">
+      <h2 class="kz-h2">Was Sie danach klarer wissen</h2>
+      <p>
+        Der Termin dient der Orientierung. Am Ende soll klarer sein, ob sich ein nächster Schritt lohnt
+        und welcher Einstieg fachlich am sinnvollsten ist.
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-top: 24px;">
+        {outcomeCards.map((card) => (
+          <article style="padding: 22px; border-radius: 12px; background: var(--kz-cream-deep); color: var(--fg-inverse); border: 1px solid rgba(232,90,43,0.14);">
+            <h3 style="margin: 0 0 8px; font-size: 18px;">{card.title}</h3>
+            <p style="margin: 0; color: var(--fg-inverse); font-size: 15px; line-height: 1.6;">{card.text}</p>
+          </article>
+        ))}
       </div>
     </section>
 
     <section style="margin-top: 56px;">
       <h2 class="kz-h2">Was im Gespräch passiert</h2>
       <ul>
-        <li><strong>Min 0–5</strong> — kurzer Smalltalk, was du machst, was wir machen</li>
-        <li><strong>Min 5–20</strong> — du erzählst einen konkreten Schmerz / Workflow / Frust-Punkt im Detail</li>
-        <li><strong>Min 20–25</strong> — wir spiegeln zurück was wir gehört haben + sagen ehrlich ob's für uns passt</li>
-        <li><strong>Min 25–30</strong> — wenn ja: nächster Schritt klären (Vertrag, Kosten, Timeline). Wenn nein: vielleicht ein Hinweis wer dir besser helfen könnte</li>
+        <li><strong>Min 0–5</strong> — kurzer Kontext: was Sie machen, was k-AIzen macht</li>
+        <li><strong>Min 5–20</strong> — Sie schildern einen konkreten Engpass oder Ablauf im Detail</li>
+        <li><strong>Min 20–25</strong> — gemeinsame Einschätzung, wo KI realistisch helfen kann und wo nicht</li>
+        <li><strong>Min 25–30</strong> — nächster sinnvoller Schritt: nicht passend, KI-Check, Pilot oder konkretes Angebot</li>
       </ul>
     </section>
 
     <section>
-      <h2 class="kz-h2">Was wir vorher wissen wollen</h2>
-      <p>Wenn du in der Buchungs-Mail / im Calendly-Form schon zwei Sätze schreibst zu:</p>
+      <h2 class="kz-h2">Was vorab hilfreich ist</h2>
+      <p>Wenn Sie in der Buchungs-Mail oder im Formular schon zwei Sätze schreiben zu:</p>
       <ul>
         <li>Branche + ungefähre Team-Größe</li>
-        <li>Konkreter Schmerz oder Workflow den du im Kopf hast</li>
+        <li>Konkreter Schmerz oder Workflow, den Sie im Kopf haben</li>
       </ul>
-      <p>… dann können wir vorbereitet ins Gespräch und sind direkt produktiv statt erst Kontext aufzubauen.</p>
+      <p>… dann starten wir vorbereitet und sind direkt produktiv, statt erst Kontext aufzubauen.</p>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">Wann k-AIzen eher abrät</h2>
+      <p>
+        Ein guter Einstieg braucht nicht viel, aber er braucht ein bisschen Realität aus Ihrem Betrieb.
+        Ein Projekt ist meist nicht sinnvoll, wenn einer dieser Punkte gerade zutrifft:
+      </p>
+      <ul>
+        {noFitItems.map((item) => <li>{item}</li>)}
+      </ul>
     </section>
 
     <section>
       <h2 class="kz-h2">Was es kostet</h2>
       <p>
-        Das Erstgespräch kostet nichts. Wir machen davon ~3-5 pro Woche und sind ehrlich gespannt
-        ob's passt — wenn nicht, ist das zusätzlich nicht-vergeudete Zeit für uns beide.
+        Das Erstgespräch kostet nichts. Es ist ein kurzer Orientierungstermin:
+        Lohnt sich KI für Ihren konkreten Alltag jetzt schon?
       </p>
       <p>
-        Falls du nach dem Gespräch buchen willst, gibt's zwei Tiers für den KI-PA: <strong>Tier 1 Autonom</strong> ab 10.299 € Setup + 1.029 €/Mo (oder 1.899 €/Mo ohne Setup). <strong>Tier 2 + Concierge</strong> ab 12.999 € + 1.529 €/Mo. Add-on-Module modular zubuchbar. Vollständige Preisübersicht: <a href="/pricing">/pricing</a>. Kein Stunden-Tracking, kein Tagessatz-Theater.
+        Wenn es passt, ist der nächste bezahlte Schritt bewusst klar begrenzt:
+        KI-Check / Discovery-Audit oder ein kleiner Pilot. Das vollständige KI-PA-Setup
+        kommt erst danach, wenn fachlich klar ist, dass der Einstieg Sinn macht.
+        Die vollständige Preisübersicht steht offen unter <a href="/pricing">/pricing</a>.
       </p>
     </section>
 
     <section style="margin-top: 80px; padding: 56px clamp(24px, 4vw, 48px); background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 12px;">
-      <h2 class="kz-h2" style="margin-top: 0; color: var(--fg-inverse);">Termin buchen</h2>
+      <h2 class="kz-h2" style="margin-top: 0; color: var(--fg-inverse);">Zwei einfache Wege</h2>
       <p style="color: var(--fg-inverse);">
-        Such dir direkt einen Slot — 30 Minuten, ohne Verkaufsdruck.
+        Wenn Sie gern sprechen: suchen Sie sich direkt einen Slot. Wenn Sie schriftlich starten möchten:
+        schicken Sie mir drei Stichpunkte. Beides ist ein sauberer Einstieg.
       </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 24px;">
+        <div style="padding: 20px; border-radius: 12px; background: rgba(255,255,255,0.58); border: 1px solid rgba(232,90,43,0.14);">
+          <h3 style="margin: 0 0 8px; font-size: 18px;">Async Kurzcheck</h3>
+          <p style="margin: 0 0 16px; color: var(--fg-inverse); font-size: 15px;">Branche, Engpass, Systeme. Sie erhalten eine persönliche Einschätzung, ob KI-PA, Audit oder vorerst nichts sinnvoll ist.</p>
+          <a href={asyncMail} class="kz-btn">3 Fragen schicken</a>
+        </div>
+        <div style="padding: 20px; border-radius: 12px; background: rgba(255,255,255,0.58); border: 1px solid rgba(232,90,43,0.14);">
+          <h3 style="margin: 0 0 8px; font-size: 18px;">30-Minuten-Termin</h3>
+          <p style="margin: 0; color: var(--fg-inverse); font-size: 15px;">Direkt sprechen, gemeinsam sortieren, am Ende den nächsten sinnvollen Schritt festlegen.</p>
+        </div>
+      </div>
 
       <!-- Cal.com inline embed (self-hosted, DSGVO-konform, DE-Server — ersetzt Calendly) -->
       <div
-        style="width:100%;min-width:320px;height:700px;margin-top:24px;overflow:auto;border-radius:8px;"
+        style="width:100%;min-width:0;height:700px;margin-top:24px;overflow:auto;border-radius:8px;"
         id="cal-inline-erstgespraech"
       ></div>
       <script type="text/javascript" is:inline>
@@ -93,7 +227,7 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
       </script>
 
       <p style="margin-top: 32px; font-size: 14px; color: var(--fg-muted);">
-        Lieber per Mail? <a href="mailto:kontakt@k-aizen.de?subject=Erstgespr%C3%A4ch%20Anfrage&body=Hi%20k-AIzen-Team%2C%0A%0AKontext%20zu%20uns%3A%0A-%20Branche%3A%20%0A-%20Team-Gr%C3%B6%C3%9Fe%3A%20%0A-%20Konkreter%20Schmerz%2FWorkflow%3A%20%0A%0ABeste%20Gr%C3%BC%C3%9Fe%2C">kontakt@k-aizen.de</a> — wir antworten binnen 48h.
+        Lieber frei formulieren? <a href="mailto:kontakt@k-aizen.de">kontakt@k-aizen.de</a> — jede Anfrage wird persönlich geprüft.
       </p>
     </section>
   </article>

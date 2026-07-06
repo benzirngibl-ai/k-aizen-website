@@ -5,24 +5,23 @@ import { getCollection } from 'astro:content';
 const tutorials = (await getCollection('tutorials'))
   .filter((t) => !t.data.draft)
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
-
-const PA_BACKEND_URL = 'https://pa.k-aizen.de';
 ---
 
 <KaizenLayout
-  title="Tutorials — KI für KMU, Schritt für Schritt"
-  description="Kurze, praktische KI-Tutorials für KMU. Kostenlos als PDF. Mit konkreten Schritten, Links und Beispielen."
+  title="Ressourcen — KI für KMU, Schritt für Schritt"
+  description="Kurze, praktische Ressourcen für KMU: KI verstehen, erste Abläufe ordnen und konkrete Schritte testen."
   path="/tutorials"
   activeNav="tutorials"
 >
   <article class="kz-page">
     <div class="kz-page-eyebrow">
       <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
-      <span>Tutorials</span>
+      <span>Ressourcen</span>
     </div>
-    <h1 class="kz-h1">Tutorials für KMU.</h1>
+    <h1 class="kz-h1">Ressourcen für den ersten KI-Schritt.</h1>
     <p class="kz-lead">
-      Kurz, klar, ohne IT-Studium. Konkrete Schritt-für-Schritt-Anleitungen für KI-Tools im Mittelstand. Als PDF zum Download — Email rein, PDF im Postfach.
+      Kurz, klar, ohne IT-Studium. Praktische Anleitungen für Unternehmen, die KI
+      verstehen und die ersten Abläufe sauberer machen wollen.
     </p>
 
     {tutorials.length === 0 ? (
@@ -49,35 +48,6 @@ const PA_BACKEND_URL = 'https://pa.k-aizen.de';
                 <p class="kz-tutorial-card-desc">{tut.data.description}</p>
               </div>
 
-              <form
-                class="kz-tutorial-form"
-                data-slug={slug}
-                data-pdf-url={`/tutorials/${slug}.pdf`}
-                data-title={tut.data.title}
-              >
-                <label for={`email-${slug}`} class="kz-tutorial-form-label">
-                  Email für PDF-Download
-                </label>
-                <div class="kz-tutorial-form-row">
-                  <input
-                    id={`email-${slug}`}
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="deine@email.de"
-                    class="kz-tutorial-input"
-                  />
-                  <button type="submit" class="kz-btn">PDF schicken</button>
-                </div>
-                <p class="kz-tutorial-form-hint">
-                  Kein Spam. Du bekommst das PDF und gelegentlich Tutorial-Updates. Abmeldung jederzeit per Klick.
-                </p>
-                <p class="kz-tutorial-form-success" hidden>
-                  ✅ PDF unterwegs an dich. Schau in deinen Posteingang.
-                </p>
-                <p class="kz-tutorial-form-error" hidden></p>
-              </form>
-
               <div class="kz-tutorial-card-footer">
                 <a href={`/tutorials/${slug}`} class="kz-tutorial-card-link">
                   Online lesen →
@@ -90,53 +60,16 @@ const PA_BACKEND_URL = 'https://pa.k-aizen.de';
     )}
 
     <section class="kz-tutorial-info">
-      <h2 class="kz-h2">Was du hier bekommst</h2>
+      <h2 class="kz-h2">Was Sie hier bekommen</h2>
       <ul>
-        <li><strong>2-3 Seiten PDF</strong> mit Schritt-für-Schritt-Anleitung — kurz, knackig, sofort umsetzbar</li>
-        <li><strong>Konkrete Links</strong> zu den Tools die du brauchst, keine generischen Tipps</li>
+        <li><strong>Kurze Praxisnotizen</strong> mit Schritt-für-Schritt-Denken — kurz, klar, sofort lesbar</li>
+        <li><strong>Konkrete Links</strong> zu relevanten Tools und Quellen, keine generischen Tipps</li>
         <li><strong>5.-Klässler-Test</strong> — jeder Begriff wird in einem Satz erklärt, kein IT-Jargon</li>
-        <li><strong>3 neue Tutorials pro Woche</strong> automatisch in deinem Postfach</li>
-        <li><strong>Kein Spam, kein Bullshit</strong> — du kannst dich jederzeit mit einem Klick abmelden</li>
+        <li><strong>Praxis statt Tool-Hype</strong> — Fokus auf Abläufe, Freigaben und sinnvolle erste Schritte</li>
+        <li><strong>Kein künstliches Gating</strong> — lesen, prüfen, bei Bedarf ein Gespräch buchen</li>
       </ul>
     </section>
   </article>
-
-  <script define:vars={{ PA_BACKEND_URL }}>
-    document.querySelectorAll('.kz-tutorial-form').forEach((form) => {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const btn = form.querySelector('button[type="submit"]');
-        const success = form.querySelector('.kz-tutorial-form-success');
-        const error = form.querySelector('.kz-tutorial-form-error');
-        const email = form.querySelector('input[name="email"]').value;
-        const slug = form.dataset.slug;
-        const pdfUrl = form.dataset.pdfUrl;
-        const title = form.dataset.title;
-
-        success.hidden = true;
-        error.hidden = true;
-        btn.disabled = true;
-        btn.textContent = '…';
-
-        try {
-          const resp = await fetch(`${PA_BACKEND_URL}/webhook/tutorial-signup`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, slug, pdf_url: pdfUrl, title }),
-          });
-          if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-          success.hidden = false;
-          form.querySelector('input[name="email"]').value = '';
-        } catch (err) {
-          error.textContent = `Konnte PDF nicht schicken (${err.message}). Versuch's später nochmal oder mail an kontakt@k-aizen.de`;
-          error.hidden = false;
-        } finally {
-          btn.disabled = false;
-          btn.textContent = 'PDF schicken';
-        }
-      });
-    });
-  </script>
 
   <style>
     .kz-empty-block {
@@ -182,62 +115,6 @@ const PA_BACKEND_URL = 'https://pa.k-aizen.de';
       line-height: 1.55;
       color: var(--fg-muted);
       margin: 0;
-    }
-
-    .kz-tutorial-form {
-      padding: 20px;
-      background: rgba(245, 240, 232, 0.7);
-      border-radius: 8px;
-      border: 1px dashed var(--kz-border);
-    }
-    .kz-tutorial-form-label {
-      display: block;
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--fg);
-    }
-    .kz-tutorial-form-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .kz-tutorial-input {
-      flex: 1;
-      min-width: 200px;
-      padding: 12px 16px;
-      font-family: var(--font-sans);
-      font-size: 15px;
-      border: 1px solid var(--kz-border);
-      border-radius: 8px;
-      background: white;
-      color: var(--fg-inverse);
-    }
-    .kz-tutorial-input:focus {
-      outline: 2px solid var(--accent);
-      outline-offset: 1px;
-    }
-    .kz-tutorial-form-hint {
-      font-family: var(--font-sans);
-      font-size: 13px;
-      color: var(--fg-muted);
-      margin: 12px 0 0;
-    }
-    .kz-tutorial-form-success {
-      font-family: var(--font-sans);
-      font-size: 14px;
-      color: #2d7a3a;
-      margin: 12px 0 0;
-      font-weight: 600;
-    }
-    .kz-tutorial-form-error {
-      font-family: var(--font-sans);
-      font-size: 14px;
-      color: #c63;
-      margin: 12px 0 0;
     }
 
     .kz-tutorial-card-footer {

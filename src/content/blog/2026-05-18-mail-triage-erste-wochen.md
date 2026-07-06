@@ -51,7 +51,7 @@ Triagiert wird in vier Kategorien:
 - **JUNK** — Werbung, Cold-Outreach, Phishing-nahe Geschichten
 - **AUTO_ACK** — Calendly-Bestätigungen, Order-Confirmations, automatische Quittungen
 
-Ein Discord-Channel zeigt mir alle 15 Minuten die `NEED_READ`-Mails als Übersicht. Den Rest sehe ich nur, wenn ich gezielt im Backend-Dashboard nachgucke.
+Ein Arbeitskanal zeigt mir alle 15 Minuten die `NEED_READ`-Mails als Übersicht. Das kann Teams, Slack, Discord oder eine eigene Oberfläche sein. Den Rest sehe ich nur, wenn ich gezielt im Backend-Dashboard nachgucke.
 
 ## Was nach drei Wochen funktioniert
 
@@ -68,9 +68,9 @@ Ein Discord-Channel zeigt mir alle 15 Minuten die `NEED_READ`-Mails als Übersic
 
 ## Was das einem KMU bringt
 
-Wenn du 60-120 Mails am Tag bekommst, sparst du nach meiner Erfahrung etwa 30-45 Minuten pro Tag. Klingt nach wenig, ist aber: über ein Jahr gerechnet zwischen 130 und 200 Stunden. Plus den kognitiven Wechsel — Inbox öffnen und nur die 12 echten Mails sehen, statt zwischen 80 News und Spam zu navigieren — das ist nicht zu unterschätzen.
+Wenn ein Betrieb 60-120 Mails am Tag bekommt, spart eine gute Triage nach meiner Erfahrung etwa 30-45 Minuten pro Tag. Klingt nach wenig, ist aber: über ein Jahr gerechnet zwischen 130 und 200 Stunden. Plus den kognitiven Wechsel — Inbox öffnen und nur die 12 echten Mails sehen, statt zwischen 80 News und Spam zu navigieren — das ist nicht zu unterschätzen.
 
-Was das nicht ersetzt: ein Assistent, der für dich antwortet. Triage entscheidet *was du anschaust*, nicht *wie du reagierst*. Wer Antwort-Generation will, braucht ein anderes Setup (mit menschlichem Approval, weil falsche Antworten teurer sind als falsche Klassifikation).
+Was das nicht ersetzt: ein Assistent, der Antworten vorbereitet. Triage entscheidet *was angeschaut werden sollte*, nicht *wie reagiert wird*. Wer Antwort-Generation will, braucht ein anderes Setup mit Kontext, Quellen und menschlicher Freigabe, weil falsche Antworten teurer sind als falsche Klassifikation.
 
 ## Was ich heute anders bauen würde
 
@@ -82,4 +82,4 @@ Wer das nachbauen will: die schwierigste Stelle ist nicht die KI, sondern Gmail-
 
 ---
 
-*Wenn du wissen willst, ob KI-Mail-Triage für dein KMU Sinn ergibt, kannst du ein [Erstgespräch](/erstgespraech) buchen. 30 Minuten, kostenlos, kein Folgevertrag.*
+*Wenn Sie wissen möchten, ob KI-Mail-Triage für Ihren Betrieb sinnvoll ist: Im [Erstgespräch](/erstgespraech) schauen wir auf Mailaufkommen, Risiken und den kleinsten sinnvollen Startpunkt.*

@@ -1,7 +1,6 @@
 ---
-// KaizenLayout.astro — Static-page layout für alle Back-Pages
-// Brand-Tokens aus /preview/colors_and_type.css (gleiche Source wie Homepage)
-// SEO + AI-Discovery: OG, Twitter-Cards, JSON-LD-Slot, ARIA-Landmarks
+// KaizenLayout.astro — shared v2 layout for public back-pages.
+// Homepage and /ki-pa are bespoke pages, but the visual language is the same.
 
 interface BreadcrumbItem {
   name: string;
@@ -11,13 +10,13 @@ interface BreadcrumbItem {
 interface Props {
   title: string;
   description: string;
-  path: string;            // z.B. "/about" — für canonical + og:url
-  ogImage?: string;        // optional, default = /og-image.png (1200x630)
-  jsonLd?: object | object[]; // optional structured data
-  breadcrumbs?: BreadcrumbItem[]; // optional breadcrumb-trail
+  path: string;
+  ogImage?: string;
+  jsonLd?: object | object[];
+  breadcrumbs?: BreadcrumbItem[];
   activeNav?: 'audit' | 'pricing' | 'about' | 'faq' | 'kontakt' | 'home' | 'blog' | 'tutorials';
-  noindex?: boolean;       // wenn true → blockiert Indexierung (für Pitch-Decks)
-  hideChrome?: boolean;    // wenn true → versteckt Header + Footer (für Pitch-Decks)
+  noindex?: boolean;
+  hideChrome?: boolean;
 }
 
 const {
@@ -34,15 +33,21 @@ const {
 
 const SITE_URL = 'https://k-aizen.de';
 const fullTitle = title.includes('k-AIzen') ? title : `${title} · k-AIzen`;
-const canonical = `${SITE_URL}${path}`;
+const toAbsoluteUrl = (href: string) => {
+  const normalizedPath = href === '/' ? '/' : `${href.replace(/\/$/, '')}/`;
+  return `${SITE_URL}${normalizedPath}`;
+};
+const canonical = toAbsoluteUrl(path);
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`;
+const robotsPolicy = noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large';
+const crawlerPolicy = noindex ? 'noindex, nofollow' : 'index, follow';
 
 const navItems = [
-  { label: 'Audit', href: '/audit', key: 'audit' },
-  { label: 'Blog', href: '/blog', key: 'blog' },
+  { label: 'Angebot', href: '/#angebot', key: 'home' },
+  { label: 'Ablauf', href: '/#ablauf', key: 'faq' },
+  { label: 'KI-PA', href: '/ki-pa', key: 'audit' },
   { label: 'Preise', href: '/pricing', key: 'pricing' },
   { label: 'Über mich', href: '/about', key: 'about' },
-  { label: 'FAQ', href: '/#faq', key: 'faq' },
   { label: 'Kontakt', href: '/kontakt', key: 'kontakt' },
 ];
 
@@ -50,22 +55,20 @@ const jsonLdArray = jsonLd
   ? Array.isArray(jsonLd) ? jsonLd : [jsonLd]
   : [];
 
-// Breadcrumb-Schema automatisch generieren falls breadcrumbs-prop gesetzt
 if (breadcrumbs && breadcrumbs.length > 0) {
-  const breadcrumbSchema = {
+  jsonLdArray.push({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Start", "item": SITE_URL },
+      { "@type": "ListItem", "position": 1, "name": "Start", "item": `${SITE_URL}/` },
       ...breadcrumbs.map((b, i) => ({
         "@type": "ListItem",
         "position": i + 2,
         "name": b.name,
-        "item": `${SITE_URL}${b.href}`,
+        "item": toAbsoluteUrl(b.href),
       })),
     ],
-  };
-  jsonLdArray.push(breadcrumbSchema);
+  });
 }
 ---
 
@@ -75,42 +78,13 @@ if (breadcrumbs && breadcrumbs.length > 0) {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <!-- SEO -->
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
-  <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large"} />
+  <meta name="robots" content={robotsPolicy} />
   <meta name="author" content="Benjamin Zirngibl · k-AIzen" />
-  <meta name="theme-color" content="#F5F0E8" />
+  <meta name="theme-color" content="#FCFCFD" />
 
-  <!--
-    SECURITY HEADERS — bewusst NICHT als <meta http-equiv> gesetzt.
-
-    Begründung:
-    - X-Frame-Options / X-Content-Type-Options sind echte HTTP-Header und
-      werden von Browsern als <meta http-equiv> ignoriert → bringen hier nichts.
-    - Eine Content-Security-Policy LIESSE sich via <meta http-equiv> setzen,
-      würde aber die Homepage zerstören: die lädt React von unpkg.com und nutzt
-      inline-Scripts (siehe is:inline unten + index). Eine sinnvoll-strenge CSP
-      (script-src 'self') würde diese blocken; eine CSP mit 'unsafe-inline' +
-      unpkg.com wäre security-theater ohne echten Schutzwert.
-
-    Entscheidung: KEINE kaputte/wirkungslose CSP im HTML. Stattdessen gehören
-    die Security-Header auf den Reverse-Proxy / Coolify-Layer, wo sie als echte
-    Response-Header greifen (und Frame-Ancestors/XFO tatsächlich durchsetzen):
-
-        X-Content-Type-Options: nosniff
-        X-Frame-Options: SAMEORIGIN            (bzw. CSP: frame-ancestors 'self')
-        Referrer-Policy: strict-origin-when-cross-origin
-        Permissions-Policy: geolocation=(), microphone=(), camera=()
-        Content-Security-Policy: ...           (muss unpkg.com + inline-Scripts
-                                                 der Homepage berücksichtigen)
-
-    Siehe Coolify → App → "Custom Headers" / Caddy/Traefik-Config.
-  -->
-
-
-  <!-- OpenGraph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
@@ -119,28 +93,29 @@ if (breadcrumbs && breadcrumbs.length > 0) {
   <meta property="og:locale" content="de_DE" />
   <meta property="og:site_name" content="k-AIzen" />
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={fullTitle} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImageUrl} />
 
-  <!-- AI Crawlers — explizit erlaubt -->
-  <meta name="GPTBot" content="index, follow" />
-  <meta name="ClaudeBot" content="index, follow" />
-  <meta name="Claude-Web" content="index, follow" />
-  <meta name="PerplexityBot" content="index, follow" />
-  <meta name="Applebot" content="index, follow" />
+  <meta name="GPTBot" content={crawlerPolicy} />
+  <meta name="ClaudeBot" content={crawlerPolicy} />
+  <meta name="Claude-Web" content={crawlerPolicy} />
+  <meta name="PerplexityBot" content={crawlerPolicy} />
+  <meta name="Applebot" content={crawlerPolicy} />
 
-  <!-- Favicon + PWA -->
-  <link rel="icon" type="image/png" href="/animations/claude-design/logo-mark.png" />
-  <link rel="apple-touch-icon" href="/animations/claude-design/logo-mark.png" />
+  <link rel="icon" type="image/png" href="/icons/kaizen-favicon.png" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/icons/kaizen-favicon.png" />
   <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
+  <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLMs Full" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/v2/kz-v2.css?v=7" />
+  <link rel="stylesheet" href="/v2/kz-v2-polish.css?v=7" />
 
-  <!-- Brand Tokens (gleiche wie Homepage) -->
-  <link rel="stylesheet" href="/preview/colors_and_type.css?v=20260528-younglena-v12" />
-
-  <!-- Hreflang (Deutschland-Default, expandable) -->
   <link rel="alternate" hreflang="de" href={canonical} />
   <link rel="alternate" hreflang="x-default" href={canonical} />
 
@@ -151,400 +126,361 @@ if (breadcrumbs && breadcrumbs.length > 0) {
   <style is:global>
     :root {
       color-scheme: light;
+      --bg: var(--paper);
+      --fg: var(--ink);
+      --fg-muted: var(--slate);
+      --fg-inverse: var(--ink);
+      --accent: var(--indigo);
+      --kz-charcoal: var(--ink);
+      --kz-cream: var(--paper);
+      --kz-cream-deep: var(--card);
+      --kz-border: var(--line);
+      --kz-ember: var(--indigo);
+      --kz-ember-text: var(--indigo-deep);
+      --kz-ember-deep: var(--indigo-deep);
+      --font-display: var(--font-sans);
     }
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
+
     body {
-      background: var(--bg);
-      color: var(--fg);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      overflow-x: clip;
     }
+
     main {
       flex: 1;
       width: 100%;
       position: relative;
+      padding-top: 82px;
     }
-    /* Atmospheric Sumi-Tusche-Layer — subtle background depth */
-    main::before {
-      content: "";
-      position: fixed;
-      bottom: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 130%;
-      max-width: 2200px;
-      height: 40vh;
-      background-image: url('/animations/claude-design/sumi-mountains.png');
-      background-repeat: no-repeat;
-      background-position: center bottom;
-      background-size: contain;
-      opacity: 0.22;
-      pointer-events: none;
-      z-index: -1;
-      filter: saturate(0.7) invert(1);
-    }
-    /* Subtle radial-gradient ink-wash für mehr Tiefe */
+    main::before,
     main::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(31,41,51,0.04) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: -1;
-    }
-    /* Breakpoints used across this site:
-       - 720px → content collapses to single column (cards, grids)
-       - 860px → header switches to hamburger nav (Logo + Wordmark + Burger fits)
-       Values are intentional, not equivalent. */
-    /* Header */
-    .kz-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(31, 41, 51, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .kz-header-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 12px clamp(20px, 5vw, 32px);
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 24px;
-    }
-    .kz-brand {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-    }
-    .kz-brand img {
-      height: 48px;
-      width: auto;
-      display: block;
-    }
-    .kz-nav {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-      justify-self: center;
-    }
-    .kz-nav a {
-      font-family: var(--font-sans);
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--fg);
-      text-decoration: none;
-      transition: color 140ms var(--ease-out);
-      padding: 8px 0;
-    }
-    .kz-nav a:hover { color: var(--accent); }
-    .kz-nav a.active { color: var(--accent); }
-    .kz-nav-cta {
-      font-family: var(--font-sans);
-      font-size: 14px;
-      font-weight: 600;
-      padding: 9px 18px;
-      background: var(--kz-charcoal);
-      color: var(--kz-cream);
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 140ms var(--ease-out);
-    }
-    .kz-nav-cta:hover { background: var(--kz-ember-deep); }
-    @media (max-width: 760px) {
-      .kz-nav { display: none; }
+      content: none !important;
+      display: none !important;
+      background: none !important;
     }
 
-    /* Footer */
-    .kz-footer {
-      background: var(--kz-charcoal);
-      color: var(--kz-cream);
-      padding: clamp(60px, 8vh, 100px) 0 32px;
-      margin-top: clamp(80px, 12vh, 140px);
+    .kz-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      z-index: 200;
+      background: linear-gradient(90deg, var(--indigo), var(--violet));
     }
-    .kz-footer a { color: var(--kz-cream); text-decoration: none; opacity: 0.85; }
-    .kz-footer a:hover { color: var(--kz-ember); opacity: 1; }
-    .kz-footer-grid {
-      max-width: 1180px;
+
+    .kz-nav__brand {
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .kz-nav__brand:hover {
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .kz-logo-mark {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      display: block;
+    }
+    .kz-logo {
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .kz-logo__ai {
+      background: linear-gradient(120deg, var(--indigo), var(--violet));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 800;
+    }
+
+    .kz-nav__links a.active {
+      color: var(--ink);
+    }
+    .kz-nav__links a.active::after {
+      width: 100%;
+    }
+
+    .kz-skip {
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: translateY(-120%);
+      z-index: 300;
+      background: var(--ink);
+      color: #fff;
+      padding: 10px 16px;
+      text-decoration: none;
+    }
+    .kz-skip:focus {
+      transform: translateY(0);
+    }
+
+    .kz-page {
+      box-sizing: border-box;
+      width: min(100%, 980px);
       margin: 0 auto;
-      padding: 0 clamp(24px, 5vw, 64px);
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
-      gap: clamp(28px, 5vw, 60px);
+      padding: clamp(54px, 8vw, 96px) var(--gutter) 0;
     }
-    @media (max-width: 760px) {
-      .kz-footer-grid { grid-template-columns: 1fr 1fr; }
+    .kz-page--wide {
+      width: min(100%, 1200px);
     }
-    .kz-footer-brand img {
-      height: 50px; width: auto; display: block;
-      margin-bottom: 18px;
-      filter: invert(1) brightness(1.05);
-    }
-    .kz-footer-tag {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: 20px;
-      line-height: 1.3;
-      color: rgba(245, 240, 232, 0.7);
-      max-width: 280px;
-      margin: 0;
-    }
-    .kz-footer-col h4 {
-      font-family: var(--font-sans);
-      font-size: 11px;
-      font-weight: 600;
+
+    .kz-page-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      color: rgba(245, 240, 232, 0.78);
+      color: var(--indigo-deep);
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: var(--indigo-wash);
+      border: 1px solid rgba(232,90,43,0.16);
+      margin-bottom: 28px;
+    }
+    .kz-page-eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--violet);
+    }
+    .kz-page-eyebrow img {
+      display: none !important;
+    }
+
+    .kz-page .kz-h1 {
+      font-size: clamp(3rem, 7vw, 5.6rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      font-weight: 800;
+      color: var(--ink);
+      max-width: 12ch;
+      overflow-wrap: anywhere;
+      margin: 0;
+    }
+    .kz-page .kz-h1 .accent {
+      background: linear-gradient(120deg, var(--indigo), var(--violet));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent !important;
+      font-style: normal !important;
+    }
+    .kz-page .kz-lead {
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      color: var(--slate);
+      max-width: 60ch;
+      margin: 28px 0 56px;
+      line-height: 1.65;
+    }
+    .kz-page .kz-h2 {
+      font-size: clamp(2rem, 4.2vw, 3.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      font-weight: 800;
+      color: var(--ink);
+      max-width: 18ch;
+      margin: clamp(64px, 10vw, 120px) 0 22px;
+    }
+    .kz-page .kz-h3 {
+      font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 36px 0 12px;
+    }
+    .kz-page p {
+      color: var(--slate);
+      font-size: 1.05rem;
+      line-height: 1.72;
+      max-width: 72ch;
       margin: 0 0 18px;
+    }
+    .kz-page ul,
+    .kz-page ol {
+      color: var(--slate);
+      font-size: 1.02rem;
+      line-height: 1.7;
+      max-width: 72ch;
+      padding-left: 1.2rem;
+      margin: 18px 0;
+    }
+    .kz-page li {
+      margin-bottom: 10px;
+    }
+    .kz-page strong {
+      color: var(--ink);
+      font-weight: 800;
+    }
+    .kz-page a:not(.kz-btn) {
+      color: var(--indigo-deep);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .kz-page section {
+      position: relative;
+    }
+    .kz-page :is(section, div)[style*="background: var(--kz-cream-deep)"],
+    .kz-page :is(section, div)[style*="background:var(--kz-cream-deep)"] {
+      background: var(--card) !important;
+      border: 1px solid var(--line) !important;
+      box-shadow: var(--shadow-sm);
+    }
+    .kz-page :is(section, div)[style*="background: var(--kz-charcoal)"],
+    .kz-page :is(section, div)[style*="background:var(--kz-charcoal)"] {
+      background: var(--ink) !important;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: var(--shadow-md);
+    }
+    .kz-page :is(section, div)[style*="background: var(--kz-charcoal)"] :is(h1,h2,h3,p,li,strong,span),
+    .kz-page :is(section, div)[style*="background:var(--kz-charcoal)"] :is(h1,h2,h3,p,li,strong,span) {
+      color: var(--paper);
+    }
+    .kz-page :is(section, div)[style*="background: var(--kz-charcoal)"] p,
+    .kz-page :is(section, div)[style*="background:var(--kz-charcoal)"] p {
+      color: rgba(255,255,255,0.72);
+    }
+
+    .kz-btn:not(.kz-btn--ghost):not(.kz-btn-ghost):not(.kz-btn--whatsapp):not(.kz-btn--audit) {
+      background: linear-gradient(135deg, var(--indigo), var(--violet));
+      color: #fff !important;
+      border-radius: 999px;
+      box-shadow: 0 8px 24px -6px rgba(232,90,43,0.45);
+    }
+    .kz-btn-ghost,
+    .kz-btn--ghost {
+      background: transparent !important;
+      color: var(--ink) !important;
+      border: 1.5px solid var(--line) !important;
+      border-radius: 999px;
+    }
+    .kz-btn-ghost:hover,
+    .kz-btn--ghost:hover {
+      border-color: var(--indigo) !important;
+      color: var(--indigo-deep) !important;
+      box-shadow: none;
+    }
+
+    .kz-quote {
+      border-left: 3px solid var(--indigo);
+      padding-left: 22px;
+      color: var(--slate);
+      font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+      line-height: 1.5;
+      font-style: normal;
+      max-width: 680px;
+      margin: 32px 0;
+    }
+
+    .kz-section-leaf,
+    .kz-section-leaf-lg {
+      display: none;
+    }
+
+    .kz-footer {
+      margin-top: clamp(80px, 12vw, 150px);
+      padding-block: 56px;
+      border-top: 1px solid var(--line);
+      color: var(--slate-2);
+      font-size: 14px;
+    }
+    .kz-footer a {
+      color: var(--slate);
+      text-decoration: none;
+    }
+    .kz-footer a:hover {
+      color: var(--indigo-deep);
+    }
+    .kz-footer-grid {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding-inline: var(--gutter);
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
+      gap: clamp(24px, 5vw, 56px);
+    }
+    .kz-footer-brand img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      display: block;
+      margin-bottom: 14px;
+    }
+    .kz-footer-tag {
+      color: var(--slate);
+      max-width: 290px;
+      margin: 0;
+      line-height: 1.6;
+    }
+    .kz-footer-col h4 {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--ink);
+      margin: 0 0 16px;
     }
     .kz-footer-col ul {
       list-style: none;
       padding: 0;
       margin: 0;
       display: grid;
-      gap: 12px;
-    }
-    .kz-footer-col li a {
-      font-size: 15px;
+      gap: 10px;
     }
     .kz-footer-base {
-      max-width: 1180px;
-      margin: 60px auto 0;
-      padding: 24px clamp(24px, 5vw, 64px) 0;
-      border-top: 1px solid rgba(245, 240, 232, 0.12);
+      max-width: var(--maxw);
+      margin: 44px auto 0;
+      padding: 24px var(--gutter) 0;
+      border-top: 1px solid var(--line);
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 16px;
-      font-family: var(--font-sans);
-      font-size: 13px;
-      color: rgba(245, 240, 232, 0.72);
+      color: var(--slate-2);
     }
 
-    /* Page-Content Defaults */
-    .kz-page {
-      max-width: 880px;
-      margin: 0 auto;
-      padding: clamp(60px, 10vh, 120px) clamp(24px, 5vw, 48px) 0;
+    @media (max-width: 760px) {
+      main {
+        padding-top: 78px;
+      }
+      .kz-page {
+        padding-top: 48px;
+      }
+      .kz-page .kz-h1 {
+        font-size: clamp(2.55rem, 13vw, 3.3rem);
+      }
+      .kz-footer-grid {
+        grid-template-columns: 1fr;
+      }
     }
-    .kz-page-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: var(--font-sans);
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--fg-muted);
-      margin-bottom: 24px;
-    }
-    .kz-page-eyebrow .kz-mark {
-      height: 24px; width: auto;
-    }
-    .kz-page-eyebrow .kz-eyebrow-leaf {
-      width: 22px;
-      height: 22px;
-      object-fit: contain;
-      flex-shrink: 0;
-    }
-    .kz-section-leaf {
-      width: 44px;
-      height: 44px;
-      object-fit: contain;
-      display: block;
-      margin-bottom: 12px;
-    }
-    .kz-section-leaf-lg {
-      width: 56px;
-      height: 56px;
-      object-fit: contain;
-      display: block;
-      margin-bottom: 12px;
-    }
-    .kz-h1 {
-      font-family: var(--font-display);
-      font-size: clamp(40px, 6vw, 72px);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: var(--fg);
-      margin: 0 0 24px;
-      text-wrap: balance;
-    }
-    .kz-lead {
-      font-family: var(--font-sans);
-      font-size: clamp(17px, 1.6vw, 21px);
-      line-height: 1.55;
-      color: var(--fg-muted);
-      margin: 0 0 56px;
-      max-width: 640px;
-      text-wrap: pretty;
-    }
-    .kz-h2 {
-      font-family: var(--font-display);
-      font-size: clamp(28px, 3.5vw, 40px);
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-      margin: 64px 0 20px;
-    }
-    .kz-h3 {
-      font-family: var(--font-display);
-      font-size: clamp(22px, 2.4vw, 28px);
-      line-height: 1.2;
-      margin: 40px 0 12px;
-    }
-    .kz-page p {
-      font-family: var(--font-sans);
-      font-size: 17px;
-      line-height: 1.65;
-      color: var(--fg);
-      margin: 0 0 16px;
-      max-width: 680px;
-      text-wrap: pretty;
-    }
-    .kz-page ul {
-      font-family: var(--font-sans);
-      font-size: 17px;
-      line-height: 1.65;
-      max-width: 680px;
-      padding-left: 0;
-      list-style: none;
-    }
-    .kz-page ul li {
-      position: relative;
-      padding-left: 24px;
-      margin-bottom: 10px;
-    }
-    .kz-page ul li::before {
-      content: "";
-      position: absolute;
-      left: 0; top: 11px;
-      width: 14px; height: 1px;
-      background: var(--accent);
-    }
-    .kz-page strong { font-weight: 600; }
-    .kz-page a:not(.kz-btn) {
-      color: var(--fg);
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-    }
-    .kz-page a:not(.kz-btn):hover { color: var(--accent); }
-    .kz-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--font-sans);
-      font-size: 16px;
-      font-weight: 600;
-      padding: 14px 26px;
-      background: var(--kz-charcoal);
-      color: var(--kz-cream) !important;
-      border-radius: 8px;
-      text-decoration: none !important;
-      transition: all 220ms var(--ease-out);
-    }
-    .kz-btn:hover {
-      background: var(--kz-ember-deep);
-      transform: translateY(-1px);
-      box-shadow: 0 12px 28px rgba(232, 90, 43, 0.28);
-    }
-    .kz-btn-ghost {
-      background: transparent;
-      color: var(--fg) !important;
-      border: 1.5px solid var(--kz-border);
-    }
-    .kz-btn-ghost:hover {
-      background: var(--kz-charcoal);
-      color: var(--kz-cream) !important;
-      border-color: var(--kz-charcoal);
-    }
-    /* When a ghost button sits on a cream-deep card, force dark text + dark border */
-    [style*="--kz-cream-deep"] .kz-btn-ghost,
-    [style*="background: var(--kz-cream-deep)"] .kz-btn-ghost,
-    .kz-day-card .kz-btn-ghost,
-    .kz-module .kz-btn-ghost,
-    .kz-price-card-a .kz-btn-ghost,
-    .kz-proof-card .kz-btn-ghost,
-    .kz-bottom-cta .kz-btn-ghost {
-      color: var(--fg-inverse) !important;
-      border-color: rgba(31, 41, 51, 0.35);
-    }
-    [style*="--kz-cream-deep"] .kz-btn-ghost:hover,
-    [style*="background: var(--kz-cream-deep)"] .kz-btn-ghost:hover,
-    .kz-day-card .kz-btn-ghost:hover,
-    .kz-module .kz-btn-ghost:hover,
-    .kz-price-card-a .kz-btn-ghost:hover,
-    .kz-proof-card .kz-btn-ghost:hover,
-    .kz-bottom-cta .kz-btn-ghost:hover {
-      background: var(--kz-charcoal);
-      color: var(--kz-cream) !important;
-      border-color: var(--kz-charcoal);
-    }
-    /* Global: any h1/h2/h3/p/strong inside a cream-deep section gets dark text — kills the recurring inheritance bug */
-    [style*="background: var(--kz-cream-deep)"] :is(h1, h2, h3, p, strong, li, span):not([style*="color"]),
-    [style*="background:var(--kz-cream-deep)"] :is(h1, h2, h3, p, strong, li, span):not([style*="color"]),
-    .kz-day-card :is(h1, h2, h3, p, strong, li):not([style*="color"]),
-    .kz-module :is(h1, h2, h3, p, strong, li):not([style*="color"]),
-    .kz-price-card-a :is(h1, h2, h3, p, strong, li):not([style*="color"]),
-    .kz-proof-card :is(h1, h2, h3, p, strong, li):not([style*="color"]),
-    .kz-bottom-cta :is(h1, h2, h3, p, strong, li):not([style*="color"]) {
-      color: var(--fg-inverse);
-    }
-    /* Links inside cream-deep sections: dark-text with ember underline on hover */
-    [style*="background: var(--kz-cream-deep)"] a:not(.kz-btn):not(.kz-btn--whatsapp):not(.kz-btn--audit):not(.kz-btn-ghost),
-    [style*="background:var(--kz-cream-deep)"] a:not(.kz-btn):not(.kz-btn--whatsapp):not(.kz-btn--audit):not(.kz-btn-ghost),
-    .kz-day-card a:not(.kz-btn):not(.kz-btn-ghost),
-    .kz-module a:not(.kz-btn):not(.kz-btn-ghost),
-    .kz-price-card-a a:not(.kz-btn):not(.kz-btn-ghost),
-    .kz-proof-card a:not(.kz-btn):not(.kz-btn-ghost),
-    .kz-bottom-cta a:not(.kz-btn):not(.kz-btn--whatsapp):not(.kz-btn--audit):not(.kz-btn-ghost) {
-      color: var(--kz-ember-text);
-    }
-    [style*="background: var(--kz-cream-deep)"] a:not(.kz-btn):not(.kz-btn--whatsapp):not(.kz-btn--audit):not(.kz-btn-ghost):hover,
-    [style*="background:var(--kz-cream-deep)"] a:not(.kz-btn):not(.kz-btn--whatsapp):not(.kz-btn--audit):not(.kz-btn-ghost):hover {
-      color: var(--kz-ember-deep);
-    }
-    .kz-quote {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: clamp(22px, 2.4vw, 28px);
-      line-height: 1.4;
-      color: var(--fg-muted);
-      border-left: 2px solid var(--accent);
-      padding-left: 24px;
-      margin: 32px 0;
-    }
-    /* Skip-to-content für Accessibility */
-    .kz-skip {
-      position: absolute; left: -9999px; top: 0;
-      background: var(--kz-charcoal); color: var(--kz-cream);
-      padding: 8px 16px; text-decoration: none; z-index: 100;
-    }
-    .kz-skip:focus { left: 0; }
   </style>
 </head>
 <body>
+  <div class="kz-progress"></div>
   <a href="#main" class="kz-skip">Zum Hauptinhalt springen</a>
 
-  <header class="kz-header" role="banner" style={hideChrome ? 'display: none;' : ''}>
-    <div class="kz-header-inner">
-      <a href="/" class="kz-brand" aria-label="k-AIzen Startseite">
-        <img src="/animations/claude-design/logo-full.png" alt="k-AIzen" />
-      </a>
-      <nav class="kz-nav" aria-label="Hauptnavigation">
-        {navItems.map((item) => (
-          <a href={item.href} class={item.key === activeNav ? 'active' : ''}>{item.label}</a>
-        ))}
-      </nav>
-      <a href="/erstgespraech" class="kz-nav-cta">Erstgespräch</a>
+  <nav class="kz-nav" role="banner" style={hideChrome ? 'display: none;' : ''}>
+    <a href="/" class="kz-nav__brand" aria-label="k-AIzen Startseite">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-logo-mark" />
+      <span class="kz-logo">k&#8209;<span class="kz-logo__ai">AI</span>zen</span>
+    </a>
+    <div class="kz-nav__links" aria-label="Hauptnavigation">
+      {navItems.map((item) => (
+        <a href={item.href} class={item.key === activeNav ? 'active' : ''}>{item.label}</a>
+      ))}
     </div>
-  </header>
+    <a href="/erstgespraech" class="kz-btn kz-btn--primary" style="padding:11px 22px;font-size:14px;">Erstgespräch</a>
+  </nav>
 
   <main id="main" role="main">
     <slot />
@@ -553,28 +489,26 @@ if (breadcrumbs && breadcrumbs.length > 0) {
   <footer class="kz-footer" role="contentinfo" style={hideChrome ? 'display: none;' : ''}>
     <div class="kz-footer-grid">
       <div class="kz-footer-brand">
-        <img src="/animations/claude-design/logo-full.png" alt="k-AIzen" />
+        <img src="/animations/claude-design/logo-mark.png" alt="" />
         <p class="kz-footer-tag">
-          Jeden Tag 1% besser.<br/>Mit KI.
+          Ihr KI-Ansprechpartner im Unternehmen. Start mit KI-PA, danach Schritt für Schritt mehr System.
         </p>
       </div>
       <div class="kz-footer-col">
-        <h4>Angebot</h4>
+        <h4>Funnel</h4>
         <ul>
-          <li><a href="/audit">Audit buchen</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/pricing">Preise &amp; Module</a></li>
-          <li><a href="/about">Über mich</a></li>
-          <li><a href="/erstgespraech">Erstgespräch (gratis)</a></li>
+          <li><a href="/erstgespraech">Erstgespräch</a></li>
+          <li><a href="/ki-pa">KI-PA verstehen</a></li>
+          <li><a href="/pricing">Preise &amp; Einstieg</a></li>
+          <li><a href="/audit">Discovery-Audit</a></li>
         </ul>
       </div>
       <div class="kz-footer-col">
-        <h4>Kontakt</h4>
+        <h4>Vertrauen</h4>
         <ul>
-          <li><a href="mailto:kontakt@k-aizen.de">kontakt@k-aizen.de</a></li>
-          <li><a href="https://wa.me/4915901031928" rel="noopener noreferrer" target="_blank">WhatsApp</a></li>
-          <li><a href="https://www.linkedin.com/in/benjamin-zirngibl-0963753ab" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
-          <li><a href="/kontakt">Kontakt-Seite</a></li>
+          <li><a href="/about">Über mich</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/kontakt">Kontakt</a></li>
         </ul>
       </div>
       <div class="kz-footer-col">
@@ -587,20 +521,11 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       </div>
     </div>
     <div class="kz-footer-base">
-      <span>© 2026 Benjamin Zirngibl · k-AIzen · Bayern</span>
-      <span>Made in Germany · Hosted in Germany</span>
+      <span>© 2026 Benjamin Zirngibl · k-AIzen</span>
+      <span>KI-PA · Automatisierung · Systematisierung</span>
     </div>
   </footer>
 
-  <!-- Chatbot Widget — Backend-URL wird über window.KAIZEN_BOT_URL gesetzt.
-       Default: same-origin /api/chat. Dev-Override im Browser-Console möglich. -->
-  <script is:inline>
-    window.KAIZEN_BOT_URL = window.KAIZEN_BOT_URL || (
-      location.hostname === 'localhost' || location.hostname === '127.0.0.1'
-        ? 'http://localhost:4123/chat'
-        : 'https://chat.k-aizen.de/chat'
-    );
-  </script>
-  <script is:inline src="/widgets/chatbot.js?v=20260528-younglena-v12" defer></script>
+  <script is:inline src="/v2/kz-v2.js?v=5" defer></script>
 </body>
 </html>

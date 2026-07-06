@@ -2,10 +2,11 @@
 import KaizenLayout from '../layouts/KaizenLayout.astro';
 ---
 <KaizenLayout
-  title="Customer-Onboarding · k-AIzen"
-  description="Setup-Formular für neue k-AIzen-Customer. Alle Infos die wir brauchen um deinen KI-Mitarbeiter live zu schalten — strukturiert in 7 kurzen Sektionen mit Schritt-für-Schritt-Anleitungen."
+  title="Kunden-Onboarding · k-AIzen"
+  description="Setup-Formular für neue k-AIzen-Kunden. Die wichtigsten Informationen für den Start mit KI-PA, Arbeitskanal und Unternehmenskontext — strukturiert in sieben kurzen Sektionen."
   path="/onboarding"
   activeNav="home"
+  noindex={true}
 >
   <article class="kz-page" style="max-width: 760px;">
     <div class="kz-page-eyebrow">
@@ -15,26 +16,26 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
 
     <h1 class="kz-h1">
       Willkommen.<br/>
-      <span style="color: var(--kz-ember-text); font-style: italic;">Lass uns dein Setup machen.</span>
+      Lassen Sie uns Ihr Setup vorbereiten.
     </h1>
 
     <p class="kz-lead">
-      Sieben kurze Sektionen. Pro Sektion: ein paar Felder, eine klare Anleitung mit Links zum Klicken oder Kopieren. Dauert ungefähr 15–20 Minuten. Am Ende landen alle Infos sauber strukturiert bei mir — wir können dann direkt mit dem Setup starten.
+      Sieben kurze Sektionen. Pro Sektion: ein paar Felder, eine klare Anleitung und nur die Informationen, die wir für den ersten sauberen Aufbau brauchen. Am Ende liegen Mailzugang, Arbeitskanal, Tonfall und Unternehmenskontext strukturiert vor.
     </p>
 
     <div class="kz-help-card">
-      <strong>Wichtig:</strong> Wenn du irgendwo unsicher bist, lass das Feld leer und schreib mir per WhatsApp. Lieber zu wenig als falsches eintragen. Alle Felder mit <span style="color: var(--kz-ember-text);">*</span> sind Pflicht. Der Rest ist optional.
+      <strong>Wichtig:</strong> Wenn Sie bei einem Punkt unsicher sind, lassen Sie das Feld leer oder schreiben kurz eine Notiz dazu. Lieber ein fehlendes Detail als falsche Zugangsdaten. Alle Felder mit <span style="color: var(--kz-ember-text);">*</span> sind Pflicht. Der Rest ist optional.
     </div>
 
     <form id="onboarding-form" novalidate>
 
-      <!-- ── SECTION 1: WER DU BIST ──────────────────────────────────── -->
+      <!-- ── SECTION 1: UNTERNEHMEN ──────────────────────────────────── -->
       <section class="kz-form-section">
         <div class="kz-section-head">
           <span class="kz-section-num">01</span>
-          <h2 class="kz-h2">Wer du bist</h2>
+          <h2 class="kz-h2">Unternehmen und Ansprechpartner</h2>
         </div>
-        <p class="kz-section-intro">Damit wir wissen, wem wir das KI-Setup bauen.</p>
+        <p class="kz-section-intro">Damit klar ist, für welches Unternehmen wir den ersten KI-PA und die Arbeitsumgebung vorbereiten.</p>
 
         <div class="kz-field">
           <label for="full_name">Voll-Name <span class="req">*</span></label>
@@ -50,7 +51,7 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
           <div class="kz-field">
             <label for="contact_email">Kontakt-Mail <span class="req">*</span></label>
             <input id="contact_email" name="contact_email" type="email" required placeholder="anna@beispiel.de" />
-            <span class="kz-hint">Hier erreichen wir dich für Rückfragen. NICHT die Mailbox die der KI-PA verwalten soll — die kommt später.</span>
+            <span class="kz-hint">Hier erreichen wir Sie für Rückfragen. Die Mailbox, die der KI-PA bearbeiten soll, kommt im nächsten Abschnitt.</span>
           </div>
           <div class="kz-field">
             <label for="phone">Telefon / WhatsApp</label>
@@ -60,14 +61,15 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
         </div>
 
         <div class="kz-field">
-          <label>Welchen KI-Mitarbeiter willst du? <span class="req">*</span></label>
+          <label>Welcher Start- oder Ausbaupunkt passt am besten? <span class="req">*</span></label>
           <div class="kz-radio-grid">
-            <label><input type="radio" name="employee" value="pa" required /> KI-PA · Personal-Assistent</label>
-            <label><input type="radio" name="employee" value="social" /> Social-Marketer</label>
-            <label><input type="radio" name="employee" value="finanzer" /> Finanzer · Buchhaltung</label>
-            <label><input type="radio" name="employee" value="personaler" /> Personaler · HR</label>
-            <label><input type="radio" name="employee" value="ultimate" /> Ultimate (alle 4 + Voice)</label>
-            <label><input type="radio" name="employee" value="unsure" /> Unsicher — schlag mir was vor</label>
+            <label><input type="radio" name="employee" value="kipa" required /> KI-PA · Mail, Kalender, Aufgaben, Kontext</label>
+            <label><input type="radio" name="employee" value="content" /> Content-Maschine</label>
+            <label><input type="radio" name="employee" value="belege" /> Beleg- und Steuer-Modul</label>
+            <label><input type="radio" name="employee" value="voice" /> Voice-Empfangsdame</label>
+            <label><input type="radio" name="employee" value="leads" /> Lead-Pipeline</label>
+            <label><input type="radio" name="employee" value="os" /> Kaizen OS · eigenes internes System</label>
+            <label><input type="radio" name="employee" value="unsure" /> Unsicher — bitte empfehlen</label>
           </div>
         </div>
       </section>
@@ -76,16 +78,16 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
       <section class="kz-form-section">
         <div class="kz-section-head">
           <span class="kz-section-num">02</span>
-          <h2 class="kz-h2">Deine Geschäfts-Mailbox</h2>
+          <h2 class="kz-h2">Ihre Geschäfts-Mailbox</h2>
         </div>
         <p class="kz-section-intro">
-          Damit der KI-PA deine Mails lesen, triagieren und Antwort-Entwürfe schreiben kann. Wir nutzen <strong>IMAP mit App-Password</strong> — kein direkter Zugriff auf dein echtes Passwort.
+          Damit der KI-PA Mails lesen, triagieren und Antwort-Entwürfe vorbereiten kann. Wir nutzen <strong>IMAP mit App-Password</strong> oder eine passende Integration — kein direkter Zugriff auf Ihr echtes Hauptpasswort.
         </p>
 
         <details class="kz-explain">
           <summary>Was ist ein App-Password und warum nicht mein echtes Passwort?</summary>
           <p>
-            Ein App-Password ist ein zufällig generierter Spezial-Schlüssel den dein Mail-Anbieter nur für eine bestimmte Anwendung ausstellt. Du kannst es jederzeit widerrufen ohne dein Hauptpasswort zu ändern. Wenn du irgendwann sagst „k-AIzen, weg mit dir", drehst du in deinem Account einfach das eine App-Password ab — fertig. Wir kommen nicht an dein echtes Passwort und sehen auch keine 2FA-Codes.
+            Ein App-Password ist ein zufällig generierter Spezial-Schlüssel, den Ihr Mail-Anbieter nur für eine bestimmte Anwendung ausstellt. Sie können es jederzeit widerrufen, ohne Ihr Hauptpasswort zu ändern. Wenn die Zusammenarbeit endet, deaktivieren Sie dieses eine App-Password im Account. Wir erhalten kein echtes Hauptpasswort und keine 2FA-Codes.
           </p>
         </details>
 
@@ -101,7 +103,7 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
             <option value="strato">STRATO</option>
             <option value="all-inkl">All-Inkl</option>
             <option value="custom">Eigene Domain (anderer Provider)</option>
-            <option value="dont-know">Weiß ich nicht — hilf mir</option>
+            <option value="dont-know">Weiß ich nicht — bitte prüfen</option>
           </select>
         </div>
 
@@ -113,7 +115,7 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
             <li><strong>2-Faktor-Auth aktivieren</strong> (falls noch nicht): <a href="https://myaccount.google.com/security" target="_blank" rel="noopener">myaccount.google.com/security</a> → „Bestätigung in zwei Schritten" → Einrichten.</li>
             <li><strong>App-Password generieren:</strong> <a href="https://myaccount.google.com/apppasswords" target="_blank" rel="noopener">myaccount.google.com/apppasswords</a></li>
             <li>App-Name: <code>k-AIzen PA</code> → „Erstellen"</li>
-            <li>Google zeigt dir einen 16-Zeichen-Code (z. B. <code>abcd efgh ijkl mnop</code>). Den ohne Leerzeichen unten einfügen.</li>
+            <li>Google zeigt einen 16-Zeichen-Code (z. B. <code>abcd efgh ijkl mnop</code>). Diesen Code ohne Leerzeichen unten einfügen.</li>
           </ol>
           <p class="kz-mini-note">IMAP-Settings sind auto-erkannt (<code>imap.gmail.com:993</code>).</p>
         </div>
@@ -133,9 +135,9 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
           <ol>
             <li>Login auf <a href="https://web.de" target="_blank" rel="noopener">web.de</a></li>
             <li>Einstellungen → POP3 / IMAP → IMAP aktivieren</li>
-            <li>Bei web.de gibt es kein klassisches „App-Password" — du musst dein normales Passwort verwenden ODER ein eigenes Mail-Passwort setzen in Sicherheits-Einstellungen.</li>
+            <li>Bei web.de gibt es kein klassisches „App-Password" — verwenden Sie entweder das normale Passwort oder ein separates Mail-Passwort aus den Sicherheitseinstellungen.</li>
           </ol>
-          <p class="kz-mini-note">IMAP: <code>imap.web.de:993</code>. <strong>Hinweis:</strong> Wir empfehlen ein separates Mail-Passwort statt deines Login-Passworts.</p>
+          <p class="kz-mini-note">IMAP: <code>imap.web.de:993</code>. <strong>Hinweis:</strong> Wir empfehlen ein separates Mail-Passwort statt des Login-Passworts.</p>
         </div>
 
         <div class="kz-howto" data-provider="gmx" hidden>
@@ -143,18 +145,18 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
           <ol>
             <li>Login auf <a href="https://gmx.net" target="_blank" rel="noopener">gmx.net</a></li>
             <li>E-Mail-Einstellungen → POP3/IMAP-Abruf → aktivieren</li>
-            <li>Wie bei web.de: dein normales oder separat-gesetztes Mail-Passwort verwenden.</li>
+            <li>Wie bei web.de: normales oder separat gesetztes Mail-Passwort verwenden.</li>
           </ol>
           <p class="kz-mini-note">IMAP: <code>imap.gmx.net:993</code>.</p>
         </div>
 
         <div class="kz-howto" data-provider="ionos" hidden>
           <h4>IONOS / 1&1 — IMAP-Settings</h4>
-          <p>Du hast eine eigene Mail-Adresse bei IONOS (z. B. <code>anna@deinedomain.de</code>):</p>
+          <p>Bei einer eigenen Mail-Adresse bei IONOS (z. B. <code>anna@ihredomain.de</code>):</p>
           <ol>
             <li><a href="https://my.ionos.de/email" target="_blank" rel="noopener">my.ionos.de/email</a> → Mailbox auswählen</li>
             <li>IMAP-Settings: <code>imap.ionos.de:993</code> (SSL/TLS)</li>
-            <li>Username = volle Mail-Adresse, Password = das Mailbox-Passwort das du bei IONOS gesetzt hast.</li>
+            <li>Username = volle Mail-Adresse, Password = das Mailbox-Passwort, das bei IONOS gesetzt wurde.</li>
           </ol>
         </div>
 
@@ -171,19 +173,19 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
           <h4>All-Inkl — IMAP-Settings</h4>
           <ol>
             <li>KAS-Login → E-Mail-Postfächer</li>
-            <li>IMAP: <code>w01XXXXXX.kasserver.com:993</code> (die genaue Server-Adresse findest du im KAS unter „Mein Account → Konfiguration")</li>
+            <li>IMAP: <code>w01XXXXXX.kasserver.com:993</code> (die genaue Server-Adresse steht im KAS unter „Mein Account → Konfiguration")</li>
             <li>Volle Mail-Adresse + Postfach-Passwort.</li>
           </ol>
         </div>
 
         <div class="kz-howto" data-provider="custom" hidden>
           <h4>Eigene Domain — IMAP-Settings</h4>
-          <p>Du hast eine Mail bei einem anderen Provider (z. B. mailbox.org, posteo, eigener Server)? Schreib unten in die Notiz-Box welcher Provider — wir finden die IMAP-Settings raus.</p>
+          <p>Bei einer Mailbox eines anderen Providers (z. B. mailbox.org, posteo, eigener Server): unten kurz den Provider notieren — wir prüfen die IMAP-Settings.</p>
         </div>
 
         <div class="kz-howto" data-provider="dont-know" hidden>
           <h4>Weiß ich nicht</h4>
-          <p>Schau in deinem Mail-Programm (Apple Mail, Outlook auf dem Mac, Thunderbird) unter <em>Einstellungen → Konten</em>. Dort steht der Provider-Name. Oder schick einen Screenshot per WhatsApp — wir helfen.</p>
+          <p>Der Provider steht meistens im Mail-Programm (Apple Mail, Outlook, Thunderbird) unter <em>Einstellungen → Konten</em>. Alternativ reicht ein Screenshot oder eine kurze Notiz.</p>
         </div>
 
         <div class="kz-row-2">
@@ -194,7 +196,7 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
           <div class="kz-field">
             <label for="mail_app_password">App-Password <span class="req">*</span></label>
             <input id="mail_app_password" name="mail_app_password" type="password" required placeholder="z. B. abcdefghijklmnop" />
-            <span class="kz-hint">Das ist verschlüsselt zu uns übertragen und landet später nur im ENV deines eigenen Servers.</span>
+            <span class="kz-hint">Die Übertragung erfolgt verschlüsselt. Zugangsdaten werden später nur in der vorgesehenen Umgebung gespeichert, nicht in Logs oder Datenbanken.</span>
           </div>
         </div>
 
@@ -217,21 +219,21 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
           <h2 class="kz-h2">Calendly · Termin-Buchungen</h2>
         </div>
         <p class="kz-section-intro">
-          Damit eingehende Bookings automatisch im Discord landen — mit Pre-Call-Briefing falls gewünscht.
+          Damit eingehende Buchungen automatisch im Arbeitskanal auftauchen — mit Pre-Call-Briefing, wenn gewünscht.
         </p>
 
         <div class="kz-field">
-          <label>Hast du schon ein Calendly?</label>
+          <label>Gibt es bereits ein Calendly?</label>
           <div class="kz-radio-grid">
-            <label><input type="radio" name="calendly" value="yes" /> Ja, hab ich</label>
-            <label><input type="radio" name="calendly" value="no_help" /> Nein — hilf mir beim Setup</label>
-            <label><input type="radio" name="calendly" value="not_needed" /> Brauch ich nicht (keine Calls)</label>
+            <label><input type="radio" name="calendly" value="yes" /> Ja, vorhanden</label>
+            <label><input type="radio" name="calendly" value="no_help" /> Nein — bitte beim Setup helfen</label>
+            <label><input type="radio" name="calendly" value="not_needed" /> Nicht notwendig</label>
           </div>
         </div>
 
         <div class="kz-field">
           <label for="calendly_url">Calendly-URL (falls vorhanden)</label>
-          <input id="calendly_url" name="calendly_url" type="url" placeholder="https://calendly.com/dein-name" />
+          <input id="calendly_url" name="calendly_url" type="url" placeholder="https://calendly.com/ihr-name" />
           <span class="kz-hint">Beispiel: <code>https://calendly.com/anna-mueller</code></span>
         </div>
 
@@ -239,27 +241,27 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
           <summary>Calendly noch nicht? In 5 Minuten gemacht.</summary>
           <ol>
             <li>Auf <a href="https://calendly.com/signup" target="_blank" rel="noopener">calendly.com/signup</a> gehen — kostenlos für 1 Event-Type</li>
-            <li>Mit deiner Geschäfts-Mail anmelden (die du oben angegeben hast)</li>
+            <li>Mit der Geschäfts-Mail anmelden, die oben angegeben wurde</li>
             <li>Ersten Event-Type erstellen: „30-Min-Kennenlernen" o. ä.</li>
             <li>URL kopieren, oben einfügen</li>
           </ol>
         </details>
       </section>
 
-      <!-- ── SECTION 4: DISCORD ──────────────────────────────────────── -->
+      <!-- ── SECTION 4: ARBEITSKANAL ─────────────────────────────────── -->
       <section class="kz-form-section">
         <div class="kz-section-head">
           <span class="kz-section-num">04</span>
-          <h2 class="kz-h2">Discord · dein Cockpit</h2>
+          <h2 class="kz-h2">Arbeitskanal · Ihr Cockpit</h2>
         </div>
         <p class="kz-section-intro">
-          Hier kommen Mails, Bookings, Leads und Status-Meldungen rein. Du bekommst die App fürs Handy + Desktop — eine zentrale Stelle für alles.
+          Hier laufen Mails, Buchungen, Freigaben und Statusmeldungen zusammen. Je nach Unternehmen nutzen wir Teams, Slack, Discord, Notion oder eine eigene Kaizen-OS-Oberfläche.
         </p>
 
         <div class="kz-field">
-          <label>Hast du schon Discord (privat oder anders)?</label>
+          <label>Falls Discord als Arbeitskanal vereinbart ist: Gibt es bereits einen Account?</label>
           <div class="kz-radio-grid">
-            <label><input type="radio" name="discord" value="yes_account" /> Ja, hab Account</label>
+            <label><input type="radio" name="discord" value="yes_account" /> Ja, Account vorhanden</label>
             <label><input type="radio" name="discord" value="no_account" /> Nein, noch nicht</label>
           </div>
         </div>
@@ -267,18 +269,18 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
         <div class="kz-field">
           <label for="discord_username">Discord-Username (falls vorhanden)</label>
           <input id="discord_username" name="discord_username" type="text" placeholder="z. B. anna_mueller#1234 oder anna_mueller" />
-          <span class="kz-hint">Damit wir dich auf den Server einladen können.</span>
+          <span class="kz-hint">Nur ausfüllen, wenn Discord im Setup genutzt wird. Der technische Feldname bleibt für die Verarbeitung bestehen.</span>
         </div>
 
         <details class="kz-explain">
-          <summary>Noch kein Discord? Dauert 3 Minuten.</summary>
+          <summary>Falls Discord genutzt wird: Account in wenigen Minuten anlegen.</summary>
           <ol>
-            <li><a href="https://discord.com/register" target="_blank" rel="noopener">discord.com/register</a> — mit deiner Geschäfts-Mail registrieren</li>
+            <li><a href="https://discord.com/register" target="_blank" rel="noopener">discord.com/register</a> — mit der Geschäfts-Mail registrieren</li>
             <li>Username wählen, Geburtsdatum eintragen, fertig</li>
             <li>Optional: Desktop-App + Handy-App installieren</li>
-            <li>Username unten eintragen — wir laden dich auf deinen eigenen Server ein</li>
+            <li>Username oben eintragen — wir laden Sie in den vereinbarten Arbeitsbereich ein</li>
           </ol>
-          <p class="kz-mini-note">Wir setzen dir einen eigenen Discord-Server mit Channels für Mails, Bookings, Leads etc. auf — du musst nichts selbst konfigurieren.</p>
+          <p class="kz-mini-note">Wenn Teams, Slack oder Kaizen OS besser passt, richten wir den Arbeitskanal dort ein. Discord ist nur eine mögliche Oberfläche.</p>
         </details>
       </section>
 
@@ -286,44 +288,44 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
       <section class="kz-form-section">
         <div class="kz-section-head">
           <span class="kz-section-num">05</span>
-          <h2 class="kz-h2">Dein Tonfall</h2>
+          <h2 class="kz-h2">Tonfall und Freigaben</h2>
         </div>
         <p class="kz-section-intro">
-          Damit die KI in DEINEM Stil schreibt — nicht generisch. 2-3 Beispiele deiner echten Mails / Posts reichen. Kein Marketing-Geschwafel — wir brauchen wie du wirklich schreibst.
+          Damit die KI nicht generisch schreibt, sondern sich an echten Beispielen orientiert. Zwei bis drei reale Mails oder Textbausteine reichen für den Start.
         </p>
 
         <div class="kz-field">
           <label for="voice_mail_samples">Beispiel-Mails (2-3, einfach reinpasten)</label>
-          <textarea id="voice_mail_samples" name="voice_mail_samples" rows="8" placeholder="Eine typische Antwort an einen Kunden, eine Anfrage-Antwort, eine Mahnung im deinem Stil — irgendwas worüber wir sehen wie du normalerweise schreibst.
+          <textarea id="voice_mail_samples" name="voice_mail_samples" rows="8" placeholder="Eine typische Antwort an einen Kunden, eine Anfrage-Antwort, eine Mahnung oder ein anderer Text, an dem wir Ihren normalen Stil erkennen.
 
 Trenne die einzelnen Beispiele mit:
 ---"></textarea>
         </div>
 
         <div class="kz-field">
-          <label for="voice_post_samples">Beispiel-Posts / Captions (nur bei Social-Marketer-Setup)</label>
-          <textarea id="voice_post_samples" name="voice_post_samples" rows="6" placeholder="2-3 deiner besten LinkedIn/IG-Posts. Trenne mit ---"></textarea>
+          <label for="voice_post_samples">Content- oder Social-Beispiele (falls relevant)</label>
+          <textarea id="voice_post_samples" name="voice_post_samples" rows="6" placeholder="2-3 gute LinkedIn-Beiträge, Newsletter, Website-Texte oder andere Beispiele. Trennen mit ---"></textarea>
         </div>
 
         <div class="kz-field">
           <label for="voice_notes">Tonfall-Hinweise (alles was wir wissen sollten)</label>
-          <textarea id="voice_notes" name="voice_notes" rows="3" placeholder="z. B. „immer locker per Du", „bei Geschäfts-Mails Sie", „nie Emojis in Kundenmails", „Sprache wechsle zwischen DE und EN bei internationalen Kunden""></textarea>
+          <textarea id="voice_notes" name="voice_notes" rows="3" placeholder="z. B. „bei Kunden immer Sie", „kurz und direkt", „keine Emojis in Kundenmails", „DE/EN je nach Kunde""></textarea>
         </div>
       </section>
 
-      <!-- ── SECTION 6: WAS BIETEST DU AN ────────────────────────────── -->
+      <!-- ── SECTION 6: ANGEBOT ──────────────────────────────────────── -->
       <section class="kz-form-section">
         <div class="kz-section-head">
           <span class="kz-section-num">06</span>
-          <h2 class="kz-h2">Was du anbietest</h2>
+          <h2 class="kz-h2">Angebot und Zielkunden</h2>
         </div>
         <p class="kz-section-intro">
-          Für ICP-Filter (Lead-Pipeline) und für AI-Reply-Drafts. Je präziser, desto besser die KI-Output-Qualität.
+          Für bessere Antwortentwürfe, Priorisierung und spätere Lead- oder Angebotslogik. Je präziser der Kontext, desto brauchbarer arbeitet der KI-PA.
         </p>
 
         <div class="kz-field">
           <label for="services">Service-Beschreibung <span class="req">*</span></label>
-          <textarea id="services" name="services" rows="4" required placeholder="z. B. „Hochzeitsfotografie + Image-Filme für lokale Unternehmen. Hauptmarkt Augsburg/Münchner Umland. Stil: emotional, dokumentarisch.""></textarea>
+          <textarea id="services" name="services" rows="4" required placeholder="z. B. „Sanitärbetrieb mit Wartung, Notdienst und Badsanierung im Großraum Augsburg. Wichtig: schnelle Reaktion, klare Termine, Bestandskundenpflege.""></textarea>
         </div>
 
         <div class="kz-row-2">
@@ -333,13 +335,13 @@ Trenne die einzelnen Beispiele mit:
           </div>
           <div class="kz-field">
             <label for="target_audience">Zielgruppe</label>
-            <input id="target_audience" name="target_audience" type="text" placeholder="z. B. Brautpaare 25-40, lokale Restaurants" />
+            <input id="target_audience" name="target_audience" type="text" placeholder="z. B. Hausverwaltungen, Gewerbekunden, Privatkunden, Bestandskunden" />
           </div>
         </div>
 
         <div class="kz-field">
           <label for="price_range">Preis-Range (typische Aufträge)</label>
-          <input id="price_range" name="price_range" type="text" placeholder="z. B. 1.500-3.500 € Hochzeit, 5-15k Image-Film" />
+          <input id="price_range" name="price_range" type="text" placeholder="z. B. 150-300 € Wartung, 3.000-15.000 € Projekt, monatliche Retainer" />
         </div>
       </section>
 
@@ -350,11 +352,11 @@ Trenne die einzelnen Beispiele mit:
           <h2 class="kz-h2">Bestandskunden · Empfehlungs-Pipeline</h2>
         </div>
         <p class="kz-section-intro">
-          Optional aber sehr empfohlen: wenn du eine Liste hast, baut die KI später Re-Engagement-Touches (6-8 Wochen nach Auftrag). Das ist erfahrungsgemäß 5× ROI gegenüber neuer Akquise.
+          Optional, aber wertvoll: Wenn bereits Kundendaten strukturiert vorliegen, kann die KI später Kontext, Wiedervorlagen und Re-Engagement vorbereiten.
         </p>
 
         <div class="kz-field">
-          <label>Hast du eine Bestandskunden-Liste?</label>
+          <label>Gibt es eine Bestandskunden-Liste?</label>
           <div class="kz-radio-grid">
             <label><input type="radio" name="customers_list" value="excel" /> Ja, Excel/Google Sheets</label>
             <label><input type="radio" name="customers_list" value="crm" /> Ja, in einem CRM (HubSpot/Pipedrive/…)</label>
@@ -364,9 +366,9 @@ Trenne die einzelnen Beispiele mit:
         </div>
 
         <div class="kz-field">
-          <label for="customers_notes">Wie viele Kunden ungefähr + welche Daten hast du?</label>
-          <textarea id="customers_notes" name="customers_notes" rows="3" placeholder="z. B. „ca. 80 Kunden, hab Name + Mail + letztes Auftragsdatum in Google Sheets" oder „ca. 20, alles in HubSpot, kann CSV exportieren""></textarea>
-          <span class="kz-hint">Mindest-Felder die wir später brauchen: <strong>Name, Mail, letzte Interaktion, Service</strong>. Du kannst die Liste später hochladen — wir können auch helfen sie zu strukturieren.</span>
+          <label for="customers_notes">Wie viele Kunden ungefähr + welche Daten liegen vor?</label>
+          <textarea id="customers_notes" name="customers_notes" rows="3" placeholder="z. B. „ca. 80 Kunden, Name + Mail + letztes Auftragsdatum in Google Sheets" oder „ca. 20, alles in HubSpot, CSV-Export möglich""></textarea>
+          <span class="kz-hint">Mindest-Felder für spätere Kontexte: <strong>Name, Mail, letzte Interaktion, Service</strong>. Die Liste kann später hochgeladen oder gemeinsam strukturiert werden.</span>
         </div>
       </section>
 
@@ -379,7 +381,7 @@ Trenne die einzelnen Beispiele mit:
 
         <div class="kz-field">
           <label for="anything_else">Sonstige Notizen, Wünsche, Sonderfälle</label>
-          <textarea id="anything_else" name="anything_else" rows="4" placeholder="Alles was du noch loswerden willst. Spezielle Tool-Stacks, Branchen-Besonderheiten, Datenschutz-Concerns, was du dir konkret erhoffst …"></textarea>
+          <textarea id="anything_else" name="anything_else" rows="4" placeholder="Spezielle Tool-Stacks, Branchen-Besonderheiten, Datenschutzthemen, Freigabeprozesse oder Erwartungen an das Setup …"></textarea>
         </div>
 
         <div class="kz-field kz-consent">
@@ -387,7 +389,7 @@ Trenne die einzelnen Beispiele mit:
             <input type="checkbox" name="consent" required />
             <span>
               Ich willige ein, dass meine angegebenen Daten zur Einrichtung des k-AIzen-Setups verarbeitet werden.
-              Zugangsdaten (App-Passwords, IMAP-Credentials) werden ausschließlich in ENV-Variablen meines eigenen Servers gespeichert, nicht in Datenbanken oder Logs.
+              Zugangsdaten (App-Passwords, IMAP-Credentials) werden ausschließlich in der vorgesehenen Umgebung gespeichert, nicht in Datenbanken oder Logs.
               <a href="/datenschutz" target="_blank">Datenschutzerklärung</a> <span class="req">*</span>
             </span>
           </label>
@@ -767,13 +769,13 @@ Trenne die einzelnen Beispiele mit:
         });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         status.className = 'success';
-        status.innerHTML = '<strong>Danke — alles angekommen.</strong> Ich melde mich innerhalb von 24h mit den nächsten Schritten. In der Zwischenzeit: lade dir <a href="https://discord.com/download" target="_blank">Discord</a> herunter falls noch nicht passiert.';
+        status.innerHTML = '<strong>Danke — alles angekommen.</strong> Ich melde mich innerhalb von 24h mit den nächsten Schritten und kläre den passenden Arbeitskanal für Ihr Setup.';
         status.hidden = false;
         form.querySelectorAll('input, textarea, select, button').forEach((el) => { if (el !== status) el.disabled = true; });
         window.scrollTo({ top: status.offsetTop - 100, behavior: 'smooth' });
       } catch (err) {
         status.className = 'error';
-        status.innerHTML = `<strong>Hat nicht geklappt:</strong> ${err.message}. Bitte schreib mir kurz auf <a href="https://wa.me/4915901031928">WhatsApp</a> mit dem Hinweis dass das Formular nicht durchging — ich helfe dann direkt.`;
+        status.innerHTML = `<strong>Hat nicht geklappt:</strong> ${err.message}. Bitte schreiben Sie mir kurz auf <a href="https://wa.me/4915901031928">WhatsApp</a> mit dem Hinweis, dass das Formular nicht durchging. Ich helfe dann direkt.`;
         status.hidden = false;
         submitBtn.disabled = false;
         submitBtn.textContent = 'Formular absenden →';

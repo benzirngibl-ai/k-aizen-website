@@ -59,7 +59,7 @@
   document.querySelectorAll('.kz-kinetic').forEach(function (el) {
     if (el.dataset.split) return; el.dataset.split = '1';
     var html = el.innerHTML;
-    // split on spaces but keep <span class="accent"> intact-ish: simple word wrap
+    // split on spaces, but keep accent spans intact so gradient text stays visible.
     var tmp = document.createElement('div'); tmp.innerHTML = html;
     function wrapTextNodes(node) {
       Array.prototype.slice.call(node.childNodes).forEach(function (n) {
@@ -70,7 +70,7 @@
             else if (w.length) { var s = document.createElement('span'); s.textContent = w; frag.appendChild(s); }
           });
           node.replaceChild(frag, n);
-        } else if (n.nodeType === 1) { wrapTextNodes(n); }
+        } else if (n.nodeType === 1 && !n.classList.contains('accent')) { wrapTextNodes(n); }
       });
     }
     wrapTextNodes(tmp);
@@ -94,11 +94,15 @@
   onScroll();
 
   if (window.location.hash) {
-    window.setTimeout(function () {
+    var scrollToHash = function () {
       var target = document.querySelector(window.location.hash);
       if (target) target.scrollIntoView({ block: 'start' });
       onScroll();
-    }, 250);
+    };
+    window.requestAnimationFrame(scrollToHash);
+    window.setTimeout(scrollToHash, 180);
+    window.setTimeout(scrollToHash, 700);
+    window.addEventListener('load', scrollToHash, { once: true });
   }
 
   /* ---------- Count-up numbers when stats scroll into view ---------- */

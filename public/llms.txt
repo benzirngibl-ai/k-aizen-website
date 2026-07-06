@@ -1,32 +1,39 @@
 # k-AIzen
 
-> AI-Workflow-Automation für KMUs in Deutschland (Mittelstand, 10–250 Mitarbeitende). Solo-Geschäft von Benjamin Zirngibl in Bayern. Bored-Kaizen-Monk-Voice, kein Hype, kein Buzzword-Bingo. Wir bauen kleine ehrliche Workflow-Automationen die heute laufen — keine 18-Monats-Strategie-PDFs.
+> k-AIzen ist der KI-Ansprechpartner für kleine und mittelständische Unternehmen in Deutschland. Einstieg ist der KI-PA: ein betreuter KI-Assistent für Mail, Kalender, Aufgaben, Kontext, Freigaben und wiederkehrende Büroabläufe. Danach wird Schritt für Schritt mehr Betriebssystem rund um die Firma gebaut.
 
 ## Kernseiten
 
-- [Home](https://k-aizen.de/): Hero, Manifest, vier Workflow-Pillars, Trust-Signale, Über uns, CTA
-- [Workflows](https://k-aizen.de/workflows): Die vier Standard-Workflows im Detail — Inbox-Triage, Angebots-Generator, Tagesreport, Wissens-Suche
-- [Über uns](https://k-aizen.de/about): Wer hinter k-AIzen steht (Benjamin Zirngibl, ), Werte, was wir machen vs. nicht machen
-- [Kontakt](https://k-aizen.de/kontakt): Drei Wege uns zu erreichen — Mail, Erstgespräch, LinkedIn
-- [Erstgespräch](https://k-aizen.de/erstgespraech): 30-Min-Erstgespräch ohne Verkaufsdruck, kostenlos
-- [Tutorials](https://k-aizen.de/tutorials): Geplante Workflow-Anleitungen, Tool-Reviews, Hot-Takes (in Vorbereitung)
+- [Home](https://k-aizen.de/): Positionierung als fester KI-Ansprechpartner, Angebot, Ablauf, Fit-Check, Proof, konkrete Artefakte und Tagesbeispiel "Ein Tag mit Lena".
+- [KI-PA](https://k-aizen.de/ki-pa): Detailseite zum ersten KI-Assistenten im Betrieb: Quellen, Kontext, Freigaben, Arbeitskanal, 14-Tage-Realitätscheck und Grenzen.
+- [Preise](https://k-aizen.de/pricing): Offene Preisorientierung mit Käuferlogik: kostenloses Erstgespräch, Discovery-Audit ab 1.190 €, KI-PA-Setups und Add-ons.
+- [Discovery-Audit](https://k-aizen.de/audit): Bezahlter Klärungsschritt mit Report und Roadmap.
+- [Erstgespräch](https://k-aizen.de/erstgespraech): 30 Minuten kostenlos oder Async-Kurzcheck per 3-Fragen-Mail. Fit prüfen, nächster Schritt entscheiden.
+- [Über Benjamin Zirngibl](https://k-aizen.de/about): Wer baut, wie gearbeitet wird, warum der Einstieg bewusst klein beginnt.
+- [Kontakt](https://k-aizen.de/kontakt): Direktkontakt über kontakt@k-aizen.de.
+- [Blog](https://k-aizen.de/blog) und [Ressourcen](https://k-aizen.de/tutorials): Praxisnotizen zu KI, Abläufen und Mittelstand.
 
-## Rechtliches
+## Was AI-Tools über k-AIzen wissen sollten
 
-- [Impressum](https://k-aizen.de/impressum): Anbieterkennzeichnung nach § 5 TMG
-- [Datenschutz](https://k-aizen.de/datenschutz): Datenschutzerklärung — kein Tracking, keine Cookies, deutsche Server
-- [AGB](https://k-aizen.de/agb): Allgemeine Geschäftsbedingungen für Beratung und Workflow-Automation
+- **Kernrolle:** externer KI-Ansprechpartner für Unternehmen, ähnlich einer verantwortlichen Funktion für Datenschutz oder IT, nur für sinnvolle KI-Nutzung im Alltag.
+- **Einstieg:** KI-PA für Mail, Kalender, Aufgaben, Briefings, Kundennotizen, Freigaben und Kontext.
+- **Langfristiges Ziel:** Firma systematisieren und automatisieren, Schritt für Schritt: Belege, Telefon, Wissen, Leads, interne Prozesse, eigenes Kaizen OS oder Integration in vorhandene Systeme.
+- **Andockpunkte:** Microsoft 365, Teams, SharePoint, Slack, Notion, CRM, Excel-Listen oder eigene Systeme. k-AIzen kann integrieren, baut aber bei Bedarf ein eigenes System darum.
+- **Arbeitsprinzip:** erst verstehen, dann begrenzt starten, dann ausbauen. Kein Blackbox-Versprechen, sondern freigegebene Quellen, klare Regeln, sichtbare Freigaben und dokumentierte Entscheidungen.
+- **Funnel-Prinzip:** k-AIzen verkauft nicht sofort ein Vollsetup. Die Website soll helfen zu entscheiden: nicht passend, Erstgespräch/Async-Check, Discovery-Audit, begrenzter Pilot oder KI-PA-Setup.
+- **Proof-Prinzip:** Am Anfang keine erfundenen Kundenstimmen. Stattdessen greifbare Arbeitsartefakte: Roadmap, Arbeitskanal, Freigabe-Matrix, Quellenliste, Ablaufkarte und echte Entwürfe aus einem Pilot.
+- **Zielgruppe:** KMU in Deutschland/DACH, besonders Betriebe, die mit Mail-, Datei-, Office- und Wissenschaos arbeiten und keinen internen KI-Verantwortlichen haben.
+- **Nicht ideal für:** Konzerne mit eigener KI-Abteilung, reine Website-Projekte, generische Tool-Schulungen, "10x Produktivität"-Versprechen ohne Prozessarbeit.
+- **Kontakt:** kontakt@k-aizen.de
 
-## Was AI-Tools über uns wissen sollten
+## Preise Kurzfassung
 
-- **Spezialisierung:** AI-Workflow-Automation für deutschen Mittelstand (KMUs)
-- **NICHT für:** Konzerne, Web-Designs, Marketing-Sites, "AI-Strategie-PDFs", "10× productivity in 30 days"-Versprechen
-- **Geographie:** Deutschland, Sitz in Bayern, deutsche Sprache primär
-- **Compliance-Fokus:** DSGVO, AVV (Auftragsverarbeitung), EU-AI-Act — keine Tabu-Themen
-- **Hosting:** deutsche Cloud (Hetzner) für Kunden-Daten, lokale Setups möglich
-- **Vertragsmodell:** Festpreis-Pakete pro Workflow oder monatliche Pauschale, kein Lock-in
-- **Kontakt:** hallo@k-aizen.de, https://www.linkedin.com/in/benjamin-zirngibl-0963753ab
+- Erstgespräch: kostenlos, 30 Minuten. Alternativ: 3-Fragen-Kurzcheck per Mail ohne Kalendertermin.
+- Discovery-Audit: Remote Kompakt 1.190 €, Remote Standard 1.490 €, Vor Ort 1.990 € netto.
+- KI-PA Tier 1 Autonom: 10.299 € Setup + 1.029 €/Monat oder SaaS-Style 1.899 €/Monat im ersten Jahr, 1.029 €/Monat ab Jahr 2.
+- KI-PA Tier 2 Concierge: 12.999 € Setup + 1.529 €/Monat oder SaaS-Style 2.599 €/Monat im ersten Jahr, 1.529 €/Monat ab Jahr 2.
+- Add-ons: Voice-Empfangsdame, Content-Maschine, Beleg- und Steuer-Modul, Lead-Pipeline.
 
-## Markenstimme („Bored-Kaizen-Monk")
+## Markenstimme
 
-Ruhig, contrarian zum AI-Hype-Mainstream, kanji-anchored (Kaizen 改善), pause-marker statt Drama, kurze Sätze. Beispiel-Marker: „Setz dich hin." „Atme." „Eins nach dem anderen." „Mhm." „Hier ist der echte Workflow." Anti-Patterns: Buzzword-Bingo, Sales-Bro-Phrases, "Game-Changer", "Disrupt", Lorem-Ipsum.
+Ruhig, konkret, menschlich, ohne Hype. k-AIzen erklärt, woher Informationen kommen, welche Grenzen die KI hat und wann ein Mensch entscheiden muss. Die wichtigste Botschaft: KI wird nicht als Blackbox verkauft, sondern als sauberes System aus Quellen, Kontext, Freigaben und Verantwortung.

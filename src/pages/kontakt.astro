@@ -15,77 +15,92 @@ const contactSchema = {
     "founder": { "@type": "Person", "name": "Benjamin Zirngibl" }
   }
 };
+
+const asyncMail = `mailto:kontakt@k-aizen.de?subject=${encodeURIComponent("KI-PA Kurzcheck")}&body=${encodeURIComponent(`Hi Ben,
+
+ich möchte kurz prüfen, ob k-AIzen für uns passt.
+
+1. Branche / Teamgröße:
+2. Wo verlieren wir gerade Zeit?
+3. Welche Systeme nutzen wir?
+
+Beste Grüße`)}`;
 ---
 
 <KaizenLayout
-  title="Kontakt — Schreib oder buch ein Erstgespräch"
-  description="Mail an kontakt@k-aizen.de — Antwort innerhalb 48h. Oder direkt 30-Min-Erstgespräch buchen. Ohne Verkaufsdruck."
+  title="Kontakt — Erstgespräch oder direkte Nachricht"
+  description="Kontakt zu k-AIzen: kostenloses Erstgespräch buchen oder direkt an Benjamin Zirngibl schreiben. Für KI-PA, KI-Check und Automatisierung im Unternehmen."
   path="/kontakt"
   activeNav="kontakt"
   jsonLd={contactSchema}
 >
-  <article class="kz-page">
-    <div class="kz-page-eyebrow">
-      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
-      <img src="/icons/icon-plum-blossom.png" alt="" class="kz-eyebrow-leaf" loading="lazy" />
-      <span>Kontakt</span>
-    </div>
-    <h1 class="kz-h1">Wie sich der Kontakt anfühlt.</h1>
+  <style is:global>
+    .kz-contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin: 42px 0 72px;
+    }
+    .kz-contact-card {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--card);
+      box-shadow: var(--shadow-sm);
+    }
+    .kz-contact-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+    }
+    @media (max-width: 820px) {
+      .kz-contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <article class="kz-page kz-page--wide">
+    <div class="kz-page-eyebrow"><span>Kontakt</span></div>
+    <h1 class="kz-h1">Der einfachste Einstieg ist ein kurzes Gespräch.</h1>
     <p class="kz-lead">
-      Drei Wege uns zu erreichen. Alle direkt — kein Sales-Funnel, kein Auto-Responder, kein Tier-3-Support.
+      Sie müssen noch nicht wissen, welches System Sie brauchen. Es reicht, wenn Sie
+      wissen, wo gerade Zeit, Überblick oder Energie verloren geht.
     </p>
 
-    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-bottom: 64px;">
-      <div style="padding: 32px; background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 12px;">
-        <img src="/icons/icon-sakura-branch.png" alt="" class="kz-section-leaf-lg" loading="lazy" />
-        <h3 class="kz-h3" style="margin-top: 0;">Mail</h3>
-        <p>Du schreibst, wir antworten — meist innerhalb 24h, garantiert binnen 48h. Auch am Wochenende, aber nicht garantiert.</p>
-        <p style="margin-top: 16px;"><a href="mailto:kontakt@k-aizen.de" class="kz-btn">kontakt@k-aizen.de</a></p>
-      </div>
-      <div style="padding: 32px; background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 12px;">
-        <img src="/icons/icon-plum-blossom.png" alt="" class="kz-section-leaf-lg" loading="lazy" />
-        <h3 class="kz-h3" style="margin-top: 0;">Erstgespräch</h3>
-        <p>30 Minuten, kostenlos, kein Verkaufsdruck. Du erzählst wo Zeit verloren geht, wir hören zu, am Ende weisst du ob's passt.</p>
-        <p style="margin-top: 16px;"><a href="/erstgespraech" class="kz-btn">Termin buchen</a></p>
-      </div>
-      <div style="padding: 32px; background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 12px;">
-        <img src="/icons/icon-maple-red.png" alt="" class="kz-section-leaf-lg" loading="lazy" />
-        <h3 class="kz-h3" style="margin-top: 0;">LinkedIn</h3>
-        <p>Wenn du erstmal ein bisschen mitlesen willst bevor du schreibst — auf LinkedIn posten wir regelmäßig Build-in-Public-Notes.</p>
-        <p style="margin-top: 16px;"><a href="https://www.linkedin.com/in/benjamin-zirngibl-0963753ab" rel="noopener noreferrer" target="_blank" class="kz-btn kz-btn-ghost">Profil ansehen</a></p>
-      </div>
+    <section class="kz-contact-grid">
+      <article class="kz-contact-card">
+        <h3>Erstgespräch</h3>
+        <p>30 Minuten, kostenlos, ohne Verkaufsdruck. Wir prüfen, ob KI-PA, KI-Check oder ein Pilot sinnvoll ist.</p>
+        <p><a href="/erstgespraech" class="kz-btn">Termin buchen <span class="kz-btn__arrow">→</span></a></p>
+      </article>
+      <article class="kz-contact-card">
+        <h3>Direkt schreiben</h3>
+        <p>Kurze Mail reicht: Branche, Teamgröße, ein konkreter Schmerzpunkt und die wichtigsten Systeme. Ich antworte persönlich.</p>
+        <p><a href={asyncMail} class="kz-btn kz-btn-ghost">3-Fragen-Mail öffnen</a></p>
+      </article>
+      <article class="kz-contact-card">
+        <h3>Mitlesen</h3>
+        <p>Auf LinkedIn schreibe ich über Aufbau, Tests und echte Lernkurven rund um k-AIzen.</p>
+        <p><a href="https://www.linkedin.com/in/benjamin-zirngibl-0963753ab" rel="noopener noreferrer" target="_blank" class="kz-btn kz-btn-ghost">LinkedIn ansehen</a></p>
+      </article>
     </section>
 
     <section>
-      <h2 class="kz-h2">Was uns interessiert wenn du schreibst</h2>
+      <h2 class="kz-h2">Was für die erste Nachricht hilft</h2>
       <ul>
-        <li><strong>In welcher Branche</strong> bist du tätig (zur Einschätzung der Compliance-Anforderungen)</li>
-        <li><strong>Wie groß</strong> ist dein Team (10? 50? 200?)</li>
-        <li><strong>Welcher Schmerz</strong> ist akut — Inbox-Flut? Angebote dauern zu lang? Wissen wird nicht gefunden? Etwas anderes?</li>
-        <li><strong>Was hast du schon probiert</strong> — falls überhaupt, und was hat nicht funktioniert</li>
-      </ul>
-      <p>
-        Wenn du diese vier Sätze schreibst, können wir beim ersten Reply schon konkret werden statt 3 Mails-Pingpong.
-      </p>
-    </section>
-
-    <section>
-      <h2 class="kz-h2">Was wir nicht beantworten</h2>
-      <ul>
-        <li><strong>„Was ist das beste AI-Tool 2026?"</strong> — kommt drauf an. Bei dir wahrscheinlich keins davon.</li>
-        <li><strong>„Können wir mal unverbindlich reden?"</strong> — ja, das heißt Erstgespräch. Buch direkt.</li>
-        <li><strong>„Macht ihr auch Web-Designs?"</strong> — nein, nur Workflow-Automation. Für Web-Designs gibt's bessere Studios.</li>
+        <li><strong>Branche und Teamgröße</strong> — damit ich den Kontext einordnen kann.</li>
+        <li><strong>Der konkrete Engpass</strong> — Mailflut, Terminchaos, Dateiablage, Belege, Kundenkontext, interne Rückfragen.</li>
+        <li><strong>Bestehende Systeme</strong> — Microsoft 365, Teams, Slack, Notion, CRM, SharePoint, Excel-Listen oder etwas Eigenes.</li>
+        <li><strong>Was schon probiert wurde</strong> — falls es bereits Tool-Tests, Automationen oder KI-Versuche gab.</li>
       </ul>
     </section>
 
-    <section style="margin-top: 96px; padding: 56px clamp(24px, 4vw, 48px); background: var(--kz-charcoal); color: var(--kz-cream); border-radius: 12px;">
+    <section style="margin-top: 96px; padding: 48px clamp(24px, 4vw, 48px); background: var(--kz-charcoal); color: var(--kz-cream); border-radius: 16px;">
       <h2 class="kz-h2" style="color: var(--kz-cream); margin-top: 0;">Postanschrift</h2>
-      <p style="color: rgba(245,240,232,0.85);">
+      <p style="color: rgba(255,255,255,0.78);">
         Benjamin Zirngibl — k-AIzen<br/>
         Zum Schwarzachtal 5 · 90592 Schwarzenbruck · Deutschland
       </p>
-      <p style="color: rgba(245,240,232,0.65); font-size: 14px;">
-        Volle postalische Anschrift findest du im <a href="/impressum" style="color: var(--kz-cream); text-decoration: underline;">Impressum</a>.
+      <p style="color: rgba(255,255,255,0.62); font-size: 14px;">
+        Die vollständigen rechtlichen Angaben stehen im <a href="/impressum" style="color: var(--kz-cream); text-decoration: underline;">Impressum</a>.
       </p>
     </section>
   </article>

@@ -1,8 +1,7 @@
-/* k-AIzen Katalog v2 — Premium Scroll-Snap Presentation
+/* k-AIzen legacy catalog CSS — not used by the current funnel routes.
  *
- * Editorial pacing: Hero → Statement → Split → Grid → Bleed → CTA
- * Type-driven. Whitespace-rich. Cinematic.
- * Cream/Charcoal/Ember palette + Cormorant Garamond display + Inter body.
+ * Kept only as archive material for old experiments. Current public pages use
+ * /v2/kz-v2.css and the KI-Ansprechpartner / KI-PA positioning.
  */
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -39,7 +38,7 @@ html, body {
 body {
   /* The scroll container itself is body — keeps scroll-snap simple.
    * Using `proximity` instead of `mandatory` lets the user freely scroll
-   * through oversized sections (Voice, Ultimate, Payment) while still
+   * through oversized sections while still
    * snapping near section boundaries. */
   scroll-snap-type: y proximity;
   scroll-behavior: smooth;

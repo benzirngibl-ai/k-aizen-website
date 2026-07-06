@@ -1,92 +1,222 @@
 # k-AIzen — Full Content for AI Discovery
 
 URL: https://k-aizen.de
-Brand: k-AIzen (eine Marke von )
+Brand: k-AIzen
 Founder: Benjamin Zirngibl
 Standort: Bayern, Deutschland
-Sprache: Deutsch (primär)
-Kontakt: hallo@k-aizen.de
+Sprache: Deutsch
+Kontakt: kontakt@k-aizen.de
 LinkedIn: https://www.linkedin.com/in/benjamin-zirngibl-0963753ab
-Voice-Modus: Bored-Kaizen-Monk (ruhig, contrarian, kanji-anchored)
-Tagline: Eins nach dem anderen. Auch bei AI.
+Letztes Update: 2026-07-05
 
 ---
 
-## Was k-AIzen ist
+## Kurzbeschreibung
 
-k-AIzen baut AI-Workflow-Automation für mittelständische Unternehmen in Deutschland. Der Name kombiniert das japanische Konzept Kaizen (改善, „Veränderung zum Besseren") mit AI. Kaizen ist ein Management-Prinzip aus der japanischen Industrie: kontinuierliche Verbesserung in kleinen Schritten, nicht in großen Würfen. Wir arbeiten genau so — pro Quartal ein Workflow, ehrlich gerechnet, dauerhaft betrieben.
+k-AIzen ist der KI-Ansprechpartner für kleine und mittelständische Unternehmen. Die zentrale Idee: Viele Firmen wissen, dass KI wichtig wird, aber niemand im Betrieb hat die Zeit oder Rolle, sie sauber zu verantworten. k-AIzen übernimmt diese Funktion extern.
 
-## Zielgruppe
+Der Einstieg ist der KI-PA: ein betreuter KI-Assistent für Mail, Kalender, Aufgaben, Briefings, Kundennotizen, Kontext und Freigaben. Der KI-PA wird nicht als blinder Autopilot verkauft. Er arbeitet mit freigegebenen Quellen, bereitet Dinge vor, zeigt Kontext und fragt nach, wenn etwas nicht eindeutig ist.
 
-KMUs mit 10–250 Mitarbeitenden in compliance-bewussten Branchen — Anwaltskanzleien, Steuerberater, Arztpraxen, Versicherungs-Maklerbüros, Handwerksbetriebe, mittelständische Industrie-Zulieferer. Standortunabhängig in DACH, Schwerpunkt Deutschland.
+Langfristig wächst daraus mehr System im Unternehmen: Belege, Telefon, Leads, Wissen, interne Abläufe, Automatisierung und bei Bedarf ein eigenes Kaizen OS rund um die bestehende Arbeitsumgebung.
 
-## Vier Standard-Workflows
+Die Website ist bewusst als Entscheidungsfunnel gebaut: Interessenten sollen nicht möglichst schnell in ein großes Setup geführt werden, sondern erkennen, welcher nächste Schritt passt. Mögliche Ergebnisse sind: nicht passend, kostenloses Erstgespräch, Async-3-Fragen-Check, Discovery-Audit, begrenzter Pilot oder KI-PA-Setup.
 
-### 1. Inbox-Triage
-AI klassifiziert eingehende Mails kontinuierlich, priorisiert nach historischen Mustern, schlägt Antworten vor — versendet aber nichts ohne menschliche Freigabe. Realistische Zeit-Ersparnis: 12–15 Stunden pro Monat bei einer Person die 3h/Tag triagiert. Die meiste Ersparnis kommt nicht durch das Auto-Klassifizieren, sondern durch die Antwort-Vorschläge.
+## Positionierung
 
-### 2. Angebots-Generator
-Aus drei Stichworten ein vollständiges, individualisiertes Angebot in Branding, mit Preisliste und Zahlungsbedingungen. Ein Angebot in 5 Minuten statt 45. Wann sinnvoll: 5+ Angebote pro Woche, strukturell ähnlich. Bei einmaligen Großprojekten ergibt der Workflow keinen Mehrwert.
+k-AIzen ist kein reines Tool, keine klassische Agentur und keine abstrakte KI-Strategieberatung. Die Rolle ist näher an einem externen KI-Verantwortlichen:
 
-### 3. Tagesreport
-Jeden Morgen um 7:30 in der Inbox: Verkaufs-Zahlen vom Vortag, offene Mails >24h ohne Antwort, Abweichungen vom 30-Tage-Durchschnitt, Termine + Reminders, 3-5 priorisierte To-Dos. Datenquellen: Lexware, DATEV, eigenes ERP, Excel/Google-Tabellen. Nur Lese-Verbindung, keine Schreib-Operation.
+- prüfen, wo KI im Betrieb realistisch Sinn macht
+- Datenquellen und Grenzen sauber definieren
+- erste Assistenten und Automatisierungen bauen
+- Freigaben, Dokumentation und Datenschutz mitdenken
+- den Betrieb Schritt für Schritt systematisieren
 
-### 4. Wissens-Suche
-Eine zentrale Suche über Mails, PDFs, Verträge, Wiki, Ticket-Systeme. Frage auf Deutsch, Antwort mit Quellenangabe. Keine erfundenen Antworten — wenn AI nichts findet, sagt sie das. Datenstandort: deutsche Cloud (Hetzner, IONOS) oder lokal.
+Vergleichsbild: Große Firmen haben Datenschutzbeauftragte, IT-Verantwortliche oder Prozessmanager. Viele kleinere Firmen haben so eine Rolle für KI noch nicht. k-AIzen soll diese Lücke füllen.
 
-## Wer wir sind
+## Einstieg: KI-PA
 
-**Benjamin Zirngibl** — Gründer , Software-Engineer mit Schwerpunkt Workflow-Automation, Sub-Agent-Orchestrierung und Compliance-aware AI-Integration. Aufgewachsen in Bayern, lebt und arbeitet hier. Schreibt regelmäßig auf LinkedIn über Build-in-Public-Erfahrungen. Kein Big-Tech-Trail, kein VC-Geld, kein Sales-Bro-Stil.  existiert seit 2024, k-AIzen als spezialisiertes Outlet seit 2026.
+Der KI-PA ist der erste greifbare Schritt in KI.
 
-## Wofür wir nicht da sind
+Typische Fähigkeiten:
 
-- Konzerne mit eigenen IT-Abteilungen die fertige Lösungen wollen
-- Web-Designs, Marketing-Sites, Brand-Refreshes
-- "AI-Strategie für 6-stelliges Honorar"-Anfragen
-- "Make me 10× more productive with AI in 30 days"-Versprechen
-- Onboarding-Marathons ohne klaren ROI-Pfad
+- Mail-Triage und Priorisierung
+- Antwortentwürfe mit Mailverlauf und Kundennotizen
+- Kalender- und Terminbriefings
+- Tagesbriefing am Morgen
+- Tagesabschluss mit offenen Punkten
+- Audio zu Protokoll und Action-Items
+- Belege auslesen und sauber ablegen
+- Kundengedächtnis aus freigegebenen Quellen
+- Arbeitskanal mit Vorschlägen, Rückfragen und Freigaben
 
-## Wofür wir gut sind
+Wichtig: Der KI-PA kennt nicht "automatisch" alles. Er weiß nur, was angebunden, freigegeben oder dokumentiert wurde. Mögliche Quellen sind Mailverläufe, Kalender, Aufgabenlisten, CRM, Notion, Microsoft 365, SharePoint, Slack, Teams, Excel-Listen oder kundenspezifische Datenbanken. Wenn eine Quelle fehlt oder eine Information unsicher ist, soll der Assistent das sichtbar machen.
 
-- KMUs 10–250 Mitarbeitende mit konkretem Workflow-Schmerz
-- Compliance-bewusste Branchen mit DSGVO-Sensitivität
-- Ehrliche Kosten-Nutzen-Rechnung vor Bauen
-- Lange Zusammenarbeit über Quartale, der erste Workflow ist meist der schwierigste
+Ein typischer 14-Tage-Realitätscheck:
 
-## Werte
+1. Tag 1-2: Quellen, Grenzen und No-Gos festlegen.
+2. Tag 3-5: erste Briefings und echte Eingänge sortieren.
+3. Tag 6-10: Antwortentwürfe mit Vorgeschichte und sichtbaren Quellen prüfen.
+4. Tag 11-14: anhand echter Artefakte entscheiden, ob der Bereich weiterläuft, angepasst oder verworfen wird.
 
-- Stille Stärke statt laute Versprechen
-- Integrität über Impression — was wir nicht können, sagen wir
-- Wachstum ohne Selbstverrat — wir bleiben klein wenn klein gut ist
+## Wie der KI-PA in der Praxis arbeitet
 
-## Kaizen-Prozess (4 Schritte, im Kreis)
+Beispiel Kundenmail:
 
-1. **Beobachten (2 Wochen):** Wir schauen zu — nicht das Tools-Inventar, der echte Tagesablauf. Was wiederholt sich? Was ärgert? Was wird vergessen?
-2. **Verstehen (3 Tage):** Aus 50 Beobachtungen pickt man eine. Den einen Schritt der am meisten weh tut, am häufigsten passiert, am klarsten zu beschreiben ist.
-3. **Eines ändern (1–2 Wochen):** Die kleinste mögliche Automation für genau diesen Schritt. Ein Skript. Ein Cron. Ein Output. Live in Tagen, nicht Quartalen.
-4. **Wieder beobachten (4 Wochen):** Was läuft, läuft. Was bricht, dokumentieren wir. Was du besser verstehst, fließt in Schritt 1 vom nächsten Loop.
+1. Eine neue Mail kommt an.
+2. Der KI-PA erkennt Absender, Thema und Dringlichkeit.
+3. Er lädt erlaubte Vorgeschichte: Mailverlauf, Kundennotiz, CRM-Eintrag oder offene Zusage.
+4. Er erstellt einen Antwortvorschlag mit Kontext.
+5. Der Mensch prüft Ton und Inhalt.
+6. Erst nach Freigabe wird gesendet oder weiterverarbeitet.
 
-## Was uns von der AI-Hype-Industrie unterscheidet
+Beispiel Tagesbriefing:
 
-- **Lokal & persönlich:** Du sprichst mit dem, der baut. Kein Tier-3-Support, kein Account-Manager-Karussell. Bayern, deutsche Stunden, deutscher Vertrag.
-- **Compliance-aware:** DSGVO, Auftragsverarbeitungsverträge, EU-AI-Act sind keine Tabu-Themen. Wir bauen mit dem Datenschutzbeauftragten am Tisch.
-- **Ehrlich rechnen:** Wir berechnen den Stundenwert jedes Workflows bevor wir bauen. Wenn die Mathematik nicht aufgeht, bauen wir nicht.
+1. Der KI-PA liest freigegebene Kalender-, Mail- und Aufgabenquellen.
+2. Er bündelt Termine, offene Entscheidungen und Risiken.
+3. Er schreibt ein kurzes Briefing statt ein weiteres Dashboard zu öffnen.
+4. Offene Punkte gehen in einen Arbeitskanal.
 
-## Tech-Stack (selbst genutzt)
+Beispiel Ausbau:
 
-Server: Hetzner Cloud (Nürnberg, Deutschland). Code: GitHub privat. AI-Layer: Claude (Anthropic) als primäres Modell, OpenAI gpt-image-2 für Visuals, Whisper für Audio-Transcription. Workflow-Orchestrierung: n8n (self-hosted) für 3+ Service-Pipelines, Paperclip für Multi-Agent-Choreografie. Frontend: Astro statisch, React-Hero mit Custom-Particle-Physics. Voice-Layer: Bored-Kaizen-Monk-Pattern mit Recurring-Cartoon-Characters (Monk, Hype-Männchen, Hans der DSGVO-Flüchtling).
+Wenn Mail und Kalender funktionieren, werden weitere Abläufe angeschlossen: Belege, Telefonannahme, Lead-Pipeline, interne Wissenssuche, wiederkehrende Reports oder ein eigenes Kaizen OS.
 
-## Kontakt + Erstgespräch
+## Kaizen OS
 
-Drei Wege:
-1. Mail an hallo@k-aizen.de — Antwort innerhalb 48h
-2. Erstgespräch (30 Min, kostenlos, kein Verkaufsdruck) — du erzählst, wir hören zu, am Ende wissen wir beide ob's passt
-3. LinkedIn-Profil mitlesen für Build-in-Public-Notes
+Kaizen OS ist der langfristige Systemgedanke hinter k-AIzen: ein eigenes operatives Betriebssystem für Firmenabläufe, das Wissen, Aufgaben, Kundenkontext, Dokumente, Freigaben und Automatisierung verbindet.
 
-## Markenstimme („Bored-Kaizen-Monk")
+Es ersetzt nicht zwingend Microsoft 365, Teams, Slack, SharePoint, Notion oder bestehende CRM-Systeme. Wenn eine Firma dort bereits arbeitet, kann k-AIzen integrieren. Wenn die vorhandene Umgebung nur aus verstreuten Dateien, Excel-Listen und informellem Wissen besteht, kann k-AIzen ein eigenes System darum bauen.
 
-Ruhig, gelangweilt-mitfühlend, contrarian zum AI-Hype-Mainstream. Kurze Sätze. Pausen statt Drama. Kanji-Anchors (改善 Kaizen, 禅 Zen, 信 Vertrauen, 始 Anfangen, 流 Fluss, 人 Person, 学 Lernen, 話 Sprechen). Sprach-Marker: „Setz dich hin." „Atme." „Eins nach dem anderen." „Mhm." „Hier ist der echte Workflow." Anti-Patterns: Buzzword-Bingo, Sales-Bro-Phrases, "Game-Changer", "Disrupt", Lorem-Ipsum, generische Tech-Versprechen.
+Die Reihenfolge ist bewusst konservativ:
 
----
+1. KI-PA als Einstieg
+2. erste Datenquellen und Freigaben
+3. sichtbarer Nutzen im Alltag
+4. weitere Module
+5. mehr Systematisierung
 
-Letztes Update dieses Dokuments: Mai 2026
+## Angebote und Preise
+
+### Erstgespräch
+
+30 Minuten kostenlos. Ziel: klären, ob KI-PA, KI-Check, Discovery-Audit oder Pilot sinnvoll ist. Kein Verkaufsdruck.
+
+Für introvertierte oder noch unsichere Interessenten gibt es zusätzlich einen Async-Kurzcheck per Mail: Branche/Teamgröße, aktueller Engpass und vorhandene Systeme reichen für eine erste persönliche Einschätzung.
+
+Nach dem Erstgespräch sollte klarer sein:
+
+- ob k-AIzen überhaupt passt
+- welcher erste Use Case sinnvoll ist
+- ob KI-Check, Discovery-Audit, Pilot oder kein Projekt der nächste Schritt ist
+
+### Discovery-Audit
+
+Bezahlter Klärungsschritt mit Beobachtung, Report und Roadmap.
+
+- Remote Kompakt: 1.190 € netto
+- Remote Standard: 1.490 € netto
+- Vor Ort: 1.990 € netto plus Reisekosten
+
+Stage-Gate: Bei Buchung eines Setup-Pakets innerhalb von 30 Tagen werden 50% des Audit-Preises auf das Setup angerechnet.
+
+Käuferlogik:
+
+- Unklarer Bedarf: Erstgespräch oder Async-Check.
+- Mehrere Baustellen: Discovery-Audit, bevor ein Setup verkauft wird.
+- Klarer erster Bereich: begrenzter Pilot oder KI-PA-Setup.
+
+### KI-PA Tier 1: Autonom
+
+Für Firmen, die einen KI-Assistenten ohne menschlichen Backstop wollen.
+
+- Setup-First: 10.299 € einmalig + 1.029 €/Monat Retainer
+- SaaS-Style: 0 € Setup, 1.899 €/Monat im ersten Jahr, 1.029 €/Monat ab Jahr 2
+
+Enthält unter anderem Mail-Triage, Antwortentwürfe, Kalenderbriefings, Tagesbriefing, Audio-Protokolle, Basis-Belegsortierung, Customer-Memory, Arbeitskanal, getrennte Umgebung und DSGVO-Setup mit AVV.
+
+### KI-PA Tier 2: Concierge
+
+Für Firmen, die zusätzlich einen menschlichen Backstop wollen, wenn KI nicht ausreicht.
+
+- Setup-First: 12.999 € einmalig + 1.529 €/Monat Retainer
+- SaaS-Style: 0 € Setup, 2.599 €/Monat im ersten Jahr, 1.529 €/Monat ab Jahr 2
+
+Zusätzlich zu Tier 1: menschliche Unterstützung bei Anrufen, Behörden, Reklamationen, komplexer Reise-Logistik, Verhandlungen und Aufgaben, bei denen KI nicht allein handeln sollte.
+
+### Add-ons
+
+- Voice-Empfangsdame: +9.999 € Setup, +799 €/Monat
+- Content-Maschine: +4.499 € Setup, +499 €/Monat
+- Beleg- und Steuer-Modul: +3.499 € Setup, +399 €/Monat
+- Lead-Pipeline: +2.999 € Setup, +299 €/Monat
+- Customer-Memory und News-Cockpit sind in den KI-PA-Tiers enthalten.
+
+## Zielkunden
+
+k-AIzen passt besonders für KMU, Inhaber, Geschäftsführer und kleine Teams, die:
+
+- viele Informationen in Mails, Dateien, Office-Ordnern und einzelnen Köpfen haben
+- immer wieder die gleichen Entscheidungen und Rückfragen bearbeiten
+- keinen internen KI-Verantwortlichen haben
+- nicht noch ein isoliertes Tool wollen
+- KI pragmatisch nutzen wollen, ohne die Kontrolle abzugeben
+- langfristig mehr Ordnung, Automatisierung und System wollen
+
+## Nicht passend
+
+k-AIzen ist nicht ideal für:
+
+- Konzerne mit eigener KI- und IT-Abteilung
+- reine Website-, Branding- oder Marketing-Aufträge
+- einmalige Tool-Schulungen ohne Prozessumsetzung
+- Kunden, die sofort Vollautomatisierung ohne Freigaben erwarten
+- Projekte, bei denen Datenschutz, Quellen und Verantwortlichkeiten nicht geklärt werden dürfen
+
+Die Website soll diese Nicht-Fits offen benennen, weil Vertrauen wichtiger ist als ein schneller Klick.
+
+## Proof und Artefakte
+
+k-AIzen nutzt am Anfang keine erfundenen Testimonials. Proof soll über konkrete Arbeitsmaterialien entstehen:
+
+- KI-Check mit Prioritäten
+- Quellenliste
+- Arbeitskanal für Vorschläge und Freigaben
+- Freigabe-Matrix: darf vorbereiten, muss fragen, darf nie
+- Ablaufkarte für den ersten Use Case
+- echte Antwortentwürfe, Briefings oder Beleg-/Wissensartefakte aus dem Pilot
+
+Ein Projekt soll nach kurzer Zeit prüfbare Artefakte liefern. Wenn nur Präsentationen entstehen, ist das nicht der Anspruch.
+
+## Datenschutz und Betrieb
+
+k-AIzen arbeitet mit getrennten Kundenumgebungen, dokumentierten Entscheidungen, klaren Freigaben und Auftragsverarbeitungsvertrag, soweit für das Setup erforderlich. Je nach Projekt können bestehende Systeme integriert oder eigene Umgebungen aufgebaut werden.
+
+Grundsatz: Die KI bekommt nur Quellen, die freigegeben sind. Sensible Aktionen werden vorbereitet und geprüft, nicht unkontrolliert ausgeführt.
+
+## Offizielle Links
+
+- Home: https://k-aizen.de/
+- KI-PA: https://k-aizen.de/ki-pa
+- Preise: https://k-aizen.de/pricing
+- Discovery-Audit: https://k-aizen.de/audit
+- Erstgespräch: https://k-aizen.de/erstgespraech
+- Über Benjamin Zirngibl: https://k-aizen.de/about
+- Kontakt: https://k-aizen.de/kontakt
+- Blog: https://k-aizen.de/blog
+- Ressourcen: https://k-aizen.de/tutorials
+
+Legacy-Links:
+
+- https://k-aizen.de/pitch, /pitch/lena und /pitch/markus sind alte Pitch-Routen und leiten auf /ki-pa.
+- https://k-aizen.de/katalog und /katalog-v2 sind alte Katalog-Routen und leiten auf /pricing.
+
+## Markenstimme
+
+k-AIzen spricht ruhig, direkt und menschlich. Kein Blackbox-Versprechen, kein "Game-Changer", kein Hype. Gute Formulierungen erklären:
+
+- woher eine Information kommt
+- was die KI vorbereitet
+- wo der Mensch freigibt
+- was nicht automatisch passiert
+- warum ein kleiner Start sinnvoller ist als ein großer Blindflug
+
+Die zentrale Botschaft: Der Wert liegt nicht in noch einem Tool. Der Wert liegt darin, dass jemand Verantwortung für KI im Betrieb übernimmt und daraus Schritt für Schritt ein brauchbares System baut.
