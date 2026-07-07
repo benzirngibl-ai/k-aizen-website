@@ -199,32 +199,10 @@ const conversationSchema = {
         </div>
         <div style="padding: 20px; border-radius: 12px; background: rgba(255,255,255,0.58); border: 1px solid rgba(232,90,43,0.14);">
           <h3 style="margin: 0 0 8px; font-size: 18px;">30-Minuten-Termin</h3>
-          <p style="margin: 0; color: var(--fg-inverse); font-size: 15px;">Direkt sprechen, gemeinsam sortieren, am Ende den nächsten sinnvollen Schritt festlegen.</p>
+          <p style="margin: 0 0 16px; color: var(--fg-inverse); font-size: 15px;">Direkt sprechen, gemeinsam sortieren, am Ende den nächsten sinnvollen Schritt festlegen. Slot wählen, Google-Meet-Link kommt automatisch.</p>
+          <a href="/termin" class="kz-btn">Termin wählen</a>
         </div>
       </div>
-
-      <!-- Cal.com inline embed (self-hosted, DSGVO-konform, DE-Server — ersetzt Calendly) -->
-      <div
-        style="width:100%;min-width:0;height:700px;margin-top:24px;overflow:auto;border-radius:8px;"
-        id="cal-inline-erstgespraech"
-      ></div>
-      <script type="text/javascript" is:inline>
-        (function (C, A, L) {
-          let p = function (a, ar) { a.q.push(ar); };
-          let d = C.document;
-          C.Cal = C.Cal || function () {
-            let cal = C.Cal; let ar = arguments;
-            if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
-            if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; }
-            p(cal, ar);
-          };
-        })(window, "https://cal.k-aizen.de/embed/embed.js", "init");
-        Cal("init", { origin: "https://cal.k-aizen.de" });
-        Cal("inline", {
-          elementOrSelector: "#cal-inline-erstgespraech",
-          calLink: "ben-kaizen/30min",
-        });
-      </script>
 
       <p style="margin-top: 32px; font-size: 14px; color: var(--fg-muted);">
         Lieber frei formulieren? <a href="mailto:kontakt@k-aizen.de">kontakt@k-aizen.de</a> — jede Anfrage wird persönlich geprüft.

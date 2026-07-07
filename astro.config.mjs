@@ -8,6 +8,11 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://k-aizen.de',
+  // Kurz-URL fürs Erstgespräch → Google-Terminplan (Buchung + Meet-Link automatisch).
+  // Merkbare Adresse für Mails/LinkedIn; Ziel-URL bei Kalenderwechsel nur hier ändern.
+  redirects: {
+    '/termin': 'https://calendar.app.google/AvBJwsvWrh4m26tV7',
+  },
   integrations: [
     react(),
     sitemap({
