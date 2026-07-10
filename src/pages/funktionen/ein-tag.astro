@@ -1,0 +1,196 @@
+---
+import KaizenLayout from '../../layouts/KaizenLayout.astro';
+
+// Die Klammer über allen Funktionsseiten: derselbe Betrieb, ein Tag, alle
+// Automatisierungen im Fluss. Jede Station verlinkt auf ihre Funktionsseite.
+const stationen = [
+  {
+    time: "06:30",
+    title: "Der Posteingang ist schon sortiert",
+    text: "80 Mails kamen über Nacht. Lena hat sie verteilt: Rechnungen zur Buchhaltung, Reklamationen zur Werkstatt. Drei Dinge warten auf Sie — mit Entwürfen.",
+    img: "/funktionen/vorsortierter-posteingang.jpg",
+    alt: "Vorher-Nachher: chaotischer Posteingang, dann sauber auf Mitarbeiter verteilt",
+    href: "/funktionen/vorsortierter-posteingang",
+  },
+  {
+    time: "08:10",
+    title: "Anfrage rein, Angebotsentwurf liegt bei",
+    text: "Die Huber GmbH fragt an. Lena hat die Positionen aus dem Katalog gezogen — Ihre Kollegin prüft und schickt, statt eine halbe Stunde zu tippen.",
+    img: "/funktionen/angebote-schreiben.jpg",
+    alt: "Mitarbeiterin zwischen Angebotsstapeln",
+    href: "/funktionen/angebote-schreiben",
+  },
+  {
+    time: "09:15",
+    title: "Rückruf mit Karte statt Blackout",
+    text: "„Lena, wie war das mit Herrn Maurer nochmal?“ — Letzter Kontakt, offene Zusage, und dass er nächste Woche Geburtstag hat. Zehn Sekunden, vorbereitet angerufen.",
+    img: "/funktionen/blackout-vorm-rueckruf.jpg",
+    alt: "Unternehmer mit klingelndem Telefon und leerer Denkblase",
+    href: "/funktionen/blackout-vorm-rueckruf",
+  },
+  {
+    time: "11:00",
+    title: "Die Beschwerde geht nicht unter",
+    text: "Eine verärgerte Kundin schreibt. Lena erkennt es beim Eintreffen, pinnt die Mail ganz oben an und legt eine sachliche Antwort bereit. Sie entscheiden den Ton.",
+    img: "/funktionen/liegengebliebene-beschwerde.jpg",
+    alt: "Verärgerte Kundin tippt eine Beschwerde-Mail",
+    href: "/funktionen/liegengebliebene-beschwerde",
+  },
+  {
+    time: "14:00",
+    title: "Rundmail an alle — ohne BCC-Roulette",
+    text: "„Betriebsferien im August“ soll an alle Kunden. Verteiler aus der Kundenliste, Abmelde-Link automatisch drin, Abgemeldete bleiben draußen. Freigeben, fertig.",
+    img: "/funktionen/rundmail.jpg",
+    alt: "Mitarbeiterin vor endlosem BCC-Adressfeld",
+    href: "/funktionen/rundmail",
+  },
+  {
+    time: "16:30",
+    title: "Das Angebot von letzter Woche fasst sich nach",
+    text: "Drei Tage keine Antwort auf AN-2026-0847. Der höfliche Nachfass-Entwurf wartet schon auf Freigabe — bevor der Wettbewerber anruft.",
+    img: "/funktionen/vergessenes-angebot.jpg",
+    alt: "Kunde vergleicht zwei Angebote",
+    href: "/funktionen/vergessenes-angebot",
+  },
+  {
+    time: "18:47",
+    title: "Feierabend. Und es geht trotzdem jemand ran.",
+    text: "Frau Berger ruft an — Heizung, dringend. Lena nimmt ab, erfasst das Anliegen, legt den Vorgang an. Morgen früh: ein Rückruf, Termin steht.",
+    img: "/funktionen/verpasster-anruf.jpg",
+    alt: "Kundin wartet abends mit Telefon am Ohr",
+    href: "/funktionen/verpasster-anruf",
+  },
+  {
+    time: "Am 1. · 06:00",
+    title: "Die Monatsrechnungen liegen bereit",
+    text: "40 Vertragsrechnungen, automatisch als Entwürfe erstellt — vollständig, keiner vergessen. Prüfen, freigeben, der Vormittag gehört wieder Ihnen.",
+    img: "/funktionen/monatsrechnungen.jpg",
+    alt: "Mitarbeiterin vor einer Reihe identischer Rechnungen",
+    href: "/funktionen/monatsrechnungen",
+  },
+  {
+    time: "Mo · 06:00",
+    title: "Der Wochenbericht wartet im Kanal",
+    text: "Was reinkam, was offen ist, wie die Woche lief — als kurzer Bericht, bevor der Montag beginnt. Keine Zettelwirtschaft, kein Bauchgefühl.",
+    img: null,
+    alt: "",
+    href: null,
+  },
+];
+
+const stufen = [
+  {
+    k: "Stufe 1",
+    title: "Vorsortieren",
+    text: "Der Lärm verschwindet: Mails, Anrufe und Anfragen kommen dort an, wo sie hingehören — nicht alles bei Ihnen.",
+  },
+  {
+    k: "Stufe 2",
+    title: "Vorbereiten",
+    text: "Statt leerer Seite: Entwürfe. Angebote, Antworten, Rechnungen und Nachfass-Mails liegen fertig zur Prüfung bereit.",
+  },
+  {
+    k: "Stufe 3",
+    title: "Erledigen — mit Freigabe",
+    text: "Wiederkehrendes läuft von selbst. Aber nichts Sensibles verlässt das Haus ohne Ihr Okay. Freigabe statt Autopilot, immer.",
+  },
+];
+---
+
+<KaizenLayout
+  title="Ein Tag im Betrieb — was Automatisierung wirklich verändert"
+  description="Derselbe Betrieb, ein ganz normaler Tag — nur dass Posteingang, Angebote, Anrufe und Rechnungen nicht mehr an einer Person hängen bleiben. Alle Funktionen im Fluss."
+  path="/funktionen/ein-tag"
+  breadcrumbs={[
+    { name: 'Funktionen', href: '/funktionen' },
+    { name: 'Ein Tag im Betrieb', href: '/funktionen/ein-tag' },
+  ]}
+>
+  <article class="kz-page">
+    <div class="kz-page-eyebrow">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
+      <span>Ein Tag im Betrieb</span>
+    </div>
+    <h1 class="kz-h1">Ein ganz normaler Tag. Nur dass nichts liegen bleibt.</h1>
+    <p class="kz-lead">
+      Einzelne Funktionen sind schnell erklärt. Was Automatisierung wirklich verändert, sieht man
+      erst im Fluss eines Tages: Es ist derselbe Betrieb, dieselben Leute, dieselben Kunden —
+      aber der Tag beginnt mit Entscheidungen statt mit Suchen.
+    </p>
+
+    <div class="kz-tag-timeline">
+      {stationen.map((s) => (
+        <div class="kz-tag-station">
+          <div class="kz-tag-time">{s.time}</div>
+          <div class="kz-tag-body">
+            <h2>{s.title}</h2>
+            <p>{s.text}</p>
+            {s.href && <a href={s.href} class="kz-tag-more">Zur Funktion →</a>}
+          </div>
+          {s.img && (
+            <a href={s.href} class="kz-tag-media">
+              <img src={s.img} alt={s.alt} loading="lazy" />
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <section class="kz-tag-stufen">
+      <h2 class="kz-h2">Was hier eigentlich passiert — die drei Stufen</h2>
+      <p class="kz-lead">
+        Hinter jedem dieser Momente steckt dasselbe Prinzip, in drei Stufen:
+      </p>
+      <div class="kz-tag-stufen-grid">
+        {stufen.map((st) => (
+          <article class="kz-tag-stufe">
+            <span class="kz-tag-stufe-k">{st.k}</span>
+            <h3>{st.title}</h3>
+            <p>{st.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="kz-tag-fazit">
+      <h2 class="kz-h2">Und was bringt das jetzt?</h2>
+      <p>
+        Wir versprechen Ihnen keine Prozentzahl — jeder Betrieb ist anders, und wer Ihnen
+        „80&nbsp;% weniger Arbeit“ verspricht, hat Ihren Betrieb nie gesehen.
+        Was sich verlässlich ändert: <strong>Nichts geht mehr verloren.</strong> Kein Anruf,
+        kein Angebot, keine Beschwerde, keine Rechnung. Und die Fleißarbeit, die bisher
+        einen Menschen blockiert hat, wird zur Prüf-Arbeit von Minuten.
+      </p>
+      <div class="kz-tag-cta-row">
+        <a href="/erstgespraech" class="kz-btn">Erstgespräch vereinbaren</a>
+        <a href="/funktionen" class="kz-btn kz-btn-ghost">Alle Funktionen einzeln ansehen</a>
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .kz-tag-timeline { display: grid; gap: 20px; margin: 56px 0 0; }
+    .kz-tag-station { display: grid; grid-template-columns: 110px 1fr 260px; gap: 20px; align-items: center; padding: 24px; background: var(--kz-cream-deep, #ede5d4); color: var(--fg-inverse); border: 1px solid rgba(232,90,43,0.14); border-radius: 12px; }
+    .kz-tag-time { font-family: var(--font-display); font-size: clamp(20px, 2.4vw, 26px); font-weight: 700; color: var(--accent, #e85a2b); line-height: 1.1; }
+    .kz-tag-body h2 { font-family: var(--font-display); font-size: clamp(18px, 2vw, 22px); margin: 0 0 8px; }
+    .kz-tag-body p { margin: 0 0 10px; font-size: 15px; line-height: 1.6; }
+    .kz-tag-more { font-size: 14px; font-weight: 600; color: var(--accent, #e85a2b); text-decoration: none; }
+    .kz-tag-more:hover { text-decoration: underline; }
+    .kz-tag-media { display: block; border-radius: 10px; overflow: hidden; }
+    .kz-tag-media img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; transition: transform 220ms var(--ease-out); }
+    .kz-tag-media:hover img { transform: scale(1.03); }
+    @media (max-width: 760px) {
+      .kz-tag-station { grid-template-columns: 1fr; }
+      .kz-tag-media { order: -1; }
+    }
+    .kz-tag-stufen { margin-top: 88px; }
+    .kz-tag-stufen-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 28px; }
+    .kz-tag-stufe { padding: 24px; border-radius: 12px; background: var(--kz-cream-deep, #ede5d4); color: var(--fg-inverse); border: 1px solid rgba(232,90,43,0.14); }
+    .kz-tag-stufe-k { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent, #e85a2b); font-weight: 800; }
+    .kz-tag-stufe h3 { font-family: var(--font-display); font-size: 20px; margin: 10px 0 8px; }
+    .kz-tag-stufe p { margin: 0; font-size: 15px; line-height: 1.6; }
+    .kz-tag-fazit { margin-top: 88px; padding: 48px clamp(24px, 4vw, 40px); background: var(--kz-cream-deep, #ede5d4); color: var(--fg-inverse); border-radius: 12px; }
+    .kz-tag-fazit p { max-width: 680px; font-size: 16px; line-height: 1.7; }
+    .kz-tag-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+  </style>
+</KaizenLayout>
