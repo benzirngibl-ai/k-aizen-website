@@ -48,6 +48,9 @@ const funktionen = defineCollection({
     phoneMock: z
       .object({ title: z.string(), lines: z.array(z.string()) })
       .optional(),
+    // Dieselbe Frage zweimal: ohne Lena ins Leere gefragt, mit Lena beantwortet (Chat-Mock wie im OS)
+    ohneFrage: z.string().optional(),
+    mitChat: z.object({ frage: z.string(), antwort: z.string() }).optional(),
     ohneText: z.string().optional(),
     mitText: z.string().optional(),
     sources: z.array(z.string()).default([]),

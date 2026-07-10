@@ -13,18 +13,18 @@ beats:
     text: "Vor dem Rückruf: Zettel wühlen, Postfach durchsuchen, Kalender blättern. Nichts Greifbares."
   - label: "09:41"
     text: "Sie rufen unvorbereitet an. Es wird ein tastendes Gespräch — und der Kunde merkt es."
+ohneFrage: "Wie war das mit Herrn Maurer nochmal…?"
 phoneMock:
   title: "Notizen"
   lines:
     - "Maurer — ???"
     - "Letzter Eintrag: keiner gefunden"
-ohneText: "Das Wissen ist alles da — verteilt auf Zettel, Postfach und Gedächtnis. Nur nicht abrufbar, wenn es darauf ankommt."
-mitText: "Lena hält zu jedem Kontakt die Karte bereit: letzter Kontakt, offene Zusage, nächster Schritt. Sie lesen zehn Sekunden — und rufen vorbereitet an."
+ohneText: "Die Frage geht an Zettel, Postfach und Gedächtnis. Keiner von den dreien antwortet."
+mitChat:
+  frage: "Lena, wie war das mit Herrn Maurer nochmal?"
+  antwort: "**Herr Maurer** · Bestandskunde\n\n• Zuletzt 24.06.: Angebot Terrassendach, 8.400 €\n• Offen: Materialmuster — bis Ende der Woche zugesagt\n• Ton: pragmatisch, mag es kurz\n\nSoll ich die Rückruf-Aufgabe auf 11 Uhr legen?"
+mitText: "Zehn Sekunden lesen — und Sie rufen vorbereitet an."
 sources: ["Kundenliste", "Mailverlauf", "Notizen"]
-flow: ["Kontakt öffnen — Historie steht bereit", "Offene Zusagen + letzter Stand auf einen Blick", "Vorbereitet zurückrufen"]
-discord:
-  channel: "#anrufe"
-  time: "09:15"
-  body: "📇 **Rückruf-Briefing**\n\n👤 Herr Maurer · Bestandskunde\n\n• Zuletzt 24.06.: Angebot Terrassendach, 8.400 €\n• Offen: Materialmuster bis Ende der Woche zugesagt\n• Ton: pragmatisch, mag es kurz\n\n📌 Rückruf-Aufgabe angelegt"
+flow: ["Lena fragen — Historie steht bereit", "Offene Zusagen + letzter Stand auf einen Blick", "Vorbereitet zurückrufen"]
 draft: false
 ---

@@ -57,6 +57,7 @@ const jsonLd = {
     <section class="kz-fn-contrast">
       <div class="kz-fn-col kz-fn-col--ohne">
         <h2>Ohne Lena</h2>
+        {d.ohneFrage && <p class="kz-fn-frage kz-fn-frage--leere">„{d.ohneFrage}“</p>}
         {d.phoneMock && (
           <div class="kz-fn-phone">
             <div class="kz-fn-phone-head">{d.phoneMock.title}</div>
@@ -67,7 +68,15 @@ const jsonLd = {
       </div>
       <div class="kz-fn-col kz-fn-col--mit">
         <h2>Mit Lena</h2>
-        {d.discord && (
+        {d.mitChat ? (
+          <div class="kz-fn-chat">
+            <div class="kz-fn-chat-frage">{d.mitChat.frage}</div>
+            <div class="kz-fn-chat-antwort">
+              <span class="kz-fn-chat-name">Lena</span>
+              <div set:html={d.mitChat.antwort.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>')} />
+            </div>
+          </div>
+        ) : d.discord && (
           <div class="kz-fn-discord">
             <div class={`kz-fn-discord-head${d.discord.alert ? ' alert' : ''}`}>
               <span class="ch">{d.discord.channel}</span><span> · {d.discord.time}</span>
@@ -132,6 +141,14 @@ const jsonLd = {
     .kz-fn-col--ohne h2 { color: var(--fg-muted); }
     .kz-fn-col--mit { background: var(--kz-cream-deep, #ede5d4); color: var(--fg-inverse); border: 1px solid rgba(232,90,43,0.2); }
     .kz-fn-col--mit h2 { color: var(--accent, #e85a2b); }
+
+    /* Dieselbe Frage, zweimal gestellt */
+    .kz-fn-frage { font-family: var(--font-display); font-style: italic; font-size: 17px; margin: 0 0 14px; }
+    .kz-fn-frage--leere { color: var(--fg-muted); }
+    .kz-fn-chat { display: grid; gap: 10px; max-width: 420px; }
+    .kz-fn-chat-frage { justify-self: end; background: var(--accent, #e85a2b); color: #fff; padding: 10px 16px; border-radius: 16px 16px 4px 16px; font-size: 15px; max-width: 85%; }
+    .kz-fn-chat-antwort { justify-self: start; background: rgba(255,255,255,0.75); border: 1px solid rgba(232,90,43,0.18); padding: 12px 16px; border-radius: 16px 16px 16px 4px; font-size: 14px; line-height: 1.55; max-width: 92%; box-shadow: 0 4px 14px rgba(31,41,51,0.06); }
+    .kz-fn-chat-name { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent, #e85a2b); font-weight: 700; margin-bottom: 6px; }
 
     /* Handy-Mock: die Leere IST der Pain */
     .kz-fn-phone { border-radius: 14px; background: #101418; color: #e8eaed; max-width: 340px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
