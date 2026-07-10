@@ -1,0 +1,111 @@
+---
+import { getCollection, render } from 'astro:content';
+import KaizenLayout from '../../layouts/KaizenLayout.astro';
+
+export async function getStaticPaths() {
+  const funktionen = await getCollection('funktionen', ({ data }) => !data.draft);
+  return funktionen.map((f) => ({ params: { slug: f.id }, props: { funktion: f } }));
+}
+
+const { funktion } = Astro.props;
+const { Content } = await render(funktion);
+const d = funktion.data;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: `${d.title} — Lena-Funktion · k-AIzen`,
+  description: d.description,
+  isPartOf: { '@id': 'https://k-aizen.de/#website' },
+  about: { '@id': 'https://k-aizen.de/ki-pa#service' },
+};
+---
+
+<KaizenLayout
+  title={`${d.title} — was Lena übernimmt`}
+  description={d.description}
+  path={`/funktionen/${funktion.id}`}
+  jsonLd={jsonLd}
+  breadcrumbs={[
+    { name: 'Funktionen', href: '/funktionen' },
+    { name: d.title, href: `/funktionen/${funktion.id}` },
+  ]}
+>
+  <article class="kz-page">
+    <div class="kz-page-eyebrow">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
+      <span>Lena-Funktion</span>
+    </div>
+    <h1 class="kz-h1">{d.title}</h1>
+    <p class="kz-lead kz-fn-kicker">{d.schmerzKicker}</p>
+
+    <div class="kz-fn-hero">
+      <img src={d.heroImage} alt={d.heroAlt} loading="eager" />
+    </div>
+
+    <div class="kz-fn-prose">
+      <Content />
+    </div>
+
+    <section class="kz-fn-mechanik">
+      <h2>So funktioniert's</h2>
+      {d.sources.length > 0 && (
+        <div class="kz-fn-row">
+          <span class="kz-fn-label">Quellen</span>
+          <div class="kz-fn-chips">{d.sources.map((s) => <span>{s}</span>)}</div>
+        </div>
+      )}
+      {d.flow.length > 0 && (
+        <div class="kz-fn-flow">
+          {d.flow.map((step, i) => (
+            <div class="kz-fn-step"><span class="kz-fn-num">{i + 1}</span><span>{step}</span></div>
+          ))}
+        </div>
+      )}
+      {d.discord && (
+        <div class="kz-fn-discord">
+          <div class={`kz-fn-discord-head${d.discord.alert ? ' alert' : ''}`}>
+            <span class="ch">{d.discord.channel}</span><span> · {d.discord.time}</span>
+          </div>
+          <div class="kz-fn-discord-body" set:html={d.discord.body.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>')} />
+        </div>
+      )}
+    </section>
+
+    <section class="kz-fn-cta">
+      <h2>Klingt nach Ihrem Betrieb?</h2>
+      <p>30 Minuten, kostenlos, unverbindlich: Wir schauen gemeinsam, ob und wo das bei Ihnen trägt. Wenn nicht, ist auch das eine klare Antwort.</p>
+      <div class="kz-fn-cta-row">
+        <a href="/erstgespraech" class="kz-btn">Erstgespräch vereinbaren</a>
+        <a href="/funktionen" class="kz-btn kz-btn-ghost">← Alle Funktionen</a>
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .kz-fn-kicker { font-style: italic; }
+    .kz-fn-hero { margin: 40px 0 56px; border-radius: 12px; overflow: hidden; }
+    .kz-fn-hero img { width: 100%; height: auto; display: block; }
+    .kz-fn-prose { font-family: var(--font-sans); font-size: 18px; line-height: 1.7; max-width: 720px; }
+    .kz-fn-prose :global(h2) { font-family: var(--font-display); font-size: clamp(26px, 3vw, 34px); margin: 56px 0 16px; line-height: 1.2; }
+    .kz-fn-prose :global(p) { margin: 0 0 20px; }
+    .kz-fn-mechanik { margin-top: 72px; padding: 32px; background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 12px; }
+    .kz-fn-mechanik h2 { font-family: var(--font-display); font-size: clamp(22px, 2.4vw, 28px); margin: 0 0 20px; }
+    .kz-fn-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+    .kz-fn-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(31,41,51,0.6); }
+    .kz-fn-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .kz-fn-chips span { padding: 4px 12px; border-radius: 999px; background: rgba(255,255,255,0.6); border: 1px solid rgba(232,90,43,0.18); font-size: 13px; }
+    .kz-fn-flow { display: grid; gap: 10px; margin: 20px 0; }
+    .kz-fn-step { display: flex; gap: 12px; align-items: baseline; font-size: 15px; }
+    .kz-fn-num { width: 22px; height: 22px; border-radius: 50%; background: var(--accent, #e85a2b); color: #fff; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+    .kz-fn-discord { margin-top: 24px; border-radius: 10px; background: #2b2d31; color: #dbdee1; font-size: 14px; overflow: hidden; max-width: 480px; }
+    .kz-fn-discord-head { padding: 10px 16px; background: #1e1f22; font-size: 12px; color: #949ba4; }
+    .kz-fn-discord-head.alert { color: #f0b132; }
+    .kz-fn-discord-head .ch { font-weight: 600; }
+    .kz-fn-discord-body { padding: 14px 16px; line-height: 1.55; }
+    .kz-fn-cta { margin-top: 72px; padding: 48px clamp(24px, 4vw, 40px); background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 12px; }
+    .kz-fn-cta h2 { font-family: var(--font-display); margin: 0 0 12px; }
+    .kz-fn-cta p { max-width: 560px; margin: 0 0 24px; }
+    .kz-fn-cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  </style>
+</KaizenLayout>
