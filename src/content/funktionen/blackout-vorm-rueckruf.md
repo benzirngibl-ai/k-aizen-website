@@ -4,7 +4,7 @@ description: "Der Kunde soll zurückgerufen werden — aber was war zuletzt besp
 schmerzKicker: "Sie sollen Herrn Maurer zurückrufen. Und wissen nicht mehr, was Sie ihm zugesagt haben."
 protagonist: markus
 heroImage: "/funktionen/blackout-vorm-rueckruf.jpg"
-heroAlt: "Unternehmer mit klingelndem Telefon und leerer Denkblase über dem Zettelchaos"
+heroAlt: "Unternehmer schaut erschrocken aufs klingelnde Telefon — Denkblase mit drei Punkten über dem Zettelchaos"
 reihenfolge: 4
 beats:
   - label: "09:12"
