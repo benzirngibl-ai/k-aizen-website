@@ -112,12 +112,14 @@ Diese eine Funktion wird komplett durchgebaut als **Template-Beweis** für alle 
 
 ---
 
-## Offene Punkte (beim Bauen entscheiden)
+## Entschieden (Ben-Review 2026-07-10)
 
-1. Sektionen als freies Markdown vs. strukturierte Frontmatter-Felder (Empfehlung: Markdown + Konvention).
-2. CTA-Ziel der Funktionsseiten: `/termin` (direkt buchen) oder `/erstgespraech` (Kontext-Landing). Tendenz: `/erstgespraech`, konsistent zum Mail-Funnel.
-3. Braucht „Verpasster Anruf" ein neues Comic-Bild (Kundin am Telefon) oder reicht ein vorhandenes Markus-Asset?
-4. Übersicht: eigene Seite `/funktionen` UND umgebaute Homepage-Sektion, oder Homepage-Sektion verlinkt nur auf `/funktionen`?
+1. **Inhaltsform:** freies Markdown mit Sektions-Konvention (nur sources/flow strukturiert). **Wichtig — Bens Review-Modus: er liest KEINE md-Dateien.** Reviews passieren immer am gerenderten Ergebnis (lokale Preview / Live-URL), nie an Dateien.
+2. **CTA-Ziel:** `/erstgespraech` (konsistent zum Mail-Funnel; dort sitzt der „Termin wählen"-Button).
+3. **Bild „Verpasster Anruf":** NEUES Comic-Bild „Kundin am Telefon, kommt nicht durch" — Prompt nach Master-Stil (Claude schreibt, Ben generiert via ChatGPT Image). Schmerz aus Kundensicht.
+4. **Übersicht: beides** — Homepage-Sektion wird kompaktes Kachel-Grid (Top-Funktionen) + „Alle Funktionen →" auf eigene `/funktionen`-Seite (skaliert mit).
+
+**Positionierungs-Update seit Spec-Erstellung (07-10 beachten):** Audit heißt jetzt **„kostenloser KI-Check"** (remote), Pricing neu strukturiert (Tier 1/2 + Add-ons, siehe `_shared/LINKS.md`). Funktionsseiten-Texte müssen zur aktuellen Positionierung passen — keine Referenzen auf „Discovery-Audit 1.190–1.990 €".
 
 ---
 
