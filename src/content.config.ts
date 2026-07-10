@@ -29,4 +29,31 @@ const tutorials = defineCollection({
   }),
 });
 
-export const collections = { blog, tutorials };
+// Lena-Funktionsseiten — 1 Datei pro Funktion (Spec: docs/superpowers/specs/2026-07-07-lena-funktionsseiten-design.md)
+// Story-Sektionen (Schmerz/Ohne/Mit) leben als freies Markdown im Body;
+// Mechanik (sources/flow/discord) strukturiert, weil das Template sie als Chips/Steps/Mock rendert.
+const funktionen = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/funktionen' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    schmerzKicker: z.string(), // 1 Satz Schmerz — Kachel-Text + Seiten-Unterzeile
+    protagonist: z.enum(['kunde', 'mitarbeiter', 'markus']),
+    heroImage: z.string(),
+    heroAlt: z.string(),
+    reihenfolge: z.number(),
+    sources: z.array(z.string()).default([]),
+    flow: z.array(z.string()).default([]),
+    discord: z
+      .object({
+        channel: z.string(),
+        time: z.string(),
+        alert: z.boolean().optional(),
+        body: z.string(),
+      })
+      .optional(),
+    draft: z.boolean().default(true),
+  }),
+});
+
+export const collections = { blog, tutorials, funktionen };
