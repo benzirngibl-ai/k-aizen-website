@@ -42,6 +42,14 @@ const funktionen = defineCollection({
     heroImage: z.string(),
     heroAlt: z.string(),
     reihenfolge: z.number(),
+    // Visuelle Story-Beats statt Prosa (Ben-Feedback 07-10: "Pain visuell zeigen, nicht erzählen")
+    beats: z.array(z.object({ label: z.string(), text: z.string() })).default([]),
+    // Der Ohne/Mit-Kontrast: Handy-Mock (die Leere = der Pain) vs. Discord-Mock (die Übergabe)
+    phoneMock: z
+      .object({ title: z.string(), lines: z.array(z.string()) })
+      .optional(),
+    ohneText: z.string().optional(),
+    mitText: z.string().optional(),
     sources: z.array(z.string()).default([]),
     flow: z.array(z.string()).default([]),
     discord: z
