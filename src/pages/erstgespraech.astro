@@ -22,7 +22,7 @@ const outcomeCards = [
   },
   {
     title: "Nächster Schritt ohne Nebel",
-    text: "Wenn es passt, wissen Sie, ob ein kleiner Pilot oder ein Discovery-Audit sinnvoll ist. Wenn nicht, wird das klar benannt.",
+    text: "Wenn es passt, wissen Sie, ob ein kostenloser KI-Check, ein kleiner Pilot oder ein konkretes Angebot sinnvoll ist. Wenn nicht, wird das klar benannt.",
   },
 ];
 
@@ -40,7 +40,7 @@ const conversationSchema = {
       "@id": "https://k-aizen.de/erstgespraech#webpage",
       "url": "https://k-aizen.de/erstgespraech",
       "name": "Erstgespräch — k-AIzen",
-      "description": "Kostenloses 30-Minuten-Erstgespräch oder Async-Kurzcheck, um zu klären, ob KI-PA, KI-Check, Discovery-Audit oder Pilot sinnvoll ist.",
+      "description": "Kostenloses 30-Minuten-Erstgespräch oder Async-Kurzcheck, um zu klären, ob KI-PA, kostenloser KI-Check oder Pilot sinnvoll ist.",
       "inLanguage": "de-DE",
       "isPartOf": { "@id": "https://k-aizen.de/#website" },
       "about": { "@id": "https://k-aizen.de/ki-pa#service" }
@@ -81,7 +81,7 @@ const conversationSchema = {
         {
           "@type": "Question",
           "name": "Was habe ich nach dem Erstgespräch?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Nach dem Erstgespräch steht eine Fit-Einschätzung: ob KI-PA, KI-Check, Discovery-Audit, Pilot oder kein Projekt sinnvoll ist. Außerdem wird der wahrscheinlich beste erste Use Case benannt." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Nach dem Erstgespräch steht eine Fit-Einschätzung: ob KI-PA, kostenloser KI-Check, Pilot oder kein Projekt sinnvoll ist. Außerdem wird der wahrscheinlich beste erste Use Case benannt." }
         }
       ]
     }
@@ -177,8 +177,8 @@ const conversationSchema = {
         Lohnt sich KI für Ihren konkreten Alltag jetzt schon?
       </p>
       <p>
-        Wenn es passt, ist der nächste bezahlte Schritt bewusst klar begrenzt:
-        KI-Check / Discovery-Audit oder ein kleiner Pilot. Das vollständige KI-PA-Setup
+        Wenn es passt, bleibt der nächste Schritt bewusst klar begrenzt:
+        kostenloser KI-Check, kleiner Pilot oder konkretes Angebot. Das vollständige KI-PA-Setup
         kommt erst danach, wenn fachlich klar ist, dass der Einstieg Sinn macht.
         Die vollständige Preisübersicht steht offen unter <a href="/pricing">/pricing</a>.
       </p>
@@ -194,7 +194,7 @@ const conversationSchema = {
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 24px;">
         <div style="padding: 20px; border-radius: 12px; background: rgba(255,255,255,0.58); border: 1px solid rgba(232,90,43,0.14);">
           <h3 style="margin: 0 0 8px; font-size: 18px;">Async Kurzcheck</h3>
-          <p style="margin: 0 0 16px; color: var(--fg-inverse); font-size: 15px;">Branche, Engpass, Systeme. Sie erhalten eine persönliche Einschätzung, ob KI-PA, Audit oder vorerst nichts sinnvoll ist.</p>
+          <p style="margin: 0 0 16px; color: var(--fg-inverse); font-size: 15px;">Branche, Engpass, Systeme. Sie erhalten eine persönliche Einschätzung, ob KI-PA, KI-Check oder vorerst nichts sinnvoll ist.</p>
           <a href={asyncMail} class="kz-btn">3 Fragen schicken</a>
         </div>
         <div style="padding: 20px; border-radius: 12px; background: rgba(255,255,255,0.58); border: 1px solid rgba(232,90,43,0.14);">

@@ -6,8 +6,8 @@
 
 - [Home](https://k-aizen.de/): Positionierung als fester KI-Ansprechpartner, Angebot, Ablauf, Fit-Check, Proof, konkrete Artefakte und Tagesbeispiel "Ein Tag mit Lena".
 - [KI-PA](https://k-aizen.de/ki-pa): Detailseite zum ersten KI-Assistenten im Betrieb: Quellen, Kontext, Freigaben, Arbeitskanal, 14-Tage-Realitätscheck und Grenzen.
-- [Preise](https://k-aizen.de/pricing): Offene Preisorientierung mit Käuferlogik: kostenloses Erstgespräch, Discovery-Audit ab 1.190 €, KI-PA-Setups und Add-ons.
-- [Discovery-Audit](https://k-aizen.de/audit): Bezahlter Klärungsschritt mit Report und Roadmap.
+- [Preise](https://k-aizen.de/pricing): Offene Preisorientierung mit Käuferlogik: kostenloses Erstgespräch, kostenloser Remote-KI-Check, KI-PA-Setups und Add-ons.
+- [KI-Check](https://k-aizen.de/audit): Kostenloser Remote-Klärungsschritt per Zoom, Google Meet oder ähnlichem Videotool.
 - [Erstgespräch](https://k-aizen.de/erstgespraech): 30 Minuten kostenlos oder Async-Kurzcheck per 3-Fragen-Mail. Fit prüfen, nächster Schritt entscheiden.
 - [Über Benjamin Zirngibl](https://k-aizen.de/about): Wer baut, wie gearbeitet wird, warum der Einstieg bewusst klein beginnt.
 - [Kontakt](https://k-aizen.de/kontakt): Direktkontakt über kontakt@k-aizen.de.
@@ -20,7 +20,7 @@
 - **Langfristiges Ziel:** Firma systematisieren und automatisieren, Schritt für Schritt: Belege, Telefon, Wissen, Leads, interne Prozesse, eigenes Kaizen OS oder Integration in vorhandene Systeme.
 - **Andockpunkte:** Microsoft 365, Teams, SharePoint, Slack, Notion, CRM, Excel-Listen oder eigene Systeme. k-AIzen kann integrieren, baut aber bei Bedarf ein eigenes System darum.
 - **Arbeitsprinzip:** erst verstehen, dann begrenzt starten, dann ausbauen. Kein Rätselraten, sondern freigegebene Quellen, klare Regeln, sichtbare Freigaben und dokumentierte Entscheidungen.
-- **Funnel-Prinzip:** k-AIzen verkauft nicht sofort ein Vollsetup. Die Website soll helfen zu entscheiden: nicht passend, Erstgespräch/Async-Check, Discovery-Audit, begrenzter Pilot oder KI-PA-Setup.
+- **Funnel-Prinzip:** k-AIzen verkauft nicht sofort ein Vollsetup. Die Website soll helfen zu entscheiden: nicht passend, Erstgespräch/Async-Check, kostenloser Remote-KI-Check, begrenzter Pilot oder KI-PA-Setup.
 - **Proof-Prinzip:** Am Anfang keine erfundenen Kundenstimmen. Stattdessen greifbare Arbeitsartefakte: Roadmap, Arbeitskanal, Freigabe-Matrix, Quellenliste, Ablaufkarte und echte Entwürfe aus einem Pilot.
 - **Zielgruppe:** KMU in Deutschland/DACH, besonders Betriebe, die mit Mail-, Datei-, Office- und Wissenschaos arbeiten und keinen internen KI-Verantwortlichen haben.
 - **Nicht ideal für:** Konzerne mit eigener KI-Abteilung, reine Website-Projekte, generische Tool-Schulungen, "10x Produktivität"-Versprechen ohne Prozessarbeit.
@@ -29,7 +29,7 @@
 ## Preise Kurzfassung
 
 - Erstgespräch: kostenlos, 30 Minuten. Alternativ: 3-Fragen-Kurzcheck per Mail ohne Kalendertermin.
-- Discovery-Audit: Remote Kompakt 1.190 €, Remote Standard 1.490 €, Vor Ort 1.990 € netto.
+- KI-Check: kostenloser Remote-Termin per Zoom, Google Meet oder ähnlichem Videotool. Aktuell kein Vor-Ort- oder Inhouse-Paket für den KI-Check.
 - KI-PA Tier 1 Autonom: 10.299 € Setup + 1.029 €/Monat oder SaaS-Style 1.899 €/Monat im ersten Jahr, 1.029 €/Monat ab Jahr 2.
 - KI-PA Tier 2 Concierge: 12.999 € Setup + 1.529 €/Monat oder SaaS-Style 2.599 €/Monat im ersten Jahr, 1.529 €/Monat ab Jahr 2.
 - Add-ons: Voice-Empfangsdame, Content-Maschine, Beleg- und Steuer-Modul, Lead-Pipeline.

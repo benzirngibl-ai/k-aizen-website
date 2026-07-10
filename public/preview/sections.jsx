@@ -1382,7 +1382,7 @@ function UeberMichSection() {
               'Eigener KI-Stack: n8n + Claude API + React/Supabase, gehostet auf Hetzner',
               'Gebaut: Personalplanungs-Tool, News-Digest, Email-Triage, Telefonagent (in Exploration)',
               'DSGVO-konforme Auftragsverarbeitung',
-              'Vor Ort im Raum Süddeutschland · remote in ganz DACH',
+              'Remote-Zusammenarbeit in ganz DACH',
             ].map((item, i) => (
               <li key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
                 <span style={{ color: 'var(--kz-ember-text)', fontWeight: 600, flexShrink: 0 }}>·</span>

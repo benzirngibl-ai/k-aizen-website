@@ -5,15 +5,15 @@ const buyerPaths = [
   {
     k: "Sie sind unsicher",
     title: "Erstgespräch oder Async-Check",
-    text: "Wenn noch nicht klar ist, wo KI helfen soll, reicht zunächst eine kostenfreie Einschätzung. Ein Audit ist erst sinnvoll, wenn ein erster Hebel grob sichtbar ist.",
+    text: "Wenn noch nicht klar ist, wo KI helfen soll, reicht zunächst eine kostenfreie Einschätzung. Danach kann ein kostenloser KI-Check per Zoom oder Google Meet sinnvoll sein.",
     cta: "Erstgespräch",
     href: "/erstgespraech",
   },
   {
     k: "Es gibt mehrere Baustellen",
-    title: "Discovery-Audit",
-    text: "Wenn Mail, Belege, Telefon, Wissen und Prozesse gleichzeitig ziehen, lohnt erst eine Priorisierung. Das verhindert ein teures Setup am falschen Punkt.",
-    cta: "Audit ansehen",
+    title: "Kostenloser KI-Check",
+    text: "Wenn Mail, Belege, Telefon, Wissen und Prozesse gleichzeitig ziehen, priorisieren wir zuerst remote. Das verhindert ein Setup am falschen Punkt.",
+    cta: "KI-Check ansehen",
     href: "#audit",
   },
   {
@@ -29,16 +29,8 @@ const offerCatalogSchema = {
   "@context": "https://schema.org",
   "@type": "OfferCatalog",
   "name": "k-AIzen Preise",
-  "description": "Öffentliche Orientierung für den Einstieg in k-AIzen: kostenloses Erstgespräch, Discovery-Audit ab 1.190 €, KI-PA-Vollsetup als Ausbaurahmen und Add-on-Module. Preise sichtbar, kein Lock-in.",
+  "description": "Öffentliche Orientierung für den Einstieg in k-AIzen: kostenloses Erstgespräch, kostenloser Remote-KI-Check, KI-PA-Vollsetup als Ausbaurahmen und Add-on-Module. Preise sichtbar, kein Lock-in.",
   "itemListElement": [
-    {
-      "@type": "Offer",
-      "name": "Discovery-Audit Standard",
-      "description": "1 Tag remote, Report binnen 5 Werktagen, 1h Follow-up. 50% bei Buchung innerhalb 30 Tagen aufs Setup angerechnet.",
-      "price": "1490",
-      "priceCurrency": "EUR",
-      "areaServed": "DE"
-    },
     {
       "@type": "Offer",
       "name": "KI-PA Autonom (Tier 1) — Setup-First",
@@ -71,22 +63,22 @@ const faqSchema = {
   "@type": "FAQPage",
   "mainEntity": [
     { "@type": "Question", "name": "Was ist der Unterschied zwischen Tier 1 und Tier 2?", "acceptedAnswer": { "@type": "Answer", "text": "Tier 1 = KI-PA Autonom. Zuverlässig lösbare Aufgaben wie Mails, Termine, Briefings, Recherche, Belege und Audio-Protokolle werden durch den Assistenten vorbereitet oder ausgeführt. Grenzfälle werden markiert. Tier 2 = KI-PA + Concierge. Alles aus Tier 1, plus menschlicher Backstop für Grenzfälle wie Anrufe, Behörden, Reklamationen, Verhandlungen oder komplexe Reise-Logistik." } },
-    { "@type": "Question", "name": "Modell A oder Modell B — was passt für mich?", "acceptedAnswer": { "@type": "Answer", "text": "Beide kosten über 24 Monate ungefähr gleich. Modell A (Setup-First): einmaliger Setup-Block, dann niedrigere Monatsraten. Modell B (SaaS-Style): kein Setup-Block, höhere Y1-Monatsrate, automatische Reduktion ab Y2. Welche Variante sinnvoll ist, klären wir nach Audit oder Pilot." } },
+    { "@type": "Question", "name": "Modell A oder Modell B — was passt für mich?", "acceptedAnswer": { "@type": "Answer", "text": "Beide kosten über 24 Monate ungefähr gleich. Modell A (Setup-First): einmaliger Setup-Block, dann niedrigere Monatsraten. Modell B (SaaS-Style): kein Setup-Block, höhere Y1-Monatsrate, automatische Reduktion ab Y2. Welche Variante sinnvoll ist, klären wir nach Erstgespräch, KI-Check oder Pilot." } },
     { "@type": "Question", "name": "Kann ich Tier 1 später auf Tier 2 upgraden?", "acceptedAnswer": { "@type": "Answer", "text": "Ja, jederzeit. Ihr KI-PA bleibt und kennt den Kontext dann bereits. Aufpreis: Differenz zwischen Tier 1 und Tier 2 ab Upgrade-Datum. Kein komplett neuer Setup-Prozess." } },
     { "@type": "Question", "name": "Kann ich Add-on-Module später dazubuchen?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Voice-Empfangsdame, Content-Maschine, Beleg-Modul, Lead-Pipeline, News-Cockpit — alles modular ergänzbar. Pro Add-on Setup-Pauschale + monatlicher Aufschlag. Vorgehen wie beim Tier-Upgrade." } },
-    { "@type": "Question", "name": "Warum bezahltes Audit statt kostenloser Beratung?", "acceptedAnswer": { "@type": "Answer", "text": "Das Audit ist ein bezahlter Klärungsschritt mit Analyse, Priorisierung und Roadmap. Bei Buchung eines Setups innerhalb 30 Tagen werden 50% des Audit-Preises aufs Setup angerechnet." } },
+    { "@type": "Question", "name": "Kostet der KI-Check etwas?", "acceptedAnswer": { "@type": "Answer", "text": "Nein. Der KI-Check ist ein kostenloser Remote-Termin zur Orientierung. Er findet per Zoom, Google Meet oder einem ähnlichen Videotool statt." } },
     { "@type": "Question", "name": "Was passiert bei Kündigung? Gibt es einen Lock-in?", "acceptedAnswer": { "@type": "Answer", "text": "Nein. Infrastruktur, Zugänge, Workflows und Daten werden sauber dokumentiert übergeben. Ziel ist kein Lock-in, sondern ein System, das Ihr Unternehmen versteht und trotzdem übergabefähig bleibt. Mindestlaufzeit 12 Monate (24 Monate bei Modell B SaaS-Style ohne Setup-Block)." } },
     { "@type": "Question", "name": "Gibt es Förderungen?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. In Deutschland go-digital bis 17.000 € (50% förderfähig). In Österreich KMU.Digital bis 8.000 € und aws AI-Start bis 15.000 €. k-AIzen ist aktuell noch nicht akkreditierter Berater — wir können aber helfen, passende Stellen zu finden." } },
     { "@type": "Question", "name": "Was ist mit Datenschutz und EU-Hosting?", "acceptedAnswer": { "@type": "Answer", "text": "Je nach Setup arbeiten wir mit einer getrennten Umgebung, klaren Freigaben und Auftragsverarbeitungsvertrag. Kundendaten und Memory liegen nachvollziehbar ab, mit Zugriff für Ihr Unternehmen." } }
     ,
-    { "@type": "Question", "name": "Welcher Einstieg ist der richtige?", "acceptedAnswer": { "@type": "Answer", "text": "Wenn der Bedarf unklar ist, zuerst Erstgespräch oder Async-Check. Wenn mehrere Baustellen gleichzeitig sichtbar sind, Discovery-Audit. Wenn ein erster Bereich klar ist, ein begrenzter KI-PA-Pilot oder Setup." } }
+    { "@type": "Question", "name": "Welcher Einstieg ist der richtige?", "acceptedAnswer": { "@type": "Answer", "text": "Wenn der Bedarf unklar ist, zuerst Erstgespräch oder Async-Check. Wenn mehrere Baustellen gleichzeitig sichtbar sind, kostenloser Remote-KI-Check. Wenn ein erster Bereich klar ist, ein begrenzter KI-PA-Pilot oder Setup." } }
   ]
 };
 ---
 
 <KaizenLayout
-  title="Preise — Einstieg, Audit, KI-PA und Ausbau. Alles offen."
-  description="Öffentliche Preisorientierung: kostenloses Erstgespräch, Discovery-Audit ab 1.190 €, KI-PA-Vollsetup als Ausbaurahmen, Add-ons modular. Kein Lock-in."
+  title="Preise — Einstieg, KI-PA und Ausbau. Alles offen."
+  description="Öffentliche Preisorientierung: kostenloses Erstgespräch, kostenloser Remote-KI-Check, KI-PA-Vollsetup als Ausbaurahmen, Add-ons modular. Kein Lock-in."
   path="/pricing"
   activeNav="pricing"
   jsonLd={[offerCatalogSchema, faqSchema]}
@@ -101,18 +93,18 @@ const faqSchema = {
     <p class="kz-lead">
       Preise stehen sichtbar — auf der Website, im Angebot, am Telefon. Gleichzeitig startet
       nicht jeder Kunde mit dem vollständigen KI-PA-Setup. Der sinnvolle Weg ist:
-      kostenloses Erstgespräch, dann KI-Check / Discovery-Audit oder Pilot, danach Ausbau.
+      kostenloses Erstgespräch, dann kostenloser KI-Check oder Pilot, danach Ausbau.
     </p>
 
     <section style="margin-top: 40px; padding: 28px 32px; background: rgba(255,85,0,0.07); border: 1px solid rgba(255,85,0,0.16); border-radius: 12px;">
       <h2 class="kz-h2" style="margin-top: 0; font-size: 24px;">Empfohlener Einstieg</h2>
       <p style="margin: 0 0 18px 0;">
         Damit der erste Schritt nicht zu groß wird, führen wir Kunden über einen klaren
-        Stage-Gate: erst verstehen, dann testen, dann ausbauen.
+        Ablauf: erst verstehen, dann testen, dann ausbauen.
       </p>
       <ol style="margin: 0; padding-left: 20px; line-height: 1.85;">
         <li><strong>Erstgespräch</strong> — 30 Minuten kostenlos, Fit prüfen.</li>
-        <li><strong>KI-Check / Discovery-Audit</strong> — ab 1.190 €, konkrete Roadmap statt Bauchgefühl.</li>
+        <li><strong>KI-Check</strong> — kostenlos per Zoom, Google Meet oder ähnlichem Tool; konkrete Prioritäten statt Bauchgefühl.</li>
         <li><strong>Pilot oder KI-PA-Basis</strong> — ein begrenzter Use Case, z.B. Mail, Termine oder Belege.</li>
         <li><strong>Ausbau</strong> — Vollsetup, Add-ons oder Kaizen OS, wenn der Nutzen belegt ist.</li>
       </ol>
@@ -151,43 +143,43 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════ 1. AUDIT ═══════════════ -->
+    <!-- ═══════════════ 1. KI-CHECK ═══════════════ -->
     <section id="audit" style="margin-top: 80px;">
-      <h2 class="kz-h2">1. Discovery-Audit — der Einstieg</h2>
+      <h2 class="kz-h2">1. KI-Check — der kostenlose Einstieg</h2>
       <p>
-        Ein Tag in Ihrem Betrieb, dokumentierter Report mit Roadmap, Festpreis. Drei Varianten je nach Setting.
-        <strong>Der Standard-Audit ist die Empfehlung für die meisten KMU.</strong>
+        Bevor ein Angebot entsteht, prüfen wir remote, wo KI in Ihrem Betrieb wirklich tragen kann.
+        Der KI-Check kostet nichts und findet per Zoom, Google Meet oder einem ähnlichen Videotool statt.
       </p>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin: 32px 0;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin: 32px 0;">
         <div style="padding: 32px 24px; background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 12px;">
           <img src="/icons/icon-camellia.png" alt="" class="kz-section-leaf" loading="lazy" />
-          <h3 class="kz-h3" style="margin-top: 0;">Remote Kompakt</h3>
-          <div style="font-family: var(--font-display); font-size: 36px; line-height: 1; margin: 12px 0 4px;">1.190 €</div>
-          <div style="font-size: 13px; color: var(--fg-muted); margin-bottom: 16px;">netto, einmalig</div>
-          <p style="margin: 0; font-size: 15px;">Halber Tag remote, Report binnen 5 Werktagen. Für kleinere Betriebe (10–15 MA) oder als niedrigschwelliger Einstieg.</p>
+          <h3 class="kz-h3" style="margin-top: 0;">Remote-Gespräch</h3>
+          <div style="font-family: var(--font-display); font-size: 36px; line-height: 1; margin: 12px 0 4px;">0 €</div>
+          <div style="font-size: 13px; color: var(--fg-muted); margin-bottom: 16px;">kostenlos</div>
+          <p style="margin: 0; font-size: 15px;">Wir sprechen über Engpässe, Systeme, Datenquellen und erste realistische Einsatzbereiche. Alles online, ohne Anfahrt.</p>
         </div>
 
         <div style="padding: 32px 24px; background: var(--kz-charcoal); color: var(--kz-cream); border-radius: 12px; position: relative; box-shadow: 0 24px 48px -16px rgba(31,41,51,0.32);">
-          <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--kz-ember-deep); color: var(--kz-cream); padding: 4px 14px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; border-radius: 999px;">Standard</div>
+          <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--kz-ember-deep); color: var(--kz-cream); padding: 4px 14px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; border-radius: 999px;">Empfohlen</div>
           <img src="/icons/icon-plum-blossom.png" alt="" class="kz-section-leaf" loading="lazy" />
-          <h3 class="kz-h3" style="margin-top: 0; color: var(--kz-cream);">Remote Standard</h3>
-          <div style="font-family: var(--font-display); font-size: 36px; line-height: 1; margin: 12px 0 4px;">1.490 €</div>
-          <div style="font-size: 13px; color: rgba(245,240,232,0.6); margin-bottom: 16px;">netto, einmalig</div>
-          <p style="margin: 0; font-size: 15px;">Voller Tag remote, 3 Mitarbeiter-Interviews à 20 Min, Report binnen 5 Werktagen, 1h Follow-up-Call. Default für die meisten Audits.</p>
+          <h3 class="kz-h3" style="margin-top: 0; color: var(--kz-cream);">Prioritäten klären</h3>
+          <div style="font-family: var(--font-display); font-size: 36px; line-height: 1; margin: 12px 0 4px;">Remote</div>
+          <div style="font-size: 13px; color: rgba(245,240,232,0.6); margin-bottom: 16px;">Zoom, Google Meet oder ähnlich</div>
+          <p style="margin: 0; font-size: 15px;">Am Ende soll klarer sein, ob KI-PA, Pilot, konkretes Setup oder vorerst kein Projekt der richtige nächste Schritt ist.</p>
         </div>
 
         <div style="padding: 32px 24px; background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 12px;">
           <img src="/icons/icon-pine.png" alt="" class="kz-section-leaf" loading="lazy" />
-          <h3 class="kz-h3" style="margin-top: 0;">Vor Ort</h3>
-          <div style="font-family: var(--font-display); font-size: 36px; line-height: 1; margin: 12px 0 4px;">1.990 €</div>
-          <div style="font-size: 13px; color: var(--fg-muted); margin-bottom: 16px;">netto, einmalig · zzgl. Reisekosten</div>
-          <p style="margin: 0; font-size: 15px;">Zwei Tage vor Ort, persönliche Begleitung der Mitarbeiter im Workflow. Für komplexere Betriebe (20+ MA) oder wenn Remote nicht passt.</p>
+          <h3 class="kz-h3" style="margin-top: 0;">Kein Inhouse-Paket</h3>
+          <div style="font-family: var(--font-display); font-size: 36px; line-height: 1; margin: 12px 0 4px;">Online</div>
+          <div style="font-size: 13px; color: var(--fg-muted); margin-bottom: 16px;">kein Vor-Ort-Angebot</div>
+          <p style="margin: 0; font-size: 15px;">Der KI-Check wird aktuell nicht als Inhouse-Termin angeboten. Wir prüfen alles im Gespräch und über geteilte Unterlagen.</p>
         </div>
       </div>
 
       <div style="padding: 24px 28px; background: rgba(255,85,0,0.08); border-left: 4px solid var(--kz-ember); border-radius: 4px; margin-top: 32px;">
-        <strong>Stage-Gate-Mechanik:</strong> Bei Buchung eines Setups innerhalb 30 Tagen werden <strong>50% des Audit-Preises aufs Setup angerechnet</strong>. Ein Standard-Audit für 1.490 € reduziert das Setup also um 745 €. Wer nur den Audit will, zahlt voll. Wer weitermacht, bekommt einen rationalen Anreiz.
+        <strong>Klarer Rahmen:</strong> Der KI-Check ist Orientierung, kein verstecktes Beratungsprodukt. Bezahlt wird erst ein Pilot, Setup oder Modul, wenn daraus ein konkretes Angebot entsteht.
       </div>
     </section>
 
@@ -402,7 +394,7 @@ const faqSchema = {
       <details style="margin-top: 16px; padding: 20px 24px; background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 8px;">
         <summary style="font-weight: 600; cursor: pointer; font-size: 16px;">Modell A oder Modell B — was passt für mich?</summary>
         <p style="margin-top: 12px; line-height: 1.7;">
-          Beide Modelle kosten über 24 Monate ungefähr gleich. <strong>Modell A (Setup-First):</strong> einmaliger Setup-Block, dann niedrigere Monatsraten — gut, wenn Budget direkt verfügbar ist und Investitionslogik passt. <strong>Modell B (SaaS-Style):</strong> kein Setup-Block, höhere Y1-Monatsrate (z.B. 1.899 € statt 1.029 €), automatische Reduktion ab Y2 — gut, wenn Liquidität wichtiger ist als niedrigere Gesamtkosten.
+          Beide Modelle kosten über 24 Monate ungefähr gleich. <strong>Modell A (Setup-First):</strong> einmaliger Setup-Block, dann niedrigere Monatsraten — gut, wenn Budget direkt verfügbar ist und Investitionslogik passt. <strong>Modell B (SaaS-Style):</strong> kein Setup-Block, höhere Y1-Monatsrate (z.B. 1.899 € statt 1.029 €), automatische Reduktion ab Y2 — gut, wenn Liquidität wichtiger ist als niedrigere Gesamtkosten. Welche Variante sinnvoll ist, klären wir im Erstgespräch, KI-Check oder Pilot.
         </p>
       </details>
 
@@ -421,9 +413,9 @@ const faqSchema = {
       </details>
 
       <details style="margin-top: 16px; padding: 20px 24px; background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 8px;">
-        <summary style="font-weight: 600; cursor: pointer; font-size: 16px;">Warum bezahltes Audit statt kostenloser Beratung?</summary>
+        <summary style="font-weight: 600; cursor: pointer; font-size: 16px;">Kostet der KI-Check etwas?</summary>
         <p style="margin-top: 12px; line-height: 1.7;">
-          Das Audit ist kein unverbindliches Beratungsgespräch, sondern ein bezahlter Klärungsschritt mit Beobachtung, Priorisierung und Roadmap. Bei Buchung eines Setups innerhalb 30 Tagen werden <strong>50% des Audit-Preises aufs Setup angerechnet</strong>.
+          Nein. Der KI-Check ist ein kostenloser Remote-Termin zur Orientierung. Er findet per Zoom, Google Meet oder einem ähnlichen Videotool statt. Es gibt aktuell kein Vor-Ort- oder Inhouse-Paket für den KI-Check.
         </p>
       </details>
 

@@ -406,12 +406,12 @@
     sendBtn.onclick = () => send(input.value);
 
     appendAssistant(
-      'Hallo, ich bin Lena, die KI-Chat-Assistentin. Frag mich was zu k-AIzen — Pricing, Module, Methodik, Vertrauen — oder lass uns ein Mini-Audit durchgehen.',
+      'Hallo, ich bin Lena, die KI-Chat-Assistentin. Frag mich was zu k-AIzen — Pricing, Module, Methodik, Vertrauen — oder lass uns einen Mini-KI-Check durchgehen.',
     );
     renderSuggestions([
       'Was ist k-AIzen?',
-      'Was kostet das Audit?',
-      'Mini-Audit starten',
+      'Kostet der KI-Check etwas?',
+      'Mini-KI-Check starten',
     ]);
 
     scheduleBubbles();

@@ -19,7 +19,7 @@ Der Einstieg ist der KI-PA: ein betreuter KI-Assistent für Mail, Kalender, Aufg
 
 Langfristig wächst daraus mehr System im Unternehmen: Belege, Telefon, Leads, Wissen, interne Abläufe, Automatisierung und bei Bedarf ein eigenes Kaizen OS rund um die bestehende Arbeitsumgebung.
 
-Die Website ist bewusst als Entscheidungsfunnel gebaut: Interessenten sollen nicht möglichst schnell in ein großes Setup geführt werden, sondern erkennen, welcher nächste Schritt passt. Mögliche Ergebnisse sind: nicht passend, kostenloses Erstgespräch, Async-3-Fragen-Check, Discovery-Audit, begrenzter Pilot oder KI-PA-Setup.
+Die Website ist bewusst als Entscheidungsfunnel gebaut: Interessenten sollen nicht möglichst schnell in ein großes Setup geführt werden, sondern erkennen, welcher nächste Schritt passt. Mögliche Ergebnisse sind: nicht passend, kostenloses Erstgespräch, Async-3-Fragen-Check, kostenloser Remote-KI-Check, begrenzter Pilot oder KI-PA-Setup.
 
 ## Positionierung
 
@@ -98,7 +98,7 @@ Die Reihenfolge ist bewusst konservativ:
 
 ### Erstgespräch
 
-30 Minuten kostenlos. Ziel: klären, ob KI-PA, KI-Check, Discovery-Audit oder Pilot sinnvoll ist. Kein Verkaufsdruck.
+30 Minuten kostenlos. Ziel: klären, ob KI-PA, kostenloser KI-Check oder Pilot sinnvoll ist. Kein Verkaufsdruck.
 
 Für introvertierte oder noch unsichere Interessenten gibt es zusätzlich einen Async-Kurzcheck per Mail: Branche/Teamgröße, aktueller Engpass und vorhandene Systeme reichen für eine erste persönliche Einschätzung.
 
@@ -106,22 +106,21 @@ Nach dem Erstgespräch sollte klarer sein:
 
 - ob k-AIzen überhaupt passt
 - welcher erste Use Case sinnvoll ist
-- ob KI-Check, Discovery-Audit, Pilot oder kein Projekt der nächste Schritt ist
+- ob KI-Check, Pilot oder kein Projekt der nächste Schritt ist
 
-### Discovery-Audit
+### KI-Check
 
-Bezahlter Klärungsschritt mit Beobachtung, Report und Roadmap.
+Kostenloser Remote-Klärungsschritt per Zoom, Google Meet oder einem ähnlichen Videotool.
 
-- Remote Kompakt: 1.190 € netto
-- Remote Standard: 1.490 € netto
-- Vor Ort: 1.990 € netto plus Reisekosten
-
-Stage-Gate: Bei Buchung eines Setup-Pakets innerhalb von 30 Tagen werden 50% des Audit-Preises auf das Setup angerechnet.
+- kostet nichts
+- findet remote statt
+- aktuell kein Vor-Ort- oder Inhouse-Paket
+- Ziel: Engpässe, Systeme, Quellen, Grenzen und den sinnvollsten nächsten Schritt klären
 
 Käuferlogik:
 
 - Unklarer Bedarf: Erstgespräch oder Async-Check.
-- Mehrere Baustellen: Discovery-Audit, bevor ein Setup verkauft wird.
+- Mehrere Baustellen: kostenloser KI-Check, bevor ein Setup verkauft wird.
 - Klarer erster Bereich: begrenzter Pilot oder KI-PA-Setup.
 
 ### KI-PA Tier 1: Autonom
@@ -197,7 +196,7 @@ Grundsatz: Die KI bekommt nur Quellen, die freigegeben sind. Sensible Aktionen w
 - Home: https://k-aizen.de/
 - KI-PA: https://k-aizen.de/ki-pa
 - Preise: https://k-aizen.de/pricing
-- Discovery-Audit: https://k-aizen.de/audit
+- KI-Check: https://k-aizen.de/audit
 - Erstgespräch: https://k-aizen.de/erstgespraech
 - Über Benjamin Zirngibl: https://k-aizen.de/about
 - Kontakt: https://k-aizen.de/kontakt

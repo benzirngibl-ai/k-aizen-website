@@ -1,228 +1,143 @@
 ---
 import KaizenLayout from '../layouts/KaizenLayout.astro';
 
+const checkMail = `mailto:kontakt@k-aizen.de?subject=${encodeURIComponent("Kostenloser KI-Check")}&body=${encodeURIComponent(`Hi Ben,
+
+ich möchte den kostenlosen KI-Check machen.
+
+Mein Unternehmen:
+- Name:
+- Branche:
+- Teamgröße:
+
+Worum es grob geht:
+- 
+
+Welche Systeme nutzen wir?
+- z. B. Microsoft 365, Teams, Slack, Notion, CRM, Excel
+
+Viele Grüße`)}`;
+
+const whatsappLink = `https://wa.me/4915901031928?text=${encodeURIComponent('Hi Ben, ich interessiere mich für den kostenlosen KI-Check. Können wir remote kurz sprechen?')}`;
+
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "k-AIzen Discovery-Audit",
-  "description": "Bezahltes 1-Tages-Audit für KMU mit dokumentiertem PDF-Report und Roadmap. Drei Varianten — Remote Kompakt 1.190 €, Remote Standard 1.490 €, Vor Ort 1.990 €. Stage-Gate-Mechanik: 50% des Audit-Preises wird auf das Setup angerechnet bei Buchung innerhalb 30 Tagen.",
+  "name": "k-AIzen KI-Check",
+  "description": "Kostenloser Remote-KI-Check für KMU. Per Zoom, Google Meet oder ähnlichem Videotool klären wir Engpässe, Systeme, Datenquellen und den sinnvollsten nächsten Schritt.",
   "provider": { "@type": "Organization", "name": "k-AIzen", "url": "https://k-aizen.de" },
-  "areaServed": "DE",
-  "serviceType": "KI-Beratung und Discovery-Audit",
+  "areaServed": ["DE", "AT", "CH"],
+  "serviceType": "KI-Potenzialcheck und Erstberatung",
   "url": "https://k-aizen.de/audit",
-  "offers": [
-    { "@type": "Offer", "name": "Remote Kompakt", "price": "1190", "priceCurrency": "EUR" },
-    { "@type": "Offer", "name": "Remote Standard", "price": "1490", "priceCurrency": "EUR" },
-    { "@type": "Offer", "name": "Vor Ort", "price": "1990", "priceCurrency": "EUR" }
-  ]
+  "offers": {
+    "@type": "Offer",
+    "name": "Kostenloser Remote-KI-Check",
+    "price": "0",
+    "priceCurrency": "EUR"
+  }
 };
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Was bekomme ich für 1.490 €?", "acceptedAnswer": { "@type": "Answer", "text": "Einen vorbereiteten Audit-Tag, 1 Tag Beobachtung in Ihrem Betrieb, einen 5–8-seitigen kundenspezifischen PDF-Report binnen 5 Werktagen mit konkreten KI-Hebeln und Roadmap, plus 1h Follow-up-Call." } },
-    { "@type": "Question", "name": "Wie funktioniert das Stage-Gate?", "acceptedAnswer": { "@type": "Answer", "text": "Wenn Sie innerhalb von 30 Tagen nach Audit-Lieferung ein Setup-Paket buchen, ziehen wir 50% des Audit-Preises vom Setup ab. Standard-Audit für 1.490 € reduziert das erste Setup also um 745 €." } },
-    { "@type": "Question", "name": "Warum nicht einfach kostenlose Erstberatung?", "acceptedAnswer": { "@type": "Answer", "text": "Das kostenlose Erstgespräch prüft den Fit. Der Audit ist der erste bezahlte Klärungsschritt mit echtem Liefer-Artefakt: Beobachtung, Roadmap und Priorisierung." } },
-    { "@type": "Question", "name": "Was passiert mit den Daten und Beobachtungen?", "acceptedAnswer": { "@type": "Answer", "text": "Audit-Notizen werden ausschließlich für die Erstellung Ihres Reports verwendet. Keine Weitergabe an Dritte. Auf Anforderung Löschung sämtlicher Notizen nach 90 Tagen. Sensible No-Gos werden vorab markiert und respektiert." } },
-    { "@type": "Question", "name": "Kann ich den Report jemand anderem geben?", "acceptedAnswer": { "@type": "Answer", "text": "Ja, der Report gehört Ihnen. Sie können ihn intern nutzen oder einem anderen Dienstleister vorlegen. Das ist bewusst anti-lock-in gebaut." } }
+    { "@type": "Question", "name": "Kostet der KI-Check etwas?", "acceptedAnswer": { "@type": "Answer", "text": "Nein. Der KI-Check ist kostenlos." } },
+    { "@type": "Question", "name": "Findet der KI-Check vor Ort statt?", "acceptedAnswer": { "@type": "Answer", "text": "Nein. Der KI-Check findet aktuell remote per Zoom, Google Meet oder einem ähnlichen Videotool statt." } },
+    { "@type": "Question", "name": "Was kommt nach dem KI-Check?", "acceptedAnswer": { "@type": "Answer", "text": "Danach ist klarer, ob KI-PA, ein kleiner Pilot, ein konkretes Setup oder vorerst kein Projekt sinnvoll ist." } },
+    { "@type": "Question", "name": "Muss ich danach etwas buchen?", "acceptedAnswer": { "@type": "Answer", "text": "Nein. Der KI-Check dient der Orientierung und erzeugt keine Kaufpflicht." } }
   ]
 };
-
-const auditMail = (variante: string) => `mailto:kontakt@k-aizen.de?subject=${encodeURIComponent(`Audit-Buchung — ${variante}`)}&body=${encodeURIComponent(`Hi Ben,\n\nich möchte ein Discovery-Audit buchen — Variante: ${variante}.\n\nMein Unternehmen:\n- Name:\n- Branche:\n- MA-Anzahl:\n- Standort:\n\nBitte schick mir den Vorab-Fragebogen und einen Vorschlag für den Audit-Tag.\n\nViele Grüße`)}`;
-
-const whatsappLink = `https://wa.me/4915901031928?text=${encodeURIComponent('Hi Ben, ich interessiere mich für ein Discovery-Audit. Können wir kurz reden?')}`;
 ---
 
 <KaizenLayout
-  title="Discovery-Audit — Ein Tag, ein Report, eine Roadmap"
-  description="Bezahltes 1-Tages-Audit für KMU. Drei Varianten ab 1.190 €. Konkreter PDF-Report mit Roadmap binnen 5 Werktagen. Stage-Gate: 50% wird auf das Setup angerechnet."
+  title="KI-Check — kostenlos und remote"
+  description="Kostenloser KI-Check für KMU. Wir klären per Zoom, Google Meet oder ähnlichem Gespräch, ob KI-PA, Pilot oder vorerst kein Projekt sinnvoll ist."
   path="/audit"
   activeNav="pricing"
-  breadcrumbs={[{ name: 'Preise', href: '/pricing' }, { name: 'Audit', href: '/audit' }]}
+  breadcrumbs={[{ name: 'Preise', href: '/pricing' }, { name: 'KI-Check', href: '/audit' }]}
   jsonLd={[serviceSchema, faqSchema]}
 >
   <article class="kz-page">
     <div class="kz-page-eyebrow">
       <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" loading="lazy" />
       <img src="/icons/icon-sakura-branch.png" alt="" class="kz-eyebrow-leaf" loading="lazy" />
-      <span>Der erste Schritt</span>
+      <span>Kostenloser KI-Check</span>
     </div>
-    <h1 class="kz-h1">KI-Check mit Substanz.</h1>
+
+    <h1 class="kz-h1">KI-Check ohne Preisschild.</h1>
     <p class="kz-lead">
-      Bevor wir bauen, schauen wir hin. Ein Tag in Ihrem Betrieb, dokumentierter Report,
-      konkrete Hebel mit Aufwand und Zeitgewinn. Festpreis, kein Verkaufs-Pitch,
-      kein „könnte man machen". Danach wissen Sie, welcher erste KI-Schritt sich lohnt.
+      Wir schauen gemeinsam auf Ihren Alltag und klären, wo KI wirklich helfen kann.
+      Der Check kostet nichts und findet remote statt: per Zoom, Google Meet oder einem ähnlichen Gespräch.
     </p>
 
-    <!-- Was Sie bekommen -->
-    <section style="margin-top: 64px;">
-      <h2 class="kz-h2">Was Sie bekommen</h2>
+    <section style="margin-top: 56px; padding: 32px; background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 12px;">
+      <h2 class="kz-h2" style="margin-top: 0; color: var(--fg-inverse);">Was im KI-Check passiert</h2>
       <ul>
-        <li><strong>Vorab-Fragebogen</strong> per Mail (~30 Min Aufwand)</li>
-        <li><strong>1 Tag Beobachtung</strong> in Ihrem Betrieb (5–6h: Schatten-Phase + 3 Mitarbeiter-Interviews à 20 Min + Wrap-Up)</li>
-        <li><strong>5–8-seitiger kundenspezifischer PDF-Report</strong> binnen 5 Werktagen mit Ist-Zustand, KI-Hebeln, Roadmap, Investitions-Indikation</li>
-        <li><strong>1 Stunde Follow-up-Call</strong> zur Roadmap-Validierung</li>
-        <li><strong>Übergabe-Garantie</strong> — der Report gehört Ihnen und kann intern oder mit anderen Dienstleistern genutzt werden</li>
+        <li><strong>Engpass verstehen</strong> — wo gerade Zeit, Überblick oder Nachhalten verloren geht.</li>
+        <li><strong>Systeme sortieren</strong> — Mail, Kalender, Aufgaben, CRM, Notion, Microsoft 365, Slack oder andere Quellen.</li>
+        <li><strong>Grenzen benennen</strong> — was die KI sehen dürfte, was tabu bleibt und wo ein Mensch freigeben muss.</li>
+        <li><strong>Nächsten Schritt klären</strong> — KI-PA, kleiner Pilot, konkretes Angebot oder bewusst kein Projekt.</li>
       </ul>
     </section>
 
-    <!-- Drei Varianten -->
-    <section style="margin-top: 64px;">
-      <h2 class="kz-h2">Drei Varianten</h2>
+    <section style="margin-top: 56px;">
+      <h2 class="kz-h2">Kein Inhouse-Paket</h2>
+      <p>
+        Den KI-Check biete ich aktuell nicht als Vor-Ort- oder Inhouse-Termin an.
+        Wir machen das bewusst online: mit Gespräch, Bildschirmteilung und den Unterlagen,
+        die Sie freigeben möchten.
+      </p>
+      <p>
+        Falls danach ein konkretes Setup sinnvoll ist, sprechen wir über Umfang, Kosten und Vorgehen separat.
+        Der Check selbst bleibt kostenlos.
+      </p>
+    </section>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin: 32px 0;">
-        <div style="padding: 32px 24px; background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 12px; display: flex; flex-direction: column;">
-          <img src="/icons/icon-camellia.png" alt="" class="kz-section-leaf" loading="lazy" />
-          <h3 class="kz-h3" style="margin-top: 0;">Remote Kompakt</h3>
-          <div style="font-family: var(--font-display); font-size: 36px; line-height: 1; margin: 12px 0 4px;">1.190 €</div>
-          <div style="font-size: 13px; color: rgba(31, 41, 51, 0.65); margin-bottom: 16px;">netto, einmalig</div>
-          <ul style="font-size: 14px; padding-left: 18px; flex: 1;">
-            <li>½ Tag remote (Video, Bildschirm-Sharing)</li>
-            <li>Report binnen 5 Werktagen</li>
-            <li>1h Follow-up-Call</li>
-          </ul>
-          <p style="margin-top: 16px; font-size: 13px; color: rgba(31, 41, 51, 0.75);">Für kleinere Betriebe (10–15 MA) oder als niedrigschwelliger Einstieg.</p>
-          <a href={auditMail('Remote Kompakt — 1.190 €')} class="kz-btn" style="margin-top: 20px; white-space: nowrap; padding: 12px 18px;">Kompakt buchen →</a>
-        </div>
-
-        <div style="padding: 32px 24px; background: var(--kz-charcoal); color: var(--kz-cream); border-radius: 12px; position: relative; box-shadow: 0 24px 48px -16px rgba(31,41,51,0.32); display: flex; flex-direction: column;">
-          <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--kz-ember-deep); color: var(--kz-cream); padding: 4px 14px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; border-radius: 999px;">Empfohlen</div>
-          <img src="/icons/icon-plum-blossom.png" alt="" class="kz-section-leaf" loading="lazy" />
-          <h3 class="kz-h3" style="margin-top: 0; color: var(--kz-cream);">Remote Standard</h3>
-          <div style="font-family: var(--font-display); font-size: 36px; line-height: 1; margin: 12px 0 4px;">1.490 €</div>
-          <div style="font-size: 13px; color: rgba(245,240,232,0.78); margin-bottom: 16px;">netto, einmalig</div>
-          <ul style="font-size: 14px; padding-left: 18px; flex: 1; color: var(--kz-cream);">
-            <li>1 voller Tag remote</li>
-            <li>3 Mitarbeiter-Interviews à 20 Min</li>
-            <li>Report binnen 5 Werktagen</li>
-            <li>1h Follow-up-Call</li>
-          </ul>
-          <p style="margin-top: 16px; font-size: 13px; color: rgba(245,240,232,0.78);">Default für die meisten KMU. Genug Tiefe, schnell durchführbar.</p>
-          <a href={auditMail('Remote Standard — 1.490 €')} class="kz-btn" style="margin-top: 20px; background: var(--kz-ember-deep); white-space: nowrap; padding: 12px 18px;">Standard buchen →</a>
-        </div>
-
-        <div style="padding: 32px 24px; background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 12px; display: flex; flex-direction: column;">
-          <img src="/icons/icon-pine.png" alt="" class="kz-section-leaf" loading="lazy" />
-          <h3 class="kz-h3" style="margin-top: 0;">Vor Ort</h3>
-          <div style="font-family: var(--font-display); font-size: 36px; line-height: 1; margin: 12px 0 4px;">1.990 €</div>
-          <div style="font-size: 13px; color: rgba(31, 41, 51, 0.65); margin-bottom: 16px;">netto, einmalig + Anreise</div>
-          <ul style="font-size: 14px; padding-left: 18px; flex: 1;">
-            <li>1 voller Tag vor Ort</li>
-            <li>Werks-/Büro-Tour (~30 Min)</li>
-            <li>3 Mitarbeiter-Interviews</li>
-            <li>Report + 1h Follow-up</li>
-          </ul>
-          <p style="margin-top: 16px; font-size: 13px; color: rgba(31, 41, 51, 0.75);">Für Hersteller oder wenn Maschinen, Produktion, physische Räume Teil des Bilds sein müssen.</p>
-          <a href={auditMail('Vor Ort — 1.990 € + Anreise')} class="kz-btn" style="margin-top: 20px; white-space: nowrap; padding: 12px 18px;">Vor-Ort buchen →</a>
-        </div>
+    <section style="margin-top: 56px;">
+      <h2 class="kz-h2">Was Sie danach wissen</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 24px;">
+        <article style="padding: 22px; border-radius: 12px; background: var(--kz-cream-deep); color: var(--fg-inverse);">
+          <h3 style="margin: 0 0 8px; font-size: 18px;">Ob es passt</h3>
+          <p style="margin: 0; color: var(--fg-inverse); font-size: 15px; line-height: 1.6;">Wenn KI gerade nicht der richtige Hebel ist, sage ich das klar.</p>
+        </article>
+        <article style="padding: 22px; border-radius: 12px; background: var(--kz-cream-deep); color: var(--fg-inverse);">
+          <h3 style="margin: 0 0 8px; font-size: 18px;">Wo man starten könnte</h3>
+          <p style="margin: 0; color: var(--fg-inverse); font-size: 15px; line-height: 1.6;">Meistens ist ein kleiner Bereich besser als ein großes Alles-auf-einmal-Projekt.</p>
+        </article>
+        <article style="padding: 22px; border-radius: 12px; background: var(--kz-cream-deep); color: var(--fg-inverse);">
+          <h3 style="margin: 0 0 8px; font-size: 18px;">Welche Quellen nötig wären</h3>
+          <p style="margin: 0; color: var(--fg-inverse); font-size: 15px; line-height: 1.6;">Wir sprechen darüber, welche Daten und Freigaben ein sinnvoller Einstieg brauchen würde.</p>
+        </article>
       </div>
     </section>
 
-    <!-- Stage-Gate -->
-    <section style="margin-top: 64px; padding: 40px clamp(24px, 4vw, 48px); background: var(--kz-charcoal); color: var(--kz-cream); border-radius: 12px;">
-      <img src="/icons/icon-ginkgo.png" alt="" class="kz-section-leaf-lg" loading="lazy" />
-      <h2 class="kz-h2" style="margin-top: 0; color: var(--kz-cream);">Stage-Gate — der Audit bleibt kein Sackgassenprodukt</h2>
-      <p style="color: rgba(245,240,232,0.9);">
-        Bei Buchung eines Setup-Pakets innerhalb <strong>30 Tagen</strong> nach Audit-Lieferung werden <strong>50% des Audit-Preises auf das Setup angerechnet</strong>.
-      </p>
-      <p style="color: rgba(245,240,232,0.9);">
-        Konkret: Standard-Audit kostet 1.490 €. Wenn Sie innerhalb von 30 Tagen ein Setup buchen, ziehen wir 745 € ab. Der Audit wird damit zum ersten sauberen Schritt ins Setup.
-      </p>
-      <p style="color: rgba(245,240,232,0.7); font-size: 14px; margin-bottom: 0;">
-        Wer nur den Audit will, zahlt voll — keine Sales-Falle. Wer weitermacht, bekommt einen rationalen Anreiz. Beide Wege sind ehrlich kalkuliert.
-      </p>
-    </section>
-
-    <!-- Tag-Ablauf -->
-    <section style="margin-top: 64px;">
-      <h2 class="kz-h2">Wie ein Audit-Tag aussieht (Standard, ~5–6h)</h2>
-      <div style="display: grid; grid-template-columns: 80px 1fr; gap: 16px 24px; margin-top: 24px; font-size: 15px;">
-        <div style="font-family: var(--font-display); color: var(--kz-ember-text);">30 min</div>
-        <div><strong>Kick-off</strong> — Erwartungen klären, Pain-Points-Talk, DSGVO-Rahmen</div>
-
-        <div style="font-family: var(--font-display); color: var(--kz-ember-text);">1,5–2h</div>
-        <div><strong>Schatten-Phase</strong> — Alltag begleiten, Mail/Kalender/Entscheidungen beobachten. <em>Hier finden wir den echten Schmerz.</em></div>
-
-        <div style="font-family: var(--font-display); color: var(--kz-ember-text);">1h</div>
-        <div><strong>2–3 Mitarbeiter-Kurzgespräche</strong> à 20 Min — wo geht Zeit verloren, welcher Ablauf würde am meisten entlasten</div>
-
-        <div style="font-family: var(--font-display); color: var(--kz-ember-text);">30 min</div>
-        <div><em>(optional Vor-Ort)</em> Werks-/Büro-Tour — Hersteller-Spezifika, Maschinen, Prozesse</div>
-
-        <div style="font-family: var(--font-display); color: var(--kz-ember-text);">45 min</div>
-        <div><strong>Wrap-Up</strong> — erste Hypothesen, Reaktion testen, nächste Schritte</div>
-      </div>
-
-      <p style="margin-top: 32px; font-style: italic; color: var(--fg-muted);">
-        Mitarbeiter-Interviews sind nicht optional. Die wissen oft besser als der Chef wo Zeit verloren geht.
-      </p>
-    </section>
-
-    <!-- Was im Report steht -->
-    <section style="margin-top: 64px;">
-      <h2 class="kz-h2">Was im Report steht</h2>
-      <ol>
-        <li><strong>Ist-Zustand</strong> — 3–5 identifizierte Schmerzen mit Beobachtungen und Zitaten</li>
-        <li><strong>KI-Hebel</strong> — 3–5 konkrete Vorschläge je mit: was es löst · Aufwand-Indikation (S/M/L) · geschätzter Zeitgewinn pro Woche · welches k-AIzen-Modul dahinter steht</li>
-        <li><strong>Roadmap</strong> — Empfehlung „starten Sie mit X, dann Y" plus „bewusst nicht im Scope" (Ihre No-Gos respektieren)</li>
-        <li><strong>Investitions-Indikation</strong> — Setup-Pakete + Retainer-Range, ggf. mit Förderhinweis</li>
-      </ol>
-      <p>5–8 Seiten PDF, kundenspezifisch, lesbar in 15 Minuten. Ohne Berater-Floskeln.</p>
-    </section>
-
-    <!-- FAQ -->
     <section style="margin-top: 64px;">
       <h2 class="kz-h2">FAQ</h2>
 
       <details style="border-top: 1px solid var(--kz-border); padding: 24px 0;">
-        <summary style="cursor: pointer; font-family: var(--font-display); font-size: 22px; font-weight: 400;">Was bekomme ich für 1.490 €?</summary>
-        <p style="margin-top: 16px;">
-          Einen vorbereiteten Audit-Tag, 1 Tag Beobachtung in Ihrem Betrieb (5–6h), 5–8-seitiger PDF-Report binnen 5 Werktagen mit konkreten Hebeln und Roadmap, plus 1h Follow-up-Call. Aufwand auf meiner Seite: ~14h verteilt über 1–2 Wochen.
-        </p>
+        <summary style="cursor: pointer; font-family: var(--font-display); font-size: 22px; font-weight: 400;">Kostet der KI-Check etwas?</summary>
+        <p style="margin-top: 16px;">Nein. Der KI-Check ist kostenlos.</p>
       </details>
 
       <details style="border-top: 1px solid var(--kz-border); padding: 24px 0;">
-        <summary style="cursor: pointer; font-family: var(--font-display); font-size: 22px; font-weight: 400;">Warum nicht einfach kostenlose Erstberatung?</summary>
-        <p style="margin-top: 16px;">
-          Das kostenlose Erstgespräch prüft den Fit. Der Audit ist der erste bezahlte Klärungsschritt mit echtem Liefer-Artefakt — kein Verkaufs-Pitch. Wenn Sie noch nicht so weit sind: <a href="/erstgespraech">30-Min-Erstgespräch</a> ist gratis.
-        </p>
-      </details>
-
-      <details style="border-top: 1px solid var(--kz-border); padding: 24px 0;">
-        <summary style="cursor: pointer; font-family: var(--font-display); font-size: 22px; font-weight: 400;">Was passiert mit den Daten und Beobachtungen?</summary>
-        <p style="margin-top: 16px;">
-          Audit-Notizen werden ausschließlich für die Erstellung Ihres Reports verwendet. Keine Weitergabe an Dritte. Auf Anforderung Löschung sämtlicher Notizen nach 90 Tagen. Bei sensiblen Bereichen markieren Sie im Vorab-Fragebogen No-Gos — die respektiere ich.
-        </p>
-      </details>
-
-      <details style="border-top: 1px solid var(--kz-border); padding: 24px 0;">
-        <summary style="cursor: pointer; font-family: var(--font-display); font-size: 22px; font-weight: 400;">Kann ich den Report jemand anderem geben?</summary>
-        <p style="margin-top: 16px;">
-          Ja, der Report gehört Ihnen. Sie können ihn intern nutzen oder einem anderen Dienstleister vorlegen. Bewusst so gebaut — das ist gelebter Anti-Lock-in im Sales-Prozess.
-        </p>
+        <summary style="cursor: pointer; font-family: var(--font-display); font-size: 22px; font-weight: 400;">Kommt k-AIzen dafür zu uns?</summary>
+        <p style="margin-top: 16px;">Nein. Aktuell biete ich dafür kein Inhouse- oder Vor-Ort-Paket an. Der KI-Check läuft remote.</p>
       </details>
 
       <details style="border-top: 1px solid var(--kz-border); border-bottom: 1px solid var(--kz-border); padding: 24px 0;">
-        <summary style="cursor: pointer; font-family: var(--font-display); font-size: 22px; font-weight: 400;">Was wenn nach dem Audit nichts passt für meinen Betrieb?</summary>
-        <p style="margin-top: 16px;">
-          Dann haben Sie trotzdem einen sauberen Report mit Hebeln, die andere Dienstleister umsetzen können — oder die Sie intern weiterverfolgen. Der Audit ist kein Verkaufs-Trichter, sondern ein eigenständiges Produkt.
-        </p>
+        <summary style="cursor: pointer; font-family: var(--font-display); font-size: 22px; font-weight: 400;">Müssen wir danach etwas kaufen?</summary>
+        <p style="margin-top: 16px;">Nein. Wenn ein Pilot oder Setup sinnvoll ist, bekommen Sie danach ein separates Angebot. Wenn nicht, bleibt es bei der Einschätzung.</p>
       </details>
     </section>
 
-    <!-- Bottom CTA -->
     <section style="margin-top: 80px; padding: 56px clamp(24px, 4vw, 48px); background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 12px;">
-      <h2 class="kz-h2" style="margin-top: 0;">Bereit für den ersten Schritt?</h2>
-      <p style="margin-bottom: 28px;">Schreib uns kurz — wir schicken den Vorab-Fragebogen und schlagen einen Termin vor.</p>
+      <h2 class="kz-h2" style="margin-top: 0;">KI-Check starten</h2>
+      <p style="margin-bottom: 28px;">Schicken Sie drei Stichpunkte oder buchen Sie direkt einen Termin. Beides reicht für den Einstieg.</p>
       <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-        <a href={auditMail('Remote Standard — 1.490 €')} class="kz-btn">Standard-Audit buchen →</a>
+        <a href="/termin" class="kz-btn">Termin wählen</a>
+        <a href={checkMail} class="kz-btn kz-btn-ghost">3 Stichpunkte schicken</a>
         <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="kz-btn kz-btn-ghost">WhatsApp an Ben</a>
-        <a href="/erstgespraech" class="kz-btn kz-btn-ghost">Erst kennenlernen (gratis)</a>
       </div>
-      <p style="margin-top: 24px; font-size: 13px; color: var(--fg-muted);">
-        Online-Fragebogen folgt — aktuell läuft der Vorab-Fragebogen per Mail mit 30 strukturierten Fragen (~30 Min Aufwand).
-      </p>
     </section>
   </article>
 </KaizenLayout>
