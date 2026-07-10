@@ -17,62 +17,14 @@ ich möchte erst einmal async prüfen, ob k-AIzen für uns passt.
 
 Beste Grüße`)}`;
 
-// "Ein Tag mit Lena" — konkrete Alltagsmomente statt abstrakter Feature-Liste.
-const szenen = [
-  {
-    time: "Früher — ohne Assistent",
-    img: "/pitch/12-old-day.png", alt: "Unternehmer mit überfülltem Posteingang am Schreibtisch",
-    result: "Der Tag startet schon mit Rückstand: ungelesene Mails, offene Rückfragen, ein Termin, der fast untergeht. Nichts davon ist einzeln riesig. Zusammen zieht es trotzdem sofort Energie.",
-    sources: ["Mails", "Termine", "Rückfragen"],
-    flow: ["Alles kommt ungefiltert", "Sie sortieren selbst", "Tag startet im Rückstand"],
-  },
-  {
-    time: "06:30 — Tagesbriefing",
-    img: "/pitch/01-morning.png", alt: "Unternehmer liest morgens das Tagesbriefing seines KI-Assistenten",
-    result: "Lena legt Ihnen morgens ein kurzes Tagesbriefing hin: Termine, neue Mails, offene Entscheidungen und Dinge, die nicht liegenbleiben sollten. Kein Dashboard zum Durchklicken. Ein Überblick, bevor der Tag losgeht.",
-    sources: ["Mail", "Kalender", "Aufgaben"],
-    flow: ["Neue Eingänge prüfen", "Wichtiges bündeln", "Briefing schicken"],
-  },
-  {
-    time: "07:00 — Freigaben",
-    img: "/pitch/02-coffee.png", alt: "Unternehmer gibt Freigaben am Handy an KI-Assistentin Lena",
-    result: "Ein paar Dinge brauchen nur Ihre Entscheidung: bestellen, senden, buchen oder ändern. Lena bereitet es vor, sammelt die Freigaben ein und dokumentiert, was entschieden wurde. Sie geben frei. Der Rest läuft weiter.",
-    sources: ["Mail", "Kalender", "Bestellung"],
-    flow: ["Vorschlag vorbereiten", "Freigabe einholen", "Erledigen + dokumentieren"],
-    discord: { channel: "#aufgaben", time: "06:45", body: "📌 **3 Freigaben warten**\n\n**1. Bürobedarf nachbestellen** · 38,50 €\n→ ✅ bestellen\n\n**2. Antwort an Kunde Müller** · Draft liegt bereit\n→ ✅ senden  ✏️ ändern\n\n**3. Hotel Berlin · 03.–05.06.** · 487 €\n→ ✅ buchen" },
-  },
-  {
-    time: "08:10 — Beschwerde",
-    img: "/pitch/13-angebot.png", alt: "Unternehmer bearbeitet vorbereitete Antwort auf Kundenbeschwerde",
-    result: "Eine verärgerte Kundenmail geht nicht im Posteingang unter. Lena erkennt die Beschwerde, markiert sie als wichtig und bereitet eine sachliche Antwort vor. Sie entscheiden den Ton und geben frei.",
-    sources: ["Mail", "Kundenliste", "Verlauf"],
-    flow: ["Beschwerde erkennen", "Verlauf zusammenfassen", "Antwort zur Freigabe"],
-    discord: { channel: "#posteingang", time: "08:09", alert: true, body: "🚨 **Beschwerde erkannt — hoch priorisiert**\n\n👤 Thomas Brandt (Bestandskunde)\n\n„…die letzte Lieferung war zwei Wochen zu spät. Ich erwarte eine Reaktion.\"\n\n📌 Oben angepinnt · wartet auf Sie" },
-  },
-  {
-    time: "10:40 — Antwort mit Vorgeschichte",
-    img: "/pitch/10-memory-retrieve.png", alt: "Unternehmer prüft eine KI-gestützte Antwort mit Mailverlauf und Kundenkontext",
-    result: "Wenn eine neue Kundenmail kommt, betrachtet Lena nicht nur diese eine Nachricht. Sie zieht den Mailverlauf, offene Zusagen und vorhandene Kundennotizen dazu. Daraus entsteht kein blindes Autopilot-Schreiben, sondern ein Antwortvorschlag mit Kontext.",
-    sources: ["Mailverlauf", "Kundennotiz", "CRM"],
-    flow: ["Neue Mail lesen", "Vorgeschichte laden", "Entwurf mit Kontext"],
-    discord: { channel: "#posteingang", time: "10:37", body: "🧠 **Antwort mit Kontext**\n\nThomas Brandt · Bestandskunde\nQuelle: Mailverlauf + Kundennotiz\n\n• Lieferung war verspätet\n• Rückmeldung noch offen\n• Ton: kurz, konkret, keine Floskeln\n\nEntwurf liegt bereit · bitte prüfen" },
-  },
-  {
-    time: "14:30 — Beleg",
-    img: "/pitch/15-beleg.png", alt: "Unternehmer fotografiert Bewirtungsbeleg für Belegerfassung",
-    result: "Foto machen reicht. Lena liest Datum, Betrag und Kategorie aus und legt den Beleg so ab, dass er später für Buchhaltung oder Steuerberater nicht wieder gesucht werden muss.",
-    sources: ["Foto", "OCR", "Buchhaltung"],
-    flow: ["Beleg auslesen", "Fehlendes markieren", "Sauber ablegen"],
-    discord: { channel: "#rechnungen", time: "14:31", body: "🧾 **Beleg erfasst**\n\n• Datum: 03.06.2026\n• Betrag: 87,40 €\n• Kategorie: Bewirtung (70 %)\n• Lieferant: Trattoria da Vinci\n\n✅ Abgelegt + für Steuerberater markiert" },
-  },
-  {
-    time: "18:00 — Tagesabschluss",
-    img: "/pitch/07-evening.png", alt: "Unternehmer entspannt abends nach Tagesabschluss",
-    result: "Am Ende sehen Sie, was erledigt ist, was offen bleibt und was morgen zuerst drankommt. Nicht mehr alles im Kopf behalten. Einfach sauber übergeben.",
-    sources: ["Mails", "Freigaben", "Aufgaben"],
-    flow: ["Erledigtes sammeln", "Offenes markieren", "Morgen vorbereiten"],
-  },
-];
+import { getCollection } from 'astro:content';
+
+// Funktionen-Grid (ehem. "Ein Tag mit Lena") — Kacheln kommen aus der funktionen-Collection.
+// Neue Funktion sichtbar machen = neue Datei in src/content/funktionen/, kein Code.
+const funktionenListe = (await getCollection('funktionen'))
+  .filter((f) => !f.data.draft)
+  .sort((a, b) => a.data.reihenfolge - b.data.reihenfolge)
+  .slice(0, 6);
 
 const ablaufSchritte = [
   {
@@ -346,7 +298,7 @@ const homeSchema = {
     <div class="kz-nav__links">
       <a href="#angebot">Angebot</a>
       <a href="#ablauf">Ablauf</a>
-      <a href="#ein-tag">Ein Tag mit Lena</a>
+      <a href="#ein-tag">Funktionen</a>
       <a href="#proof">Proof</a>
       <a href="#kontakt">Kontakt</a>
     </div>
@@ -580,64 +532,45 @@ const homeSchema = {
     </div>
   </section>
 
-  <!-- 5.5 — EIN TAG MIT LENA (Vision / Beweis) -->
+  <!-- 5.5 — FUNKTIONEN (ehem. Ein Tag mit Lena; Anker #ein-tag bleibt — extern verlinkt!) -->
   <section class="kz-section" id="ein-tag">
     <div class="kz-wrap">
-      <span class="kz-eyebrow kz-reveal">KI-Assistent im Alltag</span>
-      <h2 class="kz-h2 kz-reveal" data-delay="1">Ein Tag mit Lena im Betrieb.</h2>
-      <p class="kz-lead kz-reveal" data-delay="2">Lena ist ein Beispiel für den KI-PA als ersten Schritt. Sie arbeitet mit Mail, Kalender, Kundenliste, CRM, Notizen und Freigaben. Sie sortiert vor, schlägt nächste Schritte vor und fragt nach, wenn etwas nicht eindeutig ist. Sie ersetzt nicht Ihr Urteil. Sie nimmt Ihnen das Suchen und Nachhalten ab.</p>
+      <span class="kz-eyebrow kz-reveal">Funktionen</span>
+      <h2 class="kz-h2 kz-reveal" data-delay="1">Was Lena im Betrieb übernimmt.</h2>
+      <p class="kz-lead kz-reveal" data-delay="2">
+        Keine Feature-Liste. Jede Funktion ist eine Situation, die es in kleinen Betrieben wirklich
+        gibt — erst wie sie ohne Assistenz schiefgeht, dann wie Lena sie löst. Mit Freigaben,
+        nicht auf Autopilot.
+      </p>
 
-      <div class="kz-day" style="margin-top:clamp(48px,8vw,96px);">
-        <div class="kz-day__line"></div>
-        {szenen.map((s, i) => (
-          <div class={`kz-scene kz-scene--${i % 2 === 0 ? 'left' : 'right'} kz-reveal`}>
-            <div class="kz-scene__timewrap"><span class="kz-scene__time">{s.time}</span></div>
-            <div class="kz-scene__media">
-              <img src={s.img} alt={s.alt} loading="lazy" />
+      <div class="kz-fn-home-grid">
+        {funktionenListe.map((f) => (
+          <a href={`/funktionen/${f.id}`} class="kz-fn-home-card kz-reveal">
+            <img src={f.data.heroImage} alt={f.data.heroAlt} loading="lazy" />
+            <div class="kz-fn-home-body">
+              <p class="kz-fn-home-kicker">{f.data.schmerzKicker}</p>
+              <h3>{f.data.title}</h3>
             </div>
-            <div class="kz-scene__dot"></div>
-            <div class="kz-scene__body">
-              {s.spoken && <p class="kz-scene__spoken">„{s.spoken}"</p>}
-              <p class="kz-scene__result">{s.result}</p>
-              {(s.sources || s.flow) && (
-                <div class="kz-scene__mechanic">
-                  {s.sources && (
-                    <div class="kz-source-row">
-                      <span class="kz-source-label">Quellen</span>
-                      <div class="kz-source-chips">
-                        {s.sources.map((source) => (
-                          <span>{source}</span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  {s.flow && (
-                    <div class="kz-flow" aria-label="Ablauf">
-                      {s.flow.map((step, stepIndex) => (
-                        <div class="kz-flow__step">
-                          <span class="kz-flow__num">{stepIndex + 1}</span>
-                          <span>{step}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
-              {s.discord && (
-                <div class="kz-discord">
-                  <div class={`kz-discord__head${s.discord.alert ? ' alert' : ''}`}>
-                    <span class="ch">{s.discord.channel}</span>
-                    <span>· {s.discord.time}</span>
-                  </div>
-                  <div class="kz-discord__body" set:html={s.discord.body.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>')}></div>
-                </div>
-              )}
-            </div>
-          </div>
+          </a>
         ))}
+      </div>
+
+      <div class="kz-fn-home-more kz-reveal">
+        <a href="/funktionen" class="kz-btn">Alle Funktionen ansehen →</a>
       </div>
     </div>
   </section>
+
+  <style>
+    .kz-fn-home-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: clamp(32px, 5vw, 56px); }
+    .kz-fn-home-card { display: block; text-decoration: none !important; color: var(--fg); background: var(--kz-cream-deep, #ede5d4); border: 1px solid var(--kz-border); border-radius: 12px; overflow: hidden; transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out); }
+    .kz-fn-home-card:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(31,41,51,0.08); }
+    .kz-fn-home-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+    .kz-fn-home-body { padding: 20px 24px; }
+    .kz-fn-home-kicker { font-family: var(--font-display); font-style: italic; font-size: 16px; margin: 0 0 6px; color: var(--fg-inverse); }
+    .kz-fn-home-body h3 { font-family: var(--font-display); font-size: 20px; margin: 0; color: var(--fg-inverse); }
+    .kz-fn-home-more { margin-top: 32px; }
+  </style>
 
   <!-- 6 — PROOF -->
   <section class="kz-section" id="proof">
