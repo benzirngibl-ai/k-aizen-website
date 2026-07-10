@@ -123,6 +123,10 @@ Diese eine Funktion wird komplett durchgebaut als **Template-Beweis** für alle 
 
 ---
 
+## Stehende Regel (Ben, 2026-07-10): Release = Content
+
+**Jede fertig gebaute OS-Funktion (v.a. GHL-Parität) bekommt standardmäßig ihre Funktionsseite + LinkedIn-Draft.** Der GHL-Nachbau ist damit eine Funktionsseiten-Pipeline: Feature E2E bewiesen → Content-Datei (10 Min) → Bild-Prompt → Post-Draft. Erste Anwendung: `rundmail.md` (OS #12 Broadcasts+Unsubscribe, gebaut 07-10 von Parallel-Session, Seite am selben Tag).
+
 ## Baureihenfolge (Vorschau, Details im Implementierungsplan)
 
 1. `funktionen`-Collection in `content.config.ts` (klont `blog`-Muster).
