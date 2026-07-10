@@ -1,6 +1,6 @@
 ---
 title: "Der vorsortierte Posteingang"
-description: "80 Mails über Nacht — drei davon zählen. Lena sortiert vor, priorisiert das Wichtige und legt Antwortentwürfe bereit, bevor Ihr Tag beginnt."
+description: "80 Mails über Nacht — drei davon zählen. Lena sortiert nach Zuständigkeit, legt aus den Inhalten Aufgaben fürs Team an (jede mit der Mail verknüpft) und priorisiert, was wirklich Sie braucht."
 schmerzKicker: "80 Mails über Nacht. Drei davon zählen wirklich."
 protagonist: markus
 heroImage: "/pitch/12-old-day.png"
@@ -18,13 +18,13 @@ phoneMock:
   lines:
     - "80 ungelesene Mails"
     - "Wichtiges: irgendwo dazwischen"
-ohneText: "Der Posteingang behandelt alles gleich: Der Newsletter steht neben dem 20.000-€-Auftrag."
-mitText: "Lena sortiert über Nacht vor: Wichtiges oben, Entwürfe liegen bereit, das Rauschen ist abgelegt. Sie starten mit drei Entscheidungen statt achtzig Mails."
-sources: ["Mail", "Kundenliste", "Ihre Regeln"]
-flow: ["Eingänge beim Eintreffen einordnen", "Wichtiges priorisieren + Entwürfe vorbereiten", "Morgens: klarer Überblick statt Stapel"]
+ohneText: "Der Posteingang behandelt alles gleich: Der Newsletter steht neben dem 20.000-€-Auftrag. Und verteilen muss es trotzdem jemand — von Hand."
+mitText: "Lena kennt die Zuständigkeiten in Ihrem Betrieb: Rechnungen zur Buchhaltung, Reklamationen zur Werkstatt. Und aus den Inhalten entstehen direkt Aufgaben für die richtigen Leute — jede Aufgabe mit der Original-Mail verknüpft, jede Mail mit Hinweis auf ihre Aufgabe. Sie starten mit drei Entscheidungen statt achtzig Mails."
+sources: ["Mail", "Team-Zuständigkeiten", "Aufgaben"]
+flow: ["Eingänge nach Zuständigkeit verteilen", "Aus Inhalten Aufgaben fürs Team anlegen — mit Mail verknüpft", "Was nur Sie entscheiden können, liegt oben"]
 discord:
   channel: "#posteingang"
   time: "06:30"
-  body: "🌅 **Morgenlage**\n\n80 Mails sortiert · 3 brauchen Sie:\n\n• 2 Anfragen — Antwortentwürfe liegen bereit\n• 1 Beschwerde — oben angepinnt\n\nRest: einsortiert. Guten Start."
+  body: "🌅 **Morgenlage** · 80 Mails sortiert\n\n→ 12 Buchhaltung (Frau Ott)\n→ 7 Werkstatt (Herr Kaya)\n→ 3 brauchen SIE (2 Entwürfe bereit, 1 Beschwerde angepinnt)\n\n📋 **4 Aufgaben automatisch angelegt** — je mit Mail verknüpft:\n• Ersatzteil bestellen → Herr Kaya\n• Zählerstand melden → Frau Ott\n• Angebot Krüger nachfassen → Sie\n\nRest: einsortiert. Guten Start."
 draft: false
 ---
