@@ -22,7 +22,7 @@ phoneMock:
 ohneText: "Die Frage geht an Zettel, Postfach und Gedächtnis. Keiner von den dreien antwortet."
 mitChat:
   frage: "Lena, wie war das mit Herrn Maurer nochmal?"
-  antwort: "**Herr Maurer** · Bestandskunde\n\n• Zuletzt 24.06.: Angebot Terrassendach, 8.400 €\n• Offen: Materialmuster — bis Ende der Woche zugesagt\n• Ton: pragmatisch, mag es kurz\n\nSoll ich die Rückruf-Aufgabe auf 11 Uhr legen?"
+  antwort: "**Herr Maurer** · Bestandskunde\n\n• Zuletzt 24.06.: Angebot Terrassendach, 8.400 €\n• Offen: Materialmuster — bis Ende der Woche zugesagt\n• Ton: pragmatisch, mag es kurz\n\n🎂 Übrigens: Er hat nächste Woche Geburtstag — und in deinen Notizen steht, dass er alte Autos mag. Falls du was Persönliches einstreuen willst.\n\nSoll ich die Rückruf-Aufgabe auf 11 Uhr legen?"
 mitText: "Zehn Sekunden lesen — und Sie rufen vorbereitet an."
 sources: ["Kundenliste", "Mailverlauf", "Notizen"]
 flow: ["Lena fragen — Historie steht bereit", "Offene Zusagen + letzter Stand auf einen Blick", "Vorbereitet zurückrufen"]
