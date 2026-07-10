@@ -1,7 +1,7 @@
 ---
 title: "Die liegengebliebene Beschwerde"
 description: "Eine wütende Kundenmail geht im Posteingang unter — bis sie eskaliert. Lena erkennt Beschwerden beim Eintreffen, priorisiert sie und legt einen Antwortentwurf bereit."
-schmerzKicker: "Freitag, 16:12. Die Mail ist wütend. Montag ist sie auf Platz 47."
+schmerzKicker: "Freitag, 16:12. Die Mail ist wütend. Montag liegt sie begraben unter 46 neuen Mails."
 protagonist: kunde
 heroImage: "/funktionen/liegengebliebene-beschwerde.jpg"
 heroAlt: "Verärgerte Kundin tippt abends eine Beschwerde-Mail am Laptop"
