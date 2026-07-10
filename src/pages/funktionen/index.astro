@@ -1,0 +1,55 @@
+---
+import KaizenLayout from '../../layouts/KaizenLayout.astro';
+import { getCollection } from 'astro:content';
+
+const funktionen = (await getCollection('funktionen'))
+  .filter((f) => !f.data.draft)
+  .sort((a, b) => a.data.reihenfolge - b.data.reihenfolge);
+---
+
+<KaizenLayout
+  title="Funktionen — was Lena im Betrieb übernimmt"
+  description="Jede Funktion eine echte Alltagssituation: was ohne Assistenz schiefgeht und wie Lena sie löst. Telefon, Mail, Termine, Belege — Stück für Stück."
+  path="/funktionen"
+>
+  <article class="kz-page">
+    <div class="kz-page-eyebrow">
+      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
+      <span>Funktionen</span>
+    </div>
+    <h1 class="kz-h1">Was Lena im Betrieb übernimmt.</h1>
+    <p class="kz-lead">
+      Keine Feature-Liste. Jede Funktion ist eine Situation, die es in kleinen Betrieben
+      wirklich gibt — erst wie sie schiefgeht, dann wie Lena sie löst.
+    </p>
+
+    {funktionen.length === 0 ? (
+      <p class="kz-fn-empty">Die ersten Funktionsseiten entstehen gerade. Bald hier.</p>
+    ) : (
+      <section class="kz-fn-list">
+        {funktionen.map((f) => (
+          <a href={`/funktionen/${f.id}`} class="kz-fn-card">
+            <div class="kz-fn-thumb"><img src={f.data.heroImage} alt={f.data.heroAlt} loading="lazy" /></div>
+            <div class="kz-fn-card-body">
+              <p class="kz-fn-card-kicker">{f.data.schmerzKicker}</p>
+              <h2 class="kz-fn-card-title">{f.data.title}</h2>
+              <span class="kz-fn-card-more">Ansehen →</span>
+            </div>
+          </a>
+        ))}
+      </section>
+    )}
+  </article>
+
+  <style>
+    .kz-fn-empty { font-family: var(--font-sans); font-size: 17px; color: var(--fg-muted); margin-top: 32px; }
+    .kz-fn-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; }
+    .kz-fn-card { display: block; text-decoration: none !important; color: var(--fg); background: var(--kz-cream-deep, #ede5d4); border: 1px solid var(--kz-border); border-radius: 12px; overflow: hidden; transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out); }
+    .kz-fn-card:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(31, 41, 51, 0.08); }
+    .kz-fn-thumb img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+    .kz-fn-card-body { padding: 24px; }
+    .kz-fn-card-kicker { font-family: var(--font-display); font-style: italic; font-size: 17px; margin: 0 0 8px; color: var(--fg-inverse); }
+    .kz-fn-card-title { font-family: var(--font-display); font-size: 22px; margin: 0 0 12px; color: var(--fg-inverse); }
+    .kz-fn-card-more { font-size: 14px; color: var(--accent, #e85a2b); font-weight: 600; }
+  </style>
+</KaizenLayout>
