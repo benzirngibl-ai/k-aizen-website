@@ -3,8 +3,8 @@ title: "Der verpasste Anruf"
 description: "Was ein nicht angenommener Anruf wirklich kostet — und wie Lena jeden Anruf annimmt, das Anliegen erfasst und mit Kontext übergibt."
 schmerzKicker: "18:47 Uhr. Der Auftrag ist vierstellig. Und niemand geht ran."
 protagonist: kunde
-heroImage: "/pitch/06-waiting.png"
-heroAlt: "Kundin wartet mit Telefon am Ohr — niemand nimmt ab"
+heroImage: "/funktionen/verpasster-anruf.jpg"
+heroAlt: "Kundin wartet abends in der Küche mit Telefon am Ohr — niemand nimmt ab"
 reihenfolge: 1
 beats:
   - label: "Do · 18:47"

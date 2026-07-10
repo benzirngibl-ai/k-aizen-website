@@ -3,8 +3,8 @@ title: "Der vorsortierte Posteingang"
 description: "80 Mails über Nacht — drei davon zählen. Lena sortiert nach Zuständigkeit, legt aus den Inhalten Aufgaben fürs Team an (jede mit der Mail verknüpft) und priorisiert, was wirklich Sie braucht."
 schmerzKicker: "80 Mails über Nacht. Drei davon zählen wirklich."
 protagonist: markus
-heroImage: "/pitch/12-old-day.png"
-heroAlt: "Unternehmer vor überquellendem Posteingang am Morgen"
+heroImage: "/funktionen/vorsortierter-posteingang.jpg"
+heroAlt: "Vorher-Nachher: chaotischer E-Mail-Posteingang, dann sauber auf drei Mitarbeiter verteilt"
 reihenfolge: 7
 beats:
   - label: "07:58"

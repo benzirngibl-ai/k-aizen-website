@@ -3,8 +3,8 @@ title: "Die Rundmail an alle Kunden"
 description: "Betriebsferien, Preisanpassung, Neuigkeit — einmal an alle. Lena baut den Verteiler aus der Kundenliste, mit rechtssicherem Abmelde-Link, und pflegt die Liste automatisch."
 schmerzKicker: "Eine Mail an 200 Kunden. Outlook schafft 50. Das Excel ist von Januar."
 protagonist: mitarbeiter
-heroImage: "/pitch/02-coffee.png"
-heroAlt: "Rundmail-Freigabe am Handy — Verteiler aus der Kundenliste"
+heroImage: "/funktionen/rundmail.jpg"
+heroAlt: "Mitarbeiterin verzweifelt vor endlosem BCC-Adressfeld und Klebezetteln mit Mail-Adressen"
 reihenfolge: 8
 beats:
   - label: "Mo · 14:00"

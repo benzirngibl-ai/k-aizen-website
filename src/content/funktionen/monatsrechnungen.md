@@ -3,8 +3,8 @@ title: "Die Rechnungen vom Ersten"
 description: "Wartungsverträge, Pauschalen, Mieten — jeden Monatsersten derselbe Rechnungsstapel. Lena kennt die Verträge und legt alle Entwürfe automatisch bereit. Vollständig, ohne Zahlendreher."
 schmerzKicker: "Am Ersten des Monats: 40 Rechnungen. Alle fast gleich. Alle von Hand."
 protagonist: mitarbeiter
-heroImage: "/pitch/15-beleg.png"
-heroAlt: "Rechnungsstapel am Monatsersten auf dem Schreibtisch"
+heroImage: "/funktionen/monatsrechnungen.jpg"
+heroAlt: "Mitarbeiterin am Monatsersten vor einer langen Reihe identischer Rechnungen"
 reihenfolge: 6
 beats:
   - label: "1. · 08:00"

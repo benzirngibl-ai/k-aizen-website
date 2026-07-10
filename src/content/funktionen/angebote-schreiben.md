@@ -3,8 +3,8 @@ title: "Zwölf Angebote bis Mittag"
 description: "Angebote schreiben ist Fleißarbeit: Katalog, Preise, Anschreiben — zwölfmal am Tag. Lena liest die Anfrage, zieht die Positionen aus dem Katalog und legt den Entwurf bereit."
 schmerzKicker: "Jede Anfrage will ein Angebot. Ihre Kollegin will eigentlich nur einmal durchatmen."
 protagonist: mitarbeiter
-heroImage: "/pitch/13-angebot.png"
-heroAlt: "Mitarbeiterin arbeitet sich durch einen Stapel Angebotsanfragen"
+heroImage: "/funktionen/angebote-schreiben.jpg"
+heroAlt: "Mitarbeiterin zwischen zwei Papierstapeln arbeitet sich durch die Angebotsanfragen"
 reihenfolge: 5
 beats:
   - label: "08:10"
