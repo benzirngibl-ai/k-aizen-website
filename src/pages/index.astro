@@ -70,29 +70,6 @@ const fitCards = [
   },
 ];
 
-const entscheidungsPunkte = [
-  {
-    k: "Nach 30 Minuten",
-    title: "Passend oder nicht passend",
-    text: "Sie wissen, ob KI-PA, KI-Check, Pilot oder vorerst kein Projekt der richtige nächste Schritt ist.",
-  },
-  {
-    k: "Nach dem KI-Check",
-    title: "Priorisierte Roadmap",
-    text: "Quellen, erster Use Case, Risiken, No-Gos und grobe Kosten liegen als Arbeitsgrundlage vor.",
-  },
-  {
-    k: "Nach 14 Tagen Pilot",
-    title: "Erste echte Artefakte",
-    text: "Briefings, Antwortentwürfe, Freigabeliste oder Ablaufkarte zeigen, ob es im Alltag trägt.",
-  },
-  {
-    k: "Nach 8 Wochen",
-    title: "Ausbauentscheidung",
-    text: "Dann wird nicht aus Hoffnung erweitert, sondern weil der erste Bereich sichtbar geholfen hat.",
-  },
-];
-
 const proofPunkte = [
   {
     title: "Echte Quellen",
@@ -457,26 +434,6 @@ const homeSchema = {
             <h3>{step.title}</h3>
             <p>{step.text}</p>
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- 3.8 — ENTSCHEIDUNGSHILFE -->
-  <section class="kz-section">
-    <div class="kz-wrap">
-      <span class="kz-eyebrow kz-reveal">Was Sie bekommen</span>
-      <h2 class="kz-h2 kz-reveal" data-delay="1">Der Einstieg endet nicht mit einem Call. Er endet mit einer Entscheidung, die Sie begründen können.</h2>
-      <p class="kz-lead kz-reveal" data-delay="2">
-        Gerade bei B2B-Entscheidungen reicht Begeisterung nicht. Sie brauchen etwas, das Sie intern zeigen, vergleichen und kritisch prüfen können.
-      </p>
-      <div class="kz-decision-grid">
-        {entscheidungsPunkte.map((punkt, index) => (
-          <article class="kz-decision-card kz-reveal" data-delay={(index % 4) + 1}>
-            <div class="kz-decision-card__k">{punkt.k}</div>
-            <h3>{punkt.title}</h3>
-            <p>{punkt.text}</p>
-          </article>
         ))}
       </div>
     </div>
