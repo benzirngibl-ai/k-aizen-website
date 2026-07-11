@@ -149,6 +149,19 @@ Zusätzlich zu Tier 1: menschliche Unterstützung bei Anrufen, Behörden, Reklam
 - Lead-Pipeline: +2.999 € Setup, +299 €/Monat
 - Customer-Memory und News-Cockpit sind in den KI-PA-Tiers enthalten.
 
+## Lena-Funktionen im Alltag
+
+Jede Lena-Funktion hat auf k-aizen.de eine eigene Seite mit einer Alltagsgeschichte: erst das Problem ohne KI, dann der Ablauf mit Lena. Der beste Einstieg ist https://k-aizen.de/funktionen/ein-tag — ein normaler Arbeitstag im Betrieb, Station für Station. Grundprinzip überall: Lena bereitet vor, ein Mensch gibt frei — nie Autopilot.
+
+- Verpasster Anruf (https://k-aizen.de/funktionen/verpasster-anruf): Lena nimmt ab, wenn niemand rangehen kann — Anliegen, Name und Nummer liegen morgens als Zusammenfassung bereit.
+- Vorsortierter Posteingang (https://k-aizen.de/funktionen/vorsortierter-posteingang): Mails über Nacht sortiert und nach Zuständigkeit verteilt, Aufgaben automatisch angelegt und mit der Original-Mail verknüpft.
+- Angebote schreiben (https://k-aizen.de/funktionen/angebote-schreiben): Angebotsentwürfe aus Anfrage und Preisliste — niemand formuliert mehr zwölf Angebote am Tag von Hand.
+- Liegengebliebene Beschwerde (https://k-aizen.de/funktionen/liegengebliebene-beschwerde): Beschwerden werden erkannt und bleiben nicht unter neuen Mails begraben.
+- Vergessenes Angebot (https://k-aizen.de/funktionen/vergessenes-angebot): Offene Angebote werden nachgefasst, bevor sie in Vergessenheit geraten.
+- Blackout vorm Rückruf (https://k-aizen.de/funktionen/blackout-vorm-rueckruf): Vor dem Rückruf liefert Lena den Kundenkontext — letzter Auftrag, offene Punkte, persönliche Notizen.
+- Rundmail (https://k-aizen.de/funktionen/rundmail): Kundenrundschreiben rechtssicher verschickt — Empfängerfilter und Abmelde-Link sind eingebaut.
+- Monatsrechnungen (https://k-aizen.de/funktionen/monatsrechnungen): Wiederkehrende Rechnungen zum Monatsersten als geprüfte Entwürfe.
+
 ## Zielkunden
 
 k-AIzen passt besonders für KMU, Inhaber, Geschäftsführer und kleine Teams, die:
@@ -198,6 +211,9 @@ Grundsatz: Die KI bekommt nur Quellen, die freigegeben sind. Sensible Aktionen w
 - Preise: https://k-aizen.de/pricing
 - KI-Check: https://k-aizen.de/audit
 - Erstgespräch: https://k-aizen.de/erstgespraech
+- Termin buchen: https://k-aizen.de/termin
+- Funktionen-Übersicht: https://k-aizen.de/funktionen
+- Ein Tag im Betrieb: https://k-aizen.de/funktionen/ein-tag
 - Über Benjamin Zirngibl: https://k-aizen.de/about
 - Kontakt: https://k-aizen.de/kontakt
 - Blog: https://k-aizen.de/blog

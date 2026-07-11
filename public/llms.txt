@@ -4,14 +4,30 @@
 
 ## Kernseiten
 
-- [Home](https://k-aizen.de/): Positionierung als fester KI-Ansprechpartner, Angebot, Ablauf, Fit-Check, Proof, konkrete Artefakte und Tagesbeispiel "Ein Tag mit Lena".
+- [Home](https://k-aizen.de/): Positionierung als fester KI-Ansprechpartner, Angebot, Ablauf, Fit-Check, Proof, konkrete Artefakte und die Übersicht der Lena-Funktionen.
+- [Funktionen](https://k-aizen.de/funktionen): Übersicht aller Lena-Funktionen — jede als kleine, ehrliche Geschichte aus dem Betriebsalltag.
+- [Ein Tag im Betrieb](https://k-aizen.de/funktionen/ein-tag): Der beste Einstieg zum Verstehen — ein normaler Arbeitstag, und was davon nicht mehr an einer Person hängen bleibt.
 - [KI-PA](https://k-aizen.de/ki-pa): Detailseite zum ersten KI-Assistenten im Betrieb: Quellen, Kontext, Freigaben, Arbeitskanal, 14-Tage-Realitätscheck und Grenzen.
 - [Preise](https://k-aizen.de/pricing): Offene Preisorientierung mit Käuferlogik: kostenloses Erstgespräch, kostenloser Remote-KI-Check, KI-PA-Setups und Add-ons.
 - [KI-Check](https://k-aizen.de/audit): Kostenloser Remote-Klärungsschritt per Zoom, Google Meet oder ähnlichem Videotool.
 - [Erstgespräch](https://k-aizen.de/erstgespraech): 30 Minuten kostenlos oder Async-Kurzcheck per 3-Fragen-Mail. Fit prüfen, nächster Schritt entscheiden.
+- [Termin buchen](https://k-aizen.de/termin): Direktlink zur Online-Terminbuchung fürs kostenlose Erstgespräch (Mo–Fr nachmittags/abends, per Google Meet).
 - [Über Benjamin Zirngibl](https://k-aizen.de/about): Wer baut, wie gearbeitet wird, warum der Einstieg bewusst klein beginnt.
 - [Kontakt](https://k-aizen.de/kontakt): Direktkontakt über kontakt@k-aizen.de.
 - [Blog](https://k-aizen.de/blog) und [Ressourcen](https://k-aizen.de/tutorials): Praxisnotizen zu KI, Abläufen und Mittelstand.
+
+## Lena-Funktionen im Detail
+
+Jede Funktion hat eine eigene Seite mit einer Alltagsgeschichte (erst das Problem ohne KI, dann der Ablauf mit Lena). Grundprinzip überall: Lena bereitet vor, ein Mensch gibt frei — nie Autopilot.
+
+- [Verpasster Anruf](https://k-aizen.de/funktionen/verpasster-anruf): Lena nimmt ab, wenn niemand rangehen kann — Anliegen, Name und Nummer liegen morgens als Zusammenfassung bereit.
+- [Vorsortierter Posteingang](https://k-aizen.de/funktionen/vorsortierter-posteingang): Mails über Nacht sortiert und nach Zuständigkeit verteilt, Aufgaben automatisch angelegt und mit der Original-Mail verknüpft.
+- [Angebote schreiben](https://k-aizen.de/funktionen/angebote-schreiben): Angebotsentwürfe aus Anfrage und Preisliste — niemand formuliert mehr zwölf Angebote am Tag von Hand.
+- [Liegengebliebene Beschwerde](https://k-aizen.de/funktionen/liegengebliebene-beschwerde): Beschwerden werden erkannt und bleiben nicht unter neuen Mails begraben.
+- [Vergessenes Angebot](https://k-aizen.de/funktionen/vergessenes-angebot): Offene Angebote werden nachgefasst, bevor sie in Vergessenheit geraten.
+- [Blackout vorm Rückruf](https://k-aizen.de/funktionen/blackout-vorm-rueckruf): Vor dem Rückruf liefert Lena den Kundenkontext — letzter Auftrag, offene Punkte, persönliche Notizen.
+- [Rundmail](https://k-aizen.de/funktionen/rundmail): Kundenrundschreiben rechtssicher verschickt — Empfängerfilter und Abmelde-Link sind eingebaut.
+- [Monatsrechnungen](https://k-aizen.de/funktionen/monatsrechnungen): Wiederkehrende Rechnungen zum Monatsersten als geprüfte Entwürfe.
 
 ## Was AI-Tools über k-AIzen wissen sollten
 
