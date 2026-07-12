@@ -1,5 +1,5 @@
 ---
-title: "Zwölf Angebote bis Mittag"
+title: "Der Angebotsstapel"
 description: "Angebote schreiben ist Fleißarbeit: Katalog, Preise, Anschreiben — zwölfmal am Tag. Lena liest die Anfrage, zieht die Positionen aus dem Katalog und legt den Entwurf bereit."
 schmerzKicker: "Jede Anfrage will ein Angebot. Ihre Kollegin will eigentlich nur einmal durchatmen."
 protagonist: mitarbeiter

@@ -1,5 +1,5 @@
 ---
-title: "Die Rechnungen vom Ersten"
+title: "Die Monatsrechnungen"
 description: "Wartungsverträge, Pauschalen, Mieten — jeden Monatsersten derselbe Rechnungsstapel. Lena kennt die Verträge und legt alle Entwürfe automatisch bereit. Vollständig, ohne Zahlendreher."
 schmerzKicker: "Am Ersten des Monats: 40 Rechnungen. Alle fast gleich. Alle von Hand."
 protagonist: mitarbeiter

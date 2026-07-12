@@ -1,5 +1,5 @@
 ---
-title: "Das Blackout vorm Rückruf"
+title: "Der Blackout vorm Rückruf"
 description: "Der Kunde soll zurückgerufen werden — aber was war zuletzt besprochen? Lena hält zu jedem Kontakt die Historie bereit: letzter Kontakt, offene Zusagen, nächster Schritt."
 schmerzKicker: "Sie sollen Herrn Maurer zurückrufen. Und wissen nicht mehr, was Sie ihm zugesagt haben."
 protagonist: markus
