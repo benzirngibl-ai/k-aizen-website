@@ -1,139 +1,157 @@
 ---
 import KaizenLayout from '../layouts/KaizenLayout.astro';
 
-const asyncMail = `mailto:kontakt@k-aizen.de?subject=${encodeURIComponent("KI-PA Kurzcheck")}&body=${encodeURIComponent(`Hi Ben,
+// Erstgespräch — seit 2026-07-28 auf das Website-Paket ausgerichtet (Ben: Startseite
+// verkauft die Meisterseite, der KI-PA rückt in den Hintergrund).
+// Vorher: 30-Minuten-KI-Potenzialgespräch mit Fit-Empfehlung KI-PA/KI-Check/Pilot.
+// Jetzt: 15 Minuten Rückruf zum Website-Paket (deckungsgleich mit Startseite + /meisterseite).
+const PREIS = '297';
+const calUrl = 'https://cal.k-aizen.de/ben-kaizen/rueckruf';
+const demoUrl = 'https://muster.k-aizen.de';
 
-ich möchte erst einmal ohne Termin prüfen, ob k-AIzen für uns passt.
+const asyncMail = `mailto:kontakt@k-aizen.de?subject=${encodeURIComponent('Meisterseite — kurze Anfrage')}&body=${encodeURIComponent(`Hallo Ben,
 
-1. Branche / Teamgröße:
-2. Wo verlieren wir gerade Zeit?
-3. Welche Systeme nutzen wir? (z. B. Microsoft 365, Teams, Slack, Notion, CRM, Excel)
+ich habe einen Betrieb und interessiere mich für das Website-Paket.
+
+1. Betrieb / Gewerk:
+2. Aktuelle Website (falls vorhanden):
+3. Was mich gerade am meisten stört:
 
 Beste Grüße`)}`;
 
 const outcomeCards = [
   {
-    title: "Fit-Einschätzung",
-    text: "Passt KI-PA, KI-Check, Pilot oder gerade nichts? Sie erhalten eine klare fachliche Empfehlung.",
+    title: 'Passt es oder nicht',
+    text: 'Sie bekommen eine ehrliche Einschätzung, ob das Paket für Ihren Betrieb Sinn ergibt — auch wenn die Antwort „eher nicht" lautet.',
   },
   {
-    title: "Erster sinnvoller Use Case",
-    text: "Wir benennen den Bereich, der am ehesten trägt: Mail, Kalender, Aufgaben, Belege, Wissen, Telefon oder etwas anderes.",
+    title: 'Was Ihre Seite können muss',
+    text: 'Wir gehen durch, welche Leistungen draufgehören, welche Fragen Ihre Kunden immer stellen und wie Anfragen bei Ihnen ankommen sollen.',
   },
   {
-    title: "Nächster Schritt ohne Nebel",
-    text: "Wenn es passt, wissen Sie, ob ein kostenloser KI-Check, ein kleiner Pilot oder ein konkretes Angebot sinnvoll ist. Wenn nicht, wird das klar benannt.",
+    title: 'Was als Nächstes passiert',
+    text: 'Wenn es passt: welches Material Sie liefern und wann Ihre Seite steht. Kein Angebot mit Fußnoten, keine Bedenkzeit unter Druck.',
   },
 ];
 
 const noFitItems = [
-  "Sie wollen sofort vollautomatische Entscheidungen ohne Freigaben.",
-  "Niemand im Betrieb kann Quellen, Regeln oder Beispiele bereitstellen.",
-  "Es geht vor allem um ein sichtbares KI-Label, nicht um einen echten Ablauf.",
+  'Sie möchten selbst einloggen und Ihre Seiten eigenhändig pflegen — dafür gibt es günstigere Baukästen.',
+  'Ihr Betrieb ist ganz frisch und hat noch keine Kundenbasis, auf der eine Website aufsetzen kann.',
+  'Sie suchen eine einmalige Erstellung ohne laufende Betreuung.',
 ];
 
 const conversationSchema = {
-  "@context": "https://schema.org",
-  "@graph": [
+  '@context': 'https://schema.org',
+  '@graph': [
     {
-      "@type": "WebPage",
-      "@id": "https://k-aizen.de/erstgespraech#webpage",
-      "url": "https://k-aizen.de/erstgespraech",
-      "name": "Erstgespräch — k-AIzen",
-      "description": "Kostenloses 30-Minuten-Erstgespräch oder Async-Kurzcheck, um zu klären, ob KI-PA, kostenloser KI-Check oder Pilot sinnvoll ist.",
-      "inLanguage": "de-DE",
-      "isPartOf": { "@id": "https://k-aizen.de/#website" },
-      "about": { "@id": "https://k-aizen.de/ki-pa#service" }
+      '@type': 'WebPage',
+      '@id': 'https://k-aizen.de/erstgespraech#webpage',
+      url: 'https://k-aizen.de/erstgespraech',
+      name: 'Rückruf vereinbaren — k-AIzen',
+      description:
+        'Kostenloser 15-Minuten-Rückruf zum Website-Paket: Wir klären, ob die Meisterseite zu Ihrem Betrieb passt, und sagen ehrlich ab, wenn nicht.',
+      inLanguage: 'de-DE',
+      isPartOf: { '@id': 'https://k-aizen.de/#website' },
+      about: { '@id': 'https://k-aizen.de/#meisterseite-service' },
     },
     {
-      "@type": "Service",
-      "@id": "https://k-aizen.de/erstgespraech#service",
-      "name": "Kostenloses KI-Erstgespräch",
-      "serviceType": "KI-Potenzialcheck und Erstberatung",
-      "provider": {
-        "@type": "ProfessionalService",
-        "name": "k-AIzen",
-        "url": "https://k-aizen.de",
-        "email": "kontakt@k-aizen.de"
+      '@type': 'Service',
+      '@id': 'https://k-aizen.de/erstgespraech#service',
+      name: 'Kostenloser Rückruf zum Website-Paket',
+      serviceType: 'Beratungsgespräch Website für kleine und mittlere Betriebe',
+      provider: {
+        '@type': 'ProfessionalService',
+        name: 'k-AIzen',
+        url: 'https://k-aizen.de',
+        email: 'kontakt@k-aizen.de',
       },
-      "areaServed": ["DE", "AT", "CH"],
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR",
-        "availability": "https://schema.org/InStock"
-      }
+      areaServed: ['Nürnberg', 'Fürth', 'Erlangen', 'Schwabach'],
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'EUR',
+        availability: 'https://schema.org/InStock',
+      },
     },
     {
-      "@type": "FAQPage",
-      "@id": "https://k-aizen.de/erstgespraech#faq",
-      "mainEntity": [
+      '@type': 'FAQPage',
+      '@id': 'https://k-aizen.de/erstgespraech#faq',
+      mainEntity: [
         {
-          "@type": "Question",
-          "name": "Kostet das Erstgespräch etwas?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Nein. Das Erstgespräch kostet nichts und dient dazu, den Fit zu prüfen." }
+          '@type': 'Question',
+          name: 'Kostet das Gespräch etwas?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Nein. Der Rückruf ist kostenlos und unverbindlich. Er dient dazu, zu klären, ob das Website-Paket zu Ihrem Betrieb passt.',
+          },
         },
         {
-          "@type": "Question",
-          "name": "Muss ich direkt einen Termin buchen?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Nein. Alternativ können Interessenten einen Async-Kurzcheck per Mail schicken: Branche, Engpass und vorhandene Systeme reichen für eine erste Einschätzung." }
+          '@type': 'Question',
+          name: 'Muss ich einen Termin buchen?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Nein. Sie können stattdessen kurz per Mail schreiben: Gewerk, aktuelle Website und was Sie gerade stört. Das reicht für eine erste Einschätzung.',
+          },
         },
         {
-          "@type": "Question",
-          "name": "Was habe ich nach dem Erstgespräch?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Nach dem Erstgespräch steht eine Fit-Einschätzung: ob KI-PA, kostenloser KI-Check, Pilot oder kein Projekt sinnvoll ist. Außerdem wird der wahrscheinlich beste erste Use Case benannt." }
-        }
-      ]
-    }
-  ]
+          '@type': 'Question',
+          name: 'Wie lange dauert das Gespräch?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Etwa 15 Minuten. Wir gehen Ihren Betrieb durch, Sie sehen die Beispiel-Website, und Sie entscheiden danach in Ruhe.',
+          },
+        },
+      ],
+    },
+  ],
 };
 ---
 
 <KaizenLayout
-  title="Erstgespräch — klare Einschätzung in 30 Minuten"
-  description="Buchen Sie ein 30-Minuten-Erstgespräch. Wir klären, wo im Betrieb Zeit verloren geht und ob KI-PA, KI-Check oder ein Pilot sinnvoll ist."
+  title="Rückruf vereinbaren — 15 Minuten, unverbindlich"
+  description="Kostenloser 15-Minuten-Rückruf zum Website-Paket. Wir klären, ob die Meisterseite zu Ihrem Betrieb passt — und sagen ehrlich ab, wenn nicht."
   path="/erstgespraech"
   activeNav="kontakt"
   jsonLd={conversationSchema}
+  breadcrumbs={[{ name: 'Rückruf vereinbaren', href: '/erstgespraech' }]}
 >
   <article class="kz-page">
     <div class="kz-page-eyebrow">
       <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
       <img src="/icons/icon-sakura-branch.png" alt="" class="kz-eyebrow-leaf" loading="lazy" />
-      <span>Erstgespräch</span>
+      <span>Rückruf</span>
     </div>
-    <h1 class="kz-h1">30 Minuten für eine klare Einschätzung.</h1>
+    <h1 class="kz-h1">Fünfzehn Minuten. Dann wissen Sie, ob es passt.</h1>
     <p class="kz-lead">
-      Sie schildern, wo in Ihrem Betrieb Zeit verloren geht. Gemeinsam klären wir,
-      ob KI-PA, KI-Check oder ein Pilot fachlich sinnvoll ist.
-      Wenn nicht, ist auch das eine klare Entscheidung.
+      Sie erzählen kurz von Ihrem Betrieb, ich sage Ihnen ehrlich, ob das Website-Paket
+      für Sie Sinn ergibt. Kein Verkaufsmarathon, keine Präsentation, kein Druck.
     </p>
 
-    <!-- Pre-Read Block -->
-    <section class="kz-pre-read" style="margin-top: 32px; padding: 28px 32px; background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 12px;">
-      <h2 class="kz-h2" style="margin-top: 0; font-size: 22px; color: var(--fg-inverse);">Vorbereitung — 3 Min Pre-Read</h2>
-      <p style="margin: 8px 0 16px 0; color: var(--fg-inverse);">
-        Damit Sie nicht ohne Bild ins Gespräch kommen: Die KI-PA-Seite zeigt, wie der Einstieg
-        praktisch aussieht — Mail, Kontext, Freigaben und Arbeitskanal statt abstrakter Tool-Liste.
-        Dann reden wir im Termin direkt über Ihre Situation.
+    <!-- Vorbereitung -->
+    <section class="kz-vorbereitung">
+      <h2 class="kz-h2" style="margin-top: 0;">Vorher kurz reinschauen (2 Minuten)</h2>
+      <p>
+        Damit Sie nicht ohne Bild ins Gespräch gehen: Unter dem Link steht eine vollständige
+        Beispiel-Website. Sie zeigt genau das, was Sie bekommen würden — inklusive des
+        Kontaktformulars, das Sie ruhig ausprobieren dürfen.
       </p>
-      <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-        <a href="/ki-pa" class="kz-btn">KI-PA verstehen →</a>
-        <a href="/#ein-tag" class="kz-btn kz-btn-ghost">Tagesbeispiel ansehen →</a>
+      <div class="kz-vorbereitung__cta">
+        <a href={demoUrl} class="kz-btn" target="_blank" rel="noopener">Beispiel-Website ansehen →</a>
+        <a href="/meisterseite" class="kz-btn kz-btn--ghost">Was im Paket steckt →</a>
       </div>
     </section>
 
     <section style="margin-top: 56px;">
-      <h2 class="kz-h2">Was Sie danach klarer wissen</h2>
+      <h2 class="kz-h2">Was Sie danach wissen</h2>
       <p>
-        Der Termin dient der Orientierung. Am Ende soll klarer sein, ob sich ein nächster Schritt lohnt
-        und welcher Einstieg fachlich am sinnvollsten ist.
+        Das Gespräch dient der Orientierung — Ihrer und meiner. Am Ende soll klar sein,
+        ob sich ein nächster Schritt lohnt.
       </p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-top: 24px;">
+      <div class="kz-outcome-grid">
         {outcomeCards.map((card) => (
-          <article style="padding: 22px; border-radius: 12px; background: var(--kz-cream-deep); color: var(--fg-inverse); border: 1px solid rgba(232,90,43,0.14);">
-            <h3 style="margin: 0 0 8px; font-size: 18px;">{card.title}</h3>
-            <p style="margin: 0; color: var(--fg-inverse); font-size: 15px; line-height: 1.6;">{card.text}</p>
+          <article class="kz-outcome-card">
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
           </article>
         ))}
       </div>
@@ -142,28 +160,28 @@ const conversationSchema = {
     <section style="margin-top: 56px;">
       <h2 class="kz-h2">Was im Gespräch passiert</h2>
       <ul>
-        <li><strong>Min 0–5</strong> — kurzer Kontext: was Sie machen, was k-AIzen macht</li>
-        <li><strong>Min 5–20</strong> — Sie schildern einen konkreten Engpass oder Ablauf im Detail</li>
-        <li><strong>Min 20–25</strong> — gemeinsame Einschätzung, wo KI realistisch helfen kann und wo nicht</li>
-        <li><strong>Min 25–30</strong> — nächster sinnvoller Schritt: nicht passend, KI-Check, Pilot oder konkretes Angebot</li>
+        <li><strong>Min 0–3</strong> — kurz gegenseitig vorstellen: Ihr Betrieb, was ich mache</li>
+        <li><strong>Min 3–9</strong> — Ihre Situation: Wie kommen heute Anfragen rein, was geht dabei unter?</li>
+        <li><strong>Min 9–13</strong> — was eine Website daran ändern würde und was nicht</li>
+        <li><strong>Min 13–15</strong> — nächster Schritt oder ehrliche Absage</li>
       </ul>
     </section>
 
     <section>
-      <h2 class="kz-h2">Was vorab hilfreich ist</h2>
-      <p>Wenn Sie in der Buchungs-Mail oder im Formular schon zwei Sätze schreiben zu:</p>
+      <h2 class="kz-h2">Was vorab hilft</h2>
+      <p>Zwei Sätze reichen völlig, wenn Sie den Termin buchen:</p>
       <ul>
-        <li>Branche + ungefähre Team-Größe</li>
-        <li>Konkreter Schmerz oder Workflow, den Sie im Kopf haben</li>
+        <li>Welches Gewerk und wie viele Leute im Betrieb</li>
+        <li>Ob es schon eine Website gibt — und was Sie daran stört</li>
       </ul>
-      <p>… dann starten wir vorbereitet und sind direkt produktiv, statt erst Kontext aufzubauen.</p>
+      <p>Dann starten wir vorbereitet, statt die ersten Minuten mit Kontext zu verbrauchen.</p>
     </section>
 
     <section>
-      <h2 class="kz-h2">Wann k-AIzen eher abrät</h2>
+      <h2 class="kz-h2">Wann ich eher abrate</h2>
       <p>
-        Ein guter Einstieg braucht nicht viel, aber er braucht ein bisschen Realität aus Ihrem Betrieb.
-        Ein Projekt ist meist nicht sinnvoll, wenn einer dieser Punkte gerade zutrifft:
+        Ein Paket, das nicht passt, macht niemanden glücklich. Deshalb sage ich in
+        diesen Fällen offen, dass es gerade nicht sinnvoll ist:
       </p>
       <ul>
         {noFitItems.map((item) => <li>{item}</li>)}
@@ -173,40 +191,60 @@ const conversationSchema = {
     <section>
       <h2 class="kz-h2">Was es kostet</h2>
       <p>
-        Das Erstgespräch kostet nichts. Es ist ein kurzer Orientierungstermin:
-        Lohnt sich KI für Ihren konkreten Alltag jetzt schon?
-      </p>
-      <p>
-        Wenn es passt, bleibt der nächste Schritt bewusst klar begrenzt:
-        kostenloser KI-Check, kleiner Pilot oder konkretes Angebot. Das vollständige KI-PA-Setup
-        kommt erst danach, wenn fachlich klar ist, dass der Einstieg Sinn macht.
-        Die vollständige Preisübersicht steht offen unter <a href="/pricing">/pricing</a>.
+        Das Gespräch kostet nichts und verpflichtet zu nichts. Wenn Sie sich danach für
+        das Paket entscheiden, kostet die Website {PREIS} € im Monat — ohne
+        Einrichtungsgebühr, monatlich kündbar. Die vollständige Übersicht steht offen
+        unter <a href="/pricing">Preise</a>.
       </p>
     </section>
 
-    <section style="margin-top: 80px; padding: 56px clamp(24px, 4vw, 48px); background: var(--kz-cream-deep); color: var(--fg-inverse); border-radius: 12px;">
-      <h2 class="kz-h2" style="margin-top: 0; color: var(--fg-inverse);">Zwei einfache Wege</h2>
-      <p style="color: var(--fg-inverse);">
-        Wenn Sie gern sprechen: suchen Sie sich direkt einen Slot. Wenn Sie schriftlich starten möchten:
-        schicken Sie mir drei Stichpunkte. Beides ist ein sauberer Einstieg.
+    <section class="kz-wege">
+      <h2 class="kz-h2" style="margin-top: 0;">Zwei einfache Wege</h2>
+      <p>
+        Wenn Sie lieber sprechen: Termin wählen. Wenn Sie lieber schreiben:
+        drei Stichpunkte per Mail. Beides ist mir gleich recht.
       </p>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 24px;">
-        <div style="padding: 20px; border-radius: 12px; background: rgba(255,255,255,0.58); border: 1px solid rgba(232,90,43,0.14);">
-          <h3 style="margin: 0 0 8px; font-size: 18px;">Async Kurzcheck</h3>
-          <p style="margin: 0 0 16px; color: var(--fg-inverse); font-size: 15px;">Branche, Engpass, Systeme. Sie erhalten eine persönliche Einschätzung, ob KI-PA, KI-Check oder vorerst nichts sinnvoll ist.</p>
-          <a href={asyncMail} class="kz-btn">3 Fragen schicken</a>
+      <div class="kz-wege-grid">
+        <div class="kz-weg-card">
+          <h3>Rückruf-Termin</h3>
+          <p>Slot wählen, ich rufe an. 15 Minuten, unverbindlich, danach entscheiden Sie in Ruhe.</p>
+          <a href={calUrl} class="kz-btn" target="_blank" rel="noopener">Termin wählen</a>
         </div>
-        <div style="padding: 20px; border-radius: 12px; background: rgba(255,255,255,0.58); border: 1px solid rgba(232,90,43,0.14);">
-          <h3 style="margin: 0 0 8px; font-size: 18px;">30-Minuten-Termin</h3>
-          <p style="margin: 0 0 16px; color: var(--fg-inverse); font-size: 15px;">Direkt sprechen, gemeinsam sortieren, am Ende den nächsten sinnvollen Schritt festlegen. Slot wählen, Google-Meet-Link kommt automatisch.</p>
-          <a href="/termin" class="kz-btn">Termin wählen</a>
+        <div class="kz-weg-card">
+          <h3>Kurz per Mail</h3>
+          <p>Gewerk, aktuelle Website, was Sie stört. Sie bekommen eine persönliche Einschätzung zurück.</p>
+          <a href={asyncMail} class="kz-btn">Drei Stichpunkte schicken</a>
         </div>
       </div>
 
-      <p style="margin-top: 32px; font-size: 14px; color: var(--fg-muted);">
-        Lieber frei formulieren? <a href="mailto:kontakt@k-aizen.de">kontakt@k-aizen.de</a> — jede Anfrage wird persönlich geprüft.
+      <p class="kz-wege-note">
+        Lieber frei formulieren? <a href="mailto:kontakt@k-aizen.de">kontakt@k-aizen.de</a> — jede Anfrage wird persönlich beantwortet.
       </p>
     </section>
   </article>
 </KaizenLayout>
+
+<style>
+  /* Rückruf-Seite — Gestaltung: Fable 5 (2026-07-28) */
+  .kz-vorbereitung { margin-top:clamp(28px,4vw,40px); padding:clamp(24px,3.5vw,34px); border-radius:var(--radius-lg); border:1px solid var(--line); background:linear-gradient(150deg,var(--card) 55%,var(--indigo-wash)); box-shadow:var(--shadow-sm); }
+  .kz-vorbereitung p { color:var(--slate); line-height:1.65; max-width:62ch; }
+  .kz-vorbereitung__cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; }
+
+  .kz-outcome-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr)); gap:16px; margin-top:24px; }
+  .kz-outcome-card { padding:clamp(20px,3vw,26px); border-radius:var(--radius-md); border:1px solid var(--line-soft); background:var(--card); box-shadow:var(--shadow-sm); }
+  .kz-outcome-card h3 { margin:0 0 8px; font-size:1.02rem; letter-spacing:-0.01em; color:var(--ink); }
+  .kz-outcome-card p { margin:0; color:var(--slate); font-size:0.93rem; line-height:1.6; }
+
+  .kz-wege { margin-top:80px; padding:clamp(32px,5vw,56px); border-radius:var(--radius-xl); border:1px solid var(--line-soft); background:linear-gradient(180deg,var(--paper-2),var(--card)); }
+  .kz-wege > p { color:var(--slate); line-height:1.65; max-width:62ch; }
+  .kz-wege-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr)); gap:16px; margin-top:24px; }
+  .kz-weg-card { padding:clamp(20px,3vw,26px); border-radius:var(--radius-md); border:1px solid var(--line); background:var(--card); box-shadow:var(--shadow-sm); }
+  .kz-weg-card h3 { margin:0 0 8px; font-size:1.05rem; letter-spacing:-0.01em; color:var(--ink); }
+  .kz-weg-card p { margin:0 0 18px; color:var(--slate); font-size:0.93rem; line-height:1.6; }
+  .kz-wege-note { margin-top:28px; font-size:0.88rem; color:var(--slate-2); }
+
+  @media (max-width: 760px) {
+    .kz-vorbereitung__cta .kz-btn { width:100%; justify-content:center; }
+  }
+</style>

@@ -14,7 +14,7 @@ interface Props {
   ogImage?: string;
   jsonLd?: object | object[];
   breadcrumbs?: BreadcrumbItem[];
-  activeNav?: 'audit' | 'pricing' | 'about' | 'faq' | 'kontakt' | 'home' | 'blog' | 'tutorials';
+  activeNav?: 'paket' | 'audit' | 'pricing' | 'about' | 'faq' | 'kontakt' | 'home' | 'blog' | 'tutorials';
   noindex?: boolean;
   hideChrome?: boolean;
 }
@@ -42,10 +42,12 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}
 const robotsPolicy = noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large';
 const crawlerPolicy = noindex ? 'noindex, nofollow' : 'index, follow';
 
+// Nav seit 2026-07-28 auf das Website-Paket ausgerichtet (Ben: Startseite verkauft
+// die Meisterseite, der KI-PA rückt in den Hintergrund). /ki-pa bleibt erreichbar,
+// steht aber nicht mehr in der Hauptnavigation.
 const navItems = [
-  { label: 'Angebot', href: '/#angebot', key: 'home' },
+  { label: 'Das Paket', href: '/meisterseite', key: 'paket' },
   { label: 'Ablauf', href: '/#ablauf', key: 'faq' },
-  { label: 'KI-PA', href: '/ki-pa', key: 'audit' },
   { label: 'Preise', href: '/pricing', key: 'pricing' },
   { label: 'Über mich', href: '/about', key: 'about' },
   { label: 'Kontakt', href: '/kontakt', key: 'kontakt' },
@@ -405,8 +407,9 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       margin: 0 auto;
       padding-inline: var(--gutter);
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
-      gap: clamp(24px, 5vw, 56px);
+      /* 4 Link-Spalten seit 07-28 (Angebot · Vertrauen · Später möglich · Rechtliches) */
+      grid-template-columns: minmax(0, 1.3fr) repeat(4, minmax(0, 1fr));
+      gap: clamp(20px, 3.5vw, 44px);
     }
     .kz-footer-brand img {
       width: 28px;
@@ -491,16 +494,16 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       <div class="kz-footer-brand">
         <img src="/animations/claude-design/logo-mark.png" alt="" />
         <p class="kz-footer-tag">
-          Ihr KI-Ansprechpartner im Unternehmen. Start mit KI-PA, danach Schritt für Schritt mehr System.
+          Websites für kleine und mittlere Betriebe: komplett gebaut, dauerhaft betreut, jede Anfrage sofort aufs Handy.
         </p>
       </div>
       <div class="kz-footer-col">
-        <h4>Funnel</h4>
+        <h4>Angebot</h4>
         <ul>
-          <li><a href="/erstgespraech">Erstgespräch</a></li>
-          <li><a href="/ki-pa">KI-PA verstehen</a></li>
-          <li><a href="/pricing">Preise &amp; Einstieg</a></li>
-          <li><a href="/audit">KI-Check</a></li>
+          <li><a href="/meisterseite">Das Website-Paket</a></li>
+          <li><a href="https://muster.k-aizen.de" target="_blank" rel="noopener">Beispiel-Website</a></li>
+          <li><a href="/pricing">Preise</a></li>
+          <li><a href="/erstgespraech">Rückruf vereinbaren</a></li>
         </ul>
       </div>
       <div class="kz-footer-col">
@@ -509,6 +512,18 @@ if (breadcrumbs && breadcrumbs.length > 0) {
           <li><a href="/about">Über mich</a></li>
           <li><a href="/blog">Blog</a></li>
           <li><a href="/kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      {/* Ausbaustufen: nicht mehr in der Hauptnav (Ben 2026-07-28 — KI-PA rückt in den
+          Hintergrund), aber weiterhin erreichbar und indexiert. Ohne diesen Block wären
+          /ki-pa, /audit und die Funktionsseiten verwaist: in der Sitemap, aber von
+          keiner Seite verlinkt. */}
+      <div class="kz-footer-col">
+        <h4>Später möglich</h4>
+        <ul>
+          <li><a href="/funktionen">Was KI im Betrieb kann</a></li>
+          <li><a href="/ki-pa">KI-Assistent</a></li>
+          <li><a href="/audit">KI-Check</a></li>
         </ul>
       </div>
       <div class="kz-footer-col">
@@ -522,7 +537,7 @@ if (breadcrumbs && breadcrumbs.length > 0) {
     </div>
     <div class="kz-footer-base">
       <span>© 2026 Benjamin Zirngibl · k-AIzen</span>
-      <span>KI-PA · Automatisierung · Systematisierung</span>
+      <span>Website · Betreuung · Anfragen aufs Handy</span>
     </div>
   </footer>
 

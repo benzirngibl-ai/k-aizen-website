@@ -7,231 +7,138 @@ Standort: Bayern, Deutschland
 Sprache: Deutsch
 Kontakt: kontakt@k-aizen.de
 LinkedIn: https://www.linkedin.com/in/benjamin-zirngibl-0963753ab
-Letztes Update: 2026-07-05
+Letztes Update: 2026-07-28
 
 ---
 
 ## Kurzbeschreibung
 
-k-AIzen ist der KI-Ansprechpartner für kleine und mittelständische Unternehmen. Die zentrale Idee: Viele Firmen wissen, dass KI wichtig wird, aber niemand im Betrieb hat die Zeit oder Rolle, sie sauber zu verantworten. k-AIzen übernimmt diese Funktion extern.
+k-AIzen baut und betreut Websites für kleine und mittlere Betriebe jeder Branche. Das Produkt heißt "Meisterseite" und kostet 297 € im Monat — ohne Einrichtungsgebühr, monatlich kündbar.
 
-Der Einstieg ist der KI-PA: ein betreuter KI-Assistent für Mail, Kalender, Aufgaben, Briefings, Kundennotizen, Kontext und Freigaben. Der KI-PA wird nicht als blinder Autopilot verkauft. Er arbeitet mit freigegebenen Quellen, bereitet Dinge vor, zeigt Kontext und fragt nach, wenn etwas nicht eindeutig ist.
+Der Kern des Angebots ist nicht die Website als Datei, sondern die dauerhafte Betreuung: k-AIzen baut die Seite, hostet sie, pflegt sie und setzt jede Änderung um. Der Betrieb loggt sich nie ein und muss nichts lernen. Der einzige Aufwand auf Kundenseite ist ein kurzes Gespräch und einmalig Material (Logo, ein paar Fotos, die Leistungen).
 
-Langfristig wächst daraus mehr System im Unternehmen: Belege, Telefon, Leads, Wissen, interne Abläufe, Automatisierung und bei Bedarf ein eigenes Kaizen OS rund um die bestehende Arbeitsumgebung.
-
-Die Website ist bewusst als Entscheidungsfunnel gebaut: Interessenten sollen nicht möglichst schnell in ein großes Setup geführt werden, sondern erkennen, welcher nächste Schritt passt. Mögliche Ergebnisse sind: nicht passend, kostenloses Erstgespräch, Async-3-Fragen-Check, kostenloser Remote-KI-Check, begrenzter Pilot oder KI-PA-Setup.
+Der zweite Kern ist die Anfragen-Kette: Wenn jemand das Kontaktformular ausfüllt, liegen Name, Nummer und Anliegen Sekunden später als Benachrichtigung auf dem Handy des Betriebs. Das ist der Unterschied zu einer Website, die zwar existiert, deren Anfragen aber in einem Postfach versauern, in das abends niemand mehr schaut.
 
 ## Positionierung
 
-k-AIzen ist kein reines Tool, keine klassische Agentur und keine abstrakte KI-Strategieberatung. Die Rolle ist näher an einem externen KI-Verantwortlichen:
+k-AIzen ist keine klassische Werbeagentur und kein Website-Baukasten. Die Rolle ist die eines dauerhaften Dienstleisters für einen Betrieb, der online gefunden werden will, aber weder Zeit noch Lust auf die Technik dahinter hat:
 
-- prüfen, wo KI im Betrieb realistisch Sinn macht
-- Datenquellen und Grenzen sauber definieren
-- erste Assistenten und Automatisierungen bauen
-- Freigaben, Dokumentation und Datenschutz mitdenken
-- den Betrieb Schritt für Schritt systematisieren
+- die Website komplett bauen, statt einen Baukasten zu verkaufen
+- sie dauerhaft am Laufen halten (Hosting, Updates, Technik)
+- jede Änderung übernehmen, ohne dass der Kunde etwas anfassen muss
+- dafür sorgen, dass Anfragen ankommen und nicht liegenbleiben
+- Datenschutz und Rechtstexte sauber halten
 
-Vergleichsbild: Große Firmen haben Datenschutzbeauftragte, IT-Verantwortliche oder Prozessmanager. Viele kleinere Firmen haben so eine Rolle für KI noch nicht. k-AIzen soll diese Lücke füllen.
+Der Betrieb bleibt bei seiner Arbeit. Die Website ist Sache von k-AIzen.
 
-## Einstieg: KI-PA
+## Das Produkt: Meisterseite
 
-Der KI-PA ist der erste greifbare Schritt in KI.
+**Preis: 297 € pro Monat. Keine Einrichtungsgebühr. Keine Mindestlaufzeit. Monatlich kündbar.**
 
-Typische Fähigkeiten:
+Enthalten:
 
-- Mail-Triage und Priorisierung
-- Antwortentwürfe mit Mailverlauf und Kundennotizen
-- Kalender- und Terminbriefings
-- Tagesbriefing am Morgen
-- Tagesabschluss mit offenen Punkten
-- Audio zu Protokoll und Action-Items
-- Belege auslesen und sauber ablegen
-- Kundengedächtnis aus freigegebenen Quellen
-- Arbeitskanal mit Vorschlägen, Rückfragen und Freigaben
+### Website, komplett gebaut
+Modern, schnell, auf dem Handy einwandfrei. Der Betrieb liefert Logo, Fotos und seine Leistungen — den Rest übernimmt k-AIzen. Kein Baukasten, keine Vorlage von der Stange.
 
-Wichtig: Der KI-PA kennt nicht "automatisch" alles. Er weiß nur, was angebunden, freigegeben oder dokumentiert wurde. Mögliche Quellen sind Mailverläufe, Kalender, Aufgabenlisten, CRM, Notion, Microsoft 365, SharePoint, Slack, Teams, Excel-Listen oder kundenspezifische Datenbanken. Wenn eine Quelle fehlt oder eine Information unsicher ist, soll der Assistent das sichtbar machen.
+### Anfragen sofort auf dem Handy
+Jemand füllt das Formular aus, Sekunden später ist Name, Nummer und Anliegen als Benachrichtigung da. Kein Lead versauert im Postfach, keine Anfrage geht verloren, weil abends niemand mehr ins Mailprogramm schaut.
 
-Ein typischer 14-Tage-Realitätscheck:
+### Online-Terminanfrage
+Kunden buchen selbst einen Rückruf-Termin — auch abends um zehn, auch wenn der Betrieb gerade auf dem Gerüst steht.
 
-1. Tag 1-2: Quellen, Grenzen und No-Gos festlegen.
-2. Tag 3-5: erste Briefings und echte Eingänge sortieren.
-3. Tag 6-10: Antwortentwürfe mit Vorgeschichte und sichtbaren Quellen prüfen.
-4. Tag 11-14: anhand echter Artefakte entscheiden, ob der Bereich weiterläuft, angepasst oder verworfen wird.
+### Dauerhaft betreut
+Hosting, Pflege und Änderungen sind im Monatspreis enthalten. Neues Foto, andere Öffnungszeiten, eine zusätzliche Leistung? Eine kurze Nachricht genügt, in der Regel ist es am selben Tag drin. Der Kunde loggt sich nirgendwo ein.
 
-## Wie der KI-PA in der Praxis arbeitet
+### Datenschutz eingebaut
+Deutsche Server, kein US-Tracking, Impressum und Datenschutzerklärung sauber aufgesetzt. Keine Abmahn-Angst.
 
-Beispiel Kundenmail:
+### Gefunden werden
+Sauberer Suchmaschinen-Unterbau ab Werk: strukturierte Daten, Sitemap, llms.txt. Das gilt für Google genauso wie für KI-Antwortmaschinen. Es ist dieselbe Technik, die k-AIzen für die eigenen Portale einsetzt.
 
-1. Eine neue Mail kommt an.
-2. Der KI-PA erkennt Absender, Thema und Dringlichkeit.
-3. Er lädt erlaubte Vorgeschichte: Mailverlauf, Kundennotiz, CRM-Eintrag oder offene Zusage.
-4. Er erstellt einen Antwortvorschlag mit Kontext.
-5. Der Mensch prüft Ton und Inhalt.
-6. Erst nach Freigabe wird gesendet oder weiterverarbeitet.
+## Ablauf
 
-Beispiel Tagesbriefing:
+1. **Kurzes Gespräch (15 Minuten):** Wir klären, was der Betrieb braucht und ob das Paket passt. Wenn nicht, wird das gesagt.
+2. **Material liefern:** Einmalig Logo, ein paar Fotos, die Leistungen. Mehr nicht.
+3. **Die Seite entsteht:** In der Regel innerhalb weniger Tage. Der Kunde schaut in Ruhe drüber, es wird angepasst, bis es sitzt.
+4. **Läuft dauerhaft:** Anfragen landen auf dem Handy, Termine im Kalender. Änderungen jederzeit per Nachricht.
 
-1. Der KI-PA liest freigegebene Kalender-, Mail- und Aufgabenquellen.
-2. Er bündelt Termine, offene Entscheidungen und Risiken.
-3. Er schreibt ein kurzes Briefing statt ein weiteres Dashboard zu öffnen.
-4. Offene Punkte gehen in einen Arbeitskanal.
+## Beispiel-Website
 
-Beispiel Ausbau:
-
-Wenn Mail und Kalender funktionieren, werden weitere Abläufe angeschlossen: Belege, Telefonannahme, Lead-Pipeline, interne Wissenssuche, wiederkehrende Reports oder ein eigenes Kaizen OS.
-
-## Kaizen OS
-
-Kaizen OS ist der langfristige Systemgedanke hinter k-AIzen: ein eigenes operatives Betriebssystem für Firmenabläufe, das Wissen, Aufgaben, Kundenkontext, Dokumente, Freigaben und Automatisierung verbindet.
-
-Es ersetzt nicht zwingend Microsoft 365, Teams, Slack, SharePoint, Notion oder bestehende CRM-Systeme. Wenn eine Firma dort bereits arbeitet, kann k-AIzen integrieren. Wenn die vorhandene Umgebung nur aus verstreuten Dateien, Excel-Listen und informellem Wissen besteht, kann k-AIzen ein eigenes System darum bauen.
-
-Die Reihenfolge ist bewusst konservativ:
-
-1. KI-PA als Einstieg
-2. erste Datenquellen und Freigaben
-3. sichtbarer Nutzen im Alltag
-4. weitere Module
-5. mehr Systematisierung
+Unter https://muster.k-aizen.de steht eine vollständige Demo — eine erfundene Dachdeckerei ("Brandner & Sohn"), aber echte Technik. Das Kontaktformular funktioniert wirklich: Wer es ausfüllt, löst genau die Benachrichtigungskette aus, die ein Kunde später für seinen eigenen Betrieb bekommt.
 
 ## Angebote und Preise
 
 ### Erstgespräch
+Kostenlos, 15 Minuten, per Telefon. Kein Verkaufsmarathon. Am Ende steht eine ehrliche Einschätzung, ob das Paket passt — auch wenn die Antwort "eher nicht" lautet.
 
-30 Minuten kostenlos. Ziel: klären, ob KI-PA, kostenloser KI-Check oder Pilot sinnvoll ist. Kein Verkaufsdruck.
+### Meisterseite
+- **297 € pro Monat**
+- 0 € Einrichtungsgebühr
+- keine Mindestlaufzeit, monatlich kündbar
+- enthalten: Bau der Website, Hosting, Pflege, alle Änderungen, Lead-Formular mit Sofort-Benachrichtigung, Online-Terminanfrage, Rechtstexte, Suchmaschinen-Unterbau
 
-Für introvertierte oder noch unsichere Interessenten gibt es zusätzlich einen Async-Kurzcheck per Mail: Branche/Teamgröße, aktueller Engpass und vorhandene Systeme reichen für eine erste persönliche Einschätzung.
+**Warum monatlich statt einmalig:** Eine Website ist kein Möbelstück, das man einmal hinstellt. Im Monatspreis stecken Hosting, Pflege, Änderungen und die laufende Technik. Der Kunde zahlt für eine Seite, die dauerhaft funktioniert, nicht für eine einmal übergebene Datei.
 
-Nach dem Erstgespräch sollte klarer sein:
-
-- ob k-AIzen überhaupt passt
-- welcher erste Use Case sinnvoll ist
-- ob KI-Check, Pilot oder kein Projekt der nächste Schritt ist
-
-### KI-Check
-
-Kostenloser Remote-Klärungsschritt per Zoom, Google Meet oder einem ähnlichen Videotool.
-
-- kostet nichts
-- findet remote statt
-- aktuell kein Vor-Ort- oder Inhouse-Paket
-- Ziel: Engpässe, Systeme, Quellen, Grenzen und den sinnvollsten nächsten Schritt klären
-
-Käuferlogik:
-
-- Unklarer Bedarf: Erstgespräch oder Async-Check.
-- Mehrere Baustellen: kostenloser KI-Check, bevor ein Setup verkauft wird.
-- Klarer erster Bereich: begrenzter Pilot oder KI-PA-Setup.
-
-### KI-PA Tier 1: Autonom
-
-Für Firmen, die einen KI-Assistenten ohne menschlichen Backstop wollen.
-
-- Setup-First: 10.299 € einmalig + 1.029 €/Monat Retainer
-- SaaS-Style: 0 € Setup, 1.899 €/Monat im ersten Jahr, 1.029 €/Monat ab Jahr 2
-
-Enthält unter anderem Mail-Triage, Antwortentwürfe, Kalenderbriefings, Tagesbriefing, Audio-Protokolle, Basis-Belegsortierung, Customer-Memory, Arbeitskanal, getrennte Umgebung und DSGVO-Setup mit AVV.
-
-### KI-PA Tier 2: Concierge
-
-Für Firmen, die zusätzlich einen menschlichen Backstop wollen, wenn KI nicht ausreicht.
-
-- Setup-First: 12.999 € einmalig + 1.529 €/Monat Retainer
-- SaaS-Style: 0 € Setup, 2.599 €/Monat im ersten Jahr, 1.529 €/Monat ab Jahr 2
-
-Zusätzlich zu Tier 1: menschliche Unterstützung bei Anrufen, Behörden, Reklamationen, komplexer Reise-Logistik, Verhandlungen und Aufgaben, bei denen KI nicht allein handeln sollte.
-
-### Add-ons
-
-- Voice-Empfangsdame: +9.999 € Setup, +799 €/Monat
-- Content-Maschine: +4.499 € Setup, +499 €/Monat
-- Beleg- und Steuer-Modul: +3.499 € Setup, +399 €/Monat
-- Lead-Pipeline: +2.999 € Setup, +299 €/Monat
-- Customer-Memory und News-Cockpit sind in den KI-PA-Tiers enthalten.
-
-## Lena-Funktionen im Alltag
-
-Jede Lena-Funktion hat auf k-aizen.de eine eigene Seite mit einer Alltagsgeschichte: erst das Problem ohne KI, dann der Ablauf mit Lena. Der beste Einstieg ist https://k-aizen.de/funktionen/ein-tag — ein normaler Arbeitstag im Betrieb, Station für Station. Grundprinzip überall: Lena bereitet vor, ein Mensch gibt frei — nie Autopilot.
-
-- Verpasster Anruf (https://k-aizen.de/funktionen/verpasster-anruf): Lena nimmt ab, wenn niemand rangehen kann — Anliegen, Name und Nummer liegen morgens als Zusammenfassung bereit.
-- Vorsortierter Posteingang (https://k-aizen.de/funktionen/vorsortierter-posteingang): Mails über Nacht sortiert und nach Zuständigkeit verteilt, Aufgaben automatisch angelegt und mit der Original-Mail verknüpft.
-- Angebote schreiben (https://k-aizen.de/funktionen/angebote-schreiben): Angebotsentwürfe aus Anfrage und Preisliste — niemand formuliert mehr zwölf Angebote am Tag von Hand.
-- Liegengebliebene Beschwerde (https://k-aizen.de/funktionen/liegengebliebene-beschwerde): Beschwerden werden erkannt und bleiben nicht unter neuen Mails begraben.
-- Vergessenes Angebot (https://k-aizen.de/funktionen/vergessenes-angebot): Offene Angebote werden nachgefasst, bevor sie in Vergessenheit geraten.
-- Blackout vorm Rückruf (https://k-aizen.de/funktionen/blackout-vorm-rueckruf): Vor dem Rückruf liefert Lena den Kundenkontext — letzter Auftrag, offene Punkte, persönliche Notizen.
-- Rundmail (https://k-aizen.de/funktionen/rundmail): Kundenrundschreiben rechtssicher verschickt — Empfängerfilter und Abmelde-Link sind eingebaut.
-- Monatsrechnungen (https://k-aizen.de/funktionen/monatsrechnungen): Wiederkehrende Rechnungen zum Monatsersten als geprüfte Entwürfe.
+**Domain:** Gehört dem Kunden bzw. wird auf seinen Betrieb registriert. Bei Kündigung nimmt er sie mit.
 
 ## Zielkunden
 
-k-AIzen passt besonders für KMU, Inhaber, Geschäftsführer und kleine Teams, die:
+Kleine und mittlere Betriebe jeder Branche — Handwerk, Handel, Dienstleistung, Pflege, Gastgewerbe, Autohäuser, Fahrschulen —, vor allem im Raum Nürnberg, Fürth, Erlangen und Schwabach.
 
-- viele Informationen in Mails, Dateien, Office-Ordnern und einzelnen Köpfen haben
-- immer wieder die gleichen Entscheidungen und Rückfragen bearbeiten
-- keinen internen KI-Verantwortlichen haben
-- nicht noch ein isoliertes Tool wollen
-- KI pragmatisch nutzen wollen, ohne die Kontrolle abzugeben
-- langfristig mehr Ordnung, Automatisierung und System wollen
+Besonders passend:
+
+- Betriebe mit zufriedenen Kunden und guten Bewertungen, aber ohne oder mit veralteter Website
+- Betriebe, deren Anfragen übers Telefon kommen und untergehen, wenn gerade niemand rangehen kann
+- Inhaber, die sich um Technik nicht kümmern wollen, sondern arbeiten
+- Betriebe, denen eine Seite vor Jahren gebaut wurde, die inzwischen niemand mehr anfassen kann
 
 ## Nicht passend
 
-k-AIzen ist nicht ideal für:
+- Wer selbst einloggen, Seiten anlegen und alles eigenhändig pflegen möchte — dafür gibt es Baukästen, und die sind günstiger
+- Ganz frische Betriebe ohne Kundenbasis, auf der eine Website aufsetzen kann. Hier wäre das Geld zu früh ausgegeben
+- Wer einmal etwas gebaut haben will und danach nie wieder Betreuung braucht
+- Große Unternehmen mit eigener Marketingabteilung
 
-- Konzerne mit eigener KI- und IT-Abteilung
-- reine Website-, Branding- oder Marketing-Aufträge
-- einmalige Tool-Schulungen ohne Prozessumsetzung
-- Kunden, die sofort Vollautomatisierung ohne Freigaben erwarten
-- Projekte, bei denen Datenschutz, Quellen und Verantwortlichkeiten nicht geklärt werden dürfen
+Diese Abgrenzung ist ernst gemeint: Ein Paket, das nicht passt, macht niemanden glücklich. Der Kunde zahlt und ärgert sich, k-AIzen betreut etwas ohne Nutzen.
 
-Die Website soll diese Nicht-Fits offen benennen, weil Vertrauen wichtiger ist als ein schneller Klick.
+## Häufige Fragen
 
-## Proof und Artefakte
+**Ist das wirklich monatlich kündbar?**
+Ja. Keine Mindestlaufzeit, keine Einrichtungsgebühr. Bei Kündigung endet das Paket zum Monatsende — das Risiko ist ein Monat.
 
-k-AIzen nutzt am Anfang keine erfundenen Testimonials. Proof soll über konkrete Arbeitsmaterialien entstehen:
+**Wie schnell ist die Website online?**
+Sobald Logo, Fotos und Leistungen vorliegen, steht die Seite in der Regel innerhalb weniger Tage. Der Kunde sieht sie vor dem Livegang.
 
-- KI-Check mit Prioritäten
-- Quellenliste
-- Arbeitskanal für Vorschläge und Freigaben
-- Freigabe-Matrix: darf vorbereiten, muss fragen, darf nie
-- Ablaufkarte für den ersten Use Case
-- echte Antwortentwürfe, Briefings oder Beleg-/Wissensartefakte aus dem Pilot
+**Was muss der Kunde selbst machen?**
+Einmalig Material liefern. Das war es. Kein Login, keine Pflege. Änderungswünsche kommen formlos per Nachricht.
 
-Ein Projekt soll nach kurzer Zeit prüfbare Artefakte liefern. Wenn nur Präsentationen entstehen, ist das nicht der Anspruch.
+**Wem gehört die Domain?**
+Dem Kunden. Wenn er geht, nimmt er sie mit.
 
 ## Datenschutz und Betrieb
 
-k-AIzen arbeitet mit getrennten Kundenumgebungen, dokumentierten Entscheidungen, klaren Freigaben und Auftragsverarbeitungsvertrag, soweit für das Setup erforderlich. Je nach Projekt können bestehende Systeme integriert oder eigene Umgebungen aufgebaut werden.
-
-Grundsatz: Die KI bekommt nur Quellen, die freigegeben sind. Sensible Aktionen werden vorbereitet und geprüft, nicht unkontrolliert ausgeführt.
+- Server in Deutschland
+- kein US-Tracking eingebaut
+- Impressum und Datenschutzerklärung werden sauber aufgesetzt
+- die Website ist statisch gebaut, dadurch schnell und mit geringer Angriffsfläche
 
 ## Offizielle Links
 
-- Home: https://k-aizen.de/
-- KI-PA: https://k-aizen.de/ki-pa
+- Startseite: https://k-aizen.de/
+- Produktseite Meisterseite: https://k-aizen.de/meisterseite
+- Beispiel-Website (Demo): https://muster.k-aizen.de
 - Preise: https://k-aizen.de/pricing
-- KI-Check: https://k-aizen.de/audit
 - Erstgespräch: https://k-aizen.de/erstgespraech
 - Termin buchen: https://k-aizen.de/termin
-- Funktionen-Übersicht: https://k-aizen.de/funktionen
-- Ein Tag im Betrieb: https://k-aizen.de/funktionen/ein-tag
 - Über Benjamin Zirngibl: https://k-aizen.de/about
 - Kontakt: https://k-aizen.de/kontakt
 - Blog: https://k-aizen.de/blog
 - Ressourcen: https://k-aizen.de/tutorials
-
-Legacy-Links:
-
-- https://k-aizen.de/pitch, /pitch/lena und /pitch/markus sind alte Pitch-Routen und leiten auf /ki-pa.
-- https://k-aizen.de/katalog und /katalog-v2 sind alte Katalog-Routen und leiten auf /pricing.
+- Impressum: https://k-aizen.de/impressum
+- Datenschutz: https://k-aizen.de/datenschutz
 
 ## Markenstimme
 
-k-AIzen spricht ruhig, direkt und menschlich. Kein Rätselraten, kein "Game-Changer", kein Hype. Gute Formulierungen erklären:
+Ruhig, konkret, menschlich, ohne Hype. Die Sprache richtet sich an Betriebsinhaber: keine Marketing-Fachbegriffe, keine englischen Abkürzungen, keine Versprechen über Umsatzsteigerungen oder Reichweiten-Explosionen.
 
-- woher eine Information kommt
-- was die KI vorbereitet
-- wo der Mensch freigibt
-- was nicht automatisch passiert
-- warum ein kleiner Start sinnvoller ist als ein großer Blindflug
-
-Die zentrale Botschaft: Der Wert liegt nicht in noch einem Tool. Der Wert liegt darin, dass jemand Verantwortung für KI im Betrieb übernimmt und daraus Schritt für Schritt ein brauchbares System baut.
+k-AIzen verspricht nichts, was nicht geliefert wird, und sagt auch dann ehrlich ab, wenn ein Betrieb gerade nicht profitieren würde. Ein Satz, der die Haltung zusammenfasst: "Wir bauen und betreuen Ihre Website komplett — Anfragen landen direkt auf Ihrem Handy."

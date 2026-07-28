@@ -1,7 +1,7 @@
 ---
 import KaizenLayout from '../layouts/KaizenLayout.astro';
 
-// Meisterseite — Produktseite des Einstiegsprodukts (297 €/Mo, Handwerk).
+// Meisterseite — Produktseite des Einstiegsprodukts (297 €/Mo, branchenoffen seit 28.07.).
 // Plan: k-aizen/10-sales/INTEGRATIONSPLAN-website-meisterseite-2026-07-21.md
 // VSL-Video: Platzhalter-Block unten — sobald Bens Video da ist, YouTube-Embed
 // einsetzen (Kommentar an der Stelle).
@@ -80,14 +80,14 @@ const schema = {
       url: 'https://k-aizen.de/meisterseite',
       name: 'Meisterseite — Website komplett gebaut und betreut, 297 €/Monat',
       description:
-        'Das Website-Paket für Handwerksbetriebe: komplett gebaut, dauerhaft betreut, jede Anfrage sofort auf Ihrem Handy. 297 € im Monat, keine Einrichtungsgebühr, monatlich kündbar.',
+        'Das Website-Paket für kleine und mittlere Betriebe: komplett gebaut, dauerhaft betreut, jede Anfrage sofort auf Ihrem Handy. 297 € im Monat, keine Einrichtungsgebühr, monatlich kündbar.',
       inLanguage: 'de-DE',
       isPartOf: { '@id': 'https://k-aizen.de/#website' },
     },
     {
       '@type': 'Service',
       '@id': 'https://k-aizen.de/meisterseite#service',
-      name: 'Meisterseite — Website-Paket für Handwerksbetriebe',
+      name: 'Meisterseite — Website-Paket für kleine und mittlere Betriebe',
       serviceType: 'Website-Erstellung und dauerhafte Betreuung',
       provider: {
         '@type': 'ProfessionalService',
@@ -124,21 +124,21 @@ const schema = {
 
 <KaizenLayout
   title="Meisterseite — Ihre Website, komplett gemacht"
-  description="Das Website-Paket für Handwerksbetriebe im Raum Nürnberg: komplett gebaut, dauerhaft betreut, jede Anfrage sofort auf Ihrem Handy. 297 €/Monat, keine Einrichtungsgebühr, monatlich kündbar."
+  description="Das Website-Paket für kleine und mittlere Betriebe im Raum Nürnberg: komplett gebaut, dauerhaft betreut, jede Anfrage sofort auf Ihrem Handy. 297 €/Monat, keine Einrichtungsgebühr, monatlich kündbar."
   path="/meisterseite"
-  activeNav="pricing"
+  activeNav="paket"
   jsonLd={schema}
   breadcrumbs={[{ name: 'Meisterseite', href: '/meisterseite' }]}
 >
   <article class="kz-page">
     <div class="kz-page-eyebrow">
       <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
-      <span>Meisterseite · für Handwerksbetriebe</span>
+      <span>Meisterseite · für kleine und mittlere Betriebe</span>
     </div>
     <h1 class="kz-h1">Ihre Website.<br /><span class="accent">Komplett gemacht.</span></h1>
     <p class="kz-lead">
       Wir bauen und betreuen Ihre Website komplett — und jede Anfrage landet direkt
-      auf Ihrem Handy. Für Handwerksbetriebe im Raum Nürnberg, die gute Arbeit machen,
+      auf Ihrem Handy. Für Betriebe im Raum Nürnberg, die gute Arbeit machen,
       aber online kaum zu finden sind.
     </p>
 

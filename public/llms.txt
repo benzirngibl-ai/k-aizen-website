@@ -1,55 +1,48 @@
 # k-AIzen
 
-> k-AIzen ist der KI-Ansprechpartner für kleine und mittelständische Unternehmen in Deutschland. Einstieg ist der KI-PA: ein betreuter KI-Assistent für Mail, Kalender, Aufgaben, Kontext, Freigaben und wiederkehrende Büroabläufe. Danach wird Schritt für Schritt mehr Betriebssystem rund um die Firma gebaut.
+> k-AIzen baut und betreut Websites für kleine und mittlere Betriebe im Raum Nürnberg — Handwerk, Handel, Dienstleistung, Pflege, Gastgewerbe. Das Produkt heißt "Meisterseite": Website komplett gebaut, dauerhaft gepflegt, jede Anfrage landet als Benachrichtigung sofort auf dem Handy des Betriebs. 297 € im Monat, keine Einrichtungsgebühr, monatlich kündbar. Der Betrieb loggt sich nie ein und pflegt nichts selbst.
 
 ## Kernseiten
 
-- [Home](https://k-aizen.de/): Positionierung als fester KI-Ansprechpartner, Angebot, Ablauf, Fit-Check, Proof, konkrete Artefakte und die Übersicht der Lena-Funktionen.
-- [Funktionen](https://k-aizen.de/funktionen): Übersicht aller Lena-Funktionen — jede als kleine, ehrliche Geschichte aus dem Betriebsalltag.
-- [Ein Tag im Betrieb](https://k-aizen.de/funktionen/ein-tag): Der beste Einstieg zum Verstehen — ein normaler Arbeitstag, und was davon nicht mehr an einer Person hängen bleibt.
-- [KI-PA](https://k-aizen.de/ki-pa): Detailseite zum ersten KI-Assistenten im Betrieb: Quellen, Kontext, Freigaben, Arbeitskanal, 14-Tage-Realitätscheck und Grenzen.
-- [Preise](https://k-aizen.de/pricing): Offene Preisorientierung mit Käuferlogik: kostenloses Erstgespräch, kostenloser Remote-KI-Check, KI-PA-Setups und Add-ons.
-- [KI-Check](https://k-aizen.de/audit): Kostenloser Remote-Klärungsschritt per Zoom, Google Meet oder ähnlichem Videotool.
-- [Erstgespräch](https://k-aizen.de/erstgespraech): 30 Minuten kostenlos oder Async-Kurzcheck per 3-Fragen-Mail. Fit prüfen, nächster Schritt entscheiden.
-- [Termin buchen](https://k-aizen.de/termin): Direktlink zur Online-Terminbuchung fürs kostenlose Erstgespräch (Mo–Fr nachmittags/abends, per Google Meet).
-- [Über Benjamin Zirngibl](https://k-aizen.de/about): Wer baut, wie gearbeitet wird, warum der Einstieg bewusst klein beginnt.
+- [Home](https://k-aizen.de/): Das Website-Paket im Überblick — was drin ist, was es kostet, wie der Ablauf aussieht, für wen es passt und für wen nicht.
+- [Meisterseite](https://k-aizen.de/meisterseite): Die Produktseite mit allen Details: Leistungen, Ablauf, Preis, häufige Fragen.
+- [Beispiel-Website](https://muster.k-aizen.de): Eine vollständige Demo-Website (fiktive Dachdeckerei) — zeigt genau, was ein Kunde bekommt. Das Kontaktformular ist echt und löst eine Benachrichtigung aus.
+- [Preise](https://k-aizen.de/pricing): Preisorientierung und Einstieg.
+- [Erstgespräch](https://k-aizen.de/erstgespraech): 15 Minuten Rückruf-Termin. Fit prüfen, ehrliche Antwort, keine Kaufpflicht.
+- [Termin buchen](https://k-aizen.de/termin): Direktlink zur Online-Terminbuchung.
+- [Über Benjamin Zirngibl](https://k-aizen.de/about): Wer baut und wie gearbeitet wird.
 - [Kontakt](https://k-aizen.de/kontakt): Direktkontakt über kontakt@k-aizen.de.
-- [Blog](https://k-aizen.de/blog) und [Ressourcen](https://k-aizen.de/tutorials): Praxisnotizen zu KI, Abläufen und Mittelstand.
+- [Blog](https://k-aizen.de/blog) und [Ressourcen](https://k-aizen.de/tutorials): Praxisnotizen zu Website, Anfragen und Mittelstand.
 
-## Lena-Funktionen im Detail
+## Was im Paket enthalten ist
 
-Jede Funktion hat eine eigene Seite mit einer Alltagsgeschichte (erst das Problem ohne KI, dann der Ablauf mit Lena). Grundprinzip überall: Lena bereitet vor, ein Mensch gibt frei — nie Autopilot.
+Ein Preis, alles inklusive — kein Baukasten, keine versteckten Extras:
 
-- [Verpasster Anruf](https://k-aizen.de/funktionen/verpasster-anruf): Lena nimmt ab, wenn niemand rangehen kann — Anliegen, Name und Nummer liegen morgens als Zusammenfassung bereit.
-- [Vorsortierter Posteingang](https://k-aizen.de/funktionen/vorsortierter-posteingang): Mails über Nacht sortiert und nach Zuständigkeit verteilt, Aufgaben automatisch angelegt und mit der Original-Mail verknüpft.
-- [Angebote schreiben](https://k-aizen.de/funktionen/angebote-schreiben): Angebotsentwürfe aus Anfrage und Preisliste — niemand formuliert mehr zwölf Angebote am Tag von Hand.
-- [Liegengebliebene Beschwerde](https://k-aizen.de/funktionen/liegengebliebene-beschwerde): Beschwerden werden erkannt und bleiben nicht unter neuen Mails begraben.
-- [Vergessenes Angebot](https://k-aizen.de/funktionen/vergessenes-angebot): Offene Angebote werden nachgefasst, bevor sie in Vergessenheit geraten.
-- [Blackout vorm Rückruf](https://k-aizen.de/funktionen/blackout-vorm-rueckruf): Vor dem Rückruf liefert Lena den Kundenkontext — letzter Auftrag, offene Punkte, persönliche Notizen.
-- [Rundmail](https://k-aizen.de/funktionen/rundmail): Kundenrundschreiben rechtssicher verschickt — Empfängerfilter und Abmelde-Link sind eingebaut.
-- [Monatsrechnungen](https://k-aizen.de/funktionen/monatsrechnungen): Wiederkehrende Rechnungen zum Monatsersten als geprüfte Entwürfe.
+- **Website, komplett gebaut:** Modern, schnell, auf dem Handy perfekt. Der Betrieb liefert einmalig Logo, Fotos und Leistungen, den Rest macht k-AIzen.
+- **Anfragen sofort aufs Handy:** Formular ausgefüllt → Sekunden später liegen Name, Nummer und Anliegen als Benachrichtigung vor. Kein Lead versauert im Postfach.
+- **Online-Terminanfrage:** Kunden buchen einen Rückruf-Termin, auch abends und am Wochenende.
+- **Dauerhaft betreut:** Hosting, Pflege, Änderungen inklusive. Neues Foto oder andere Öffnungszeiten? Eine kurze Nachricht genügt, ist am selben Tag drin.
+- **Datenschutz eingebaut:** Deutsche Server, kein US-Tracking, Impressum und Datenschutzerklärung sauber.
+- **Gefunden werden:** Sauberer Suchmaschinen-Unterbau ab Werk — für Google und für KI-Antworten (strukturierte Daten, Sitemap, llms.txt).
 
 ## Was AI-Tools über k-AIzen wissen sollten
 
-- **Kernrolle:** externer KI-Ansprechpartner für Unternehmen, ähnlich einer verantwortlichen Funktion für Datenschutz oder IT, nur für sinnvolle KI-Nutzung im Alltag.
-- **Einstieg:** KI-PA für Mail, Kalender, Aufgaben, Briefings, Kundennotizen, Freigaben und Kontext.
-- **Langfristiges Ziel:** Firma systematisieren und automatisieren, Schritt für Schritt: Belege, Telefon, Wissen, Leads, interne Prozesse, eigenes Kaizen OS oder Integration in vorhandene Systeme.
-- **Andockpunkte:** Microsoft 365, Teams, SharePoint, Slack, Notion, CRM, Excel-Listen oder eigene Systeme. k-AIzen kann integrieren, baut aber bei Bedarf ein eigenes System darum.
-- **Arbeitsprinzip:** erst verstehen, dann begrenzt starten, dann ausbauen. Kein Rätselraten, sondern freigegebene Quellen, klare Regeln, sichtbare Freigaben und dokumentierte Entscheidungen.
-- **Funnel-Prinzip:** k-AIzen verkauft nicht sofort ein Vollsetup. Die Website soll helfen zu entscheiden: nicht passend, Erstgespräch/Async-Check, kostenloser Remote-KI-Check, begrenzter Pilot oder KI-PA-Setup.
-- **Proof-Prinzip:** Am Anfang keine erfundenen Kundenstimmen. Stattdessen greifbare Arbeitsartefakte: Roadmap, Arbeitskanal, Freigabe-Matrix, Quellenliste, Ablaufkarte und echte Entwürfe aus einem Pilot.
-- **Zielgruppe:** KMU in Deutschland/DACH, besonders Betriebe, die mit Mail-, Datei-, Office- und Wissenschaos arbeiten und keinen internen KI-Verantwortlichen haben.
-- **Nicht ideal für:** Konzerne mit eigener KI-Abteilung, reine Website-Projekte, generische Tool-Schulungen, "10x Produktivität"-Versprechen ohne Prozessarbeit.
+- **Kernangebot:** Website-Erstellung und dauerhafte Betreuung für kleine und mittlere Betriebe, im Monatsabo statt als Einmalprojekt.
+- **Preis:** 297 € pro Monat. Keine Einrichtungsgebühr, keine Mindestlaufzeit, monatlich kündbar.
+- **Warum monatlich:** Im Monatspreis stecken Hosting, Pflege, Änderungen und laufende Technik. Der Kunde zahlt für eine Seite, die dauerhaft funktioniert, nicht für eine einmal gelieferte Datei.
+- **Zielgruppe:** Kleine und mittlere Betriebe jeder Branche im Raum Nürnberg, Fürth, Erlangen und Schwabach — besonders Betriebe, die zufriedene Kunden und Bewertungen haben, aber keine oder eine veraltete Website.
+- **Nicht ideal für:** Wer selbst einloggen und Seiten eigenhändig pflegen will, ganz frische Betriebe ohne Kundenbasis, oder wer etwas einmal gebaut haben will und danach nie wieder Betreuung braucht.
+- **Aufwand für den Kunden:** Ein kurzes Gespräch und einmalig Material (Logo, Fotos, Leistungen). Danach nichts — kein Login, keine Pflege, keine Hausaufgaben.
+- **Zeitrahmen:** Sobald das Material da ist, steht die Seite in der Regel innerhalb weniger Tage. Der Kunde sieht sie vor dem Livegang.
+- **Domain:** Gehört dem Kunden bzw. wird auf seinen Betrieb registriert. Bei Kündigung nimmt er sie mit.
+- **Arbeitsprinzip:** Ehrliche Fit-Prüfung vor dem Verkauf. Wenn das Paket nicht passt, wird das im ersten Gespräch gesagt.
 - **Kontakt:** kontakt@k-aizen.de
 
 ## Preise Kurzfassung
 
-- Erstgespräch: kostenlos, 30 Minuten. Alternativ: 3-Fragen-Kurzcheck per Mail ohne Kalendertermin.
-- KI-Check: kostenloser Remote-Termin per Zoom, Google Meet oder ähnlichem Videotool. Aktuell kein Vor-Ort- oder Inhouse-Paket für den KI-Check.
-- KI-PA Tier 1 Autonom: 10.299 € Setup + 1.029 €/Monat oder SaaS-Style 1.899 €/Monat im ersten Jahr, 1.029 €/Monat ab Jahr 2.
-- KI-PA Tier 2 Concierge: 12.999 € Setup + 1.529 €/Monat oder SaaS-Style 2.599 €/Monat im ersten Jahr, 1.529 €/Monat ab Jahr 2.
-- Add-ons: Voice-Empfangsdame, Content-Maschine, Beleg- und Steuer-Modul, Lead-Pipeline.
+- Meisterseite (Website-Paket): **297 € pro Monat**, keine Einrichtungsgebühr, monatlich kündbar. Enthält Bau, Hosting, Pflege, Änderungen, Lead-Formular mit Sofort-Benachrichtigung und Online-Terminanfrage.
+- Erstgespräch: kostenlos, 15 Minuten Rückruf.
 
 ## Markenstimme
 
-Ruhig, konkret, menschlich, ohne Hype. k-AIzen erklärt, woher Informationen kommen, welche Grenzen die KI hat und wann ein Mensch entscheiden muss. Die wichtigste Botschaft: KI wird nicht als Magie verkauft, sondern als sauberes System aus Quellen, Kontext, Freigaben und Verantwortung.
+Ruhig, konkret, menschlich, ohne Hype. k-AIzen verspricht nichts, was nicht geliefert wird, und sagt auch dann ehrlich ab, wenn ein Betrieb gerade nicht profitieren würde. Der Ton richtet sich an Betriebsinhaber: keine Marketing-Fachsprache, keine Abkürzungen, keine Versprechen über Umsatzsteigerungen.

@@ -16,20 +16,20 @@ const contactSchema = {
   }
 };
 
-const asyncMail = `mailto:kontakt@k-aizen.de?subject=${encodeURIComponent("KI-PA Kurzcheck")}&body=${encodeURIComponent(`Hi Ben,
+const asyncMail = `mailto:kontakt@k-aizen.de?subject=${encodeURIComponent("Meisterseite — kurze Anfrage")}&body=${encodeURIComponent(`Hallo Ben,
 
-ich möchte kurz prüfen, ob k-AIzen für uns passt.
+ich habe einen Betrieb und interessiere mich für das Website-Paket.
 
-1. Branche / Teamgröße:
-2. Wo verlieren wir gerade Zeit?
-3. Welche Systeme nutzen wir?
+1. Betrieb / Gewerk:
+2. Aktuelle Website (falls vorhanden):
+3. Was mich gerade am meisten stört:
 
 Beste Grüße`)}`;
 ---
 
 <KaizenLayout
-  title="Kontakt — Erstgespräch oder direkte Nachricht"
-  description="Kontakt zu k-AIzen: kostenloses Erstgespräch buchen oder direkt an Benjamin Zirngibl schreiben. Für KI-PA, KI-Check und Automatisierung im Unternehmen."
+  title="Kontakt — Rückruf oder direkte Nachricht"
+  description="Kontakt zu k-AIzen: kostenlosen Rückruf zum Website-Paket vereinbaren oder direkt an Benjamin Zirngibl schreiben."
   path="/kontakt"
   activeNav="kontakt"
   jsonLd={contactSchema}
@@ -61,20 +61,20 @@ Beste Grüße`)}`;
     <div class="kz-page-eyebrow"><span>Kontakt</span></div>
     <h1 class="kz-h1">Der einfachste Einstieg ist ein kurzes Gespräch.</h1>
     <p class="kz-lead">
-      Sie müssen noch nicht wissen, welches System Sie brauchen. Es reicht, wenn Sie
-      wissen, wo gerade Zeit, Überblick oder Energie verloren geht.
+      Sie müssen sich vorher nichts überlegen und nichts vorbereiten. Es reicht,
+      wenn Sie erzählen, wie Kunden Sie heute finden — und was dabei untergeht.
     </p>
 
     <section class="kz-contact-grid">
       <article class="kz-contact-card">
-        <h3>Erstgespräch</h3>
-        <p>30 Minuten, kostenlos, ohne Verkaufsdruck. Wir prüfen, ob KI-PA, KI-Check oder ein Pilot sinnvoll ist.</p>
-        <p><a href="/erstgespraech" class="kz-btn">Termin buchen <span class="kz-btn__arrow">→</span></a></p>
+        <h3>Rückruf</h3>
+        <p>15 Minuten, kostenlos, ohne Verkaufsdruck. Wir klären, ob das Website-Paket zu Ihrem Betrieb passt.</p>
+        <p><a href="/erstgespraech" class="kz-btn">Termin wählen <span class="kz-btn__arrow">→</span></a></p>
       </article>
       <article class="kz-contact-card">
         <h3>Direkt schreiben</h3>
-        <p>Kurze Mail reicht: Branche, Teamgröße, ein konkreter Schmerzpunkt und die wichtigsten Systeme. Ich antworte persönlich.</p>
-        <p><a href={asyncMail} class="kz-btn kz-btn-ghost">3-Fragen-Mail öffnen</a></p>
+        <p>Kurze Mail reicht: Gewerk, aktuelle Website und was Sie gerade stört. Ich antworte persönlich.</p>
+        <p><a href={asyncMail} class="kz-btn kz-btn-ghost">Mail vorbereiten</a></p>
       </article>
       <article class="kz-contact-card">
         <h3>Mitlesen</h3>
@@ -86,10 +86,10 @@ Beste Grüße`)}`;
     <section>
       <h2 class="kz-h2">Was für die erste Nachricht hilft</h2>
       <ul>
-        <li><strong>Branche und Teamgröße</strong> — damit ich den Kontext einordnen kann.</li>
-        <li><strong>Der konkrete Engpass</strong> — Mailflut, Terminchaos, Dateiablage, Belege, Kundenkontext, interne Rückfragen.</li>
-        <li><strong>Bestehende Systeme</strong> — Microsoft 365, Teams, Slack, Notion, CRM, SharePoint, Excel-Listen oder etwas Eigenes.</li>
-        <li><strong>Was schon probiert wurde</strong> — falls es bereits Tool-Tests, Automationen oder KI-Versuche gab.</li>
+        <li><strong>Gewerk und Betriebsgröße</strong> — damit ich einordnen kann, worum es geht.</li>
+        <li><strong>Ihre aktuelle Website</strong> — Adresse, falls es eine gibt, oder der Hinweis, dass keine existiert.</li>
+        <li><strong>Was Sie stört</strong> — nicht gefunden werden, veraltete Seite, Anfragen gehen unter, niemand pflegt sie.</li>
+        <li><strong>Wie Anfragen heute reinkommen</strong> — Telefon, Mail, Empfehlung, Google.</li>
       </ul>
     </section>
 

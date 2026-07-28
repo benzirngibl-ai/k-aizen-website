@@ -1,72 +1,134 @@
 ---
-// k-AIzen — Cinematic Light Premium (Nordstern-Positionierung).
-// Seit 2026-07-03 die Startseite (war zuvor /v2). Vorgänger: old-index.astro.
-const benFoto = "/images/ben-portrait.png";
+// k-AIzen — Startseite. Verkauft die MEISTERSEITE (Website-Paket, 297 €/Mo).
+//
+// POSITIONIERUNGSWECHSEL 2026-07-28 (Ben): Die Startseite verkaufte bis hierhin
+// den KI-PA (1.899 €/Mo). Der PA wird in den Hintergrund geschoben und nur noch
+// stückweise weiter integriert — die Startseite spricht ab jetzt AUSSCHLIESSLICH
+// über das Website-Paket. Ben-Entscheid: KI-PA komplett von der Startseite runter
+// (kein Abschnitt, keine Erwähnung). /ki-pa bleibt als Unterseite erreichbar.
+// Vorgänger-Fassung liegt als index-ki-pa-backup.astro.bak daneben.
+//
+// Produktsubstanz stammt 1:1 aus der bestehenden /meisterseite (daf5058) und
+// dem Angebots-Einseiter — bewusst KEINE neuen Versprechen erfunden.
 const siteUrl = "https://k-aizen.de";
 const homeUrl = `${siteUrl}/`;
-const homeTitle = "k-AIzen — Ihr KI-Ansprechpartner im Unternehmen";
-const homeDescription = "Ein fester KI-Ansprechpartner für Ihr Unternehmen. Start mit dem KI-Personal-Assistant für Mail, Kalender, Aufgaben und Kontext — danach Schritt für Schritt Automatisierung und System.";
+const homeTitle = "k-AIzen — Website für Ihren Betrieb, komplett gebaut und betreut";
+const homeDescription =
+  "Ihre Website komplett gebaut, dauerhaft betreut, jede Anfrage sofort auf Ihrem Handy. 297 € im Monat, keine Einrichtungsgebühr, monatlich kündbar. Für Betriebe im Raum Nürnberg.";
 const ogImage = `${siteUrl}/og-image.png`;
-const asyncMail = `mailto:kontakt@k-aizen.de?subject=${encodeURIComponent("KI-PA Kurzcheck")}&body=${encodeURIComponent(`Hi Ben,
+const benFoto = "/images/ben-portrait.png";
 
-ich möchte erst einmal async prüfen, ob k-AIzen für uns passt.
+const PREIS = "297";
+const demoUrl = "https://muster.k-aizen.de";
+const calUrl = "https://cal.k-aizen.de/ben-kaizen/rueckruf";
 
-1. Branche / Teamgröße:
-2. Wo verlieren wir gerade Zeit?
-3. Welche Systeme nutzen wir? (z. B. Microsoft 365, Teams, Slack, Notion, CRM, Excel)
+const asyncMail = `mailto:kontakt@k-aizen.de?subject=${encodeURIComponent("Meisterseite — kurze Anfrage")}&body=${encodeURIComponent(`Hallo Ben,
+
+ich habe einen Betrieb und interessiere mich für das Website-Paket.
+
+1. Betrieb / Gewerk:
+2. Aktuelle Website (falls vorhanden):
+3. Was mich gerade am meisten stört:
 
 Beste Grüße`)}`;
 
-import { getCollection } from 'astro:content';
+// Was im Paket steckt — Substanz identisch zur /meisterseite, damit beide Seiten
+// dasselbe versprechen. Änderungen bitte an BEIDEN Stellen.
+// Das Kernversprechen der Seite steht bewusst NICHT gleichrangig neben den anderen
+// fünf Punkten — es bekommt eigenes Gewicht (Design: Fable, craft-floor: keine
+// gleichförmigen Karten als Seitenstruktur, keine Nummern ohne Informationswert).
+const leistungHero = {
+  title: "Anfragen sofort auf Ihrem Handy",
+  text: "Jemand füllt Ihr Formular aus — Sekunden später haben Sie Name, Nummer und Anliegen als Benachrichtigung. Kein Lead versauert im Postfach.",
+};
 
-// Funktionen-Grid (ehem. "Ein Tag mit Lena") — Kacheln kommen aus der funktionen-Collection.
-// Neue Funktion sichtbar machen = neue Datei in src/content/funktionen/, kein Code.
-const funktionenListe = (await getCollection('funktionen'))
-  .filter((f) => !f.data.draft)
-  .sort((a, b) => a.data.reihenfolge - b.data.reihenfolge)
-  .slice(0, 6);
+const leistungen = [
+  {
+    title: "Website, komplett gebaut",
+    text: "Modern, schnell, auf dem Handy perfekt. Sie liefern Logo, Fotos und Ihre Leistungen — den Rest machen wir.",
+  },
+  {
+    title: "Online-Terminanfrage",
+    text: "Ihre Kunden buchen einen Rückruf-Termin — auch abends um zehn, auch wenn Sie auf dem Gerüst stehen.",
+  },
+  {
+    title: "Dauerhaft betreut",
+    text: "Hosting, Pflege, Änderungen — alles drin. Neues Foto, andere Öffnungszeiten? Eine kurze Nachricht genügt, ist am selben Tag drin. Sie loggen sich nie ein.",
+  },
+  {
+    title: "Datenschutz eingebaut",
+    text: "Deutsche Server, kein US-Tracking, Impressum und Datenschutzerklärung sauber. Keine Abmahn-Angst.",
+  },
+  {
+    title: "Gefunden werden",
+    text: "Sauberer Suchmaschinen-Unterbau ab Werk — für Google und für KI-Antworten. Dieselbe Technik wie bei unseren eigenen Portalen.",
+  },
+];
 
 const ablaufSchritte = [
   {
     k: "01",
-    title: "Erstgespräch",
-    text: "30 Minuten: Wir schauen, ob KI bei Ihnen gerade wirklich Sinn macht und wo der erste Hebel liegt.",
+    title: "Kurzes Gespräch",
+    text: "15 Minuten: Wir klären, was Ihr Betrieb braucht und ob das Paket zu Ihnen passt. Ehrliche Antwort inklusive — auch wenn sie „noch nicht\" lautet.",
   },
   {
     k: "02",
-    title: "KI-Check",
-    text: "Wir prüfen Mails, Kalender, Aufgaben, wiederkehrende Entscheidungen und Datenquellen. Danach ist klar, was zuerst gebaut wird.",
+    title: "Sie liefern das Material",
+    text: "Einmalig Logo, ein paar Fotos und Ihre Leistungen. Mehr brauchen wir nicht von Ihnen.",
   },
   {
     k: "03",
-    title: "KI-PA einrichten",
-    text: "Der Assistent bekommt freigegebene Quellen, Regeln, Tonalität und klare Grenzen. Erst Vorschläge, dann Freigabe.",
+    title: "Ihre Seite entsteht",
+    text: "Wenige Tage später steht Ihre Website. Sie schauen in Ruhe drüber, wir passen an, bis es sitzt.",
   },
   {
     k: "04",
-    title: "System ausbauen",
-    text: "Wenn der Einstieg trägt, automatisieren wir Schritt für Schritt weitere Abläufe: Telefon, Belege, Leads, Wissen, interne Prozesse.",
+    title: "Läuft — dauerhaft",
+    text: "Anfragen landen auf Ihrem Handy, Termine im Kalender. Änderungen jederzeit per Zuruf. Monatlich kündbar.",
   },
 ];
 
 const fitCards = [
   {
     k: "Gut geeignet, wenn",
-    title: "Sie KI pragmatisch in Abläufe bringen wollen.",
+    title: "Ihr Betrieb läuft, aber online findet Sie kaum jemand.",
     items: [
-      "Mails, Termine, Aufgaben oder Wissen ziehen im Alltag sichtbar Energie.",
-      "Sie wollen klein starten, aber sauber genug für späteren Ausbau.",
-      "Sie brauchen jemanden, der Technik, Alltag und Verantwortung zusammenhält.",
+      "Sie haben zufriedene Kunden und Bewertungen, aber keine oder eine veraltete Website.",
+      "Anfragen kommen übers Telefon — und gehen unter, wenn Sie auf der Baustelle sind.",
+      "Sie wollen sich um die Technik nicht kümmern müssen, sondern arbeiten.",
     ],
   },
   {
     k: "Eher nicht geeignet, wenn",
-    title: "Sie sofort Vollautomatik ohne gemeinsame Grundlagen erwarten.",
+    title: "Sie eine Website zum Selbstbasteln oder einen reinen Baukasten suchen.",
     items: [
-      "Niemand darf Quellen freigeben, Regeln klären oder Feedback geben.",
-      "Es soll nur ein Chatbot auf die Website, aber kein interner Ablauf besser werden.",
-      "Einmal eingerichtet und nie wieder betreut ist wichtiger als ein lernendes System.",
+      "Sie wollen selbst einloggen, Seiten anlegen und alles eigenhändig pflegen.",
+      "Der Betrieb ist ganz frisch und hat noch keine Kundenbasis, auf der eine Seite aufsetzen kann.",
+      "Es soll einmal etwas gebaut und danach nie wieder angefasst werden.",
     ],
+  },
+];
+
+const faqs = [
+  {
+    q: "Ist das wirklich monatlich kündbar?",
+    a: "Ja. Keine Mindestlaufzeit, keine Einrichtungsgebühr. Wenn Sie kündigen, endet das Paket zum Monatsende — Ihr Risiko ist ein Monat.",
+  },
+  {
+    q: "Wie schnell ist meine Website online?",
+    a: "Sobald Logo, Fotos und Ihre Leistungen da sind, steht die Seite in der Regel innerhalb weniger Tage. Sie sehen sie vor dem Livegang.",
+  },
+  {
+    q: "Was muss ich selbst machen?",
+    a: "Einmalig Material liefern (Logo, ein paar Fotos, Ihre Leistungen) — das war es. Sie loggen sich nirgendwo ein und pflegen nichts. Änderungswünsche schicken Sie formlos per Nachricht.",
+  },
+  {
+    q: "Wem gehört die Domain?",
+    a: "Ihre Domain gehört Ihnen bzw. wird auf Ihren Betrieb registriert. Wenn Sie gehen, nehmen Sie sie mit.",
+  },
+  {
+    q: "Warum monatlich statt einmalig?",
+    a: "Weil eine Website kein Möbelstück ist, das man einmal hinstellt. Im Monatspreis stecken Hosting, Pflege, Änderungen und die laufende Technik — Sie zahlen für eine Seite, die dauerhaft funktioniert, nicht für eine Datei.",
   },
 ];
 
@@ -82,16 +144,18 @@ const homeSchema = {
       "image": ogImage,
       "email": "kontakt@k-aizen.de",
       "founder": { "@id": `${siteUrl}/#benjamin-zirngibl` },
-      "areaServed": ["DE", "AT", "CH"],
-      "description": "k-AIzen ist der externe KI-Ansprechpartner für kleine und mittelständische Unternehmen. Einstieg ist der KI-Personal-Assistant für Mail, Kalender, Aufgaben, Kontext und Freigaben.",
+      "areaServed": ["Nürnberg", "Fürth", "Erlangen", "Schwabach", "DE"],
+      "description":
+        "k-AIzen baut und betreut Websites für kleine und mittlere Betriebe: komplett gebaut, dauerhaft gepflegt, jede Anfrage sofort auf dem Handy des Betriebs. 297 € im Monat, keine Einrichtungsgebühr.",
       "knowsAbout": [
-        "KI Beratung KMU",
-        "KI Assistent Unternehmen",
-        "KI Automatisierung Mittelstand",
-        "Microsoft 365 KI Integration",
-        "KI Mail Assistent Firma",
-        "Kaizen OS"
-      ]
+        "Website erstellen lassen Nürnberg",
+        "Website für kleine Unternehmen",
+        "Website Handwerksbetrieb",
+        "Homepage Autohaus Pflegedienst Fahrschule",
+        "Website Betreuung monatlich",
+        "Anfragen über die Website gewinnen",
+        "DSGVO konforme Website",
+      ],
     },
     {
       "@type": "Person",
@@ -99,9 +163,9 @@ const homeSchema = {
       "name": "Benjamin Zirngibl",
       "url": `${siteUrl}/about`,
       "image": `${siteUrl}${benFoto}`,
-      "jobTitle": "Gründer und KI-Ansprechpartner",
+      "jobTitle": "Gründer",
       "worksFor": { "@id": `${siteUrl}/#organization` },
-      "sameAs": ["https://www.linkedin.com/in/benjamin-zirngibl-0963753ab"]
+      "sameAs": ["https://www.linkedin.com/in/benjamin-zirngibl-0963753ab"],
     },
     {
       "@type": "WebSite",
@@ -110,69 +174,46 @@ const homeSchema = {
       "name": "k-AIzen",
       "inLanguage": "de-DE",
       "publisher": { "@id": `${siteUrl}/#organization` },
-      "about": { "@id": `${siteUrl}/#ki-pa-service` }
+      "about": { "@id": `${siteUrl}/#meisterseite-service` },
     },
     {
       "@type": "Service",
-      "@id": `${siteUrl}/#ki-pa-service`,
-      "name": "KI-Personal-Assistant (KI-PA) für Unternehmen",
-      "serviceType": "KI-Assistent und KI-Automatisierung für KMU",
+      "@id": `${siteUrl}/#meisterseite-service`,
+      "name": "Meisterseite — Website-Paket für kleine und mittlere Betriebe",
+      "serviceType": "Website-Erstellung und dauerhafte Betreuung",
       "provider": { "@id": `${siteUrl}/#organization` },
-      "areaServed": ["DE", "AT", "CH"],
-      "description": "Betreuter KI-Assistent für Mail, Kalender, Aufgaben, Kundennotizen, Kontext, Freigaben und schrittweisen Ausbau zu einem internen KI-System.",
+      "areaServed": ["Nürnberg", "Fürth", "Erlangen", "Schwabach"],
+      "url": `${siteUrl}/meisterseite`,
+      "description":
+        "Website komplett gebaut und dauerhaft betreut: Lead-Formular mit Sofort-Benachrichtigung aufs Handy, Online-Terminanfrage, Hosting und Pflege inklusive, DSGVO-konform auf deutschen Servern.",
       "audience": {
         "@type": "BusinessAudience",
-        "audienceType": "kleine und mittelständische Unternehmen"
+        "audienceType": "Kleine und mittlere Betriebe: Handwerk, Handel, Dienstleistung, Gesundheit, Gastgewerbe",
       },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "k-AIzen Einstieg",
-        "itemListElement": [
-          { "@type": "Offer", "name": "Kostenloses Erstgespräch", "url": `${siteUrl}/erstgespraech` },
-          { "@type": "Offer", "name": "Kostenloser KI-Check", "url": `${siteUrl}/audit` },
-          { "@type": "Offer", "name": "KI-PA Setup", "url": `${siteUrl}/pricing` }
-        ]
-      }
+      "offers": {
+        "@type": "Offer",
+        "price": PREIS,
+        "priceCurrency": "EUR",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": PREIS,
+          "priceCurrency": "EUR",
+          "unitText": "Monat",
+        },
+        "availability": "https://schema.org/InStock",
+        "url": `${siteUrl}/meisterseite`,
+      },
     },
     {
       "@type": "FAQPage",
       "@id": `${siteUrl}/#faq`,
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Woher weiß der KI-Personal-Assistant, was beim Kunden wichtig ist?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Der KI-PA arbeitet nur mit freigegebenen Quellen wie Mailverlauf, Kalender, Aufgabenlisten, CRM, Kundennotizen oder Microsoft 365. Fehlender oder unsicherer Kontext wird sichtbar gemacht."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Startet k-AIzen sofort mit Vollautomatisierung?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Nein. Der Einstieg ist bewusst klein: Erstgespräch, kostenloser KI-Check oder begrenzter KI-PA-Pilot. Erst wenn der Nutzen sichtbar ist, werden weitere Abläufe angeschlossen."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Kann k-AIzen mit bestehenden Systemen arbeiten?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ja. k-AIzen kann an Microsoft 365, Teams, SharePoint, Slack, Notion, CRM, Excel-Listen oder eigene Systeme andocken und bei Bedarf ein eigenes Kaizen OS darum bauen."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Wann passt k-AIzen nicht?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "k-AIzen passt weniger, wenn sofort Vollautomatik ohne Freigaben, Quellenklärung oder Feedback erwartet wird. Der Ansatz beginnt bewusst mit einem begrenzten Bereich und menschlicher Kontrolle."
-          }
-        }
-      ]
-    }
-  ]
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a },
+      })),
+    },
+  ],
 };
 ---
 <!DOCTYPE html>
@@ -227,31 +268,32 @@ const homeSchema = {
       <span class="kz-logo">k&#8209;<span class="kz-logo__ai">AI</span>zen</span>
     </div>
     <div class="kz-nav__links">
-      <a href="#angebot">Angebot</a>
+      <a href="#angebot">Das Paket</a>
       <a href="#ablauf">Ablauf</a>
-      <a href="#ein-tag">Funktionen</a>
-      <a href="#kontakt">Kontakt</a>
+      <a href="#beispiel">Beispiel</a>
+      <a href="#fragen">Fragen</a>
     </div>
-    <a href="/erstgespraech" class="kz-btn kz-btn--primary" style="padding:11px 22px;font-size:14px;">Erstgespräch</a>
+    <a href={calUrl} class="kz-btn kz-btn--primary" style="padding:11px 22px;font-size:14px;" target="_blank" rel="noopener">Rückruf</a>
   </nav>
 
   <!-- HERO -->
   <header class="kz-hero">
     <div class="kz-hero__grid"></div>
     <div class="kz-wrap">
-      <div class="kz-hero__eyebrow kz-reveal"><span class="dot"></span> Ihr KI-Ansprechpartner im Unternehmen</div>
-      <h1 class="kz-h1 kz-kinetic">Ein fester Ansprechpartner für KI — <span class="accent">startend mit Ihrem KI-Personal-Assistant.</span></h1>
+      <div class="kz-hero__eyebrow kz-reveal"><span class="dot"></span> Für Betriebe im Raum Nürnberg</div>
+      <h1 class="kz-h1 kz-kinetic">Ihre Website — komplett gebaut, dauerhaft betreut, <span class="accent">{PREIS} € im Monat.</span></h1>
       <p class="kz-hero__sub kz-reveal" data-delay="2">
-        So wie größere Firmen klare Verantwortliche für Datenschutz haben, bekommt Ihr Betrieb einen Ansprechpartner für KI. Der Einstieg ist der KI-Personal-Assistant, kurz KI-PA: für Mail, Termine, Aufgaben, Freigaben und Kontext. Danach wird Schritt für Schritt erweitert, wenn der erste Bereich sichtbar trägt.
+        Sie liefern einmal Logo, Fotos und Ihre Leistungen. Wir bauen die Seite, halten sie am Laufen und kümmern uns um jede Änderung. Jede Anfrage landet Sekunden später als Benachrichtigung auf Ihrem Handy — auch wenn Sie gerade beim Kunden sind.
       </p>
       <div class="kz-hero__cta kz-reveal" data-delay="3">
-        <a href="/erstgespraech" class="kz-btn kz-btn--primary">Kostenloses Erstgespräch buchen <span class="kz-btn__arrow">→</span></a>
-        <a href={asyncMail} class="kz-btn kz-btn--ghost">3-Fragen-Check per Mail</a>
-        <a href="#angebot" class="kz-btn kz-btn--ghost">Angebot ansehen</a>
+        <a href={calUrl} class="kz-btn kz-btn--primary" target="_blank" rel="noopener">15 Minuten Rückruf vereinbaren <span class="kz-btn__arrow">→</span></a>
+        <a href="#beispiel" class="kz-btn kz-btn--ghost">Beispiel-Website ansehen</a>
       </div>
+      <p class="kz-hero__note kz-reveal" data-delay="4">
+        Keine Einrichtungsgebühr · monatlich kündbar · Sie loggen sich nie ein
+      </p>
     </div>
-    <div class="kz-scrollcue">
-      <span>Scroll</span>
+    <div class="kz-scrollcue" aria-hidden="true">
       <span class="kz-scrollcue__line"></span>
     </div>
   </header>
@@ -259,57 +301,59 @@ const homeSchema = {
   <!-- 2 — DAS PROBLEM (Spiegel) -->
   <section class="kz-section">
     <div class="kz-wrap">
-      <span class="kz-eyebrow kz-reveal">Das Dilemma</span>
       <h2 class="kz-h2 kz-reveal" data-delay="1">
-        „KI wird wichtig. Aber wer soll das bei uns eigentlich verantworten?"
+        „Die Arbeit läuft. Aber im Netz findet uns kaum jemand."
       </h2>
       <p class="kz-lead kz-reveal" data-delay="2">
-        Tools testen reicht nicht. Irgendjemand muss verstehen, wo Zeit verloren geht, welche Daten ran dürfen, welche Antworten freigegeben werden müssen und wie daraus ein funktionierendes System entsteht. Genau diese Verantwortung bleibt in vielen Betrieben liegen.
+        Viele gute Betriebe haben zufriedene Kunden, ordentliche Bewertungen — und keine Website. Oder eine, die vor acht Jahren gebaut wurde, auf dem Handy zerfällt und die niemand mehr anfassen kann. Der Grund ist selten Desinteresse. Der Grund ist, dass abends nach zwölf Stunden Baustelle niemand Lust auf Baukästen, Hosting-Rechnungen und Datenschutztexte hat.
       </p>
     </div>
   </section>
 
-  <!-- 3 — REFRAME: all in vs all in -->
+  <!-- 3 — REFRAME: Sie / wir -->
   <section class="kz-section" style="background:var(--paper-2);">
     <div class="kz-wrap">
-      <span class="kz-eyebrow kz-reveal">Auf Augenhöhe</span>
+      <h2 class="kz-h2 kz-reveal">Sie machen Ihre Arbeit. Wir machen die Website.</h2>
       <div class="kz-duo-grid">
         <div class="kz-reveal" data-delay="1">
           <div class="kz-split-card" data-tilt>
             <div class="kz-split-num">01</div>
             <h3 style="font-size:1.5rem;font-weight:700;margin-bottom:8px;">Ihr Betrieb</h3>
-            <p style="color:var(--slate);">Sie kennen Ihr Handwerk. Ihr Lebenswerk. Niemand kennt Ihren Betrieb so wie Sie.</p>
+            <p style="color:var(--slate);">Sie können Ihr Geschäft. Sie liefern einmal Logo, ein paar Fotos und Ihre Leistungen — und arbeiten dann weiter wie bisher.</p>
           </div>
         </div>
         <div class="kz-reveal" data-delay="2">
           <div class="kz-split-card kz-split-card--accent" data-tilt>
             <div class="kz-split-num">02</div>
             <h3 style="font-size:1.5rem;font-weight:700;margin-bottom:8px;">k-AIzen</h3>
-            <p style="color:rgba(255,255,255,0.85);">k-AIzen übernimmt die KI-Rolle: sinnvolle Einsatzfelder prüfen, den ersten Assistenten bauen und daraus Schritt für Schritt bessere Abläufe entwickeln.</p>
+            <p style="color:rgba(255,255,255,0.85);">Wir bauen die Seite, hosten sie, pflegen sie und ändern, was geändert werden muss. Sie bekommen kein Login und keine Hausaufgaben.</p>
           </div>
         </div>
       </div>
       <p class="kz-lead kz-reveal" data-delay="3" style="margin-top:48px;text-align:center;margin-inline:auto;">
-        Der Einstieg ist bewusst klein genug, um ihn zu verstehen — aber so gebaut, dass er später wachsen kann.
+        Ein Preis, alles drin. Kein Baukasten, keine versteckten Extras, keine Rechnung für jede Kleinigkeit.
       </p>
     </div>
   </section>
 
-  <!-- 3.5 — ZAHLEN-BAND (Rhythmus + Greifbarkeit) -->
+  <!-- 3.5 — ZAHLEN-BAND -->
   <section class="kz-section" style="padding-block:0;">
     <div class="kz-wrap">
+<!-- Bewusst OHNE data-count: der Count-up (kz-v2.js) würde einen Preis
+           hochzählen lassen (wirkt wie ein Werbespot) und bei "0 €" 1,4 s lang
+           von 0 auf 0 animieren — also sichtbar nichts tun. -->
       <div class="kz-stats kz-reveal">
         <div class="kz-stat">
-          <div class="kz-stat__num" data-count="1" data-suffix="">0</div>
-          <div class="kz-stat__label">fester KI-Ansprechpartner, der Ihren Betrieb kennt</div>
+          <div class="kz-stat__num">{PREIS} €</div>
+          <div class="kz-stat__label">im Monat — Bau, Hosting, Pflege und Änderungen inklusive</div>
         </div>
         <div class="kz-stat">
-          <div class="kz-stat__num" data-count="30" data-suffix=" Min">0</div>
-          <div class="kz-stat__label">kostenloses Erstgespräch als sauberer Einstieg</div>
+          <div class="kz-stat__num">0 €</div>
+          <div class="kz-stat__label">Einrichtungsgebühr, keine Mindestlaufzeit</div>
         </div>
         <div class="kz-stat">
-          <div class="kz-stat__num" data-count="4" data-suffix="">0</div>
-          <div class="kz-stat__label">Startbereiche: Mail, Kalender, Aufgaben, Wissen</div>
+          <div class="kz-stat__num">1</div>
+          <div class="kz-stat__label">Nachricht genügt für jede Änderung — Sie loggen sich nie ein</div>
         </div>
       </div>
     </div>
@@ -318,34 +362,114 @@ const homeSchema = {
   <!-- 3.6 — ANGEBOT -->
   <section class="kz-section" id="angebot">
     <div class="kz-wrap">
-      <span class="kz-eyebrow kz-reveal">Das Angebot</span>
-      <h2 class="kz-h2 kz-reveal" data-delay="1">Der erste Schritt ist nicht „die ganze Firma automatisieren".</h2>
-      <p class="kz-lead kz-reveal" data-delay="2">
-        Der erste Schritt ist ein persönlicher KI-Assistent, der an echten Stellen hilft: Mail, Kalender, Aufgaben, Freigaben und Kontext. So bekommt Ihr Betrieb einen greifbaren Einstieg in KI, ohne dass Sie selbst zum Tool-Manager werden.
+      <h2 class="kz-h2 kz-reveal">Was Sie für {PREIS} € im Monat bekommen.</h2>
+      <p class="kz-lead kz-reveal" data-delay="1">
+        Keine Website, die nur schön dasteht. Eine Seite, die Anfragen annimmt und sie dorthin bringt, wo Sie sie sehen: auf Ihr Handy.
       </p>
 
-      <div class="kz-offer kz-reveal" data-delay="3">
+      <div class="kz-leist">
+        <article class="kz-leist__hero kz-reveal" data-delay="2">
+          <div class="kz-leist__hero-copy">
+            <h3>{leistungHero.title}</h3>
+            <p>{leistungHero.text}</p>
+          </div>
+          <div class="kz-leist__note" aria-hidden="true">
+            <span class="kz-leist__note-card">
+              <i class="kz-leist__dot"></i>
+              <span class="kz-leist__note-lines">
+                <b>Neue Anfrage über Ihre Website</b>
+                <i class="kz-leist__note-bar" style="width:72%"></i>
+                <i class="kz-leist__note-bar" style="width:46%"></i>
+              </span>
+              <em>Jetzt</em>
+            </span>
+          </div>
+        </article>
+
+        <ul class="kz-leist__list">
+          {leistungen.map((l, index) => (
+            <li class="kz-reveal" data-delay={(index % 2) + 1}>
+              <h3><i class="kz-leist__dot" aria-hidden="true"></i>{l.title}</h3>
+              <p>{l.text}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="kz-offer kz-reveal" data-delay="3" style="margin-top:48px;">
         <div class="kz-offer__main">
-          <div class="kz-offer__label">Einstieg</div>
-          <h3>KI-PA + persönlicher KI-Ansprechpartner</h3>
+          <div class="kz-offer__label">Der Preis</div>
+          <h3>{PREIS} € im Monat — und das war's</h3>
           <p>
-            Der Assistent wird mit Ihnen eingerichtet, nutzt nur freigegebene Quellen und liefert Vorschläge mit nachvollziehbarem Kontext.
+            Alles, was oben steht, steckt in diesem einen Preis. Es gibt keine Einrichtungsgebühr, keine Mindestlaufzeit und keine Position, die später dazukommt.
           </p>
           <ul class="kz-checklist">
-            <li>Mailverlauf, Kalender, Aufgaben und Kundennotizen als freigegebene Quellen.</li>
-            <li>Tagesbriefing, Antwortentwürfe, Freigaben und Erinnerungen für den Alltag.</li>
-            <li>Regeln, Tonalität und Grenzen, damit nichts unkontrolliert nach außen geht.</li>
-            <li>Laufende Weiterentwicklung, wenn der erste Assistent im Alltag trägt.</li>
+            <li>Keine Einrichtungsgebühr — Sie starten mit dem ersten Monatsbeitrag.</li>
+            <li>Monatlich kündbar. Ihr Risiko ist ein einziger Monat.</li>
+            <li>Hosting, Pflege und Änderungen sind enthalten, nicht extra.</li>
+            <li>Ihre Domain gehört Ihnen. Wenn Sie gehen, nehmen Sie sie mit.</li>
           </ul>
         </div>
         <aside class="kz-offer__side">
           <div class="kz-offer__side-k">Nächster Schritt</div>
-          <h3>30 Minuten Erstgespräch</h3>
-          <p>Wir nehmen Ihren Alltag durch. Am Ende steht keine Pflicht zum Kauf, sondern eine klare Empfehlung: nicht passend, KI-Check, Pilot oder KI-PA.</p>
-          <a href="/erstgespraech" class="kz-btn kz-btn--primary">Erstgespräch buchen <span class="kz-btn__arrow">→</span></a>
-          <a href={asyncMail} class="kz-offer__link">Lieber 3 Fragen per Mail schicken</a>
-          <a href="/ki-pa" class="kz-offer__link">Mehr zum KI-PA verstehen</a>
+          <h3>15 Minuten am Telefon</h3>
+          <p>Wir schauen uns Ihren Betrieb an und sagen ehrlich, ob das Paket passt — auch wenn die Antwort „eher nicht" lautet.</p>
+          <a href={calUrl} class="kz-btn kz-btn--primary" target="_blank" rel="noopener">Rückruf-Termin wählen <span class="kz-btn__arrow">→</span></a>
+          <a href={asyncMail} class="kz-offer__link">Lieber kurz per Mail schreiben</a>
+          <a href="/meisterseite" class="kz-offer__link">Alle Details zum Paket</a>
         </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3.62 — BEISPIEL / DEMO — der visuelle Höhepunkt der Seite.
+       Die Screenshots sind ECHTE Aufnahmen von muster.k-aizen.de (Playwright,
+       28.07.2026), keine Mockups: Ben hat KI-Bilder ausdrücklich abgelehnt.
+       Neu aufnehmen, wenn sich die Demo-Site ändert. -->
+  <section class="kz-section kz-demo-section" id="beispiel">
+    <div class="kz-wrap">
+      <h2 class="kz-h2 kz-reveal">Schauen Sie sich an, was Sie bekommen.</h2>
+      <p class="kz-lead kz-reveal" data-delay="1">
+        Eine vollständige Beispiel-Website — eine erfundene Dachdeckerei, aber echte Technik. Probieren Sie ruhig das Kontaktformular aus: genau diese Anfrage landet Sekunden später als Benachrichtigung auf einem Handy. Bei Ihrer Website ist es dann Ihres.
+      </p>
+
+      <a
+        href={demoUrl}
+        class="kz-demo-stage kz-reveal"
+        data-delay="2"
+        target="_blank"
+        rel="noopener"
+        aria-label="Beispiel-Website Dachdeckerei Brandner und Sohn in neuem Tab öffnen"
+      >
+        <span class="kz-demo-browser">
+          <span class="kz-demo-browser__bar" aria-hidden="true">
+            <span class="kz-demo-browser__dots"><i></i><i></i><i></i></span>
+            <span class="kz-demo-browser__url">muster.k-aizen.de</span>
+          </span>
+          <img
+            src="/images/demo/muster-desktop.webp"
+            width="1440"
+            height="900"
+            loading="lazy"
+            decoding="async"
+            alt="Beispiel-Website der Demo-Dachdeckerei Brandner und Sohn: großes Titelbild „Ihr Dach in Meisterhand“, Bewertung 4,9 von 5 aus 87 Bewertungen und Knopf „Jetzt Anfrage senden“"
+          />
+        </span>
+        <span class="kz-demo-phone">
+          <img
+            src="/images/demo/muster-mobil.webp"
+            width="390"
+            height="844"
+            loading="lazy"
+            decoding="async"
+            alt="Dieselbe Beispiel-Website auf einem Handy-Bildschirm"
+          />
+        </span>
+      </a>
+
+      <div class="kz-demo-cta kz-reveal" data-delay="3">
+        <a href={demoUrl} class="kz-btn kz-btn--primary" target="_blank" rel="noopener">Beispiel-Website öffnen <span class="kz-btn__arrow">→</span></a>
+        <span class="kz-demo-hint">Öffnet sich in einem neuen Tab · Dachdeckerei Brandner &amp; Sohn (Demo)</span>
       </div>
     </div>
   </section>
@@ -353,10 +477,9 @@ const homeSchema = {
   <!-- 3.65 — FIT FILTER -->
   <section class="kz-section kz-fit-section">
     <div class="kz-wrap">
-      <span class="kz-eyebrow kz-reveal">Schneller Fit-Check</span>
-      <h2 class="kz-h2 kz-reveal" data-delay="1">Nicht jeder Betrieb braucht jetzt ein KI-Projekt. Genau deshalb starten wir klein.</h2>
+      <h2 class="kz-h2 kz-reveal" data-delay="1">Nicht jeder Betrieb braucht das. Sagen wir lieber vorher als hinterher.</h2>
       <p class="kz-lead kz-reveal" data-delay="2">
-        Ein guter Einstieg soll nicht nur überzeugen, sondern auch aussortieren. Wenn einer dieser Punkte nicht passt, klären wir das früh, bevor Aufwand und Budget in die falsche Richtung laufen.
+        Ein Paket, das nicht passt, macht niemanden glücklich — Sie zahlen und ärgern sich, wir betreuen etwas, das keinen Nutzen bringt. Deshalb klären wir das im ersten Gespräch.
       </p>
       <div class="kz-fit-grid">
         {fitCards.map((card, index) => (
@@ -375,10 +498,9 @@ const homeSchema = {
   <!-- 3.7 — ABLAUF -->
   <section class="kz-section" id="ablauf" style="background:var(--paper-2);">
     <div class="kz-wrap">
-      <span class="kz-eyebrow kz-reveal">Ablauf</span>
-      <h2 class="kz-h2 kz-reveal" data-delay="1">Vom ersten Gespräch zum ersten System im Betrieb.</h2>
+      <h2 class="kz-h2 kz-reveal" data-delay="1">Vom Anruf zur fertigen Seite — in wenigen Tagen.</h2>
       <p class="kz-lead kz-reveal" data-delay="2">
-        Es geht nicht darum, sofort alles zu automatisieren. Es geht darum, den richtigen Einstieg zu finden, sauber aufzubauen und dann mit jedem Schritt mehr Ordnung ins Unternehmen zu bringen.
+        Sie müssen nichts vorbereiten und nichts lernen. Der einzige Aufwand auf Ihrer Seite ist ein kurzes Gespräch und einmal Material.
       </p>
       <div class="kz-process">
         {ablaufSchritte.map((step, index) => (
@@ -395,7 +517,7 @@ const homeSchema = {
   <!-- 4 — WER ICH BIN -->
   <section class="kz-section" id="wer-ich-bin">
     <div class="kz-wrap">
-      <div style="display:grid;grid-template-columns:minmax(0,0.9fr) 1.1fr;gap:clamp(28px,6vw,72px);align-items:center;">
+      <div class="kz-person-grid">
         <div class="kz-reveal">
           <div class="kz-portrait" data-tilt>
             <img src={benFoto} alt="Benjamin Zirngibl" loading="lazy" />
@@ -403,109 +525,43 @@ const homeSchema = {
           </div>
         </div>
         <div>
-          <span class="kz-eyebrow kz-reveal">Ansprechpartner</span>
-          <h2 class="kz-h2 kz-reveal" data-delay="1">Persönlich begleitet. Professionell umgesetzt.</h2>
+          <h2 class="kz-h2 kz-reveal" data-delay="1">Sie haben einen Ansprechpartner. Keine Hotline.</h2>
           <p class="kz-lead kz-reveal" data-delay="2">
-            k-AIzen ist nicht als einmaliges Tool-Projekt gedacht. Der Betrieb wird verstanden, der erste sinnvolle Ablauf wird umgesetzt und die nächsten Schritte bleiben betreut.
+            Bei mir rufen Sie an und bekommen mich — nicht ein Ticketsystem. Wenn sich Ihre Öffnungszeiten ändern oder ein neues Foto auf die Seite soll, schreiben Sie mir eine Nachricht, und es ist erledigt.
           </p>
           <p class="kz-lead kz-reveal" data-delay="3">
-            Das Ziel ist größer als ein Assistent: langfristig mehr System, weniger Sucherei, weniger Liegengebliebenes und mehr Abläufe, die sauber funktionieren.
+            Die Technik dahinter ist dieselbe, die ich für meine eigenen Portale nutze: schnelle Seiten, deutsche Server, sauberer Datenschutz. Kein Bausatz von der Stange.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 5 — LANGFRISTIGE ROLLE -->
-  <section class="kz-section" id="so-laeufts" style="background:var(--ink);color:var(--paper);">
+  <!-- 5 — FAQ -->
+  <section class="kz-section" id="fragen" style="background:var(--paper-2);">
     <div class="kz-wrap">
-      <span class="kz-eyebrow kz-reveal" style="color:#FFB088;">Langfristig</span>
-      <h2 class="kz-h2 kz-reveal" data-delay="1" style="color:#fff;">Erst KI-PA. Dann Schritt für Schritt mehr System im Betrieb.</h2>
-      <p class="kz-lead kz-reveal" data-delay="2" style="color:rgba(255,255,255,0.7);">Der Assistent ist der Anfang, nicht die Grenze. Wenn der erste Nutzen sichtbar ist, nehmen wir den nächsten wiederkehrenden Ablauf und bauen ihn sauber weiter.</p>
-      <div class="kz-steps">
-        <div class="kz-step kz-reveal" data-delay="1" data-tilt>
-          <div class="kz-step__k">Verantwortung</div>
-          <h4>Ein fester KI-Kontakt</h4>
-          <p>Sie haben jemanden, der KI im Blick behält, Fragen einordnet und nicht bei jedem neuen Tool wieder bei null anfängt.</p>
-        </div>
-        <div class="kz-step kz-reveal" data-delay="2" data-tilt>
-          <div class="kz-step__k">Automatisieren</div>
-          <h4>Wiederkehrendes abgeben</h4>
-          <p>Mails, Termine, Telefon, Belege, Leads, interne Listen: alles, was regelmäßig gleich anfängt, kann sauberer laufen.</p>
-        </div>
-        <div class="kz-step kz-reveal" data-delay="3" data-tilt>
-          <div class="kz-step__k">Systematisieren</div>
-          <h4>Wissen nutzbar machen</h4>
-          <p>Aus Notizen, Regeln, Erfahrungen und Entscheidungen wird ein System, das nicht nur in Köpfen oder alten Mails steckt.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5.5 — FUNKTIONEN (ehem. Ein Tag mit Lena; Anker #ein-tag bleibt — extern verlinkt!) -->
-  <section class="kz-section" id="ein-tag">
-    <div class="kz-wrap">
-      <span class="kz-eyebrow kz-reveal">Funktionen</span>
-      <h2 class="kz-h2 kz-reveal" data-delay="1">Was Lena im Betrieb übernimmt.</h2>
-      <p class="kz-lead kz-reveal" data-delay="2">
-        Keine Feature-Liste. Jede Funktion ist eine Situation, die es in kleinen Betrieben wirklich
-        gibt — erst wie sie ohne Assistenz schiefgeht, dann wie Lena sie löst. Mit Freigaben,
-        nicht auf Autopilot.
-      </p>
-
-      <div class="kz-fn-home-grid">
-        {funktionenListe.map((f) => (
-          <a href={`/funktionen/${f.id}`} class="kz-fn-home-card kz-reveal">
-            <img src={f.data.heroImage} alt={f.data.heroAlt} loading="lazy" />
-            <div class="kz-fn-home-body">
-              <p class="kz-fn-home-kicker">{f.data.schmerzKicker}</p>
-              <h3>{f.data.title}</h3>
-            </div>
-          </a>
+      <h2 class="kz-h2 kz-reveal" data-delay="1">Was Betriebe uns vorher fragen.</h2>
+      <div class="kz-faq kz-reveal" data-delay="2">
+        {faqs.map((f) => (
+          <details class="kz-faq__item">
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
         ))}
       </div>
-
-      <div class="kz-fn-home-more kz-reveal">
-        <a href="/funktionen" class="kz-btn">Alle Funktionen ansehen →</a>
-      </div>
     </div>
   </section>
 
-  <style>
-    .kz-fn-home-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: clamp(32px, 5vw, 56px); }
-    .kz-fn-home-card { display: block; text-decoration: none !important; color: var(--fg); background: var(--kz-cream-deep, #ede5d4); border: 1px solid var(--kz-border); border-radius: 12px; overflow: hidden; transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out); }
-    .kz-fn-home-card:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(31,41,51,0.08); }
-    .kz-fn-home-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
-    .kz-fn-home-body { padding: 20px 24px; }
-    .kz-fn-home-kicker { font-family: var(--font-display); font-style: italic; font-size: 16px; margin: 0 0 6px; color: var(--fg-inverse); }
-    .kz-fn-home-body h3 { font-family: var(--font-display); font-size: 20px; margin: 0; color: var(--fg-inverse); }
-    .kz-fn-home-more { margin-top: 32px; }
-  </style>
-
-  <!-- 6 — PROOF -->
-  <!-- 7 — GROSS-ZITAT (ruhiger Rhythmus-Bruch) -->
-  <section class="kz-quote" style="background:var(--ink);">
+  <!-- 6 — KONTAKT -->
+  <section class="kz-section" id="kontakt" style="text-align:center;">
     <div class="kz-wrap">
-      <span class="kz-quote__mark kz-reveal" style="color:var(--violet);">„</span>
-      <blockquote class="kz-reveal" data-delay="1" style="color:#fff;">
-        Der Wert liegt nicht im nächsten KI-Tool. Der Wert liegt darin, KI in einen funktionierenden Arbeitsablauf zu übersetzen.
-      </blockquote>
-      <cite class="kz-reveal" data-delay="2" style="color:rgba(255,255,255,0.6);">— Benjamin Zirngibl</cite>
-    </div>
-  </section>
-
-  <!-- 8 — KONTAKT -->
-  <section class="kz-section" id="kontakt" style="background:var(--paper-2);text-align:center;">
-    <div class="kz-wrap">
-      <span class="kz-eyebrow kz-reveal">Nächster Schritt</span>
-      <h2 class="kz-h2 kz-reveal" data-delay="1" style="margin-inline:auto;">Starten Sie so klein, wie es für Sie angenehm ist.</h2>
+      <h2 class="kz-h2 kz-reveal" data-delay="1" style="margin-inline:auto;">Fünfzehn Minuten, und Sie wissen, ob es passt.</h2>
       <p class="kz-lead kz-reveal" data-delay="2" style="margin-inline:auto;">
-        Kalendertermin, Mail oder WhatsApp. Wenn Sie lieber schriftlich starten möchten, reichen drei Stichpunkte.
-        Sie erhalten eine persönliche Einschätzung, ob KI-PA, KI-Check oder vorerst kein Projekt sinnvoll ist.
+        Kein Verkaufsmarathon. Wir sprechen über Ihren Betrieb, Sie sehen das Beispiel, und Sie entscheiden in Ruhe. Wenn es nicht passt, sage ich das.
       </p>
       <div class="kz-reveal" data-delay="3" style="margin-top:36px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-        <a href="/erstgespraech" class="kz-btn kz-btn--primary">Erstgespräch buchen <span class="kz-btn__arrow">→</span></a>
-        <a href={asyncMail} class="kz-btn kz-btn--ghost">3-Fragen-Check per Mail</a>
+        <a href={calUrl} class="kz-btn kz-btn--primary" target="_blank" rel="noopener">Rückruf-Termin wählen <span class="kz-btn__arrow">→</span></a>
+        <a href={asyncMail} class="kz-btn kz-btn--ghost">Kurz per Mail</a>
         <a href="https://wa.me/4915901031928" class="kz-btn kz-btn--ghost">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.477-.916zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.148-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.29.173-1.414z"/></svg>
           WhatsApp
@@ -516,10 +572,24 @@ const homeSchema = {
 
   <footer class="kz-footer">
     <div class="kz-wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;">
-      <span>© k-AIzen · Benjamin Zirngibl · <a href="/impressum" style="color:inherit;">Impressum</a> · <a href="/datenschutz" style="color:inherit;">Datenschutz</a></span>
-      <span style="font-family:var(--font-mono);">KI-PA · Automatisierung · Systematisierung</span>
+      <span>© k-AIzen · Benjamin Zirngibl · <a href="/impressum" style="color:inherit;">Impressum</a> · <a href="/datenschutz" style="color:inherit;">Datenschutz</a> · <a href="/agb" style="color:inherit;">AGB</a></span>
+      <!-- Ausbaustufen dezent verlinkt: nicht mehr in der Hauptnav (Ben 07-28), aber
+           erreichbar — sonst wären /funktionen und /ki-pa von der Startseite aus verwaist. -->
+      <span style="font-family:var(--font-mono);"><a href="/funktionen" style="color:inherit;">Später möglich: KI im Betrieb</a></span>
     </div>
   </footer>
+
+  <script is:inline src="/v2/kz-v2.js?v=5" defer></script>
+
+  <!-- k-AIzen OS Chat-Widget (wie in KaizenLayout.astro — Startseite hat eigenes Layout) -->
+  <script
+    is:inline
+    async
+    src="https://kaizen-os.k-aizen.de/widget.js"
+    data-channel-id="36c2c50b-f03f-46b8-93a9-4f5f9becb6b8"
+    data-base-url="https://kaizen-os.k-aizen.de"
+    data-title="Fragen? Schreiben Sie uns"
+    data-accent="#E85A2B"></script>
 
   <style>
     .kz-btn--whatsapp { background:#25D366; color:#fff; box-shadow:0 8px 24px -6px rgba(37,211,102,0.45); }
@@ -583,18 +653,101 @@ const homeSchema = {
       .kz-process__step { min-height:auto; }
       .kz-hero__grid { display:none; }
     }
+
+    /* --- Neue Sektionen der Meisterseiten-Startseite (Design: Fable 5, 2026-07-28) --- */
+    .kz-hero__note { margin-top:18px; font-size:0.85rem; color:var(--slate-2); letter-spacing:0.01em; line-height:1.6; }
+
+
+    .kz-demo-section { background:linear-gradient(160deg,var(--paper-2) 0%,var(--indigo-wash) 100%); border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft); }
+
+    .kz-demo-cta { display:flex; align-items:center; flex-wrap:wrap; gap:18px; margin-top:clamp(24px,4vw,36px); }
+    .kz-demo-hint { font-size:0.85rem; color:var(--slate-2); line-height:1.5; max-width:38ch; }
+
+    .kz-faq { margin-top:clamp(28px,4vw,44px); border-top:1px solid var(--line); }
+    .kz-faq__item { border-bottom:1px solid var(--line); }
+    .kz-faq__item summary { position:relative; list-style:none; cursor:pointer; padding:18px 48px 18px 0; font-weight:700; font-size:1.02rem; letter-spacing:-0.01em; color:var(--ink); }
+    .kz-faq__item summary::-webkit-details-marker { display:none; }
+    .kz-faq__item summary::after { content:"+"; position:absolute; right:2px; top:50%; translate:0 -50%; width:26px; height:26px; display:grid; place-items:center; border:1px solid var(--line); border-radius:50%; background:var(--card); font-family:var(--font-mono); font-size:15px; font-weight:700; color:var(--indigo-deep); transition:transform 0.35s var(--ease-out); }
+    .kz-faq__item[open] summary::after { transform:rotate(45deg); }
+    .kz-faq__item summary:hover { color:var(--indigo-deep); }
+    .kz-faq__item summary:focus-visible { outline:2px solid var(--indigo); outline-offset:3px; border-radius:6px; }
+    .kz-faq__item p { color:var(--slate); font-size:0.98rem; line-height:1.65; max-width:62ch; padding:0 48px 20px 0; }
+
+    .kz-person-grid { display:grid; grid-template-columns:minmax(0,0.9fr) 1.1fr; gap:clamp(28px,6vw,72px); align-items:center; }
+
+    @media (max-width: 760px) {
+      .kz-person-grid { grid-template-columns:1fr; gap:28px; }
+      .kz-demo-cta { flex-direction:column; align-items:flex-start; gap:12px; }
+      .kz-demo-hint { max-width:none; }
+      .kz-hero__note { font-size:0.82rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .kz-faq__item summary::after { transition:none; }
+    }
+
+    /* ===== Beispiel-Sektion: Screenshot-Bühne (Design: Fable, 28.07.) ===== */
+    .kz-demo-stage { position:relative; display:block; margin-top:clamp(32px,5vw,56px); text-decoration:none; }
+    .kz-demo-stage:focus-visible { outline:2px solid var(--indigo); outline-offset:6px; border-radius:var(--radius-lg); }
+
+    .kz-demo-browser { display:block; width:calc(100% - clamp(56px,9vw,120px)); margin-bottom:clamp(28px,5vw,64px); background:var(--card); border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-md); }
+    .kz-demo-browser img { display:block; width:100%; height:auto; }
+    .kz-demo-browser__bar { display:flex; align-items:center; gap:14px; padding:10px 14px; background:var(--paper-2); border-bottom:1px solid var(--line-soft); }
+    .kz-demo-browser__dots { display:flex; gap:6px; }
+    .kz-demo-browser__dots i { width:9px; height:9px; border-radius:50%; background:var(--line); }
+    .kz-demo-browser__url { flex:1; text-align:center; font-size:0.8rem; color:var(--slate); background:var(--card); border:1px solid var(--line-soft); border-radius:999px; padding:4px 14px; max-width:32ch; margin-inline:auto; letter-spacing:0.01em; }
+
+    .kz-demo-phone { position:absolute; right:0; bottom:0; display:block; width:clamp(132px,17vw,218px); padding:5px; background:var(--ink); border-radius:22px; box-shadow:var(--shadow-lg); }
+    .kz-demo-phone img { display:block; width:100%; height:auto; border-radius:17px; }
+
+    /* Der EINE inszenierte Moment der Seite: die Bühne gleitet ein, dann setzt sich
+       das Handy mit kurzem Nachlauf auf den Screenshot. Nicht auf andere Sektionen
+       kopieren — craft-floor: eine authored moment, keine verstreuten Effekte. */
+    @media (prefers-reduced-motion: no-preference) {
+      .kz-demo-phone { opacity:0.2; transform:translateY(34px) rotate(3deg); transition:opacity 0.9s var(--ease-out) 0.35s, transform 0.9s var(--ease-out) 0.35s; }
+      .kz-demo-stage.is-in .kz-demo-phone { opacity:1; transform:none; }
+      .kz-demo-browser { transition:transform 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out); }
+      .kz-demo-stage:hover .kz-demo-browser, .kz-demo-stage:focus-visible .kz-demo-browser { transform:translateY(-4px); box-shadow:var(--shadow-lg); }
+    }
+
+    /* ===== Leistungen: ein Kernversprechen, fünf Fakten ===== */
+    .kz-leist { margin-top:clamp(28px,4vw,44px); }
+
+    .kz-leist__hero { position:relative; overflow:hidden; display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr); gap:clamp(24px,4vw,48px); align-items:center; background:var(--ink); border-radius:var(--radius-xl); padding:clamp(28px,4.5vw,52px); box-shadow:var(--shadow-lg); }
+    .kz-leist__hero::before { content:""; position:absolute; right:-18%; bottom:-55%; width:70%; aspect-ratio:1; background:radial-gradient(circle, var(--glow), transparent 65%); pointer-events:none; }
+    .kz-leist__hero h3 { color:var(--paper); font-size:clamp(1.45rem,2.6vw,2rem); line-height:1.15; letter-spacing:-0.02em; font-weight:800; }
+    .kz-leist__hero p { margin-top:12px; color:color-mix(in srgb, var(--paper) 82%, var(--violet) 18%); font-size:clamp(1rem,1.5vw,1.1rem); line-height:1.65; max-width:46ch; }
+
+    .kz-leist__note { position:relative; display:grid; justify-items:end; }
+    .kz-leist__note-card { display:flex; align-items:flex-start; gap:12px; width:min(340px,100%); background:var(--card); border-radius:var(--radius-lg); padding:14px 16px; box-shadow:var(--shadow-md); }
+    .kz-leist__note-lines { display:grid; gap:7px; flex:1; min-width:0; }
+    .kz-leist__note-lines b { font-size:0.92rem; color:var(--ink); letter-spacing:-0.01em; line-height:1.35; }
+    .kz-leist__note-bar { display:block; height:8px; border-radius:4px; background:var(--paper-2); border:1px solid var(--line-soft); }
+    .kz-leist__note-card em { font-style:normal; font-size:0.78rem; color:var(--slate-2); flex:none; }
+
+    .kz-leist__dot { display:inline-block; width:9px; height:9px; border-radius:50%; background:var(--indigo); flex:none; }
+    .kz-leist__note-card .kz-leist__dot { margin-top:4px; }
+
+    .kz-leist__list { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:1fr 1fr; column-gap:clamp(28px,5vw,64px); margin-top:clamp(8px,1.5vw,16px); }
+    .kz-leist__list li { padding-block:clamp(18px,2.5vw,26px); border-top:1px solid var(--line-soft); }
+    .kz-leist__list li:nth-child(-n+2) { border-top:0; }
+    .kz-leist__list h3 { font-size:1.08rem; font-weight:700; letter-spacing:-0.01em; color:var(--ink); line-height:1.3; }
+    .kz-leist__list h3 .kz-leist__dot { margin-right:10px; translate:0 -1px; }
+    .kz-leist__list p { margin-top:8px; color:var(--slate); font-size:0.95rem; line-height:1.62; max-width:52ch; }
+
+    @media (max-width:760px) {
+      .kz-demo-browser { width:calc(100% - clamp(44px,12vw,64px)); }
+      .kz-demo-phone { width:clamp(104px,30vw,132px); border-radius:18px; }
+      .kz-demo-phone img { border-radius:14px; }
+      .kz-demo-browser__url { max-width:none; }
+
+      .kz-leist__hero { grid-template-columns:1fr; padding:clamp(24px,6vw,32px); }
+      .kz-leist__note { justify-items:start; }
+      .kz-leist__list { grid-template-columns:1fr; }
+      .kz-leist__list li:nth-child(2) { border-top:1px solid var(--line-soft); }
+    }
+
   </style>
 
-  <script is:inline src="/v2/kz-v2.js?v=5" defer></script>
-
-  <!-- k-AIzen OS Chat-Widget (wie in KaizenLayout.astro — Startseite hat eigenes Layout) -->
-  <script
-    is:inline
-    async
-    src="https://kaizen-os.k-aizen.de/widget.js"
-    data-channel-id="36c2c50b-f03f-46b8-93a9-4f5f9becb6b8"
-    data-base-url="https://kaizen-os.k-aizen.de"
-    data-title="Fragen? Schreiben Sie uns"
-    data-accent="#E85A2B"></script>
 </body>
 </html>
