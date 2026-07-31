@@ -43,8 +43,8 @@ Modern, schnell, auf dem Handy einwandfrei. Der Betrieb liefert Logo, Fotos und 
 ### Anfragen sofort auf dem Handy
 Jemand füllt das Formular aus, Sekunden später ist Name, Nummer und Anliegen als Benachrichtigung da. Kein Lead versauert im Postfach, keine Anfrage geht verloren, weil abends niemand mehr ins Mailprogramm schaut.
 
-### Online-Terminanfrage
-Kunden buchen selbst einen Rückruf-Termin — auch abends um zehn, auch wenn der Betrieb gerade auf dem Gerüst steht.
+### Anfragen-App
+Jede Anfrage lässt sich direkt auf dem Handy bearbeiten: zurückrufen mit einem Tipp, Bearbeitungsstand setzen (neu, angerufen, besichtigt, Angebot raus, Auftrag), Notizen festhalten. Die Notizen hängen am Kunden, nicht an der einzelnen Anfrage; meldet sich jemand nach einem Jahr wieder, ist der letzte Stand noch da. Im Anfrageformular gibt der Interessent an, wann er zurückgerufen werden möchte: vormittags, nachmittags oder abends nach 17 Uhr.
 
 ### Dauerhaft betreut
 Hosting, Pflege und Änderungen sind im Monatspreis enthalten. Neues Foto, andere Öffnungszeiten, eine zusätzliche Leistung? Eine kurze Nachricht genügt, in der Regel ist es am selben Tag drin. Der Kunde loggt sich nirgendwo ein.
@@ -60,7 +60,7 @@ Sauberer Suchmaschinen-Unterbau ab Werk: strukturierte Daten, Sitemap, llms.txt.
 1. **Kurzes Gespräch (15 Minuten):** Wir klären, was der Betrieb braucht und ob das Paket passt. Wenn nicht, wird das gesagt.
 2. **Material liefern:** Einmalig Logo, ein paar Fotos, die Leistungen. Mehr nicht.
 3. **Die Seite entsteht:** In der Regel innerhalb weniger Tage. Der Kunde schaut in Ruhe drüber, es wird angepasst, bis es sitzt.
-4. **Läuft dauerhaft:** Anfragen landen auf dem Handy, Termine im Kalender. Änderungen jederzeit per Nachricht.
+4. **Läuft dauerhaft:** Anfragen landen auf dem Handy und werden in der Anfragen-App bearbeitet. Änderungen jederzeit per Nachricht.
 
 ## Beispiel-Website
 
@@ -75,7 +75,7 @@ Kostenlos, 15 Minuten, per Telefon. Kein Verkaufsmarathon. Am Ende steht eine eh
 - **297 € pro Monat**
 - 0 € Einrichtungsgebühr
 - keine Mindestlaufzeit, monatlich kündbar
-- enthalten: Bau der Website, Hosting, Pflege, alle Änderungen, Lead-Formular mit Sofort-Benachrichtigung, Online-Terminanfrage, Rechtstexte, Suchmaschinen-Unterbau
+- enthalten: Bau der Website, Hosting, Pflege, alle Änderungen, Lead-Formular mit Sofort-Benachrichtigung, Anfragen-App (Bearbeitungsstand, Kunden-Notizen), Rechtstexte, Suchmaschinen-Unterbau
 
 **Warum monatlich statt einmalig:** Eine Website ist kein Möbelstück, das man einmal hinstellt. Im Monatspreis stecken Hosting, Pflege, Änderungen und die laufende Technik. Der Kunde zahlt für eine Seite, die dauerhaft funktioniert, nicht für eine einmal übergebene Datei.
 

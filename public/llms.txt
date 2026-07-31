@@ -20,7 +20,7 @@ Ein Preis, alles inklusive — kein Baukasten, keine versteckten Extras:
 
 - **Website, komplett gebaut:** Modern, schnell, auf dem Handy perfekt. Der Betrieb liefert einmalig Logo, Fotos und Leistungen, den Rest macht k-AIzen.
 - **Anfragen sofort aufs Handy:** Formular ausgefüllt → Sekunden später liegen Name, Nummer und Anliegen als Benachrichtigung vor. Kein Lead versauert im Postfach.
-- **Online-Terminanfrage:** Kunden buchen einen Rückruf-Termin, auch abends und am Wochenende.
+- **Anfragen-App:** Jede Anfrage wird direkt auf dem Handy bearbeitet: zurückrufen mit einem Tipp, Bearbeitungsstand setzen (neu, angerufen, besichtigt, Angebot, Auftrag), Notizen je Kunde. Im Formular gibt der Interessent an, wann er zurückgerufen werden möchte (vormittags, nachmittags oder abends).
 - **Dauerhaft betreut:** Hosting, Pflege, Änderungen inklusive. Neues Foto oder andere Öffnungszeiten? Eine kurze Nachricht genügt, ist am selben Tag drin.
 - **Datenschutz eingebaut:** Deutsche Server, kein US-Tracking, Impressum und Datenschutzerklärung sauber.
 - **Gefunden werden:** Sauberer Suchmaschinen-Unterbau ab Werk — für Google und für KI-Antworten (strukturierte Daten, Sitemap, llms.txt).
@@ -40,7 +40,7 @@ Ein Preis, alles inklusive — kein Baukasten, keine versteckten Extras:
 
 ## Preise Kurzfassung
 
-- Meisterseite (Website-Paket): **297 € pro Monat**, keine Einrichtungsgebühr, monatlich kündbar. Enthält Bau, Hosting, Pflege, Änderungen, Lead-Formular mit Sofort-Benachrichtigung und Online-Terminanfrage.
+- Meisterseite (Website-Paket): **297 € pro Monat**, keine Einrichtungsgebühr, monatlich kündbar. Enthält Bau, Hosting, Pflege, Änderungen, Lead-Formular mit Sofort-Benachrichtigung und Anfragen-App mit Bearbeitungsstand und Kunden-Notizen.
 - Erstgespräch: kostenlos, 15 Minuten Rückruf.
 
 ## Markenstimme
