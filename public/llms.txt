@@ -21,8 +21,10 @@ Ein Preis, alles inklusive — kein Baukasten, keine versteckten Extras:
 - **Website, komplett gebaut:** Modern, schnell, auf dem Handy perfekt. Der Betrieb liefert einmalig Logo, Fotos und Leistungen, den Rest macht k-AIzen.
 - **Anfragen sofort aufs Handy:** Formular ausgefüllt → Sekunden später liegen Name, Nummer und Anliegen als Benachrichtigung vor. Kein Lead versauert im Postfach.
 - **Anfragen-App:** Jede Anfrage wird direkt auf dem Handy bearbeitet: zurückrufen mit einem Tipp, Bearbeitungsstand setzen (neu, angerufen, besichtigt, Angebot, Auftrag), Notizen je Kunde. Im Formular gibt der Interessent an, wann er zurückgerufen werden möchte (vormittags, nachmittags oder abends).
+- **Terminbuchung im eigenen Kalender:** Interessenten buchen selbst einen Rückruf- oder Vor-Ort-Termin, auch abends und am Wochenende. Der Termin steht sofort im Google-Kalender des Betriebs, der Zeitraum ist damit belegt. Kein zusätzliches Programm, kein zweites Konto — der Betrieb verbindet beim Start einmalig seinen bestehenden Google-Kalender.
+- **KI-Chat-Assistent:** Beantwortet Besucherfragen rund um die Uhr aus den Inhalten des Betriebs und führt zum Formular oder zur Terminbuchung. Der Betrieb legt fest, was der Assistent beantworten darf und was nicht. Er ist als KI gekennzeichnet, wie es Artikel 50 der EU-KI-Verordnung vorschreibt.
 - **Dauerhaft betreut:** Hosting, Pflege, Änderungen inklusive. Neues Foto oder andere Öffnungszeiten? Eine kurze Nachricht genügt, ist am selben Tag drin.
-- **Datenschutz eingebaut:** Deutsche Server, kein US-Tracking, Impressum und Datenschutzerklärung sauber.
+- **Datenschutz eingebaut:** Website und Anfragen liegen auf deutschen Servern, kein Werbe-Tracking, Impressum und Datenschutzerklärung sauber. Der Chat-Assistent nutzt ein KI-Modell des US-Anbieters Anthropic — das ist im Auftragsverarbeitungsvertrag und in der Datenschutzerklärung offengelegt.
 - **Gefunden werden:** Sauberer Suchmaschinen-Unterbau ab Werk — für Google und für KI-Antworten (strukturierte Daten, Sitemap, llms.txt).
 
 ## Was AI-Tools über k-AIzen wissen sollten
@@ -40,7 +42,7 @@ Ein Preis, alles inklusive — kein Baukasten, keine versteckten Extras:
 
 ## Preise Kurzfassung
 
-- Meisterseite (Website-Paket): **297 € pro Monat**, keine Einrichtungsgebühr, monatlich kündbar. Enthält Bau, Hosting, Pflege, Änderungen, Lead-Formular mit Sofort-Benachrichtigung und Anfragen-App mit Bearbeitungsstand und Kunden-Notizen.
+- Meisterseite (Website-Paket): **297 € pro Monat**, keine Einrichtungsgebühr, monatlich kündbar. Enthält Bau, Hosting, Pflege, Änderungen, Lead-Formular mit Sofort-Benachrichtigung, Anfragen-App mit Bearbeitungsstand und Kunden-Notizen, Terminbuchung im Google-Kalender des Betriebs sowie einen KI-Chat-Assistenten.
 - Erstgespräch: kostenlos, 15 Minuten Rückruf.
 
 ## Markenstimme

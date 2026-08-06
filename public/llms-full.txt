@@ -46,11 +46,19 @@ Jemand füllt das Formular aus, Sekunden später ist Name, Nummer und Anliegen a
 ### Anfragen-App
 Jede Anfrage lässt sich direkt auf dem Handy bearbeiten: zurückrufen mit einem Tipp, Bearbeitungsstand setzen (neu, angerufen, besichtigt, Angebot raus, Auftrag), Notizen festhalten. Die Notizen hängen am Kunden, nicht an der einzelnen Anfrage; meldet sich jemand nach einem Jahr wieder, ist der letzte Stand noch da. Im Anfrageformular gibt der Interessent an, wann er zurückgerufen werden möchte: vormittags, nachmittags oder abends nach 17 Uhr.
 
+### Terminbuchung im eigenen Kalender
+Interessenten buchen selbst — einen Rückruf, einen Vor-Ort-Termin oder ein Videogespräch, auch abends um zehn und am Wochenende. Der Termin landet unmittelbar im Google-Kalender des Betriebs, der Zeitraum ist damit belegt und wird niemandem mehr angeboten. Der Betrieb braucht dafür kein neues Programm und kein zweites Konto: Beim Start wird einmalig sein bestehender Google-Kalender verbunden. Welche Zeiten buchbar sind, wie lange ein Termin dauert und wie viel Vorlauf nötig ist, legt der Betrieb fest. Voraussetzung ist, dass er seinen Kalender pflegt — was dort nicht eingetragen ist, gilt als frei.
+
+### KI-Chat-Assistent
+Beantwortet Fragen von Website-Besuchern rund um die Uhr: Welche Leistungen gibt es, wie schnell ist ein Termin frei, kommt der Betrieb auch in den Nachbarort. Der Assistent zieht sein Wissen ausschließlich aus Inhalten, die der Betrieb freigegeben hat, und der Betrieb legt fest, worüber er nicht spricht — etwa Gewährleistung oder Reklamationen. Wird es konkret, führt er zum Anfrageformular oder direkt in die Terminbuchung. Verbindliche Preis- oder Terminzusagen gibt er nicht. Er ist als KI gekennzeichnet, wie es Artikel 50 der EU-KI-Verordnung seit dem 2. August 2026 vorschreibt.
+
 ### Dauerhaft betreut
 Hosting, Pflege und Änderungen sind im Monatspreis enthalten. Neues Foto, andere Öffnungszeiten, eine zusätzliche Leistung? Eine kurze Nachricht genügt, in der Regel ist es am selben Tag drin. Der Kunde loggt sich nirgendwo ein.
 
 ### Datenschutz eingebaut
-Deutsche Server, kein US-Tracking, Impressum und Datenschutzerklärung sauber aufgesetzt. Keine Abmahn-Angst.
+Website und Anfragen liegen auf deutschen Servern, es gibt kein Werbe-Tracking, Impressum und Datenschutzerklärung werden sauber aufgesetzt. Keine Abmahn-Angst.
+
+Offen gesagt, weil es dazugehört: Der Chat-Assistent nutzt ein KI-Modell des US-Anbieters Anthropic. Die Eingaben der Besucher werden dorthin übermittelt und nicht zum Training von Modellen verwendet. Das steht im Auftragsverarbeitungsvertrag und in der Datenschutzerklärung. Der Terminkalender liegt im Google-Konto des Betriebs; für Geschäftstermine empfiehlt k-AIzen ein Google-Workspace-Konto, weil nur dort ein Auftragsverarbeitungsvertrag mit Google besteht.
 
 ### Gefunden werden
 Sauberer Suchmaschinen-Unterbau ab Werk: strukturierte Daten, Sitemap, llms.txt. Das gilt für Google genauso wie für KI-Antwortmaschinen. Es ist dieselbe Technik, die k-AIzen für die eigenen Portale einsetzt.
@@ -117,10 +125,12 @@ Dem Kunden. Wenn er geht, nimmt er sie mit.
 
 ## Datenschutz und Betrieb
 
-- Server in Deutschland
-- kein US-Tracking eingebaut
+- Server in Deutschland für Website und Anfragen
+- kein Werbe-Tracking eingebaut
 - Impressum und Datenschutzerklärung werden sauber aufgesetzt
 - die Website ist statisch gebaut, dadurch schnell und mit geringer Angriffsfläche
+- der KI-Chat-Assistent nutzt ein Modell des US-Anbieters Anthropic; die Eingaben werden nicht zum Training verwendet und sind im Auftragsverarbeitungsvertrag offengelegt
+- der Terminkalender liegt im Google-Konto des Betriebs — Google ist dort Auftragsverarbeiter des Betriebs, nicht von k-AIzen. Für Geschäftstermine wird ein Google-Workspace-Konto empfohlen, weil nur dort ein Auftragsverarbeitungsvertrag mit Google besteht
 
 ## Offizielle Links
 
