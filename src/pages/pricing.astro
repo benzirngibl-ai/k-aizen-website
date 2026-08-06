@@ -11,9 +11,9 @@ const PREIS = '297';
 
 const enthalten = [
   'Website komplett gebaut — modern, schnell, auf dem Handy perfekt',
-  'Lead-Formular: jede Anfrage sofort als Benachrichtigung auf Ihr Handy',
+  'Lead-Formular: jede Anfrage sofort als Benachrichtigung auf dein Handy',
   'Anfragen-App: Stand setzen, Notizen führen, mit einem Tipp zurückrufen',
-  'Hosting, Pflege und alle Änderungen — Sie loggen sich nie ein',
+  'Hosting, Pflege und alle Änderungen — du loggst dich nie ein',
   'Impressum und Datenschutzerklärung sauber, deutsche Server, kein US-Tracking',
   'Suchmaschinen-Unterbau ab Werk — für Google und für KI-Antworten',
 ];
@@ -21,11 +21,11 @@ const enthalten = [
 const nichtEnthalten = [
   {
     title: 'Einrichtungsgebühr',
-    text: 'Es gibt keine. Sie starten mit dem ersten Monatsbeitrag, nicht mit einer vierstelligen Rechnung.',
+    text: 'Es gibt keine. Du startest mit dem ersten Monatsbeitrag, nicht mit einer vierstelligen Rechnung.',
   },
   {
     title: 'Mindestlaufzeit',
-    text: 'Keine. Monatlich kündbar zum Monatsende — Ihr Risiko ist ein einziger Monat.',
+    text: 'Keine. Monatlich kündbar zum Monatsende — dein Risiko ist ein einziger Monat.',
   },
   {
     title: 'Kosten pro Änderung',
@@ -36,23 +36,23 @@ const nichtEnthalten = [
 const faqs = [
   {
     q: 'Warum monatlich und nicht einmalig?',
-    a: 'Weil eine Website kein Möbelstück ist, das man einmal hinstellt. Im Monatspreis stecken Hosting, Pflege, Änderungen und die laufende Technik. Sie zahlen für eine Seite, die dauerhaft funktioniert — nicht für eine Datei, die nach zwei Jahren veraltet ist und die niemand mehr anfasst.',
+    a: 'Weil eine Website kein Möbelstück ist, das man einmal hinstellt. Im Monatspreis stecken Hosting, Pflege, Änderungen und die laufende Technik. Du zahlst für eine Seite, die dauerhaft funktioniert — nicht für eine Datei, die nach zwei Jahren veraltet ist und die niemand mehr anfasst.',
   },
   {
     q: 'Ist das wirklich monatlich kündbar?',
-    a: 'Ja. Keine Mindestlaufzeit, keine Einrichtungsgebühr. Wenn Sie kündigen, endet das Paket zum Monatsende.',
+    a: 'Ja. Keine Mindestlaufzeit, keine Einrichtungsgebühr. Wenn du kündigst, endet das Paket zum Monatsende.',
   },
   {
     q: 'Wem gehört die Domain?',
-    a: 'Ihre Domain gehört Ihnen bzw. wird auf Ihren Betrieb registriert. Wenn Sie gehen, nehmen Sie sie mit.',
+    a: 'Deine Domain gehört dir bzw. wird auf deinen Betrieb registriert. Wenn du gehst, nimmst du sie mit.',
   },
   {
     q: 'Was kostet es, wenn ich später mehr will?',
-    a: 'Das besprechen wir dann konkret. Es gibt Ausbaustufen — etwa eine KI, die Anrufe annimmt und Termine vereinbart. Nichts davon wird Ihnen beim Einstieg mitverkauft, und nichts läuft automatisch mit.',
+    a: 'Das besprechen wir dann konkret. Es gibt Ausbaustufen — etwa eine KI, die Anrufe annimmt und Termine vereinbart. Nichts davon wird dir beim Einstieg mitverkauft, und nichts läuft automatisch mit.',
   },
   {
     q: 'Gibt es Förderungen?',
-    a: 'Für ein Website-Paket in dieser Größenordnung in der Regel nicht — der Aufwand für einen Förderantrag steht in keinem Verhältnis zu 297 € im Monat. Wir sagen Ihnen das lieber offen, als Ihnen Hoffnung zu machen.',
+    a: 'Für ein Website-Paket in dieser Größenordnung in der Regel nicht — der Aufwand für einen Förderantrag steht in keinem Verhältnis zu 297 € im Monat. Wir sagen dir das lieber offen, als dir Hoffnung zu machen.',
   },
 ];
 
@@ -115,8 +115,8 @@ const faqSchema = {
       <div class="kz-preis-text">
         <h2 class="kz-h2" style="margin-top:0;">Die Meisterseite</h2>
         <p>
-          Alles, was Ihre Website braucht, in einem Betrag: Bau, Hosting, Pflege,
-          Änderungen und die Technik, die Anfragen auf Ihr Handy bringt.
+          Alles, was deine Website braucht, in einem Betrag: Bau, Hosting, Pflege,
+          Änderungen und die Technik, die Anfragen auf dein Handy bringt.
         </p>
         <ul class="kz-checklist">
           {enthalten.map((e) => <li>{e}</li>)}
@@ -152,9 +152,9 @@ const faqSchema = {
       <h2 class="kz-h2">Was das im Verhältnis bedeutet</h2>
       <p>
         {PREIS} € im Monat sind rund {Math.round(Number(PREIS) / 22)} € pro Arbeitstag. Ob sich
-        das lohnt, hängt an einer einzigen Frage: Was ist bei Ihnen ein gewonnener Auftrag wert?
+        das lohnt, hängt an einer einzigen Frage: Was ist bei dir ein gewonnener Auftrag wert?
         Bei den meisten Betrieben, mit denen wir sprechen, reicht <strong>ein</strong> zusätzlicher
-        Auftrag im Jahr, damit die Rechnung aufgeht. Wir versprechen Ihnen trotzdem keine
+        Auftrag im Jahr, damit die Rechnung aufgeht. Wir versprechen dir trotzdem keine
         Auftragszahlen — das kann seriös niemand.
       </p>
     </section>
@@ -176,7 +176,7 @@ const faqSchema = {
     <section class="kz-preis-abschluss">
       <h2 class="kz-h2" style="margin-top: 0;">Der nächste Schritt kostet nichts</h2>
       <p>
-        Fünfzehn Minuten am Telefon: Wir schauen uns Ihren Betrieb an und sagen ehrlich,
+        Fünfzehn Minuten am Telefon: Wir schauen uns deinen Betrieb an und sagen ehrlich,
         ob das Paket passt. Wenn nicht, sagen wir das auch.
       </p>
       <div class="kz-preis-cta">

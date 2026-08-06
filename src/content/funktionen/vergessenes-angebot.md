@@ -19,9 +19,9 @@ phoneMock:
     - "Angebot_2026-0847.pdf"
     - "vor 12 Tagen · Keine Antwort"
 ohneText: "Nachfassen steht auf jeder To-do-Liste. Und rutscht jeden Tag einen Platz nach unten."
-mitText: "Nach drei Tagen ohne Antwort legt Lena einen höflichen Nachfass-Entwurf bereit. Sie lesen kurz drüber — ein Klick, raus."
+mitText: "Nach drei Tagen ohne Antwort legt Lena einen höflichen Nachfass-Entwurf bereit. Du liest kurz drüber — ein Klick, raus."
 sources: ["Angebote", "Mail", "Aufgaben"]
-flow: ["Angebot im Blick behalten", "Nach 3 Tagen ohne Antwort: Nachfass-Entwurf", "Ihre Freigabe — dann raus"]
+flow: ["Angebot im Blick behalten", "Nach 3 Tagen ohne Antwort: Nachfass-Entwurf", "Deine Freigabe — dann raus"]
 discord:
   channel: "#aufgaben"
   time: "09:00"

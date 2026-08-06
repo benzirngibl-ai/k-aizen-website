@@ -82,4 +82,4 @@ Wer das nachbauen will: die schwierigste Stelle ist nicht die KI, sondern Gmail-
 
 ---
 
-*Wenn Sie wissen möchten, ob KI-Mail-Triage für Ihren Betrieb sinnvoll ist: Im [Erstgespräch](/erstgespraech) schauen wir auf Mailaufkommen, Risiken und den kleinsten sinnvollen Startpunkt.*
+*Wenn du wissen möchtest, ob KI-Mail-Triage für deinen Betrieb sinnvoll ist: Im [Erstgespräch](/erstgespraech) schauen wir auf Mailaufkommen, Risiken und den kleinsten sinnvollen Startpunkt.*

@@ -13,13 +13,13 @@ tags:
 
 Am 19. Mai hat die EU-Kommission Entwurfsleitlinien zur Einstufung von Hochrisiko-KI veröffentlicht. Über 160 Seiten, drei Abschnitte, Konsultationsfrist bis 23. Juni 2026, 22:00 Uhr. Ich habe mir das Dokument am Mittwochabend angesehen, weil mich drei Geschäftsführer in der letzten Woche fast wortgleich gefragt haben: "Muss ich jetzt was tun?"
 
-Die ehrliche Antwort: Wahrscheinlich weniger, als Ihnen ein Anwalt verkaufen möchte. Aber mehr als nichts. Die Leitlinien sind erstmals so konkret, dass man als KMU-Inhaber in 30 Minuten klären kann, ob der eigene Betrieb betroffen ist. Das ist die gute Nachricht. Die schlechte: Wer KI für Bewerberauswahl oder sicherheitsrelevante Produkte nutzt, bekommt jetzt Hausaufgaben.
+Die ehrliche Antwort: Wahrscheinlich weniger, als dir ein Anwalt verkaufen möchte. Aber mehr als nichts. Die Leitlinien sind erstmals so konkret, dass man als KMU-Inhaber in 30 Minuten klären kann, ob der eigene Betrieb betroffen ist. Das ist die gute Nachricht. Die schlechte: Wer KI für Bewerberauswahl oder sicherheitsrelevante Produkte nutzt, bekommt jetzt Hausaufgaben.
 
 ## Erste Reaktion: "Dann lassen wir KI lieber sein"
 
 Das war der Reflex von zwei meiner Gesprächspartner letzte Woche. Ein Sanitärbetrieb mit 18 Mitarbeitern hatte gerade angefangen, ChatGPT für Angebotsentwürfe zu nutzen. Eine Steuerberatungskanzlei nutzt Copilot für Mandantenkommunikation. Beide dachten nach den Schlagzeilen: "Bevor wir hier in Hochrisiko-Compliance rutschen, drehen wir das lieber wieder ab."
 
-Das ist Quatsch. Und genau deshalb sind die neuen Leitlinien hilfreich: Sie ziehen erstmals eine klare Linie zwischen "KI als Schreibwerkzeug" und "KI als Entscheider über Menschen". Ein Sanitärbetrieb, der mit ChatGPT Angebote vorformuliert, ist kein Hochrisiko-Anwender. Eine Steuerkanzlei, die KI als Recherche- und Textwerkzeug einsetzt, auch nicht. Die EU interessiert sich nicht für Ihre Marketingtexte. Sie interessiert sich für Anwendungen, die über Geld, Zugang, Sicherheit oder den Job einer realen Person mitentscheiden.
+Das ist Quatsch. Und genau deshalb sind die neuen Leitlinien hilfreich: Sie ziehen erstmals eine klare Linie zwischen "KI als Schreibwerkzeug" und "KI als Entscheider über Menschen". Ein Sanitärbetrieb, der mit ChatGPT Angebote vorformuliert, ist kein Hochrisiko-Anwender. Eine Steuerkanzlei, die KI als Recherche- und Textwerkzeug einsetzt, auch nicht. Die EU interessiert sich nicht für deine Marketingtexte. Sie interessiert sich für Anwendungen, die über Geld, Zugang, Sicherheit oder den Job einer realen Person mitentscheiden.
 
 ## Wo die Linie wirklich verläuft
 
@@ -43,7 +43,7 @@ Ich habe mit zwei Kunden in den letzten Tagen einen kleinen Check durchgespielt,
 
 1. **Liste machen.** Jedes KI-Tool, das im Betrieb genutzt wird — ChatGPT, Copilot, Gemini, Branchensoftware mit KI-Funktion, der KI-Modus im CRM, was auch immer.
 2. **Einsatzzweck dahinter.** Ein Satz pro Tool. "Angebotsentwürfe", "Mandanten-E-Mails", "Lebenslauf-Screening".
-3. **Markieren, was über Menschen entscheidet.** Personalauswahl, Kundenbewertung, Kreditentscheidung, Sicherheit. Wenn nichts markiert ist, sind Sie vermutlich raus aus Hochrisiko.
+3. **Markieren, was über Menschen entscheidet.** Personalauswahl, Kundenbewertung, Kreditentscheidung, Sicherheit. Wenn nichts markiert ist, bist du vermutlich raus aus Hochrisiko.
 4. **Verantwortlichen benennen.** Eine Person pro Tool, die weiß, was das System tut und wer darauf zugreift.
 5. **Kritische Fälle separat anschauen.** Erst dort lohnt sich tiefere rechtliche Prüfung.
 
@@ -57,12 +57,12 @@ Erstens: Die Verschiebung als Entwarnung lesen. Die DSGVO-Pflichten gelten weite
 
 Zweitens: Die Leitlinien für endgültig halten. Es sind Entwürfe. Bis Ende Juni läuft die Konsultation, danach kommt die finale Fassung. Details werden sich noch ändern.
 
-Drittens: Rechtsberatung ohne eigene Vorarbeit. Wenn Sie ohne Werkzeugliste in ein Compliance-Mandat gehen, bezahlen Sie den Anwalt für eine Bestandsaufnahme, die Sie selbst in einer Stunde machen können.
+Drittens: Rechtsberatung ohne eigene Vorarbeit. Wenn du ohne Werkzeugliste in ein Compliance-Mandat gehst, bezahlst du den Anwalt für eine Bestandsaufnahme, die du selbst in einer Stunde machen kannst.
 
 ## Was KMU davon haben
 
-Pragmatisch betrachtet: Die meisten von Ihnen sind nicht Hochrisiko. Sie nutzen KI als Werkzeug, nicht als Entscheider. Die neuen Leitlinien bestätigen das schwarz auf weiß und nehmen damit Druck raus.
+Pragmatisch betrachtet: Die meisten von euch sind nicht Hochrisiko. Ihr nutzt KI als Werkzeug, nicht als Entscheider. Die neuen Leitlinien bestätigen das schwarz auf weiß und nehmen damit Druck raus.
 
-Wer aber im Recruiting, in der Bonitätsprüfung oder im Produktbau KI einsetzt, sollte die nächsten Monate nutzen, um sauber zu dokumentieren: Welches System wird wofür genutzt, welche Daten gehen rein, wer kontrolliert das Ergebnis. Das ist keine Raketenwissenschaft. Das ist ein Dokument, das Sie ohnehin spätestens 2027 brauchen — und das Ihnen heute schon hilft, wenn ein Kunde, ein Lieferant oder eine Aufsichtsbehörde fragt.
+Wer aber im Recruiting, in der Bonitätsprüfung oder im Produktbau KI einsetzt, sollte die nächsten Monate nutzen, um sauber zu dokumentieren: Welches System wird wofür genutzt, welche Daten gehen rein, wer kontrolliert das Ergebnis. Das ist keine Raketenwissenschaft. Das ist ein Dokument, das du ohnehin spätestens 2027 brauchst — und das dir heute schon hilft, wenn ein Kunde, ein Lieferant oder eine Aufsichtsbehörde fragt.
 
-*Falls Sie unsicher sind, ob Ihre KI-Nutzung in die Hochrisiko-Kategorie fällt: Im [Erstgespräch](/erstgespraech) gehen wir Ihre konkreten Tools und Anwendungsfälle in 30 Minuten durch. Ohne Verkaufsdruck, ohne Compliance-Theater.*
+*Falls du unsicher bist, ob deine KI-Nutzung in die Hochrisiko-Kategorie fällt: Im [Erstgespräch](/erstgespraech) gehen wir deine konkreten Tools und Anwendungsfälle in 30 Minuten durch. Ohne Verkaufsdruck, ohne Compliance-Theater.*

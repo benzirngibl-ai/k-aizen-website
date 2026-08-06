@@ -22,22 +22,22 @@ Beste Grüße`)}`;
 const outcomeCards = [
   {
     title: 'Passt es oder nicht',
-    text: 'Sie bekommen eine ehrliche Einschätzung, ob das Paket für Ihren Betrieb Sinn ergibt — auch wenn die Antwort „eher nicht" lautet.',
+    text: 'Du bekommst eine ehrliche Einschätzung, ob das Paket für deinen Betrieb Sinn ergibt — auch wenn die Antwort „eher nicht" lautet.',
   },
   {
-    title: 'Was Ihre Seite können muss',
-    text: 'Wir gehen durch, welche Leistungen draufgehören, welche Fragen Ihre Kunden immer stellen und wie Anfragen bei Ihnen ankommen sollen.',
+    title: 'Was deine Seite können muss',
+    text: 'Wir gehen durch, welche Leistungen draufgehören, welche Fragen deine Kunden immer stellen und wie Anfragen bei dir ankommen sollen.',
   },
   {
     title: 'Was als Nächstes passiert',
-    text: 'Wenn es passt: welches Material Sie liefern und wann Ihre Seite steht. Kein Angebot mit Fußnoten, keine Bedenkzeit unter Druck.',
+    text: 'Wenn es passt: welches Material du lieferst und wann deine Seite steht. Kein Angebot mit Fußnoten, keine Bedenkzeit unter Druck.',
   },
 ];
 
 const noFitItems = [
-  'Sie möchten selbst einloggen und Ihre Seiten eigenhändig pflegen — dafür gibt es günstigere Baukästen.',
-  'Ihr Betrieb ist ganz frisch und hat noch keine Kundenbasis, auf der eine Website aufsetzen kann.',
-  'Sie suchen eine einmalige Erstellung ohne laufende Betreuung.',
+  'Du möchtest selbst einloggen und deine Seiten eigenhändig pflegen — dafür gibt es günstigere Baukästen.',
+  'Dein Betrieb ist ganz frisch und hat noch keine Kundenbasis, auf der eine Website aufsetzen kann.',
+  'Du suchst eine einmalige Erstellung ohne laufende Betreuung.',
 ];
 
 const conversationSchema = {
@@ -49,7 +49,7 @@ const conversationSchema = {
       url: 'https://k-aizen.de/erstgespraech',
       name: 'Rückruf vereinbaren — k-AIzen',
       description:
-        'Kostenloser 15-Minuten-Rückruf zum Website-Paket: Wir klären, ob die Meisterseite zu Ihrem Betrieb passt, und sagen ehrlich ab, wenn nicht.',
+        'Kostenloser 15-Minuten-Rückruf zum Website-Paket: Wir klären, ob die Meisterseite zu deinem Betrieb passt, und sagen ehrlich ab, wenn nicht.',
       inLanguage: 'de-DE',
       isPartOf: { '@id': 'https://k-aizen.de/#website' },
       about: { '@id': 'https://k-aizen.de/#meisterseite-service' },
@@ -82,7 +82,7 @@ const conversationSchema = {
           name: 'Kostet das Gespräch etwas?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Nein. Der Rückruf ist kostenlos und unverbindlich. Er dient dazu, zu klären, ob das Website-Paket zu Ihrem Betrieb passt.',
+            text: 'Nein. Der Rückruf ist kostenlos und unverbindlich. Er dient dazu, zu klären, ob das Website-Paket zu deinem Betrieb passt.',
           },
         },
         {
@@ -90,7 +90,7 @@ const conversationSchema = {
           name: 'Muss ich einen Termin buchen?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Nein. Sie können stattdessen kurz per Mail schreiben: Gewerk, aktuelle Website und was Sie gerade stört. Das reicht für eine erste Einschätzung.',
+            text: 'Nein. Du kannst stattdessen kurz per Mail schreiben: Gewerk, aktuelle Website und was dich gerade stört. Das reicht für eine erste Einschätzung.',
           },
         },
         {
@@ -98,7 +98,7 @@ const conversationSchema = {
           name: 'Wie lange dauert das Gespräch?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Etwa 15 Minuten. Wir gehen Ihren Betrieb durch, Sie sehen die Beispiel-Website, und Sie entscheiden danach in Ruhe.',
+            text: 'Etwa 15 Minuten. Wir gehen deinen Betrieb durch, du siehst die Beispiel-Website, und du entscheidest danach in Ruhe.',
           },
         },
       ],
@@ -109,7 +109,7 @@ const conversationSchema = {
 
 <KaizenLayout
   title="Rückruf vereinbaren — 15 Minuten, unverbindlich"
-  description="Kostenloser 15-Minuten-Rückruf zum Website-Paket. Wir klären, ob die Meisterseite zu Ihrem Betrieb passt — und sagen ehrlich ab, wenn nicht."
+  description="Kostenloser 15-Minuten-Rückruf zum Website-Paket. Wir klären, ob die Meisterseite zu deinem Betrieb passt — und sagen ehrlich ab, wenn nicht."
   path="/erstgespraech"
   activeNav="kontakt"
   jsonLd={conversationSchema}
@@ -121,19 +121,19 @@ const conversationSchema = {
       <img src="/icons/icon-sakura-branch.png" alt="" class="kz-eyebrow-leaf" loading="lazy" />
       <span>Rückruf</span>
     </div>
-    <h1 class="kz-h1">Fünfzehn Minuten. Dann wissen Sie, ob es passt.</h1>
+    <h1 class="kz-h1">Fünfzehn Minuten. Dann weißt du, ob es passt.</h1>
     <p class="kz-lead">
-      Sie erzählen kurz von Ihrem Betrieb, ich sage Ihnen ehrlich, ob das Website-Paket
-      für Sie Sinn ergibt. Kein Verkaufsmarathon, keine Präsentation, kein Druck.
+      Du erzählst kurz von deinem Betrieb, ich sage dir ehrlich, ob das Website-Paket
+      für dich Sinn ergibt. Kein Verkaufsmarathon, keine Präsentation, kein Druck.
     </p>
 
     <!-- Vorbereitung -->
     <section class="kz-vorbereitung">
       <h2 class="kz-h2" style="margin-top: 0;">Vorher kurz reinschauen (2 Minuten)</h2>
       <p>
-        Damit Sie nicht ohne Bild ins Gespräch gehen: Unter dem Link steht eine vollständige
-        Beispiel-Website. Sie zeigt genau das, was Sie bekommen würden — inklusive des
-        Kontaktformulars, das Sie ruhig ausprobieren dürfen.
+        Damit du nicht ohne Bild ins Gespräch gehst: Unter dem Link steht eine vollständige
+        Beispiel-Website. Sie zeigt genau das, was du bekommen würdest — inklusive des
+        Kontaktformulars, das du ruhig ausprobieren darfst.
       </p>
       <div class="kz-vorbereitung__cta">
         <a href={demoUrl} class="kz-btn" target="_blank" rel="noopener">Beispiel-Website ansehen →</a>
@@ -142,9 +142,9 @@ const conversationSchema = {
     </section>
 
     <section style="margin-top: 56px;">
-      <h2 class="kz-h2">Was Sie danach wissen</h2>
+      <h2 class="kz-h2">Was du danach weißt</h2>
       <p>
-        Das Gespräch dient der Orientierung — Ihrer und meiner. Am Ende soll klar sein,
+        Das Gespräch dient der Orientierung — deiner und meiner. Am Ende soll klar sein,
         ob sich ein nächster Schritt lohnt.
       </p>
       <div class="kz-outcome-grid">
@@ -160,8 +160,8 @@ const conversationSchema = {
     <section style="margin-top: 56px;">
       <h2 class="kz-h2">Was im Gespräch passiert</h2>
       <ul>
-        <li><strong>Min 0–3</strong> — kurz gegenseitig vorstellen: Ihr Betrieb, was ich mache</li>
-        <li><strong>Min 3–9</strong> — Ihre Situation: Wie kommen heute Anfragen rein, was geht dabei unter?</li>
+        <li><strong>Min 0–3</strong> — kurz gegenseitig vorstellen: dein Betrieb, was ich mache</li>
+        <li><strong>Min 3–9</strong> — deine Situation: Wie kommen heute Anfragen rein, was geht dabei unter?</li>
         <li><strong>Min 9–13</strong> — was eine Website daran ändern würde und was nicht</li>
         <li><strong>Min 13–15</strong> — nächster Schritt oder ehrliche Absage</li>
       </ul>
@@ -169,10 +169,10 @@ const conversationSchema = {
 
     <section>
       <h2 class="kz-h2">Was vorab hilft</h2>
-      <p>Zwei Sätze reichen völlig, wenn Sie den Termin buchen:</p>
+      <p>Zwei Sätze reichen völlig, wenn du den Termin buchst:</p>
       <ul>
         <li>Welches Gewerk und wie viele Leute im Betrieb</li>
-        <li>Ob es schon eine Website gibt — und was Sie daran stört</li>
+        <li>Ob es schon eine Website gibt — und was dich daran stört</li>
       </ul>
       <p>Dann starten wir vorbereitet, statt die ersten Minuten mit Kontext zu verbrauchen.</p>
     </section>
@@ -191,8 +191,8 @@ const conversationSchema = {
     <section>
       <h2 class="kz-h2">Was es kostet</h2>
       <p>
-        Das Gespräch kostet nichts und verpflichtet zu nichts. Wenn Sie sich danach für
-        das Paket entscheiden, kostet die Website {PREIS} € im Monat — ohne
+        Das Gespräch kostet nichts und verpflichtet zu nichts. Wenn du dich danach für
+        das Paket entscheidest, kostet die Website {PREIS} € im Monat — ohne
         Einrichtungsgebühr, monatlich kündbar. Die vollständige Übersicht steht offen
         unter <a href="/pricing">Preise</a>.
       </p>
@@ -201,19 +201,19 @@ const conversationSchema = {
     <section class="kz-wege">
       <h2 class="kz-h2" style="margin-top: 0;">Zwei einfache Wege</h2>
       <p>
-        Wenn Sie lieber sprechen: Termin wählen. Wenn Sie lieber schreiben:
+        Wenn du lieber sprichst: Termin wählen. Wenn du lieber schreibst:
         drei Stichpunkte per Mail. Beides ist mir gleich recht.
       </p>
 
       <div class="kz-wege-grid">
         <div class="kz-weg-card">
           <h3>Rückruf-Termin</h3>
-          <p>Slot wählen, ich rufe an. 15 Minuten, unverbindlich, danach entscheiden Sie in Ruhe.</p>
+          <p>Slot wählen, ich rufe an. 15 Minuten, unverbindlich, danach entscheidest du in Ruhe.</p>
           <a href={calUrl} class="kz-btn" target="_blank" rel="noopener">Termin wählen</a>
         </div>
         <div class="kz-weg-card">
           <h3>Kurz per Mail</h3>
-          <p>Gewerk, aktuelle Website, was Sie stört. Sie bekommen eine persönliche Einschätzung zurück.</p>
+          <p>Gewerk, aktuelle Website, was dich stört. Du bekommst eine persönliche Einschätzung zurück.</p>
           <a href={asyncMail} class="kz-btn">Drei Stichpunkte schicken</a>
         </div>
       </div>

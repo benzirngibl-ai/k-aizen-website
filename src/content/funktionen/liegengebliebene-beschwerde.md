@@ -19,7 +19,7 @@ phoneMock:
     - "47 ungelesene Mails"
     - "Die Beschwerde: irgendwo dazwischen"
 ohneText: "Niemand ignoriert die Kundin absichtlich. Ihre Mail ist nur eine von 47. Bis sie eskaliert."
-mitText: "Lena erkennt die Beschwerde beim Eintreffen, pinnt sie ganz oben an und legt einen sachlichen Antwortentwurf bereit. Sie entscheiden den Ton — und geben frei."
+mitText: "Lena erkennt die Beschwerde beim Eintreffen, pinnt sie ganz oben an und legt einen sachlichen Antwortentwurf bereit. Du entscheidest den Ton — und gibst frei."
 sources: ["Mail", "Kundenliste", "Verlauf"]
 flow: ["Beschwerde beim Eintreffen erkennen", "Verlauf + Kundenkontext zusammenfassen", "Antwortentwurf zur Freigabe"]
 discord:

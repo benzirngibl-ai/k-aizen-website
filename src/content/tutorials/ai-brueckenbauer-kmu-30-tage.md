@@ -15,7 +15,7 @@ Ohne Kontext bleibt KI ein Textfeld. Mit Kontext wird sie zur Assistenz: Sie ken
 
 Diese 30-Tage-Anleitung ist bewusst klein gehalten. Ziel ist nicht, das ganze Unternehmen in einem Monat zu automatisieren. Ziel ist eine erste Aufgabe, die sauber dokumentiert, kontrolliert getestet und später systematisch ausgebaut werden kann.
 
-## Was Sie brauchen
+## Was du brauchst
 
 - **Eine echte Routineaufgabe.** Ideal sind Mails, Angebotsentwürfe, Zusammenfassungen, Terminvorbereitung oder interne Standardantworten.
 - **30 Minuten pro Tag für vier Wochen.** Nicht als Schulung, sondern als Arbeitsblock.
@@ -26,15 +26,15 @@ Kein neues Großprojekt. Kein Tool-Wechsel. Erst eine Aufgabe, ein Kontext, ein 
 
 ## Schritt 1: Den Arbeitsalltag sichtbar machen
 
-Schreiben Sie für zwei Tage auf, welche wiederkehrenden Aufgaben im Betrieb auftauchen. Nicht nur die großen Projekte, sondern die kleinen Wiederholungen: Anfrage beantworten, Lieferant nachfassen, Termin vorbereiten, Angebot anpassen, Besprechung zusammenfassen.
+Schreib für zwei Tage auf, welche wiederkehrenden Aufgaben im Betrieb auftauchen. Nicht nur die großen Projekte, sondern die kleinen Wiederholungen: Anfrage beantworten, Lieferant nachfassen, Termin vorbereiten, Angebot anpassen, Besprechung zusammenfassen.
 
-Markieren Sie anschließend alles, was mindestens dreimal pro Woche vorkommt und heute spürbar Zeit oder Aufmerksamkeit kostet.
+Markiere anschließend alles, was mindestens dreimal pro Woche vorkommt und heute spürbar Zeit oder Aufmerksamkeit kostet.
 
 Die beste erste Aufgabe ist selten die spektakulärste. Sie ist die, bei der Routine, Text und Freigabe zusammenkommen.
 
 ## Schritt 2: Eine einzige Aufgabe auswählen
 
-Wählen Sie genau eine Aufgabe. Für den Einstieg eignen sich Aufgaben mit niedrigem Risiko und klarer menschlicher Kontrolle:
+Wähle genau eine Aufgabe. Für den Einstieg eignen sich Aufgaben mit niedrigem Risiko und klarer menschlicher Kontrolle:
 
 - Antwortentwurf auf Standardanfragen
 - Zusammenfassung langer Mail-Threads
@@ -46,7 +46,7 @@ Wichtig: Die KI entscheidet nicht allein. Sie bereitet vor. Ein Mensch prüft, g
 
 ## Schritt 3: Kontext aufschreiben
 
-Jetzt entsteht der eigentliche Wert. Schreiben Sie auf, wie diese Aufgabe im Unternehmen wirklich funktioniert:
+Jetzt entsteht der eigentliche Wert. Schreib auf, wie diese Aufgabe im Unternehmen wirklich funktioniert:
 
 - Welche Informationen braucht man vorher?
 - Welche Vorlagen gibt es?
@@ -59,7 +59,7 @@ Das muss nicht schön sein. Ein sauberes internes Dokument reicht. Entscheidend 
 
 ## Schritt 4: Mit echten Beispielen testen
 
-Nehmen Sie fünf bis zehn echte Fälle aus der Vergangenheit. Lassen Sie die KI Entwürfe erzeugen und prüfen Sie jedes Ergebnis:
+Nimm fünf bis zehn echte Fälle aus der Vergangenheit. Lass die KI Entwürfe erzeugen und prüfe jedes Ergebnis:
 
 - Was war brauchbar?
 - Was war zu allgemein?
@@ -82,7 +82,7 @@ Das schützt den Betrieb und macht die KI gleichzeitig besser. Jede Korrektur is
 
 ## Schritt 6: Eine zweite Person einbeziehen
 
-Wenn die Aufgabe stabil läuft, holen Sie eine zweite Person dazu. Nicht das ganze Team auf einmal. Eine Person reicht.
+Wenn die Aufgabe stabil läuft, hol eine zweite Person dazu. Nicht das ganze Team auf einmal. Eine Person reicht.
 
 Diese Person nutzt denselben Kontext, prüft die Ergebnisse und ergänzt fehlende Regeln. Dadurch zeigt sich schnell, ob der Prozess wirklich verständlich ist oder nur für die Person funktioniert, die ihn gebaut hat.
 
@@ -98,7 +98,7 @@ Nach drei bis vier Wochen sollte die Aufgabe nicht mehr nur in einem Chatverlauf
 
 Das ist der Punkt, an dem aus einzelner KI-Nutzung langsam ein Unternehmenssystem wird. Genau dort setzt k-AIzen an: erst KI-PA und Mail-/Kontextarbeit, dann Stück für Stück mehr Struktur.
 
-## Woran Sie merken, dass der Einstieg funktioniert
+## Woran du merkst, dass der Einstieg funktioniert
 
 Ein guter erster KI-Prozess fühlt sich nicht spektakulär an. Er fühlt sich entlastend an:
 

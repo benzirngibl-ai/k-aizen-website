@@ -19,9 +19,9 @@ phoneMock:
     - "40 Vertragsrechnungen"
     - "Wie letzten Monat. Und den davor."
 ohneText: "Die Arbeit ist nicht schwer. Sie ist nur jeden Monat gleich — und genau deshalb passieren die Fehler."
-mitText: "Lena kennt Ihre Verträge. Am Ersten liegen alle Rechnungsentwürfe bereit — vollständig, keiner vergessen. Sie prüfen und geben frei."
+mitText: "Lena kennt deine Verträge. Am Ersten liegen alle Rechnungsentwürfe bereit — vollständig, keiner vergessen. Du prüfst und gibst frei."
 sources: ["Verträge", "Rechnungen", "Kalender"]
-flow: ["Fällige Verträge erkennen", "Alle Entwürfe am Ersten bereitlegen", "Ihre Freigabe — dann Versand"]
+flow: ["Fällige Verträge erkennen", "Alle Entwürfe am Ersten bereitlegen", "Deine Freigabe — dann Versand"]
 discord:
   channel: "#rechnungen"
   time: "06:00"

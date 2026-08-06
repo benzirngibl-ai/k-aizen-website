@@ -72,4 +72,4 @@ Drei Stunden für die Tool-Liste, eine Stunde für die Transparenz-Hinweise, vie
 
 Was man sich damit erkauft, ist nicht nur Compliance. Es ist Klarheit, was im eigenen Betrieb überhaupt läuft. Bei dem Bauunternehmer aus dem Schwarzwald haben wir nebenbei rausgefunden, dass die Sekretärin auf der unbezahlten kostenlosen ChatGPT-Version Angebotskalkulationen reinkopiert hat. Das war kein AI-Act-Problem — das war ein DSGVO-Problem. Die Verschiebung des AI Act ändert daran nichts.
 
-*Wenn Sie wissen möchten, wo Ihr Betrieb steht: Im [Erstgespräch](/erstgespraech) schauen wir auf Ihre konkrete Tool-Landschaft und den kleinsten sinnvollen nächsten Schritt.*
+*Wenn du wissen möchtest, wo dein Betrieb steht: Im [Erstgespräch](/erstgespraech) schauen wir auf deine konkrete Tool-Landschaft und den kleinsten sinnvollen nächsten Schritt.*

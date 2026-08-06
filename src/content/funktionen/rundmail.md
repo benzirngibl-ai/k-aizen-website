@@ -19,7 +19,7 @@ phoneMock:
     - "BCC-Verteiler — Teil 3 von 4"
     - "Adress-Excel: Stand Januar"
 ohneText: "Rundmails von Hand heißen: veralteter Verteiler, kein Abmelde-Link, keine Ahnung, was ankam. Jedes Mal."
-mitText: "Lena baut den Verteiler aus der aktuellen Kundenliste — Abgemeldete bleiben automatisch draußen, der Abmelde-Link ist rechtssicher drin, und unzustellbare Adressen legen sich von selbst still. Sie schreiben die Nachricht, geben frei — fertig."
+mitText: "Lena baut den Verteiler aus der aktuellen Kundenliste — Abgemeldete bleiben automatisch draußen, der Abmelde-Link ist rechtssicher drin, und unzustellbare Adressen legen sich von selbst still. Du schreibst die Nachricht, gibst frei — fertig."
 sources: ["Kundenliste", "Mail", "Abmelde-Liste"]
 flow: ["Empfänger aus der Kundenliste — Abmeldungen respektiert", "Entwurf mit Abmelde-Link zur Freigabe", "Versand — Unzustellbares pflegt die Liste automatisch"]
 discord:

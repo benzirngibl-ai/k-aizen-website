@@ -1,7 +1,7 @@
 ---
 title: "Der Angebotsstapel"
 description: "Angebote schreiben ist Fleißarbeit: Katalog, Preise, Anschreiben — zwölfmal am Tag. Lena liest die Anfrage, zieht die Positionen aus dem Katalog und legt den Entwurf bereit."
-schmerzKicker: "Jede Anfrage will ein Angebot. Ihre Kollegin will eigentlich nur einmal durchatmen."
+schmerzKicker: "Jede Anfrage will ein Angebot. Deine Kollegin will eigentlich nur einmal durchatmen."
 protagonist: mitarbeiter
 heroImage: "/funktionen/angebote-schreiben.jpg"
 heroAlt: "Mitarbeiterin zwischen zwei Papierstapeln arbeitet sich durch die Angebotsanfragen"
@@ -19,7 +19,7 @@ phoneMock:
     - "12 neue Anfragen"
     - "≈ 35 Minuten pro Angebot"
 ohneText: "Angebote schreiben ist Fleißarbeit: zwölfmal am Tag dasselbe — nur eben jedes Mal ein bisschen anders."
-mitText: "Lena liest die Anfrage, zieht die passenden Positionen aus Ihrem Katalog und legt den Angebotsentwurf bereit. Ihre Kollegin prüft, statt zu tippen — zwölfmal am Tag."
+mitText: "Lena liest die Anfrage, zieht die passenden Positionen aus deinem Katalog und legt den Angebotsentwurf bereit. Deine Kollegin prüft, statt zu tippen — zwölfmal am Tag."
 sources: ["Anfrage-Mail", "Produktkatalog", "Preise"]
 flow: ["Anfrage lesen + verstehen", "Positionen aus dem Katalog ziehen", "Angebotsentwurf zur Freigabe"]
 discord:
