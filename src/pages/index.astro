@@ -491,14 +491,19 @@ const homeSchema = {
             <li>Deine Domain gehört dir. Wenn du gehst, nimmst du sie mit.</li>
           </ul>
         </div>
-        <aside class="kz-offer__side">
+        {/* <div>, nicht <aside>: Das hier ist der rechte Teil des Angebotsblocks,
+            kein seitenweiter Nebenbereich. Als <aside> war es ein
+            „complementary"-Landmark innerhalb von <main> — axe meldet das
+            zu Recht, weil Screenreader-Nutzer dann einen Bereich angesagt
+            bekommen, der gar keiner ist. */}
+        <div class="kz-offer__side">
           <div class="kz-offer__side-k">Nächster Schritt</div>
           <h3>Sieh es an deinem eigenen Betrieb</h3>
           <p>Sag mir kurz, was du machst — ich baue dir daraus eine Beispielseite mit deinem Namen und deinen Leistungen. Kostet nichts, verpflichtet zu nichts.</p>
           <a href="#anfrage" class="kz-btn kz-btn--primary">Beispielseite anfordern <span class="kz-btn__arrow">→</span></a>
           <a href={calUrl} class="kz-offer__link" target="_blank" rel="noopener">Lieber 15 Minuten telefonieren</a>
           <a href="/meisterseite" class="kz-offer__link">Alle Details zum Paket</a>
-        </aside>
+        </div>
       </div>
     </div>
   </section>
