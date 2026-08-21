@@ -709,3 +709,21 @@
 @media (max-width: 560px) {
   .kz-termin__buehne { min-height: 520px; }
 }
+
+/* Sprunglink — die Startseite hat ein eigenes Layout und erbt die Regel aus
+   KaizenLayout.astro nicht. Unsichtbar, bis er den Tastaturfokus bekommt. */
+.kz-skip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(-120%);
+  z-index: 300;
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--indigo);
+  border-radius: 0 0 var(--radius-md) 0;
+  padding: 10px 16px;
+  text-decoration: none;
+  font-weight: 600;
+}
+.kz-skip:focus { transform: translateY(0); }

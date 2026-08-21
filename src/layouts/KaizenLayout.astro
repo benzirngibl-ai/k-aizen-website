@@ -458,7 +458,11 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       margin: 0;
       line-height: 1.6;
     }
-    .kz-footer-col h4 {
+    /* Aus h4 wurde h2, damit die Gliederung nicht von h1 auf h4 springt
+       (axe „heading-order", 21.08.). Das Aussehen bleibt bewusst gleich —
+       die Ebene ist eine Struktur-, keine Größenangabe. */
+    .kz-footer-col h4,
+    .kz-footer-col .kz-footer-h {
       font-family: var(--font-mono);
       font-size: 11px;
       font-weight: 800;
@@ -506,7 +510,12 @@ if (breadcrumbs && breadcrumbs.length > 0) {
   <div class="kz-progress"></div>
   <a href="#main" class="kz-skip">Zum Hauptinhalt springen</a>
 
-  <nav class="kz-nav" role="banner" style={hideChrome ? 'display: none;' : ''}>
+  {/* role="banner" war falsch: banner gehört auf das Element, das den
+      Seitenkopf DARSTELLT, nicht auf eine Navigation. Ein <nav> ist von sich
+      aus die Rolle „navigation"; die aufgezwungene Rolle hat sie überschrieben,
+      wodurch die Navigation für Screenreader gar keine Navigation mehr war.
+      Gemessen mit axe am 21.08. */}
+  <nav class="kz-nav" aria-label="Hauptbereich" style={hideChrome ? 'display: none;' : ''}>
     {/* Echtes Logo statt gesetztem Schriftzug — Begründung im Kommentar in
         index.astro (das große I liest sich als l). Mindesthöhe 56px. */}
     <a href="/" class="kz-nav__brand" aria-label="k-AIzen — zur Startseite">
@@ -536,7 +545,7 @@ if (breadcrumbs && breadcrumbs.length > 0) {
         </p>
       </div>
       <div class="kz-footer-col">
-        <h4>Angebot</h4>
+        <h2 class="kz-footer-h">Angebot</h2>
         <ul>
           <li><a href="/meisterseite">Das Website-Paket</a></li>
           <li><a href="https://muster.k-aizen.de" target="_blank" rel="noopener">Beispiel-Website</a></li>
@@ -545,7 +554,7 @@ if (breadcrumbs && breadcrumbs.length > 0) {
         </ul>
       </div>
       <div class="kz-footer-col">
-        <h4>Vertrauen</h4>
+        <h2 class="kz-footer-h">Vertrauen</h2>
         <ul>
           <li><a href="/about">Über mich</a></li>
           <li><a href="/blog">Blog</a></li>
@@ -556,7 +565,7 @@ if (breadcrumbs && breadcrumbs.length > 0) {
           Funnel-Umbau 2026-08-21 entfallen — die Seiten existieren nicht mehr.
           Er stand hier, damit sie nicht verwaisen; jetzt wären es tote Links. */}
       <div class="kz-footer-col">
-        <h4>Rechtliches</h4>
+        <h2 class="kz-footer-h">Rechtliches</h2>
         <ul>
           <li><a href="/impressum">Impressum</a></li>
           <li><a href="/datenschutz">Datenschutz</a></li>

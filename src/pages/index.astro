@@ -22,8 +22,10 @@ import TerminKalender from '../components/TerminKalender.astro';
 const siteUrl = "https://k-aizen.de";
 const homeUrl = `${siteUrl}/`;
 const homeTitle = "k-AIzen — gefunden, gefragt, gebucht: die Website für deinen Betrieb";
+// Max. ~155 Zeichen — darüber schneidet Google im Suchergebnis ab, der Rest ist
+// verschenkt. Stand 21.08.: 152.
 const homeDescription =
-  "Gefunden werden, Fragen beantwortet bekommen, Aufträge kriegen: Website, Google-Profil, Bewertungen und jede Anfrage sofort aufs Handy. 297 € im Monat, keine Einrichtungsgebühr, monatlich kündbar. Für Betriebe im Raum Nürnberg.";
+  "Website, Google-Profil und Bewertungen für deinen Betrieb im Raum Nürnberg. Jede Anfrage sofort aufs Handy. 297 €/Monat, monatlich kündbar.";
 const ogImage = `${siteUrl}/og-image.png`;
 const benFoto = "/images/ben-portrait.png";
 
@@ -319,6 +321,11 @@ const homeSchema = {
 </head>
 <body>
 
+  {/* Sprunglink für Tastatur- und Screenreader-Nutzer. Er stand nur im
+      KaizenLayout; die Startseite hat ein eigenes Layout und hatte deshalb
+      keinen — man musste sich durch die ganze Navigation tabben. */}
+  <a href="#main" class="kz-skip">Zum Hauptinhalt springen</a>
+
   <!-- Scroll-Progress -->
   <div class="kz-progress"></div>
 
@@ -366,6 +373,10 @@ const homeSchema = {
       <span class="kz-scrollcue__line"></span>
     </div>
   </header>
+
+  {/* Ohne <main> lagen 24 Abschnitte in keinem Landmark (axe, 21.08.) —
+      Screenreader-Nutzer navigieren genau darüber. */}
+  <main id="main">
 
   <!-- 2 — DAS PROBLEM (Spiegel) -->
   <section class="kz-section">
@@ -662,6 +673,8 @@ const homeSchema = {
       </div>
     </div>
   </section>
+
+  </main>
 
   <footer class="kz-footer">
     <div class="kz-wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;">
