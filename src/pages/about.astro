@@ -64,8 +64,8 @@ const personSchema = {
       margin-top: 56px;
       padding: clamp(28px, 4vw, 42px);
       border-radius: var(--radius-xl);
-      background: linear-gradient(145deg, #fff, var(--indigo-wash));
-      border: 1px solid var(--line);
+      background: linear-gradient(145deg, var(--card), rgba(232, 90, 43, 0.12));
+      border: 1px solid var(--line-soft);
       box-shadow: var(--shadow-md);
     }
     .kz-about-note p {
@@ -82,7 +82,8 @@ const personSchema = {
   </style>
 
   <article class="kz-page kz-page--wide">
-    <div class="kz-page-eyebrow"><span>Über mich</span></div>
+    {/* Eyebrow beim Dark-Umbau entfallen (craft-floor: kein Label über
+        der Überschrift) — die h1 trägt selbst. */}
     <h1 class="kz-h1">Benjamin Zirngibl. Gründer von k-AIzen.</h1>
     <p class="kz-lead">
       k-AIzen unterstützt Unternehmen dabei, KI nicht nur auszuprobieren, sondern

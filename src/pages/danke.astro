@@ -1,0 +1,71 @@
+---
+// Landeplatz nach dem Absenden des Anfrage-Formulars (Funnel-Umbau 2026-08-21).
+//
+// Die Lead-API leitet hierher zurück — siehe die Weißliste `ZIELE` in
+// muster-website/lead-api/server.mjs. Ohne diese Seite landete jeder, der auf
+// k-aizen.de ein Formular abschickt, auf der Danke-Seite der Demo-Domain.
+//
+// noindex: Eine Bestätigungsseite gehört nicht in die Suche. Sie hat keinen
+// eigenen Wert für Suchende, und in den Ergebnissen stünde eine Seite, die
+// jedem Fremden „Danke für deine Anfrage" sagt, ohne dass er eine gestellt hat.
+// Sie ist außerdem in astro.config.mjs aus der Sitemap ausgenommen.
+import KaizenLayout from '../layouts/KaizenLayout.astro';
+
+const calUrl = 'https://calendar.app.google/AvBJwsvWrh4m26tV7';
+---
+
+<KaizenLayout
+  title="Angekommen — ich melde mich"
+  description="Deine Anfrage ist angekommen."
+  path="/danke"
+  noindex={true}
+>
+  <article class="kz-page">
+    <h1 class="kz-h1">Angekommen.</h1>
+    <p class="kz-lead">
+      Deine Anfrage liegt auf meinem Handy — nicht in einem Postfach, das ich
+      abends mal durchsehe. Ich schaue sie mir an und melde mich innerhalb eines
+      Werktags bei dir.
+    </p>
+
+    <section class="kz-danke-weiter">
+      <h2 class="kz-h2">Was jetzt passiert</h2>
+      <ol class="kz-danke-schritte">
+        <li>
+          <strong>Ich sehe mir deinen Betrieb an.</strong> Was du machst, wie
+          Kunden dich heute finden, was dein Google-Eintrag hergibt.
+        </li>
+        <li>
+          <strong>Ich baue dir eine Beispielseite.</strong> Mit deinem
+          Betriebsnamen, deinen Leistungen, deinem Ort — keine Schablone mit
+          eingesetztem Namen.
+        </li>
+        <li>
+          <strong>Du bekommst den Link.</strong> Anschauen, drüber schlafen,
+          ehrlich sagen was du denkst. Kostet nichts und verpflichtet zu nichts.
+        </li>
+      </ol>
+    </section>
+
+    <section class="kz-danke-eilig">
+      <h2 class="kz-h2">Wenn es eilig ist</h2>
+      <p>
+        Ruf einfach an oder buch dir direkt einen Rückruf — dann sprechen wir,
+        bevor ich anfange zu bauen.
+      </p>
+      <p class="kz-danke-wege">
+        <a href={calUrl} class="kz-btn kz-btn--primary" target="_blank" rel="noopener">
+          Rückruf-Termin wählen <span class="kz-btn__arrow">→</span>
+        </a>
+        <a href="https://wa.me/4915901031928" class="kz-btn kz-btn--ghost">WhatsApp</a>
+        <a href="mailto:kontakt@k-aizen.de" class="kz-btn kz-btn--ghost">kontakt@k-aizen.de</a>
+      </p>
+    </section>
+
+    <p class="kz-danke-zurueck">
+      <a href="/">Zurück zur Startseite</a> ·
+      <a href="/meisterseite">Was im Paket steckt</a> ·
+      <a href="/pricing">Was es kostet</a>
+    </p>
+  </article>
+</KaizenLayout>

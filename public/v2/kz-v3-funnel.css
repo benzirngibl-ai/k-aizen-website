@@ -1,0 +1,711 @@
+/* ============================================================
+   k-AIzen v3 — Funnel-Layer (Dark: Charcoal & Ember)
+   Stufen · Laufend-Band · Anfrage-Formular · Direkt · Danke
+   Lädt NACH kz-v2.css und kz-v2-polish.css, nutzt deren Tokens.
+   (Textauswahl/Caret/Scrollleiste liegen seit dem Dark-Umbau
+   zentral in kz-v2.css.)
+   ============================================================ */
+
+/* ============================================================
+   1 · DIE DREI STUFEN — Gefunden → Gefragt → Gebucht
+   Bewusst KEINE drei Karten nebeneinander: die Stufen bauen
+   aufeinander auf, also erzählt die Form ein Crescendo.
+   Drei Ledger-Zeilen untereinander; das große Wort wächst von
+   Stufe zu Stufe in Größe und Ton (Slate → Elfenbein → Glut),
+   und der Ember-Strich auf der Trennlinie verlängert sich — die
+   Steigerung selbst ist die Gestaltung, nicht eine Nummer.
+   ============================================================ */
+.kz-stufen {
+  list-style: none;               /* Zahlen erzählen hier nichts, was das
+                                     Crescendo nicht schon erzählt */
+  margin: clamp(56px, 8vw, 96px) 0 0;
+  padding: 0;
+}
+
+.kz-stufe {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  column-gap: clamp(28px, 5vw, 72px);
+  align-items: start;
+  padding-block: clamp(36px, 5.5vw, 60px);
+}
+.kz-stufe:first-child { padding-top: 0; }
+.kz-stufe + .kz-stufe { border-top: 1px solid var(--line-soft); }
+
+/* Der wachsende Ember-Strich auf der Trennlinie: mit jeder Stufe
+   länger — die Abfolge trägt sichtbar Information. */
+.kz-stufe + .kz-stufe::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--indigo), var(--violet));
+  box-shadow: 0 0 14px rgba(255, 122, 69, 0.45);
+}
+.kz-stufe:nth-child(2)::before { width: 56px; }
+.kz-stufe:nth-child(3)::before { width: 128px; }
+
+/* Das große Wort: wächst und wärmt sich von Stufe zu Stufe auf.
+   Betonung aus Größe und Gewicht — kein Verlaufs-Text. */
+.kz-stufe__wort {
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  margin-top: -0.06em;            /* Versalhöhe optisch an die erste
+                                     Satzzeile rechts anlegen */
+}
+.kz-stufe:nth-child(1) .kz-stufe__wort {
+  font-size: clamp(2.5rem, 5.5vw, 3.9rem);
+  color: var(--slate);
+}
+.kz-stufe:nth-child(2) .kz-stufe__wort {
+  font-size: clamp(2.9rem, 6.5vw, 4.8rem);
+  color: var(--ink);
+}
+.kz-stufe:nth-child(3) .kz-stufe__wort {
+  font-size: clamp(3.3rem, 7.5vw, 5.7rem);
+  color: var(--indigo-deep);      /* Text-Ember, 8.3:1 auf Charcoal —
+                                     der Glut-Höhepunkt, gemessen */
+  text-shadow: 0 0 44px rgba(255, 122, 69, 0.35);
+}
+
+/* Ein Satz zur Folge im Alltag: trägt die rechte Spalte an. */
+.kz-stufe__satz {
+  font-size: clamp(1.08rem, 1.8vw, 1.3rem);
+  font-weight: 600;               /* echte Schnittstufe — Jakarta lädt statisch */
+  line-height: 1.45;
+  color: var(--ink);
+  max-width: 44ch;
+}
+
+/* Drei belegende Einzelheiten: ruhige Liste mit gezeichneter
+   Ember-Raute als Marker (Echo des Diamant-Motivs der Seite). */
+.kz-stufe__punkte {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+}
+.kz-stufe__punkte li {
+  position: relative;
+  padding-left: 24px;
+  margin-top: 12px;
+  color: var(--slate);
+  font-size: 0.99rem;
+  line-height: 1.6;
+  max-width: 54ch;
+}
+.kz-stufe__punkte li:first-child { margin-top: 0; }
+.kz-stufe__punkte li::before {
+  content: '';
+  position: absolute;
+  left: 2px; top: 0.52em;
+  width: 7px; height: 7px;
+  border-radius: 1.5px;
+  background: var(--violet);
+  transform: rotate(45deg);
+  opacity: 0.85;
+}
+
+@media (max-width: 760px) {
+  .kz-stufe {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 14px;
+    padding-block: clamp(30px, 8vw, 40px);
+  }
+  .kz-stufe__wort { margin-top: 0; }
+}
+
+/* ============================================================
+   2 · „LÄUFT DARUNTER WEITER" — die Grundlage, nicht die
+   Schlagzeile. Ein leises Band; die dl bleibt, was sie ist:
+   Begriff links, Erklärung rechts, Zeile für Zeile.
+   ============================================================ */
+.kz-laufend {
+  margin-top: clamp(56px, 8vw, 96px);
+  max-width: 880px;
+  background: var(--paper-2);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-xl);
+  padding: clamp(26px, 4.5vw, 44px) clamp(22px, 4.5vw, 48px);
+  box-shadow: var(--edge);
+}
+
+.kz-laufend__titel {
+  font-size: 1.06rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink-soft);
+  margin-bottom: 22px;
+}
+
+.kz-laufend__liste { margin: 0; }
+
+.kz-laufend__paar {
+  display: grid;
+  grid-template-columns: minmax(150px, 220px) 1fr;
+  column-gap: clamp(20px, 3vw, 36px);
+  align-items: baseline;
+}
+.kz-laufend__paar + .kz-laufend__paar {
+  border-top: 1px solid var(--line-soft);
+  margin-top: 16px;
+  padding-top: 16px;
+}
+.kz-laufend__paar dt {
+  font-weight: 700;
+  font-size: 0.97rem;
+  color: var(--ink);
+}
+.kz-laufend__paar dd {
+  margin: 0;
+  color: var(--slate);
+  font-size: 0.97rem;
+  line-height: 1.6;
+  max-width: 58ch;
+}
+
+@media (max-width: 640px) {
+  .kz-laufend__paar { grid-template-columns: 1fr; row-gap: 4px; }
+}
+
+/* ============================================================
+   3 · DAS ANFRAGE-FORMULAR — der einzige Erfassungspunkt.
+   Entscheidung Dark-Umbau: Der Bogen bleibt HELL — ein warmes
+   Blatt Papier auf dem dunklen Tisch. Damit das gewollt aussieht
+   (und nicht wie ein vergessener Rest), ist das Blatt warmweiß
+   statt reinweiß, liegt in einer Glut-Umgebung und wirft einen
+   tiefen, weichen Schatten. Alle Token im Bogen sind LOKAL auf
+   eine Licht-Palette umgestellt — gemessene Kontraste im
+   Kommentar am Selektor.
+   ============================================================ */
+.kz-anfrage {
+  padding-block: clamp(88px, 12vw, 160px);
+  background:
+    radial-gradient(90% 70% at 88% 4%, rgba(255, 122, 69, 0.12), transparent 60%),
+    radial-gradient(80% 60% at 6% 96%, rgba(232, 90, 43, 0.10), transparent 55%),
+    var(--paper-2);
+  border-block: 1px solid var(--line-soft);
+  overflow: hidden;
+}
+/* Ginkgo als leise botanische Form unten links — bewusst nicht
+   rechts: dort wohnt das Chat-Widget. */
+.kz-anfrage::before {
+  content: '';
+  position: absolute;
+  left: -90px; bottom: -110px;
+  width: clamp(200px, 20vw, 320px);
+  aspect-ratio: 480 / 596;
+  background: url('/icons/icon-ginkgo.png') no-repeat center / contain;
+  opacity: 0.05;               /* Der dichte Gelbton wird auf Charcoal
+                                  sonst schlammig — nur andeuten */
+  pointer-events: none;
+}
+
+.kz-anfrage__intro { margin-bottom: clamp(36px, 6vw, 56px); }
+
+@media (min-width: 1000px) {
+  .kz-anfrage .kz-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    column-gap: clamp(48px, 6vw, 88px);
+    align-items: start;
+  }
+  .kz-anfrage__intro {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    margin-bottom: 0;
+    position: sticky;               /* Das Versprechen bleibt neben dem
+                                       langen Formular im Blick */
+    top: 128px;
+  }
+  .kz-anfrage__fehler { grid-column: 2; }
+  .kz-anfrage__form   { grid-column: 2; }
+}
+
+/* Fehlerband: ernst und ruhig, kein Alarm. Es liegt auf dem
+   DUNKLEN Grund (außerhalb des Bogens): getönter Ember-Grund,
+   helle Ember-Schrift (#FFB496 ≈ 10.3:1 auf --paper-2).
+   Kein display gesetzt, damit [hidden] weiter greift. */
+.kz-anfrage__fehler {
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  border: 1px solid rgba(255, 143, 94, 0.32);
+  border-radius: var(--radius-md);
+  background: rgba(232, 90, 43, 0.10);
+  color: #FFB496;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.55;
+  max-width: 62ch;
+}
+
+/* Der Bogen: lokale Licht-Palette. Alle Kindregeln lesen die
+   Token von hier — Labels, Platzhalter, Linien, Hinweise.
+   Gemessen: Text #2B231C auf #FDF8F1 = 14.6:1 · Platzhalter/
+   Hinweise #6A594A = 6.3:1 · Link #B04517 = 5.4:1. */
+.kz-anfrage__form {
+  --ink: #2B231C;
+  --ink-soft: #3C332A;
+  --slate: #6A594A;
+  --slate-2: #857463;
+  --line: #E3D7C8;
+  --line-soft: #EFE6D9;
+  --paper-2: #F4EBDF;
+  --card: #FFFDF9;
+  --indigo-deep: #B04517;         /* Ember-Text auf hellem Blatt */
+
+  position: relative;               /* Anker für den Honigtopf */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 24px;
+  background: linear-gradient(180deg, #FFFDF9, #FAF3E9);
+  color: var(--ink);
+  border: 1px solid rgba(255, 240, 225, 0.12);
+  border-radius: var(--radius-xl);
+  padding: clamp(24px, 5vw, 52px);
+  box-shadow:
+    0 30px 70px -20px rgba(0, 0, 0, 0.65),
+    0 10px 26px -8px rgba(0, 0, 0, 0.45),
+    0 0 90px -20px rgba(232, 90, 43, 0.25);
+  accent-color: var(--indigo);
+  caret-color: var(--indigo);
+}
+
+/* Der EINE inszenierte Bewegungs-Moment dieser Datei: der Bogen
+   schiebt sich beim Hereinscrollen an seinen Platz — scroll-
+   getrieben, nur wo der Browser es kann, nie bei reduced motion.
+   (.kz-reveal wird bewusst nicht dupliziert.) */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .kz-anfrage__form {
+      animation: kz-bogen-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+@keyframes kz-bogen-in {
+  from { opacity: 0.35; transform: translateY(40px) scale(0.985); }
+  to   { opacity: 1;    transform: none; }
+}
+
+/* Honigtopf: unsichtbar und unfokussierbar für Menschen, aber
+   NICHT display:none (durchschauen Bots). Abseits-Technik; durch
+   width/height 1px + overflow hidden erzeugt er auch kein
+   Scrollfeld. aria-hidden + tabindex=-1 stehen im Markup, damit
+   weder Screenreader noch Tab-Reihenfolge hineinfallen. */
+.kz-anfrage__topf {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ---------- Felder ---------- */
+.kz-anfrage__feld {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.kz-anfrage__feld--breit,
+.kz-anfrage__einwilligung,
+.kz-anfrage__abschluss { grid-column: 1 / -1; }
+
+.kz-anfrage__feld label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  margin-bottom: 8px;
+}
+.kz-anfrage__optional {
+  font-weight: 500;
+  color: var(--slate);
+}
+
+.kz-anfrage__feld input,
+.kz-anfrage__feld textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;                  /* ≥16px — iOS zoomt sonst hinein */
+  line-height: 1.4;
+  color: var(--ink);
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 13px 16px;
+  transition:
+    border-color 0.18s var(--ease-soft),
+    box-shadow 0.18s var(--ease-soft),
+    background-color 0.18s var(--ease-soft);
+}
+.kz-anfrage__feld textarea {
+  min-height: 128px;
+  resize: vertical;
+}
+
+/* Platzhalter: aus der Blatt-Palette und lesbar (6.7:1 auf Weiß). */
+.kz-anfrage__feld input::placeholder,
+.kz-anfrage__feld textarea::placeholder {
+  color: var(--slate);
+  opacity: 1;                       /* Firefox dünnt sonst aus */
+}
+
+.kz-anfrage__feld input:hover,
+.kz-anfrage__feld textarea:hover {
+  border-color: rgba(43, 35, 28, 0.35);
+}
+
+/* Fokusring aus der Palette statt Browser-Default. Text-Inputs
+   matchen :focus-visible bei jeder Fokusart — Ring ist immer da. */
+.kz-anfrage__feld input:focus-visible,
+.kz-anfrage__feld textarea:focus-visible {
+  outline: none;
+  border-color: var(--indigo);
+  box-shadow: 0 0 0 4px rgba(232, 90, 43, 0.18);
+}
+
+.kz-anfrage__feld input:disabled,
+.kz-anfrage__feld textarea:disabled {
+  background: var(--paper-2);
+  color: var(--slate-2);
+  border-color: var(--line-soft);
+  cursor: not-allowed;
+}
+
+/* Ungültig ERST nach Interaktion — kein rotes Feld, bevor jemand
+   etwas getippt hat. Dunkles Ember als ernster Ton der Marke. */
+.kz-anfrage__feld input:user-invalid,
+.kz-anfrage__feld textarea:user-invalid {
+  border-color: #C2491F;
+  background: rgba(194, 73, 31, 0.04);
+}
+/* Rückfall für Browser ohne :user-invalid — greift erst, wenn der
+   Platzhalter verschwunden ist, also erst nach dem Tippen. */
+@supports not selector(:user-invalid) {
+  .kz-anfrage__feld input:not(:placeholder-shown):invalid,
+  .kz-anfrage__feld textarea:not(:placeholder-shown):invalid {
+    border-color: #C2491F;
+    background: rgba(194, 73, 31, 0.04);
+  }
+}
+
+.kz-anfrage__hinweis {
+  margin-top: 8px;
+  font-size: 0.87rem;
+  line-height: 1.5;
+  color: var(--slate);
+  max-width: 58ch;
+}
+
+/* ---------- Einwilligung ---------- */
+.kz-anfrage__einwilligung {
+  margin: 6px 0 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 12px;
+  align-items: start;
+}
+.kz-anfrage__einwilligung input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 26px;                      /* Tippziel ≥ 24px */
+  height: 26px;
+  margin: 0;
+  flex: none;
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 7px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition:
+    border-color 0.18s var(--ease-soft),
+    background-color 0.18s var(--ease-soft),
+    box-shadow 0.18s var(--ease-soft);
+}
+.kz-anfrage__einwilligung input[type="checkbox"]:hover {
+  border-color: var(--indigo);
+}
+.kz-anfrage__einwilligung input[type="checkbox"]:focus-visible {
+  outline: none;
+  border-color: var(--indigo);
+  box-shadow: 0 0 0 4px rgba(232, 90, 43, 0.18);
+}
+.kz-anfrage__einwilligung input[type="checkbox"]:checked {
+  background-color: var(--indigo);
+  border-color: var(--indigo);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' d='M3.2 8.6l3.2 3.2 6.4-7.2'/%3E%3C/svg%3E");
+  background-size: 15px 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.kz-anfrage__einwilligung input[type="checkbox"]:user-invalid {
+  border-color: #C2491F;
+}
+.kz-anfrage__einwilligung label {
+  font-size: 0.93rem;
+  line-height: 1.55;
+  color: var(--slate);
+  max-width: 62ch;
+  cursor: pointer;
+  padding-top: 2px;                 /* erste Zeile optisch mittig
+                                       zur Checkbox */
+}
+.kz-anfrage__einwilligung a {
+  color: var(--indigo-deep);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+.kz-anfrage__einwilligung a:hover { color: var(--indigo); }
+.kz-anfrage__einwilligung a:focus-visible {
+  outline: 2px solid var(--indigo);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ---------- Abschluss ---------- */
+.kz-anfrage__abschluss {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 16px 24px;
+  flex-wrap: wrap;
+}
+.kz-anfrage__zusage {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--slate);
+  max-width: 36ch;
+}
+
+/* Button-Zustände vervollständigen (Basis liegt in kz-v2.css). */
+.kz-anfrage .kz-btn:focus-visible,
+.kz-direkt .kz-btn:focus-visible,
+.kz-danke-wege .kz-btn:focus-visible {
+  outline: 3px solid rgba(232, 90, 43, 0.6);
+  outline-offset: 3px;
+}
+.kz-anfrage .kz-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ---------- Formular responsiv ---------- */
+@media (max-width: 700px) {
+  .kz-anfrage__form { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .kz-anfrage__abschluss .kz-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .kz-anfrage__zusage { max-width: none; }
+}
+
+/* ============================================================
+   4 · „LIEBER DIREKT SPRECHEN" — der Zweitweg. Bewusst kleiner
+   als das Formular darüber: kompaktere Sektion, kleinere
+   Überschrift, Ghost-Buttons bleiben Ghost.
+   ============================================================ */
+.kz-section.kz-direkt { padding-block: clamp(56px, 9vw, 104px); }
+
+.kz-direkt .kz-h2 { font-size: clamp(1.7rem, 3.4vw, 2.5rem); }
+
+.kz-direkt .kz-lead {
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  margin-top: 16px;
+  max-width: 52ch;
+}
+
+.kz-direkt__wege {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+@media (max-width: 560px) {
+  .kz-direkt__wege .kz-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ============================================================
+   5 · DANKE-SEITE — ruhig, bestätigend, kurz.
+   Hier tragen die Nummern echte Information (was nacheinander
+   passiert), deshalb bekommen sie hier ihren Auftritt — mit
+   einem feinen Glut-Faden, der die Schritte verbindet.
+   Selektoren mit .kz-page-Präfix, weil die Layout-Styles nach
+   dieser Datei geladen werden und sonst gleichziehen.
+   ============================================================ */
+.kz-page ol.kz-danke-schritte {
+  list-style: none;
+  counter-reset: schritt;
+  margin: 28px 0 0;
+  padding: 0;
+  max-width: 64ch;
+}
+.kz-page ol.kz-danke-schritte > li {
+  counter-increment: schritt;
+  position: relative;
+  margin: 0;
+  padding: 0 0 30px 60px;
+}
+.kz-page ol.kz-danke-schritte > li:last-child { padding-bottom: 0; }
+
+.kz-page ol.kz-danke-schritte > li::before {
+  content: counter(schritt);
+  position: absolute;
+  left: 0;
+  top: -3px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--indigo-deep);
+  background: var(--indigo-wash);
+  border: 1px solid rgba(255, 143, 94, 0.30);
+}
+/* Der Faden zwischen den Schritten. */
+.kz-page ol.kz-danke-schritte > li::after {
+  content: '';
+  position: absolute;
+  left: 17px;
+  top: 39px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(rgba(255, 143, 94, 0.40), rgba(255, 143, 94, 0.10));
+}
+.kz-page ol.kz-danke-schritte > li:last-child::after { display: none; }
+
+/* Die Wege, wenn es eilig ist. */
+.kz-page p.kz-danke-wege {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 26px 0 0;
+  max-width: none;
+}
+@media (max-width: 560px) {
+  .kz-page p.kz-danke-wege .kz-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Ruhiger Abgang zurück zur Seite. */
+.kz-page p.kz-danke-zurueck {
+  margin: clamp(64px, 10vw, 110px) 0 clamp(56px, 9vw, 88px);
+  padding-top: 22px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 0.95rem;
+  color: var(--slate);
+}
+
+/* ============================================================
+   Reduzierte Bewegung: alles Bewegte dieser Datei liegt bereits
+   hinter (prefers-reduced-motion: no-preference); hier zusätzlich
+   die Zustandsübergänge beruhigen.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .kz-anfrage__form,
+  .kz-anfrage__feld input,
+  .kz-anfrage__feld textarea,
+  .kz-anfrage__einwilligung input[type="checkbox"] {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TERMINPLAN (Ben, 21.08.2026) — ganz unten auf der Startseite.
+   Google-Kalender, deshalb Klick-zum-Laden: solange der Vorschalt-Block steht,
+   ist keine Verbindung zu Google aufgebaut. Begründung in der Komponente.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.kz-termin {
+  padding-block: clamp(72px, 9vw, 128px);
+  border-top: 1px solid var(--line);
+  background: var(--paper-2);
+}
+
+.kz-termin .kz-h2 { max-width: 20ch; }
+.kz-termin .kz-lead { max-width: 62ch; }
+
+.kz-termin__rahmen {
+  margin-top: clamp(32px, 4vw, 52px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--card);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+/* Der Vorschalt-Block trägt die Entscheidung. Er ist bewusst ruhig und
+   erklärend statt reißerisch — hier wird eine Einwilligung erteilt. */
+.kz-termin__vorschalt {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  padding: clamp(40px, 6vw, 72px) clamp(20px, 4vw, 48px);
+  text-align: center;
+}
+
+.kz-termin__hinweis {
+  margin: 0;
+  max-width: 52ch;
+  color: var(--slate);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.kz-termin__ausweich {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--slate-2);
+}
+
+.kz-termin__ausweich a,
+.kz-termin__fussnote a {
+  color: var(--ember-text);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.kz-termin__ausweich a:hover,
+.kz-termin__fussnote a:hover { color: var(--violet); }
+
+/* Googles Terminplan ist hell und lässt sich nicht umfärben. Auf dunklem Grund
+   bekommt er deshalb dieselbe Behandlung wie das Formular: ein helles Blatt,
+   das als gezeigtes Objekt gelesen wird — nicht als Loch im Layout. */
+.kz-termin__buehne {
+  background: #FFFFFF;
+  border-top: 1px solid var(--line);
+  min-height: 600px;
+}
+
+.kz-termin__buehne iframe { display: block; width: 100%; border: 0; }
+
+.kz-termin__fussnote {
+  margin-top: 22px;
+  font-size: 0.92rem;
+  color: var(--slate-2);
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .kz-termin__buehne { min-height: 520px; }
+}

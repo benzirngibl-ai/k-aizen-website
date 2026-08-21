@@ -1,11 +1,17 @@
 ---
 import KaizenLayout from '../layouts/KaizenLayout.astro';
+import AnfrageFormular from '../components/AnfrageFormular.astro';
 
 // Meisterseite — Produktseite des Einstiegsprodukts (297 €/Mo, branchenoffen seit 28.07.).
 // Plan: k-aizen/10-sales/INTEGRATIONSPLAN-website-meisterseite-2026-07-21.md
 // VSL-Video: Platzhalter-Block unten — sobald Bens Video da ist, YouTube-Embed
 // einsetzen (Kommentar an der Stelle).
 
+// POSITIONIERUNG 2026-08-21 (Ben) — identisch zur Startseite, siehe den langen
+// Kommentar in index.astro. Kurzfassung der beiden Fallen:
+//   · KEIN Terminkalender versprechen (am 28.07. bewusst gestrichen).
+//   · Preis bleibt 297 €, obwohl das Paket gewachsen ist.
+// Ändert sich hier etwas, muss es auch in index.astro geändert werden.
 const leistungen = [
   {
     title: 'Website, komplett gebaut',
@@ -20,16 +26,28 @@ const leistungen = [
     text: 'Die Anfragen-App auf deinem Handy: mit einem Tipp zurückrufen, den Stand setzen — angerufen, besichtigt, Angebot raus — und Notizen festhalten. Meldet sich ein Kunde nächstes Jahr wieder, steht noch da, was besprochen war.',
   },
   {
+    title: 'Fragen beantwortet, auch nach Feierabend',
+    text: 'Ein Assistent auf deiner Seite beantwortet, was Kunden immer fragen: was du machst, wo du hinfährst, wie es abläuft, wann du erreichbar bist. Was er nicht weiß, wird zur Anfrage statt zur abgebrochenen Suche.',
+  },
+  {
+    title: 'Bewertungen, ohne dass du fragen musst',
+    text: 'Nach dem Auftrag wird dein Kunde freundlich erinnert, eine Bewertung zu hinterlassen. Genau die Sterne, nach denen der nächste Kunde schaut, bevor er anruft.',
+  },
+  {
+    title: 'Dein Google-Profil gepflegt',
+    text: 'Der Eintrag, den die meisten zuerst sehen: vollständig ausgefüllt, aktuell gehalten, mit deinen Leistungen und deinem Gebiet. Nicht nur einmal angelegt und dann vergessen.',
+  },
+  {
+    title: 'Auch in KI-Antworten auftauchen',
+    text: 'Immer mehr Leute fragen nicht Google, sondern einen KI-Assistenten nach einem Betrieb. Deine Seite ist so gebaut, dass er sie sauber lesen und deinen Betrieb nennen kann.',
+  },
+  {
     title: 'Dauerhaft betreut',
     text: 'Hosting, Pflege, Änderungen — alles drin. Neues Foto, andere Öffnungszeiten? Eine kurze Nachricht genügt, ist am selben Tag drin. Du loggst dich nie ein.',
   },
   {
     title: 'Datenschutz eingebaut',
     text: 'Deutsche Server, kein US-Tracking, Impressum und Datenschutzerklärung sauber. Keine Abmahn-Angst.',
-  },
-  {
-    title: 'Gefunden werden',
-    text: 'Sauberer Suchmaschinen-Unterbau ab Werk — für Google und für KI-Antworten (strukturierte Daten, Sitemap, llms.txt). Dieselbe Technik wie bei unseren eigenen Portalen.',
   },
 ];
 
@@ -78,9 +96,9 @@ const schema = {
       '@type': 'WebPage',
       '@id': 'https://k-aizen.de/meisterseite#webpage',
       url: 'https://k-aizen.de/meisterseite',
-      name: 'Meisterseite — Website komplett gebaut und betreut, 297 €/Monat',
+      name: 'Meisterseite — gefunden, gefragt, gebucht. 297 €/Monat',
       description:
-        'Das Website-Paket für kleine und mittlere Betriebe: komplett gebaut, dauerhaft betreut, jede Anfrage sofort auf deinem Handy. 297 € im Monat, keine Einrichtungsgebühr, monatlich kündbar.',
+        'Das Paket für kleine und mittlere Betriebe: Website komplett gebaut und dauerhaft betreut, Google-Unternehmensprofil gepflegt, Kundenbewertungen automatisch eingesammelt, Kundenfragen rund um die Uhr beantwortet, jede Anfrage sofort auf deinem Handy. 297 € im Monat, keine Einrichtungsgebühr, monatlich kündbar.',
       inLanguage: 'de-DE',
       isPartOf: { '@id': 'https://k-aizen.de/#website' },
     },
@@ -123,23 +141,24 @@ const schema = {
 ---
 
 <KaizenLayout
-  title="Meisterseite — deine Website, komplett gemacht"
-  description="Das Website-Paket für kleine und mittlere Betriebe im Raum Nürnberg: komplett gebaut, dauerhaft betreut, jede Anfrage sofort auf deinem Handy. 297 €/Monat, keine Einrichtungsgebühr, monatlich kündbar."
+  title="Meisterseite — gefunden, gefragt, gebucht"
+  description="Das Paket für kleine und mittlere Betriebe im Raum Nürnberg: Website komplett gebaut und betreut, Google-Profil gepflegt, Bewertungen automatisch gesammelt, Kundenfragen rund um die Uhr beantwortet, jede Anfrage sofort aufs Handy. 297 €/Monat, keine Einrichtungsgebühr, monatlich kündbar."
   path="/meisterseite"
   activeNav="paket"
   jsonLd={schema}
   breadcrumbs={[{ name: 'Meisterseite', href: '/meisterseite' }]}
 >
   <article class="kz-page">
-    <div class="kz-page-eyebrow">
-      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
-      <span>Meisterseite · für kleine und mittlere Betriebe</span>
-    </div>
-    <h1 class="kz-h1">Deine Website.<br /><span class="accent">Komplett gemacht.</span></h1>
+    {/* Der Eyebrow über der Überschrift ist am 21.08. entfallen (craft-floor:
+        ein Label über einer Überschrift ist gebannt). Die Einordnung „für
+        kleine und mittlere Betriebe" steht jetzt in der Unterzeile. */}
+    <h1 class="kz-h1">Gefunden. Gefragt.<br /><span class="accent">Gebucht.</span></h1>
     <p class="kz-lead">
-      Wir bauen und betreuen deine Website komplett — und jede Anfrage landet direkt
-      auf deinem Handy. Für Betriebe im Raum Nürnberg, die gute Arbeit machen,
-      aber online kaum zu finden sind.
+      Wir bauen und betreuen deine Website, pflegen dein Google-Profil, sammeln
+      Bewertungen ein und beantworten Kundenfragen rund um die Uhr — und jede
+      Anfrage landet Sekunden später auf deinem Handy. Für kleine und mittlere
+      Betriebe im Raum Nürnberg, die gute Arbeit machen, aber online kaum zu
+      finden sind.
     </p>
 
     <!-- Preis sofort sichtbar (Kai-Prinzip: Karten auf den Tisch) -->
@@ -161,8 +180,8 @@ const schema = {
     </section>
 
     <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-      <a href="https://cal.k-aizen.de/ben-kaizen/rueckruf" class="kz-btn" target="_blank" rel="noopener">Rückruf-Termin wählen</a>
-      <a href="https://muster.k-aizen.de" class="kz-btn kz-btn-ghost" target="_blank" rel="noopener">Muster-Website ansehen →</a>
+      <a href="#anfrage" class="kz-btn">Beispielseite anfordern <span class="kz-btn__arrow">→</span></a>
+      <a href="https://muster.k-aizen.de" class="kz-btn kz-btn-ghost" target="_blank" rel="noopener">Beispiel ansehen →</a>
     </div>
 
     <!-- VSL-Block — PLATZHALTER. Sobald Bens Video da ist (YouTube unlisted):
@@ -266,21 +285,35 @@ const schema = {
 
     <!-- Abschluss-CTA -->
     <section style="margin-top: 80px; padding: 56px clamp(24px, 4vw, 48px); background: var(--kz-cream-deep); border-radius: 12px;">
-      <h2 class="kz-h2" style="margin-top: 0; color: var(--fg-inverse);">Der nächste Schritt ist ein Gespräch</h2>
+      <h2 class="kz-h2" style="margin-top: 0; color: var(--fg-inverse);">Der nächste Schritt kostet dich nichts</h2>
       <p style="color: var(--fg-inverse);">
-        Kein Verkaufsmarathon: Du wählst einen Rückruf-Termin, wir sprechen 15 Minuten
-        über deinen Betrieb, und du entscheidest in Ruhe. Wenn es nicht passt, sagen wir
-        das ehrlich.
+        Am einfachsten siehst du es an deinem eigenen Betrieb: Sag mir unten kurz,
+        was du machst — ich baue dir daraus eine Beispielseite. Wenn du lieber
+        redest, nimm einen Rückruf-Termin. Passt es nicht, sage ich das ehrlich.
       </p>
       <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;">
-        <a href="https://cal.k-aizen.de/ben-kaizen/rueckruf" class="kz-btn" target="_blank" rel="noopener">Rückruf-Termin wählen</a>
-        <a href="mailto:kontakt@k-aizen.de?subject=Meisterseite" class="kz-btn kz-btn-ghost">Oder kurz per Mail</a>
+        <a href="#anfrage" class="kz-btn">Beispielseite anfordern <span class="kz-btn__arrow">→</span></a>
+        <a href="https://calendar.app.google/AvBJwsvWrh4m26tV7" class="kz-btn kz-btn-ghost" target="_blank" rel="noopener">Lieber 15 Minuten telefonieren</a>
       </div>
       <p style="margin-top: 28px; font-size: 14px; color: var(--fg-muted);">
-        Die Meisterseite ist der Einstieg. Wer später mehr will — etwa eine KI-Stimme,
-        die Anrufe annimmt und direkt Termine vereinbart — findet bei k-AIzen die
-        nächsten Stufen. Eins nach dem anderen.
+        Die Meisterseite ist der Einstieg. Wer später mehr will — etwa eine
+        Stimme, die Anrufe annimmt, wenn niemand rangeht — findet die nächsten
+        Stufen bei uns. Eins nach dem anderen.
       </p>
     </section>
   </article>
+
+  <AnfrageFormular quelle="k-aizen.de/meisterseite" id="anfrage">
+    <Fragment slot="intro">
+      <h2 class="kz-h2">Sieh es an deinem eigenen Betrieb.</h2>
+      <p class="kz-lead">
+        Eine fremde Beispielseite sagt dir wenig. Schreib mir kurz, was du machst
+        — ich baue dir eine Seite mit deinem Namen, deinem Gewerk und deinem Ort.
+      </p>
+    </Fragment>
+    <Fragment slot="button">Beispielseite anfordern</Fragment>
+    <Fragment slot="zusage">
+      Innerhalb eines Werktags. Kostenlos, unverbindlich, kein Vertreterbesuch.
+    </Fragment>
+  </AnfrageFormular>
 </KaizenLayout>

@@ -9,11 +9,8 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
   noindex={true}
 >
   <article class="kz-page" style="max-width: 760px;">
-    <div class="kz-page-eyebrow">
-      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
-      <span>Customer-Setup</span>
-    </div>
-
+    {/* Eyebrow beim Dark-Umbau entfallen (craft-floor: kein Label über
+        der Überschrift). */}
     <h1 class="kz-h1">
       Willkommen.<br/>
       Lass uns dein Setup vorbereiten.
@@ -408,7 +405,7 @@ Trenne die einzelnen Beispiele mit:
     .kz-help-card {
       background: var(--kz-cream-deep);
       color: var(--fg-inverse);
-      border-left: 3px solid var(--kz-ember);
+      border: 1px solid rgba(255, 143, 94, 0.24); /* volle Hairline statt dicker Farbkante */
       padding: 16px 20px;
       border-radius: 6px;
       margin: 24px 0 40px;
@@ -475,8 +472,9 @@ Trenne die einzelnen Beispiele mit:
       line-height: 1.4;
       border: 1px solid var(--kz-border);
       border-radius: 6px;
-      background: white;
-      color: var(--fg-inverse);
+      /* Dunkle, leicht vertiefte Felder statt weißer Löcher im Charcoal */
+      background: var(--kz-charcoal);
+      color: var(--fg);
       transition: border-color 160ms;
     }
     .kz-field input:focus,
@@ -484,14 +482,14 @@ Trenne die einzelnen Beispiele mit:
     .kz-field textarea:focus {
       outline: none;
       border-color: var(--kz-ember);
-      box-shadow: 0 0 0 3px rgba(232, 90, 43, 0.12);
+      box-shadow: 0 0 0 3px rgba(232, 90, 43, 0.22);
     }
     .kz-field textarea { resize: vertical; min-height: 80px; }
     .kz-hint {
       display: block;
       font-family: var(--font-sans);
       font-size: 12px;
-      color: rgba(245, 240, 232, 0.55);
+      color: var(--fg-muted);
       margin-top: 4px;
       line-height: 1.45;
     }
@@ -520,13 +518,13 @@ Trenne die einzelnen Beispiele mit:
       border-radius: 6px;
       cursor: pointer;
       font-weight: 400;
-      background: white;
+      background: var(--kz-cream-deep);
       color: var(--fg-inverse);
       transition: border-color 140ms, background 140ms;
     }
     .kz-radio-grid label:hover {
       border-color: var(--kz-ember);
-      background: var(--kz-cream-paper, var(--kz-cream-deep));
+      background: rgba(232, 90, 43, 0.10);
     }
     .kz-radio-grid input[type="radio"] {
       accent-color: var(--kz-ember);
@@ -559,8 +557,8 @@ Trenne die einzelnen Beispiele mit:
     }
     .kz-explain p { padding-left: 0; }
     .kz-explain code {
-      background: white;
-      color: var(--fg-inverse);
+      background: var(--kz-charcoal);
+      color: var(--fg);
       padding: 2px 6px;
       border-radius: 4px;
       font-size: 13px;
@@ -569,11 +567,11 @@ Trenne die einzelnen Beispiele mit:
     .kz-explain a { color: var(--kz-ember-text); }
 
     .kz-howto {
-      background: rgba(232, 90, 43, 0.06);
+      background: rgba(232, 90, 43, 0.08);
       color: var(--fg);
-      border-left: 3px solid var(--kz-ember);
+      border: 1px solid rgba(255, 143, 94, 0.24); /* volle Hairline statt dicker Farbkante */
       padding: 16px 20px;
-      border-radius: 4px;
+      border-radius: 6px;
       margin: 12px 0 24px;
       font-family: var(--font-sans);
     }
@@ -586,8 +584,8 @@ Trenne die einzelnen Beispiele mit:
     .kz-howto ol { padding-left: 20px; font-size: 14px; line-height: 1.6; margin: 0; }
     .kz-howto code,
     .kz-explain code {
-      background: white;
-      color: var(--fg-inverse);
+      background: var(--kz-charcoal);
+      color: var(--fg);
       padding: 2px 6px;
       border-radius: 4px;
       font-size: 13px;
@@ -601,22 +599,19 @@ Trenne die einzelnen Beispiele mit:
       background: var(--kz-cream-deep);
       border-color: var(--kz-ember);
     }
+    /* Kopiert-Zustand: Grün für Dunkel aufgehellt (gemessen 11:1),
+       das Emoji-Icon ist beim Dark-Umbau entfallen (craft-floor). */
     .kz-howto code.kz-copied,
     .kz-explain code.kz-copied {
-      background: rgba(74, 222, 128, 0.18);
-      border-color: #16a34a;
-    }
-    .kz-howto code::after,
-    .kz-explain code::after {
-      content: "📋";
-      margin-left: 6px;
-      font-size: 10px;
-      opacity: 0.4;
+      background: rgba(74, 222, 128, 0.14);
+      border-color: #4CBB72;
     }
     .kz-howto code.kz-copied::after,
     .kz-explain code.kz-copied::after {
       content: "✓";
-      color: #16a34a;
+      margin-left: 6px;
+      font-size: 10px;
+      color: #86D9A0;
       opacity: 1;
     }
     .kz-howto a { color: var(--kz-ember-text); font-weight: 500; }
@@ -657,8 +652,10 @@ Trenne die einzelnen Beispiele mit:
       gap: 8px;
       margin-top: 32px;
       padding: 16px 32px;
-      background: var(--kz-charcoal);
-      color: var(--kz-cream);
+      /* Auf Charcoal wäre ein Charcoal-Button unsichtbar — der
+         Abschluss-Knopf trägt jetzt die Glut wie alle Primär-CTAs. */
+      background: linear-gradient(135deg, var(--kz-ember), #FF7A45);
+      color: #fff;
       border: none;
       border-radius: 8px;
       font-family: var(--font-sans);
@@ -669,9 +666,8 @@ Trenne die einzelnen Beispiele mit:
       transition: all 200ms;
     }
     .kz-btn-submit:hover {
-      background: var(--kz-ember);
       transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(232, 90, 43, 0.25);
+      box-shadow: 0 10px 26px -6px rgba(232, 90, 43, 0.55);
     }
     .kz-btn-submit:disabled {
       opacity: 0.6;
@@ -688,14 +684,16 @@ Trenne die einzelnen Beispiele mit:
       font-size: 15px;
       line-height: 1.5;
     }
+    /* Statusbänder: volle Hairline statt dicker Farbkante; Grün und
+       Ember für Dunkel aufgehellt (gemessen ≥10:1). */
     #submit-status.success {
-      background: rgba(74, 222, 128, 0.12);
-      border-left: 3px solid #16a34a;
-      color: #15803d;
+      background: rgba(74, 222, 128, 0.10);
+      border: 1px solid rgba(134, 217, 160, 0.4);
+      color: #86D9A0;
     }
     #submit-status.error {
-      background: rgba(232, 90, 43, 0.1);
-      border-left: 3px solid var(--kz-ember);
+      background: rgba(232, 90, 43, 0.12);
+      border: 1px solid rgba(255, 143, 94, 0.4);
       color: var(--kz-ember-text);
     }
   </style>

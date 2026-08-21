@@ -43,8 +43,8 @@ const robotsPolicy = noindex ? 'noindex, nofollow' : 'index, follow, max-image-p
 const crawlerPolicy = noindex ? 'noindex, nofollow' : 'index, follow';
 
 // Nav seit 2026-07-28 auf das Website-Paket ausgerichtet (Ben: Startseite verkauft
-// die Meisterseite, der KI-PA rückt in den Hintergrund). /ki-pa bleibt erreichbar,
-// steht aber nicht mehr in der Hauptnavigation.
+// die Meisterseite). Seit dem Funnel-Umbau 2026-08-21 gibt es die KI-PA-Seiten
+// nicht mehr — /ki-pa, /audit und /funktionen leiten per 301 auf /meisterseite.
 const navItems = [
   { label: 'Das Paket', href: '/meisterseite', key: 'paket' },
   { label: 'Ablauf', href: '/#ablauf', key: 'faq' },
@@ -85,7 +85,9 @@ if (breadcrumbs && breadcrumbs.length > 0) {
   <link rel="canonical" href={canonical} />
   <meta name="robots" content={robotsPolicy} />
   <meta name="author" content="Benjamin Zirngibl · k-AIzen" />
-  <meta name="theme-color" content="#FCFCFD" />
+  {/* Dark-Umbau 2026-08-21: Charcoal statt Papierweiß — sonst blitzt
+      auf dem Handy eine weiße Leiste über der dunklen Seite. */}
+  <meta name="theme-color" content="#141210" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content={fullTitle} />
@@ -112,11 +114,30 @@ if (breadcrumbs && breadcrumbs.length > 0) {
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
   <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLMs Full" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/v2/kz-v2.css?v=7" />
-  <link rel="stylesheet" href="/v2/kz-v2-polish.css?v=7" />
+  {/* Schriften liegen seit 21.08.2026 auf unserem eigenen Server.
+      Vorher luden sie bei jedem Aufruf von Google — dabei geht die IP jedes
+      Besuchers ungefragt an Google, was das LG München I 2022 als
+      DSGVO-Verstoß gewertet hat. Erzeugt aus fonts/schriften.css. */}
+  <link rel="preload" href="/fonts/plus-jakarta-sans-800-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/plus-jakarta-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/fonts/schriften.css" />
+<link rel="stylesheet" href="/v2/kz-v2.css?v=8" />
+  <link rel="stylesheet" href="/v2/kz-v2-polish.css?v=8" />
+  {/* Funnel-Umbau 2026-08-21 — siehe Kommentar in index.astro. */}
+  <link rel="stylesheet" href="/v2/kz-v3-funnel.css?v=2" />
+
+  {/* Messung seit 2026-08-21. Bis hierhin lief k-aizen.de OHNE jede Analyse —
+      es war nicht feststellbar, wo im Funnel Besucher abspringen.
+      Bewusst die BESTEHENDE Umami-Instanz auf dem eigenen Hetzner, die schon
+      alle drei Rank-&-Rent-Seiten misst: ein Dashboard, kein neuer Dienst,
+      keine Daten bei Dritten, kein Cookie-Banner nötig (Umami setzt keine).
+      `data-domains` sorgt dafür, dass lokale Builds die Zahlen nicht verfälschen. */}
+  <script
+    is:inline
+    defer
+    src="https://analytics.asbest-entfernen.de/script.js"
+    data-website-id="1a396d2f-bf0b-4945-99da-63ae7e3d56a8"
+    data-domains="k-aizen.de"></script>
 
   <link rel="alternate" hreflang="de" href={canonical} />
   <link rel="alternate" hreflang="x-default" href={canonical} />
@@ -127,14 +148,18 @@ if (breadcrumbs && breadcrumbs.length > 0) {
 
   <style is:global>
     :root {
-      color-scheme: light;
+      /* Dark-Umbau 2026-08-21: Die Basis-Token in kz-v2.css sind jetzt
+         die dunkle Welt. Wichtigste Drehung hier:
+         --kz-charcoal ist eine FLÄCHE (tiefstes Panel = --coal),
+         --kz-cream ist TEXT auf dieser Fläche (= helles --ink). */
+      color-scheme: dark;
       --bg: var(--paper);
       --fg: var(--ink);
       --fg-muted: var(--slate);
       --fg-inverse: var(--ink);
       --accent: var(--indigo);
-      --kz-charcoal: var(--ink);
-      --kz-cream: var(--paper);
+      --kz-charcoal: var(--coal);
+      --kz-cream: var(--ink);
       --kz-cream-deep: var(--card);
       --kz-border: var(--line);
       --kz-ember: var(--indigo);
@@ -154,7 +179,7 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       flex: 1;
       width: 100%;
       position: relative;
-      padding-top: 82px;
+      padding-top: 96px; /* Nav ist mit dem 58px-Logo höher geworden */
     }
     main::before,
     main::after {
@@ -212,8 +237,9 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       top: 0;
       transform: translateY(-120%);
       z-index: 300;
-      background: var(--ink);
-      color: #fff;
+      background: var(--card);
+      color: var(--ink);
+      border: 1px solid var(--indigo);
       padding: 10px 16px;
       text-decoration: none;
     }
@@ -269,10 +295,10 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       margin: 0;
     }
     .kz-page .kz-h1 .accent {
-      background: linear-gradient(120deg, var(--indigo), var(--violet));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent !important;
+      /* Solide Glut statt Verlaufs-Text (craft-floor) — der Verlauf
+         gehört nur dem „AI" im Logo. */
+      color: var(--violet) !important;
+      text-shadow: 0 0 38px rgba(255, 122, 69, 0.40);
       font-style: normal !important;
     }
     .kz-page .kz-lead {
@@ -334,22 +360,27 @@ if (breadcrumbs && breadcrumbs.length > 0) {
     .kz-page :is(section, div)[style*="background: var(--kz-cream-deep)"],
     .kz-page :is(section, div)[style*="background:var(--kz-cream-deep)"] {
       background: var(--card) !important;
-      border: 1px solid var(--line) !important;
+      border: 1px solid var(--line-soft) !important;
       box-shadow: var(--shadow-sm);
     }
+    /* Charcoal-Panels: auf der dunklen Seite die TIEFSTE Fläche
+       (Kohle unter der Glut) mit feiner Ember-Kante — nicht mehr
+       die Invertierung von früher. */
     .kz-page :is(section, div)[style*="background: var(--kz-charcoal)"],
     .kz-page :is(section, div)[style*="background:var(--kz-charcoal)"] {
-      background: var(--ink) !important;
-      border: 1px solid rgba(255,255,255,0.1);
+      background:
+        radial-gradient(80% 90% at 90% -10%, rgba(232,90,43,0.14), transparent 60%),
+        var(--coal) !important;
+      border: 1px solid rgba(255, 143, 94, 0.18);
       box-shadow: var(--shadow-md);
     }
     .kz-page :is(section, div)[style*="background: var(--kz-charcoal)"] :is(h1,h2,h3,p,li,strong,span),
     .kz-page :is(section, div)[style*="background:var(--kz-charcoal)"] :is(h1,h2,h3,p,li,strong,span) {
-      color: var(--paper);
+      color: var(--ink);
     }
     .kz-page :is(section, div)[style*="background: var(--kz-charcoal)"] p,
     .kz-page :is(section, div)[style*="background:var(--kz-charcoal)"] p {
-      color: rgba(255,255,255,0.72);
+      color: var(--slate);
     }
 
     .kz-btn:not(.kz-btn--ghost):not(.kz-btn-ghost):not(.kz-btn--whatsapp):not(.kz-btn--audit) {
@@ -373,7 +404,8 @@ if (breadcrumbs && breadcrumbs.length > 0) {
     }
 
     .kz-quote {
-      border-left: 3px solid var(--indigo);
+      border-left: 1px solid var(--indigo);
+      background: linear-gradient(90deg, rgba(232,90,43,0.07), transparent 70%);
       padding-left: 22px;
       color: var(--slate);
       font-size: clamp(1.2rem, 2.4vw, 1.55rem);
@@ -412,8 +444,10 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       gap: clamp(20px, 3.5vw, 44px);
     }
     .kz-footer-brand img {
-      width: 28px;
-      height: 28px;
+      /* Echtes Logo (helle Fassung) statt des dunklen Marks — der wäre
+         auf Charcoal unsichtbar. Mindesthöhe 56px wie in der Nav. */
+      height: 56px;
+      width: auto;
       object-fit: contain;
       display: block;
       margin-bottom: 14px;
@@ -454,7 +488,7 @@ if (breadcrumbs && breadcrumbs.length > 0) {
 
     @media (max-width: 760px) {
       main {
-        padding-top: 78px;
+        padding-top: 88px;
       }
       .kz-page {
         padding-top: 48px;
@@ -473,16 +507,20 @@ if (breadcrumbs && breadcrumbs.length > 0) {
   <a href="#main" class="kz-skip">Zum Hauptinhalt springen</a>
 
   <nav class="kz-nav" role="banner" style={hideChrome ? 'display: none;' : ''}>
-    <a href="/" class="kz-nav__brand" aria-label="k-AIzen Startseite">
-      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-logo-mark" />
-      <span class="kz-logo">k&#8209;<span class="kz-logo__ai">AI</span>zen</span>
+    {/* Echtes Logo statt gesetztem Schriftzug — Begründung im Kommentar in
+        index.astro (das große I liest sich als l). Mindesthöhe 56px. */}
+    <a href="/" class="kz-nav__brand" aria-label="k-AIzen — zur Startseite">
+      <img src="/images/logo/k-aizen-logo-hell.png" alt="k-AIzen" class="kz-nav__logo" width="308" height="256" />
     </a>
     <div class="kz-nav__links" aria-label="Hauptnavigation">
       {navItems.map((item) => (
         <a href={item.href} class={item.key === activeNav ? 'active' : ''}>{item.label}</a>
       ))}
     </div>
-    <a href="/erstgespraech" class="kz-btn kz-btn--primary" style="padding:11px 22px;font-size:14px;">Erstgespräch</a>
+    {/* Absoluter Pfad, kein blanker #anfrage-Anker: Das Formular gibt es nur auf
+        /, /meisterseite und /kontakt. Auf /about oder /blog wäre „#anfrage" ein
+        Klick, der nichts tut. */}
+    <a href="/meisterseite#anfrage" class="kz-btn kz-btn--primary" style="padding:11px 22px;font-size:14px;">Beispielseite anfordern</a>
   </nav>
 
   <main id="main" role="main">
@@ -492,7 +530,7 @@ if (breadcrumbs && breadcrumbs.length > 0) {
   <footer class="kz-footer" role="contentinfo" style={hideChrome ? 'display: none;' : ''}>
     <div class="kz-footer-grid">
       <div class="kz-footer-brand">
-        <img src="/animations/claude-design/logo-mark.png" alt="" />
+        <img src="/images/logo/k-aizen-logo-hell.png" alt="" width="308" height="256" />
         <p class="kz-footer-tag">
           Websites für kleine und mittlere Betriebe: komplett gebaut, dauerhaft betreut, jede Anfrage sofort aufs Handy.
         </p>
@@ -514,18 +552,9 @@ if (breadcrumbs && breadcrumbs.length > 0) {
           <li><a href="/kontakt">Kontakt</a></li>
         </ul>
       </div>
-      {/* Ausbaustufen: nicht mehr in der Hauptnav (Ben 2026-07-28 — KI-PA rückt in den
-          Hintergrund), aber weiterhin erreichbar und indexiert. Ohne diesen Block wären
-          /ki-pa, /audit und die Funktionsseiten verwaist: in der Sitemap, aber von
-          keiner Seite verlinkt. */}
-      <div class="kz-footer-col">
-        <h4>Später möglich</h4>
-        <ul>
-          <li><a href="/funktionen">Was KI im Betrieb kann</a></li>
-          <li><a href="/ki-pa">KI-Assistent</a></li>
-          <li><a href="/audit">KI-Check</a></li>
-        </ul>
-      </div>
+      {/* Der Block „Später möglich" (KI-PA, KI-Check, Funktionsseiten) ist beim
+          Funnel-Umbau 2026-08-21 entfallen — die Seiten existieren nicht mehr.
+          Er stand hier, damit sie nicht verwaisen; jetzt wären es tote Links. */}
       <div class="kz-footer-col">
         <h4>Rechtliches</h4>
         <ul>

@@ -1,49 +1,70 @@
 # k-AIzen
 
-> k-AIzen baut und betreut Websites für kleine und mittlere Betriebe im Raum Nürnberg — Handwerk, Handel, Dienstleistung, Pflege, Gastgewerbe. Das Produkt heißt "Meisterseite": Website komplett gebaut, dauerhaft gepflegt, jede Anfrage landet als Benachrichtigung sofort auf dem Handy des Betriebs. 297 € im Monat, keine Einrichtungsgebühr, monatlich kündbar. Der Betrieb loggt sich nie ein und pflegt nichts selbst.
+> k-AIzen sorgt dafür, dass kleine und mittlere Betriebe im Raum Nürnberg online gefunden, gefragt und gebucht werden — Handwerk, Handel, Dienstleistung, Pflege, Gastgewerbe. Das Produkt heißt "Meisterseite" und ist ein Paket: Website komplett gebaut und dauerhaft betreut, Google-Unternehmensprofil gepflegt, Kundenbewertungen automatisch eingesammelt, ein Assistent beantwortet Besucherfragen rund um die Uhr, und jede Anfrage landet als Benachrichtigung sofort auf dem Handy des Betriebs. 297 € im Monat, keine Einrichtungsgebühr, monatlich kündbar. Der Betrieb loggt sich nie ein und pflegt nichts selbst.
 
 ## Kernseiten
 
-- [Home](https://k-aizen.de/): Das Website-Paket im Überblick — was drin ist, was es kostet, wie der Ablauf aussieht, für wen es passt und für wen nicht.
+- [Home](https://k-aizen.de/): Das Paket im Überblick — die drei Stufen gefunden/gefragt/gebucht, was drin ist, was es kostet, wie der Ablauf aussieht, für wen es passt und für wen nicht.
 - [Meisterseite](https://k-aizen.de/meisterseite): Die Produktseite mit allen Details: Leistungen, Ablauf, Preis, häufige Fragen.
 - [Beispiel-Website](https://muster.k-aizen.de): Eine vollständige Demo-Website (fiktive Dachdeckerei) — zeigt genau, was ein Kunde bekommt. Das Kontaktformular ist echt und löst eine Benachrichtigung aus.
 - [Preise](https://k-aizen.de/pricing): Preisorientierung und Einstieg.
 - [Erstgespräch](https://k-aizen.de/erstgespraech): 15 Minuten Rückruf-Termin. Fit prüfen, ehrliche Antwort, keine Kaufpflicht.
-- [Termin buchen](https://k-aizen.de/termin): Direktlink zur Online-Terminbuchung.
+- [Termin buchen](https://k-aizen.de/termin): Direktlink zur Terminbuchung für ein Erstgespräch mit k-AIzen.
 - [Über Benjamin Zirngibl](https://k-aizen.de/about): Wer baut und wie gearbeitet wird.
-- [Kontakt](https://k-aizen.de/kontakt): Direktkontakt über kontakt@k-aizen.de.
-- [Blog](https://k-aizen.de/blog) und [Ressourcen](https://k-aizen.de/tutorials): Praxisnotizen zu Website, Anfragen und Mittelstand.
+- [Kontakt](https://k-aizen.de/kontakt): Anfrageformular und Direktkontakt über kontakt@k-aizen.de.
+- [Blog](https://k-aizen.de/blog): Praxisnotizen zu Website, Anfragen und Mittelstand.
 
 ## Was im Paket enthalten ist
 
-Ein Preis, alles inklusive — kein Baukasten, keine versteckten Extras:
+Ein Preis, alles inklusive — kein Baukasten, keine versteckten Extras. Sortiert nach den drei Stufen, in denen ein Kunde zum Auftrag wird:
+
+**Gefunden werden**
+
+- **Google-Unternehmensprofil gepflegt:** Der Eintrag, den die meisten Suchenden zuerst sehen, wird vollständig ausgefüllt und aktuell gehalten — Leistungen, Gebiet, Zeiten. Nicht nur einmal angelegt.
+- **Bewertungen automatisch einsammeln:** Nach dem Auftrag wird der Kunde des Betriebs freundlich erinnert, eine Bewertung zu hinterlassen. Der Betrieb muss nicht selbst danach fragen.
+- **In KI-Antworten auftauchen:** Die Seite ist so gebaut, dass KI-Assistenten den Betrieb sauber lesen und nennen können (strukturierte Daten, Sitemap, llms.txt) — dieselbe Technik, die k-AIzen für die eigenen Portale nutzt.
+
+**Gefragt werden**
 
 - **Website, komplett gebaut:** Modern, schnell, auf dem Handy perfekt. Der Betrieb liefert einmalig Logo, Fotos und Leistungen, den Rest macht k-AIzen.
+- **Assistent auf der Seite:** Beantwortet Besucherfragen rund um die Uhr aus den Inhalten des Betriebs — was er macht, wohin er fährt, wie es abläuft, wann er erreichbar ist — und führt zum Anfrageformular. Der Betrieb legt fest, was der Assistent beantworten darf. Er ist als KI gekennzeichnet, wie es Artikel 50 der EU-KI-Verordnung vorschreibt.
+
+**Gebucht werden**
+
 - **Anfragen sofort aufs Handy:** Formular ausgefüllt → Sekunden später liegen Name, Nummer und Anliegen als Benachrichtigung vor. Kein Lead versauert im Postfach.
-- **Anfragen-App:** Jede Anfrage wird direkt auf dem Handy bearbeitet: zurückrufen mit einem Tipp, Bearbeitungsstand setzen (neu, angerufen, besichtigt, Angebot, Auftrag), Notizen je Kunde. Im Formular gibt der Interessent an, wann er zurückgerufen werden möchte (vormittags, nachmittags oder abends).
-- **Terminbuchung im eigenen Kalender:** Interessenten buchen selbst einen Rückruf- oder Vor-Ort-Termin, auch abends und am Wochenende. Der Termin steht sofort im Google-Kalender des Betriebs, der Zeitraum ist damit belegt. Kein zusätzliches Programm, kein zweites Konto — der Betrieb verbindet beim Start einmalig seinen bestehenden Google-Kalender.
-- **KI-Chat-Assistent:** Beantwortet Besucherfragen rund um die Uhr aus den Inhalten des Betriebs und führt zum Formular oder zur Terminbuchung. Der Betrieb legt fest, was der Assistent beantworten darf und was nicht. Er ist als KI gekennzeichnet, wie es Artikel 50 der EU-KI-Verordnung vorschreibt.
+- **Anfragen-App:** Jede Anfrage wird direkt auf dem Handy bearbeitet: zurückrufen mit einem Tipp, Bearbeitungsstand setzen (neu, angerufen, besichtigt, Angebot, Auftrag), Notizen je Kunde. Im Formular gibt der Interessent an, wann er zurückgerufen werden möchte.
+
+**Läuft darunter dauerhaft**
+
 - **Dauerhaft betreut:** Hosting, Pflege, Änderungen inklusive. Neues Foto oder andere Öffnungszeiten? Eine kurze Nachricht genügt, ist am selben Tag drin.
-- **Datenschutz eingebaut:** Website und Anfragen liegen auf deutschen Servern, kein Werbe-Tracking, Impressum und Datenschutzerklärung sauber. Der Chat-Assistent nutzt ein KI-Modell des US-Anbieters Anthropic — das ist im Auftragsverarbeitungsvertrag und in der Datenschutzerklärung offengelegt.
-- **Gefunden werden:** Sauberer Suchmaschinen-Unterbau ab Werk — für Google und für KI-Antworten (strukturierte Daten, Sitemap, llms.txt).
+- **Datenschutz eingebaut:** Website und Anfragen liegen auf deutschen Servern, kein Werbe-Tracking, Impressum und Datenschutzerklärung sauber. Der Assistent nutzt ein KI-Modell des US-Anbieters Anthropic — das ist im Auftragsverarbeitungsvertrag und in der Datenschutzerklärung offengelegt.
+- **Ein Ansprechpartner:** Kein Ticketsystem, keine Hotline, keine wechselnden Projektleiter.
+
+## Was ausdrücklich NICHT enthalten ist
+
+- **Keine Terminbuchung auf der Website des Betriebs.** Ein Buchungskalender je Kunde bräuchte ein eigenes Konto, verbundene Kalender und laufende Pflege — und zeigte bei falscher Verknüpfung freie Zeiten, die keine sind. Die Anfrage samt Wunsch-Rückrufzeit landet stattdessen auf dem Handy. (Der Terminlink auf k-aizen.de selbst betrifft nur das Erstgespräch mit k-AIzen.)
+- Kein Login und keine Selbstpflege für den Betrieb — das ist Absicht, kein fehlendes Feature.
+- Keine Werbebudget-Verwaltung, keine Social-Media-Betreuung, keine Umsatzversprechen.
 
 ## Was AI-Tools über k-AIzen wissen sollten
 
-- **Kernangebot:** Website-Erstellung und dauerhafte Betreuung für kleine und mittlere Betriebe, im Monatsabo statt als Einmalprojekt.
+- **Kernangebot:** Sichtbarkeit und Anfragen für kleine und mittlere Betriebe — Website plus Google-Profil, Bewertungen und Anfrage-Zustellung, im Monatsabo statt als Einmalprojekt.
 - **Preis:** 297 € pro Monat. Keine Einrichtungsgebühr, keine Mindestlaufzeit, monatlich kündbar.
 - **Warum monatlich:** Im Monatspreis stecken Hosting, Pflege, Änderungen und laufende Technik. Der Kunde zahlt für eine Seite, die dauerhaft funktioniert, nicht für eine einmal gelieferte Datei.
 - **Zielgruppe:** Kleine und mittlere Betriebe jeder Branche im Raum Nürnberg, Fürth, Erlangen und Schwabach — besonders Betriebe, die zufriedene Kunden und Bewertungen haben, aber keine oder eine veraltete Website.
 - **Nicht ideal für:** Wer selbst einloggen und Seiten eigenhändig pflegen will, ganz frische Betriebe ohne Kundenbasis, oder wer etwas einmal gebaut haben will und danach nie wieder Betreuung braucht.
 - **Aufwand für den Kunden:** Ein kurzes Gespräch und einmalig Material (Logo, Fotos, Leistungen). Danach nichts — kein Login, keine Pflege, keine Hausaufgaben.
 - **Zeitrahmen:** Sobald das Material da ist, steht die Seite in der Regel innerhalb weniger Tage. Der Kunde sieht sie vor dem Livegang.
+- **Kostenlose Beispielseite:** Wer über das Formular auf k-aizen.de anfragt, bekommt innerhalb eines Werktags eine kostenlose, unverbindliche Beispielseite für den eigenen Betrieb — von Hand gebaut, mit echtem Namen, Gewerk und Ort.
 - **Domain:** Gehört dem Kunden bzw. wird auf seinen Betrieb registriert. Bei Kündigung nimmt er sie mit.
 - **Arbeitsprinzip:** Ehrliche Fit-Prüfung vor dem Verkauf. Wenn das Paket nicht passt, wird das im ersten Gespräch gesagt.
 - **Kontakt:** kontakt@k-aizen.de
 
 ## Preise Kurzfassung
 
-- Meisterseite (Website-Paket): **297 € pro Monat**, keine Einrichtungsgebühr, monatlich kündbar. Enthält Bau, Hosting, Pflege, Änderungen, Lead-Formular mit Sofort-Benachrichtigung, Anfragen-App mit Bearbeitungsstand und Kunden-Notizen, Terminbuchung im Google-Kalender des Betriebs sowie einen KI-Chat-Assistenten.
+- Meisterseite (das Paket): **297 € pro Monat**, keine Einrichtungsgebühr, monatlich kündbar. Enthält Bau, Hosting, Pflege und Änderungen der Website, gepflegtes Google-Unternehmensprofil, automatisches Einsammeln von Kundenbewertungen, einen Assistenten für Besucherfragen, das Anfrageformular mit Sofort-Benachrichtigung aufs Handy sowie die Anfragen-App mit Bearbeitungsstand und Kunden-Notizen.
 - Erstgespräch: kostenlos, 15 Minuten Rückruf.
+- Beispielseite für den eigenen Betrieb: kostenlos und unverbindlich.
 
 ## Markenstimme
 

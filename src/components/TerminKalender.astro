@@ -1,0 +1,109 @@
+---
+// Terminplan direkt auf der Seite (Ben, 2026-08-21: „ganz unten auf der Webseite
+// bitte noch Kalender / Termin-Formular für mich selbst").
+//
+// ⛔ KALENDER-STANDARD IST GOOGLE (Ben, 2026-08-21): „wir benutzen erstmal kein
+// cal.com mehr. Unser Standard ist Google Kalender." Das ersetzt die
+// Vereinheitlichung auf Cal.com vom selben Tag. Wenn hier je wieder eine
+// Cal.com-Adresse auftaucht, ist das ein Rückschritt, kein Fortschritt.
+//
+// ⚠️ KLICK ZUM LADEN, bewusst kein automatisches Nachladen:
+// Der Terminplan liegt bei Google in den USA. Dieselbe Seite verspricht ein paar
+// Abschnitte weiter oben „deutsche Server, kein US-Tracking" — ein iframe, das
+// beim Scrollen von allein lädt, würde die IP jedes Besuchers an Google geben,
+// ohne dass er es wollte, und das Versprechen wäre gebrochen. Deshalb passiert
+// erst etwas, wenn jemand ausdrücklich auf den Knopf drückt. Das ist zugleich
+// die schnellere Seite: ohne Klick wird nichts von Google geladen.
+//
+// Die eingebettete Adresse ist der aufgelöste Kurzlink `calendar.app.google/…`
+// mit `?gv=true` (Googles Einbett-Schalter). Bei Kalenderwechsel hier UND in
+// astro.config.mjs (/termin) ändern.
+
+interface Props {
+  titel?: string;
+  text?: string;
+}
+
+const {
+  titel = 'Oder such dir gleich einen Termin aus.',
+  text = 'Fünfzehn Minuten, kostenlos, ohne Verkaufsdruck. Such dir einen Zeitpunkt, der dir passt — die Bestätigung kommt sofort.',
+} = Astro.props;
+
+const TERMIN_KURZ = 'https://calendar.app.google/AvBJwsvWrh4m26tV7';
+const TERMIN_EMBED =
+  'https://calendar.google.com/calendar/appointments/schedules/' +
+  'AcZssZ18EO9aWbTEV_765IL7Q34omI2YVExujnnumIheyhmRzNrrkEk8wL_NtJKJGCQMxa0UQutRHf6g?gv=true';
+---
+
+<section class="kz-termin" id="termin">
+  <div class="kz-wrap">
+    <h2 class="kz-h2 kz-reveal">{titel}</h2>
+    <p class="kz-lead kz-reveal" data-delay="1">{text}</p>
+
+    <div class="kz-termin__rahmen kz-reveal" data-delay="2">
+      <div class="kz-termin__vorschalt" id="kz-termin-vorschalt">
+        <p class="kz-termin__hinweis">
+          Der Terminplan liegt bei Google. Wir laden ihn erst, wenn du es
+          möchtest — dann stellt dein Browser eine Verbindung zu Google her.
+        </p>
+        <button type="button" class="kz-btn kz-btn--primary" id="kz-termin-start">
+          Freie Termine anzeigen <span class="kz-btn__arrow">→</span>
+        </button>
+        <p class="kz-termin__ausweich">
+          Oder <a href={TERMIN_KURZ} target="_blank" rel="noopener">direkt bei Google öffnen</a>.
+        </p>
+      </div>
+
+      <div class="kz-termin__buehne" id="kz-termin-buehne" hidden></div>
+    </div>
+
+    <p class="kz-termin__fussnote">
+      Lieber schreiben? Das Formular oben tut es auch — oder direkt an
+      <a href="mailto:kontakt@k-aizen.de">kontakt@k-aizen.de</a>.
+    </p>
+  </div>
+</section>
+
+<script is:inline define:vars={{ TERMIN_EMBED, TERMIN_KURZ }}>
+  (function () {
+    var knopf = document.getElementById('kz-termin-start');
+    var vorschalt = document.getElementById('kz-termin-vorschalt');
+    var buehne = document.getElementById('kz-termin-buehne');
+    if (!knopf || !vorschalt || !buehne) return;
+
+    knopf.addEventListener('click', function () {
+      knopf.disabled = true;
+      knopf.textContent = 'Wird geladen …';
+
+      var rahmen = document.createElement('iframe');
+      rahmen.src = TERMIN_EMBED;
+      rahmen.title = 'Freie Termine bei k-AIzen';
+      rahmen.loading = 'lazy';
+      rahmen.style.border = '0';
+      rahmen.width = '100%';
+      rahmen.height = '600';
+
+      rahmen.addEventListener('load', function () {
+        vorschalt.hidden = true;
+        buehne.hidden = false;
+      });
+
+      // Lädt Google nicht (geblockt, offline, Erweiterung), bleibt sonst ein
+      // toter Knopf stehen. Nach 10 Sekunden gibt es stattdessen den Direktlink.
+      setTimeout(function () {
+        if (buehne.hidden) {
+          knopf.disabled = false;
+          knopf.textContent = 'Erneut versuchen';
+          var hinweis = document.createElement('p');
+          hinweis.className = 'kz-termin__ausweich';
+          hinweis.innerHTML =
+            'Der Kalender lädt gerade nicht. <a href="' + TERMIN_KURZ +
+            '" target="_blank" rel="noopener">Direkt bei Google öffnen →</a>';
+          vorschalt.appendChild(hinweis);
+        }
+      }, 10000);
+
+      buehne.appendChild(rahmen);
+    });
+  })();
+</script>

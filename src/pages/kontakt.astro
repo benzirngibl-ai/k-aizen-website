@@ -1,5 +1,6 @@
 ---
 import KaizenLayout from '../layouts/KaizenLayout.astro';
+import AnfrageFormular from '../components/AnfrageFormular.astro';
 
 const contactSchema = {
   "@context": "https://schema.org",
@@ -58,8 +59,8 @@ Beste Grüße`)}`;
   </style>
 
   <article class="kz-page kz-page--wide">
-    <div class="kz-page-eyebrow"><span>Kontakt</span></div>
-    <h1 class="kz-h1">Der einfachste Einstieg ist ein kurzes Gespräch.</h1>
+    {/* Eyebrow entfallen 2026-08-21 (craft-floor: kein Label über der Überschrift). */}
+    <h1 class="kz-h1">Vier Wege zu mir. Such dir den bequemsten aus.</h1>
     <p class="kz-lead">
       Du musst dir vorher nichts überlegen und nichts vorbereiten. Es reicht,
       wenn du erzählst, wie Kunden dich heute finden — und was dabei untergeht.
@@ -85,6 +86,10 @@ Beste Grüße`)}`;
 
     <section>
       <h2 class="kz-h2">Was für die erste Nachricht hilft</h2>
+      <p>
+        Wenn du das Formular unten nimmst, ist das schon abgedeckt — die Felder
+        fragen genau danach.
+      </p>
       <ul>
         <li><strong>Gewerk und Betriebsgröße</strong> — damit ich einordnen kann, worum es geht.</li>
         <li><strong>Deine aktuelle Website</strong> — Adresse, falls es eine gibt, oder der Hinweis, dass keine existiert.</li>
@@ -95,13 +100,29 @@ Beste Grüße`)}`;
 
     <section style="margin-top: 96px; padding: 48px clamp(24px, 4vw, 48px); background: var(--kz-charcoal); color: var(--kz-cream); border-radius: 16px;">
       <h2 class="kz-h2" style="color: var(--kz-cream); margin-top: 0;">Postanschrift</h2>
-      <p style="color: rgba(255,255,255,0.78);">
+      {/* Sekundärtext aus dem Warmton getönt (Token), nicht weiß gedimmt */}
+      <p style="color: var(--ink-soft);">
         Benjamin Zirngibl — k-AIzen<br/>
         Zum Schwarzachtal 5 · 90592 Schwarzenbruck · Deutschland
       </p>
-      <p style="color: rgba(255,255,255,0.62); font-size: 14px;">
+      <p style="color: var(--slate); font-size: 14px;">
         Die vollständigen rechtlichen Angaben stehen im <a href="/impressum" style="color: var(--kz-cream); text-decoration: underline;">Impressum</a>.
       </p>
     </section>
   </article>
+
+  <AnfrageFormular quelle="k-aizen.de/kontakt" id="anfrage">
+    <Fragment slot="intro">
+      <h2 class="kz-h2">Schreib mir hier</h2>
+      <p class="kz-lead">
+        Der bequemste Weg: Felder ausfüllen, abschicken, fertig. Die Anfrage
+        landet als Benachrichtigung auf meinem Handy — nicht in einem Postfach,
+        das ich abends mal durchsehe.
+      </p>
+    </Fragment>
+    <Fragment slot="button">Nachricht abschicken</Fragment>
+    <Fragment slot="zusage">
+      Antwort innerhalb eines Werktags. Kein Newsletter, keine Weitergabe.
+    </Fragment>
+  </AnfrageFormular>
 </KaizenLayout>

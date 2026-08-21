@@ -20,10 +20,8 @@ const pillarLabel: Record<'A' | 'B' | 'C', string> = {
   activeNav="blog"
 >
   <article class="kz-page">
-    <div class="kz-page-eyebrow">
-      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
-      <span>Blog</span>
-    </div>
+    {/* Eyebrow beim Dark-Umbau entfallen (craft-floor: kein Label über
+        der Überschrift). */}
     <h1 class="kz-h1">Beobachtungen aus der KI-KMU-Praxis</h1>
     <p class="kz-lead">
       Was ich teste, was funktioniert, was Hype ist. Drei Pillars: KMU-Use-Case-Lab (Tools für den Alltag), Build-in-Public (eigene Sprints), Compliance-Realität (EU AI Act + DSGVO für KMU).
@@ -66,14 +64,14 @@ const pillarLabel: Record<'A' | 'B' | 'C', string> = {
       text-decoration: none !important;
       color: var(--fg);
       padding: 32px;
-      background: var(--kz-cream-deep, #ede5d4);
+      background: var(--kz-cream-deep, #211C18);
       border-radius: 12px;
       border: 1px solid var(--kz-border);
       transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out);
     }
     .kz-blog-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(31, 41, 51, 0.08);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
     }
     .kz-blog-pillar {
       font-family: var(--font-sans);

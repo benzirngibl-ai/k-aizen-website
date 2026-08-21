@@ -5,22 +5,31 @@
 // den KI-PA (1.899 €/Mo). Der PA wird in den Hintergrund geschoben und nur noch
 // stückweise weiter integriert — die Startseite spricht ab jetzt AUSSCHLIESSLICH
 // über das Website-Paket. Ben-Entscheid: KI-PA komplett von der Startseite runter
-// (kein Abschnitt, keine Erwähnung). /ki-pa bleibt als Unterseite erreichbar.
-// Vorgänger-Fassung liegt als index-ki-pa-backup.astro.bak daneben.
+// (kein Abschnitt, keine Erwähnung).
 //
-// Produktsubstanz stammt 1:1 aus der bestehenden /meisterseite (daf5058) und
-// dem Angebots-Einseiter — bewusst KEINE neuen Versprechen erfunden.
+// NACHTRAG 2026-08-21: /ki-pa ist seitdem ganz entfallen und leitet per 301 auf
+// /meisterseite. Die Vorgänger-Fassung dieser Datei und alle KI-PA-Seiten liegen
+// in _archive/2026-08-21-funnel-umbau/.
+//
+// Produktsubstanz stammt aus der /meisterseite und dem Angebots-Einseiter —
+// bewusst KEINE neuen Versprechen erfunden. Was heute noch nicht bei jedem
+// Kunden läuft (Assistent im Kunden-Template, Bewertungs-Nachfassen,
+// Google-Profil-Pflege, KI-Auffindbarkeit), steht trotzdem drauf: Ben-Entscheid
+// vom 21.08. — es ist im Preis drin und wird beim Kunden nacheinander gebaut.
+import AnfrageFormular from '../components/AnfrageFormular.astro';
+import TerminKalender from '../components/TerminKalender.astro';
+
 const siteUrl = "https://k-aizen.de";
 const homeUrl = `${siteUrl}/`;
-const homeTitle = "k-AIzen — Website für deinen Betrieb, komplett gebaut und betreut";
+const homeTitle = "k-AIzen — gefunden, gefragt, gebucht: die Website für deinen Betrieb";
 const homeDescription =
-  "Deine Website komplett gebaut, dauerhaft betreut, jede Anfrage sofort auf deinem Handy. 297 € im Monat, keine Einrichtungsgebühr, monatlich kündbar. Für Betriebe im Raum Nürnberg.";
+  "Gefunden werden, Fragen beantwortet bekommen, Aufträge kriegen: Website, Google-Profil, Bewertungen und jede Anfrage sofort aufs Handy. 297 € im Monat, keine Einrichtungsgebühr, monatlich kündbar. Für Betriebe im Raum Nürnberg.";
 const ogImage = `${siteUrl}/og-image.png`;
 const benFoto = "/images/ben-portrait.png";
 
 const PREIS = "297";
 const demoUrl = "https://muster.k-aizen.de";
-const calUrl = "https://cal.k-aizen.de/ben-kaizen/rueckruf";
+const calUrl = "https://calendar.app.google/AvBJwsvWrh4m26tV7";
 
 const asyncMail = `mailto:kontakt@k-aizen.de?subject=${encodeURIComponent("Meisterseite — kurze Anfrage")}&body=${encodeURIComponent(`Hallo Ben,
 
@@ -32,25 +41,57 @@ ich habe einen Betrieb und interessiere mich für das Website-Paket.
 
 Beste Grüße`)}`;
 
-// Was im Paket steckt — Substanz identisch zur /meisterseite, damit beide Seiten
-// dasselbe versprechen. Änderungen bitte an BEIDEN Stellen.
-// Das Kernversprechen der Seite steht bewusst NICHT gleichrangig neben den anderen
-// fünf Punkten — es bekommt eigenes Gewicht (Design: Fable, craft-floor: keine
-// gleichförmigen Karten als Seitenstruktur, keine Nummern ohne Informationswert).
-const leistungHero = {
-  title: "Anfragen sofort auf deinem Handy",
-  text: "Jemand füllt dein Formular aus — Sekunden später hast du Name, Nummer und Anliegen auf dem Handy, samt Wunschzeit für den Rückruf. Kein Lead versauert im Postfach.",
-};
+// POSITIONIERUNG 2026-08-21 (Ben): Das Paket ist gewachsen — es ist nicht mehr
+// „eine Website", sondern die Kette davor und danach: gefunden werden, gefragt
+// werden, gebucht werden. Ben-Vorgabe für die Sprache: „Wir wollen nicht zu
+// technisch werden, sondern dem Kunden sein Ergebnis zeigen."
+//
+// ⚠️ Zwei Festlegungen, die beim Umschreiben nicht verloren gehen dürfen:
+//   1. KEIN Terminkalender. Ben hat ihn am 28.07. gestrichen (bräuchte je Kunde
+//      ein eigenes Konto und laufende Pflege, und zeigte bei falscher
+//      Verknüpfung freie Zeiten, die keine sind). „Gebucht" meint den
+//      Auftragskalender im übertragenen Sinn, nie ein Buchungswidget.
+//   2. Der Preis bleibt 297 €, obwohl das Paket gewachsen ist (Ben 2026-08-21).
+//
+// Substanz identisch zur /meisterseite, damit beide Seiten dasselbe versprechen.
+// Änderungen bitte an BEIDEN Stellen.
 
-const leistungen = [
+// Die Klammer der Seite. Drei Ergebnisse statt einer Funktionsliste — deshalb
+// bewusst KEIN gleichförmiges Kartenraster (craft-floor), sondern drei Blöcke
+// mit eigenem Gewicht und je einer konkreten Folge im Betriebsalltag.
+const klammer = [
   {
-    title: "Website, komplett gebaut",
-    text: "Modern, schnell, auf dem Handy perfekt. Du lieferst Logo, Fotos und deine Leistungen — den Rest machen wir.",
+    wort: "Gefunden",
+    satz: "Wer in deiner Gegend nach deinem Gewerk sucht, landet bei dir: bei Google, im Kartenprofil und in den Antworten, die KI-Assistenten heute ausspucken.",
+    punkte: [
+      "Dein Google-Profil wird vollständig gepflegt, nicht nur angelegt.",
+      "Zufriedene Kunden werden nach dem Auftrag um eine Bewertung gebeten. Automatisch, ohne dass du fragen musst.",
+      "Die Seite ist so gebaut, dass KI-Assistenten deinen Betrieb sauber vorlesen können.",
+    ],
   },
   {
-    title: "Alle Anfragen im Griff",
-    text: "Die Anfragen-App auf deinem Handy: mit einem Tipp zurückrufen, den Stand setzen — angerufen, besichtigt, Angebot raus — und Notizen festhalten. Meldet sich ein Kunde nächstes Jahr wieder, steht noch da, was besprochen war.",
+    wort: "Gefragt",
+    satz: "Wer auf deiner Seite landet, bekommt Antworten, auch um halb elf abends, wenn du längst Feierabend hast.",
+    punkte: [
+      "Eine Website, die auf dem Handy funktioniert und in Sekunden lädt.",
+      "Ein Assistent auf der Seite beantwortet, was Kunden immer fragen: Leistungen, Gebiet, Ablauf, Erreichbarkeit.",
+      "Was er nicht weiß, wird zur Anfrage, statt zur abgebrochenen Suche.",
+    ],
   },
+  {
+    wort: "Gebucht",
+    satz: "Jede Anfrage landet Sekunden später auf deinem Handy. Keine geht unter, auch nicht die von Freitagnachmittag.",
+    punkte: [
+      "Name, Nummer und Anliegen als Benachrichtigung, nicht in einem Postfach, das du abends durchsiehst.",
+      "In der Anfragen-App tippst du auf Rückruf, setzt den Stand und schreibst dir Notizen dazu.",
+      "Meldet sich derselbe Kunde nächstes Jahr wieder, steht noch da, was besprochen war.",
+    ],
+  },
+];
+
+// Was außerdem dauerhaft drinsteckt und in keine der drei Stufen gehört, weil es
+// unter allen dreien liegt.
+const laufend = [
   {
     title: "Dauerhaft betreut",
     text: "Hosting, Pflege, Änderungen — alles drin. Neues Foto, andere Öffnungszeiten? Eine kurze Nachricht genügt, ist am selben Tag drin. Du loggst dich nie ein.",
@@ -60,8 +101,8 @@ const leistungen = [
     text: "Deutsche Server, kein US-Tracking, Impressum und Datenschutzerklärung sauber. Keine Abmahn-Angst.",
   },
   {
-    title: "Gefunden werden",
-    text: "Sauberer Suchmaschinen-Unterbau ab Werk — für Google und für KI-Antworten. Dieselbe Technik wie bei unseren eigenen Portalen.",
+    title: "Ein Ansprechpartner",
+    text: "Kein Ticketsystem, keine Hotline, keine Agentur mit wechselnden Projektleitern. Du schreibst mir, ich antworte.",
   },
 ];
 
@@ -146,7 +187,7 @@ const homeSchema = {
       "founder": { "@id": `${siteUrl}/#benjamin-zirngibl` },
       "areaServed": ["Nürnberg", "Fürth", "Erlangen", "Schwabach", "DE"],
       "description":
-        "k-AIzen baut und betreut Websites für kleine und mittlere Betriebe: komplett gebaut, dauerhaft gepflegt, jede Anfrage sofort auf dem Handy des Betriebs. 297 € im Monat, keine Einrichtungsgebühr.",
+        "k-AIzen sorgt dafür, dass kleine und mittlere Betriebe online gefunden, gefragt und gebucht werden: Website komplett gebaut und dauerhaft betreut, Google-Profil gepflegt, Bewertungen automatisch eingesammelt, Fragen rund um die Uhr beantwortet und jede Anfrage sofort auf dem Handy des Betriebs. 297 € im Monat, keine Einrichtungsgebühr.",
       "knowsAbout": [
         "Website erstellen lassen Nürnberg",
         "Website für kleine Unternehmen",
@@ -154,6 +195,9 @@ const homeSchema = {
         "Homepage Autohaus Pflegedienst Fahrschule",
         "Website Betreuung monatlich",
         "Anfragen über die Website gewinnen",
+        "Google Unternehmensprofil pflegen lassen",
+        "Kundenbewertungen automatisch sammeln",
+        "In KI-Antworten gefunden werden",
         "DSGVO konforme Website",
       ],
     },
@@ -185,7 +229,7 @@ const homeSchema = {
       "areaServed": ["Nürnberg", "Fürth", "Erlangen", "Schwabach"],
       "url": `${siteUrl}/meisterseite`,
       "description":
-        "Website komplett gebaut und dauerhaft betreut: Lead-Formular mit Sofort-Benachrichtigung aufs Handy, Anfragen-App mit Bearbeitungsstand und Kunden-Notizen, Hosting und Pflege inklusive, DSGVO-konform auf deutschen Servern.",
+        "Website komplett gebaut und dauerhaft betreut, Google-Unternehmensprofil gepflegt, Kundenbewertungen automatisch eingesammelt, Assistent auf der Seite beantwortet Kundenfragen rund um die Uhr, Anfragen als Sofort-Benachrichtigung aufs Handy, Anfragen-App mit Bearbeitungsstand und Kunden-Notizen. Hosting und Pflege inklusive, DSGVO-konform auf deutschen Servern.",
       "audience": {
         "@type": "BusinessAudience",
         "audienceType": "Kleine und mittlere Betriebe: Handwerk, Handel, Dienstleistung, Gesundheit, Gastgewerbe",
@@ -226,7 +270,7 @@ const homeSchema = {
   <link rel="canonical" href={homeUrl} />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Benjamin Zirngibl · k-AIzen" />
-  <meta name="theme-color" content="#FCFCFD" />
+  <meta name="theme-color" content="#141210" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content={homeTitle} />
   <meta property="og:description" content={homeDescription} />
@@ -249,11 +293,28 @@ const homeSchema = {
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
   <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLMs Full" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/v2/kz-v2.css?v=7" />
-  <link rel="stylesheet" href="/v2/kz-v2-polish.css?v=7" />
+  {/* Schriften liegen seit 21.08.2026 auf unserem eigenen Server.
+      Vorher luden sie bei jedem Aufruf von Google — dabei geht die IP jedes
+      Besuchers ungefragt an Google, was das LG München I 2022 als
+      DSGVO-Verstoß gewertet hat. Erzeugt aus fonts/schriften.css. */}
+  <link rel="preload" href="/fonts/plus-jakarta-sans-800-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/plus-jakarta-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/fonts/schriften.css" />
+<link rel="stylesheet" href="/v2/kz-v2.css?v=8" />
+  <link rel="stylesheet" href="/v2/kz-v2-polish.css?v=8" />
+  {/* Funnel-Umbau 2026-08-21: Stufen, Formular und Danke-Seite. Bewusst eine
+      eigene Datei — kz-v2.css trägt die gewachsene Startseite und soll beim
+      Zurückrollen nicht mit angefasst werden müssen. */}
+  <link rel="stylesheet" href="/v2/kz-v3-funnel.css?v=2" />
+
+  {/* Messung seit 2026-08-21 — Begründung im Kopf von KaizenLayout.astro.
+      Die Startseite hat ein eigenes Layout und braucht die Zeile deshalb extra. */}
+  <script
+    is:inline
+    defer
+    src="https://analytics.asbest-entfernen.de/script.js"
+    data-website-id="1a396d2f-bf0b-4945-99da-63ae7e3d56a8"
+    data-domains="k-aizen.de"></script>
   <script type="application/ld+json" set:html={JSON.stringify(homeSchema)} />
 </head>
 <body>
@@ -263,34 +324,42 @@ const homeSchema = {
 
   <!-- NAV -->
   <nav class="kz-nav">
-    <div class="kz-nav__brand">
-      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-logo-mark" />
-      <span class="kz-logo">k&#8209;<span class="kz-logo__ai">AI</span>zen</span>
-    </div>
+    {/* Ben, 2026-08-21: In der Navigation steht das ECHTE Logo, nie der gesetzte
+        Schriftzug. Grund ist derselbe wie beim Druck: In Plus Jakarta Sans ist
+        das große I ein nackter Strich, „k-AIzen" liest sich als „k-Alzen" —
+        Ben sieht es in seiner eigenen Browser-Tableiste. Im Logo trennt der
+        Ember-Ton das „AI" sichtbar ab.
+        ⚠️ Mindesthöhe 56px: darunter wird der Schriftzug neben dem großen K
+        unlesbar (gemessen bei 44/64/88px). */}
+    <a href="/" class="kz-nav__brand" aria-label="k-AIzen — zur Startseite">
+      <img src="/images/logo/k-aizen-logo-hell.png" alt="k-AIzen" class="kz-nav__logo" width="308" height="256" />
+    </a>
     <div class="kz-nav__links">
       <a href="#angebot">Das Paket</a>
-      <a href="#ablauf">Ablauf</a>
       <a href="#beispiel">Beispiel</a>
+      <a href="#ablauf">Ablauf</a>
       <a href="#fragen">Fragen</a>
     </div>
-    <a href={calUrl} class="kz-btn kz-btn--primary" style="padding:11px 22px;font-size:14px;" target="_blank" rel="noopener">Rückruf</a>
+    <a href="#anfrage" class="kz-btn kz-btn--primary" style="padding:11px 22px;font-size:14px;">Beispielseite anfordern</a>
   </nav>
 
   <!-- HERO -->
   <header class="kz-hero">
     <div class="kz-hero__grid"></div>
     <div class="kz-wrap">
-      <div class="kz-hero__eyebrow kz-reveal"><span class="dot"></span> Für Betriebe im Raum Nürnberg</div>
-      <h1 class="kz-h1 kz-kinetic">Deine Website — komplett gebaut, dauerhaft betreut, <span class="accent">{PREIS} € im Monat.</span></h1>
+      {/* Der Eyebrow („Für Betriebe im Raum Nürnberg") ist am 21.08. entfallen —
+          ein Label über der Überschrift ist gebannt (craft-floor). Das Gebiet
+          steht jetzt in der Unterzeile, wo es ohnehin besser gelesen wird. */}
+      <h1 class="kz-h1 kz-kinetic">Gefunden. Gefragt. <span class="accent">Gebucht.</span></h1>
       <p class="kz-hero__sub kz-reveal" data-delay="2">
-        Du lieferst einmal Logo, Fotos und deine Leistungen. Wir bauen die Seite, halten sie am Laufen und kümmern uns um jede Änderung. Jede Anfrage landet Sekunden später als Benachrichtigung auf deinem Handy — auch wenn du gerade beim Kunden bist.
+        Deine Arbeit ist gut. Nur merkt es online kaum jemand. Wir bauen und betreuen deine Website, pflegen dein Google-Profil, sammeln Bewertungen ein und beantworten Kundenfragen rund um die Uhr. Und jede Anfrage landet Sekunden später auf deinem Handy. Für Betriebe im Raum Nürnberg, {PREIS} € im Monat.
       </p>
       <div class="kz-hero__cta kz-reveal" data-delay="3">
-        <a href={calUrl} class="kz-btn kz-btn--primary" target="_blank" rel="noopener">15 Minuten Rückruf vereinbaren <span class="kz-btn__arrow">→</span></a>
-        <a href="#beispiel" class="kz-btn kz-btn--ghost">Beispiel-Website ansehen</a>
+        <a href="#anfrage" class="kz-btn kz-btn--primary">Zeig mir, wie meine Seite aussieht <span class="kz-btn__arrow">→</span></a>
+        <a href={calUrl} class="kz-btn kz-btn--ghost" target="_blank" rel="noopener">Lieber 15 Minuten telefonieren</a>
       </div>
       <p class="kz-hero__note kz-reveal" data-delay="4">
-        Keine Einrichtungsgebühr · monatlich kündbar · du loggst dich nie ein
+        Kostenlos und unverbindlich · keine Einrichtungsgebühr · monatlich kündbar
       </p>
     </div>
     <div class="kz-scrollcue" aria-hidden="true">
@@ -315,18 +384,20 @@ const homeSchema = {
     <div class="kz-wrap">
       <h2 class="kz-h2 kz-reveal">Du machst deine Arbeit. Wir machen die Website.</h2>
       <div class="kz-duo-grid">
+        {/* Die 01/02-Nummern sind beim Dark-Umbau entfallen (craft-floor:
+            Nummern nur, wenn die Reihenfolge Information trägt — hier
+            stehen zwei Rollen nebeneinander, keine Abfolge). */}
         <div class="kz-reveal" data-delay="1">
           <div class="kz-split-card" data-tilt>
-            <div class="kz-split-num">01</div>
             <h3 style="font-size:1.5rem;font-weight:700;margin-bottom:8px;">Dein Betrieb</h3>
             <p style="color:var(--slate);">Du kannst dein Geschäft. Du lieferst einmal Logo, ein paar Fotos und deine Leistungen — und arbeitest dann weiter wie bisher.</p>
           </div>
         </div>
         <div class="kz-reveal" data-delay="2">
           <div class="kz-split-card kz-split-card--accent" data-tilt>
-            <div class="kz-split-num">02</div>
             <h3 style="font-size:1.5rem;font-weight:700;margin-bottom:8px;">k-AIzen</h3>
-            <p style="color:rgba(255,255,255,0.85);">Wir bauen die Seite, hosten sie, pflegen sie und ändern, was geändert werden muss. Du bekommst kein Login und keine Hausaufgaben.</p>
+            {/* Sekundärtext auf der Ember-Fläche aus dem Farbton getönt, nicht grau gedimmt — 5.4:1 auf #C2491F gemessen */}
+            <p style="color:#FFF1EA;">Wir bauen die Seite, hosten sie, pflegen sie und ändern, was geändert werden muss. Du bekommst kein Login und keine Hausaufgaben.</p>
           </div>
         </div>
       </div>
@@ -364,36 +435,35 @@ const homeSchema = {
     <div class="kz-wrap">
       <h2 class="kz-h2 kz-reveal">Was du für {PREIS} € im Monat bekommst.</h2>
       <p class="kz-lead kz-reveal" data-delay="1">
-        Keine Website, die nur schön dasteht. Eine Seite, die Anfragen annimmt und sie dorthin bringt, wo du sie siehst: auf dein Handy.
+        Nicht eine Website, die schön dasteht. Drei Dinge, die zusammen den
+        Unterschied machen — und die einzeln nichts bringen.
       </p>
 
-      <div class="kz-leist">
-        <article class="kz-leist__hero kz-reveal" data-delay="2">
-          <div class="kz-leist__hero-copy">
-            <h3>{leistungHero.title}</h3>
-            <p>{leistungHero.text}</p>
-          </div>
-          <div class="kz-leist__note" aria-hidden="true">
-            <span class="kz-leist__note-card">
-              <i class="kz-leist__dot"></i>
-              <span class="kz-leist__note-lines">
-                <b>Neue Anfrage über deine Website</b>
-                <i class="kz-leist__note-bar" style="width:72%"></i>
-                <i class="kz-leist__note-bar" style="width:46%"></i>
-              </span>
-              <em>Jetzt</em>
-            </span>
-          </div>
-        </article>
+      {/* Die drei Stufen. Bewusst kein gleichförmiges Kartenraster (craft-floor):
+          jede Stufe trägt ein großes Wort, einen Satz zur Folge im Alltag und
+          drei belegte Einzelheiten. Das Wort führt, die Punkte belegen. */}
+      <ol class="kz-stufen">
+        {klammer.map((stufe, index) => (
+          <li class="kz-stufe kz-reveal" data-delay={index + 1}>
+            <h3 class="kz-stufe__wort">{stufe.wort}</h3>
+            <p class="kz-stufe__satz">{stufe.satz}</p>
+            <ul class="kz-stufe__punkte">
+              {stufe.punkte.map((p) => <li>{p}</li>)}
+            </ul>
+          </li>
+        ))}
+      </ol>
 
-        <ul class="kz-leist__list">
-          {leistungen.map((l, index) => (
-            <li class="kz-reveal" data-delay={(index % 2) + 1}>
-              <h3><i class="kz-leist__dot" aria-hidden="true"></i>{l.title}</h3>
-              <p>{l.text}</p>
-            </li>
+      <div class="kz-laufend kz-reveal" data-delay="2">
+        <h3 class="kz-laufend__titel">Und darunter läuft es einfach weiter</h3>
+        <dl class="kz-laufend__liste">
+          {laufend.map((l) => (
+            <div class="kz-laufend__paar">
+              <dt>{l.title}</dt>
+              <dd>{l.text}</dd>
+            </div>
           ))}
-        </ul>
+        </dl>
       </div>
 
       <div class="kz-offer kz-reveal" data-delay="3" style="margin-top:48px;">
@@ -412,10 +482,10 @@ const homeSchema = {
         </div>
         <aside class="kz-offer__side">
           <div class="kz-offer__side-k">Nächster Schritt</div>
-          <h3>15 Minuten am Telefon</h3>
-          <p>Wir schauen uns deinen Betrieb an und sagen ehrlich, ob das Paket passt — auch wenn die Antwort „eher nicht" lautet.</p>
-          <a href={calUrl} class="kz-btn kz-btn--primary" target="_blank" rel="noopener">Rückruf-Termin wählen <span class="kz-btn__arrow">→</span></a>
-          <a href={asyncMail} class="kz-offer__link">Lieber kurz per Mail schreiben</a>
+          <h3>Sieh es an deinem eigenen Betrieb</h3>
+          <p>Sag mir kurz, was du machst — ich baue dir daraus eine Beispielseite mit deinem Namen und deinen Leistungen. Kostet nichts, verpflichtet zu nichts.</p>
+          <a href="#anfrage" class="kz-btn kz-btn--primary">Beispielseite anfordern <span class="kz-btn__arrow">→</span></a>
+          <a href={calUrl} class="kz-offer__link" target="_blank" rel="noopener">Lieber 15 Minuten telefonieren</a>
           <a href="/meisterseite" class="kz-offer__link">Alle Details zum Paket</a>
         </aside>
       </div>
@@ -553,17 +623,40 @@ const homeSchema = {
   </section>
 
   <!-- 6 — KONTAKT -->
-  <section class="kz-section" id="kontakt" style="text-align:center;">
-    <div class="kz-wrap">
-      <h2 class="kz-h2 kz-reveal" data-delay="1" style="margin-inline:auto;">Fünfzehn Minuten, und du weißt, ob es passt.</h2>
-      <p class="kz-lead kz-reveal" data-delay="2" style="margin-inline:auto;">
-        Kein Verkaufsmarathon. Wir sprechen über deinen Betrieb, du siehst das Beispiel, und du entscheidest in Ruhe. Wenn es nicht passt, sage ich das.
+  {/* ABSCHLUSS — seit 21.08. ein echtes Formular statt dreier Buttons.
+      Vorher hatte die Seite keinen einzigen Erfassungspunkt: Wer nicht
+      telefonieren, mailen oder chatten wollte, hatte keinen Weg. */}
+  <AnfrageFormular quelle="k-aizen.de/ (Startseite)" id="anfrage">
+    <Fragment slot="intro">
+      <h2 class="kz-h2 kz-reveal" data-delay="1">Sieh es an deinem eigenen Betrieb.</h2>
+      <p class="kz-lead kz-reveal" data-delay="2">
+        Ein Beispiel von einem fremden Betrieb sagt dir wenig. Deshalb baue ich
+        dir eine Seite mit deinem Namen, deinem Gewerk und deinem Ort — damit du
+        siehst, wie das für dich aussieht, bevor du irgendetwas entscheidest.
       </p>
-      <div class="kz-reveal" data-delay="3" style="margin-top:36px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-        <a href={calUrl} class="kz-btn kz-btn--primary" target="_blank" rel="noopener">Rückruf-Termin wählen <span class="kz-btn__arrow">→</span></a>
+    </Fragment>
+    <Fragment slot="button">Beispielseite anfordern</Fragment>
+    <Fragment slot="zusage">
+      Innerhalb eines Werktags. Kostenlos, unverbindlich, kein Vertreterbesuch.
+    </Fragment>
+  </AnfrageFormular>
+
+  {/* Terminplan ganz unten (Ben, 21.08.). Lädt erst auf Klick — Begründung im
+      Kopf der Komponente. */}
+  <TerminKalender />
+
+
+  <section class="kz-section kz-direkt" id="kontakt">
+    <div class="kz-wrap">
+      <h2 class="kz-h2 kz-reveal" data-delay="1">Lieber direkt sprechen?</h2>
+      <p class="kz-lead kz-reveal" data-delay="2">
+        Kein Verkaufsmarathon. Wir reden über deinen Betrieb, du siehst das Beispiel, und du entscheidest in Ruhe. Wenn es nicht passt, sage ich das.
+      </p>
+      <div class="kz-direkt__wege kz-reveal" data-delay="3">
+        <a href={calUrl} class="kz-btn kz-btn--ghost" target="_blank" rel="noopener">15 Minuten Rückruf <span class="kz-btn__arrow">→</span></a>
         <a href={asyncMail} class="kz-btn kz-btn--ghost">Kurz per Mail</a>
         <a href="https://wa.me/4915901031928" class="kz-btn kz-btn--ghost">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.477-.916zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.148-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.29.173-1.414z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.477-.916zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.148-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.29.173-1.414z"/></svg>
           WhatsApp
         </a>
       </div>
@@ -573,9 +666,7 @@ const homeSchema = {
   <footer class="kz-footer">
     <div class="kz-wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;">
       <span>© k-AIzen · Benjamin Zirngibl · <a href="/impressum" style="color:inherit;">Impressum</a> · <a href="/datenschutz" style="color:inherit;">Datenschutz</a> · <a href="/agb" style="color:inherit;">AGB</a></span>
-      <!-- Ausbaustufen dezent verlinkt: nicht mehr in der Hauptnav (Ben 07-28), aber
-           erreichbar — sonst wären /funktionen und /ki-pa von der Startseite aus verwaist. -->
-      <span style="font-family:var(--font-mono);"><a href="/funktionen" style="color:inherit;">Später möglich: KI im Betrieb</a></span>
+      <span><a href="/meisterseite" style="color:inherit;">Das Paket</a> · <a href="/pricing" style="color:inherit;">Preise</a> · <a href="/about" style="color:inherit;">Über mich</a></span>
     </div>
   </footer>
 
@@ -592,51 +683,53 @@ const homeSchema = {
     data-accent="#E85A2B"></script>
 
   <style>
-    .kz-btn--whatsapp { background:#25D366; color:#fff; box-shadow:0 8px 24px -6px rgba(37,211,102,0.45); }
-    .kz-btn--whatsapp:hover { box-shadow:0 14px 36px -8px rgba(37,211,102,0.6); }
+    /* Auf Dunkel trägt das Markengrün selbst — neutraler Tiefen-Schatten
+       statt grünem Glow (Detektor-Befund dark-glow). */
+    .kz-btn--whatsapp { background:#25D366; color:#fff; box-shadow:0 8px 24px -6px rgba(0,0,0,0.5); }
+    .kz-btn--whatsapp:hover { box-shadow:0 14px 36px -8px rgba(0,0,0,0.6); }
     .kz-logo-mark { width:24px; height:24px; object-fit:contain; display:block; }
     .kz-logo { font-weight:800; letter-spacing:-0.02em; }
-    .kz-logo__ai { background:linear-gradient(120deg,var(--indigo),var(--violet)); -webkit-background-clip:text; background-clip:text; color:transparent; font-weight:800; }
     .kz-offer { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(280px,0.65fr); gap:22px; margin-top:48px; align-items:stretch; }
-    .kz-offer__main, .kz-offer__side { border-radius:var(--radius-lg); border:1px solid var(--line); background:var(--card); box-shadow:var(--shadow-md); }
+    .kz-offer__main, .kz-offer__side { border-radius:var(--radius-lg); border:1px solid var(--line-soft); background:var(--card); box-shadow:var(--shadow-md); }
     .kz-offer__main { padding:clamp(28px,4vw,44px); }
-    .kz-offer__label, .kz-offer__side-k, .kz-process__k { font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.14em; font-weight:700; color:var(--indigo-deep); }
+    .kz-offer__label, .kz-offer__side-k, .kz-process__k { font-size:11px; text-transform:uppercase; letter-spacing:0.14em; font-weight:800; color:var(--indigo-deep); }
     .kz-offer__main h3, .kz-offer__side h3 { font-size:clamp(1.45rem,2.5vw,2rem); line-height:1.12; letter-spacing:-0.02em; margin-top:12px; }
     .kz-offer__main p, .kz-offer__side p { color:var(--slate); margin-top:16px; font-size:1.02rem; line-height:1.65; }
     .kz-checklist { list-style:none; display:grid; gap:12px; margin-top:24px; }
     .kz-checklist li { position:relative; padding-left:30px; color:var(--ink-soft); line-height:1.55; }
     .kz-checklist li::before { content:'✓'; position:absolute; left:0; top:1px; display:grid; place-items:center; width:20px; height:20px; border-radius:50%; background:var(--indigo-wash); color:var(--indigo-deep); font-weight:800; font-size:12px; }
-    .kz-offer__side { padding:28px; display:flex; flex-direction:column; justify-content:center; background:linear-gradient(145deg,#fff,var(--indigo-wash)); }
+    .kz-offer__side { padding:28px; display:flex; flex-direction:column; justify-content:center; background:linear-gradient(145deg,var(--card),rgba(232,90,43,0.14)); }
     .kz-offer__side .kz-btn { justify-content:center; margin-top:24px; width:100%; }
     .kz-offer__link { display:inline-flex; justify-content:center; margin-top:16px; color:var(--indigo-deep); text-decoration:none; font-weight:750; font-size:0.94rem; }
     .kz-offer__link:hover { text-decoration:underline; }
-    .kz-fit-section { background:#fff; padding-top:clamp(72px,8vw,108px); }
+    .kz-fit-section { background:var(--paper-2); padding-top:clamp(72px,8vw,108px); border-block:1px solid var(--line-soft); }
     .kz-fit-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin-top:42px; }
-    .kz-fit-card { min-height:360px; padding:clamp(26px,4vw,38px); border-radius:var(--radius-lg); background:linear-gradient(145deg,#fff,var(--indigo-wash)); border:1px solid var(--line); box-shadow:var(--shadow-md); }
+    .kz-fit-card { min-height:360px; padding:clamp(26px,4vw,38px); border-radius:var(--radius-lg); background:linear-gradient(145deg,var(--card),rgba(232,90,43,0.12)); border:1px solid var(--line-soft); box-shadow:var(--shadow-md); }
     .kz-fit-card--quiet { background:var(--card); }
-    .kz-fit-card__k, .kz-decision-card__k { font-family:var(--font-mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--indigo-deep); font-weight:800; }
+    .kz-fit-card__k, .kz-decision-card__k { font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--indigo-deep); font-weight:800; }
     .kz-fit-card h3, .kz-decision-card h3 { margin-top:14px; font-size:clamp(1.25rem,2.2vw,1.65rem); letter-spacing:-0.02em; line-height:1.15; }
     .kz-fit-card ul { list-style:none; display:grid; gap:14px; margin:24px 0 0; padding:0; }
     .kz-fit-card li { position:relative; padding-left:30px; color:var(--ink-soft); line-height:1.58; }
-    .kz-fit-card li::before { content:'✓'; position:absolute; left:0; top:1px; display:grid; place-items:center; width:20px; height:20px; border-radius:50%; background:rgba(86,93,255,0.14); color:var(--indigo-deep); font-weight:800; font-size:12px; }
-    .kz-fit-card--quiet li::before { content:'•'; background:rgba(11,16,32,0.06); color:var(--slate); }
+    .kz-fit-card li::before { content:'✓'; position:absolute; left:0; top:1px; display:grid; place-items:center; width:20px; height:20px; border-radius:50%; background:rgba(232,90,43,0.18); color:var(--indigo-deep); font-weight:800; font-size:12px; }
+    .kz-fit-card--quiet li::before { content:'•'; background:rgba(255,240,225,0.08); color:var(--slate); }
     .kz-decision-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; margin-top:44px; }
-    .kz-decision-card { min-height:245px; padding:24px; border-radius:var(--radius-lg); background:var(--card); border:1px solid var(--line); box-shadow:var(--shadow-sm); }
+    .kz-decision-card { min-height:245px; padding:24px; border-radius:var(--radius-lg); background:var(--card); border:1px solid var(--line-soft); box-shadow:var(--shadow-sm); }
     .kz-decision-card h3 { font-size:1.17rem; }
     .kz-decision-card p { margin-top:12px; color:var(--slate); font-size:0.95rem; line-height:1.62; }
     .kz-duo-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(24px,5vw,80px); align-items:center; }
     .kz-process { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; margin-top:48px; counter-reset:process; }
-    .kz-process__step { position:relative; min-height:250px; padding:26px; border-radius:var(--radius-lg); background:var(--card); border:1px solid var(--line); box-shadow:var(--shadow-sm); overflow:hidden; }
-    .kz-process__step::after { content:''; position:absolute; left:26px; right:26px; bottom:0; height:3px; background:linear-gradient(90deg,var(--indigo),var(--violet)); opacity:0.85; }
+    .kz-process__step { position:relative; min-height:250px; padding:26px; border-radius:var(--radius-lg); background:var(--card); border:1px solid var(--line-soft); box-shadow:var(--shadow-sm); overflow:hidden; }
+    .kz-process__step::after { content:''; position:absolute; left:26px; right:26px; bottom:0; height:2px; background:linear-gradient(90deg,var(--indigo),var(--violet)); opacity:0.85; box-shadow:0 0 12px rgba(255,122,69,0.5); }
     .kz-process__step h3 { font-size:1.2rem; margin-top:18px; margin-bottom:10px; letter-spacing:-0.015em; }
     .kz-process__step p { color:var(--slate); font-size:0.95rem; line-height:1.6; }
-    .kz-split-card { background:var(--card); border:1px solid var(--line); border-radius:var(--radius-xl); padding:36px; box-shadow:var(--shadow-md); transition:transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out); will-change:transform; }
+    .kz-split-card { background:var(--card); border:1px solid var(--line-soft); border-radius:var(--radius-xl); padding:36px; box-shadow:var(--shadow-md); transition:transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out); will-change:transform; }
     .kz-split-card:hover { box-shadow:var(--shadow-lg); }
-    .kz-split-card--accent { background:linear-gradient(145deg,var(--indigo),var(--violet)); color:#fff; border:none; }
-    .kz-split-num { font-family:var(--font-mono); font-size:13px; opacity:0.5; margin-bottom:18px; }
-    .kz-portrait { position:relative; border-radius:var(--radius-xl); overflow:hidden; box-shadow:var(--shadow-lg); transition:transform 0.3s var(--ease-out); will-change:transform; }
+    /* Tieferes Ember-Duo statt indigo→violet: heller Fließtext erreicht
+       sonst keine 4.5:1 auf der Glut (gemessen: 2.8:1 → jetzt ≥5:1). */
+    .kz-split-card--accent { background:linear-gradient(145deg,#9E3610,#C2491F); color:#fff; border:none; box-shadow:var(--shadow-md), 0 0 70px -14px rgba(232,90,43,0.55); }
+    .kz-portrait { position:relative; border-radius:var(--radius-xl); overflow:hidden; border:1px solid rgba(255,240,225,0.12); box-shadow:var(--shadow-lg), 0 0 70px -18px rgba(232,90,43,0.30); transition:transform 0.3s var(--ease-out); will-change:transform; }
     .kz-portrait img { width:100%; display:block; aspect-ratio:4/5; object-fit:cover; }
-    .kz-portrait__badge { position:absolute; bottom:14px; left:14px; background:rgba(11,16,32,0.72); backdrop-filter:blur(8px); color:#fff; font-size:13px; font-weight:600; padding:8px 14px; border-radius:999px; }
+    .kz-portrait__badge { position:absolute; bottom:14px; left:14px; background:rgba(14,12,10,0.78); backdrop-filter:blur(8px); color:var(--ink); font-size:13px; font-weight:600; padding:8px 14px; border-radius:999px; border:1px solid rgba(255,240,225,0.14); }
     .kz-traits { list-style:none; display:flex; flex-direction:column; gap:14px; margin-top:8px; }
     .kz-traits li { padding-left:26px; position:relative; color:var(--slate); font-size:1.05rem; }
     .kz-traits li::before { content:'→'; position:absolute; left:0; color:var(--indigo); font-weight:700; }
@@ -658,7 +751,14 @@ const homeSchema = {
     .kz-hero__note { margin-top:18px; font-size:0.85rem; color:var(--slate-2); letter-spacing:0.01em; line-height:1.6; }
 
 
-    .kz-demo-section { background:linear-gradient(160deg,var(--paper-2) 0%,var(--indigo-wash) 100%); border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft); }
+    /* Beispiel-Sektion: warme Bühne — die Glut kommt von unten, wo die
+       Screenshots als beleuchtetes Objekt stehen. */
+    .kz-demo-section {
+      background:
+        radial-gradient(90% 80% at 50% 110%, rgba(232,90,43,0.14), transparent 65%),
+        var(--paper-2);
+      border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft);
+    }
 
     .kz-demo-cta { display:flex; align-items:center; flex-wrap:wrap; gap:18px; margin-top:clamp(24px,4vw,36px); }
     .kz-demo-hint { font-size:0.85rem; color:var(--slate-2); line-height:1.5; max-width:38ch; }
@@ -690,14 +790,19 @@ const homeSchema = {
     .kz-demo-stage { position:relative; display:block; margin-top:clamp(32px,5vw,56px); text-decoration:none; }
     .kz-demo-stage:focus-visible { outline:2px solid var(--indigo); outline-offset:6px; border-radius:var(--radius-lg); }
 
-    .kz-demo-browser { display:block; width:calc(100% - clamp(56px,9vw,120px)); margin-bottom:clamp(28px,5vw,64px); background:var(--card); border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-md); }
+    /* Die hellen Screenshots sind auf Charcoal das hellste Element der
+       Seite — deshalb bekommen sie eine kräftige FASSUNG: dunkle
+       Browser-Leiste, deutliche Lichtkante, Glut-Schein dahinter.
+       So lesen sie sich als gezeigtes Objekt, nicht als Loch im Layout. */
+    .kz-demo-browser { display:block; width:calc(100% - clamp(56px,9vw,120px)); margin-bottom:clamp(28px,5vw,64px); background:var(--coal); border:1px solid rgba(255,240,225,0.16); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-lg), 0 0 90px -18px rgba(232,90,43,0.40); }
     .kz-demo-browser img { display:block; width:100%; height:auto; }
-    .kz-demo-browser__bar { display:flex; align-items:center; gap:14px; padding:10px 14px; background:var(--paper-2); border-bottom:1px solid var(--line-soft); }
+    .kz-demo-browser__bar { display:flex; align-items:center; gap:14px; padding:10px 14px; background:var(--coal); border-bottom:1px solid rgba(255,240,225,0.10); }
     .kz-demo-browser__dots { display:flex; gap:6px; }
-    .kz-demo-browser__dots i { width:9px; height:9px; border-radius:50%; background:var(--line); }
-    .kz-demo-browser__url { flex:1; text-align:center; font-size:0.8rem; color:var(--slate); background:var(--card); border:1px solid var(--line-soft); border-radius:999px; padding:4px 14px; max-width:32ch; margin-inline:auto; letter-spacing:0.01em; }
+    .kz-demo-browser__dots i { width:9px; height:9px; border-radius:50%; background:rgba(255,240,225,0.22); }
+    .kz-demo-browser__dots i:first-child { background:var(--violet); }
+    .kz-demo-browser__url { flex:1; text-align:center; font-size:0.8rem; color:var(--slate); background:rgba(255,240,225,0.06); border:1px solid rgba(255,240,225,0.10); border-radius:999px; padding:4px 14px; max-width:32ch; margin-inline:auto; letter-spacing:0.01em; }
 
-    .kz-demo-phone { position:absolute; right:0; bottom:0; display:block; width:clamp(132px,17vw,218px); padding:5px; background:var(--ink); border-radius:22px; box-shadow:var(--shadow-lg); }
+    .kz-demo-phone { position:absolute; right:0; bottom:0; display:block; width:clamp(132px,17vw,218px); padding:5px; background:#0A0806; border:1px solid rgba(255,240,225,0.16); border-radius:22px; box-shadow:var(--shadow-lg), 0 0 50px -10px rgba(232,90,43,0.35); }
     .kz-demo-phone img { display:block; width:100%; height:auto; border-radius:17px; }
 
     /* Der EINE inszenierte Moment der Seite: die Bühne gleitet ein, dann setzt sich
@@ -713,10 +818,10 @@ const homeSchema = {
     /* ===== Leistungen: ein Kernversprechen, fünf Fakten ===== */
     .kz-leist { margin-top:clamp(28px,4vw,44px); }
 
-    .kz-leist__hero { position:relative; overflow:hidden; display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr); gap:clamp(24px,4vw,48px); align-items:center; background:var(--ink); border-radius:var(--radius-xl); padding:clamp(28px,4.5vw,52px); box-shadow:var(--shadow-lg); }
+    .kz-leist__hero { position:relative; overflow:hidden; display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr); gap:clamp(24px,4vw,48px); align-items:center; background:var(--coal); border:1px solid rgba(255,143,94,0.18); border-radius:var(--radius-xl); padding:clamp(28px,4.5vw,52px); box-shadow:var(--shadow-lg); }
     .kz-leist__hero::before { content:""; position:absolute; right:-18%; bottom:-55%; width:70%; aspect-ratio:1; background:radial-gradient(circle, var(--glow), transparent 65%); pointer-events:none; }
-    .kz-leist__hero h3 { color:var(--paper); font-size:clamp(1.45rem,2.6vw,2rem); line-height:1.15; letter-spacing:-0.02em; font-weight:800; }
-    .kz-leist__hero p { margin-top:12px; color:color-mix(in srgb, var(--paper) 82%, var(--violet) 18%); font-size:clamp(1rem,1.5vw,1.1rem); line-height:1.65; max-width:46ch; }
+    .kz-leist__hero h3 { color:var(--ink); font-size:clamp(1.45rem,2.6vw,2rem); line-height:1.15; letter-spacing:-0.02em; font-weight:800; }
+    .kz-leist__hero p { margin-top:12px; color:color-mix(in srgb, var(--slate) 84%, var(--violet) 16%); font-size:clamp(1rem,1.5vw,1.1rem); line-height:1.65; max-width:46ch; }
 
     .kz-leist__note { position:relative; display:grid; justify-items:end; }
     .kz-leist__note-card { display:flex; align-items:flex-start; gap:12px; width:min(340px,100%); background:var(--card); border-radius:var(--radius-lg); padding:14px 16px; box-shadow:var(--shadow-md); }

@@ -8,10 +8,14 @@ Disallow: /_pitch-archive/
 Disallow: /widgets/
 Disallow: /v1/
 Disallow: /onboarding
+Disallow: /danke
 
-# Legacy-Routen wie /pitch, /pitch/lena, /katalog und /old-index bleiben crawlbar,
-# damit Suchmaschinen ihre noindex/canonical-Weiterleitungen sehen können.
-# Wichtig: /pitch/*.png wird auf der neuen Homepage als Bildmaterial genutzt.
+# Funnel-Umbau 2026-08-21: Die alten Routen (/ki-pa, /audit, /funktionen,
+# /tutorials, /katalog, /pitch, /old-index) gibt es nicht mehr — nginx antwortet
+# dort mit 301 auf die Produktseite. Sie bleiben ausdrücklich crawlbar, denn
+# eine per robots.txt gesperrte URL darf der Crawler nicht abrufen und sieht
+# die Weiterleitung deshalb nie; die alte Adresse bliebe dann im Index stehen.
+# Wichtig: /pitch/*.png ist Bildmaterial der Startseite und wird NICHT umgeleitet.
 
 Sitemap: https://k-aizen.de/sitemap-index.xml
 Sitemap: https://k-aizen.de/sitemap-0.xml

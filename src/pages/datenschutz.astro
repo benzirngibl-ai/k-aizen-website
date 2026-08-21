@@ -70,25 +70,15 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
     </section>
 
     <section>
-      <h2 class="kz-h2">4. Externe Schriftarten</h2>
+      {/* Umgeschrieben am 21.08.2026: Die Schriften liegen seit heute auf dem
+          eigenen Server. Der vorige Text beschrieb die Übermittlung an Google
+          und kündigte das Selbst-Hosten „mittelfristig" an — beides ist erledigt. */}
+      <h2 class="kz-h2">4. Schriftarten</h2>
       <p>
-        Beim Aufruf der Seite werden Schriftarten von Google Fonts geladen:
-      </p>
-      <ul>
-        <li><strong>Google Fonts</strong> (Plus Jakarta Sans, JetBrains Mono) — geladen von <code>fonts.googleapis.com</code> / <code>fonts.gstatic.com</code></li>
-      </ul>
-      <p>
-        Beim Aufruf wird Ihre IP-Adresse an Google übermittelt. Google LLC verarbeitet diese Daten eventuell auch außerhalb der EU.
-      </p>
-      <p>
-        Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an performanter, korrekt dargestellter Website).
-      </p>
-      <p>
-        Falls Sie diese Datenübermittlung vermeiden möchten, können Sie externe Schriftarten über Browser-Einstellungen oder
-        Erweiterungen blockieren — die Seite funktioniert dann mit System-Schriftarten weiter.
-      </p>
-      <p>
-        Wir planen mittelfristig, die Schriftarten selbst zu hosten, um diese Datenübermittlung zu vermeiden.
+        Die verwendeten Schriftarten (Plus Jakarta Sans, JetBrains Mono) werden
+        <strong>von unserem eigenen Server in Deutschland ausgeliefert</strong>.
+        Es besteht keine Verbindung zu Google Fonts, und es wird keine IP-Adresse
+        an Google übermittelt.
       </p>
     </section>
 
@@ -118,10 +108,37 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
         verlassen Sie diese Seite und es gelten die Datenschutzerklärungen der jeweiligen Anbieter. Wir haben keinen
         Einfluss auf deren Datenverarbeitung.
       </p>
+      {/* ⚠️ Geändert am 21.08.2026, weil sich die Tatsache geändert hat: Bis
+          hierhin stand hier, die Terminbuchung laufe über eine eigene
+          Cal.com-Instanz und es gebe „keinen US-Drittanbieter". Ben hat den
+          Kalender-Standard am 21.08. auf Google umgestellt. Der alte Satz wäre
+          damit eine falsche Angabe in einem Rechtstext gewesen.
+          Der Kalender wird deshalb ERST NACH KLICK geladen — solange niemand
+          darauf drückt, geht keine Verbindung zu Google. */}
       <p>
-        Die Termin-Buchung ist über unsere eigene, in Deutschland gehostete Cal.com-Instanz
-        (<code>cal.k-aizen.de</code>) eingebettet — kein US-Drittanbieter. Ihre Buchungsdaten bleiben auf
-        unserem Server in der EU.
+        Für die Terminvereinbarung nutzen wir den <strong>Google-Terminplan</strong>
+        (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland;
+        Mutterkonzern Google LLC, USA). Auf unserer Website ist der Terminplan
+        <strong>nicht automatisch eingebunden</strong>: Er wird erst geladen, wenn
+        Sie ausdrücklich auf „Freie Termine anzeigen" klicken. Bis dahin wird
+        keine Verbindung zu Google aufgebaut und es werden keine Daten dorthin
+        übertragen.
+      </p>
+      <p>
+        Klicken Sie den Knopf, übermittelt Ihr Browser an Google unter anderem
+        Ihre IP-Adresse, und Google kann Cookies setzen. Dabei können Daten in die
+        USA übertragen werden; Google stützt dies auf die Standardvertragsklauseln
+        und das EU-US Data Privacy Framework. Rechtsgrundlage für das Laden ist
+        Ihre Einwilligung durch den Klick (Art. 6 Abs. 1 lit. a DSGVO), die Sie
+        jederzeit widerrufen können, indem Sie die Seite neu laden und den Knopf
+        nicht betätigen. Buchen Sie einen Termin, verarbeiten wir die dabei
+        angegebenen Daten zur Durchführung des Gesprächs (Art. 6 Abs. 1 lit. b
+        DSGVO). Näheres in der
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>.
+      </p>
+      <p>
+        Das Anfrageformular auf dieser Website läuft dagegen weiterhin
+        ausschließlich über unseren eigenen Server in Deutschland.
       </p>
     </section>
 
@@ -168,7 +185,7 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
       </p>
     </section>
 
-    <section style="margin-top: 64px; padding: 32px; background: var(--kz-cream-deep); border-radius: 12px; font-size: 14px; color: rgba(31,41,51,0.7);">
+    <section style="margin-top: 64px; padding: 32px; background: var(--kz-cream-deep); border-radius: 12px; font-size: 14px; color: var(--fg-muted);">
       <p style="margin: 0;">
         <strong>Hinweis:</strong> Diese Datenschutzerklärung wurde inhaltlich vorbereitet und deckt die aktuelle technische
         Konfiguration der Website ab. Bei Änderungen am Tech-Stack oder vor öffentlicher Live-Schaltung empfehlen wir

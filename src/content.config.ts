@@ -1,6 +1,13 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+// FUNNEL-UMBAU 2026-08-21 (Ben): Die Sammlungen `tutorials` und `funktionen`
+// gehörten zur KI-PA-Welt und sind mit den zugehörigen Routen nach
+// `_archive/2026-08-21-funnel-umbau/content/` gewandert. Die Texte dort sind
+// bewusst aufgehoben — mehrere Schmerz-Geschichten (verpasster Anruf,
+// vergessenes Angebot) beschreiben genau das, was das heutige Paket löst,
+// und taugen als Rohmaterial. Reaktivieren heißt: Ordner zurück nach
+// src/content/ + Sammlung hier wieder eintragen + Route zurückholen.
 const blog = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
   schema: z.object({
@@ -16,55 +23,4 @@ const blog = defineCollection({
   }),
 });
 
-const tutorials = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/tutorials' }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    slug: z.string().optional(),
-    author: z.string().default('Benjamin Zirngibl'),
-    source_video: z.string().optional(),
-    draft: z.boolean().default(false),
-  }),
-});
-
-// Lena-Funktionsseiten — 1 Datei pro Funktion (Spec: docs/superpowers/specs/2026-07-07-lena-funktionsseiten-design.md)
-// Story-Sektionen (Schmerz/Ohne/Mit) leben als freies Markdown im Body;
-// Mechanik (sources/flow/discord) strukturiert, weil das Template sie als Chips/Steps/Mock rendert.
-const funktionen = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/funktionen' }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    schmerzKicker: z.string(), // 1 Satz Schmerz — Kachel-Text + Seiten-Unterzeile
-    protagonist: z.enum(['kunde', 'mitarbeiter', 'markus']),
-    heroImage: z.string(),
-    heroAlt: z.string(),
-    reihenfolge: z.number(),
-    // Visuelle Story-Beats statt Prosa (Ben-Feedback 07-10: "Pain visuell zeigen, nicht erzählen")
-    beats: z.array(z.object({ label: z.string(), text: z.string() })).default([]),
-    // Der Ohne/Mit-Kontrast: Handy-Mock (die Leere = der Pain) vs. Discord-Mock (die Übergabe)
-    phoneMock: z
-      .object({ title: z.string(), lines: z.array(z.string()) })
-      .optional(),
-    // Dieselbe Frage zweimal: ohne Lena ins Leere gefragt, mit Lena beantwortet (Chat-Mock wie im OS)
-    ohneFrage: z.string().optional(),
-    mitChat: z.object({ frage: z.string(), antwort: z.string() }).optional(),
-    ohneText: z.string().optional(),
-    mitText: z.string().optional(),
-    sources: z.array(z.string()).default([]),
-    flow: z.array(z.string()).default([]),
-    discord: z
-      .object({
-        channel: z.string(),
-        time: z.string(),
-        alert: z.boolean().optional(),
-        body: z.string(),
-      })
-      .optional(),
-    draft: z.boolean().default(true),
-  }),
-});
-
-export const collections = { blog, tutorials, funktionen };
+export const collections = { blog };

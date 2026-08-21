@@ -95,11 +95,8 @@ const faqSchema = {
   breadcrumbs={[{ name: 'Preise', href: '/pricing' }]}
 >
   <article class="kz-page">
-    <div class="kz-page-eyebrow">
-      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" loading="lazy" />
-      <img src="/icons/icon-ginkgo.png" alt="" class="kz-eyebrow-leaf" loading="lazy" />
-      <span>Preise</span>
-    </div>
+    {/* Eyebrow beim Dark-Umbau entfallen (craft-floor: kein Label über
+        der Überschrift). */}
     <h1 class="kz-h1">Ein Produkt. Ein Preis. Keine Überraschungen.</h1>
     <p class="kz-lead">
       Wir haben kein Preismodell mit Stufen, Paketen und Sternchen. Es gibt eine Website,
@@ -122,7 +119,7 @@ const faqSchema = {
           {enthalten.map((e) => <li>{e}</li>)}
         </ul>
         <div class="kz-preis-cta">
-          <a href="https://cal.k-aizen.de/ben-kaizen/rueckruf" class="kz-btn kz-btn--primary" target="_blank" rel="noopener">
+          <a href="https://calendar.app.google/AvBJwsvWrh4m26tV7" class="kz-btn kz-btn--primary" target="_blank" rel="noopener">
             Rückruf-Termin wählen <span class="kz-btn__arrow">→</span>
           </a>
           <a href="/meisterseite" class="kz-btn kz-btn--ghost">Alle Details zum Paket</a>
@@ -180,7 +177,7 @@ const faqSchema = {
         ob das Paket passt. Wenn nicht, sagen wir das auch.
       </p>
       <div class="kz-preis-cta">
-        <a href="https://cal.k-aizen.de/ben-kaizen/rueckruf" class="kz-btn kz-btn--primary" target="_blank" rel="noopener">
+        <a href="https://calendar.app.google/AvBJwsvWrh4m26tV7" class="kz-btn kz-btn--primary" target="_blank" rel="noopener">
           Rückruf-Termin wählen <span class="kz-btn__arrow">→</span>
         </a>
         <a href="mailto:kontakt@k-aizen.de?subject=Meisterseite" class="kz-btn kz-btn--ghost">Oder kurz per Mail</a>

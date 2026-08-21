@@ -1,0 +1,178 @@
+---
+// Anfrage-Formular für k-aizen.de — der einzige Erfassungspunkt der Website.
+//
+// Warum es das gibt (Funnel-Umbau 2026-08-21): Bis hierhin hatte die gesamte
+// Marketing-Seite KEIN einziges Formular. Wer nicht telefonieren, mailen oder
+// den Chat öffnen wollte, hatte keinen Weg. Das war das größte Loch im Funnel.
+//
+// Der Weg dahinter existiert bereits und ist E2E bewiesen (21.07.): POST geht an
+// die Lead-API, die daraus einen Discord-Ping MIT Mention (= Push aufs Handy),
+// eine Resend-Mail und eine Zeile im JSONL macht. Kein neuer Dienst.
+//
+// ⚠️ Zwei Felder sind hier nicht kosmetisch:
+//   `kunde=kaizen` trennt unsere eigenen Anfragen von den Demo-Leads der
+//   Musterseite — ohne das landen sie im selben Topf.
+//   `ziel=kaizen` steuert, wohin die API nach dem Absenden zurückleitet. Ohne
+//   das landet der Besucher auf der Danke-Seite der DEMO, also auf einer
+//   fremden Domain mit Entwurfs-Band. Die erlaubten Ziele stehen fest in
+//   lead-api/server.mjs (Weißliste, keine freie URL).
+
+interface Props {
+  /** Woher die Anfrage kam — landet im Lead und beantwortet später „was zieht?" */
+  quelle: string;
+  /** Anker-Id, damit CTAs von oben hierher springen können. */
+  id?: string;
+}
+
+const { quelle, id = 'anfrage' } = Astro.props;
+
+const LEAD_API = 'https://muster-api.k-aizen.de/anfrage';
+
+const felder = [
+  {
+    name: 'name',
+    label: 'Dein Name und dein Betrieb',
+    platzhalter: 'Thomas Berger, Berger Elektrotechnik',
+    typ: 'text',
+    autocomplete: 'name',
+    pflicht: true,
+  },
+  {
+    name: 'telefon',
+    label: 'Handynummer',
+    platzhalter: '0170 1234567',
+    typ: 'tel',
+    autocomplete: 'tel',
+    inputmode: 'tel',
+    pflicht: true,
+    hinweis: 'Damit ich kurz zurückrufen kann, wenn etwas unklar ist.',
+  },
+  {
+    name: 'ort',
+    label: 'Ort',
+    platzhalter: 'Feucht',
+    typ: 'text',
+    autocomplete: 'address-level2',
+    pflicht: true,
+  },
+  {
+    name: 'email',
+    label: 'E-Mail',
+    platzhalter: 'thomas@berger-elektro.de',
+    typ: 'email',
+    autocomplete: 'email',
+    pflicht: false,
+    hinweis: 'Optional — hierhin schicke ich dir den Link zu deiner Beispielseite.',
+  },
+];
+---
+
+<section class="kz-anfrage" id={id}>
+  <div class="kz-wrap">
+    <div class="kz-anfrage__intro">
+      <slot name="intro" />
+    </div>
+
+    {/* Fehlerband: Die Lead-API schickt bei fehlenden Pflichtfeldern auf
+        ?fehler=felder zurück. Serverseitig können wir das auf einer statisch
+        gebauten Seite nicht rendern, deshalb schaltet es das Skript unten frei. */}
+    <p class="kz-anfrage__fehler" id="anfrage-fehler" role="alert" hidden>
+      Da fehlte noch etwas. Name, Nummer, Ort, ein Satz zum Betrieb und das
+      Häkchen unten brauche ich — dann geht es raus.
+    </p>
+
+    <form class="kz-anfrage__form" method="POST" action={LEAD_API}>
+      {/* Steuerfelder — siehe Kommentar im Kopf der Datei. */}
+      <input type="hidden" name="kunde" value="kaizen" />
+      <input type="hidden" name="ziel" value="kaizen" />
+      <input type="hidden" name="quelle" value={quelle} />
+
+      {/* Honigtopf: Für Menschen unsichtbar und nicht ansteuerbar. Füllt ihn
+          jemand aus, war es ein Bot — die API verwirft die Anfrage dann still,
+          statt eine Fehlermeldung zu zeigen, die dem Bot beim Lernen hilft. */}
+      <div class="kz-anfrage__topf" aria-hidden="true">
+        <label for="website">Website (bitte leer lassen)</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+      </div>
+
+      {felder.map((f) => (
+        <p class="kz-anfrage__feld">
+          <label for={`anfrage-${f.name}`}>
+            {f.label}
+            {!f.pflicht && <span class="kz-anfrage__optional"> · optional</span>}
+          </label>
+          <input
+            type={f.typ}
+            id={`anfrage-${f.name}`}
+            name={f.name}
+            placeholder={f.platzhalter}
+            autocomplete={f.autocomplete}
+            inputmode={f.inputmode}
+            required={f.pflicht || undefined}
+            aria-describedby={f.hinweis ? `hinweis-${f.name}` : undefined}
+          />
+          {f.hinweis && <span class="kz-anfrage__hinweis" id={`hinweis-${f.name}`}>{f.hinweis}</span>}
+        </p>
+      ))}
+
+      <p class="kz-anfrage__feld kz-anfrage__feld--breit">
+        <label for="anfrage-nachricht">Was macht dein Betrieb?</label>
+        <textarea
+          id="anfrage-nachricht"
+          name="nachricht"
+          rows="4"
+          required
+          placeholder="Elektrotechnik, hauptsächlich Altbausanierung und Photovoltaik. Website habe ich keine, nur einen Google-Eintrag."
+          aria-describedby="hinweis-nachricht"></textarea>
+        <span class="kz-anfrage__hinweis" id="hinweis-nachricht">
+          Zwei, drei Sätze reichen. Daraus baue ich deine Beispielseite.
+        </span>
+      </p>
+
+      <p class="kz-anfrage__feld kz-anfrage__feld--breit">
+        <label for="anfrage-rueckruf">
+          Wann erreiche ich dich am besten?
+          <span class="kz-anfrage__optional"> · optional</span>
+        </label>
+        <input
+          type="text"
+          id="anfrage-rueckruf"
+          name="rueckruf"
+          placeholder="Werktags ab 17 Uhr"
+        />
+      </p>
+
+      <p class="kz-anfrage__einwilligung">
+        <input type="checkbox" id="anfrage-einwilligung" name="einwilligung" required />
+        {/* Bewusst ohne den Namen „k-AIzen" im Fließtext: In Plus Jakarta Sans
+            ist das große I ein nackter Strich, der Name liest sich dort als
+            „k-Alzen". In der Navigation trägt das Logo die Unterscheidung, in
+            einem Einwilligungstext gibt es die nicht. */}
+        <label for="anfrage-einwilligung">
+          Ich bin einverstanden, dass meine Angaben gespeichert werden, um mir
+          zu antworten. Kein Newsletter, keine Weitergabe an Dritte. Details in
+          der <a href="/datenschutz">Datenschutzerklärung</a>.
+        </label>
+      </p>
+
+      <div class="kz-anfrage__abschluss">
+        <button type="submit" class="kz-btn kz-btn--primary">
+          <slot name="button">Beispielseite anfordern</slot>
+          <span class="kz-btn__arrow">→</span>
+        </button>
+        <span class="kz-anfrage__zusage"><slot name="zusage" /></span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script is:inline>
+  // Fehlerband nur zeigen, wenn die Lead-API uns zurückgeschickt hat.
+  if (new URLSearchParams(location.search).get('fehler') === 'felder') {
+    var band = document.getElementById('anfrage-fehler');
+    if (band) {
+      band.hidden = false;
+      band.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    }
+  }
+</script>

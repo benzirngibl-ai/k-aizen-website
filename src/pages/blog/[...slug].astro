@@ -49,14 +49,13 @@ const jsonLd = {
   ]}
 >
   <article class="kz-page kz-blog-post">
-    <div class="kz-page-eyebrow">
-      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
-      <span>{pillarLabel[post.data.pillar]}</span>
-    </div>
+    {/* Eyebrow beim Dark-Umbau entfallen (craft-floor: kein Label über
+        der Überschrift) — das Pillar-Label steht jetzt in der Meta-Zeile. */}
     <h1 class="kz-h1">{post.data.title}</h1>
     <p class="kz-lead">{post.data.description}</p>
 
     <div class="kz-blog-meta">
+      <span class="kz-blog-pillar">{pillarLabel[post.data.pillar]}</span><span> · </span>
       <time datetime={post.data.pubDate.toISOString()}>{dateDe(post.data.pubDate)}</time>
       {post.data.updatedDate && (
         <span> · Aktualisiert: {dateDe(post.data.updatedDate)}</span>
@@ -80,6 +79,13 @@ const jsonLd = {
       font-size: 14px;
       color: var(--fg-muted);
       margin-bottom: 48px;
+    }
+    .kz-blog-pillar {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 12px;
     }
     .kz-blog-prose {
       font-family: var(--font-sans);
@@ -107,7 +113,7 @@ const jsonLd = {
     .kz-blog-prose code {
       font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
       font-size: 0.9em;
-      background: var(--kz-cream-deep, #ede5d4);
+      background: var(--kz-cream-deep, #211C18);
       padding: 2px 6px;
       border-radius: 4px;
     }

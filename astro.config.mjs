@@ -8,8 +8,16 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://k-aizen.de',
-  // Kurz-URL fürs Erstgespräch → Google-Terminplan (Buchung + Meet-Link automatisch).
-  // Merkbare Adresse für Mails/LinkedIn; Ziel-URL bei Kalenderwechsel nur hier ändern.
+  // Kurz-URL fürs Erstgespräch. Merkbare Adresse für Mails/LinkedIn/Signatur;
+  // Ziel-URL bei Kalenderwechsel nur hier ändern.
+  //
+  // ⛔ KALENDER-STANDARD IST GOOGLE (Ben, 2026-08-21): „wir benutzen erstmal
+  // kein cal.com mehr. Unser Standard ist Google Kalender."
+  //
+  // Vorgeschichte am selben Tag: Es liefen ZWEI Systeme parallel (Startseite auf
+  // Cal.com, /termin auf Google). Erst wurde auf Cal.com vereinheitlicht, dann
+  // hat Ben Google als Standard gesetzt. Wenn hier je wieder cal.k-aizen.de
+  // steht, ist das ein Rückschritt.
   redirects: {
     '/termin': 'https://calendar.app.google/AvBJwsvWrh4m26tV7',
   },
@@ -19,15 +27,15 @@ export default defineConfig({
       filter: (page) => {
         const url = new URL(page);
         const path = url.pathname;
+        // Nach dem Funnel-Umbau 2026-08-21 existieren die meisten alten Routen
+        // gar nicht mehr (nginx leitet sie per 301 um). Übrig bleibt, was gebaut
+        // wird, aber nicht in die Suche gehört: das Kunden-Setup-Formular und
+        // die noindex-Vorschauen.
         const blockedPrefixes = [
-          '/old-index',
-          '/preview',
-          '/preview-lighttech',
-          '/v1',
-          '/katalog',
-          '/katalog-v2',
-          '/pitch',
           '/onboarding',
+          '/preview',
+          '/danke',
+          '/v1',
         ];
 
         return !blockedPrefixes.some((prefix) => path === prefix || path.startsWith(`${prefix}/`));

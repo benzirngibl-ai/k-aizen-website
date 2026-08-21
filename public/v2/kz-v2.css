@@ -1,38 +1,53 @@
 /* ============================================================
-   k-AIzen v2 — Cinematic Light Premium
-   Design tokens adapted from colors_lighttech.css
+   k-AIzen v2 — Charcoal & Ember (Dark)
+   Umbau 2026-08-21 (Ben): „im Dark Style. Charcoal, Ember Farben.
+   Mit mehr schönen Deko-Elementen."
+   Die Token-NAMEN bleiben die alten (--paper, --ink, --indigo …),
+   damit keine der drei CSS-Schichten und keine Seite bricht —
+   nur ihre WERTE sind jetzt die dunkle Welt:
+   --paper ist Charcoal, --ink ist warmes Elfenbein.
+   Alle Kontraste gemessen (WCAG), nicht geschätzt — Werte im
+   Kommentar am jeweiligen Token.
    ============================================================ */
 
 :root {
-  /* Surfaces */
-  --ink: #0B1020;
-  --ink-soft: #1C2333;
-  --slate: #475569;
-  --slate-2: #64748B;
-  --paper: #FCFCFD;
-  --paper-2: #F4F5FA;
-  --card: #FFFFFF;
-  --line: #E6E8F0;
-  --line-soft: #EEF0F6;
+  color-scheme: dark;
+
+  /* Surfaces — warmes Charcoal, keine Neutralgrautöne */
+  --ink: #F4EDE5;                 /* Primärtext · 16.1:1 auf --paper */
+  --ink-soft: #E7DCD1;            /* 12.5:1 auf --card */
+  --slate: #C7B5A5;               /* Sekundärtext, aus dem Warmton getönt · 9.4:1 auf --paper */
+  --slate-2: #A08D7C;             /* Tertiärtext · 5.9:1 auf --paper */
+  --paper: #141210;               /* Seitengrund: Charcoal */
+  --paper-2: #1C1815;             /* getönte Sektionen */
+  --card: #211C18;                /* erhabene Flächen */
+  --coal: #0E0C0A;                /* tiefste Panels (Kohle unter der Glut) */
+  --line: #3A322B;                /* Hairlines */
+  --line-soft: #2A241F;
 
   /* Accents — Ember (k-AIzen-Markenfarbe) */
-  --indigo: #E85A2B;          /* ember (Token-Name beibehalten, damit nichts bricht) */
-  --indigo-deep: #C2491F;     /* ember dunkler */
-  --violet: #FF7A45;          /* ember-glow (heller, für Verläufe) */
-  --indigo-wash: rgba(232, 90, 43, 0.07);
-  --glow: rgba(255, 122, 69, 0.18);
-  --teal: #138086;                       /* Komplementär-Akzent zu Ember (Cursor-Hover) */
-  --teal-glow: rgba(19, 128, 134, 0.22);
+  --indigo: #E85A2B;              /* ember (Token-Name beibehalten, damit nichts bricht) */
+  --indigo-deep: #FF8F5E;         /* ⚠️ auf Dunkel ist „deep" der TEXT-Ember: 8.3:1 auf --paper.
+                                     Der alte dunkle Wert (#C2491F) wäre hier unlesbar. */
+  --ember-text: #FF8F5E;          /* Alias mit ehrlichem Namen für neuen Code */
+  --violet: #FF7A45;              /* ember-glow (heller, für Verläufe) · 7.2:1 auf --paper */
+  --indigo-wash: rgba(232, 90, 43, 0.10);
+  --glow: rgba(255, 122, 69, 0.22);
+  --teal: #45BFC6;                /* Komplementär-Akzent · 7.7:1 auf --card */
+  --teal-glow: rgba(69, 191, 198, 0.22);
 
   /* Type */
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-  /* Shadows */
-  --shadow-sm: 0 2px 8px -2px rgba(11,16,32,0.08), 0 1px 3px rgba(11,16,32,0.04);
-  --shadow-md: 0 10px 28px -8px rgba(11,16,32,0.12), 0 3px 8px rgba(11,16,32,0.06);
-  --shadow-lg: 0 28px 60px -14px rgba(232,90,43,0.18), 0 10px 24px rgba(11,16,32,0.10);
-  --shadow-glow: 0 0 0 1px rgba(232,90,43,0.12), 0 20px 50px -12px rgba(255,122,69,0.30);
+  /* Tiefe: Schatten tragen auf Dunkel wenig — deshalb steckt in
+     jedem Token zusätzlich eine LICHTKANTE oben (inset), die die
+     Fläche vom Grund abhebt. Versatz + weiche Unschärfe bleiben. */
+  --edge: inset 0 1px 0 rgba(255, 240, 225, 0.07);
+  --shadow-sm: inset 0 1px 0 rgba(255,240,225,0.06), 0 2px 10px -2px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.35);
+  --shadow-md: inset 0 1px 0 rgba(255,240,225,0.07), 0 14px 34px -10px rgba(0,0,0,0.55), 0 4px 12px rgba(0,0,0,0.35);
+  --shadow-lg: inset 0 1px 0 rgba(255,240,225,0.08), 0 32px 70px -16px rgba(0,0,0,0.6), 0 12px 28px rgba(0,0,0,0.4);
+  --shadow-glow: 0 0 0 1px rgba(255,143,94,0.14), 0 22px 54px -12px rgba(232,90,43,0.30);
 
   /* Motion */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -52,7 +67,17 @@ html {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
+  /* Scrollleiste aus der Palette, nicht Browser-Grau */
+  scrollbar-color: var(--line) var(--paper);
 }
+
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 6px; border: 3px solid var(--paper); }
+::-webkit-scrollbar-thumb:hover { background: #5A4C3E; }
+
+/* Textauswahl + Caret gehören zur Glut, nicht zum Browser-Blau */
+::selection { background: rgba(232, 90, 43, 0.45); color: #FFF2E8; }
 
 body {
   font-family: var(--font-sans);
@@ -61,28 +86,53 @@ body {
   line-height: 1.5;
   overflow-x: clip;
   cursor: auto;
+  caret-color: var(--violet);
 }
+
+/* Korn gegen die Plastik-Anmutung großer dunkler Flächen:
+   feines SVG-Rauschen als fixe Schicht, unter dem Chat-Widget. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Fokusring einheitlich aus der Palette (Komponenten dürfen ihn
+   gezielt überschreiben, aber nie auf Browser-Default fallen). */
+:focus-visible { outline: 2px solid var(--indigo); outline-offset: 3px; }
 
 /* ---------- Layout ---------- */
 .kz-wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: var(--gutter); position: relative; z-index: 1; }
 section { position: relative; }
-section[id] { scroll-margin-top: 88px; }
+section[id] { scroll-margin-top: 104px; }
 
 /* ---------- Nav ---------- */
 .kz-nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 18px var(--gutter);
-  background: rgba(252,252,253,0.7);
-  backdrop-filter: saturate(180%) blur(16px);
-  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  padding: 10px var(--gutter);
+  background: rgba(20, 18, 16, 0.72);
+  backdrop-filter: saturate(160%) blur(16px);
+  -webkit-backdrop-filter: saturate(160%) blur(16px);
   border-bottom: 1px solid transparent;
   transition: border-color 0.4s ease, background 0.4s ease, padding 0.4s ease;
 }
-.kz-nav.is-scrolled { border-bottom-color: var(--line); padding-block: 12px; }
+.kz-nav.is-scrolled { border-bottom-color: var(--line-soft); padding-block: 6px; background: rgba(16, 14, 12, 0.85); }
 .kz-nav__brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; letter-spacing: -0.02em; }
-.kz-nav__brand img { height: 28px; width: auto; }
+/* ⚠️ Mindesthöhe 56px (Ben, gemessen bei 44/64/88px): darunter wird
+   der Schriftzug neben dem großen K unlesbar. */
+.kz-nav__brand img,
+/* 64px, nicht weniger: Der Schriftzug „k-AIzen" ist im Logo klein gegenüber dem
+   großen K. Bei 44/64/88px gegengeprüft — ab 64 ist er lesbar, bei 58 nicht mehr
+   sicher. Auf schmalen Geräten darf er kleiner werden, dort steht das Logo aber
+   allein und wird nicht mit der Navigation verwechselt. */
+.kz-nav__logo { height: 64px; width: auto; display: block; }
+@media (max-width: 560px) { .kz-nav__logo { height: 52px; } }
 .kz-nav__links { display: flex; gap: 32px; align-items: center; }
 .kz-nav__links a { color: var(--slate); text-decoration: none; font-size: 14px; font-weight: 600; position: relative; transition: color 0.2s; }
 .kz-nav__links a::after {
@@ -109,10 +159,10 @@ section[id] { scroll-margin-top: 88px; }
 .kz-btn--primary {
   background: linear-gradient(135deg, var(--indigo), var(--violet));
   color: #fff;
-  box-shadow: 0 8px 24px -6px rgba(232,90,43,0.45);
+  box-shadow: 0 10px 30px -8px rgba(232,90,43,0.55), inset 0 1px 0 rgba(255,255,255,0.22);
 }
-.kz-btn--primary:hover { box-shadow: 0 14px 36px -8px rgba(255,122,69,0.6); }
-.kz-btn--ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+.kz-btn--primary:hover { box-shadow: 0 16px 40px -8px rgba(255,122,69,0.65), inset 0 1px 0 rgba(255,255,255,0.22); }
+.kz-btn--ghost { background: rgba(255, 240, 225, 0.03); color: var(--ink); border: 1.5px solid var(--line); }
 .kz-btn--ghost:hover { border-color: var(--indigo); color: var(--indigo-deep); }
 .kz-btn__arrow { transition: transform 0.3s var(--ease-out); }
 .kz-btn:hover .kz-btn__arrow { transform: translateX(4px); }
@@ -135,22 +185,22 @@ section[id] { scroll-margin-top: 88px; }
 }
 
 /* ---------- Hero ---------- */
-.kz-hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; overflow: hidden; }
+.kz-hero { min-height: 100vh; display: flex; align-items: center; padding-top: 96px; overflow: hidden; }
 .kz-hero__grid { position: absolute; inset: 0; z-index: 0; opacity: 0.5;
   background-image:
-    linear-gradient(var(--line-soft) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    linear-gradient(rgba(255, 235, 215, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 235, 215, 0.05) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 75%);
   -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 75%);
 }
 .kz-hero__eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+  font-size: 12px; font-weight: 700;
   text-transform: uppercase; letter-spacing: 0.18em;
   color: var(--indigo-deep);
   padding: 7px 14px; border-radius: 999px;
-  background: var(--indigo-wash); border: 1px solid rgba(232,90,43,0.16);
+  background: var(--indigo-wash); border: 1px solid rgba(232,90,43,0.24);
   margin-bottom: 28px;
 }
 .kz-hero__eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--violet); box-shadow: 0 0 0 0 rgba(255,122,69,0.5); animation: kz-pulse 2.4s infinite; }
@@ -161,22 +211,37 @@ section[id] { scroll-margin-top: 88px; }
   line-height: 1.02; letter-spacing: -0.035em; font-weight: 800;
   max-width: 16ch;
 }
-.kz-h1 .accent { background: linear-gradient(120deg, var(--indigo), var(--violet)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+/* Akzentwort: solide Glut statt Verlaufs-Text (craft-floor).
+   Der Ember-Verlauf lebt nur noch im „AI" des Logos — Marke. */
+.kz-h1 .accent { color: var(--violet); }
 .kz-hero__sub { font-size: clamp(1.05rem, 2vw, 1.35rem); color: var(--slate); max-width: 52ch; margin-top: 28px; line-height: 1.6; }
 .kz-hero__cta { display: flex; gap: 16px; margin-top: 40px; flex-wrap: wrap; }
 
-.kz-scrollcue { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--slate-2); font-size: 11px; font-family: var(--font-mono); letter-spacing: 0.15em; text-transform: uppercase; }
+.kz-scrollcue { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--slate-2); font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; }
 .kz-scrollcue__line { width: 1px; height: 40px; background: linear-gradient(var(--violet), transparent); animation: kz-cue 2s infinite; transform-origin: top; }
 @keyframes kz-cue { 0%,100%{ transform: scaleY(0.4); opacity:0.4; } 50%{ transform: scaleY(1); opacity:1; } }
 @media (max-width: 760px) {
   .kz-scrollcue { display: none; }
 }
+@media (prefers-reduced-motion: reduce) {
+  .kz-scrollcue__line, .kz-hero__eyebrow .dot { animation: none; }
+}
 
 /* ---------- Generic section ---------- */
 .kz-section { padding-block: clamp(80px, 12vw, 160px); }
-.kz-eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--indigo-deep); margin-bottom: 18px; display: block; }
+.kz-eyebrow { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: var(--indigo-deep); margin-bottom: 18px; display: block; }
 .kz-h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); line-height: 1.08; letter-spacing: -0.03em; font-weight: 800; max-width: 18ch; }
 .kz-lead { font-size: clamp(1.05rem, 1.8vw, 1.25rem); color: var(--slate); max-width: 56ch; margin-top: 22px; line-height: 1.65; }
 
 /* Footer */
-.kz-footer { padding-block: 56px; border-top: 1px solid var(--line); color: var(--slate-2); font-size: 14px; }
+.kz-footer { padding-block: 56px; border-top: 1px solid var(--line-soft); color: var(--slate-2); font-size: 14px; position: relative; overflow: hidden; }
+/* Kiefer als leise botanische Form am linken Rand — bewusst links:
+   unten rechts wohnt das Chat-Widget. */
+.kz-footer::before {
+  content: '';
+  position: absolute; left: -60px; bottom: -80px;
+  width: 300px; height: 292px;
+  background: url('/icons/icon-pine.png') no-repeat center / contain;
+  opacity: 0.07;
+  pointer-events: none;
+}

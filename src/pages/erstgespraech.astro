@@ -6,7 +6,7 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
 // Vorher: 30-Minuten-KI-Potenzialgespräch mit Fit-Empfehlung KI-PA/KI-Check/Pilot.
 // Jetzt: 15 Minuten Rückruf zum Website-Paket (deckungsgleich mit Startseite + /meisterseite).
 const PREIS = '297';
-const calUrl = 'https://cal.k-aizen.de/ben-kaizen/rueckruf';
+const calUrl = 'https://calendar.app.google/AvBJwsvWrh4m26tV7';
 const demoUrl = 'https://muster.k-aizen.de';
 
 const asyncMail = `mailto:kontakt@k-aizen.de?subject=${encodeURIComponent('Meisterseite — kurze Anfrage')}&body=${encodeURIComponent(`Hallo Ben,
@@ -116,11 +116,8 @@ const conversationSchema = {
   breadcrumbs={[{ name: 'Rückruf vereinbaren', href: '/erstgespraech' }]}
 >
   <article class="kz-page">
-    <div class="kz-page-eyebrow">
-      <img src="/animations/claude-design/logo-mark.png" alt="" class="kz-mark" />
-      <img src="/icons/icon-sakura-branch.png" alt="" class="kz-eyebrow-leaf" loading="lazy" />
-      <span>Rückruf</span>
-    </div>
+    {/* Eyebrow beim Dark-Umbau entfallen (craft-floor: kein Label über
+        der Überschrift). */}
     <h1 class="kz-h1">Fünfzehn Minuten. Dann weißt du, ob es passt.</h1>
     <p class="kz-lead">
       Du erzählst kurz von deinem Betrieb, ich sage dir ehrlich, ob das Website-Paket
