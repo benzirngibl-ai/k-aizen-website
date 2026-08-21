@@ -1,0 +1,292 @@
+---
+/**
+ * Startseite fürs Onboarding — Bens Cockpit (Ben, 21.08.2026:
+ * „ein Übersichtsdashboard mit all den Links, das unabhängig von dir ist").
+ *
+ * ZWECK: Alles, was beim Aufsetzen eines Kunden angeklickt wird, an einer
+ * Stelle. Ohne Claude, ohne Terminal, vom Handy aus erreichbar.
+ *
+ * REGEL FÜR DIESE SEITE: Nur Links, die WIRKLICH existieren. Ein toter Link
+ * im Kundentermin ist schlimmer als ein fehlender — deshalb steht hier
+ * nichts „Geplantes". Was noch nicht läuft, steht als Text ohne Link da.
+ *
+ * noindex: internes Werkzeug, kein Verkaufsdokument.
+ */
+import KaizenLayout from '../layouts/KaizenLayout.astro';
+
+/** Der Ablauf, in der Reihenfolge, in der er passiert. */
+const ablauf = [
+  {
+    phase: 'Vor dem Gespräch',
+    schritte: [
+      {
+        titel: 'Leads finden',
+        text: 'Betriebe mit Bewertungen, aber ohne oder mit toter Website.',
+        links: [{ t: 'Demo-Seite zeigen', u: 'https://muster.k-aizen.de' }],
+      },
+      {
+        titel: 'Google-Eintrag prüfen',
+        text: 'Vollständig? Bewertungen? Antwortet der Inhaber? Zwei von drei Mängeln genügen.',
+        links: [{ t: 'Google Maps', u: 'https://www.google.com/maps' }],
+      },
+    ],
+  },
+  {
+    phase: 'Erstgespräch',
+    schritte: [
+      {
+        titel: 'Die drei Fragen, die entscheiden',
+        text: 'Wer meldet fertige Aufträge? · Wer hat Zugang zum Google-Eintrag? · Wie viele Aufträge pro Woche? — Fällt eine schlecht aus, passt das Produkt nicht.',
+        links: [],
+      },
+      {
+        titel: 'Was gesagt wird',
+        text: 'Aufhänger, Einwände, Belege mit Quelle — und was nie gesagt wird.',
+        links: [],
+        datei: '10-sales/verkaufsscript/',
+      },
+      {
+        titel: 'Termin vereinbaren',
+        text: 'Rückruf oder Erstgespräch.',
+        links: [{ t: 'Terminseite', u: 'https://k-aizen.de/termin' }],
+      },
+    ],
+  },
+  {
+    phase: 'Onboarding-Termin',
+    schritte: [
+      {
+        titel: 'Aufnahmebogen gemeinsam ausfüllen',
+        text: 'Bildschirm teilen, durchgehen. Speichert automatisch im Browser — ein Neuladen verliert nichts.',
+        links: [{ t: 'Aufnahmebogen öffnen', u: '/onboarding', stark: true }],
+      },
+      {
+        titel: 'Google-Eintrag: Zugriff holen',
+        text: 'Nutzer → Nutzer hinzufügen → unsere E-Mail, Rolle „Manager". Im Termin erledigen, nicht als Hausaufgabe.',
+        links: [{ t: 'Unternehmensprofil', u: 'https://business.google.com/' }],
+      },
+      {
+        titel: 'Verträge',
+        text: 'Vertrag und Auftragsverarbeitung. Noch nicht anwaltlich geprüft.',
+        links: [],
+        datei: '00-blueprints/vertraege/',
+      },
+    ],
+  },
+  {
+    phase: 'Aufsetzen',
+    schritte: [
+      {
+        titel: 'Website bauen',
+        text: 'Aus dem Aufnahmebogen: Betriebsdaten, Leistungen, Einsatzgebiet.',
+        links: [],
+        datei: 'demo-sites/template/src/config.ts',
+      },
+      {
+        titel: 'Auftrags-Kanal einrichten',
+        text: 'Kanal anlegen, Lena einladen, erster Testauftrag.',
+        links: [{ t: 'k-AIzen Ops', u: 'https://discord.com/channels/1505022554526584832' }],
+        datei: 'demo-sites/jobs-eingang/README.md',
+      },
+      {
+        titel: 'Kalender verbinden',
+        text: 'Google-Kalender des Betriebs, beide Richtungen.',
+        links: [{ t: 'Google Kalender', u: 'https://calendar.google.com' }],
+      },
+      {
+        titel: 'Deploy',
+        text: '⚠️ Läuft nie von allein. Nach jedem Push auslösen — danach die Seite wirklich aufrufen, nicht nur den Status lesen.',
+        links: [{ t: 'Coolify (nur über Tailscale)', u: 'http://100.121.138.16:8000' }],
+      },
+    ],
+  },
+];
+
+/** Dienste, die laufen. Kein Ablauf — Nachschlagewerk. */
+const dienste = [
+  { t: 'k-aizen.de', u: 'https://k-aizen.de', b: 'Website' },
+  { t: 'Muster-Demo', u: 'https://muster.k-aizen.de', b: 'Verkaufswerkzeug' },
+  { t: 'k-AIzen OS', u: 'https://kaizen-os.k-aizen.de/dashboard', b: 'CRM, Inbox, Aufgaben' },
+  { t: 'Anfragen-App', u: 'https://muster-api.k-aizen.de/app/', b: 'Handy-Ping beim Kunden' },
+  { t: 'Chat-Dienst', u: 'https://chat.k-aizen.de/health', b: 'Zustand des Assistenten' },
+  { t: 'Terminbuchung', u: 'https://cal.k-aizen.de', b: 'Cal.com' },
+  { t: 'Coolify', u: 'http://100.121.138.16:8000', b: 'Deploys · nur über Tailscale' },
+  { t: 'Discord Ops', u: 'https://discord.com/channels/1505022554526584832', b: 'Meldungen, Aufträge' },
+];
+
+/** Was noch nicht geht — ehrlich, damit niemand danach sucht. */
+const offen = [
+  'Bewertungs-Kette: braucht den Google-Zugang und die anwaltliche Prüfung.',
+  'Lena als eigener Bot: heute läuft AInstein im Testkanal.',
+  'Modellwechsel auf EU-Anbieter — vor dem ersten zahlenden Kunden.',
+  'Der Auftrags-Eingang läuft auf dem Mac, noch nicht auf dem Server.',
+];
+---
+<KaizenLayout
+  title="Start · k-AIzen"
+  description="Interne Übersicht: Ablauf und Links fürs Kunden-Onboarding."
+  path="/start"
+  activeNav="home"
+  noindex={true}
+>
+  <article class="kz-page" style="max-width: 860px;">
+    <h1 class="kz-h1">Kunden aufsetzen.</h1>
+    <p class="kz-lead">
+      Der Ablauf von der ersten Ansprache bis zur laufenden Seite — mit allem,
+      was dabei angeklickt wird.
+    </p>
+
+    {ablauf.map((block) => (
+      <section class="st-block">
+        <h2 class="st-phase">{block.phase}</h2>
+        {block.schritte.map((s) => (
+          <div class="st-schritt">
+            <h3>{s.titel}</h3>
+            <p>{s.text}</p>
+            {(s.links.length > 0 || s.datei) && (
+              <p class="st-links">
+                {s.links.map((l) => (
+                  <a href={l.u} class={l.stark ? 'st-link st-stark' : 'st-link'} target={l.u.startsWith('/') ? undefined : '_blank'} rel="noopener">{l.t}</a>
+                ))}
+                {s.datei && <code class="st-datei">{s.datei}</code>}
+              </p>
+            )}
+          </div>
+        ))}
+      </section>
+    ))}
+
+    <section class="st-block">
+      <h2 class="st-phase">Dienste</h2>
+      <div class="st-dienste">
+        {dienste.map((d) => (
+          <a href={d.u} class="st-dienst" target="_blank" rel="noopener">
+            <strong>{d.t}</strong>
+            <span>{d.b}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="st-block">
+      <h2 class="st-phase">Läuft noch nicht</h2>
+      <ul class="st-offen">
+        {offen.map((o) => <li>{o}</li>)}
+      </ul>
+      <p class="st-fuss">
+        Steht hier bewusst, damit niemand im Kundentermin danach sucht.
+        Stand 21.08.2026.
+      </p>
+    </section>
+  </article>
+
+  <style>
+    .st-block {
+      margin-top: 48px;
+      padding-top: 28px;
+      border-top: 1px solid var(--kz-border);
+    }
+    .st-block:first-of-type { border-top: none; padding-top: 0; margin-top: 40px; }
+
+    .st-phase {
+      font-family: var(--font-display);
+      font-size: clamp(19px, 2.2vw, 25px);
+      font-weight: 500;
+      margin: 0 0 22px;
+      line-height: 1.15;
+    }
+
+    /* Ein Schritt: Überschrift, ein Satz, die Knöpfe. Bewusst KEINE Karten —
+       eine Abfolge ist eine Liste, kein Raster. */
+    .st-schritt { margin-bottom: 26px; max-width: 62ch; }
+    .st-schritt h3 {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+    .st-schritt p {
+      font-family: var(--font-sans);
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: var(--fg-muted);
+      margin: 0;
+    }
+    .st-links {
+      display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+      margin-top: 10px !important;
+    }
+    .st-link {
+      display: inline-block;
+      padding: 7px 13px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--fg);
+      text-decoration: none;
+      border: 1px solid var(--kz-border);
+      border-radius: 6px;
+      transition: border-color .18s ease, color .18s ease;
+    }
+    .st-link:hover { border-color: var(--kz-ember-text); color: var(--kz-ember-text); }
+    .st-stark { border-color: var(--kz-ember-text); color: var(--kz-ember-text); font-weight: 600; }
+
+    .st-datei {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      color: var(--fg-muted);
+      padding: 6px 9px;
+      background: var(--kz-surface, rgba(128,128,128,.08));
+      border-radius: 4px;
+    }
+
+    /* Dienste: hier ist ein Raster richtig — gleichrangige Ziele ohne Reihenfolge. */
+    .st-dienste {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+      gap: 10px;
+    }
+    .st-dienst {
+      display: block;
+      padding: 13px 15px;
+      text-decoration: none;
+      border: 1px solid var(--kz-border);
+      border-radius: 7px;
+      transition: border-color .18s ease;
+    }
+    .st-dienst:hover { border-color: var(--kz-ember-text); }
+    .st-dienst strong {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--fg);
+      margin-bottom: 2px;
+    }
+    .st-dienst span {
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      color: var(--fg-muted);
+    }
+
+    .st-offen {
+      max-width: 62ch;
+      margin: 0;
+      padding-left: 20px;
+      font-family: var(--font-sans);
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--fg-muted);
+    }
+    .st-fuss {
+      margin-top: 16px;
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      color: var(--fg-muted);
+    }
+
+    @media print {
+      .st-link, .st-dienst { border-color: #999; }
+      header, footer, nav { display: none !important; }
+    }
+  </style>
+</KaizenLayout>
