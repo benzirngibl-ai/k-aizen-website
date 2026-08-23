@@ -4,10 +4,23 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
 // Erstgespräch — seit 2026-07-28 auf das Website-Paket ausgerichtet (Ben: Startseite
 // verkauft die Meisterseite, der KI-PA rückt in den Hintergrund).
 // Vorher: 30-Minuten-KI-Potenzialgespräch mit Fit-Empfehlung KI-PA/KI-Check/Pilot.
-// Jetzt: 15 Minuten Rückruf zum Website-Paket (deckungsgleich mit Startseite + /meisterseite).
+// Jetzt: 15 Minuten Erstgespräch zum Website-Paket (deckungsgleich mit Startseite + /meisterseite).
+//
+// ⚠️ NIEMALS „Rückruf" als Rahmen der Seite (Ben, 21.08.2026: „ich will nur nicht random
+//    angerufen werden, ich hasse telefonieren"). Ein Anruf ist NUR erlaubt, wenn der Besucher
+//    vorher selbst einen Slot gewählt hat. Die drei Wege sind überall gleich:
+//    Termin (Google) · WhatsApp · Mail — je mit vorgefertigtem Text.
+//    Deckungsgleich mit der Kontakt-Sektion der Startseite.
 const PREIS = '297';
 const calUrl = 'https://calendar.app.google/AvBJwsvWrh4m26tV7';
 const demoUrl = 'https://muster.k-aizen.de';
+
+const waText = `Hallo Ben, ich habe einen Betrieb und interessiere mich für die Meisterseite.
+
+Betrieb:
+Ort:
+Was ich mache: `;
+const waLink = `https://wa.me/4915901031928?text=${encodeURIComponent(waText)}`;
 
 const asyncMail = `mailto:kontakt@k-aizen.de?subject=${encodeURIComponent('Meisterseite — kurze Anfrage')}&body=${encodeURIComponent(`Hallo Ben,
 
@@ -47,9 +60,9 @@ const conversationSchema = {
       '@type': 'WebPage',
       '@id': 'https://k-aizen.de/erstgespraech#webpage',
       url: 'https://k-aizen.de/erstgespraech',
-      name: 'Rückruf vereinbaren — k-AIzen',
+      name: 'Erstgespräch vereinbaren — k-AIzen',
       description:
-        'Kostenloser 15-Minuten-Rückruf zum Website-Paket: Wir klären, ob die Meisterseite zu deinem Betrieb passt, und sagen ehrlich ab, wenn nicht.',
+        'Kostenloses 15-Minuten-Erstgespräch zum Website-Paket: Wir klären, ob die Meisterseite zu deinem Betrieb passt, und sagen ehrlich ab, wenn nicht.',
       inLanguage: 'de-DE',
       isPartOf: { '@id': 'https://k-aizen.de/#website' },
       about: { '@id': 'https://k-aizen.de/#meisterseite-service' },
@@ -57,7 +70,7 @@ const conversationSchema = {
     {
       '@type': 'Service',
       '@id': 'https://k-aizen.de/erstgespraech#service',
-      name: 'Kostenloser Rückruf zum Website-Paket',
+      name: 'Kostenloses Erstgespräch zum Website-Paket',
       serviceType: 'Beratungsgespräch Website für kleine und mittlere Betriebe',
       provider: {
         '@type': 'ProfessionalService',
@@ -82,15 +95,15 @@ const conversationSchema = {
           name: 'Kostet das Gespräch etwas?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Nein. Der Rückruf ist kostenlos und unverbindlich. Er dient dazu, zu klären, ob das Website-Paket zu deinem Betrieb passt.',
+            text: 'Nein. Das Erstgespräch ist kostenlos und unverbindlich. Es dient dazu, zu klären, ob das Website-Paket zu deinem Betrieb passt.',
           },
         },
         {
           '@type': 'Question',
-          name: 'Muss ich einen Termin buchen?',
+          name: 'Muss ich telefonieren?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Nein. Du kannst stattdessen kurz per Mail schreiben: Gewerk, aktuelle Website und was dich gerade stört. Das reicht für eine erste Einschätzung.',
+            text: 'Nein. Du kannst genauso gut per WhatsApp oder Mail schreiben — der Text ist jeweils vorbereitet, du füllst drei Zeilen aus. Angerufen wird nur, wenn du selbst vorher einen Termin im Kalender gewählt hast.',
           },
         },
         {
@@ -108,20 +121,21 @@ const conversationSchema = {
 ---
 
 <KaizenLayout
-  title="Rückruf vereinbaren — 15 Minuten, unverbindlich"
-  description="Kostenloser 15-Minuten-Rückruf zum Website-Paket. Wir klären, ob die Meisterseite zu deinem Betrieb passt — und sagen ehrlich ab, wenn nicht."
+  title="Erstgespräch — 15 Minuten, unverbindlich"
+  description="Kostenloses 15-Minuten-Erstgespräch zum Website-Paket. Wir klären, ob die Meisterseite zu deinem Betrieb passt — und sagen ehrlich ab, wenn nicht."
   path="/erstgespraech"
   activeNav="kontakt"
   jsonLd={conversationSchema}
-  breadcrumbs={[{ name: 'Rückruf vereinbaren', href: '/erstgespraech' }]}
+  breadcrumbs={[{ name: 'Erstgespräch', href: '/erstgespraech' }]}
 >
   <article class="kz-page">
     {/* Eyebrow beim Dark-Umbau entfallen (craft-floor: kein Label über
         der Überschrift). */}
     <h1 class="kz-h1">Fünfzehn Minuten. Dann weißt du, ob es passt.</h1>
     <p class="kz-lead">
-      Du erzählst kurz von deinem Betrieb, ich sage dir ehrlich, ob das Website-Paket
-      für dich Sinn ergibt. Kein Verkaufsmarathon, keine Präsentation, kein Druck.
+      Du erzählst kurz von deinem Betrieb — am Telefon, per WhatsApp oder per Mail,
+      das entscheidest du. Ich sage dir ehrlich, ob das Website-Paket für dich Sinn
+      ergibt. Kein Verkaufsmarathon, keine Präsentation, kein Druck.
     </p>
 
     <!-- Vorbereitung -->
@@ -141,8 +155,8 @@ const conversationSchema = {
     <section style="margin-top: 56px;">
       <h2 class="kz-h2">Was du danach weißt</h2>
       <p>
-        Das Gespräch dient der Orientierung — deiner und meiner. Am Ende soll klar sein,
-        ob sich ein nächster Schritt lohnt.
+        Egal ob Telefonat oder Nachricht — am Ende soll klar sein, ob sich ein
+        nächster Schritt lohnt. Für dich und für mich.
       </p>
       <div class="kz-outcome-grid">
         {outcomeCards.map((card) => (
@@ -155,7 +169,12 @@ const conversationSchema = {
     </section>
 
     <section style="margin-top: 56px;">
-      <h2 class="kz-h2">Was im Gespräch passiert</h2>
+      <h2 class="kz-h2">So laufen die 15 Minuten am Telefon</h2>
+      <p>
+        Das gilt für den gebuchten Termin — angerufen wird nur, wenn du selbst vorher
+        einen Slot gewählt hast. Schreibst du lieber, klären wir dieselben Punkte per
+        WhatsApp oder Mail, in deinem Tempo.
+      </p>
       <ul>
         <li><strong>Min 0–3</strong> — kurz gegenseitig vorstellen: dein Betrieb, was ich mache</li>
         <li><strong>Min 3–9</strong> — deine Situation: Wie kommen heute Anfragen rein, was geht dabei unter?</li>
@@ -166,12 +185,12 @@ const conversationSchema = {
 
     <section>
       <h2 class="kz-h2">Was vorab hilft</h2>
-      <p>Zwei Sätze reichen völlig, wenn du den Termin buchst:</p>
+      <p>Zwei Sätze reichen völlig — egal ob du buchst oder schreibst:</p>
       <ul>
         <li>Welches Gewerk und wie viele Leute im Betrieb</li>
         <li>Ob es schon eine Website gibt — und was dich daran stört</li>
       </ul>
-      <p>Dann starten wir vorbereitet, statt die ersten Minuten mit Kontext zu verbrauchen.</p>
+      <p>Dann starten wir vorbereitet — und wenn du schreibst, bekommst du gleich eine konkrete Antwort statt einer Rückfrage.</p>
     </section>
 
     <section>
@@ -196,22 +215,31 @@ const conversationSchema = {
     </section>
 
     <section class="kz-wege">
-      <h2 class="kz-h2" style="margin-top: 0;">Zwei einfache Wege</h2>
+      <h2 class="kz-h2" style="margin-top: 0;">Drei einfache Wege</h2>
       <p>
-        Wenn du lieber sprichst: Termin wählen. Wenn du lieber schreibst:
-        drei Stichpunkte per Mail. Beides ist mir gleich recht.
+        Wenn du lieber sprichst: Termin wählen, dann rufe ich zur vereinbarten Zeit an.
+        Wenn du lieber schreibst: WhatsApp oder Mail, Text steht schon da.
+        Unangekündigt rufe ich nie an.
       </p>
 
       <div class="kz-wege-grid">
         <div class="kz-weg-card">
-          <h3>Rückruf-Termin</h3>
-          <p>Slot wählen, ich rufe an. 15 Minuten, unverbindlich, danach entscheidest du in Ruhe.</p>
+          <h3>Termin im Kalender</h3>
+          <p>Du wählst den Slot, ich rufe zur vereinbarten Zeit an. 15 Minuten, unverbindlich, danach entscheidest du in Ruhe.</p>
           <a href={calUrl} class="kz-btn" target="_blank" rel="noopener">Termin wählen</a>
+        </div>
+        <div class="kz-weg-card">
+          <h3>Kurz per WhatsApp</h3>
+          <p>Der Text steht schon da — Betrieb, Ort, was du machst. Drei Zeilen ausfüllen, abschicken, fertig.</p>
+          <a href={waLink} class="kz-btn kz-btn--ghost" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.477-.916zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.148-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.29.173-1.414z"/></svg>
+            WhatsApp schreiben
+          </a>
         </div>
         <div class="kz-weg-card">
           <h3>Kurz per Mail</h3>
           <p>Gewerk, aktuelle Website, was dich stört. Du bekommst eine persönliche Einschätzung zurück.</p>
-          <a href={asyncMail} class="kz-btn">Drei Stichpunkte schicken</a>
+          <a href={asyncMail} class="kz-btn kz-btn--ghost">Drei Stichpunkte schicken</a>
         </div>
       </div>
 
@@ -223,7 +251,7 @@ const conversationSchema = {
 </KaizenLayout>
 
 <style>
-  /* Rückruf-Seite — Gestaltung: Fable 5 (2026-07-28) */
+  /* Erstgespräch-Seite — Gestaltung: Fable 5 (2026-07-28) */
   .kz-vorbereitung { margin-top:clamp(28px,4vw,40px); padding:clamp(24px,3.5vw,34px); border-radius:var(--radius-lg); border:1px solid var(--line); background:linear-gradient(150deg,var(--card) 55%,var(--indigo-wash)); box-shadow:var(--shadow-sm); }
   .kz-vorbereitung p { color:var(--slate); line-height:1.65; max-width:62ch; }
   .kz-vorbereitung__cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; }

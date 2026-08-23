@@ -8,7 +8,7 @@
 - [Meisterseite](https://k-aizen.de/meisterseite): Die Produktseite mit allen Details: Leistungen, Ablauf, Preis, häufige Fragen.
 - [Beispiel-Website](https://muster.k-aizen.de): Eine vollständige Demo-Website (fiktive Dachdeckerei) — zeigt genau, was ein Kunde bekommt. Das Kontaktformular ist echt und löst eine Benachrichtigung aus.
 - [Preise](https://k-aizen.de/pricing): Preisorientierung und Einstieg.
-- [Erstgespräch](https://k-aizen.de/erstgespraech): 15 Minuten Rückruf-Termin. Fit prüfen, ehrliche Antwort, keine Kaufpflicht.
+- [Erstgespräch](https://k-aizen.de/erstgespraech): 15 Minuten, kostenlos. Fit prüfen, ehrliche Antwort, keine Kaufpflicht. Wahlweise am Telefon (nur nach selbst gewähltem Termin), per WhatsApp oder per Mail.
 - [Termin buchen](https://k-aizen.de/termin): Direktlink zur Terminbuchung für ein Erstgespräch mit k-AIzen.
 - [Über Benjamin Zirngibl](https://k-aizen.de/about): Wer baut und wie gearbeitet wird.
 - [Kontakt](https://k-aizen.de/kontakt): Anfrageformular und Direktkontakt über kontakt@k-aizen.de.
@@ -63,7 +63,7 @@ Ein Preis, alles inklusive — kein Baukasten, keine versteckten Extras. Sortier
 ## Preise Kurzfassung
 
 - Meisterseite (das Paket): **297 € pro Monat**, keine Einrichtungsgebühr, monatlich kündbar. Enthält Bau, Hosting, Pflege und Änderungen der Website, gepflegtes Google-Unternehmensprofil, automatisches Einsammeln von Kundenbewertungen, einen Assistenten für Besucherfragen, das Anfrageformular mit Sofort-Benachrichtigung aufs Handy sowie die Anfragen-App mit Bearbeitungsstand und Kunden-Notizen.
-- Erstgespräch: kostenlos, 15 Minuten Rückruf.
+- Erstgespräch: kostenlos, 15 Minuten. Termin, WhatsApp oder Mail — der Interessent wählt.
 - Beispielseite für den eigenen Betrieb: kostenlos und unverbindlich.
 
 ## Markenstimme
