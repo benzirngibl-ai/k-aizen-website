@@ -15,7 +15,9 @@ Disallow: /danke
 # dort mit 301 auf die Produktseite. Sie bleiben ausdrücklich crawlbar, denn
 # eine per robots.txt gesperrte URL darf der Crawler nicht abrufen und sieht
 # die Weiterleitung deshalb nie; die alte Adresse bliebe dann im Index stehen.
-# Wichtig: /pitch/*.png ist Bildmaterial der Startseite und wird NICHT umgeleitet.
+# Seit 23.08.2026 gilt das auch für /pitch/*.png. Hier stand vorher, die Bilder
+# seien Material der Startseite — nachgemessen stimmte das nicht mehr, der
+# Ordner ist archiviert.
 
 Sitemap: https://k-aizen.de/sitemap-index.xml
 Sitemap: https://k-aizen.de/sitemap-0.xml

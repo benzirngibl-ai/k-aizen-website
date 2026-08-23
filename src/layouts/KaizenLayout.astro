@@ -257,32 +257,12 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       width: min(100%, 1200px);
     }
 
-    .kz-page-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--indigo-deep);
-      padding: 7px 14px;
-      border-radius: 999px;
-      background: var(--indigo-wash);
-      border: 1px solid rgba(232,90,43,0.16);
-      margin-bottom: 28px;
-    }
-    .kz-page-eyebrow::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--violet);
-    }
-    .kz-page-eyebrow img {
-      display: none !important;
-    }
+    /* .kz-page-eyebrow entfernt 2026-08-23. Der Kicker über der Überschrift
+       wiederholte auf allen drei Rechtsseiten nur die h1 ("Impressum" über
+       "Impressum") und ist per craft-floor ausnahmslos verboten — die
+       Überschrift trägt sich selbst. Er setzte außerdem Monospace-Versalien
+       als Technik-Kostüm. Sein Logo-Bild war ohnehin schon per
+       display:none !important abgeschaltet, wurde aber weiter ausgeliefert. */
 
     .kz-page .kz-h1 {
       font-size: clamp(3rem, 7vw, 5.6rem);
