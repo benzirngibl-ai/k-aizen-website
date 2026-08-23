@@ -19,7 +19,7 @@
   z-index: 0; pointer-events: none;
   background:
     radial-gradient(38% 38% at 24% 78%, rgba(232, 90, 43, 0.16), transparent 70%),
-    radial-gradient(30% 30% at 74% 30%, rgba(255, 122, 69, 0.08), transparent 70%);
+    radial-gradient(34% 34% at 76% 26%, rgba(255, 122, 69, 0.11), transparent 70%);
   filter: blur(48px);
   animation: kz-aurora 22s ease-in-out infinite alternate;
 }
@@ -28,22 +28,9 @@
   50%  { opacity: 1; }
   100% { opacity: 0.78; }
 }
-/* Sakura-Zweig als große, leise Form oben rechts — die hellen
-   botanischen Icons tragen auf Charcoal von selbst. */
-.kz-hero::after {
-  content: '';
-  position: absolute;
-  top: 64px; right: -70px;
-  width: clamp(260px, 32vw, 480px);
-  aspect-ratio: 480 / 470;
-  background: url('/icons/icon-sakura-branch.png') no-repeat center / contain;
-  opacity: 0.13;
-  z-index: 0;
-  pointer-events: none;
-}
-@media (max-width: 760px) {
-  .kz-hero::after { top: 88px; right: -90px; width: 240px; opacity: 0.10; }
-}
+/* Botanik-Ausbau 2026-08-23: Der Sakura-Zweig oben rechts ist entfallen
+   (Japan-Metapher der Ur-Seite). Statt einer Ersatzform trägt die Aurora
+   oben rechts einen Hauch mehr Glut — siehe Radial oben. */
 @media (prefers-reduced-motion: reduce) { .kz-hero::before { animation: none; } }
 
 /* ---------- Sektions-Rhythmus: Glut-Naht zwischen dunklen Sektionen ---------- */

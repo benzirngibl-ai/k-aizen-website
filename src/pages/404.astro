@@ -8,8 +8,11 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
   path="/404"
 >
   <article class="kz-page" style="text-align: center; padding-top: 12vh;">
-    <img src="/icons/icon-pine.png" alt=""
-      style="width: clamp(120px, 18vw, 200px); height: auto; display: block; margin: 0 auto 32px; opacity: 0.85;" loading="lazy" />
+    {/* Botanik-Ausbau 2026-08-23: Statt des Kiefern-Zweigs benennt die Seite
+        sich selbst — die Ziffer als Held, in der Display-Typo der Seite. */}
+    <p style="margin: 0 auto 8px; font-weight: 800; font-size: clamp(88px, 14vw, 150px); line-height: 1; letter-spacing: -0.035em; color: var(--indigo-deep); text-shadow: 0 4px 60px rgba(255, 122, 69, 0.35);">
+      404
+    </p>
     <h1 class="kz-h1" style="margin: 0 auto 24px; max-width: 720px;">
       Diese Seite existiert nicht.
     </h1>
@@ -18,34 +21,27 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
       Hier sind die wichtigsten Wege zurück:
     </p>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; max-width: 760px; margin: 0 auto 48px; text-align: left;">
+    {/* minmax 260px statt 220px: vier Wege als 2×2 statt 3+1 mit Waise. */}
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; max-width: 760px; margin: 0 auto 48px; text-align: left;">
       <a href="/" style="padding: 24px; background: var(--kz-cream-deep); border-radius: 8px; text-decoration: none; color: var(--fg-inverse); transition: background 220ms var(--ease-out);">
-        <img src="/icons/icon-ginkgo.png" alt="" style="width: 32px; height: 32px; object-fit: contain; display: block; margin-bottom: 8px;" loading="lazy" />
         <strong style="display: block; margin-bottom: 4px;">Startseite</strong>
         <span style="font-size: 14px; color: var(--fg-muted);">Zurück zum Anfang</span>
       </a>
       <a href="/meisterseite" style="padding: 24px; background: var(--kz-cream-deep); border-radius: 8px; text-decoration: none; color: var(--fg-inverse);">
-        <img src="/icons/icon-sakura-branch.png" alt="" style="width: 32px; height: 32px; object-fit: contain; display: block; margin-bottom: 8px;" loading="lazy" />
         <strong style="display: block; margin-bottom: 4px;">Das Paket</strong>
         <span style="font-size: 14px; color: var(--fg-muted);">Was drin ist und was es kostet</span>
       </a>
       <a href="/about" style="padding: 24px; background: var(--kz-cream-deep); border-radius: 8px; text-decoration: none; color: var(--fg-inverse);">
-        <img src="/icons/icon-camellia.png" alt="" style="width: 32px; height: 32px; object-fit: contain; display: block; margin-bottom: 8px;" loading="lazy" />
         <strong style="display: block; margin-bottom: 4px;">Über uns</strong>
         <span style="font-size: 14px; color: var(--fg-muted);">Wer dahinter steht</span>
       </a>
       <a href="/kontakt" style="padding: 24px; background: var(--kz-cream-deep); border-radius: 8px; text-decoration: none; color: var(--fg-inverse);">
-        <img src="/icons/icon-plum-blossom.png" alt="" style="width: 32px; height: 32px; object-fit: contain; display: block; margin-bottom: 8px;" loading="lazy" />
         <strong style="display: block; margin-bottom: 4px;">Kontakt</strong>
         <span style="font-size: 14px; color: var(--fg-muted);">Drei Wege uns zu erreichen</span>
       </a>
     </div>
 
-    <p style="font-family: var(--font-display); font-style: italic; font-size: 22px; color: var(--fg-muted); margin: 56px 0 0;">
-      „Wer den Weg verloren hat — atmet einmal, dann sucht den nächsten Schritt."
-    </p>
-    <p style="font-family: var(--font-brush); font-size: 24px; color: var(--fg-muted); opacity: 0.7; margin-top: 24px;">
-      — k-AIzen Maxime
-    </p>
+    {/* Die alte Zen-Maxime (Pinselschrift-Signatur, --font-brush war seit dem
+        Dark-Umbau ohnehin undefiniert) ist mit der Japan-Metapher gegangen. */}
   </article>
 </KaizenLayout>

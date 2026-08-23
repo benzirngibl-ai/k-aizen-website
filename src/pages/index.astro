@@ -312,12 +312,17 @@ const homeSchema = {
   <link rel="preload" href="/fonts/plus-jakarta-sans-800-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/plus-jakarta-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/fonts/schriften.css" />
-<link rel="stylesheet" href="/v2/kz-v2.css?v=8" />
-  <link rel="stylesheet" href="/v2/kz-v2-polish.css?v=8" />
+{/* ⚠️ Diese Nummern MÜSSEN mit KaizenLayout.astro übereinstimmen. Die Startseite
+      hat ein eigenes Layout und verlinkt dieselben Dateien ein zweites Mal — wer
+      nur eine der beiden Stellen hochzählt, liefert wiederkehrenden Besuchern auf
+      der meistbesuchten Seite altes CSS aus, während alle anderen Seiten korrekt
+      aussehen. Genau das passierte beim Kontrast-Fix am 23.08.2026. */}
+  <link rel="stylesheet" href="/v2/kz-v2.css?v=10" />
+  <link rel="stylesheet" href="/v2/kz-v2-polish.css?v=10" />
   {/* Funnel-Umbau 2026-08-21: Stufen, Formular und Danke-Seite. Bewusst eine
       eigene Datei — kz-v2.css trägt die gewachsene Startseite und soll beim
       Zurückrollen nicht mit angefasst werden müssen. */}
-  <link rel="stylesheet" href="/v2/kz-v3-funnel.css?v=2" />
+  <link rel="stylesheet" href="/v2/kz-v3-funnel.css?v=3" />
 
   {/* Messung seit 2026-08-21 — Begründung im Kopf von KaizenLayout.astro.
       Die Startseite hat ein eigenes Layout und braucht die Zeile deshalb extra. */}

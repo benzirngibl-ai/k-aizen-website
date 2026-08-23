@@ -189,19 +189,9 @@
   border-block: 1px solid var(--line-soft);
   overflow: hidden;
 }
-/* Ginkgo als leise botanische Form unten links — bewusst nicht
-   rechts: dort wohnt das Chat-Widget. */
-.kz-anfrage::before {
-  content: '';
-  position: absolute;
-  left: -90px; bottom: -110px;
-  width: clamp(200px, 20vw, 320px);
-  aspect-ratio: 480 / 596;
-  background: url('/icons/icon-ginkgo.png') no-repeat center / contain;
-  opacity: 0.05;               /* Der dichte Gelbton wird auf Charcoal
-                                  sonst schlammig — nur andeuten */
-  pointer-events: none;
-}
+/* Botanik-Ausbau 2026-08-23: Der Ginkgo unten links ist ersatzlos
+   entfallen — die Sektion trägt ihre Atmosphäre bereits über die zwei
+   Glutwaschungen im background oben; eine dritte Form war Doppelung. */
 
 .kz-anfrage__intro { margin-bottom: clamp(36px, 6vw, 56px); }
 

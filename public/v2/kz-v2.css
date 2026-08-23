@@ -240,13 +240,13 @@ section[id] { scroll-margin-top: 104px; }
 
 /* Footer */
 .kz-footer { padding-block: 56px; border-top: 1px solid var(--line-soft); color: var(--slate-2); font-size: 14px; position: relative; overflow: hidden; }
-/* Kiefer als leise botanische Form am linken Rand — bewusst links:
-   unten rechts wohnt das Chat-Widget. */
+/* Statt der Kiefer (Botanik-Ausbau 2026-08-23): eine leise, ausklingende
+   Glut aus der linken unteren Ecke — die Bildsprache der Seite zu Ende
+   erzählt. Bewusst links: unten rechts wohnt das Chat-Widget. */
 .kz-footer::before {
   content: '';
-  position: absolute; left: -60px; bottom: -80px;
-  width: 300px; height: 292px;
-  background: url('/icons/icon-pine.png') no-repeat center / contain;
-  opacity: 0.07;
+  position: absolute; left: -140px; bottom: -190px;
+  width: 520px; height: 420px;
+  background: radial-gradient(closest-side, rgba(232, 90, 43, 0.11), rgba(232, 90, 43, 0.04) 55%, transparent 75%);
   pointer-events: none;
 }
