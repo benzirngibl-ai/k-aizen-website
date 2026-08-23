@@ -223,9 +223,11 @@ const conversationSchema = {
       </p>
 
       <div class="kz-wege-grid">
-        <div class="kz-weg-card">
-          <h3>Termin im Kalender</h3>
-          <p>Du wählst den Slot, ich rufe zur vereinbarten Zeit an. 15 Minuten, unverbindlich, danach entscheidest du in Ruhe.</p>
+        <div class="kz-weg-card kz-weg-card--haupt">
+          <div class="kz-weg-card__text">
+            <h3>Termin im Kalender</h3>
+            <p>Du wählst den Slot, ich rufe zur vereinbarten Zeit an. 15 Minuten, unverbindlich, danach entscheidest du in Ruhe.</p>
+          </div>
           <a href={calUrl} class="kz-btn" target="_blank" rel="noopener">Termin wählen</a>
         </div>
         <div class="kz-weg-card">
@@ -239,7 +241,7 @@ const conversationSchema = {
         <div class="kz-weg-card">
           <h3>Kurz per Mail</h3>
           <p>Gewerk, aktuelle Website, was dich stört. Du bekommst eine persönliche Einschätzung zurück.</p>
-          <a href={asyncMail} class="kz-btn kz-btn--ghost">Drei Stichpunkte schicken</a>
+          <a href={asyncMail} class="kz-btn kz-btn--ghost">Mail schreiben</a>
         </div>
       </div>
 
@@ -263,7 +265,13 @@ const conversationSchema = {
 
   .kz-wege { margin-top:80px; padding:clamp(32px,5vw,56px); border-radius:var(--radius-xl); border:1px solid var(--line-soft); background:linear-gradient(180deg,var(--paper-2),var(--card)); }
   .kz-wege > p { color:var(--slate); line-height:1.65; max-width:62ch; }
-  .kz-wege-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr)); gap:16px; margin-top:24px; }
+  /* 1 + 2: Der Termin ist der Hauptweg und liegt als volle Zeile oben,
+     WhatsApp und Mail sind das schriftliche Paar darunter. */
+  .kz-wege-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin-top:24px; }
+  .kz-weg-card--haupt { grid-column:1 / -1; display:flex; align-items:center; gap:clamp(20px,3.5vw,36px); }
+  .kz-weg-card--haupt .kz-weg-card__text { flex:1 1 auto; min-width:0; }
+  .kz-weg-card--haupt p { margin-bottom:0; }
+  .kz-weg-card--haupt .kz-btn { flex-shrink:0; }
   .kz-weg-card { padding:clamp(20px,3vw,26px); border-radius:var(--radius-md); border:1px solid var(--line); background:var(--card); box-shadow:var(--shadow-sm); }
   .kz-weg-card h3 { margin:0 0 8px; font-size:1.05rem; letter-spacing:-0.01em; color:var(--ink); }
   .kz-weg-card p { margin:0 0 18px; color:var(--slate); font-size:0.93rem; line-height:1.6; }
@@ -271,5 +279,8 @@ const conversationSchema = {
 
   @media (max-width: 760px) {
     .kz-vorbereitung__cta .kz-btn { width:100%; justify-content:center; }
+    .kz-wege-grid { grid-template-columns:1fr; }
+    .kz-weg-card--haupt { flex-direction:column; align-items:stretch; }
+    .kz-weg-card .kz-btn { width:100%; justify-content:center; }
   }
 </style>

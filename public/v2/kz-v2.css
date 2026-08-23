@@ -158,10 +158,15 @@ section[id] { scroll-margin-top: 104px; }
 }
 .kz-btn--primary {
   background: linear-gradient(135deg, var(--indigo), var(--violet));
-  color: #fff;
+  /* Kontrast-Fix 2026-08-23: Charcoal statt Weiß auf Ember (5.28:1 / 7.23:1),
+     Gewicht 800, damit die dunkle Schrift auf der Glut nicht dünn wirkt. */
+  color: var(--paper);
+  font-weight: 800;
   box-shadow: 0 10px 30px -8px rgba(232,90,43,0.55), inset 0 1px 0 rgba(255,255,255,0.22);
 }
 .kz-btn--primary:hover { box-shadow: 0 16px 40px -8px rgba(255,122,69,0.65), inset 0 1px 0 rgba(255,255,255,0.22); }
+/* Heller Ring statt Ember-auf-Ember: hebt sich vom Knopf UND vom Seitengrund ab. */
+.kz-btn--primary:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .kz-btn--ghost { background: rgba(255, 240, 225, 0.03); color: var(--ink); border: 1.5px solid var(--line); }
 .kz-btn--ghost:hover { border-color: var(--indigo); color: var(--indigo-deep); }
 .kz-btn__arrow { transition: transform 0.3s var(--ease-out); }

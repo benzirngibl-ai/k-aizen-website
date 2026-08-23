@@ -121,8 +121,8 @@ if (breadcrumbs && breadcrumbs.length > 0) {
   <link rel="preload" href="/fonts/plus-jakarta-sans-800-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/plus-jakarta-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/fonts/schriften.css" />
-<link rel="stylesheet" href="/v2/kz-v2.css?v=8" />
-  <link rel="stylesheet" href="/v2/kz-v2-polish.css?v=8" />
+<link rel="stylesheet" href="/v2/kz-v2.css?v=9" />
+  <link rel="stylesheet" href="/v2/kz-v2-polish.css?v=9" />
   {/* Funnel-Umbau 2026-08-21 — siehe Kommentar in index.astro. */}
   <link rel="stylesheet" href="/v2/kz-v3-funnel.css?v=2" />
 
@@ -385,9 +385,15 @@ if (breadcrumbs && breadcrumbs.length > 0) {
 
     .kz-btn:not(.kz-btn--ghost):not(.kz-btn-ghost):not(.kz-btn--whatsapp):not(.kz-btn--audit) {
       background: linear-gradient(135deg, var(--indigo), var(--violet));
-      color: #fff !important;
+      /* Kontrast-Fix 2026-08-23: Charcoal statt Weiß auf Ember, wie .kz-btn--primary. */
+      color: var(--paper) !important;
+      font-weight: 800;
       border-radius: 999px;
       box-shadow: 0 8px 24px -6px rgba(232,90,43,0.45);
+    }
+    .kz-btn:not(.kz-btn--ghost):not(.kz-btn-ghost):not(.kz-btn--whatsapp):not(.kz-btn--audit):focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
     }
     .kz-btn-ghost,
     .kz-btn--ghost {
