@@ -5,16 +5,19 @@
  * entschieden, WELCHE Lage gerade sichtbar ist und WIE weit sie sich
  * gegenüber dem Text verschiebt.
  *
- * Drei Rücksichten, die den Code länger machen als das Prinzip:
+ * Der Film im Hero läuft NICHT von selbst ab. Das Scrollrad ist sein
+ * Abspielkopf: oben steht der erste Frame, eine Bildschirmhöhe weiter der
+ * letzte. Wer nicht scrollt, sieht ein Standbild — der Dachdecker bewegt
+ * sich genau so weit, wie der Leser dreht.
+ *
+ * Rücksichten, die den Code länger machen als das Prinzip:
  *
  * 1. Ein Handwerker schaut die Seite oft im Mobilfunk an. 2,6 MB Video beim
  *    ersten Laden wären unhöflich. Deshalb `preload=none` im Markup und ein
  *    echtes `src` erst hier, nach dem ersten Bild.
  * 2. Wer Bewegung reduziert hat, bekommt gar kein Video, sondern das Poster.
- *    Deshalb steht `autoplay` NICHT im Markup: sonst lädt der Browser die
- *    Datei, bevor JavaScript die Einstellung prüfen kann.
- * 3. Läuft der Hero aus dem Bild, wird pausiert. Ein unsichtbares Video
- *    kostet Akku ohne Gegenwert.
+ * 3. Springen im Video ist asynchron und vom Decoder begrenzt. Deshalb eine
+ *    eigene Schleife mit Totband statt eines Sprungs pro Scroll-Ereignis.
  */
 (function () {
   'use strict';
@@ -30,8 +33,8 @@
   var ruhig = matchMedia('(prefers-reduced-motion: reduce)');
   var schmal = matchMedia('(max-width: 760px)');
   var aktuell = 'hero';
-  // Vor zeigen() deklariert: die Funktion ruft filmNachfuehren(), und das
-  // braucht `film`. Sonst wäre es beim ersten Lauf noch undefined.
+  // Der Abspielkopf des Hero-Films. Er wird ausschließlich vom Scrollrad
+  // bewegt — siehe unten.
   var film = buehne.querySelector('.kz-buehne__film');
 
   // ── Lagenwechsel ────────────────────────────────────────────────────────
@@ -44,7 +47,6 @@
     if (lagen[aktuell]) lagen[aktuell].classList.remove('ist-da');
     lagen[name].classList.add('ist-da');
     aktuell = name;
-    filmNachfuehren();
   }
 
   function lesen() {
@@ -76,48 +78,104 @@
   addEventListener('scroll', anstossen, { passive: true });
   addEventListener('resize', anstossen, { passive: true });
 
-  // ── Der Film im Hero ────────────────────────────────────────────────────
+  // ── Der Film im Hero: das Scrollrad IST der Abspielkopf ─────────────────
+  //
+  // Der Film läuft NICHT von selbst. Er bewegt sich nur, solange gescrollt
+  // wird — das Rad ist der Regler, nicht ein Startknopf. Steht die Maus
+  // still, steht auch der Dachdecker still.
+  //
   // (`film` ist oben deklariert, weil zeigen() es schon braucht.)
 
-  function filmStarten() {
+  var kopf = { bereit: false, ziel: 0, ist: 0, gemalt: false };
+
+  function filmLaden() {
     if (!film || ruhig.matches || film.src) return;
     var quelle = schmal.matches
       ? film.dataset.srcMobile || film.dataset.src
       : film.dataset.src;
     if (!quelle) return;
-    film.src = quelle;
-    // play() darf abgelehnt werden (Energiesparmodus, iOS-Regeln). Das ist
-    // kein Fehler: dann bleibt das Poster stehen und die Seite sieht aus wie
-    // vorher. Daher der leere catch statt einer Meldung.
-    var v = film.play();
-    if (v && v.catch) v.catch(function () {});
-    buehne.classList.add('film-an');
+
+    // Als Blob laden, nicht per src. Springen im Video braucht sonst
+    // Range-Unterstützung vom Server; über einen Blob liegt die Datei
+    // vollständig im Speicher und jeder Sprung ist sofort möglich.
+    fetch(quelle)
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.blob(); })
+      .then(function (blob) {
+        // Zuhörer VOR dem src setzen: das Zuweisen startet den Ladevorgang,
+        // ein späteres Anhängen würde ihn abbrechen und neu starten.
+        film.addEventListener('loadedmetadata', function () {
+          kopf.bereit = true;
+          // Einmal erzwungen springen, auch wenn das Ziel 0 ist: das Poster
+          // wird erst über 'seeked' abgelöst, und die Schleife springt nur,
+          // wenn sich die Zeit ändert. Ohne das bliebe am Seitenanfang ewig
+          // das Standbild stehen.
+          try { film.currentTime = 0.001; } catch (e) {}
+        });
+        film.addEventListener('seeked', function () {
+          kopf.gemalt = true;
+          buehne.classList.add('film-an');
+        }, { once: true });
+        film.preload = 'auto';
+        film.src = URL.createObjectURL(blob);
+      })
+      .catch(function () { /* Poster bleibt stehen — die Seite sieht aus wie vorher */ });
   }
 
-  if ('requestIdleCallback' in window) requestIdleCallback(filmStarten, { timeout: 2500 });
-  else addEventListener('load', function () { setTimeout(filmStarten, 500); });
+  if ('requestIdleCallback' in window) filmLaden && requestIdleCallback(filmLaden, { timeout: 2500 });
+  else addEventListener('load', function () { setTimeout(filmLaden, 500); });
 
-  // Film pausieren, sobald eine andere Lage ihn zudeckt.
-  //
-  // NICHT über einen IntersectionObserver auf der Hero-Lage: die ist
-  // `position:fixed; inset:0` und schneidet damit IMMER den Viewport — das
-  // Video liefe dann bis zum Seitenende weiter, unsichtbar unter einer
-  // anderen Lage, und kostete die ganze Zeit Akku. Maßgeblich ist deshalb,
-  // welche Lage gerade gilt, nicht ob ein fixiertes Element „sichtbar" ist.
-  function filmNachfuehren() {
-    if (!film || !film.src) return;
-    if (aktuell === 'hero' && !ruhig.matches) {
-      var v = film.play();
-      if (v && v.catch) v.catch(function () {});
-    } else if (!film.paused) {
-      film.pause();
+  // Das Ziel wird aus der Scrollposition im Hero berechnet: oben = erster
+  // Frame, eine Bildschirmhöhe weiter = letzter Frame.
+  function kopfZielSetzen() {
+    var p = Math.min(1, Math.max(0, scrollY / Math.max(1, innerHeight)));
+    kopf.ziel = p;
+  }
+
+  // Eigene Schleife, getrennt vom Scroll-Zuhörer. Springen im Video ist
+  // asynchron und wird vom Decoder begrenzt; der Scroll-Zuhörer muss dagegen
+  // billig bleiben. Die Annäherung in kleinen Schritten ist außerdem das,
+  // was aus ruckeligen Radschritten eine Fahrt macht.
+  function schleife() {
+    if (kopf.bereit && !ruhig.matches) {
+      // Nie einen neuen Sprung anfordern, solange der Decoder noch am letzten
+      // arbeitet — sonst stapeln sich auf dem Handy die Anfragen und das Bild
+      // friert ein.
+      if (!film.seeking) {
+        var totband = schmal.matches ? 0.02 : 0.008;
+        kopf.ist += (kopf.ziel - kopf.ist) * 0.16;
+        var dauer = film.duration || 1;
+        var t = Math.min(0.999, Math.max(0, kopf.ist)) * dauer;
+        if (Math.abs(film.currentTime - t) > totband) {
+          try { film.currentTime = t; } catch (e) {}
+        }
+      }
     }
+    requestAnimationFrame(schleife);
   }
+  requestAnimationFrame(schleife);
 
-  ruhig.addEventListener('change', function () {
-    if (ruhig.matches && film) { film.pause(); buehne.classList.remove('film-an'); }
-    else filmStarten();
+  // iOS malt ein stummes Video nicht, das nie eine Nutzergeste gesehen hat —
+  // es kann geladen und gesprungen sein und trotzdem schwarz bleiben. Ein
+  // einmaliges play/pause bei der ersten Berührung schaltet es frei.
+  var freigeschaltet = false;
+  function freischalten() {
+    if (freigeschaltet || !film || !film.src) return;
+    freigeschaltet = true;
+    var v = film.play();
+    if (v && v.then) v.then(function () { film.pause(); }).catch(function () {});
+    else { try { film.pause(); } catch (e) {} }
+  }
+  ['touchstart', 'pointerdown'].forEach(function (e) {
+    addEventListener(e, freischalten, { once: true, passive: true });
   });
 
+  ruhig.addEventListener('change', function () {
+    if (ruhig.matches) { kopf.bereit = false; buehne.classList.remove('film-an'); }
+    else filmLaden();
+  });
+
+  // Beim Scrollen wird jetzt beides nachgeführt: Lage UND Abspielkopf.
+  addEventListener('scroll', kopfZielSetzen, { passive: true });
+  kopfZielSetzen();
   lesen();
 })();
