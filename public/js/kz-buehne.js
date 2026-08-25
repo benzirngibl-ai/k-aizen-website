@@ -124,11 +124,25 @@
   if ('requestIdleCallback' in window) filmLaden && requestIdleCallback(filmLaden, { timeout: 2500 });
   else addEventListener('load', function () { setTimeout(filmLaden, 500); });
 
-  // Das Ziel wird aus der Scrollposition im Hero berechnet: oben = erster
-  // Frame, eine Bildschirmhöhe weiter = letzter Frame.
+  // Das Ziel kommt aus der Scrollposition innerhalb der HERO-STRECKE, nicht
+  // aus einer festen Bildschirmhöhe: der Hero ist 2,8 Bildschirmhöhen hoch
+  // und pinnt seine Bühne darin. Mit einer Bildschirmhöhe war der ganze
+  // Fünf-Sekünder nach einem Rad-Ruck durch — die Bewegung war vorbei,
+  // bevor sie auffiel.
+  var hero = document.querySelector('.kz-hero');
+
   function kopfZielSetzen() {
-    var p = Math.min(1, Math.max(0, scrollY / Math.max(1, innerHeight)));
-    kopf.ziel = p;
+    if (!hero) return;
+    // Nutzbarer Weg = Höhe der Strecke minus der einen Bildschirmhöhe, die
+    // die gepinnte Bühne selbst einnimmt.
+    var weg = Math.max(1, hero.offsetHeight - innerHeight);
+    var p = Math.min(1, Math.max(0, scrollY / weg));
+    // Verweilen (dwell): in der Mitte langsamer, an den Rändern schneller.
+    // Ohne das rauscht der Anfang vorbei und das Ende zieht sich. Entspricht
+    // data-sc-dwell="0.36" der Scroll-Fassung.
+    var d = 0.36;
+    kopf.ziel = p + d * Math.sin(2 * Math.PI * p) / (2 * Math.PI) * -1;
+    kopf.ziel = Math.min(1, Math.max(0, kopf.ziel));
   }
 
   // Eigene Schleife, getrennt vom Scroll-Zuhörer. Springen im Video ist

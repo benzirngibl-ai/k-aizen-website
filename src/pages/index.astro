@@ -397,7 +397,13 @@ const homeSchema = {
     <div class="kz-buehne__schleier"></div>
   </div>
 
-  <header class="kz-hero">
+  {/* Der Hero bekommt eine SCROLL-STRECKE: er ist 2,8 Bildschirmhöhen hoch,
+      die sichtbare Bühne bleibt darin gepinnt. Erst dadurch hat der Film
+      Weg — vorher lief er über eine einzige Bildschirmhöhe ab, also in
+      einem Rad-Ruck, und die Bewegung war vorbei, bevor sie auffiel.
+      2,8 ist derselbe Wert, den die Scroll-Fassung im Hero-Akt benutzt. */}
+  <header class="kz-hero kz-hero--strecke">
+    <div class="kz-hero__buehne">
     <div class="kz-hero__grid"></div>
     <div class="kz-wrap">
       {/* Der Eyebrow („Für Betriebe im Raum Nürnberg") ist am 21.08. entfallen —
@@ -418,6 +424,7 @@ const homeSchema = {
     <div class="kz-scrollcue" aria-hidden="true">
       <span class="kz-scrollcue__line"></span>
     </div>
+    </div>{/* kz-hero__buehne */}
   </header>
 
   {/* Ohne <main> lagen 24 Abschnitte in keinem Landmark (axe, 21.08.) —
@@ -925,15 +932,22 @@ const homeSchema = {
          2. der Schleier (hält jede Textzeile über jedem Motiv lesbar),
          3. der Inhalt — Platten und Karten mit echtem Schattenwurf.
 
-       Lesbarkeit ist GERECHNET, nicht geschätzt. Der Schleier komponiert
-       aus Grundton (α .55) und Spalten-Plateau (α .68) eine Deckung von
-       96 % Charcoal über der Inhaltsbreite. Selbst über einem reinweißen
-       Bildfleck bleibt damit:
+       Lesbarkeit ist GERECHNET, nicht geschätzt — aber der Schutz liegt
+       seit 26.08. nicht mehr komplett im fixen Schleier (der machte den
+       Hero-Film unsichtbar, Bens Befund). Die Arbeit ist verteilt:
+         · fixer Schleier: nur noch Grundtönung (α .30) + Bodenanker —
+           im Hero bleibt der Film dadurch sichtbar.
+         · Hero-Bühne: trägt ihren eigenen Textschutz — links dicht
+           (α .80 lokal, ⊕ Grundton ≈ .86 gesamt), rechts offen, wo Mann
+           und Rolltor sich bewegen.
+         · transparente Sektionen: tragen ihr Spalten-Plateau selbst
+           (α .795 lokal ⊕ Grundton = .857 — exakt die alte Deckung).
+           Es scrollt mit dem Text: unter jeder Zeile identisch dicht.
+       Zielwerte über der Inhaltsbreite (gemessen per Playwright-Sampling,
+       hellster Pixel unter jeder Textbox über die ganze Film-Strecke):
          --slate  (Fließtext)      ≥ 6.0:1
          --slate-2 (Tertiärtext)   ≥ 4.7:1  (Token dafür unten angehoben)
          --ink    (Überschriften)  ≥ 11:1
-       Gemessene hellste Stellen der echten Motive (siehe scrollcraft-
-       Referenz): L ≈ 0.62–0.73 — real liegen alle Werte darüber.
        ══════════════════════════════════════════════════════════════════ */
 
     .kz-buehne {
@@ -981,28 +995,55 @@ const homeSchema = {
     .kz-buehne__film { opacity: 0; }
     .film-an .kz-buehne__film { opacity: 1; transition: opacity 0.9s var(--ease-soft); }
 
-    /* DER SCHLEIER — das tragende Element.
-       Drei Lagen übereinander:
-       · Grundton α .55 über allem: die Motive bleiben Raum, nie Poster.
-       · Spalten-Plateau α .68 über der Inhaltsbreite: beginnt exakt an
-         der Wrap-Kante — max(16px, freie Randbreite). Auf großen
-         Schirmen atmet das Motiv neben der Textspalte auf, auf schmalen
-         liegt das Plateau praktisch vollflächig. Textzeilen erreichen
-         den Verlaufsanstieg dadurch NIE (Gutter ≥ 20px > 16px).
-       · Bodendichte unten: verankert das Bild und trägt Scrollcue & Co. */
+    /* DER SCHLEIER — seit 26.08. nur noch die Grundtönung.
+       α .30 hält die Motive als Raum (nie Poster) und lässt den Hero-Film
+       durchscheinen; dazu ein leichter Bodenanker am Viewport-Grund.
+       Das dichte Spalten-Plateau, das hier früher lag, wanderte in die
+       Elemente, die es wirklich brauchen: die Hero-Bühne (Textschutz
+       links) und die transparenten Sektionen (Scrim scrollt mit). */
     .kz-buehne__schleier {
       position: absolute; inset: 0;
       background:
         linear-gradient(to top,
-          rgb(20 18 16 / 0.50) 0%,
-          rgb(20 18 16 / 0.16) 26%,
-          rgb(20 18 16 / 0) 44%),
+          rgb(20 18 16 / 0.34) 0%,
+          rgb(20 18 16 / 0.10) 24%,
+          rgb(20 18 16 / 0) 40%);
+      background-color: rgb(20 18 16 / 0.30);
+    }
+
+    /* Der Hero-Film bekommt Licht: eine Spur heller und knackiger, damit
+       Mann und Rolltor hinter dem Grundton α .30 klar zu erkennen sind.
+       Gilt für Poster UND Video — kein Helligkeitssprung beim Einblenden. */
+    .kz-buehne__lage[data-lage="hero"] .kz-buehne__bild,
+    .kz-buehne__lage[data-lage="hero"] .kz-buehne__film {
+      filter: brightness(1.12) contrast(1.03);
+    }
+
+    /* WANDERNDE SCRIMS — transparente Sektionen tragen ihr Plateau selbst.
+       Lokal α .795 ⊕ Grundton .30 = .857 Gesamtdeckung über der
+       Inhaltsbreite (exakt der alte, gerechnete Wert); an den Rändern
+       .41 ⊕ .30 = .59 — das Motiv atmet dort weiter auf. Weil der Scrim
+       am Element hängt, liegt er unter JEDER Textzeile gleich dicht,
+       egal wo sie gerade im Viewport steht — auch über dem hellen
+       Schlussbild des Films direkt nach der Hero-Strecke. */
+    .kz-section:not(.kz-demo-section):not(.kz-fit-section):not([style*="background"]) {
+      background:
         linear-gradient(to right,
-          rgb(20 18 16 / 0.08) 0,
-          rgb(20 18 16 / 0.68) max(16px, calc((100% - 1200px) / 2)),
-          rgb(20 18 16 / 0.68) calc(100% - max(16px, calc((100% - 1200px) / 2))),
-          rgb(20 18 16 / 0.08) 100%);
-      background-color: rgb(20 18 16 / 0.55);
+          rgb(20 18 16 / 0.41) 0,
+          rgb(20 18 16 / 0.795) max(16px, calc((100% - 1200px) / 2)),
+          rgb(20 18 16 / 0.795) calc(100% - max(16px, calc((100% - 1200px) / 2))),
+          rgb(20 18 16 / 0.41) 100%);
+    }
+    /* Die erste Sektion nach der Strecke schiebt sich über das helle
+       Schlussbild des Films — die einzige Stelle, an der eine Scrim-Kante
+       auf offene Bühne trifft. Sie bekommt dieselbe Materialität wie die
+       Platten: Lichtkante oben, weicher Schattenwurf (Versatz + Unschärfe)
+       nach oben auf das Tor dahinter. So liest sich die Kante als Panel,
+       nicht als Render-Fehler. */
+    #main > .kz-section:first-child {
+      box-shadow:
+        inset 0 1px 0 rgba(255, 240, 225, 0.06),
+        0 -30px 56px -30px rgb(0 0 0 / 0.6);
     }
 
     /* Tertiärtext eine Stufe heller: #A08D7C hielt auf dem Schleier über
@@ -1018,14 +1059,108 @@ const homeSchema = {
        ≥ 6:1 halten. Der Blur bleibt. */
     .kz-nav.kz-nav { background: rgb(20 18 16 / 0.86); }
 
-    /* Der Hero gibt seinen opaken Grund auf: das Rolltor IST jetzt der
-       Grund. Die Glutherde bleiben und legen sich als warmes Licht über
-       das Video. (Doppelklasse: gewinnt gegen kz-v2-polish.css.) */
-    .kz-hero.kz-hero {
+    /* DIE HERO-STRECKE — der Film bekommt Weg (Gerüst: Opus, 26.08.).
+       Der Header ist 2,8 Bildschirmhöhen hoch; die sichtbare Bühne pinnt
+       sich darin fest. Das Scrollrad ist der Abspielkopf des Films
+       (kz-buehne.js) — mit einer Bildschirmhöhe war der Fünf-Sekünder
+       nach einem Rad-Ruck durch.
+       overflow:visible ist Pflicht: ein overflow:hidden am Header würde
+       das Pinning brechen (sticky klemmt dann im Header fest statt am
+       Viewport). Geclippt wird stattdessen in der Bühne selbst.
+       (Doppelklasse: gewinnt gegen kz-v2.css / kz-v2-polish.css.) */
+    .kz-hero.kz-hero--strecke {
+      height: 280svh;
+      min-height: 0;
+      display: block;
+      padding-top: 0;
+      overflow: visible;
+      background: none;
+    }
+    /* Die Aurora zieht mit auf die gepinnte Bühne (unten) — auf dem
+       2,8-Schirme-Header stünde sie an der falschen Stelle. */
+    .kz-hero.kz-hero--strecke::before { content: none; }
+
+    /* Die gepinnte Bühne übernimmt Layout UND Licht des alten Heros:
+       Flex-Zentrierung, Nav-Abstand, Glutherde. Dazu ihr eigener
+       TEXTSCHUTZ — ein Keil Charcoal über der Textspalte links
+       (α .80 lokal ⊕ Grundton .30 ≈ .86 gesamt, wie das alte Plateau),
+       der ab der rechten Kante der Textspalte auf null ausläuft:
+       rechts, wo Mann und Rolltor spielen, liegt nur noch der Grundton. */
+    .kz-hero__buehne {
+      position: sticky; top: 0;
+      height: 100svh;
+      display: flex; align-items: center;
+      padding-top: 96px;
+      overflow: hidden;
       background:
         radial-gradient(90% 60% at 12% 108%, rgba(232, 90, 43, 0.20), transparent 60%),
         radial-gradient(70% 55% at 88% -10%, rgba(255, 122, 69, 0.10), transparent 55%),
-        radial-gradient(50% 40% at 70% 90%, rgba(69, 191, 198, 0.05), transparent 70%);
+        radial-gradient(50% 40% at 70% 90%, rgba(69, 191, 198, 0.05), transparent 70%),
+        linear-gradient(to right,
+          rgb(20 18 16 / 0.86) 0,
+          rgb(20 18 16 / 0.86) calc(max(16px, (100% - 1200px) / 2) + 730px),
+          rgb(20 18 16 / 0) calc(max(16px, (100% - 1200px) / 2) + 1030px));
+    }
+    /* Aurora, 1:1 aus kz-v2-polish.css hierher gezogen. */
+    .kz-hero__buehne::before {
+      content: '';
+      position: absolute; inset: 0;
+      z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(38% 38% at 24% 78%, rgba(232, 90, 43, 0.16), transparent 70%),
+        radial-gradient(34% 34% at 76% 26%, rgba(255, 122, 69, 0.11), transparent 70%);
+      filter: blur(48px);
+      animation: kz-aurora 22s ease-in-out infinite alternate;
+    }
+
+    @media (max-width: 760px) {
+      /* Mobil füllt der Text fast den ganzen Schirm (Note endet gemessen
+         bei ~93 % Höhe) — großflächig öffnen geht nicht. Stattdessen ein
+         LICHTSPALT UNTERM TOR: die letzten ~44px bleiben offen. Dort
+         fällt am Anfang Licht durch den offenen Torspalt und verschwindet,
+         wenn die Unterkante den Boden erreicht — genau der Filmmoment.
+         220svh statt 280: am Daumen fühlen sich 2,8 Schirme Pinning zäh
+         an. Der Spalt ist von UNTEN verankert (px, nicht %), damit er auf
+         höheren Phones nicht in den Text wandert. */
+      .kz-hero.kz-hero--strecke { height: 220svh; }
+      .kz-hero__buehne {
+        background:
+          radial-gradient(90% 60% at 12% 108%, rgba(232, 90, 43, 0.20), transparent 60%),
+          radial-gradient(70% 55% at 88% -10%, rgba(255, 122, 69, 0.10), transparent 55%),
+          linear-gradient(to bottom,
+            rgb(20 18 16 / 0.86) 0,
+            rgb(20 18 16 / 0.86) calc(100% - 44px),
+            rgb(20 18 16 / 0.24) calc(100% - 4px));
+      }
+    }
+
+    /* Höhen-Leitplanke: auf sehr flachen Schirmen ist der Hero-Inhalt
+       höher als eine Bildschirmhöhe. Der alte Hero wuchs einfach mit
+       (min-height) — die gepinnte 100svh-Bühne würde ihn CLIPPEN.
+       Deshalb dort: kein Pinning, Bühne wächst wieder, Lichtspalt zu
+       (er läge sonst im Text). Der Film scrubbt dann kurz — Lesbarkeit
+       schlägt Inszenierung. */
+    @media (max-height: 720px) {
+      .kz-hero.kz-hero--strecke { height: auto; min-height: 100svh; }
+      .kz-hero__buehne {
+        position: relative; height: auto; min-height: 100svh;
+      }
+    }
+    @media (max-height: 720px) and (max-width: 760px) {
+      .kz-hero__buehne {
+        background:
+          radial-gradient(90% 60% at 12% 108%, rgba(232, 90, 43, 0.20), transparent 60%),
+          radial-gradient(70% 55% at 88% -10%, rgba(255, 122, 69, 0.10), transparent 55%),
+          linear-gradient(rgb(20 18 16 / 0.86), rgb(20 18 16 / 0.86));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      /* Ohne Bewegung gibt es nichts zu scrubben: Strecke zurück auf eine
+         Bildschirmhöhe, kein Pinning — der Hero ist wieder ein normaler,
+         voller Schirm mit Poster. */
+      .kz-hero.kz-hero--strecke { height: auto; min-height: 100svh; }
+      .kz-hero__buehne { position: relative; height: auto; min-height: 100svh; }
     }
 
     /* MATERIALITÄT — Abschnitte mit eigenem Grund liegen als Platten VOR
