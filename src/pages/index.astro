@@ -366,6 +366,37 @@ const homeSchema = {
   </nav>
 
   <!-- HERO -->
+  {/* ══ HINTERGRUND-BÜHNE ═══════════════════════════════════════════════
+      Ein einziger fixierter Träger hinter der GANZEN Seite. Die Motive
+      wechseln beim Scrollen; der Inhalt darüber bleibt unverändert.
+
+      Warum fixiert statt pro Abschnitt: So entsteht ein durchgehender Raum,
+      durch den man scrollt, statt sechs Bilder, an denen man vorbeiscrollt.
+      Und es gibt genau EIN Video im DOM statt mehrerer, die alle Speicher
+      belegen.
+
+      `aria-hidden`, weil das reine Atmosphäre ist — jede Aussage der Seite
+      steht im Text davor, nicht hier. */}
+  <div class="kz-buehne" aria-hidden="true">
+    <div class="kz-buehne__lage" data-lage="hero">
+      <img class="kz-buehne__bild" src="/video/hero-rolltor-poster.webp" alt="" width="1600" height="889" fetchpriority="high" decoding="async">
+      <video class="kz-buehne__film" muted playsinline loop preload="none"
+             poster="/video/hero-rolltor-poster.webp"
+             data-src="/video/hero-rolltor.mp4"
+             data-src-mobile="/video/hero-rolltor-m.mp4"></video>
+    </div>
+    <div class="kz-buehne__lage" data-lage="suche">
+      <img class="kz-buehne__bild" src="/video/02-suche.webp" alt="" width="1600" height="889" loading="lazy" decoding="async">
+    </div>
+    <div class="kz-buehne__lage" data-lage="abends">
+      <img class="kz-buehne__bild" src="/video/04-abends.webp" alt="" width="1600" height="889" loading="lazy" decoding="async">
+    </div>
+    <div class="kz-buehne__lage" data-lage="morgen">
+      <img class="kz-buehne__bild" src="/video/06-morgen.webp" alt="" width="1600" height="889" loading="lazy" decoding="async">
+    </div>
+    <div class="kz-buehne__schleier"></div>
+  </div>
+
   <header class="kz-hero">
     <div class="kz-hero__grid"></div>
     <div class="kz-wrap">
@@ -457,7 +488,7 @@ const homeSchema = {
   </section>
 
   <!-- 3.6 — ANGEBOT -->
-  <section class="kz-section" id="angebot">
+  <section class="kz-section" id="angebot" data-buehne="suche">
     <div class="kz-wrap">
       <h2 class="kz-h2 kz-reveal">Was du für {PREIS} € im Monat bekommst.</h2>
       <p class="kz-lead kz-reveal" data-delay="1">
@@ -526,7 +557,7 @@ const homeSchema = {
        Die Screenshots sind ECHTE Aufnahmen von muster.k-aizen.de (Playwright,
        28.07.2026), keine Mockups: Ben hat KI-Bilder ausdrücklich abgelehnt.
        Neu aufnehmen, wenn sich die Demo-Site ändert. -->
-  <section class="kz-section kz-demo-section" id="beispiel">
+  <section class="kz-section kz-demo-section" id="beispiel" data-buehne="abends">
     <div class="kz-wrap">
       <h2 class="kz-h2 kz-reveal">Schau dir an, was du bekommst.</h2>
       <p class="kz-lead kz-reveal" data-delay="1">
@@ -596,7 +627,7 @@ const homeSchema = {
   </section>
 
   <!-- 3.7 — ABLAUF -->
-  <section class="kz-section" id="ablauf" style="background:var(--paper-2);">
+  <section class="kz-section" id="ablauf" data-buehne="abends" style="background:var(--paper-2);">
     <div class="kz-wrap">
       <h2 class="kz-h2 kz-reveal" data-delay="1">Vom Anruf zur fertigen Seite — in wenigen Tagen.</h2>
       <p class="kz-lead kz-reveal" data-delay="2">
@@ -615,7 +646,7 @@ const homeSchema = {
   </section>
 
   <!-- 4 — WER ICH BIN -->
-  <section class="kz-section" id="wer-ich-bin">
+  <section class="kz-section" id="wer-ich-bin" data-buehne="morgen">
     <div class="kz-wrap">
       <div class="kz-person-grid">
         <div class="kz-reveal">
@@ -638,7 +669,7 @@ const homeSchema = {
   </section>
 
   <!-- 5 — FAQ -->
-  <section class="kz-section" id="fragen" style="background:var(--paper-2);">
+  <section class="kz-section" id="fragen" data-buehne="morgen" style="background:var(--paper-2);">
     <div class="kz-wrap">
       <h2 class="kz-h2 kz-reveal" data-delay="1">Was Betriebe uns vorher fragen.</h2>
       <div class="kz-faq kz-reveal" data-delay="2">
@@ -703,6 +734,7 @@ const homeSchema = {
   </footer>
 
   <script is:inline src="/v2/kz-v2.js?v=5" defer></script>
+  <script is:inline src="/js/kz-buehne.js" defer></script>
 
   <!-- k-AIzen OS Chat-Widget (wie in KaizenLayout.astro — Startseite hat eigenes Layout) -->
   <script
@@ -882,6 +914,147 @@ const homeSchema = {
       .kz-leist__note { justify-items:start; }
       .kz-leist__list { grid-template-columns:1fr; }
       .kz-leist__list li:nth-child(2) { border-top:1px solid var(--line-soft); }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       DIE BÜHNE — visuelle Tiefe (Design: Fable, 2026-08-26)
+       ───────────────────────────────────────────────────────────────────
+       Ein fixierter Bildraum hinter der ganzen Seite (Markup + Logik von
+       Opus, kz-buehne.js). Drei Schichten Tiefe:
+         1. die Motive (zuunterst, ziehen langsamer als der Inhalt),
+         2. der Schleier (hält jede Textzeile über jedem Motiv lesbar),
+         3. der Inhalt — Platten und Karten mit echtem Schattenwurf.
+
+       Lesbarkeit ist GERECHNET, nicht geschätzt. Der Schleier komponiert
+       aus Grundton (α .55) und Spalten-Plateau (α .68) eine Deckung von
+       96 % Charcoal über der Inhaltsbreite. Selbst über einem reinweißen
+       Bildfleck bleibt damit:
+         --slate  (Fließtext)      ≥ 6.0:1
+         --slate-2 (Tertiärtext)   ≥ 4.7:1  (Token dafür unten angehoben)
+         --ink    (Überschriften)  ≥ 11:1
+       Gemessene hellste Stellen der echten Motive (siehe scrollcraft-
+       Referenz): L ≈ 0.62–0.73 — real liegen alle Werte darüber.
+       ══════════════════════════════════════════════════════════════════ */
+
+    .kz-buehne {
+      position: fixed; inset: 0;
+      z-index: -1;                /* hinter allem Inhalt, vor dem Canvas */
+      overflow: hidden;
+      background: var(--paper);   /* Boden unter den Motiven */
+      pointer-events: none;
+    }
+
+    /* Eine Lage = ein Motiv. Der Hero liegt zuunterst und ist immer da —
+       die anderen decken ihn beim Einblenden zu. So braucht der Wechsel
+       keinen Schwarz-Zwischenschritt: es blendet immer Bild ÜBER Bild. */
+    .kz-buehne__lage {
+      position: absolute; inset: 0;
+      opacity: 0;
+      /* Bühne zieht langsamer als der Inhalt: über die ganze Seite wandern
+         die Motive 3.2vh nach oben — gerade genug, dass der Raum sich
+         bewegt, ohne dass es nach Effekt aussieht. Die leichte Skalierung
+         hält dabei die Ränder (und den Unschärfe-Saum) aus dem Bild. */
+      transform: translate3d(0, calc(var(--kz-buehne-p, 0) * -3.2vh), 0) scale(1.07);
+      transition: opacity 1.5s var(--ease-soft);
+      will-change: opacity, transform;
+    }
+    .kz-buehne__lage.ist-da { opacity: 1; transition-duration: 1s; }
+    .kz-buehne__lage[data-lage="hero"] { opacity: 1; }
+
+    .kz-buehne__bild,
+    .kz-buehne__film {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    /* Tiefenstaffelung: die Standbilder stehen eine Spur hinter der
+       Schärfeebene — leicht unscharf, entsättigt, gedimmt. Der Hero
+       bleibt scharf: er ist der Auftritt, nicht die Kulisse. */
+    .kz-buehne__lage:not([data-lage="hero"]) .kz-buehne__bild {
+      filter: blur(2px) saturate(0.88) brightness(0.9);
+    }
+
+    /* Das Video liegt über seinem Poster und blendet erst ein, wenn es
+       wirklich läuft (kz-buehne.js setzt .film-an) — kein schwarzer Frame,
+       kein Sprung. Rückweg ohne Transition: Poster sofort da. */
+    .kz-buehne__film { opacity: 0; }
+    .film-an .kz-buehne__film { opacity: 1; transition: opacity 0.9s var(--ease-soft); }
+
+    /* DER SCHLEIER — das tragende Element.
+       Drei Lagen übereinander:
+       · Grundton α .55 über allem: die Motive bleiben Raum, nie Poster.
+       · Spalten-Plateau α .68 über der Inhaltsbreite: beginnt exakt an
+         der Wrap-Kante — max(16px, freie Randbreite). Auf großen
+         Schirmen atmet das Motiv neben der Textspalte auf, auf schmalen
+         liegt das Plateau praktisch vollflächig. Textzeilen erreichen
+         den Verlaufsanstieg dadurch NIE (Gutter ≥ 20px > 16px).
+       · Bodendichte unten: verankert das Bild und trägt Scrollcue & Co. */
+    .kz-buehne__schleier {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to top,
+          rgb(20 18 16 / 0.50) 0%,
+          rgb(20 18 16 / 0.16) 26%,
+          rgb(20 18 16 / 0) 44%),
+        linear-gradient(to right,
+          rgb(20 18 16 / 0.08) 0,
+          rgb(20 18 16 / 0.68) max(16px, calc((100% - 1200px) / 2)),
+          rgb(20 18 16 / 0.68) calc(100% - max(16px, calc((100% - 1200px) / 2))),
+          rgb(20 18 16 / 0.08) 100%);
+      background-color: rgb(20 18 16 / 0.55);
+    }
+
+    /* Tertiärtext eine Stufe heller: #A08D7C hielt auf dem Schleier über
+       einem hellen Bildfleck nur ~3.8:1. #B2A08F hält dort 4.7:1 und auf
+       plain Charcoal 7.4:1 — bleibt klar unter --slate in der Hierarchie.
+       (:root:root schlägt das :root aus kz-v2.css unabhängig von der
+       Ladereihenfolge. Der helle Anfrage-Bogen definiert sein --slate-2
+       lokal und bleibt unberührt.) */
+    :global(:root:root) { --slate-2: #B2A08F; }
+
+    /* Die Navigation schwebt über dem Video — ihr Träger wird dichter
+       (0.72 → 0.86), damit die Links auch über hellen Rolltor-Lamellen
+       ≥ 6:1 halten. Der Blur bleibt. */
+    .kz-nav.kz-nav { background: rgb(20 18 16 / 0.86); }
+
+    /* Der Hero gibt seinen opaken Grund auf: das Rolltor IST jetzt der
+       Grund. Die Glutherde bleiben und legen sich als warmes Licht über
+       das Video. (Doppelklasse: gewinnt gegen kz-v2-polish.css.) */
+    .kz-hero.kz-hero {
+      background:
+        radial-gradient(90% 60% at 12% 108%, rgba(232, 90, 43, 0.20), transparent 60%),
+        radial-gradient(70% 55% at 88% -10%, rgba(255, 122, 69, 0.10), transparent 55%),
+        radial-gradient(50% 40% at 70% 90%, rgba(69, 191, 198, 0.05), transparent 70%);
+    }
+
+    /* MATERIALITÄT — Abschnitte mit eigenem Grund liegen als Platten VOR
+       der Bühne: Lichtkante oben (Licht fällt von oben), weicher
+       Schattenwurf mit Versatz UND Unschärfe nach unten auf den Bildraum
+       dahinter. Das ist der Unterschied zwischen „Farbwechsel" und
+       „liegt darüber". */
+    .kz-section.kz-section[style*="paper-2"] { border-block: 1px solid var(--line-soft); }
+    .kz-section.kz-section[style*="paper-2"],
+    .kz-fit-section.kz-fit-section,
+    .kz-demo-section.kz-demo-section,
+    :global(.kz-anfrage.kz-anfrage) {
+      box-shadow:
+        inset 0 1px 0 rgba(255, 240, 225, 0.06),
+        0 34px 64px -36px rgb(0 0 0 / 0.62);
+    }
+
+    /* Karten, die direkt auf dem Bildraum stehen (Angebot liegt in einer
+       Fenster-Sektion), heben sich eine Stufe stärker ab als auf einer
+       Platte: tieferer Wurf, gleiche Lichtkante. */
+    .kz-offer__main, .kz-offer__side { box-shadow: var(--shadow-lg); }
+    .kz-laufend { box-shadow: var(--shadow-md); }
+
+    /* Reduzierte Bewegung: kein Video (kz-buehne.js lädt es gar nicht
+       erst), kein Parallax-Zug, harte statt gleitender Lagenwechsel.
+       Die leichte Skalierung bleibt — sie deckt den Unschärfe-Saum. */
+    @media (prefers-reduced-motion: reduce) {
+      .kz-buehne__lage { transition: none; transform: scale(1.03); }
+      .kz-buehne__film { display: none; }
     }
 
   </style>
