@@ -97,24 +97,105 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
     <section>
       <h2 class="kz-h2">5. Kontaktaufnahme per E-Mail</h2>
       <p>
-        Wenn Sie uns per E-Mail kontaktieren (z.B. an <a href="mailto:kontakt@k-aizen.de">kontakt@k-aizen.de</a>), werden
-        Ihre Angaben zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen gespeichert.
+        Schreiben Sie uns an <a href="mailto:kontakt@k-aizen.de">kontakt@k-aizen.de</a>, empfängt der E-Mail-Anbieter
+        <strong>mailbox.org</strong> (Heinlein Hosting GmbH, Berlin) Ihre Nachricht und leitet sie an unser Postfach bei
+        <strong>Gmail</strong> weiter (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland). Google
+        verarbeitet die E-Mail dort in eigener Verantwortung und kann Daten auch in die USA übermitteln; die Google LLC ist
+        unter dem EU-US Data Privacy Framework zertifiziert.
+      </p>
+      <p>
+        Von dort übernimmt unsere eigene Software <strong>k-AIzen OS</strong> auf unserem Server bei Hetzner (siehe
+        Ziffer 3) die Nachricht, damit wir sie beantworten können. Dabei sortiert eine KI sie vor und schlägt uns Antwortentwürfe vor:
+        <strong>Anthropic</strong> (Anthropic Ireland, Limited, Dublin, bzw. Anthropic PBC, San Francisco, USA) arbeitet
+        dafür als Auftragsverarbeiter, verarbeitet Daten auch in den USA auf Grundlage der EU-Standardvertragsklauseln,
+        nutzt die Inhalte nicht zum Training und löscht sie nach 30 Tagen (bei Verdacht auf Missbrauch länger).
       </p>
       <p>
         Verarbeitete Daten: Ihre Mail-Adresse, Ihr Name (falls in der Mail enthalten), der Inhalt Ihrer Nachricht.
-      </p>
-      <p>
         Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
-        Interesse an Beantwortung Ihrer Anfrage).
+        Interesse an der Beantwortung Ihrer Anfrage).
       </p>
       <p>
-        Speicherdauer: bis zur Beendigung der geschäftlichen Kommunikation, danach Löschung — außer es bestehen gesetzliche
-        Aufbewahrungspflichten (z.B. handels- oder steuerrechtliche, dann bis zu 10 Jahre).
+        Speicherdauer: Wir bewahren E-Mails auf, solange wir sie für Ihr Anliegen brauchen oder gesetzliche
+        Aufbewahrungspflichten bestehen (z.B. handels- oder steuerrechtliche, dann bis zu 10 Jahre).
       </p>
     </section>
 
     <section>
-      <h2 class="kz-h2">6. Externe Verlinkungen</h2>
+      <h2 class="kz-h2">6. Anfrageformular</h2>
+      <p>
+        Wenn Sie das Anfrageformular nutzen, verarbeiten wir Ihre Angaben (Name, Telefon, Ort, Anliegen, auf Wunsch
+        E-Mail und Rückrufwunsch) und die IP-Adresse Ihres Geräts, um Ihnen zu antworten. Rechtsgrundlage ist Ihre
+        Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die Sie jederzeit für die Zukunft widerrufen können, und die
+        Vertragsanbahnung (Art. 6 Abs. 1 lit. b DSGVO).
+      </p>
+      <ul>
+        <li><strong>Speicherung:</strong> auf unserem Server bei Hetzner in Deutschland (siehe Ziffer 3).</li>
+        <li>
+          <strong>Benachrichtigung per E-Mail:</strong> Der Server schickt die Anfrage über <strong>Resend</strong>
+          (Plus Five Five, Inc., 2261 Market Street #5039, San Francisco, USA) an unser Postfach bei Gmail (siehe
+          Ziffer 5). Resend arbeitet als Auftragsverarbeiter; der Vertrag zur Auftragsverarbeitung enthält die
+          EU-Standardvertragsklauseln, außerdem ist Resend unter dem EU-US Data Privacy Framework zertifiziert. Resend
+          speichert die Versanddaten bis zu 30 Tage.
+        </li>
+        <li>
+          <strong>Hinweis aufs Handy:</strong> Über einen Discord-Kanal erhalten wir nur den Hinweis, dass eine neue
+          Anfrage eingegangen ist — ohne Ihren Namen und ohne Ihre Angaben.
+        </li>
+      </ul>
+      <p>
+        Speicherdauer: Kommt kein Auftrag zustande, löschen wir Ihre Kontaktdaten, Ihre Nachricht und die IP-Adresse
+        spätestens sechs Monate nach Ihrer Anfrage auf dem Server und verschieben die Benachrichtigungs-E-Mail in den
+        Papierkorb unseres Postfachs, aus dem Gmail sie nach 30 Tagen endgültig löscht. Für unsere Statistik bleiben nur
+        Datum, Ort, die Seite, über die die Anfrage kam, und der Nachweis Ihrer Einwilligung. Wird daraus ein Auftrag, gelten die gesetzlichen
+        Aufbewahrungspflichten.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">7. Aufnahmebogen für Kunden</h2>
+      <p>
+        Den Aufnahmebogen unter /onboarding/ füllen Kunden zur Vorbereitung ihres Auftrags aus. Während Sie tippen, legt
+        die Seite Ihre Eingaben im lokalen Speicher Ihres Browsers ab (localStorage), damit nichts verloren geht. Dort
+        bleiben sie, bis Sie „Formular leeren“ drücken — auch nach dem Absenden, damit Sie nachbessern können. Beim
+        Absenden gehen die Angaben an unseren Server bei Hetzner und von dort über Resend (siehe Ziffer 6) per E-Mail an
+        unser Postfach bei Gmail (siehe Ziffer 5); über Discord erhalten wir nur den Hinweis, dass ein Bogen eingegangen
+        ist, ohne Ihre Angaben. Rechtsgrundlage ist die Vorbereitung des Vertrags (Art. 6 Abs. 1 lit. b DSGVO); wir
+        bewahren die Angaben für die Dauer der Zusammenarbeit und danach im Rahmen gesetzlicher Aufbewahrungspflichten
+        auf.
+      </p>
+    </section>
+
+    <section id="chat">
+      <h2 class="kz-h2">8. Chat auf dieser Website</h2>
+      <p>
+        Unten rechts können Sie uns über ein Chat-Fenster schreiben. Antworten erzeugt zunächst eine KI:
+        <strong>Anthropic</strong> (Anthropic Ireland, Limited, Dublin, bzw. Anthropic PBC, San Francisco, USA) arbeitet
+        dafür als Auftragsverarbeiter, verarbeitet Daten auch in den USA auf Grundlage der EU-Standardvertragsklauseln,
+        nutzt die Inhalte nicht zum Training und löscht sie nach 30 Tagen (bei Verdacht auf Missbrauch länger). Für die
+        automatischen Antworten erhält Anthropic Ihre Nachrichten und den bisherigen Gesprächsverlauf, nicht aber Name und
+        E-Mail-Adresse aus dem Vorstellformular. Antworten wir Ihnen persönlich, kann uns die KI einen Entwurf
+        vorschlagen; dafür erhält sie den ganzen Gesprächsverlauf einschließlich unserer Notizen, also auch Ihren Namen
+        und Ihre E-Mail-Adresse.
+      </p>
+      <p>
+        Der Verlauf wird in k-AIzen OS auf unserem Server bei Hetzner gespeichert, damit wir das Gespräch persönlich
+        fortsetzen können. Geben Sie Name und E-Mail an, legen wir dafür einen Kontakt in unserer Kundenverwaltung an.
+        Erst wenn Sie den Chat nutzen, speichert das Fenster im lokalen Speicher Ihres Browsers eine zufällige
+        Gesprächskennung, die letzten Nachrichten und gegebenenfalls Ihren Namen und Ihre E-Mail-Adresse, damit das Gespräch beim nächsten Besuch
+        weitergeht. Cookies setzt der Chat nicht.
+      </p>
+      <p>
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Ihre Anfrage) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
+        Interesse, Fragen schnell zu beantworten). Chatverläufe ohne neue Nachricht löschen wir automatisch nach
+        12 Monaten; in Sicherungskopien unserer Datenbank bleiben sie, bis diese Kopien gelöscht werden. Den Kontakt
+        löschen wir, wenn keine Geschäftsbeziehung entsteht oder Sie es verlangen. Den lokalen Speicher können Sie
+        jederzeit in Ihrem Browser löschen.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="kz-h2">9. Externe Verlinkungen</h2>
       <p>
         Auf der Website finden sich Links zu externen Diensten (LinkedIn, GitHub, Mailto). Beim Klicken
         verlassen Sie diese Seite und es gelten die Datenschutzerklärungen der jeweiligen Anbieter. Wir haben keinen
@@ -148,14 +229,10 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
         DSGVO). Näheres in der
         <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>.
       </p>
-      <p>
-        Das Anfrageformular auf dieser Website läuft dagegen weiterhin
-        ausschließlich über unseren eigenen Server in Deutschland.
-      </p>
     </section>
 
     <section>
-      <h2 class="kz-h2">7. Ihre Rechte</h2>
+      <h2 class="kz-h2">10. Ihre Rechte</h2>
       <p>Sie haben jederzeit das Recht auf:</p>
       <ul>
         <li><strong>Auskunft</strong> (Art. 15 DSGVO) über Ihre bei uns gespeicherten Daten</li>
@@ -173,7 +250,7 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
     </section>
 
     <section>
-      <h2 class="kz-h2">8. Auftragsverarbeitung bei Kundenprojekten</h2>
+      <h2 class="kz-h2">11. Auftragsverarbeitung bei Kundenprojekten</h2>
       <p>
         Wenn wir für Sie Workflows bauen, die personenbezogene Daten verarbeiten, schließen wir vor Projektstart einen
         Auftragsverarbeitungsvertrag (AVV) nach Art. 28 DSGVO ab. Wir verarbeiten in Ihrem Auftrag, nicht in eigener Verantwortung,
@@ -186,7 +263,7 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
     </section>
 
     <section>
-      <h2 class="kz-h2">9. Änderungen dieser Datenschutzerklärung</h2>
+      <h2 class="kz-h2">12. Änderungen dieser Datenschutzerklärung</h2>
       <p>
         Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen
         entspricht oder um Änderungen unserer Leistungen abzubilden. Die jeweils aktuelle Fassung gilt für Ihren erneuten
