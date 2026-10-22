@@ -4,7 +4,7 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
 
 <KaizenLayout
   title="Datenschutzerklärung"
-  description="Wie k-AIzen mit personenbezogenen Daten umgeht. Kein Tracking, keine Cookies, klare Freigaben und AVV für Kundenprojekte."
+  description="Wie k-AIzen mit personenbezogenen Daten umgeht: keine Werbe-Tracker, keine Tracking-Cookies, Reichweitenmessung nur mit selbst betriebenem Umami, AVV für Kundenprojekte."
   path="/datenschutz"
 >
   <article class="kz-page">
@@ -22,7 +22,8 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
       </p>
       <p>
         <strong>Benjamin Zirngibl — k-AIzen</strong><br/>
-        [Vollständige Anschrift wird im Impressum ergänzt]<br/>
+        Zum Schwarzachtal 5<br/>
+        90592 Schwarzenbruck<br/>
         E-Mail: <a href="mailto:kontakt@k-aizen.de">kontakt@k-aizen.de</a>
       </p>
     </section>
@@ -34,7 +35,7 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
       </p>
       <ul>
         <li><strong>Keine Cookies</strong> für Analytics, Werbung oder Tracking</li>
-        <li><strong>Kein Google Analytics</strong>, kein Matomo, kein Plausible — keine Web-Analytics</li>
+        <li><strong>Kein Google Analytics</strong>, keine Analyse-Dienste von Drittanbietern (Reichweitenmessung nur mit dem selbst betriebenen Umami, siehe Ziffer 3)</li>
         <li><strong>Kein Pixel-Tracking</strong> (Facebook-Pixel, LinkedIn-Insight, Google-Tag-Manager — nichts davon)</li>
         <li><strong>Keine Newsletter-Software</strong> mit Tracking-Pixel</li>
         <li><strong>Kein Profiling</strong>, keine automatisierte Entscheidungsfindung</li>
@@ -46,22 +47,37 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
       <h2 class="kz-h2">3. Hosting</h2>
       <p>
         Diese Website wird gehostet bei der <strong>Hetzner Online GmbH</strong>, Industriestraße 25, 91710 Gunzenhausen,
-        Deutschland. Server-Standort: Nürnberg, Deutschland.
+        Deutschland. Server-Standort: Nürnberg, Deutschland. Hetzner verarbeitet die Daten als Dienstleister in unserem
+        Auftrag; mit Hetzner besteht ein Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO.
       </p>
       <p>
-        Beim Aufruf der Seite werden technisch notwendige Server-Logs erstellt. Diese enthalten:
+        Wenn Sie eine Seite aufrufen, verarbeitet der Server technisch notwendige Daten: Ihre IP-Adresse, Datum und
+        Uhrzeit, die aufgerufene Adresse sowie Angaben zu Browser und Betriebssystem, die Ihr Browser mitsendet. Die
+        IP-Adresse wird nur verwendet, um Ihnen die Seite auszuliefern. <strong>Zugriffsprotokolle werden nicht
+        gespeichert.</strong> Nur wenn auf dem Server ein kritischer Fehler auftritt, entsteht ein Fehlereintrag, der die
+        IP-Adresse enthalten kann. Er wird gelöscht, wenn der Webserver bei der nächsten Aktualisierung der Website
+        ersetzt wird.
       </p>
-      <ul>
-        <li>IP-Adresse (gekürzt, nur für 7 Tage zur Spam-/Angriffs-Abwehr)</li>
-        <li>Datum und Uhrzeit des Zugriffs</li>
-        <li>Aufgerufene URL</li>
-        <li>HTTP-Statuscode</li>
-        <li>Übertragene Datenmenge</li>
-        <li>Browser-User-Agent (Browsertyp und -version)</li>
-      </ul>
       <p>
         Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an stabilem, sicherem Betrieb der Website).
-        Speicherdauer: max. 7 Tage, danach automatische Löschung.
+      </p>
+      <p>
+        <strong>Reichweitenmessung mit Umami.</strong> Um zu verstehen, welche Seiten gelesen werden, nutzen wir die
+        Open-Source-Software Umami. Sie läuft auf einem selbst betriebenen Server, ebenfalls bei Hetzner in Deutschland,
+        erreichbar unter analytics.asbest-entfernen.de. Die Daten gehen an keinen Drittanbieter, Umami setzt keine Cookies
+        (<a href="https://umami.is/docs/faq" rel="noopener noreferrer" target="_blank">Umami-FAQ</a>). Bei jedem
+        Seitenaufruf sendet das Umami-Skript Adresse und Titel der Seite, den Hostnamen, die verweisende Seite, die
+        Bildschirmgröße und die Spracheinstellung Ihres Browsers; aus den Angaben, die Ihr Browser ohnehin mitsendet,
+        ermittelt Umami außerdem Browser, Betriebssystem, Gerätetyp und den ungefähren Standort
+        (<a href="https://umami.is/docs/tracker-functions" rel="noopener noreferrer" target="_blank">Umami-Dokumentation</a>).
+        Ihre IP-Adresse wird nur kurz verarbeitet, um daraus mit Browserangaben und einem monatlich wechselnden
+        Wert aus Datum und einem geheimen Server-Schlüssel eine pseudonyme Besucherkennung zu bilden; gespeichert wird sie nicht
+        (<a href="https://umami.is/docs/metric-definitions" rel="noopener noreferrer" target="_blank">Umami-Dokumentation</a>).
+        Ist im lokalen Speicher Ihres Browsers der Eintrag „umami.disabled“ gesetzt, misst das Skript nichts
+        (<a href="https://umami.is/docs/exclude-my-own-visits" rel="noopener noreferrer" target="_blank">Umami-Dokumentation</a>).
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO; unser berechtigtes Interesse ist eine datensparsame Messung,
+        welche Inhalte gebraucht werden. Wir werten die Daten nur zusammengefasst aus. Die gespeicherten Aufrufdaten bewahren wir auf, solange wir diese Website
+        betreiben, und löschen sie, wenn wir die Website einstellen.
       </p>
     </section>
 
@@ -177,7 +193,7 @@ import KaizenLayout from '../layouts/KaizenLayout.astro';
         Besuch.
       </p>
       <p>
-        <strong>Stand:</strong> Mai 2026
+        <strong>Stand:</strong> Oktober 2026
       </p>
     </section>
 
